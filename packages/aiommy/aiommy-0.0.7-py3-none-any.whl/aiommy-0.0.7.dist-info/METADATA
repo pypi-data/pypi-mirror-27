@@ -1,0 +1,49 @@
+Metadata-Version: 2.0
+Name: aiommy
+Version: 0.0.7
+Summary: A helpful tools for building web API
+Home-page: https://github.com/dennypenta/aiommy
+Author: Denis Dvornikov
+Author-email: candyboobers@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: Web API
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: aiohttp
+Requires-Dist: cerberus
+Requires-Dist: pytz
+Requires-Dist: peewee
+Requires-Dist: peewee-async
+Requires-Dist: PyJWT
+Requires-Dist: psycopg2
+Requires-Dist: aiopg
+
+There would an aiommy description.
+Something about how to use and what is it for.
+
+### Installation ###
+pip install aiommy
+
+### TODO: ###
+  - test installing
+  - refactoring
+  - safely managing testing database
+  - make test runner for explicit set testing database and database driver
+
+  - license
+  - makefile
+  - travis
+  - separate dev dependencies
+
+  - responses
+  - validators
+  - views
+
+  - other extensions for peewee
+
+
