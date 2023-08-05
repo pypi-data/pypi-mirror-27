@@ -1,0 +1,1127 @@
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+usage: tsgettoolbox about [-h]
+
+Print out information about tsgettoolbox and the system.
+
+optional arguments:
+  -h, --help  show this help message and exit
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
+/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/odo/backends/pandas.py:94: FutureWarning: pandas.tslib is deprecated and will be removed in a future version.
+You can access NaTType as type(pandas.NaT)
+  @convert.register((pd.Timestamp, pd.Timedelta), (pd.tslib.NaTType, type(None)))
+Traceback (most recent call last):
+  File "/home/tim/python_ves/python-2.7.13/bin/tsgettoolbox", line 11, in <module>
+    load_entry_point('tsgettoolbox==13.16.5.9', 'console_scripts', 'tsgettoolbox')()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/tsgettoolbox/tsgettoolbox.py", line 8005, in main
+    mando.main()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 201, in __call__
+    return self.execute(sys.argv[1:])
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 195, in execute
+    command, a = self.parse(args)
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/core.py", line 177, in parse
+    self._options = self.parser.parse_args(args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1701, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1921, in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1898, in consume_positionals
+    take_action(action, args)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1096, in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1733, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1939, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1879, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 1807, in take_action
+    action(self, namespace, argument_values, option_string)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 996, in __call__
+    parser.print_help()
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2340, in print_help
+    self._print_message(self.format_help(), file)
+  File "/home/tim/pythons/python-2.7.13/lib/python2.7/argparse.py", line 2314, in format_help
+    return formatter.format_help()
+  File "/home/tim/python_ves/python-2.7.13/lib/python2.7/site-packages/mando/rst_text_formatter.py", line 26, in format_help
+    'replace').decode(sys.stdout.encoding)
+TypeError: encode() argument 1 must be string, not None
