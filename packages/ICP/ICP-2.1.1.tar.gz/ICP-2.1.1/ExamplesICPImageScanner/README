@@ -1,0 +1,67 @@
+
+
+             README for ExamplesICPImageScanner Directory
+             ********************************************
+
+
+This directory contains the following scripts:
+
+
+1)  RunICPImageScanner.py
+
+          This example script illustrates how to use the ICPImageScanner
+          class in the ICP module.
+
+          This script scans two images, one for the model and the other
+          for the data, in an interactive mode.  What that means is that 
+          each subimage is shown to the user before moving on to the 
+          next subimage.
+
+          The subimages extracted from the large model and data images are
+          dumped in scanner dump directories whose names are keyed to the
+          names of the images.
+
+2)  ICPforOneSubimagePair.py
+
+          This script demonstrates ICP registration of one subimage
+          extracted from the large model image with the corresponding
+          subimage extracted from the large data image.
+
+          For this script to work, you have to have previously run the
+          image scanner that chops the large images into subimages and
+          dumps them in two scanner dump directories, one for the model 
+          image and the other for the data image.  The names of the dump 
+          directories are keyed to the names of the images.
+
+3)  ICPforScannerDump_show_intermediate_results.py
+
+          This script applies the ICP registration algorithm to ALL the
+          subimage pairs extracted from the large model and data images.
+
+          Since this script shows you ICP registration separately for each
+          subimage pair, it is slower than the next script listed in this
+          README.
+
+          The final output of this script is in the form of a composite
+          movie that shows ICP registration for ALL subimage pairs
+          simultaneously.
+
+4)  ICPforScannerDump_no_intermediate_results.py
+
+          Like the previous script, this script applies the ICP algorithm
+          to ALL of the subimage pairs extracted from the large model and
+          data images. This script should be much faster than the previous 
+          script listed above that must also display separately the ICP
+          registrations for the individual pairs of subimages.
+
+          As for the previous script, the final output of this script is in
+          the form of a composite movie that shows ICP registration for ALL
+          subimage pairs simultaneously.
+
+5)  cleanup_scanner_directory.py
+          
+          Ordinarily, the script themselves should clean up after
+          themselves.  However, should you want to kill a script midstream
+          or should it abort for some reason, you can run this script to
+          clean up the directory.
+           

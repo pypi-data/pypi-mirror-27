@@ -1,0 +1,46 @@
+The Examples directory contains the following six canned scripts:
+
+
+1.  color_image_registration_with_edge_pixels_example1.py
+
+          This script shows registration results with edge-based ICP on two
+          color images of Sydney Opera House. (The registration itself is
+          carried out on the grayscale versions of the color images.)
+
+
+2.  color_image_registration_with_edge_pixels_example2.py
+
+          This script shows registration results with edge-based ICP on
+          overhead grayscale photos of a highway interchange.
+
+
+3.  color_image_registration_with_edge_pixels_example3.py
+
+          This script shows registration results on a pair of generic
+          grayscale images, each with a large square block.
+
+
+4.  color_image_registration_with_corner_pixels_example1.py
+
+          This script shows registration results with corner-pixels based
+          ICP on two photos of my wife's earrings.  The model photo is from
+          the www.etsy.com website where these earrings are sold.  To the
+          best of what I can tell, there are no copyright issues related to
+          the use of this photo here.
+
+
+5.   binary_image_registration_example1.py
+
+          This is an example of registering two binary images of a
+          triangular shape.
+
+
+6.   binary_image_registration_example2.py
+
+          This is another example of binary image registration that only
+          involves a single straight line in the images.
+
+
+It is highly recommended that you play with these example scripts before
+using the module on your own images.
+
