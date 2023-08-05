@@ -1,0 +1,18 @@
+[console_scripts]
+exmemo = exmemo.commands.exmemo:exmemo
+
+[exmemo.commands]
+config = exmemo.commands.config:config
+expt = exmemo.commands.expt:expt
+init = exmemo.commands.project:init
+project = exmemo.commands.project:project
+
+[exmemo.commands.expt]
+edit = exmemo.commands.expt:edit
+ls = exmemo.commands.expt:ls
+open = exmemo.commands.expt:open
+
+[exmemo.commands.project]
+init = exmemo.commands.project:init
+root = exmemo.commands.project:root
+
