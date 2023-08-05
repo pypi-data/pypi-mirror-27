@@ -1,0 +1,12 @@
+{% load staticfiles %}
+
+<li class="menu-list__item">
+  <a class="menu-list__link" href="{% url 'colab_pauta:colab_pauta' '' %}" title="Escolha a pauta">
+    <div class="logo logo--menu-list">
+      <div class="logo__icon--pauta">
+        <img class="logo__image" src="{% static 'img/logo-pauta.svg' %}">
+      </div>
+    </div>
+    <span class="menu-list__text">Pautas</span>
+  </a>
+</li>

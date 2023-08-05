@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+<section class="section section--pauta">
+  <div class="e-row e-expanded">
+    <div class="section__info section__block e-columns small-12 large-3">
+      <a href="{% url 'colab_pauta:colab_pauta' '' %}"><img class="section__logo" src="{% static 'img/logo-pauta-participativa.svg' %}" data-fallback="{% static 'img/logo-labhacker.png' %}"></a>
+      <p class="section__text">
+        Escolha os assustos a serem abordados em plenário.
+      </p>
+    </div>
+
+    <div class="section__block e-columns small-12 large-9">
+      <div class="section__content">
+        <h1 class="section__title">
+          <a class="section__link" href="{% url 'colab_pauta:colab_pauta' '' %}" title="Veja todas as discussões">Escolha a pauta</a>
+          <a class="button section__button" href="{% url 'colab_pauta:colab_pauta' '' %}" title="Ver todos">
+            Ver todos
+          </a>
+        </h1>
+        <div class="container container--card-list">
+          <ul class="card-list">
+            {% for agenda in pauta_data %}
+              <a class="info-card__link" href="{{agenda.get_url}}">
+                <li class="info-card info-card--pauta">
+                  {% if agenda.is_closed %}
+                    <div class="info-card__header info-card__header--closed">
+                      <div class="info-card__icon info-card__icon--closed">
+                        <i class="icon icon-calendar-times-o"></i>
+                      </div>
+                      <h2 class="info-card__title">Votação Encerrada</h2>
+                    </div>
+                  {% else %}
+                    <div class="info-card__header info-card__header--calendar">
+                      <div class="info-card__icon info-card__icon--calendar">
+                        <i class="icon icon-calendar-check-o"></i>
+                      </div>
+                      <h2 class="info-card__title">Aberta Para Votação</h2>
+                    </div>
+                  {% endif %}
+                  <h2 class="info-card__title">{{agenda.title|truncatechars:70}}</h2>
+                  <p class="info-card__text">
+                    Nesta edição, consulta sobre projetos dos temas {% for group in agenda.groups.all %}{% if forloop.first %}<span class="text__highlight">{{group.theme_name|title}}</span>{% elif forloop.last %} e <span class="text__highlight">{{group.theme_name|title}}</span>{% else %}, <span class="text__highlight">{{group.theme_name|title}}</span>{% endif %}{% endfor %}.
+                  </p>
+                  <div class="info-card__footer">
+
+                    {% with agenda.is_closed as closed %}
+                      <div class="card-stats">
+                        <div class="card-stats__name">{% if closed %}Encerrado em{% else %}Participe até{% endif %}</div>
+                        <div class="card-stats__value {% if closed %}card-stats__value--closed{% endif %}">{{agenda.end_date|date:"d/m/Y"}}</div>
+                      </div>
+
+                      <div class="card-stats">
+                        <div class="card-stats__name">Participantes</div>
+                        <div class="card-stats__value {% if closed %}card-stats__value--closed{% endif %}">{{agenda.participants_count}}</div>
+                      </div>
+                    {% endwith %}
+                  </div>
+                </li>
+              </a>
+            {% empty %}
+              <li>
+                <div class="section__content-wrapper section__content-wrapper--center text-center">
+                  <p class="section__text">
+                    Desculpe. Não encontramos nenhuma discussão.
+                  </p>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
