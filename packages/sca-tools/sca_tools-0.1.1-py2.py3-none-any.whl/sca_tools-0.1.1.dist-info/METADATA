@@ -1,0 +1,33 @@
+Metadata-Version: 2.0
+Name: sca-tools
+Version: 0.1.1
+Summary: Scalability Analysis Tools
+Home-page: https://github.com/mookerji/sca_tools
+Author: Bhaskar Mookerji
+Author-email: mookerji@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Platform: Linux
+Platform: Windows
+Platform: Mac
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Requires-Dist: pytest (>=2.8.0)
+Requires-Dist: numpy
+Requires-Dist: pandas (<=0.20.3,>=0.20.1)
+Requires-Dist: scipy
+Requires-Dist: tables
+Requires-Dist: matplotlib
+Requires-Dist: click
+Requires-Dist: uncertainties
+Requires-Dist: lmfit
+Requires-Dist: pytest-cov
+Requires-Dist: pytest-xdist
+Requires-Dist: pytest-datafiles
+
+UNKNOWN
+
+
