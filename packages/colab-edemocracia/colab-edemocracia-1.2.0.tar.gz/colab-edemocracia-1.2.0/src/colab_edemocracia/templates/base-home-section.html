@@ -1,0 +1,46 @@
+{% load staticfiles macros %}
+
+{% macro app_slug %}{% block app_slug %}{% endblock %}{% endmacro %}
+{% macro section_title %}{% block section_title %}{% endblock %}{% endmacro %}
+{% macro section_title_attr %}{% block section_title_attr %}{% endblock %}{% endmacro %}
+{% macro section_text %}{% block section_text %}{% endblock %}{% endmacro %}
+{% macro empty_text %}{% block empty_text %}{% endblock %}{% endmacro %}
+{% macro cards_ammount_conditional %}{% block cards_ammount_conditional %}{% endblock %}{% endmacro %}
+{% macro plugin_url %}{% block plugin_url %}{% endblock %}{% endmacro %}
+{% macro logo_url %}{% block logo_url %}{% endblock %}{% endmacro %}
+
+<section class="section section--{% use_macro app_slug %}">
+  <div class="e-row e-expanded">
+
+    <div class="section__info section__block e-columns small-12 large-3">
+      <a href="{% use_macro plugin_url %}"><img class="section__logo" src="{% use_macro logo_url %}" ></a>
+      <p class="section__text">
+        {% use_macro section_text %}
+      </p>
+    </div>
+
+    <div class="section__block e-columns small-12 large-9">
+      <div class="section__content">
+
+        <h1 class="section__title">
+          <a class="section__link" href="{% use_macro plugin_url %}" title="{% use_macro section_title_attr %}">{% use_macro section_title %}</a>
+        </h1>
+
+        <div class="container container--card-list">
+
+          <a class="section__button" href="{% use_macro plugin_url %}">
+            Ver todos
+          </a>
+
+          <ul class="card-list">
+            {% block cards %}
+
+            {% endblock cards %}
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

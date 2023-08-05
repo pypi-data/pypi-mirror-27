@@ -1,0 +1,159 @@
+.edem-topbar {
+  font-family: $font-family-main;
+  font-size: $base-unit;
+  min-height: $edem-topbar-height;
+  width: 100%;
+  box-sizing: border-box;
+
+  * { box-sizing: inherit }
+
+  > .stick {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100vw;
+    height: $edem-topbar-height;
+    background: linear-gradient(90deg, #114433 0%, #002222 100%);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 1px 4px rgba(0, 0, 0, 0.23);
+    overflow: hidden;
+    z-index: 1000000;
+
+    > .brand {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      min-width: 0;
+      text-decoration: none;
+      transition: transform 0.3s 0s $swift-out, opacity 0.2s 0.1s linear;
+
+      > .logo {
+        height: 38px;
+        margin-left: 0.625 * $base-unit;
+        margin-bottom: 4px;
+
+        @include bp-smallup {
+          margin-left: 0.75 * $base-unit;
+        }
+      }
+
+      > .name {
+        color: #fff;
+        line-height: 0.8 * $base-unit;
+        font-size: 0.8 * $base-unit;
+        font-weight: 600;
+        margin-left: 0.5 * $base-unit;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        @include bp-smallup {
+          line-height: 1 * $base-unit;
+          font-size: 1 * $base-unit;
+        }
+      }
+
+      &.-menuopen {
+        transition: transform 0.3s 0s $swift-out, opacity 0.2s 0s linear;
+        @include bp-smallonly {
+          transform: translateX(-100%);
+          opacity: 0;
+
+        }
+      }
+    }
+
+    > .actions {
+      display: flex;
+      height: 100%;
+
+      > .menu {
+        display: flex;
+        height: 100%;
+
+        @include bp-smallonly {
+          justify-content: flex-end;
+          position: absolute;
+          width: 100%;
+          left: -32px;
+          transform: translateX(-100%);
+          opacity: 0;
+          transition: transform 0.3s $swift-out, opacity 0.1s 0s linear;
+        }
+
+        &.-menuopen {
+          transform: translateX(0);
+          opacity: 1;
+          transition: transform 0.3s $swift-out, opacity 0.2s 0.15s linear;
+        }
+
+        > .link {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          height: 100%;
+          padding: 0 0.625 * $base-unit;
+          color: white;
+          font-size: $font-size-mili;
+          font-weight: 700;
+          text-transform: uppercase;
+          cursor: pointer;
+          user-select: none;
+          transition: all 0.3s ease;
+
+          @include bp-smallup {
+            font-size: $font-size-centi;
+            padding: 0 0.75 * $base-unit;
+          }
+
+          &::after, &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            transition: transform 0.3s $swift-out;
+            z-index: -1;
+          }
+
+          &::before {
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: center;
+          }
+
+          &::after{
+            height: 100%;
+            transform: scaleY(0);
+            transform-origin: bottom;
+          }
+
+          &:hover::before {
+            transform: scaleX(1);
+          }
+
+          &.-highlight {
+            color: $edem-color-secondary;
+
+            &::after, &::before {
+              background-color: $edem-color-secondary;
+            }
+          }
+
+          &.-active {
+            color: $edem-color-primary;
+            &::after { transform: scaleY(1) }
+            &:hover::after { transform: scaleY(0.9375) } //(topbar-height - 2)/topbar-height
+          }
+
+          > .user-avatar {
+            margin-left: 0.5 * $base-unit;
+          }
+        }
+      }
+    }
+  }
+}
