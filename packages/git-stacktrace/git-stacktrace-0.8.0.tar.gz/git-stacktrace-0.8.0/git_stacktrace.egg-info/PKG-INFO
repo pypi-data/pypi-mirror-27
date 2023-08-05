@@ -1,0 +1,133 @@
+Metadata-Version: 1.1
+Name: git-stacktrace
+Version: 0.8.0
+Summary: git-blame for stacktraces
+Home-page: https://github.com/pinterest/git-stacktrace
+Author: Joe Gordon
+Author-email: UNKNOWN
+License: Apache License (2.0)
+Description-Content-Type: UNKNOWN
+Description: git-stacktrace
+        ==============
+        
+        git-stacktrace is designed to make it easy to figure out which commit caused a given stacktrace.
+        
+        git-stacktrace looks for:
+        
+        * commits in given range that touched files in the stacktrace
+        * commits in given range that added/removed code present the stacktrace
+        
+        
+        Supported Languages
+        -------------------
+        
+        * Python
+        * Java
+        
+        
+        Development
+        ------------
+        
+        Run tests with: ``tox``
+        
+        Installation
+        ------------
+        
+        .. code-block:: sh
+        
+            $ pip install git_stacktrace
+        
+        Usage
+        -----
+        
+        For the CLI see: ``git stacktrace -h``
+        
+        For the Python API see: ``git_stacktrace/api.py``
+        
+        
+        Examples
+        --------
+        
+        Example output::
+        
+        
+            $ git stacktrace --since=1.day < trace
+            Traceback (most recent call last):
+             File "webapp/framework/resource.py", line 72, in _call
+               result = getattr(self, method_name)()
+             File "webapp/resources/interests_resource.py", line 232, in get
+               if self.options['from_navigate'] == "true":
+            KeyError
+        
+        
+            commit da39a3ee5e6b4b0d3255bfef95601890afd80709
+            Commit Date: Tue, 19 Jul 2016 14:18:08 -0700
+            Author:      John Doe <johndoe@pinterest.com>
+            Subject:     break interest resource
+            Link:        https://example.com/D1000
+            Files Modified:
+               - webapp/resources/interests_resource.py:232
+            Lines Added:
+               - "if self.options['from_navigate'] == "true":"
+        
+        Change Log
+        ==========
+        
+        0.8.0
+        -----
+        
+        * Fix pickaxe support for python3
+        * Improve java traceback support
+        * Improve the python api
+        
+        0.7.2
+        -----
+        
+        * Fix python traceback parsing with no code on last line (https://github.com/pinterest/git-stacktrace/pull/13)
+        
+        0.7.1
+        -----
+        
+        * Fix python traceback parsing where code is missing (https://github.com/pinterest/git-stacktrace/issues/10)
+        * Add --debug flag
+        
+        0.7.0
+        -----
+        
+        * Add python 3 support
+        
+        0.6.0
+        -----
+        
+        * Support arbitrary sized abbreviated hashes
+        * Clarify CLI help message
+        
+        0.5.0
+        -----
+        
+        * Match file line numbers in stacktrace to lines changed in commits
+        * Differentiate files added, deleted and modified
+        * print stacktrace headers and footers
+        * Fix git pickaxe error (Use '--' to separate paths from revisions)
+        * Add initial java stacktrace support. Begin supporting basic java stacktraces, some more complex formats are not supported yet.
+        
+        0.4.1
+        -----
+        
+        * Get ready for pypi
+        
+        0.4.0
+        -----
+        
+        * Initial open source commit
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: Apache Software License
