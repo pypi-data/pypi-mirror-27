@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: pyspark-hbase
+Version: 0.0.5
+Summary: pyspark hbase hadoop utils
+Home-page: https://github.com/songjian28/pyspark-hbase
+Author: SONG JIAN
+Author-email: songjian9228@163.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 通过pyspark的newAPIHadoopRDD方法直连hbase，返回dataframe，hbase:1.2
+        需配置系统变量 HBASE_CONF 来确定hbase的配置文件地址
+        eg:
+        
+Keywords: spark hbase
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
