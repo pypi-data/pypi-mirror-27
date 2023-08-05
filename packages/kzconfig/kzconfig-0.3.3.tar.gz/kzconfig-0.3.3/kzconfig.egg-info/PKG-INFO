@@ -1,0 +1,83 @@
+Metadata-Version: 1.1
+Name: kzconfig
+Version: 0.3.3
+Summary: Convenience library for configuring Kazoo & it's components
+Home-page: https://github.com/telephoneorg/kzconfig
+Author: Joe Black
+Author-email: me@joeblack.nyc
+License: Apache 2.0
+Download-URL: https://github.com/telephoneorg/kzconfig/tarball/v0.3.3
+Description: # kzconfig
+        
+        General kazoo configuration wrappers and helpers.  Wraps the following:
+        * python-couchdb
+        * kazoo-sdk
+        * pyrkube
+        * dnsimple
+        
+        
+        ## Usage
+        ```python
+        from kzconfig import Context
+        context = Context()
+        
+        
+        rabbit_pod = context.kube.get('pod', 'rabbitmq')
+        db = context.couchdb['system_config']
+        
+        env = context.configs['environment']
+        couchdb_creds = context.secrets['couchdb']
+        
+        context.dns.add('A', '192.168.0.1')
+        
+        master_acct = context.kazoo.get_account(context.secrets['master-account'])
+        
+        context.sup.kz_nodes.status()
+        ```
+        
+        
+        ## CLI Commands
+        ### `sup`
+        
+        #### Usage
+        ```
+        Usage: sup [OPTIONS] MODULE FUNCTION [ARGS]...
+        
+        Options:
+          --help  Show this message and exit.
+        ```
+        
+        ### `install-kubectl`
+        
+        #### Usage
+        ```
+        Usage: install-kubectl [OPTIONS]
+        
+        Options:
+          --help  Show this message and exit.
+        ```
+        
+        Installs kubectl version == KUBECTL_VERSION || 1.7.8.
+        
+        If you override the version using environment variables, be sure to override KUBECTL_SHA256 also.
+        
+        
+        #### Example
+        
+        ```
+        sup kz_nodes status
+        ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development
+Classifier: Topic :: System
+Classifier: Topic :: System :: Systems Administration
