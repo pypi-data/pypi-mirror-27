@@ -1,0 +1,86 @@
+#!/usr/bin/env python
+
+"""
+# sikafs (Client for Sika File Server)
+
+    Ondrej Sika <ondrej@ondrejsika.com>
+    https://github.com/ondrejsika/sikafs
+
+"""
+
+import os
+import sys
+import argparse
+
+import requests
+
+
+def _env(name, default=None):
+    return os.environ.get(name, default)
+
+
+def _env_bool(name, default=None):
+    val = _env(name)
+    if val == 'true':
+        return True
+    elif val == 'false':
+        return False
+    else:
+        return default
+
+
+root_parser = argparse.ArgumentParser()
+root_parser.add_argument('--token', type=str, default=_env('SIKAFS_TOKEN'))
+root_subparsers = root_parser.add_subparsers(dest='command0')
+
+upload_parser = root_subparsers.add_parser('upload')
+upload_parser.add_argument('url')
+upload_parser.add_argument('file')
+
+download_parser = root_subparsers.add_parser('download')
+download_parser.add_argument('url')
+download_parser.add_argument('file',  nargs='?', default=None)
+
+delete_parser = root_subparsers.add_parser('delete')
+delete_parser.add_argument('url')
+
+args = root_parser.parse_args()
+
+
+def get_data(file_path):
+    if file_path == '-':
+        input_file = sys.stdin
+    else:
+        input_file = file(file_path)
+
+    with input_file as f:
+        return f.read()
+
+
+if args.command0 == 'upload':
+    headers = {}
+    if args.token:
+        headers['x-sikafs-token'] = args.token
+    print requests.post(args.url, data=get_data(args.file), headers=headers).text
+
+if args.command0 == 'download':
+    headers = {}
+    if args.token:
+        headers['x-sikafs-token'] = args.token
+
+    r = requests.get(args.url, headers=headers)
+    if r.status_code == 200:
+        if not args.file:
+            print r.text
+        else:
+            with file(args.file, 'w') as f:
+                f.write(r.text)
+                f.flush()
+            print 'OK'
+
+
+if args.command0 == 'delete':
+    headers = {}
+    if args.token:
+        headers['x-sikafs-token'] = args.token
+    print requests.delete(args.url, headers=headers).text

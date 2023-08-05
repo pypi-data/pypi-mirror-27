@@ -1,0 +1,113 @@
+#!/usr/bin/env python
+
+"""
+# sikafsd (Sika File Server)
+
+    Ondrej Sika <ondrej@ondrejsika.com>
+    https://github.com/ondrejsika/sikafs
+
+"""
+
+import os
+import argparse
+import mimetypes
+
+import flask
+
+
+def _env(name, default=None):
+    return os.environ.get(name, default)
+
+
+def _env_bool(name, default=None):
+    val = _env(name)
+    if val == 'true':
+        return True
+    elif val == 'false':
+        return False
+    else:
+        return default
+
+
+root_parser = argparse.ArgumentParser()
+root_parser.add_argument('--debug', action='store_true', default=_env_bool('SIKAFSD_DEBUG', False))
+root_parser.add_argument('--token', type=str, default=_env('SIKAFSD_TOKEN'))
+root_parser.add_argument('--storage-dir', type=str, default=_env('SIKAFSD_STORAGE_DIR', 'storage'))
+
+args = root_parser.parse_args()
+
+
+def get_file_path(url):
+    return os.path.abspath(os.path.join(args.storage_dir, url))
+
+
+def save_file(url, data):
+    file_path = get_file_path(url)
+    dirname = os.path.dirname(file_path)
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+    with file(file_path, 'w') as f:
+        f.write(data)
+        f.flush()
+
+
+def read_file(url):
+    file_path = get_file_path(url)
+    if not os.path.exists(file_path) or os.path.isdir(file_path):
+        return False, None
+    with file(file_path, 'r') as f:
+        return True, f.read()
+
+
+def remove_file(url):
+    file_path = get_file_path(url)
+    if os.path.isdir(file_path):
+        return False
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    return True
+
+
+def get_mime_type(path):
+    return mimetypes.guess_type(path)[0] or 'application/octet-stream'
+
+
+app = flask.Flask(__name__)
+
+
+@app.route('/')
+def http_index():
+    return '[sikafs] 200 Sika File Server, more info at https://github.com/ondrejsika/sikafs\n'
+
+
+@app.route('/<path:path>', methods=['POST'])
+def http_create_file(path):
+    if args.token:
+        if flask.request.headers.get('x-sikafs-token') != args.token:
+            return '[sikafs] 403 Token auth failed\n'
+    save_file(path, flask.request.get_data())
+    return '[sikafs] 200 OK\n'
+
+
+@app.route('/<path:path>', methods=['GET'])
+def http_get_file(path):
+    file_exists, data = read_file(path)
+    if file_exists:
+        return flask.Response(data, mimetype=get_mime_type(path))
+    return '[sikafs] 404 File not found\n', 404
+
+
+@app.route('/<path:path>', methods=['DELETE'])
+def http_delete_file(path):
+    if args.token:
+        if flask.request.headers.get('x-sikafs-token') != args.token:
+            return '[sikafs] 403 Token auth failed\n'
+    is_deleted = remove_file(path)
+    if is_deleted:
+        return '[sikafs] 200 OK\n'
+    return '[sikafs] Can not delete\n', 403
+
+
+if __name__ == '__main__':
+    app.debug = args.debug
+    app.run(host='0.0.0.0')
