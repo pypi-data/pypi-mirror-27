@@ -1,0 +1,13 @@
+include LICENSE
+include README.rst
+include Makefile
+graft pulsar
+graft docs
+graft requirements
+graft examples
+graft extensions
+graft tests
+global-exclude *.pyc
+global-exclude *.pyd
+global-exclude *.so
+global-exclude *.mp4
