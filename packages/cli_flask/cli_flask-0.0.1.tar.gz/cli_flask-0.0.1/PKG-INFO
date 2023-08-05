@@ -1,0 +1,50 @@
+Metadata-Version: 1.1
+Name: cli_flask
+Version: 0.0.1
+Summary: Flask cli (command line interface) for Flask application based project
+Home-page: https://github.com/struts2spring/flask_cli
+Author: Vijay 
+Author-email: struts2spring@gmail.com
+License: MIT
+Description: ## Flask CLI
+        This is cli (commond line interface) for Flask application based project.
+        
+        ## Table of Contents
+        
+        ## fl new
+        The flask cli makes it easy to create flask application . 
+        
+        ### Generating and starting an Flask project via a development server
+        ```bash
+        fl new PROJECT_NAME
+        cd PROJECT_NAME
+        fl start
+        ```
+        Navigate to http://localhost:5000/ . 
+        
+        
+        
+        # flask start
+        You can configure the default HTTP host and port used by the development server with two command-line options :
+        
+        ```bash
+        fl start --host 0.0.0.0 --port 5001
+        ```
+        
+         
+        ### Updating Flask CLI
+        
+        
+        ## License
+        
+        MIT
+        
+Platform: any
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Environment :: Other Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
