@@ -1,0 +1,10 @@
+-r optional.txt
+mock
+pytest
+pytest-xdist
+pytest-html
+pytest-django
+factory-boy
+psycopg2
+django-environ
+pathlib ; python_version < '3.3'
