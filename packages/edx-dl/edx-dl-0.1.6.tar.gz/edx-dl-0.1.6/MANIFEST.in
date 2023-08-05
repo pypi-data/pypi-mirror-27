@@ -1,0 +1,5 @@
+include requirements*.txt
+prune test
+prune test_*.py
+prune .*
+prune edx-dl.py
