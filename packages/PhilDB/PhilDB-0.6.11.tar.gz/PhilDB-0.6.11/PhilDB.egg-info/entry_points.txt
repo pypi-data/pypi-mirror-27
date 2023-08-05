@@ -1,0 +1,5 @@
+[console_scripts]
+phil = phildb.console:deprecated_main
+phil-create = phildb.create:main
+phildb = phildb.console:main
+
