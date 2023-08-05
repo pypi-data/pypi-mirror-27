@@ -1,0 +1,15 @@
+/** Diagonal Jacobian approximation (for GSL): (f(s+.01) - f(s))/.001 */
+extern "C" int {{component_name}}_{{regime.name}}_jacobian(double t, const double y[], double *dfdy, double dfdt[], void* node) {
+    // cast the node ptr to {{component_name}} object
+    assert(node);
+    {{component_name}}& cell =    *(reinterpret_cast<{{component_name}}*>(node));
+    {{component_name}}::{{regime.name}}Regime_& regime = *(reinterpret_cast<{{component_name}}::{{regime.name}}Regime_*>(cell.get_regime({{component_name}}::{{regime.name | upper}}_REGIME)));
+
+    for (unsigned int i = 0; i < regime.N; i++)
+        regime.u[i] = y[i] + 0.01;
+
+    {{component_name}}_{{regime.name}}_dynamics(t, regime.u, regime.jac, node);
+    for (unsigned int i = 0; i < regime.N; i++)
+        dfdt[i*regime.N + i] = (regime.jac[i] - dfdy[i]) / .001;
+    return 0;
+}
