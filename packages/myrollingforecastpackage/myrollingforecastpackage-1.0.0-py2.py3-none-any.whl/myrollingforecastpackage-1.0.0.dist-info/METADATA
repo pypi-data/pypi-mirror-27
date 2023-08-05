@@ -1,0 +1,22 @@
+Metadata-Version: 2.0
+Name: myrollingforecastpackage
+Version: 1.0.0
+Summary: A Python project for rolling prediction
+Home-page: https://github.com/RohenHun/packagem
+Author: Molnar Daniel
+Author-email: molnardaniel0309@gmail.com
+License: MIT
+Requires-Dist: GradientBoostingRegressor
+Requires-Dist: matplotlib.pyplot
+Requires-Dist: metrics
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: peppercorn
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+
+Feladatom megvalósítása során egy osztályt alkottam, amiben a benne található függvényeket felhasználva a felhasználó könnyen tud alkalmazni adatbányászati lépéseket a számára fontos adathalmazon. Így a következőkben ezeknek a függvényeknek a lényeges működését írom le, hogy bárki használni tudja ezek ismeretében.
+
+
