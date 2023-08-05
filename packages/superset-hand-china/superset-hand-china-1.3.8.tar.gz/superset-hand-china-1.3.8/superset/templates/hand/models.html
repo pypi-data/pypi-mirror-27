@@ -1,0 +1,20 @@
+{% block body %}
+    <div id="app" model="{{ model }}"></div>
+    {% block tail_js %}
+        <link href="/static/appbuilder/css/font-awesome.min.css" rel="stylesheet">
+        <script src="{{ js_manifest('jquery.js') }}"></script>
+        <script src="{{ js_manifest('bootstrap.js') }}"></script> 
+        <script src="{{ js_manifest('react.js') }}"></script>
+        <script src="{{ js_manifest('ag-grid.js') }}"></script>   
+        <script src="{{ js_manifest('react-dom.js') }}"></script>
+        <script src="{{ js_manifest('redux.js') }}"></script>
+        <script src="{{ js_manifest('react-ace.js') }}"></script> 
+        <script src="{{ js_manifest('react-bootstrap.js') }}"></script>
+        <script src="{{ js_manifest('react-bootstrap-table.js') }}"></script>
+        <script src="{{ js_manifest('react-map-gl.js') }}"></script>  
+        <script src="{{ js_manifest('react-redux.js') }}"></script> 
+
+        <link rel="stylesheet" type="text/css" href="{{ js_manifest('models.css') }}" >
+        <script src="{{ js_manifest('models.js') }}"></script>
+    {% endblock %}
+{% endblock %}
