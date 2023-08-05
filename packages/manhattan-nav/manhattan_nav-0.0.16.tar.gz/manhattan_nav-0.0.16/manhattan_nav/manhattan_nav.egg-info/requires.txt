@@ -1,0 +1,11 @@
+Flask>=0.12.1
+
+[develop]
+pytest
+pytest-flask
+tox
+
+[test]
+pytest
+pytest-flask
+tox
