@@ -1,0 +1,35 @@
+{% load i18n staticfiles sekizai_tags cms_tags %}
+
+<div class="djangocms-googlecalendar" style="width:{{ instance.width }};height:{{ instance.height }};"></div>
+
+{% addtoblock "css" %}
+    <link href="{% static 'djangocms_googlecalendar/fullcalendar-3.4.0/fullcalendar.min.css' %}" rel="stylesheet">
+    <link href="{% static 'djangocms_googlecalendar/fullcalendar-3.4.0/fullcalendar.print.min.css' %}" rel="stylesheet" media='print'>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+    <script src="{% static 'djangocms_googlecalendar/fullcalendar-3.4.0/lib/moment.min.js' %}"></script>
+    <script src="{% static 'djangocms_googlecalendar/fullcalendar-3.4.0/fullcalendar.min.js' %}"></script>
+    <script src="{% static 'djangocms_googlecalendar/fullcalendar-3.4.0/gcal.min.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+
+            // page is now ready, initialize the calendar...
+
+            $('.djangocms-googlecalendar').fullCalendar({
+                // put your options and callbacks here
+                googleCalendarApiKey: '{{ instance.api_key }}',
+                events: {
+                    googleCalendarId: '{{ instance.calendar_id }}'
+                }
+            })
+
+        });
+    </script>
+{% endaddtoblock %}
+
+{% comment %}
+    {{ instance.title }}
+    {{ instance.width }}
+    {{ instance.height }}
+{% endcomment %}

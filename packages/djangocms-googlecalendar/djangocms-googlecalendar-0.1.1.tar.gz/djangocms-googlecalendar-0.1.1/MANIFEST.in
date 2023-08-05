@@ -1,0 +1,6 @@
+include LICENSE.md
+include README.md
+recursive-include djangocms_googlecalendar/static *
+recursive-include djangocms_googlecalendar/templates *
+
+recursive-include docs *

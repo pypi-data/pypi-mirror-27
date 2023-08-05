@@ -1,0 +1,26 @@
+Metadata-Version: 1.1
+Name: djangocms-googlecalendar
+Version: 0.1.1
+Summary: Adds Google Calendar plugins to django CMS.
+Home-page: https://github.com/benjiyamin/djangocms-googlecalendar
+Author: Ben Miller
+Author-email: mail@benkmiller.com
+License: GNU General Public License v3 (GPLv3), see LICENSE.md
+Description: # Django CMS Google CalendarDjango CMS Google Calendar is a set of plugins for Django CMS that allow you to implement Google Calendar into your website.![Django CMS Google Calendar Example](./docs/img/preview.png "Django CMS Google Calendar Example")## Quick Start1. Install the easy way, using pip:        $ pip install djangocms-googlecalendar2. Add "djangocms\_googlecalendar" to your INSTALLED\_APPS setting like this:        INSTALLED_APPS = [            ...            'djangocms_googlecalendar',        ]3. Run `python manage.py migrate djangocms_googlecalendar` to create the plugin models.## Running TestsYou can run tests by executing:	virtualenv venv -p python3	source venv/bin/activate	pip install -r tests/requirements.txt	python setup.py test## LicenseThis project is licensed under GPL 3.0 - see [LICENSE](LICENSE.md) for details.
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
