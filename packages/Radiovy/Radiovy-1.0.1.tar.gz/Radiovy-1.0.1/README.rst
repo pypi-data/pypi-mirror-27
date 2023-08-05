@@ -1,0 +1,114 @@
+=================================================
+Radiovy -- Internet Radio Player on kivy GUI
+=================================================
+
+Introduction
+----------------------
+This project is a sub project of my 'homekeepi' project, in which I'm
+planning to support several functions to help my family to do house
+keeping works, also to provide a few entertainment things.
+
+Playing Internet radio stations is one of them.  It is not a big deal,
+once we have a URL to play.  But how to collect URLs and select one to
+play is not so trivial.  Basically the following steps must be done.
+
+1. go to a public Internet radio station site
+2. download pages which include radio stations URL
+3. for playlist URL, go to the playlist site and download it
+4. from the playlist get a streaming URL
+5. repeat 2 to 4, and organize the URLs in a database
+6. Let users select one of the URLs
+7. Play/Stop the selected URL
+
+I've found 'https://www.internet-radio.com/' is the best place to
+collect URLs, and supported the above functions by accessing that
+site.
+
+getradiourl.py
+----------------------
+This program does '1' to '5' in the list above.
+'ZODB' is used as the database to save URLs
+
+gstplayer.py
+----------------------
+This program does '7' in the list above.
+gstreamer is used to play radio station streams.
+
+radiovy.py
+----------------------
+This program does '6' in the list above.
+It runs on kivy, and is targeted to show GUI on 800x480 Raspberry Pi
+touch screen panel.
+
+installation
+----------------------
+If Kivy 1.10 is available, this package must be instllable and runnable.
+I've tested on 'KivyPie Version 1.0' and Mint Linux 18.2.
+
+  $ sudo pip install radiovy
+
+The installation should be completed by this command.
+  
+configuration
+----------------------
+In 'hkbase' directory under the installed directory, there is
+'config.cfg' file, which includes all configurable values.  Simple
+explanation is there and changing the configurations must be straight
+forward.
+
+If you put 'config.cfg' in '~/.getradiourl', which becomes a primary
+config file, and the above mentioned file becomes a secondary file.
+
+How to use
+----------------------
+Run 'radiovy' from a console.
+At the fist run, it downloads genres information automatically, so it
+takes a while to start up the first screen.  Once the genres
+information is ready, it shows a top page of 'radiovy'.
+
+.. image:: radiovy/files/radiovy_top.png
+   :scale: 50%
+
+Hitting 'genres' button, shows a genre-list page. Each genre name is a
+button to go inside the genre.
+
+.. image:: radiovy/files/radiovy_genres.png
+   :scale: 50%
+
+Selecting a genre, a modal dialog box shows up and ask you if you want
+to update stations information.  Because of the first run, there is
+not any stations information, it can't show stations information page
+without downloading it.
+
+.. image:: radiovy/files/radiovy_stations_update.png
+   :scale: 50%
+
+Clicking on 'Update Stations', it changes the button color and freezes for
+a while. How log it is depends on which genre you selected. A big genre
+like 'pop' takes quite a long time.
+
+There is another button on the modal dialogue box, which is 'Update
+All' button.  Hitting this button downloads all stations information
+for all the genres.  It takes a few hours, but if you had done it, you
+wouldn't have to wait to select any genre on the screen.
+
+Once the stations information is ready, the button color returns to the
+original color, and hitting 'Done' button, it returns to the genre-list page.
+
+Now, it can go ahead to show stations list for the selected genre.
+It shows the next kind of station-list page.
+
+.. image:: radiovy/files/radiovy_stations_list.png
+   :scale: 50%
+
+The stations list is on a scroll window, with the default
+configuration, it shows up to 80 stations in a scroll window, and
+paginate into multiple pages when there are more stations.
+
+Hitting one station, it starts playing the station.  Hitting again, it
+stops playing.
+
+There are 'mark this genre' button and 'mark playing station' button,
+hitting those buttons makes the selected genre or the playing station
+is put at earlier position in the list.
+
