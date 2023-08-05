@@ -1,0 +1,117 @@
+====
+kiek
+====
+
+.. image:: https://img.shields.io/pypi/v/kiek.svg
+        :target: https://pypi.python.org/pypi/kiek
+        :alt: PyPi
+
+.. image:: https://img.shields.io/travis/maartenq/kiek.svg
+        :target: https://travis-ci.org/maartenq/kiek
+        :alt: Travis CI
+
+.. image:: https://codecov.io/gh/maartenq/kiek /branch/master/graph/badge.svg
+        :target: https://codecov.io/gh/maartenq/kiek
+        :alt: Coverage
+
+.. image:: https://readthedocs.org/projects/kiek/badge/?version=latest
+        :target: https://kiek.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+
+A KISS Kiekshow App
+
+
+* Free software: ISC license
+* Documentation: https://kiek.readthedocs.io
+* PyPi: https://pypi.python.org/pypi/kiek
+* Travis CI: https://travis-ci.org/maartenq/kiek
+* Codecov: https://codecov.io/github/maartenq/kiek
+
+
+Features
+--------
+
+* TODO
+
+
+Credits
+---------
+
+This package was created with Cookiecutter_ and the `maartenq/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`maartenq/cookiecutter-pypackage`: https://github.com/maartenq/cookiecutter-pypackage
+
+
+
+=======
+History
+=======
+
+0.2.4 (2017-07-18)
+------------------
+
+* Update requirents.txt for click 6.7
+* Removed PyUp
+* Removed travis deploy to PyPi
+
+
+
+0.2.3 (2017-07-18)
+------------------
+
+* Update test
+
+
+0.2.2 (2017-07-17)
+------------------
+
+* Travis: deploy on python 2.7
+
+
+0.2.1 (2017-07-17)
+------------------
+
+* Updated dependencies
+
+
+0.1.6 (2017-07-15)
+------------------
+
+* Updated dependencies
+
+* Using tox-travis
+
+
+0.1.5 (2016-10-14)
+------------------
+
+* Updated dependencies
+
+
+0.1.4 (2016-09-30)
+------------------
+
+* Update dependencies
+
+
+0.1.3 (2016-08-28)
+------------------
+
+* Update dependencies
+* Removed twine
+
+
+0.1.2 (2016-08-21)
+------------------
+
+* PyPi deployment with Travis CI
+
+
+0.1.1 (2016-08-20)
+------------------
+
+* First release on PyPI.
+
+
