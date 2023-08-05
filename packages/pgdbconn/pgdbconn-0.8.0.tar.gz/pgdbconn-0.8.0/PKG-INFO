@@ -1,0 +1,63 @@
+Metadata-Version: 1.1
+Name: pgdbconn
+Version: 0.8.0
+Summary: Object-oriented layer over Psycopg2 to connect and interact with Postgres databases
+Home-page: https://github.com/perseas/pgdbconn
+Author: Joe Abbate
+Author-email: jma@freedomcircle.com
+License: BSD
+Description-Content-Type: UNKNOWN
+Description: ========
+        PgDbConn
+        ========
+        
+        PgDbConn is an offshoot from the Perseas project (started as Pyrseas)
+        to isolate and generalize the Postgres database connection code so
+        that it can be used in other Perseas products, such as a web
+        application to update Postgres tables.
+        
+        Features
+        --------
+        
+        - Connect to a Postgres database with minimal information, creating a
+          DbConnection object
+        
+        - Provide basic methods through the DbConnection object, e.g., fetch,
+          execute, commit, rollback
+        
+        - (planned) Connect using a pool of connections, so that it can be used,
+          for example, in a web application
+        
+        
+        Requirements
+        ------------
+        
+        - PostgreSQL 9.2 or higher
+        
+        - Python 2.7, or 3.4 or higher
+        
+        - Psycopg2 2.5 or higher
+        
+        License
+        -------
+        
+        PgDbConn is free (libre) software and is distributed under the BSD
+        license.  Please see the LICENSE file for details.
+        
+Platform: OS-independent
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: SQL
+Classifier: Topic :: Database :: Front-Ends
