@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+<head>
+<link TYPE="text/css" href="{{style}}" rel="stylesheet"/>
+<link TYPE="text/css" href="style.css" rel="stylesheet"/>
+<title>LightMLBoard</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link rel="shortcut icon" href="{{icon}}" />
+<meta content="" name="description" />
+</head>
+<body id="css-zen-garden">
+
+<div class="page-wrapper">
+
+        <section class="intro" id="zen-intro">
+            <header role="banner">
+                <h1>{{title}}</h1>
+                <p><img src="{{image}}" /></p>
+            </header>
+
+            <div class="summary" id="zen-summary" role="article">
+                <h2>Upload</h2>
+                <p></p>
+            </div>
+        </section>
+
+        <div class="supporting" id="zen-supporting" role="main">
+            <div class="explanation" id="zen-explanation" role="article">
+                <p>
+                    <form enctype="multipart/form-data" action="/upload" method="post">
+                    Prédictions pour
+                    <select name="competition" id="competition" value="{{cpt_value}}">
+                          {% for i, name in cptidname %}
+                          <option value="{{i}}">{{name}}</option>
+                          {% end for %}
+                    </select> :
+                    <br />
+                    <input type="file" name="filearg" /><br />
+                    <input type="submit" value="upload" />
+                    </form>
+                   </p>
+            </div>
+
+            <footer>
+                <p><a href="http://www.xavierdupre.fr" class="zen-validate-html">xavierdupre.fr</a></p>
+            </footer>
+
+        </div>
+</div>
+</body>
+</html>
