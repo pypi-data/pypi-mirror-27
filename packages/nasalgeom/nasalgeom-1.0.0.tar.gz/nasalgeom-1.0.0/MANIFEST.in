@@ -1,0 +1,6 @@
+# Include the license file
+include LICENSE.txt 
+
+# Better we don't install the examples, which are large files that should be
+# uncompressed
+# recursive-include examples *.zip
