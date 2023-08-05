@@ -1,0 +1,23 @@
+Metadata-Version: 2.0
+Name: aerende
+Version: 0.2.0
+Summary: A post-it note/reminders tool
+Home-page: https://github.com/Autophagy/aerende
+Author: Mika Naylor (Autophagy)
+Author-email: mail@autophagy.io
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3
+Requires-Dist: PyYAML
+Requires-Dist: urwid
+
+Ærende is a small, python based note taking application.
+Works offline and in the terminal via a curses interface.
+Navigation via vim-esque keys.
+Designed to slot easily into my comm workspace alongside weechat and neomutt.
+
