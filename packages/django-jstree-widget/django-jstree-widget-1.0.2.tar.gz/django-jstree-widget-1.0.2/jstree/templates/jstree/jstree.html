@@ -1,0 +1,28 @@
+{% if widget.type == 'hidden' %}
+    {% include 'django/forms/widgets/hidden.html' %}
+{% else %}
+    {% include 'django/forms/widgets/text.html' %}
+{% endif %}
+
+<div id="{{ widget.attrs.id }}-tree" style="overflow:auto; border:1px solid silver; min-height: 150px; max-height: 500px;">
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#{{ widget.attrs.id }}-tree").jstree({
+            'core' : {
+                'data' : {
+                    'url' : "{{ url }}",
+                    'data' : function (node) {
+                      return { 'id' : node.id };
+                    }
+                }
+            }
+        }).on(
+            "select_node.jstree",
+            function (e, data) {
+                $("#{{ widget.attrs.id }}").val(data.node.id);
+            }
+        );
+    });
+</script>
