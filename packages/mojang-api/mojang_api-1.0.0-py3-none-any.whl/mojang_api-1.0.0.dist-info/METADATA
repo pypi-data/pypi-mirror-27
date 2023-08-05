@@ -1,0 +1,47 @@
+Metadata-Version: 2.0
+Name: mojang-api
+Version: 1.0.0
+Summary: A full Python wrapper of Mojang's API and Authentication API.
+Home-page: https://github.com/SyncMC/mojang-api
+Author: Synchronous
+Author-email: UNKNOWN
+License: MIT
+Keywords: mojang minecraft mc api authentication auth
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.4.*
+Requires-Dist: attrdict
+Requires-Dist: requests
+
+mojang-api
+==========
+
+|build-status| |license|
+
+A full Python wrapper of Mojang's `API`_ and `Authentication API`_.
+
+.. |build-status| image:: https://img.shields.io/travis/SyncMC/mojang-api.svg
+    :alt: Build Status
+    :scale: 100%
+    :target: https://travis-ci.org/SyncMC/mojang-api
+
+.. |license| image:: https://img.shields.io/github/license/SyncMC/mojang-api.svg
+    :alt: License
+    :scale: 100%
+    :target: https://opensource.org/licenses/MIT
+
+.. _API: http://wiki.vg/Mojang_API
+.. _Authentication API: http://wiki.vg/Authentication
+
+Installation
+------------
+``$ pip install mojang-api``
+
+
