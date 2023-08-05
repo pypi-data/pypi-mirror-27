@@ -1,0 +1,17 @@
+pillow>=4.0.0
+smbus2
+monotonic;python_version<"3.3"
+spidev;platform_system=="Linux"
+RPI.GPIO;platform_system=="Linux"
+
+[docs]
+sphinx>=1.5.1
+
+[qa]
+flake8
+rstcheck
+
+[test]
+mock;python_version<"3.3"
+pytest>=3.1
+pytest-cov
