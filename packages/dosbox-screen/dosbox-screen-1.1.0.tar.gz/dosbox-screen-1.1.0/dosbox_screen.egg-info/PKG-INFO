@@ -1,0 +1,79 @@
+Metadata-Version: 1.1
+Name: dosbox-screen
+Version: 1.1.0
+Summary: The Screen class lets you to do positioned writes to the dos terminal.
+Home-page: https://github.com/thebjorn/doscmd-screen
+Author: Bjorn Pettersen
+Author-email: bjorn@tkbe.org
+License: BSD
+Download-URL: https://github.com/thebjorn/doscmd-screen
+Description-Content-Type: UNKNOWN
+Description: 
+        doscmd-screen
+        =============
+        
+         -- Screen positioning and colors in the dos shell (and unix too)
+        
+        .. image:: https://readthedocs.org/projects/doscmd-screen/badge/?version=latest
+           :target: https://readthedocs.org/projects/doscmd-screen/?badge=latest
+           :alt: Documentation Status
+        
+        Installation
+        ------------
+        ::
+        
+           pip install doscmd-screen
+        
+        Changes
+        -------
+        Version 1.0.3 introduces thread safe window areas through the Window class.
+        
+        Changes in version 1.0 include support for non-dos platforms, a visual
+        test script, and zero-based indexing of screen positions. Since the last
+        one is a backwards incompatible change I have upped the major version 
+        number. I don't forsee any further backwards incompatible changes in 
+        this module.
+        
+        
+        Documentation
+        -------------
+        
+        The documentation lives at http://doscmd-screen.readthedocs.org/
+        
+        
+        Usage
+        -----
+        
+        Straight forward positioning and terminal colors in the terminal::
+        
+            import screen  # screen probably needs to be your first import.
+            scr = Screen()
+            scr.centerxy(scr.center, scr.middle, '((.))')
+        
+            scr.writexy(scr.left, scr.bottom, 
+                        'left bottom', 
+        		        color='black', on='red')
+        
+        Works for both Windows..
+        
+        .. image:: docs/_static/screenshot-dos.png
+        
+        ..and unix-like terminals:
+        
+        .. image:: docs/_static/screenshot-linux.png
+        
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: Microsoft :: MS-DOS
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: System :: Shells
+Classifier: Topic :: Terminals
+Requires: colorama
