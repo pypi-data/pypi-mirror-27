@@ -1,0 +1,14 @@
+tosca-parser
+six
+requests
+ruamel.yaml
+
+[dev]
+check-manifest
+isort
+flake8
+tox
+coverage
+
+[test]
+requests_mock
