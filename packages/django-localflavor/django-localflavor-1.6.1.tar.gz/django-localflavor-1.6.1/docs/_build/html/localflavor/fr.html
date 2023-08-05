@@ -1,0 +1,247 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>France (fr) &#8212; django-localflavor 1.5 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Great Britain (gb)" href="gb.html" />
+    <link rel="prev" title="Finland (fi)" href="fi.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gb.html" title="Great Britain (gb)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fi.html" title="Finland (fi)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="france-fr">
+<h1>France (<code class="docutils literal"><span class="pre">fr</span></code>)<a class="headerlink" href="#france-fr" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-localflavor.fr.forms">
+<span id="forms"></span><h2>Forms<a class="headerlink" href="#module-localflavor.fr.forms" title="Permalink to this headline">¶</a></h2>
+<p>FR-specific Form helpers</p>
+<dl class="class">
+<dt id="localflavor.fr.forms.FRDepartmentField">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRDepartmentField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRDepartmentField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRDepartmentField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select Field that uses a FRDepartmentSelect widget.</p>
+<dl class="attribute">
+<dt id="localflavor.fr.forms.FRDepartmentField.widget">
+<code class="descname">widget</code><a class="headerlink" href="#localflavor.fr.forms.FRDepartmentField.widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#localflavor.fr.forms.FRDepartmentSelect" title="localflavor.fr.forms.FRDepartmentSelect"><code class="xref py py-class docutils literal"><span class="pre">FRDepartmentSelect</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRDepartmentSelect">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRDepartmentSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRDepartmentSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRDepartmentSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of FR departments as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRNationalIdentificationNumber">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRNationalIdentificationNumber</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRNationalIdentificationNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRNationalIdentificationNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates input as a French National Identification number.</p>
+<p>Validation of the Number, and checksum calculation is detailed at <a class="reference external" href="http://en.wikipedia.org/wiki/INSEE_code">http://en.wikipedia.org/wiki/INSEE_code</a></p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRPhoneNumberField">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRPhoneNumberField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRPhoneNumberField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRPhoneNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate local French phone number (not international ones).</p>
+<p>The correct format is ‘0X XX XX XX XX’.
+‘0X.XX.XX.XX.XX’ and ‘0XXXXXXXXX’ validate but are corrected to
+‘0X XX XX XX XX’.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.4: </span>Use the <a class="reference external" href="https://github.com/stefanfoulis/django-phonenumber-field">django-phonenumber-field</a> library instead.</p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRRegion2016Select">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRRegion2016Select</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRRegion2016Select"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRRegion2016Select" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of France’s New Regions as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRRegionField">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRRegionField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRRegionField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRRegionField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select Field that uses a FRRegionSelect widget.</p>
+<dl class="attribute">
+<dt id="localflavor.fr.forms.FRRegionField.widget">
+<code class="descname">widget</code><a class="headerlink" href="#localflavor.fr.forms.FRRegionField.widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#localflavor.fr.forms.FRRegionSelect" title="localflavor.fr.forms.FRRegionSelect"><code class="xref py py-class docutils literal"><span class="pre">FRRegionSelect</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRRegionSelect">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRRegionSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRRegionSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRRegionSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of FR Regions as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRSIRENField">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRSIRENField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRSIRENField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRSIRENField" title="Permalink to this definition">¶</a></dt>
+<dd><p>SIREN stands for “Système d’identification du répertoire des entreprises”.</p>
+<p>It’s under authority of the INSEE.
+See <a class="reference external" href="http://fr.wikipedia.org/wiki">http://fr.wikipedia.org/wiki</a>/Système_d’identification_du_répertoire_des_entreprises for more information.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRSIRETField">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRSIRETField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRSIRETField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRSIRETField" title="Permalink to this definition">¶</a></dt>
+<dd><p>SIRET stands for “Système d’identification du répertoire des établissements”.</p>
+<p>It’s under authority of the INSEE.
+See <a class="reference external" href="http://fr.wikipedia.org/wiki">http://fr.wikipedia.org/wiki</a>/Système_d’identification_du_répertoire_des_établissements for more information.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fr.forms.FRZipCodeField">
+<em class="property">class </em><code class="descclassname">localflavor.fr.forms.</code><code class="descname">FRZipCodeField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fr/forms.html#FRZipCodeField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fr.forms.FRZipCodeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate local French zip code.</p>
+<p>The correct format is ‘XXXXX’.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="localflavor.fr.fr_department.DEPARTMENT_CHOICES_PER_REGION">
+<code class="descclassname">localflavor.fr.fr_department.</code><code class="descname">DEPARTMENT_CHOICES_PER_REGION</code><em class="property"> = ((u'01', u'Ain', u'82'), (u'02', u'Aisne', u'22'), (u'03', u'Allier', u'83'), (u'04', u'Alpes-de-Haute-Provence', u'93'), (u'05', u'Hautes-Alpes', u'93'), (u'06', u'Alpes-Maritimes', u'93'), (u'07', u'Ard\xe8che', u'82'), (u'08', u'Ardennes', u'21'), (u'09', u'Ari\xe8ge', u'73'), (u'10', u'Aube', u'21'), (u'11', u'Aude', u'91'), (u'12', u'Aveyron', u'73'), (u'13', u'Bouches-du-Rh\xf4ne', u'93'), (u'14', u'Calvados', u'25'), (u'15', u'Cantal', u'83'), (u'16', u'Charente', u'54'), (u'17', u'Charente-Maritime', u'54'), (u'18', u'Cher', u'24'), (u'19', u'Corr\xe8ze', u'74'), (u'2A', u'Corse-du-Sud', u'94'), (u'2B', u'Haute-Corse', u'94'), (u'21', u&quot;C\xf4te-d'Or&quot;, u'26'), (u'22', u&quot;C\xf4tes-d'Armor&quot;, u'53'), (u'23', u'Creuse', u'74'), (u'24', u'Dordogne', u'72'), (u'25', u'Doubs', u'43'), (u'26', u'Dr\xf4me', u'82'), (u'27', u'Eure', u'23'), (u'28', u'Eure-et-Loir', u'24'), (u'29', u'Finist\xe8re', u'53'), (u'30', u'Gard', u'91'), (u'31', u'Haute-Garonne', u'73'), (u'32', u'Gers', u'73'), (u'33', u'Gironde', u'72'), (u'34', u'H\xe9rault', u'91'), (u'35', u'Ille-et-Vilaine', u'53'), (u'36', u'Indre', u'24'), (u'37', u'Indre-et-Loire', u'24'), (u'38', u'Is\xe8re', u'82'), (u'39', u'Jura', u'43'), (u'40', u'Landes', u'72'), (u'41', u'Loir-et-Cher', u'24'), (u'42', u'Loire', u'82'), (u'43', u'Haute-Loire', u'83'), (u'44', u'Loire-Atlantique', u'52'), (u'45', u'Loiret', u'24'), (u'46', u'Lot', u'73'), (u'47', u'Lot-et-Garonne', u'72'), (u'48', u'Loz\xe8re', u'91'), (u'49', u'Maine-et-Loire', u'52'), (u'50', u'Manche', u'25'), (u'51', u'Marne', u'21'), (u'52', u'Haute-Marne', u'21'), (u'53', u'Mayenne', u'52'), (u'54', u'Meurthe-et-Moselle', u'41'), (u'55', u'Meuse', u'41'), (u'56', u'Morbihan', u'53'), (u'57', u'Moselle', u'41'), (u'58', u'Ni\xe8vre', u'26'), (u'59', u'Nord', u'31'), (u'60', u'Oise', u'22'), (u'61', u'Orne', u'25'), (u'62', u'Pas-de-Calais', u'31'), (u'63', u'Puy-de-D\xf4me', u'83'), (u'64', u'Pyr\xe9n\xe9es-Atlantiques', u'72'), (u'65', u'Hautes-Pyr\xe9n\xe9es', u'73'), (u'66', u'Pyr\xe9n\xe9es-Orientales', u'91'), (u'67', u'Bas-Rhin', u'42'), (u'68', u'Haut-Rhin', u'42'), (u'69', u'Rh\xf4ne', u'82'), (u'70', u'Haute-Sa\xf4ne', u'43'), (u'71', u'Sa\xf4ne-et-Loire', u'26'), (u'72', u'Sarthe', u'52'), (u'73', u'Savoie', u'82'), (u'74', u'Haute-Savoie', u'82'), (u'75', u'Paris', u'11'), (u'76', u'Seine-Maritime', u'23'), (u'77', u'Seine-et-Marne', u'11'), (u'78', u'Yvelines', u'11'), (u'79', u'Deux-S\xe8vres', u'54'), (u'80', u'Somme', u'22'), (u'81', u'Tarn', u'73'), (u'82', u'Tarn-et-Garonne', u'73'), (u'83', u'Var', u'93'), (u'84', u'Vaucluse', u'93'), (u'85', u'Vend\xe9e', u'52'), (u'86', u'Vienne', u'54'), (u'87', u'Haute-Vienne', u'74'), (u'88', u'Vosges', u'41'), (u'89', u'Yonne', u'26'), (u'90', u'Territoire de Belfort', u'43'), (u'91', u'Essonne', u'11'), (u'92', u'Hauts-de-Seine', u'11'), (u'93', u'Seine-Saint-Denis', u'11'), (u'94', u'Val-de-Marne', u'11'), (u'95', u&quot;Val-d'Oise&quot;, u'11'), (u'971', u'Guadeloupe', u'01'), (u'972', u'Martinique', u'02'), (u'973', u'Guyane', u'03'), (u'974', u'La R\xe9union', u'04'), (u'975', u'Saint-Pierre-et-Miquelon', None), (u'976', u'Mayotte', u'05'), (u'977', u'Saint-Barth\xe9lemy', None), (u'978', u'Saint-Martin', None), (u'984', u'Terres australes et antarctiques fran\xe7aises', None), (u'986', u'Wallis et Futuna', None), (u'987', u'Polyn\xe9sie fran\xe7aise', None), (u'988', u'Nouvelle-Cal\xe9donie', None), (u'989', u'\xcele de Clipperton', None))</em><a class="headerlink" href="#localflavor.fr.fr_department.DEPARTMENT_CHOICES_PER_REGION" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the “Code officiel géographique” on the INSEE website &lt;www.insee.fr&gt;.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.fr.fr_department.DEPARTMENT_CHOICES">
+<code class="descclassname">localflavor.fr.fr_department.</code><code class="descname">DEPARTMENT_CHOICES</code><em class="property"> = ((u'01', u'01 - Ain'), (u'02', u'02 - Aisne'), (u'03', u'03 - Allier'), (u'04', u'04 - Alpes-de-Haute-Provence'), (u'05', u'05 - Hautes-Alpes'), (u'06', u'06 - Alpes-Maritimes'), (u'07', u'07 - Ard\xe8che'), (u'08', u'08 - Ardennes'), (u'09', u'09 - Ari\xe8ge'), (u'10', u'10 - Aube'), (u'11', u'11 - Aude'), (u'12', u'12 - Aveyron'), (u'13', u'13 - Bouches-du-Rh\xf4ne'), (u'14', u'14 - Calvados'), (u'15', u'15 - Cantal'), (u'16', u'16 - Charente'), (u'17', u'17 - Charente-Maritime'), (u'18', u'18 - Cher'), (u'19', u'19 - Corr\xe8ze'), (u'2A', u'2A - Corse-du-Sud'), (u'2B', u'2B - Haute-Corse'), (u'21', u&quot;21 - C\xf4te-d'Or&quot;), (u'22', u&quot;22 - C\xf4tes-d'Armor&quot;), (u'23', u'23 - Creuse'), (u'24', u'24 - Dordogne'), (u'25', u'25 - Doubs'), (u'26', u'26 - Dr\xf4me'), (u'27', u'27 - Eure'), (u'28', u'28 - Eure-et-Loir'), (u'29', u'29 - Finist\xe8re'), (u'30', u'30 - Gard'), (u'31', u'31 - Haute-Garonne'), (u'32', u'32 - Gers'), (u'33', u'33 - Gironde'), (u'34', u'34 - H\xe9rault'), (u'35', u'35 - Ille-et-Vilaine'), (u'36', u'36 - Indre'), (u'37', u'37 - Indre-et-Loire'), (u'38', u'38 - Is\xe8re'), (u'39', u'39 - Jura'), (u'40', u'40 - Landes'), (u'41', u'41 - Loir-et-Cher'), (u'42', u'42 - Loire'), (u'43', u'43 - Haute-Loire'), (u'44', u'44 - Loire-Atlantique'), (u'45', u'45 - Loiret'), (u'46', u'46 - Lot'), (u'47', u'47 - Lot-et-Garonne'), (u'48', u'48 - Loz\xe8re'), (u'49', u'49 - Maine-et-Loire'), (u'50', u'50 - Manche'), (u'51', u'51 - Marne'), (u'52', u'52 - Haute-Marne'), (u'53', u'53 - Mayenne'), (u'54', u'54 - Meurthe-et-Moselle'), (u'55', u'55 - Meuse'), (u'56', u'56 - Morbihan'), (u'57', u'57 - Moselle'), (u'58', u'58 - Ni\xe8vre'), (u'59', u'59 - Nord'), (u'60', u'60 - Oise'), (u'61', u'61 - Orne'), (u'62', u'62 - Pas-de-Calais'), (u'63', u'63 - Puy-de-D\xf4me'), (u'64', u'64 - Pyr\xe9n\xe9es-Atlantiques'), (u'65', u'65 - Hautes-Pyr\xe9n\xe9es'), (u'66', u'66 - Pyr\xe9n\xe9es-Orientales'), (u'67', u'67 - Bas-Rhin'), (u'68', u'68 - Haut-Rhin'), (u'69', u'69 - Rh\xf4ne'), (u'70', u'70 - Haute-Sa\xf4ne'), (u'71', u'71 - Sa\xf4ne-et-Loire'), (u'72', u'72 - Sarthe'), (u'73', u'73 - Savoie'), (u'74', u'74 - Haute-Savoie'), (u'75', u'75 - Paris'), (u'76', u'76 - Seine-Maritime'), (u'77', u'77 - Seine-et-Marne'), (u'78', u'78 - Yvelines'), (u'79', u'79 - Deux-S\xe8vres'), (u'80', u'80 - Somme'), (u'81', u'81 - Tarn'), (u'82', u'82 - Tarn-et-Garonne'), (u'83', u'83 - Var'), (u'84', u'84 - Vaucluse'), (u'85', u'85 - Vend\xe9e'), (u'86', u'86 - Vienne'), (u'87', u'87 - Haute-Vienne'), (u'88', u'88 - Vosges'), (u'89', u'89 - Yonne'), (u'90', u'90 - Territoire de Belfort'), (u'91', u'91 - Essonne'), (u'92', u'92 - Hauts-de-Seine'), (u'93', u'93 - Seine-Saint-Denis'), (u'94', u'94 - Val-de-Marne'), (u'95', u&quot;95 - Val-d'Oise&quot;), (u'971', u'971 - Guadeloupe'), (u'972', u'972 - Martinique'), (u'973', u'973 - Guyane'), (u'974', u'974 - La R\xe9union'), (u'975', u'975 - Saint-Pierre-et-Miquelon'), (u'976', u'976 - Mayotte'), (u'977', u'977 - Saint-Barth\xe9lemy'), (u'978', u'978 - Saint-Martin'), (u'984', u'984 - Terres australes et antarctiques fran\xe7aises'), (u'986', u'986 - Wallis et Futuna'), (u'987', u'987 - Polyn\xe9sie fran\xe7aise'), (u'988', u'988 - Nouvelle-Cal\xe9donie'), (u'989', u'989 - \xcele de Clipperton'))</em><a class="headerlink" href="#localflavor.fr.fr_department.DEPARTMENT_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of departments</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.fr.fr_region.REGION_CHOICES">
+<code class="descclassname">localflavor.fr.fr_region.</code><code class="descname">REGION_CHOICES</code><em class="property"> = ((u'01', u'Guadeloupe'), (u'02', u'Martinique'), (u'03', u'Guyane'), (u'04', u'La R\xe9union'), (u'05', u'Mayotte'), (u'11', u'\xcele-de-France'), (u'21', u'Champagne-Ardenne'), (u'22', u'Picardie'), (u'23', u'Haute-Normandie'), (u'24', u'Centre'), (u'25', u'Basse-Normandie'), (u'26', u'Bourgogne'), (u'31', u'Nord-Pas-de-Calais'), (u'41', u'Lorraine'), (u'42', u'Alsace'), (u'43', u'Franche-Comt\xe9'), (u'52', u'Pays de la Loire'), (u'53', u'Bretagne'), (u'54', u'Poitou-Charentes'), (u'72', u'Aquitaine'), (u'73', u'Midi-Pyr\xe9n\xe9es'), (u'74', u'Limousin'), (u'82', u'Rh\xf4ne-Alpes'), (u'83', u'Auvergne'), (u'91', u'Languedoc-Roussillon'), (u'93', u&quot;Provence-Alpes-C\xf4te d'Azur&quot;), (u'94', u'Corse'))</em><a class="headerlink" href="#localflavor.fr.fr_region.REGION_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the “Code officiel géographique” on the INSEE website &lt;www.insee.fr&gt;.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.fr.fr_region.REGION_2016_CHOICES">
+<code class="descclassname">localflavor.fr.fr_region.</code><code class="descname">REGION_2016_CHOICES</code><em class="property"> = ((u'01', u'Guadeloupe'), (u'02', u'Martinique'), (u'03', u'Guyane'), (u'04', u'La R\xe9union'), (u'06', u'Mayotte'), (u'11', u'\xcele-de-France'), (u'24', u'Centre-Val de Loire'), (u'27', u'Bourgogne-Franche-Comt\xe9'), (u'28', u'Normandie'), (u'32', u'Hauts-de-France'), (u'44', u'Grand Est'), (u'52', u'Pays de la Loire'), (u'53', u'Bretagne'), (u'75', u'Nouvelle-Aquitaine'), (u'76', u'Occitanie'), (u'84', u'Auvergne-Rh\xf4ne-Alpes'), (u'93', u&quot;Provence-Alpes-C\xf4te d'Azur&quot;), (u'94', u'Corse'))</em><a class="headerlink" href="#localflavor.fr.fr_region.REGION_2016_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>France changed its regions in 2016, see:</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">France (<code class="docutils literal"><span class="pre">fr</span></code>)</a><ul>
+<li><a class="reference internal" href="#module-localflavor.fr.forms">Forms</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fi.html"
+                        title="previous chapter">Finland (<code class="docutils literal"><span class="pre">fi</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gb.html"
+                        title="next chapter">Great Britain (<code class="docutils literal"><span class="pre">gb</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/localflavor/fr.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gb.html" title="Great Britain (gb)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fi.html" title="Finland (fi)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

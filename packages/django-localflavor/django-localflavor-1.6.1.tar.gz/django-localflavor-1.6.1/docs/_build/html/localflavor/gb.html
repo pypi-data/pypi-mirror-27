@@ -1,0 +1,202 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Great Britain (gb) &#8212; django-localflavor 1.5 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Greece (gr)" href="gr.html" />
+    <link rel="prev" title="France (fr)" href="fr.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gr.html" title="Greece (gr)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fr.html" title="France (fr)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="great-britain-gb">
+<h1>Great Britain (<code class="docutils literal"><span class="pre">gb</span></code>)<a class="headerlink" href="#great-britain-gb" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-localflavor.gb.forms">
+<span id="forms"></span><h2>Forms<a class="headerlink" href="#module-localflavor.gb.forms" title="Permalink to this headline">¶</a></h2>
+<p>GB-specific Form helpers.</p>
+<dl class="class">
+<dt id="localflavor.gb.forms.GBCountySelect">
+<em class="property">class </em><code class="descclassname">localflavor.gb.forms.</code><code class="descname">GBCountySelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/gb/forms.html#GBCountySelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.gb.forms.GBCountySelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of UK Counties/Regions as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.gb.forms.GBNationSelect">
+<em class="property">class </em><code class="descclassname">localflavor.gb.forms.</code><code class="descname">GBNationSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/gb/forms.html#GBNationSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.gb.forms.GBNationSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of UK Nations as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.gb.forms.GBPostcodeField">
+<em class="property">class </em><code class="descclassname">localflavor.gb.forms.</code><code class="descname">GBPostcodeField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/gb/forms.html#GBPostcodeField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.gb.forms.GBPostcodeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates its input is a UK postcode.</p>
+<p>The regular expression used is sourced from the schema for British Standard
+BS7666 address types: <a class="reference external" href="http://www.govtalk.gov.uk/gdsc/schemas/bs7666-v2-0.xsd">http://www.govtalk.gov.uk/gdsc/schemas/bs7666-v2-0.xsd</a></p>
+<p>The value is uppercased and a space added in the correct place, if required.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-localflavor.gb.gb_regions">
+<span id="data"></span><h2>Data<a class="headerlink" href="#module-localflavor.gb.gb_regions" title="Permalink to this headline">¶</a></h2>
+<p>This module contains various lists of regions and subdivisions in Great Britain.</p>
+<p>Since subdivisions aren’t clear this is supposed to be
+the most pragmatic collection of lists as possible. Your mileage may vary.</p>
+<p>See <a class="reference external" href="https://github.com/django/django-localflavor/pull/43">https://github.com/django/django-localflavor/pull/43</a> for a long discussion
+about it.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.1.</span></p>
+</div>
+<dl class="data">
+<dt id="localflavor.gb.gb_regions.ENGLAND_REGION_CHOICES">
+<code class="descclassname">localflavor.gb.gb_regions.</code><code class="descname">ENGLAND_REGION_CHOICES</code><em class="property"> = (('Bath and North East Somerset', u'Bath and North East Somerset'), ('Bedford', u'Bedford'), ('Berkshire', u'Berkshire'), ('Blackburn with Darwen', u'Blackburn with Darwen'), ('Blackpool', u'Blackpool'), ('Bournemouth', u'Bournemouth'), ('Brighton &amp; Hove', u'Brighton &amp; Hove'), ('Bristol', u'Bristol'), ('Buckinghamshire', u'Buckinghamshire'), ('Cambridgeshire', u'Cambridgeshire'), ('Central Bedfordshire', u'Central Bedfordshire'), ('Cheshire East', u'Cheshire East'), ('Cheshire West and Chester', u'Cheshire West and Chester'), ('Cornwall', u'Cornwall'), ('Cumbria', u'Cumbria'), ('Darlington', u'Darlington'), ('Derby', u'Derby'), ('Derbyshire', u'Derbyshire'), ('Devon', u'Devon'), ('Dorset', u'Dorset'), ('Durham', u'Durham'), ('East Riding of Yorkshire', u'East Riding of Yorkshire'), ('East Sussex', u'East Sussex'), ('Essex', u'Essex'), ('Gloucestershire', u'Gloucestershire'), ('Greater Manchester', u'Greater Manchester'), ('Halton', u'Halton'), ('Hampshire', u'Hampshire'), ('Hartlepool', u'Hartlepool'), ('Herefordshire', u'Herefordshire'), ('Hertfordshire', u'Hertfordshire'), ('Isle of Wight', u'Isle of Wight'), ('Kent', u'Kent'), ('Kingston upon Hull', u'Kingston upon Hull'), ('Lancashire', u'Lancashire'), ('Leicester', u'Leicester'), ('Leicestershire', u'Leicestershire'), ('Lincolnshire', u'Lincolnshire'), ('London', u'London'), ('Luton', u'Luton'), ('Medway', u'Medway'), ('Merseyside', u'Merseyside'), ('Middlesbrough', u'Middlesbrough'), ('Milton Keynes', u'Milton Keynes'), ('Norfolk', u'Norfolk'), ('North East Lincolnshire', u'North East Lincolnshire'), ('North Lincolnshire', u'North Lincolnshire'), ('North Somerset', u'North Somerset'), ('North Yorkshire', u'North Yorkshire'), ('Northamptonshire', u'Northamptonshire'), ('Northumberland', u'Northumberland'), ('Nottingham', u'Nottingham'), ('Nottinghamshire', u'Nottinghamshire'), ('Oxfordshire', u'Oxfordshire'), ('Peterborough', u'Peterborough'), ('Plymouth', u'Plymouth'), ('Poole', u'Poole'), ('Portsmouth', u'Portsmouth'), ('Redcar and Cleveland', u'Redcar and Cleveland'), ('Rutland', u'Rutland'), ('Shropshire', u'Shropshire'), ('Somerset', u'Somerset'), ('South Gloucestershire', u'South Gloucestershire'), ('South Yorkshire', u'South Yorkshire'), ('Southampton', u'Southampton'), ('Southend-on-Sea', u'Southend-on-Sea'), ('Staffordshire', u'Staffordshire'), ('Stockton-on-Tees', u'Stockton-on-Tees'), ('Stoke-on-Trent', u'Stoke-on-Trent'), ('Suffolk', u'Suffolk'), ('Surrey', u'Surrey'), ('Swindon', u'Swindon'), ('Telford and Wrekin', u'Telford and Wrekin'), ('Thurrock', u'Thurrock'), ('Torbay', u'Torbay'), ('Tyne and Wear', u'Tyne and Wear'), ('Warrington', u'Warrington'), ('Warwickshire', u'Warwickshire'), ('West Midlands', u'West Midlands'), ('West Sussex', u'West Sussex'), ('West Yorkshire', u'West Yorkshire'), ('Wiltshire', u'Wiltshire'), ('Worcestershire', u'Worcestershire'), ('York', u'York'))</em><a class="headerlink" href="#localflavor.gb.gb_regions.ENGLAND_REGION_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metropolitan and non-metropolitan counties of England
+(not the ceremonial counties)
+Retrieved 10th Nov 2014 from <a class="reference external" href="http://en.wikipedia.org/wiki/Metropolitan_and_non-metropolitan_counties_of_England">http://en.wikipedia.org/wiki/Metropolitan_and_non-metropolitan_counties_of_England</a></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.gb.gb_regions.GB_NATIONS_CHOICES">
+<code class="descclassname">localflavor.gb.gb_regions.</code><code class="descname">GB_NATIONS_CHOICES</code><em class="property"> = (('England', u'England'), ('Northern Ireland', u'Northern Ireland'), ('Wales', u'Wales'), ('Scotland', u'Scotland'))</em><a class="headerlink" href="#localflavor.gb.gb_regions.GB_NATIONS_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nations of the United Kingdom</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.gb.gb_regions.GB_REGION_CHOICES">
+<code class="descclassname">localflavor.gb.gb_regions.</code><code class="descname">GB_REGION_CHOICES</code><em class="property"> = (('Bath and North East Somerset', u'Bath and North East Somerset'), ('Bedford', u'Bedford'), ('Berkshire', u'Berkshire'), ('Blackburn with Darwen', u'Blackburn with Darwen'), ('Blackpool', u'Blackpool'), ('Bournemouth', u'Bournemouth'), ('Brighton &amp; Hove', u'Brighton &amp; Hove'), ('Bristol', u'Bristol'), ('Buckinghamshire', u'Buckinghamshire'), ('Cambridgeshire', u'Cambridgeshire'), ('Central Bedfordshire', u'Central Bedfordshire'), ('Cheshire East', u'Cheshire East'), ('Cheshire West and Chester', u'Cheshire West and Chester'), ('Cornwall', u'Cornwall'), ('Cumbria', u'Cumbria'), ('Darlington', u'Darlington'), ('Derby', u'Derby'), ('Derbyshire', u'Derbyshire'), ('Devon', u'Devon'), ('Dorset', u'Dorset'), ('Durham', u'Durham'), ('East Riding of Yorkshire', u'East Riding of Yorkshire'), ('East Sussex', u'East Sussex'), ('Essex', u'Essex'), ('Gloucestershire', u'Gloucestershire'), ('Greater Manchester', u'Greater Manchester'), ('Halton', u'Halton'), ('Hampshire', u'Hampshire'), ('Hartlepool', u'Hartlepool'), ('Herefordshire', u'Herefordshire'), ('Hertfordshire', u'Hertfordshire'), ('Isle of Wight', u'Isle of Wight'), ('Kent', u'Kent'), ('Kingston upon Hull', u'Kingston upon Hull'), ('Lancashire', u'Lancashire'), ('Leicester', u'Leicester'), ('Leicestershire', u'Leicestershire'), ('Lincolnshire', u'Lincolnshire'), ('London', u'London'), ('Luton', u'Luton'), ('Medway', u'Medway'), ('Merseyside', u'Merseyside'), ('Middlesbrough', u'Middlesbrough'), ('Milton Keynes', u'Milton Keynes'), ('Norfolk', u'Norfolk'), ('North East Lincolnshire', u'North East Lincolnshire'), ('North Lincolnshire', u'North Lincolnshire'), ('North Somerset', u'North Somerset'), ('North Yorkshire', u'North Yorkshire'), ('Northamptonshire', u'Northamptonshire'), ('Northumberland', u'Northumberland'), ('Nottingham', u'Nottingham'), ('Nottinghamshire', u'Nottinghamshire'), ('Oxfordshire', u'Oxfordshire'), ('Peterborough', u'Peterborough'), ('Plymouth', u'Plymouth'), ('Poole', u'Poole'), ('Portsmouth', u'Portsmouth'), ('Redcar and Cleveland', u'Redcar and Cleveland'), ('Rutland', u'Rutland'), ('Shropshire', u'Shropshire'), ('Somerset', u'Somerset'), ('South Gloucestershire', u'South Gloucestershire'), ('South Yorkshire', u'South Yorkshire'), ('Southampton', u'Southampton'), ('Southend-on-Sea', u'Southend-on-Sea'), ('Staffordshire', u'Staffordshire'), ('Stockton-on-Tees', u'Stockton-on-Tees'), ('Stoke-on-Trent', u'Stoke-on-Trent'), ('Suffolk', u'Suffolk'), ('Surrey', u'Surrey'), ('Swindon', u'Swindon'), ('Telford and Wrekin', u'Telford and Wrekin'), ('Thurrock', u'Thurrock'), ('Torbay', u'Torbay'), ('Tyne and Wear', u'Tyne and Wear'), ('Warrington', u'Warrington'), ('Warwickshire', u'Warwickshire'), ('West Midlands', u'West Midlands'), ('West Sussex', u'West Sussex'), ('West Yorkshire', u'West Yorkshire'), ('Wiltshire', u'Wiltshire'), ('Worcestershire', u'Worcestershire'), ('York', u'York'), ('Antrim', u'Antrim'), ('Armagh', u'Armagh'), ('Down', u'Down'), ('Fermanagh', u'Fermanagh'), ('Londonderry', u'Londonderry'), ('Tyrone', u'Tyrone'), ('Blaenau Gwent', u'Blaenau Gwent'), ('Bridgend', u'Bridgend'), ('Caerphilly', u'Caerphilly'), ('Cardiff', u'Cardiff'), ('Carmarthenshire', u'Carmarthenshire'), ('Ceredigion', u'Ceredigion'), ('Conwy', u'Conwy'), ('Denbighshire', u'Denbighshire'), ('Flintshire', u'Flintshire'), ('Gwynedd', u'Gwynedd'), ('Isle of Anglesey', u'Isle of Anglesey'), ('Merthyr Tydfil', u'Merthyr Tydfil'), ('Monmouthshire', u'Monmouthshire'), ('Neath Port Talbot', u'Neath Port Talbot'), ('Newport', u'Newport'), ('Pembrokeshire', u'Pembrokeshire'), ('Powys', u'Powys'), ('Rhondda Cynon Taf', u'Rhondda Cynon Taf'), ('Swansea', u'Swansea'), ('Torfaen', u'Torfaen'), ('Vale of Glamorgan', u'Vale of Glamorgan'), ('Wrexham', u'Wrexham'), ('Aberdeen City', u'Aberdeen City'), ('Aberdeenshire', u'Aberdeenshire'), ('Angus', u'Angus'), ('Argyll and Bute', u'Argyll and Bute'), ('Clackmannanshire', u'Clackmannanshire'), ('Dumfries and Galloway', u'Dumfries and Galloway'), ('Dundee City', u'Dundee City'), ('East Ayrshire', u'East Ayrshire'), ('East Dunbartonshire', u'East Dunbartonshire'), ('East Lothian', u'East Lothian'), ('East Renfrewshire', u'East Renfrewshire'), ('Edinburgh, City of ', u'Edinburgh, City of'), ('Falkirk', u'Falkirk'), ('Fife', u'Fife'), ('Glasgow City', u'Glasgow City'), ('Highland', u'Highland'), ('Inverclyde', u'Inverclyde'), ('Midlothian', u'Midlothian'), ('Moray', u'Moray'), ('North Ayrshire', u'North Ayrshire'), ('North Lanarkshire', u'North Lanarkshire'), ('Perth and Kinross', u'Perth and Kinross'), ('Renfrewshire', u'Renfrewshire'), ('Scottish Borders', u'Scottish Borders'), ('South Ayrshire', u'South Ayrshire'), ('South Lanarkshire', u'South Lanarkshire'), ('Stirling', u'Stirling'), ('West Dunbartonshire', u'West Dunbartonshire'), ('West Lothian', u'West Lothian'), ('Na h-Eileanan Siar', u'Na h-Eileanan Siar'), ('Orkney Islands', u'Orkney Islands'), ('Shetland Islands', u'Shetland Islands'))</em><a class="headerlink" href="#localflavor.gb.gb_regions.GB_REGION_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>All regions of United Kingdom</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.gb.gb_regions.NORTHERN_IRELAND_REGION_CHOICES">
+<code class="descclassname">localflavor.gb.gb_regions.</code><code class="descname">NORTHERN_IRELAND_REGION_CHOICES</code><em class="property"> = (('Antrim', u'Antrim'), ('Armagh', u'Armagh'), ('Down', u'Down'), ('Fermanagh', u'Fermanagh'), ('Londonderry', u'Londonderry'), ('Tyrone', u'Tyrone'))</em><a class="headerlink" href="#localflavor.gb.gb_regions.NORTHERN_IRELAND_REGION_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counties of Northern Ireland
+(not the more recent, but less well-known, districts of Northern Ireland)
+Retrieved 10th Nov 2014 from <a class="reference external" href="http://en.wikipedia.org/wiki/Counties_of_Northern_Ireland">http://en.wikipedia.org/wiki/Counties_of_Northern_Ireland</a></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.gb.gb_regions.SCOTTISH_REGION_CHOICES">
+<code class="descclassname">localflavor.gb.gb_regions.</code><code class="descname">SCOTTISH_REGION_CHOICES</code><em class="property"> = (('Aberdeen City', u'Aberdeen City'), ('Aberdeenshire', u'Aberdeenshire'), ('Angus', u'Angus'), ('Argyll and Bute', u'Argyll and Bute'), ('Clackmannanshire', u'Clackmannanshire'), ('Dumfries and Galloway', u'Dumfries and Galloway'), ('Dundee City', u'Dundee City'), ('East Ayrshire', u'East Ayrshire'), ('East Dunbartonshire', u'East Dunbartonshire'), ('East Lothian', u'East Lothian'), ('East Renfrewshire', u'East Renfrewshire'), ('Edinburgh, City of ', u'Edinburgh, City of'), ('Falkirk', u'Falkirk'), ('Fife', u'Fife'), ('Glasgow City', u'Glasgow City'), ('Highland', u'Highland'), ('Inverclyde', u'Inverclyde'), ('Midlothian', u'Midlothian'), ('Moray', u'Moray'), ('North Ayrshire', u'North Ayrshire'), ('North Lanarkshire', u'North Lanarkshire'), ('Perth and Kinross', u'Perth and Kinross'), ('Renfrewshire', u'Renfrewshire'), ('Scottish Borders', u'Scottish Borders'), ('South Ayrshire', u'South Ayrshire'), ('South Lanarkshire', u'South Lanarkshire'), ('Stirling', u'Stirling'), ('West Dunbartonshire', u'West Dunbartonshire'), ('West Lothian', u'West Lothian'), ('Na h-Eileanan Siar', u'Na h-Eileanan Siar'), ('Orkney Islands', u'Orkney Islands'), ('Shetland Islands', u'Shetland Islands'))</em><a class="headerlink" href="#localflavor.gb.gb_regions.SCOTTISH_REGION_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Council areas of Scotland
+Retrieved 10th Nov 2014 from <a class="reference external" href="http://en.wikipedia.org/wiki/Subdivisions_of_Scotland#Council_areas">http://en.wikipedia.org/wiki/Subdivisions_of_Scotland#Council_areas</a></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.gb.gb_regions.WALES_REGION_CHOICES">
+<code class="descclassname">localflavor.gb.gb_regions.</code><code class="descname">WALES_REGION_CHOICES</code><em class="property"> = (('Blaenau Gwent', u'Blaenau Gwent'), ('Bridgend', u'Bridgend'), ('Caerphilly', u'Caerphilly'), ('Cardiff', u'Cardiff'), ('Carmarthenshire', u'Carmarthenshire'), ('Ceredigion', u'Ceredigion'), ('Conwy', u'Conwy'), ('Denbighshire', u'Denbighshire'), ('Flintshire', u'Flintshire'), ('Gwynedd', u'Gwynedd'), ('Isle of Anglesey', u'Isle of Anglesey'), ('Merthyr Tydfil', u'Merthyr Tydfil'), ('Monmouthshire', u'Monmouthshire'), ('Neath Port Talbot', u'Neath Port Talbot'), ('Newport', u'Newport'), ('Pembrokeshire', u'Pembrokeshire'), ('Powys', u'Powys'), ('Rhondda Cynon Taf', u'Rhondda Cynon Taf'), ('Swansea', u'Swansea'), ('Torfaen', u'Torfaen'), ('Vale of Glamorgan', u'Vale of Glamorgan'), ('Wrexham', u'Wrexham'))</em><a class="headerlink" href="#localflavor.gb.gb_regions.WALES_REGION_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Principal areas of Wales
+(not the preserved or historic counties)
+Retrieved 10th Nov 2014 from <a class="reference external" href="http://en.wikipedia.org/wiki/Local_government_in_Wales">http://en.wikipedia.org/wiki/Local_government_in_Wales</a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Great Britain (<code class="docutils literal"><span class="pre">gb</span></code>)</a><ul>
+<li><a class="reference internal" href="#module-localflavor.gb.forms">Forms</a></li>
+<li><a class="reference internal" href="#module-localflavor.gb.gb_regions">Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fr.html"
+                        title="previous chapter">France (<code class="docutils literal"><span class="pre">fr</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gr.html"
+                        title="next chapter">Greece (<code class="docutils literal"><span class="pre">gr</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/localflavor/gb.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gr.html" title="Greece (gr)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fr.html" title="France (fr)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,159 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Iceland (is) &#8212; django-localflavor 1.5 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Italy (it)" href="it.html" />
+    <link rel="prev" title="India (in)" href="in_.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="it.html" title="Italy (it)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="in_.html" title="India (in)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="iceland-is">
+<h1>Iceland (<code class="docutils literal"><span class="pre">is</span></code>)<a class="headerlink" href="#iceland-is" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-localflavor.is_.forms">
+<span id="forms"></span><h2>Forms<a class="headerlink" href="#module-localflavor.is_.forms" title="Permalink to this headline">¶</a></h2>
+<p>Iceland specific form helpers.</p>
+<dl class="class">
+<dt id="localflavor.is_.forms.ISIdNumberField">
+<em class="property">class </em><code class="descclassname">localflavor.is_.forms.</code><code class="descname">ISIdNumberField</code><span class="sig-paren">(</span><em>max_length=11</em>, <em>min_length=10</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/is_/forms.html#ISIdNumberField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.is_.forms.ISIdNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Icelandic identification number (kennitala).</p>
+<p>This is a number every citizen of Iceland has.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.is_.forms.ISPhoneNumberField">
+<em class="property">class </em><code class="descclassname">localflavor.is_.forms.</code><code class="descname">ISPhoneNumberField</code><span class="sig-paren">(</span><em>max_length=8</em>, <em>min_length=7</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/is_/forms.html#ISPhoneNumberField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.is_.forms.ISPhoneNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Icelandic phone number.</p>
+<p>Seven digits with an optional hyphen or space after the first three digits.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.4: </span>Use the <a class="reference external" href="https://github.com/stefanfoulis/django-phonenumber-field">django-phonenumber-field</a> library instead.</p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.is_.forms.ISPostalCodeSelect">
+<em class="property">class </em><code class="descclassname">localflavor.is_.forms.</code><code class="descname">ISPostalCodeSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/is_/forms.html#ISPostalCodeSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.is_.forms.ISPostalCodeSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of Icelandic postal codes as its choices.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="localflavor.is_.is_postalcodes.IS_POSTALCODES">
+<code class="descclassname">localflavor.is_.is_postalcodes.</code><code class="descname">IS_POSTALCODES</code><em class="property"> = ((u'101', u'101 Reykjav\xedk'), (u'103', u'103 Reykjav\xedk'), (u'104', u'104 Reykjav\xedk'), (u'105', u'105 Reykjav\xedk'), (u'107', u'107 Reykjav\xedk'), (u'108', u'108 Reykjav\xedk'), (u'109', u'109 Reykjav\xedk'), (u'110', u'110 Reykjav\xedk'), (u'111', u'111 Reykjav\xedk'), (u'112', u'112 Reykjav\xedk'), (u'113', u'113 Reykjav\xedk'), (u'116', u'116 Kjalarnes'), (u'121', u'121 Reykjav\xedk'), (u'123', u'123 Reykjav\xedk'), (u'124', u'124 Reykjav\xedk'), (u'125', u'125 Reykjav\xedk'), (u'127', u'127 Reykjav\xedk'), (u'128', u'128 Reykjav\xedk'), (u'129', u'129 Reykjav\xedk'), (u'130', u'130 Reykjav\xedk'), (u'132', u'132 Reykjav\xedk'), (u'150', u'150 Reykjav\xedk'), (u'155', u'155 Reykjav\xedk'), (u'170', u'170 Seltjarnarnes'), (u'172', u'172 Seltjarnarnes'), (u'190', u'190 Vogar'), (u'200', u'200 K\xf3pavogur'), (u'201', u'201 K\xf3pavogur'), (u'202', u'202 K\xf3pavogur'), (u'203', u'203 K\xf3pavogur'), (u'210', u'210 Gar\xf0ab\xe6r'), (u'212', u'212 Gar\xf0ab\xe6r'), (u'220', u'220 Hafnarfj\xf6r\xf0ur'), (u'221', u'221 Hafnarfj\xf6r\xf0ur'), (u'222', u'222 Hafnarfj\xf6r\xf0ur'), (u'225', u'225 \xc1lftanes'), (u'230', u'230 Reykjanesb\xe6r'), (u'232', u'232 Reykjanesb\xe6r'), (u'233', u'233 Reykjanesb\xe6r'), (u'235', u'235 Keflav\xedkurflugv\xf6llur'), (u'240', u'240 Grindav\xedk'), (u'245', u'245 Sandger\xf0i'), (u'250', u'250 Gar\xf0ur'), (u'260', u'260 Reykjanesb\xe6r'), (u'270', u'270 Mosfellsb\xe6r'), (u'271', u'271 Mosfellsb\xe6r'), (u'276', u'276 Mosfellsb\xe6r'), (u'300', u'300 Akranes'), (u'301', u'301 Akranes'), (u'302', u'302 Akranes'), (u'310', u'310 Borgarnes'), (u'311', u'311 Borgarnes'), (u'320', u'320 Reykholt \xed Borgarfir\xf0i'), (u'340', u'340 Stykkish\xf3lmur'), (u'345', u'345 Flatey \xe1 Brei\xf0afir\xf0i'), (u'350', u'350 Grundarfj\xf6r\xf0ur'), (u'355', u'355 \xd3lafsv\xedk'), (u'356', u'356 Sn\xe6fellsb\xe6r'), (u'360', u'360 Hellissandur'), (u'370', u'370 B\xfa\xf0ardalur'), (u'371', u'371 B\xfa\xf0ardalur'), (u'380', u'380 Reykh\xf3lahreppur'), (u'400', u'400 \xcdsafj\xf6r\xf0ur'), (u'401', u'401 \xcdsafj\xf6r\xf0ur'), (u'410', u'410 Hn\xedfsdalur'), (u'415', u'415 Bolungarv\xedk'), (u'420', u'420 S\xfa\xf0av\xedk'), (u'425', u'425 Flateyri'), (u'430', u'430 Su\xf0ureyri'), (u'450', u'450 Patreksfj\xf6r\xf0ur'), (u'451', u'451 Patreksfj\xf6r\xf0ur'), (u'460', u'460 T\xe1lknafj\xf6r\xf0ur'), (u'465', u'465 B\xedldudalur'), (u'470', u'470 \xdeingeyri'), (u'471', u'471 \xdeingeyri'), (u'500', u'500 Sta\xf0ur'), (u'510', u'510 H\xf3lmav\xedk'), (u'512', u'512 H\xf3lmav\xedk'), (u'520', u'520 Drangsnes'), (u'522', u'522 Kj\xf6rvogur'), (u'523', u'523 B\xe6r'), (u'524', u'524 Nor\xf0urfj\xf6r\xf0ur'), (u'530', u'530 Hvammstangi'), (u'531', u'531 Hvammstangi'), (u'540', u'540 Bl\xf6ndu\xf3s'), (u'541', u'541 Bl\xf6ndu\xf3s'), (u'545', u'545 Skagastr\xf6nd'), (u'550', u'550 Sau\xf0\xe1rkr\xf3kur'), (u'551', u'551 Sau\xf0\xe1rkr\xf3kur'), (u'560', u'560 Varmahl\xed\xf0'), (u'565', u'565 Hofs\xf3s'), (u'566', u'566 Hofs\xf3s'), (u'570', u'570 Flj\xf3t'), (u'580', u'580 Siglufj\xf6r\xf0ur'), (u'600', u'600 Akureyri'), (u'601', u'601 Akureyri'), (u'602', u'602 Akureyri'), (u'603', u'603 Akureyri'), (u'610', u'610 Greniv\xedk'), (u'611', u'611 Gr\xedmsey'), (u'620', u'620 Dalv\xedk'), (u'621', u'621 Dalv\xedk'), (u'625', u'625 \xd3lafsfj\xf6r\xf0ur'), (u'630', u'630 Hr\xedsey'), (u'640', u'640 H\xfasav\xedk'), (u'641', u'641 H\xfasav\xedk'), (u'645', u'645 Fossh\xf3ll'), (u'650', u'650 Laugar'), (u'660', u'660 M\xfdvatn'), (u'670', u'670 K\xf3pasker'), (u'671', u'671 K\xf3pasker'), (u'675', u'675 Raufarh\xf6fn'), (u'680', u'680 \xde\xf3rsh\xf6fn'), (u'681', u'681 \xde\xf3rsh\xf6fn'), (u'685', u'685 Bakkafj\xf6r\xf0ur'), (u'690', u'690 Vopnafj\xf6r\xf0ur'), (u'700', u'700 Egilssta\xf0ir'), (u'701', u'701 Egilssta\xf0ir'), (u'710', u'710 Sey\xf0isfj\xf6r\xf0ur'), (u'715', u'715 Mj\xf3ifj\xf6r\xf0ur'), (u'720', u'720 Borgarfj\xf6r\xf0ur eystri'), (u'730', u'730 Rey\xf0arfj\xf6r\xf0ur'), (u'735', u'735 Eskifj\xf6r\xf0ur'), (u'740', u'740 Neskaupsta\xf0ur'), (u'750', u'750 F\xe1skr\xfa\xf0sfj\xf6r\xf0ur'), (u'755', u'755 St\xf6\xf0varfj\xf6r\xf0ur'), (u'760', u'760 Brei\xf0dalsv\xedk'), (u'765', u'765 Dj\xfapivogur'), (u'780', u'780 H\xf6fn \xed Hornafir\xf0i'), (u'781', u'781 H\xf6fn \xed Hornafir\xf0i'), (u'785', u'785 \xd6r\xe6fi'), (u'800', u'800 Selfoss'), (u'801', u'801 Selfoss'), (u'802', u'802 Selfoss'), (u'810', u'810 Hverager\xf0i'), (u'815', u'815 \xdeorl\xe1ksh\xf6fn'), (u'816', u'816 \xd6lfus'), (u'820', u'820 Eyrarbakki'), (u'825', u'825 Stokkseyri'), (u'840', u'840 Laugarvatn'), (u'845', u'845 Fl\xfa\xf0ir'), (u'850', u'850 Hella'), (u'851', u'851 Hella'), (u'860', u'860 Hvolsv\xf6llur'), (u'861', u'861 Hvolsv\xf6llur'), (u'870', u'870 V\xedk'), (u'871', u'871 V\xedk'), (u'880', u'880 Kirkjub\xe6jarklaustur'), (u'900', u'900 Vestmannaeyjar'), (u'902', u'902 Vestmannaeyjar'))</em><a class="headerlink" href="#localflavor.is_.is_postalcodes.IS_POSTALCODES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of Icelandic postal codes</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Iceland (<code class="docutils literal"><span class="pre">is</span></code>)</a><ul>
+<li><a class="reference internal" href="#module-localflavor.is_.forms">Forms</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="in_.html"
+                        title="previous chapter">India (<code class="docutils literal"><span class="pre">in</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="it.html"
+                        title="next chapter">Italy (<code class="docutils literal"><span class="pre">it</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/localflavor/is_.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="it.html" title="Italy (it)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="in_.html" title="India (in)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

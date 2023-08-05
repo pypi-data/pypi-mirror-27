@@ -1,0 +1,171 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Latvia (lv) &#8212; django-localflavor 1.5 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Macedonia (mk)" href="mk.html" />
+    <link rel="prev" title="Lithuania (lt)" href="lt.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mk.html" title="Macedonia (mk)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lt.html" title="Lithuania (lt)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="latvia-lv">
+<h1>Latvia (<code class="docutils literal"><span class="pre">lv</span></code>)<a class="headerlink" href="#latvia-lv" title="Permalink to this headline">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+<div class="section" id="module-localflavor.lv.forms">
+<span id="forms"></span><h2>Forms<a class="headerlink" href="#module-localflavor.lv.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="localflavor.lv.forms.LVMunicipalitySelect">
+<em class="property">class </em><code class="descclassname">localflavor.lv.forms.</code><code class="descname">LVMunicipalitySelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/lv/forms.html#LVMunicipalitySelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.lv.forms.LVMunicipalitySelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A select field of Latvian municipalities.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.lv.forms.LVPersonalCodeField">
+<em class="property">class </em><code class="descclassname">localflavor.lv.forms.</code><code class="descname">LVPersonalCodeField</code><span class="sig-paren">(</span><em>required=True</em>, <em>widget=None</em>, <em>label=None</em>, <em>initial=None</em>, <em>help_text=u''</em>, <em>error_messages=None</em>, <em>show_hidden_initial=False</em>, <em>validators=()</em>, <em>localize=False</em>, <em>disabled=False</em>, <em>label_suffix=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/lv/forms.html#LVPersonalCodeField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.lv.forms.LVPersonalCodeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates input as a Latvian personal code.</p>
+<dl class="staticmethod">
+<dt id="localflavor.lv.forms.LVPersonalCodeField.lv_checksum">
+<em class="property">static </em><code class="descname">lv_checksum</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/lv/forms.html#LVPersonalCodeField.lv_checksum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.lv.forms.LVPersonalCodeField.lv_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a string of 10 digits as input, returns check digit.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.lv.forms.LVPostalCodeField">
+<em class="property">class </em><code class="descclassname">localflavor.lv.forms.</code><code class="descname">LVPostalCodeField</code><span class="sig-paren">(</span><em>required=True</em>, <em>widget=None</em>, <em>label=None</em>, <em>initial=None</em>, <em>help_text=u''</em>, <em>error_messages=None</em>, <em>show_hidden_initial=False</em>, <em>validators=()</em>, <em>localize=False</em>, <em>disabled=False</em>, <em>label_suffix=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/lv/forms.html#LVPostalCodeField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.lv.forms.LVPostalCodeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates and normalizes Latvian postal codes.</p>
+<dl class="docutils">
+<dt>Latvian postal codes in following forms accepted:</dt>
+<dd><ul class="first last simple">
+<li>XXXX</li>
+<li>LV-XXXX</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="localflavor.lv.lv_choices.MUNICIPALITY_CHOICES">
+<code class="descclassname">localflavor.lv.lv_choices.</code><code class="descname">MUNICIPALITY_CHOICES</code><em class="property"> = ((u'DGV', u'Daugavpils'), (u'JEL', u'Jelgava'), (u'JKB', u'J\u0113kabpils'), (u'JUR', u'J\u016brmala'), (u'LPX', u'Liep\u0101ja'), (u'REZ', u'R\u0113zekne'), (u'RIX', u'Riga'), (u'VMR', u'Valmiera'), (u'VEN', u'Ventspils'), (u'001', u'Aglona municipality'), (u'002', u'Aizkraukle municipality'), (u'003', u'Aizpute municipality'), (u'004', u'Akn\u012bste municipality'), (u'005', u'Aloja municipality'), (u'006', u'Alsunga municipality'), (u'007', u'Al\u016bksne municipality'), (u'008', u'Amata municipality'), (u'009', u'Ape municipality'), (u'010', u'Auce municipality'), (u'011', u'\u0100da\u017ei municipality'), (u'012', u'Bab\u012bte municipality'), (u'013', u'Baldone municipality'), (u'014', u'Baltinava municipality'), (u'015', u'Balvi municipality'), (u'016', u'Bauska municipality'), (u'017', u'Bever\u012bna municipality'), (u'018', u'Broc\u0113ni municipality'), (u'019', u'Burtnieki municipality'), (u'020', u'Carnikava municipality'), (u'021', u'Cesvaine municipality'), (u'022', u'C\u0113sis municipality'), (u'023', u'Cibla municipality'), (u'024', u'Dagda municipality'), (u'025', u'Daugavpils municipality'), (u'026', u'Dobele municipality'), (u'027', u'Dundaga municipality'), (u'028', u'Durbe municipality'), (u'029', u'Engure municipality'), (u'030', u'\u0112rg\u013ci municipality'), (u'031', u'Garkalne municipality'), (u'032', u'Grobi\u0146a municipality'), (u'033', u'Gulbene municipality'), (u'034', u'Iecava municipality'), (u'035', u'Ik\u0161\u0137ile municipality'), (u'036', u'Il\u016bkste municipality'), (u'037', u'In\u010dukalns municipality'), (u'038', u'Jaunjelgava municipality'), (u'039', u'Jaunpiebalga municipality'), (u'040', u'Jaunpils municipality'), (u'041', u'Jelgava municipality'), (u'042', u'J\u0113kabpils municipality'), (u'043', u'Kandava municipality'), (u'044', u'K\u0101rsava municipality'), (u'045', u'Koc\u0113ni municipality'), (u'046', u'Koknese municipality'), (u'047', u'Kr\u0101slava municipality'), (u'048', u'Krimulda municipality'), (u'049', u'Krustpils municipality'), (u'050', u'Kuld\u012bga municipality'), (u'051', u'\u0136egums municipality'), (u'052', u'\u0136ekava municipality'), (u'053', u'Lielv\u0101rde municipality'), (u'054', u'Limba\u017ei municipality'), (u'055', u'L\u012bgatne municipality'), (u'056', u'L\u012bv\u0101ni municipality'), (u'057', u'Lub\u0101na municipality'), (u'058', u'Ludza municipality'), (u'059', u'Madona municipality'), (u'060', u'Mazsalaca municipality'), (u'061', u'M\u0101lpils municipality'), (u'062', u'M\u0101rupe municipality'), (u'063', u'M\u0113rsrags municipality'), (u'064', u'Nauk\u0161\u0113ni municipality'), (u'065', u'Nereta municipality'), (u'066', u'N\u012bca municipality'), (u'067', u'Ogre municipality'), (u'068', u'Olaine municipality'), (u'069', u'Ozolnieki municipality'), (u'070', u'P\u0101rgauja municipality'), (u'071', u'P\u0101vilosta municipality'), (u'072', u'P\u013cavi\u0146as municipality'), (u'073', u'Prei\u013ci municipality'), (u'074', u'Priekule municipality'), (u'075', u'Prieku\u013ci municipality'), (u'076', u'Rauna municipality'), (u'077', u'R\u0113zekne municipality'), (u'078', u'Riebi\u0146i municipality'), (u'079', u'Roja municipality'), (u'080', u'Ropa\u017ei municipality'), (u'081', u'Rucava municipality'), (u'082', u'Rug\u0101ji municipality'), (u'083', u'Rund\u0101le municipality'), (u'084', u'R\u016bjiena municipality'), (u'085', u'Sala municipality'), (u'086', u'Salacgr\u012bva municipality'), (u'087', u'Salaspils municipality'), (u'088', u'Saldus municipality'), (u'089', u'Saulkrasti municipality'), (u'090', u'S\u0113ja municipality'), (u'091', u'Sigulda municipality'), (u'092', u'Skr\u012bveri municipality'), (u'093', u'Skrunda municipality'), (u'094', u'Smiltene municipality'), (u'095', u'Stopi\u0146i municipality'), (u'096', u'Stren\u010di municipality'), (u'097', u'Talsi municipality'), (u'098', u'T\u0113rvete municipality'), (u'099', u'Tukums municipality'), (u'100', u'Vai\u0146ode municipality'), (u'101', u'Valka municipality'), (u'102', u'Varak\u013c\u0101ni municipality'), (u'103', u'V\u0101rkava municipality'), (u'104', u'Vecpiebalga municipality'), (u'105', u'Vecumnieki municipality'), (u'106', u'Ventspils municipality'), (u'107', u'Vies\u012bte municipality'), (u'108', u'Vi\u013caka municipality'), (u'109', u'Vi\u013c\u0101ni municipality'), (u'110', u'Zilupe municipality'))</em><a class="headerlink" href="#localflavor.lv.lv_choices.MUNICIPALITY_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of Latvian municipalities and republican cities.
+Identifiers based on ISO 3166-2:LV. <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-2:LV">https://en.wikipedia.org/wiki/ISO_3166-2:LV</a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Latvia (<code class="docutils literal"><span class="pre">lv</span></code>)</a><ul>
+<li><a class="reference internal" href="#module-localflavor.lv.forms">Forms</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lt.html"
+                        title="previous chapter">Lithuania (<code class="docutils literal"><span class="pre">lt</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mk.html"
+                        title="next chapter">Macedonia (<code class="docutils literal"><span class="pre">mk</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/localflavor/lv.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mk.html" title="Macedonia (mk)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lt.html" title="Lithuania (lt)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

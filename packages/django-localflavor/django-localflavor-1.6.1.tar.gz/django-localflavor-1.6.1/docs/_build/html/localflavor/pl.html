@@ -1,0 +1,242 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Poland (pl) &#8212; django-localflavor 1.5 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Portugal (pt)" href="pt.html" />
+    <link rel="prev" title="Pakistan (pk)" href="pk.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pt.html" title="Portugal (pt)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pk.html" title="Pakistan (pk)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="poland-pl">
+<h1>Poland (<code class="docutils literal"><span class="pre">pl</span></code>)<a class="headerlink" href="#poland-pl" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-localflavor.pl.forms">
+<span id="forms"></span><h2>Forms<a class="headerlink" href="#module-localflavor.pl.forms" title="Permalink to this headline">¶</a></h2>
+<p>Polish-specific form helpers.</p>
+<dl class="class">
+<dt id="localflavor.pl.forms.PLCountySelect">
+<em class="property">class </em><code class="descclassname">localflavor.pl.forms.</code><code class="descname">PLCountySelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLCountySelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLCountySelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A select widget with list of Polish administrative units as choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.pl.forms.PLNIPField">
+<em class="property">class </em><code class="descclassname">localflavor.pl.forms.</code><code class="descname">PLNIPField</code><span class="sig-paren">(</span><em>max_length=None</em>, <em>min_length=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLNIPField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLNIPField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates as Polish Tax Number (NIP).</p>
+<p>Valid forms are: XXX-YYY-YY-YY, XXX-YY-YY-YYY or XXXYYYYYYY.
+Checksum algorithm based on documentation at
+<a class="reference external" href="http://wipos.p.lodz.pl/zylla/ut/nip-rego.html">http://wipos.p.lodz.pl/zylla/ut/nip-rego.html</a></p>
+<dl class="method">
+<dt id="localflavor.pl.forms.PLNIPField.has_valid_checksum">
+<code class="descname">has_valid_checksum</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLNIPField.has_valid_checksum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLNIPField.has_valid_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a checksum with the provided algorithm.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.pl.forms.PLNationalIDCardNumberField">
+<em class="property">class </em><code class="descclassname">localflavor.pl.forms.</code><code class="descname">PLNationalIDCardNumberField</code><span class="sig-paren">(</span><em>max_length=None</em>, <em>min_length=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLNationalIDCardNumberField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLNationalIDCardNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates as Polish National ID Card Number.</p>
+<dl class="docutils">
+<dt>Checks the following rules:</dt>
+<dd><ul class="first last simple">
+<li>the length consist of 3 letter and 6 digits</li>
+<li>has a valid checksum</li>
+</ul>
+</dd>
+</dl>
+<p>The algorithm is documented at <a class="reference external" href="http://en.wikipedia.org/wiki/Polish_identity_card">http://en.wikipedia.org/wiki/Polish_identity_card</a>.</p>
+<dl class="method">
+<dt id="localflavor.pl.forms.PLNationalIDCardNumberField.has_valid_checksum">
+<code class="descname">has_valid_checksum</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLNationalIDCardNumberField.has_valid_checksum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLNationalIDCardNumberField.has_valid_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a checksum with the provided algorithm.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.pl.forms.PLPESELField">
+<em class="property">class </em><code class="descclassname">localflavor.pl.forms.</code><code class="descname">PLPESELField</code><span class="sig-paren">(</span><em>max_length=None</em>, <em>min_length=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLPESELField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLPESELField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates as Polish Identification Number (PESEL).</p>
+<dl class="docutils">
+<dt>Checks the following rules:</dt>
+<dd><ul class="first last simple">
+<li>the length consist of 11 digits</li>
+<li>has a valid checksum</li>
+<li>contains a valid birth date</li>
+</ul>
+</dd>
+</dl>
+<p>The algorithm is documented at <a class="reference external" href="http://en.wikipedia.org/wiki/PESEL">http://en.wikipedia.org/wiki/PESEL</a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.4.</span></p>
+</div>
+<dl class="method">
+<dt id="localflavor.pl.forms.PLPESELField.has_valid_birth_date">
+<code class="descname">has_valid_birth_date</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLPESELField.has_valid_birth_date"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLPESELField.has_valid_birth_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the birth date encoded in PESEL is valid.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="localflavor.pl.forms.PLPESELField.has_valid_checksum">
+<code class="descname">has_valid_checksum</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLPESELField.has_valid_checksum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLPESELField.has_valid_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a checksum with the provided algorithm.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.pl.forms.PLPostalCodeField">
+<em class="property">class </em><code class="descclassname">localflavor.pl.forms.</code><code class="descname">PLPostalCodeField</code><span class="sig-paren">(</span><em>max_length=None</em>, <em>min_length=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLPostalCodeField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLPostalCodeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates as Polish postal code.</p>
+<p>Valid code is XX-XXX where X is digit.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.pl.forms.PLProvinceSelect">
+<em class="property">class </em><code class="descclassname">localflavor.pl.forms.</code><code class="descname">PLProvinceSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLProvinceSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLProvinceSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A select widget with list of Polish administrative provinces as choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.pl.forms.PLREGONField">
+<em class="property">class </em><code class="descclassname">localflavor.pl.forms.</code><code class="descname">PLREGONField</code><span class="sig-paren">(</span><em>max_length=None</em>, <em>min_length=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLREGONField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLREGONField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates its input is a REGON number.</p>
+<p>Valid regon number consists of 9 or 14 digits.
+See <a class="reference external" href="http://www.stat.gov.pl/bip/regon_ENG_HTML.htm">http://www.stat.gov.pl/bip/regon_ENG_HTML.htm</a> for more information.</p>
+<dl class="method">
+<dt id="localflavor.pl.forms.PLREGONField.has_valid_checksum">
+<code class="descname">has_valid_checksum</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/pl/forms.html#PLREGONField.has_valid_checksum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.pl.forms.PLREGONField.has_valid_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a checksum with the provided algorithm.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="localflavor.pl.pl_administrativeunits.ADMINISTRATIVE_UNIT_CHOICES">
+<code class="descclassname">localflavor.pl.pl_administrativeunits.</code><code class="descname">ADMINISTRATIVE_UNIT_CHOICES</code><em class="property"> = ((u'wroclaw', u'Wroc\u0142aw'), (u'jeleniagora', u'Jelenia G\xf3ra'), (u'legnica', u'Legnica'), (u'boleslawiecki', u'boles\u0142awiecki'), (u'dzierzoniowski', u'dzier\u017coniowski'), (u'glogowski', u'g\u0142ogowski'), (u'gorowski', u'g\xf3rowski'), (u'jaworski', u'jaworski'), (u'jeleniogorski', u'jeleniog\xf3rski'), (u'kamiennogorski', u'kamiennog\xf3rski'), (u'klodzki', u'k\u0142odzki'), (u'legnicki', u'legnicki'), (u'lubanski', u'luba\u0144ski'), (u'lubinski', u'lubi\u0144ski'), (u'lwowecki', u'lw\xf3wecki'), (u'milicki', u'milicki'), (u'olesnicki', u'ole\u015bnicki'), (u'olawski', u'o\u0142awski'), (u'polkowicki', u'polkowicki'), (u'strzelinski', u'strzeli\u0144ski'), (u'sredzki', u'\u015bredzki'), (u'swidnicki', u'\u015bwidnicki'), (u'trzebnicki', u'trzebnicki'), (u'walbrzyski', u'wa\u0142brzyski'), (u'wolowski', u'wo\u0142owski'), (u'wroclawski', u'wroc\u0142awski'), (u'zabkowicki', u'z\u0105bkowicki'), (u'zgorzelecki', u'zgorzelecki'), (u'zlotoryjski', u'z\u0142otoryjski'), (u'bydgoszcz', u'Bydgoszcz'), (u'torun', u'Toru\u0144'), (u'wloclawek', u'W\u0142oc\u0142awek'), (u'grudziadz', u'Grudzi\u0105dz'), (u'aleksandrowski', u'aleksandrowski'), (u'brodnicki', u'brodnicki'), (u'bydgoski', u'bydgoski'), (u'chelminski', u'che\u0142mi\u0144ski'), (u'golubsko-dobrzynski', u'golubsko-dobrzy\u0144ski'), (u'grudziadzki', u'grudzi\u0105dzki'), (u'inowroclawski', u'inowroc\u0142awski'), (u'lipnowski', u'lipnowski'), (u'mogilenski', u'mogile\u0144ski'), (u'nakielski', u'nakielski'), (u'radziejowski', u'radziejowski'), (u'rypinski', u'rypi\u0144ski'), (u'sepolenski', u's\u0119pole\u0144ski'), (u'swiecki', u'\u015bwiecki'), (u'torunski', u'toru\u0144ski'), (u'tucholski', u'tucholski'), (u'wabrzeski', u'w\u0105brzeski'), (u'wloclawski', u'w\u0142oc\u0142awski'), (u'zninski', u'\u017cni\u0144ski'), (u'lublin', u'Lublin'), (u'biala-podlaska', u'Bia\u0142a Podlaska'), (u'chelm', u'Che\u0142m'), (u'zamosc', u'Zamo\u015b\u0107'), (u'bialski', u'bialski'), (u'bilgorajski', u'bi\u0142gorajski'), (u'chelmski', u'che\u0142mski'), (u'hrubieszowski', u'hrubieszowski'), (u'janowski', u'janowski'), (u'krasnostawski', u'krasnostawski'), (u'krasnicki', u'kra\u015bnicki'), (u'lubartowski', u'lubartowski'), (u'lubelski', u'lubelski'), (u'leczynski', u'\u0142\u0119czy\u0144ski'), (u'lukowski', u'\u0142ukowski'), (u'opolski', u'opolski'), (u'parczewski', u'parczewski'), (u'pulawski', u'pu\u0142awski'), (u'radzynski', u'radzy\u0144ski'), (u'rycki', u'rycki'), (u'swidnicki', u'\u015bwidnicki'), (u'tomaszowski', u'tomaszowski'), (u'wlodawski', u'w\u0142odawski'), (u'zamojski', u'zamojski'), (u'gorzow-wielkopolski', u'Gorz\xf3w Wielkopolski'), (u'zielona-gora', u'Zielona G\xf3ra'), (u'gorzowski', u'gorzowski'), (u'krosnienski', u'kro\u015bnie\u0144ski'), (u'miedzyrzecki', u'mi\u0119dzyrzecki'), (u'nowosolski', u'nowosolski'), (u'slubicki', u's\u0142ubicki'), (u'strzelecko-drezdenecki', u'strzelecko-drezdenecki'), (u'sulecinski', u'sule\u0144ci\u0144ski'), (u'swiebodzinski', u'\u015bwiebodzi\u0144ski'), (u'wschowski', u'wschowski'), (u'zielonogorski', u'zielonog\xf3rski'), (u'zaganski', u'\u017caga\u0144ski'), (u'zarski', u'\u017carski'), (u'lodz', u'\u0141\xf3d\u017a'), (u'piotrkow-trybunalski', u'Piotrk\xf3w Trybunalski'), (u'skierniewice', u'Skierniewice'), (u'belchatowski', u'be\u0142chatowski'), (u'brzezinski', u'brzezi\u0144ski'), (u'kutnowski', u'kutnowski'), (u'laski', u'\u0142aski'), (u'leczycki', u'\u0142\u0119czycki'), (u'lowicki', u'\u0142owicki'), (u'lodzki wschodni', u'\u0142\xf3dzki wschodni'), (u'opoczynski', u'opoczy\u0144ski'), (u'pabianicki', u'pabianicki'), (u'pajeczanski', u'paj\u0119cza\u0144ski'), (u'piotrkowski', u'piotrkowski'), (u'poddebicki', u'podd\u0119bicki'), (u'radomszczanski', u'radomszcza\u0144ski'), (u'rawski', u'rawski'), (u'sieradzki', u'sieradzki'), (u'skierniewicki', u'skierniewicki'), (u'tomaszowski', u'tomaszowski'), (u'wielunski', u'wielu\u0144ski'), (u'wieruszowski', u'wieruszowski'), (u'zdunskowolski', u'zdu\u0144skowolski'), (u'zgierski', u'zgierski'), (u'krakow', u'Krak\xf3w'), (u'tarnow', u'Tarn\xf3w'), (u'nowy-sacz', u'Nowy S\u0105cz'), (u'bochenski', u'boche\u0144ski'), (u'brzeski', u'brzeski'), (u'chrzanowski', u'chrzanowski'), (u'dabrowski', u'd\u0105browski'), (u'gorlicki', u'gorlicki'), (u'krakowski', u'krakowski'), (u'limanowski', u'limanowski'), (u'miechowski', u'miechowski'), (u'myslenicki', u'my\u015blenicki'), (u'nowosadecki', u'nowos\u0105decki'), (u'nowotarski', u'nowotarski'), (u'olkuski', u'olkuski'), (u'oswiecimski', u'o\u015bwi\u0119cimski'), (u'proszowicki', u'proszowicki'), (u'suski', u'suski'), (u'tarnowski', u'tarnowski'), (u'tatrzanski', u'tatrza\u0144ski'), (u'wadowicki', u'wadowicki'), (u'wielicki', u'wielicki'), (u'warszawa', u'Warszawa'), (u'ostroleka', u'Ostro\u0142\u0119ka'), (u'plock', u'P\u0142ock'), (u'radom', u'Radom'), (u'siedlce', u'Siedlce'), (u'bialobrzeski', u'bia\u0142obrzeski'), (u'ciechanowski', u'ciechanowski'), (u'garwolinski', u'garwoli\u0144ski'), (u'gostyninski', u'gostyni\u0144ski'), (u'grodziski', u'grodziski'), (u'grojecki', u'gr\xf3jecki'), (u'kozienicki', u'kozenicki'), (u'legionowski', u'legionowski'), (u'lipski', u'lipski'), (u'losicki', u'\u0142osicki'), (u'makowski', u'makowski'), (u'minski', u'mi\u0144ski'), (u'mlawski', u'm\u0142awski'), (u'nowodworski', u'nowodworski'), (u'ostrolecki', u'ostro\u0142\u0119cki'), (u'ostrowski', u'ostrowski'), (u'otwocki', u'otwocki'), (u'piaseczynski', u'piaseczy\u0144ski'), (u'plocki', u'p\u0142ocki'), (u'plonski', u'p\u0142o\u0144ski'), (u'pruszkowski', u'pruszkowski'), (u'przasnyski', u'przasnyski'), (u'przysuski', u'przysuski'), (u'pultuski', u'pu\u0142tuski'), (u'radomski', u'radomski'), (u'siedlecki', u'siedlecki'), (u'sierpecki', u'sierpecki'), (u'sochaczewski', u'sochaczewski'), (u'sokolowski', u'soko\u0142owski'), (u'szydlowiecki', u'szyd\u0142owiecki'), (u'warszawski-zachodni', u'warszawski zachodni'), (u'wegrowski', u'w\u0119growski'), (u'wolominski', u'wo\u0142omi\u0144ski'), (u'wyszkowski', u'wyszkowski'), (u'zwolenski', u'zwole\u0144ski'), (u'zurominski', u'\u017curomi\u0144ski'), (u'zyrardowski', u'\u017cyrardowski'), (u'opole', u'Opole'), (u'brzeski', u'brzeski'), (u'glubczycki', u'g\u0142ubczyski'), (u'kedzierzynsko-kozielski', u'k\u0119dzierzy\u0144sko-kozielski'), (u'kluczborski', u'kluczborski'), (u'krapkowicki', u'krapkowicki'), (u'namyslowski', u'namys\u0142owski'), (u'nyski', u'nyski'), (u'oleski', u'oleski'), (u'opolski', u'opolski'), (u'prudnicki', u'prudnicki'), (u'strzelecki', u'strzelecki'), (u'rzeszow', u'Rzesz\xf3w'), (u'krosno', u'Krosno'), (u'przemysl', u'Przemy\u015bl'), (u'tarnobrzeg', u'Tarnobrzeg'), (u'bieszczadzki', u'bieszczadzki'), (u'brzozowski', u'brzozowski'), (u'debicki', u'd\u0119bicki'), (u'jaroslawski', u'jaros\u0142awski'), (u'jasielski', u'jasielski'), (u'kolbuszowski', u'kolbuszowski'), (u'krosnienski', u'kro\u015bnie\u0144ski'), (u'leski', u'leski'), (u'lezajski', u'le\u017cajski'), (u'lubaczowski', u'lubaczowski'), (u'lancucki', u'\u0142a\u0144cucki'), (u'mielecki', u'mielecki'), (u'nizanski', u'ni\u017ca\u0144ski'), (u'przemyski', u'przemyski'), (u'przeworski', u'przeworski'), (u'ropczycko-sedziszowski', u'ropczycko-s\u0119dziszowski'), (u'rzeszowski', u'rzeszowski'), (u'sanocki', u'sanocki'), (u'stalowowolski', u'stalowowolski'), (u'strzyzowski', u'strzy\u017cowski'), (u'tarnobrzeski', u'tarnobrzeski'), (u'bialystok', u'Bia\u0142ystok'), (u'lomza', u'\u0141om\u017ca'), (u'suwalki', u'Suwa\u0142ki'), (u'augustowski', u'augustowski'), (u'bialostocki', u'bia\u0142ostocki'), (u'bielski', u'bielski'), (u'grajewski', u'grajewski'), (u'hajnowski', u'hajnowski'), (u'kolnenski', u'kolne\u0144ski'), (u'\u0142omzynski', u'\u0142om\u017cy\u0144ski'), (u'moniecki', u'moniecki'), (u'sejnenski', u'sejne\u0144ski'), (u'siemiatycki', u'siematycki'), (u'sokolski', u'sok\xf3lski'), (u'suwalski', u'suwalski'), (u'wysokomazowiecki', u'wysokomazowiecki'), (u'zambrowski', u'zambrowski'), (u'gdansk', u'Gda\u0144sk'), (u'gdynia', u'Gdynia'), (u'slupsk', u'S\u0142upsk'), (u'sopot', u'Sopot'), (u'bytowski', u'bytowski'), (u'chojnicki', u'chojnicki'), (u'czluchowski', u'cz\u0142uchowski'), (u'kartuski', u'kartuski'), (u'koscierski', u'ko\u015bcierski'), (u'kwidzynski', u'kwidzy\u0144ski'), (u'leborski', u'l\u0119borski'), (u'malborski', u'malborski'), (u'nowodworski', u'nowodworski'), (u'gdanski', u'gda\u0144ski'), (u'pucki', u'pucki'), (u'slupski', u's\u0142upski'), (u'starogardzki', u'starogardzki'), (u'sztumski', u'sztumski'), (u'tczewski', u'tczewski'), (u'wejherowski', u'wejcherowski'), (u'katowice', u'Katowice'), (u'bielsko-biala', u'Bielsko-Bia\u0142a'), (u'bytom', u'Bytom'), (u'chorzow', u'Chorz\xf3w'), (u'czestochowa', u'Cz\u0119stochowa'), (u'dabrowa-gornicza', u'D\u0105browa G\xf3rnicza'), (u'gliwice', u'Gliwice'), (u'jastrzebie-zdroj', u'Jastrz\u0119bie Zdr\xf3j'), (u'jaworzno', u'Jaworzno'), (u'myslowice', u'Mys\u0142owice'), (u'piekary-slaskie', u'Piekary \u015al\u0105skie'), (u'ruda-slaska', u'Ruda \u015al\u0105ska'), (u'rybnik', u'Rybnik'), (u'siemianowice-slaskie', u'Siemianowice \u015al\u0105skie'), (u'sosnowiec', u'Sosnowiec'), (u'swietochlowice', u'\u015awi\u0119toch\u0142owice'), (u'tychy', u'Tychy'), (u'zabrze', u'Zabrze'), (u'zory', u'\u017bory'), (u'bedzinski', u'b\u0119dzi\u0144ski'), (u'bielski', u'bielski'), (u'bierunsko-ledzinski', u'bieru\u0144sko-l\u0119dzi\u0144ski'), (u'cieszynski', u'cieszy\u0144ski'), (u'czestochowski', u'cz\u0119stochowski'), (u'gliwicki', u'gliwicki'), (u'klobucki', u'k\u0142obucki'), (u'lubliniecki', u'lubliniecki'), (u'mikolowski', u'miko\u0142owski'), (u'myszkowski', u'myszkowski'), (u'pszczynski', u'pszczy\u0144ski'), (u'raciborski', u'raciborski'), (u'rybnicki', u'rybnicki'), (u'tarnogorski', u'tarnog\xf3rski'), (u'wodzislawski', u'wodzis\u0142awski'), (u'zawiercianski', u'zawiercia\u0144ski'), (u'zywiecki', u'\u017cywiecki'), (u'kielce', u'Kielce'), (u'buski', u'buski'), (u'jedrzejowski', u'j\u0119drzejowski'), (u'kazimierski', u'kazimierski'), (u'kielecki', u'kielecki'), (u'konecki', u'konecki'), (u'opatowski', u'opatowski'), (u'ostrowiecki', u'ostrowiecki'), (u'pinczowski', u'pi\u0144czowski'), (u'sandomierski', u'sandomierski'), (u'skarzyski', u'skar\u017cyski'), (u'starachowicki', u'starachowicki'), (u'staszowski', u'staszowski'), (u'wloszczowski', u'w\u0142oszczowski'), (u'olsztyn', u'Olsztyn'), (u'elblag', u'Elbl\u0105g'), (u'bartoszycki', u'bartoszycki'), (u'braniewski', u'braniewski'), (u'dzialdowski', u'dzia\u0142dowski'), (u'elblaski', u'elbl\u0105ski'), (u'elcki', u'e\u0142cki'), (u'gizycki', u'gi\u017cycki'), (u'goldapski', u'go\u0142dapski'), (u'ilawski', u'i\u0142awski'), (u'ketrzynski', u'k\u0119trzy\u0144ski'), (u'lidzbarski', u'lidzbarski'), (u'mragowski', u'mr\u0105gowski'), (u'nidzicki', u'nidzicki'), (u'nowomiejski', u'nowomiejski'), (u'olecki', u'olecki'), (u'olsztynski', u'olszty\u0144ski'), (u'ostrodzki', u'ostr\xf3dzki'), (u'piski', u'piski'), (u'szczycienski', u'szczycie\u0144ski'), (u'wegorzewski', u'w\u0119gorzewski'), (u'poznan', u'Pozna\u0144'), (u'kalisz', u'Kalisz'), (u'konin', u'Konin'), (u'leszno', u'Leszno'), (u'chodzieski', u'chodziejski'), (u'czarnkowsko-trzcianecki', u'czarnkowsko-trzcianecki'), (u'gnieznienski', u'gnie\u017anie\u0144ski'), (u'gostynski', u'gosty\u0144ski'), (u'grodziski', u'grodziski'), (u'jarocinski', u'jaroci\u0144ski'), (u'kaliski', u'kaliski'), (u'kepinski', u'k\u0119pi\u0144ski'), (u'kolski', u'kolski'), (u'koninski', u'koni\u0144ski'), (u'koscianski', u'ko\u015bcia\u0144ski'), (u'krotoszynski', u'krotoszy\u0144ski'), (u'leszczynski', u'leszczy\u0144ski'), (u'miedzychodzki', u'mi\u0119dzychodzki'), (u'nowotomyski', u'nowotomyski'), (u'obornicki', u'obornicki'), (u'ostrowski', u'ostrowski'), (u'ostrzeszowski', u'ostrzeszowski'), (u'pilski', u'pilski'), (u'pleszewski', u'pleszewski'), (u'poznanski', u'pozna\u0144ski'), (u'rawicki', u'rawicki'), (u'slupecki', u's\u0142upecki'), (u'szamotulski', u'szamotulski'), (u'sredzki', u'\u015bredzki'), (u'sremski', u'\u015bremski'), (u'turecki', u'turecki'), (u'wagrowiecki', u'w\u0105growiecki'), (u'wolsztynski', u'wolszty\u0144ski'), (u'wrzesinski', u'wrzesi\u0144ski'), (u'zlotowski', u'z\u0142otowski'), (u'bialogardzki', u'bia\u0142ogardzki'), (u'choszczenski', u'choszcze\u0144ski'), (u'drawski', u'drawski'), (u'goleniowski', u'goleniowski'), (u'gryficki', u'gryficki'), (u'gryfinski', u'gryfi\u0144ski'), (u'kamienski', u'kamie\u0144ski'), (u'kolobrzeski', u'ko\u0142obrzeski'), (u'koszalinski', u'koszali\u0144ski'), (u'lobeski', u'\u0142obeski'), (u'mysliborski', u'my\u015bliborski'), (u'policki', u'policki'), (u'pyrzycki', u'pyrzycki'), (u'slawienski', u's\u0142awie\u0144ski'), (u'stargardzki', u'stargardzki'), (u'szczecinecki', u'szczecinecki'), (u'swidwinski', u'\u015bwidwi\u0144ski'), (u'walecki', u'wa\u0142ecki'))</em><a class="headerlink" href="#localflavor.pl.pl_administrativeunits.ADMINISTRATIVE_UNIT_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polish administrative units as in <a class="reference external" href="http://pl.wikipedia.org/wiki/Podzia%C5%82_administracyjny_Polski">http://pl.wikipedia.org/wiki/Podzia%C5%82_administracyjny_Polski</a></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.pl.pl_voivodeships.VOIVODESHIP_CHOICES">
+<code class="descclassname">localflavor.pl.pl_voivodeships.</code><code class="descname">VOIVODESHIP_CHOICES</code><em class="property"> = (('lower_silesia', u'Lower Silesian'), ('kuyavia-pomerania', u'Kuyavian-Pomeranian'), ('lublin', u'Lublin'), ('lubusz', u'Lubusz'), ('lodz', u'Lodz'), ('lesser_poland', u'Lesser Poland'), ('masovia', u'Masovian'), ('opole', u'Opole'), ('subcarpatia', u'Subcarpathian'), ('podlasie', u'Podlasie'), ('pomerania', u'Pomeranian'), ('silesia', u'Silesian'), ('swietokrzyskie', u'Swietokrzyskie'), ('warmia-masuria', u'Warmian-Masurian'), ('greater_poland', u'Greater Poland'), ('west_pomerania', u'West Pomeranian'))</em><a class="headerlink" href="#localflavor.pl.pl_voivodeships.VOIVODESHIP_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polish voivodeship as in <a class="reference external" href="http://en.wikipedia.org/wiki/Poland#Administrative_division">http://en.wikipedia.org/wiki/Poland#Administrative_division</a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Poland (<code class="docutils literal"><span class="pre">pl</span></code>)</a><ul>
+<li><a class="reference internal" href="#module-localflavor.pl.forms">Forms</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pk.html"
+                        title="previous chapter">Pakistan (<code class="docutils literal"><span class="pre">pk</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pt.html"
+                        title="next chapter">Portugal (<code class="docutils literal"><span class="pre">pt</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/localflavor/pl.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pt.html" title="Portugal (pt)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pk.html" title="Pakistan (pk)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

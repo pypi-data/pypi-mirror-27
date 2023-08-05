@@ -1,0 +1,259 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Italy (it) &#8212; django-localflavor 1.5 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Japan (jp)" href="jp.html" />
+    <link rel="prev" title="Iceland (is)" href="is_.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="jp.html" title="Japan (jp)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="is_.html" title="Iceland (is)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="italy-it">
+<h1>Italy (<code class="docutils literal"><span class="pre">it</span></code>)<a class="headerlink" href="#italy-it" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-localflavor.it.forms">
+<span id="forms"></span><h2>Forms<a class="headerlink" href="#module-localflavor.it.forms" title="Permalink to this headline">¶</a></h2>
+<p>IT-specific Form helpers.</p>
+<dl class="class">
+<dt id="localflavor.it.forms.ITPhoneNumberField">
+<em class="property">class </em><code class="descclassname">localflavor.it.forms.</code><code class="descname">ITPhoneNumberField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/forms.html#ITPhoneNumberField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.forms.ITPhoneNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates input as an Italian phone number.</p>
+<p>Will strip any +39 country prefix from the number.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.4: </span>Use the <a class="reference external" href="https://github.com/stefanfoulis/django-phonenumber-field">django-phonenumber-field</a> library instead.</p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.it.forms.ITProvinceSelect">
+<em class="property">class </em><code class="descclassname">localflavor.it.forms.</code><code class="descname">ITProvinceSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/forms.html#ITProvinceSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.forms.ITProvinceSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of IT provinces as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.it.forms.ITRegionProvinceSelect">
+<em class="property">class </em><code class="descclassname">localflavor.it.forms.</code><code class="descname">ITRegionProvinceSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/forms.html#ITRegionProvinceSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.forms.ITRegionProvinceSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a named group list of IT regions mapped to regions as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.it.forms.ITRegionSelect">
+<em class="property">class </em><code class="descclassname">localflavor.it.forms.</code><code class="descname">ITRegionSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/forms.html#ITRegionSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.forms.ITRegionSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of IT regions as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.it.forms.ITSocialSecurityNumberField">
+<em class="property">class </em><code class="descclassname">localflavor.it.forms.</code><code class="descname">ITSocialSecurityNumberField</code><span class="sig-paren">(</span><em>max_length=None</em>, <em>min_length=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/forms.html#ITSocialSecurityNumberField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.forms.ITSocialSecurityNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates Italian Tax code (codice fiscale) for both persons and entities.</p>
+<p>For reference see <a class="reference external" href="http://www.agenziaentrate.it/">http://www.agenziaentrate.it/</a> and search for:</p>
+<ul class="simple">
+<li>‘Informazioni sulla codificazione delle persone fisiche’ for persons’ SSN</li>
+<li>‘Codice fiscale Modello AA5/6’ for entities’ SSN</li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.1.</span></p>
+</div>
+<p>The <code class="docutils literal"><span class="pre">ITSocialSecurityNumberField</span></code> now also accepts SSN values for
+entities (numeric-only form).</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.it.forms.ITVatNumberField">
+<em class="property">class </em><code class="descclassname">localflavor.it.forms.</code><code class="descname">ITVatNumberField</code><span class="sig-paren">(</span><em>required=True</em>, <em>widget=None</em>, <em>label=None</em>, <em>initial=None</em>, <em>help_text=u''</em>, <em>error_messages=None</em>, <em>show_hidden_initial=False</em>, <em>validators=()</em>, <em>localize=False</em>, <em>disabled=False</em>, <em>label_suffix=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/forms.html#ITVatNumberField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.forms.ITVatNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates Italian VAT numbers (partita IVA).</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.it.forms.ITZipCodeField">
+<em class="property">class </em><code class="descclassname">localflavor.it.forms.</code><code class="descname">ITZipCodeField</code><span class="sig-paren">(</span><em>max_length=None</em>, <em>min_length=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/forms.html#ITZipCodeField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.forms.ITZipCodeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates input as an Italian zip code.</p>
+<p>Valid codes must have five digits.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-localflavor.it.util">
+<span id="utilities"></span><h2>Utilities<a class="headerlink" href="#module-localflavor.it.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="localflavor.it.util.ssn_check_digit">
+<code class="descclassname">localflavor.it.util.</code><code class="descname">ssn_check_digit</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/util.html#ssn_check_digit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.util.ssn_check_digit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Italian social security number check digit.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="localflavor.it.util.ssn_validation">
+<code class="descclassname">localflavor.it.util.</code><code class="descname">ssn_validation</code><span class="sig-paren">(</span><em>ssn_value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/util.html#ssn_validation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.util.ssn_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate Italian SSN for persons</p>
+<p><code class="docutils literal"><span class="pre">ValueError</span></code> is raised if validation fails.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="localflavor.it.util.vat_number_check_digit">
+<code class="descclassname">localflavor.it.util.</code><code class="descname">vat_number_check_digit</code><span class="sig-paren">(</span><em>vat_number</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/util.html#vat_number_check_digit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.util.vat_number_check_digit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Italian VAT number check digit.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="localflavor.it.util.vat_number_validation">
+<code class="descclassname">localflavor.it.util.</code><code class="descname">vat_number_validation</code><span class="sig-paren">(</span><em>vat_number</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/it/util.html#vat_number_validation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.it.util.vat_number_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate Italian VAT number. Used also for entities SSN validation.</p>
+<p><code class="docutils literal"><span class="pre">ValueError</span></code> is raised if validation fails.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="localflavor.it.it_province.PROVINCE_CHOICES">
+<code class="descclassname">localflavor.it.it_province.</code><code class="descname">PROVINCE_CHOICES</code><em class="property"> = ((u'AG', u'Agrigento'), (u'AL', u'Alessandria'), (u'AN', u'Ancona'), (u'AO', u'Aosta'), (u'AR', u'Arezzo'), (u'AP', u'Ascoli Piceno'), (u'AT', u'Asti'), (u'AV', u'Avellino'), (u'BA', u'Bari'), (u'BT', u'Barletta-Andria-Trani'), (u'BL', u'Belluno'), (u'BN', u'Benevento'), (u'BG', u'Bergamo'), (u'BI', u'Biella'), (u'BO', u'Bologna'), (u'BZ', u'Bolzano/Bozen'), (u'BS', u'Brescia'), (u'BR', u'Brindisi'), (u'CA', u'Cagliari'), (u'CL', u'Caltanissetta'), (u'CB', u'Campobasso'), (u'CI', u'Carbonia-Iglesias'), (u'CE', u'Caserta'), (u'CT', u'Catania'), (u'CZ', u'Catanzaro'), (u'CH', u'Chieti'), (u'CO', u'Como'), (u'CS', u'Cosenza'), (u'CR', u'Cremona'), (u'KR', u'Crotone'), (u'CN', u'Cuneo'), (u'EN', u'Enna'), (u'FM', u'Fermo'), (u'FE', u'Ferrara'), (u'FI', u'Firenze'), (u'FG', u'Foggia'), (u'FC', u'Forl\xec-Cesena'), (u'FR', u'Frosinone'), (u'GE', u'Genova'), (u'GO', u'Gorizia'), (u'GR', u'Grosseto'), (u'IM', u'Imperia'), (u'IS', u'Isernia'), (u'SP', u'La Spezia'), (u'AQ', u'L\u2019Aquila'), (u'LT', u'Latina'), (u'LE', u'Lecce'), (u'LC', u'Lecco'), (u'LI', u'Livorno'), (u'LO', u'Lodi'), (u'LU', u'Lucca'), (u'MC', u'Macerata'), (u'MN', u'Mantova'), (u'MS', u'Massa-Carrara'), (u'MT', u'Matera'), (u'VS', u'Medio Campidano'), (u'ME', u'Messina'), (u'MI', u'Milano'), (u'MO', u'Modena'), (u'MB', u'Monza e Brianza'), (u'NA', u'Napoli'), (u'NO', u'Novara'), (u'NU', u'Nuoro'), (u'OG', u'Ogliastra'), (u'OT', u'Olbia-Tempio'), (u'OR', u'Oristano'), (u'PD', u'Padova'), (u'PA', u'Palermo'), (u'PR', u'Parma'), (u'PV', u'Pavia'), (u'PG', u'Perugia'), (u'PU', u'Pesaro e Urbino'), (u'PE', u'Pescara'), (u'PC', u'Piacenza'), (u'PI', u'Pisa'), (u'PT', u'Pistoia'), (u'PN', u'Pordenone'), (u'PZ', u'Potenza'), (u'PO', u'Prato'), (u'RG', u'Ragusa'), (u'RA', u'Ravenna'), (u'RC', u'Reggio Calabria'), (u'RE', u'Reggio Emilia'), (u'RI', u'Rieti'), (u'RN', u'Rimini'), (u'RM', u'Roma'), (u'RO', u'Rovigo'), (u'SA', u'Salerno'), (u'SS', u'Sassari'), (u'SV', u'Savona'), (u'SI', u'Siena'), (u'SR', u'Siracusa'), (u'SO', u'Sondrio'), (u'TA', u'Taranto'), (u'TE', u'Teramo'), (u'TR', u'Terni'), (u'TO', u'Torino'), (u'TP', u'Trapani'), (u'TN', u'Trento'), (u'TV', u'Treviso'), (u'TS', u'Trieste'), (u'UD', u'Udine'), (u'VA', u'Varese'), (u'VE', u'Venezia'), (u'VB', u'Verbano Cusio Ossola'), (u'VC', u'Vercelli'), (u'VR', u'Verona'), (u'VV', u'Vibo Valentia'), (u'VI', u'Vicenza'), (u'VT', u'Viterbo'))</em><a class="headerlink" href="#localflavor.it.it_province.PROVINCE_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alphabetical list of provinces</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.it.it_province.PROVINCE_REGIONS">
+<code class="descclassname">localflavor.it.it_province.</code><code class="descname">PROVINCE_REGIONS</code><em class="property"> = {u'CZ': u'CAL', u'CR': u'LOM', u'CS': u'CAL', u'TA': u'PUG', u'CT': u'SIC', u'CH': u'ABR', u'CI': u'SAR', u'CN': u'PMN', u'CO': u'LOM', u'CL': u'SIC', u'CB': u'MOL', u'CA': u'SAR', u'CE': u'CAM', u'PO': u'TOS', u'PN': u'FVG', u'PI': u'TOS', u'PG': u'UMB', u'PE': u'ABR', u'PD': u'VEN', u'PC': u'EMR', u'PA': u'SIC', u'KR': u'CAL', u'PZ': u'BAS', u'PV': u'LOM', u'PU': u'MAR', u'PT': u'TOS', u'PR': u'EMR', u'BT': u'PUG', u'BS': u'LOM', u'BR': u'PUG', u'BZ': u'TAA', u'BG': u'LOM', u'BA': u'PUG', u'BL': u'VEN', u'BO': u'EMR', u'BN': u'CAM', u'BI': u'PMN', u'SI': u'TOS', u'SO': u'LOM', u'TR': u'UMB', u'SA': u'CAM', u'SR': u'SIC', u'SS': u'SAR', u'SP': u'LIG', u'SV': u'LIG', u'EN': u'SIC', u'RE': u'EMR', u'RG': u'SIC', u'RA': u'EMR', u'RC': u'CAL', u'RM': u'LAZ', u'RO': u'VEN', u'MS': u'TOS', u'RI': u'LAZ', u'MI': u'LOM', u'MN': u'LOM', u'MO': u'EMR', u'MB': u'LOM', u'MC': u'MAR', u'ME': u'SIC', u'UD': u'FVG', u'LU': u'TOS', u'LT': u'LAZ', u'LI': u'TOS', u'LO': u'LOM', u'LC': u'LOM', u'LE': u'PUG', u'GO': u'FVG', u'OT': u'SAR', u'OR': u'SAR', u'TE': u'ABR', u'GE': u'LIG', u'TO': u'PMN', u'TN': u'TAA', u'TS': u'FVG', u'OG': u'SAR', u'TP': u'SIC', u'TV': u'VEN', u'GR': u'TOS', u'RN': u'EMR', u'MT': u'BAS', u'FI': u'TOS', u'FM': u'MAR', u'FC': u'EMR', u'FE': u'EMR', u'FG': u'PUG', u'NA': u'CAM', u'FR': u'LAZ', u'NO': u'PMN', u'AT': u'PMN', u'AV': u'CAM', u'AP': u'MAR', u'AQ': u'ABR', u'AR': u'TOS', u'AL': u'PMN', u'AN': u'MAR', u'AO': u'VAO', u'NU': u'SAR', u'AG': u'SIC', u'IM': u'LIG', u'VS': u'SAR', u'VR': u'VEN', u'VT': u'LAZ', u'VV': u'CAL', u'VI': u'VEN', u'IS': u'MOL', u'VA': u'LOM', u'VC': u'PMN', u'VB': u'PMN', u'VE': u'VEN'}</em><a class="headerlink" href="#localflavor.it.it_province.PROVINCE_REGIONS" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary of provinces mapped to regions</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.it.it_region.REGION_CHOICES">
+<code class="descclassname">localflavor.it.it_region.</code><code class="descname">REGION_CHOICES</code><em class="property"> = ((u'ABR', u'Abruzzo'), (u'BAS', u'Basilicata'), (u'CAL', u'Calabria'), (u'CAM', u'Campania'), (u'EMR', u'Emilia-Romagna'), (u'FVG', u'Friuli-Venezia Giulia'), (u'LAZ', u'Lazio'), (u'LIG', u'Liguria'), (u'LOM', u'Lombardia'), (u'MAR', u'Marche'), (u'MOL', u'Molise'), (u'PMN', u'Piemonte'), (u'PUG', u'Puglia'), (u'SAR', u'Sardegna'), (u'SIC', u'Sicilia'), (u'TOS', u'Toscana'), (u'TAA', u'Trentino-Alto Adige'), (u'UMB', u'Umbria'), (u'VAO', u'Valle d\u2019Aosta'), (u'VEN', u'Veneto'))</em><a class="headerlink" href="#localflavor.it.it_region.REGION_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alphabetical list of regions</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.it.it_region.REGION_PROVINCES">
+<code class="descclassname">localflavor.it.it_region.</code><code class="descname">REGION_PROVINCES</code><em class="property"> = {u'MAR': [u'AN', u'AP', u'FM', u'MC', u'PU'], u'LIG': [u'GE', u'IM', u'SP', u'SV'], u'SIC': [u'AG', u'CL', u'CT', u'EN', u'ME', u'PA', u'RG', u'SR', u'TP'], u'CAL': [u'CS', u'CZ', u'KR', u'RC', u'VV'], u'CAM': [u'AV', u'BN', u'CE', u'NA', u'SA'], u'TAA': [u'BZ', u'TN'], u'LOM': [u'BG', u'BS', u'CO', u'CR', u'LC', u'LO', u'MB', u'MI', u'MN', u'PV', u'SO', u'VA'], u'ABR': [u'AQ', u'CH', u'PE', u'TE'], u'SAR': [u'CA', u'CI', u'NU', u'OG', u'OR', u'OT', u'SS', u'VS'], u'EMR': [u'BO', u'FC', u'FE', u'MO', u'PC', u'PR', u'RA', u'RE', u'RN'], u'MOL': [u'CB', u'IS'], u'PUG': [u'BA', u'BR', u'BT', u'FG', u'LE', u'TA'], u'FVG': [u'GO', u'PN', u'TS', u'UD'], u'LAZ': [u'FR', u'LT', u'RI', u'RM', u'VT'], u'BAS': [u'MT', u'PZ'], u'PMN': [u'AL', u'AT', u'BI', u'CN', u'NO', u'TO', u'VB', u'VC'], u'VEN': [u'BL', u'PD', u'RO', u'TV', u'VE', u'VI', u'VR'], u'UMB': [u'PG', u'TR'], u'TOS': [u'AR', u'FI', u'GR', u'LI', u'LU', u'MS', u'PI', u'PO', u'PT', u'SI'], u'VAO': [u'AO']}</em><a class="headerlink" href="#localflavor.it.it_region.REGION_PROVINCES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary of regions mapped to provinces</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.it.it_region.REGION_PROVINCE_CHOICES">
+<code class="descclassname">localflavor.it.it_region.</code><code class="descname">REGION_PROVINCE_CHOICES</code><em class="property"> = [(u'Abruzzo', ((u'CH', u'Chieti'), (u'AQ', u'L\u2019Aquila'), (u'PE', u'Pescara'), (u'TE', u'Teramo'))), (u'Basilicata', ((u'MT', u'Matera'), (u'PZ', u'Potenza'))), (u'Calabria', ((u'CZ', u'Catanzaro'), (u'CS', u'Cosenza'), (u'KR', u'Crotone'), (u'RC', u'Reggio Calabria'), (u'VV', u'Vibo Valentia'))), (u'Campania', ((u'AV', u'Avellino'), (u'BN', u'Benevento'), (u'CE', u'Caserta'), (u'NA', u'Napoli'), (u'SA', u'Salerno'))), (u'Emilia-Romagna', ((u'BO', u'Bologna'), (u'FE', u'Ferrara'), (u'FC', u'Forl\xec-Cesena'), (u'MO', u'Modena'), (u'PR', u'Parma'), (u'PC', u'Piacenza'), (u'RA', u'Ravenna'), (u'RE', u'Reggio Emilia'), (u'RN', u'Rimini'))), (u'Friuli-Venezia Giulia', ((u'GO', u'Gorizia'), (u'PN', u'Pordenone'), (u'TS', u'Trieste'), (u'UD', u'Udine'))), (u'Lazio', ((u'FR', u'Frosinone'), (u'LT', u'Latina'), (u'RI', u'Rieti'), (u'RM', u'Roma'), (u'VT', u'Viterbo'))), (u'Liguria', ((u'GE', u'Genova'), (u'IM', u'Imperia'), (u'SP', u'La Spezia'), (u'SV', u'Savona'))), (u'Lombardia', ((u'BG', u'Bergamo'), (u'BS', u'Brescia'), (u'CO', u'Como'), (u'CR', u'Cremona'), (u'LC', u'Lecco'), (u'LO', u'Lodi'), (u'MN', u'Mantova'), (u'MI', u'Milano'), (u'MB', u'Monza e Brianza'), (u'PV', u'Pavia'), (u'SO', u'Sondrio'), (u'VA', u'Varese'))), (u'Marche', ((u'AN', u'Ancona'), (u'AP', u'Ascoli Piceno'), (u'FM', u'Fermo'), (u'MC', u'Macerata'), (u'PU', u'Pesaro e Urbino'))), (u'Molise', ((u'CB', u'Campobasso'), (u'IS', u'Isernia'))), (u'Piemonte', ((u'AL', u'Alessandria'), (u'AT', u'Asti'), (u'BI', u'Biella'), (u'CN', u'Cuneo'), (u'NO', u'Novara'), (u'TO', u'Torino'), (u'VB', u'Verbano Cusio Ossola'), (u'VC', u'Vercelli'))), (u'Puglia', ((u'BA', u'Bari'), (u'BT', u'Barletta-Andria-Trani'), (u'BR', u'Brindisi'), (u'FG', u'Foggia'), (u'LE', u'Lecce'), (u'TA', u'Taranto'))), (u'Sardegna', ((u'CA', u'Cagliari'), (u'CI', u'Carbonia-Iglesias'), (u'VS', u'Medio Campidano'), (u'NU', u'Nuoro'), (u'OG', u'Ogliastra'), (u'OT', u'Olbia-Tempio'), (u'OR', u'Oristano'), (u'SS', u'Sassari'))), (u'Sicilia', ((u'AG', u'Agrigento'), (u'CL', u'Caltanissetta'), (u'CT', u'Catania'), (u'EN', u'Enna'), (u'ME', u'Messina'), (u'PA', u'Palermo'), (u'RG', u'Ragusa'), (u'SR', u'Siracusa'), (u'TP', u'Trapani'))), (u'Toscana', ((u'AR', u'Arezzo'), (u'FI', u'Firenze'), (u'GR', u'Grosseto'), (u'LI', u'Livorno'), (u'LU', u'Lucca'), (u'MS', u'Massa-Carrara'), (u'PI', u'Pisa'), (u'PT', u'Pistoia'), (u'PO', u'Prato'), (u'SI', u'Siena'))), (u'Trentino-Alto Adige', ((u'BZ', u'Bolzano/Bozen'), (u'TN', u'Trento'))), (u'Umbria', ((u'PG', u'Perugia'), (u'TR', u'Terni'))), (u'Valle d\u2019Aosta', ((u'AO', u'Aosta'),)), (u'Veneto', ((u'BL', u'Belluno'), (u'PD', u'Padova'), (u'RO', u'Rovigo'), (u'TV', u'Treviso'), (u'VE', u'Venezia'), (u'VR', u'Verona'), (u'VI', u'Vicenza')))]</em><a class="headerlink" href="#localflavor.it.it_region.REGION_PROVINCE_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A alphabetical list of provinces mapped to regions</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Italy (<code class="docutils literal"><span class="pre">it</span></code>)</a><ul>
+<li><a class="reference internal" href="#module-localflavor.it.forms">Forms</a></li>
+<li><a class="reference internal" href="#module-localflavor.it.util">Utilities</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="is_.html"
+                        title="previous chapter">Iceland (<code class="docutils literal"><span class="pre">is</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="jp.html"
+                        title="next chapter">Japan (<code class="docutils literal"><span class="pre">jp</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/localflavor/it.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="jp.html" title="Japan (jp)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="is_.html" title="Iceland (is)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

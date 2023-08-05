@@ -1,0 +1,155 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Finland (fi) &#8212; django-localflavor 1.5 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="France (fr)" href="fr.html" />
+    <link rel="prev" title="Spain (es)" href="es.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fr.html" title="France (fr)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="es.html" title="Spain (es)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="finland-fi">
+<h1>Finland (<code class="docutils literal"><span class="pre">fi</span></code>)<a class="headerlink" href="#finland-fi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-localflavor.fi.forms">
+<span id="forms"></span><h2>Forms<a class="headerlink" href="#module-localflavor.fi.forms" title="Permalink to this headline">¶</a></h2>
+<p>FI-specific Form helpers.</p>
+<dl class="class">
+<dt id="localflavor.fi.forms.FIMunicipalitySelect">
+<em class="property">class </em><code class="descclassname">localflavor.fi.forms.</code><code class="descname">FIMunicipalitySelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fi/forms.html#FIMunicipalitySelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fi.forms.FIMunicipalitySelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of Finnish municipalities as its choices.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fi.forms.FISocialSecurityNumber">
+<em class="property">class </em><code class="descclassname">localflavor.fi.forms.</code><code class="descname">FISocialSecurityNumber</code><span class="sig-paren">(</span><em>required=True</em>, <em>widget=None</em>, <em>label=None</em>, <em>initial=None</em>, <em>help_text=u''</em>, <em>error_messages=None</em>, <em>show_hidden_initial=False</em>, <em>validators=()</em>, <em>localize=False</em>, <em>disabled=False</em>, <em>label_suffix=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fi/forms.html#FISocialSecurityNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fi.forms.FISocialSecurityNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates input as a Finnish social security number.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.fi.forms.FIZipCodeField">
+<em class="property">class </em><code class="descclassname">localflavor.fi.forms.</code><code class="descname">FIZipCodeField</code><span class="sig-paren">(</span><em>max_length=None</em>, <em>min_length=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/fi/forms.html#FIZipCodeField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.fi.forms.FIZipCodeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates input as a Finnish zip code.</p>
+<p>Valid codes consist of five digits.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="localflavor.fi.fi_municipalities.MUNICIPALITY_CHOICES">
+<code class="descclassname">localflavor.fi.fi_municipalities.</code><code class="descname">MUNICIPALITY_CHOICES</code><em class="property"> = ((u'akaa', u'Akaa'), (u'alajarvi', u'Alaj\xe4rvi'), (u'alavieska', u'Alavieska'), (u'alavus', u'Alavus'), (u'artjarvi', u'Artj\xe4rvi'), (u'asikkala', u'Asikkala'), (u'askola', u'Askola'), (u'aura', u'Aura'), (u'brando', u'Br\xe4nd\xf6'), (u'eckero', u'Ecker\xf6'), (u'enonkoski', u'Enonkoski'), (u'enontekio', u'Enonteki\xf6'), (u'espoo', u'Espoo'), (u'eura', u'Eura'), (u'eurajoki', u'Eurajoki'), (u'evijarvi', u'Evij\xe4rvi'), (u'finstrom', u'Finstr\xf6m'), (u'forssa', u'Forssa'), (u'foglo', u'F\xf6gl\xf6'), (u'geta', u'Geta'), (u'haapajarvi', u'Haapaj\xe4rvi'), (u'haapavesi', u'Haapavesi'), (u'hailuoto', u'Hailuoto'), (u'halsua', u'Halsua'), (u'hamina', u'Hamina'), (u'hammarland', u'Hammarland'), (u'hankasalmi', u'Hankasalmi'), (u'hanko', u'Hanko'), (u'harjavalta', u'Harjavalta'), (u'hartola', u'Hartola'), (u'hattula', u'Hattula'), (u'haukipudas', u'Haukipudas'), (u'hausjarvi', u'Hausj\xe4rvi'), (u'heinola', u'Heinola'), (u'heinavesi', u'Hein\xe4vesi'), (u'helsinki', u'Helsinki'), (u'hirvensalmi', u'Hirvensalmi'), (u'hollola', u'Hollola'), (u'honkajoki', u'Honkajoki'), (u'huittinen', u'Huittinen'), (u'humppila', u'Humppila'), (u'hyrynsalmi', u'Hyrynsalmi'), (u'hyvinkaa', u'Hyvink\xe4\xe4'), (u'hameenkoski', u'H\xe4meenkoski'), (u'hameenkyro', u'H\xe4meenkyr\xf6'), (u'hameenlinna', u'H\xe4meenlinna'), (u'ii', u'Ii'), (u'iisalmi', u'Iisalmi'), (u'iitti', u'Iitti'), (u'ikaalinen', u'Ikaalinen'), (u'ilmajoki', u'Ilmajoki'), (u'ilomantsi', u'Ilomantsi'), (u'imatra', u'Imatra'), (u'inari', u'Inari'), (u'inkoo', u'Inkoo'), (u'isojoki', u'Isojoki'), (u'isokyro', u'Isokyr\xf6'), (u'jalasjarvi', u'Jalasj\xe4rvi'), (u'janakkala', u'Janakkala'), (u'joensuu', u'Joensuu'), (u'jokioinen', u'Jokioinen'), (u'jomala', u'Jomala'), (u'joroinen', u'Joroinen'), (u'joutsa', u'Joutsa'), (u'juankoski', u'Juankoski'), (u'juuka', u'Juuka'), (u'juupajoki', u'Juupajoki'), (u'juva', u'Juva'), (u'jyvaskyla', u'Jyv\xe4skyl\xe4'), (u'jamijarvi', u'J\xe4mij\xe4rvi'), (u'jamsa', u'J\xe4ms\xe4'), (u'jarvenpaa', u'J\xe4rvenp\xe4\xe4'), (u'kaarina', u'Kaarina'), (u'kaavi', u'Kaavi'), (u'kajaani', u'Kajaani'), (u'kalajoki', u'Kalajoki'), (u'kangasala', u'Kangasala'), (u'kangasniemi', u'Kangasniemi'), (u'kankaanpaa', u'Kankaanp\xe4\xe4'), (u'kannonkoski', u'Kannonkoski'), (u'kannus', u'Kannus'), (u'karijoki', u'Karijoki'), (u'karjalohja', u'Karjalohja'), (u'karkkila', u'Karkkila'), (u'karstula', u'Karstula'), (u'karttula', u'Karttula'), (u'karvia', u'Karvia'), (u'kaskinen', u'Kaskinen'), (u'kauhajoki', u'Kauhajoki'), (u'kauhava', u'Kauhava'), (u'kauniainen', u'Kauniainen'), (u'kaustinen', u'Kaustinen'), (u'keitele', u'Keitele'), (u'kemi', u'Kemi'), (u'kemijarvi', u'Kemij\xe4rvi'), (u'keminmaa', u'Keminmaa'), (u'kemionsaari', u'Kemi\xf6nsaari'), (u'kempele', u'Kempele'), (u'kerava', u'Kerava'), (u'kerimaki', u'Kerim\xe4ki'), (u'kesalahti', u'Kes\xe4lahti'), (u'keuruu', u'Keuruu'), (u'kihnio', u'Kihni\xf6'), (u'kiikoinen', u'Kiikoinen'), (u'kiiminki', u'Kiiminki'), (u'kinnula', u'Kinnula'), (u'kirkkonummi', u'Kirkkonummi'), (u'kitee', u'Kitee'), (u'kittila', u'Kittil\xe4'), (u'kiuruvesi', u'Kiuruvesi'), (u'kivijarvi', u'Kivij\xe4rvi'), (u'kokemaki', u'Kokem\xe4ki'), (u'kokkola', u'Kokkola'), (u'kolari', u'Kolari'), (u'konnevesi', u'Konnevesi'), (u'kontiolahti', u'Kontiolahti'), (u'korsnas', u'Korsn\xe4s'), (u'koskitl', u'Koski Tl'), (u'kotka', u'Kotka'), (u'kouvola', u'Kouvola'), (u'kristiinankaupunki', u'Kristiinankaupunki'), (u'kruunupyy', u'Kruunupyy'), (u'kuhmalahti', u'Kuhmalahti'), (u'kuhmo', u'Kuhmo'), (u'kuhmoinen', u'Kuhmoinen'), (u'kumlinge', u'Kumlinge'), (u'kuopio', u'Kuopio'), (u'kuortane', u'Kuortane'), (u'kurikka', u'Kurikka'), (u'kustavi', u'Kustavi'), (u'kuusamo', u'Kuusamo'), (u'kylmakoski', u'Kylm\xe4koski'), (u'kyyjarvi', u'Kyyj\xe4rvi'), (u'karkola', u'K\xe4rk\xf6l\xe4'), (u'karsamaki', u'K\xe4rs\xe4m\xe4ki'), (u'kokar', u'K\xf6kar'), (u'koylio', u'K\xf6yli\xf6'), (u'lahti', u'Lahti'), (u'laihia', u'Laihia'), (u'laitila', u'Laitila'), (u'lapinjarvi', u'Lapinj\xe4rvi'), (u'lapinlahti', u'Lapinlahti'), (u'lappajarvi', u'Lappaj\xe4rvi'), (u'lappeenranta', u'Lappeenranta'), (u'lapua', u'Lapua'), (u'laukaa', u'Laukaa'), (u'lavia', u'Lavia'), (u'lemi', u'Lemi'), (u'lemland', u'Lemland'), (u'lempaala', u'Lemp\xe4\xe4l\xe4'), (u'leppavirta', u'Lepp\xe4virta'), (u'lestijarvi', u'Lestij\xe4rvi'), (u'lieksa', u'Lieksa'), (u'lieto', u'Lieto'), (u'liminka', u'Liminka'), (u'liperi', u'Liperi'), (u'lohja', u'Lohja'), (u'loimaa', u'Loimaa'), (u'loppi', u'Loppi'), (u'loviisa', u'Loviisa'), (u'luhanka', u'Luhanka'), (u'lumijoki', u'Lumijoki'), (u'lumparland', u'Lumparland'), (u'luoto', u'Luoto'), (u'luumaki', u'Luum\xe4ki'), (u'luvia', u'Luvia'), (u'lansi-turunmaa', u'L\xe4nsi-Turunmaa'), (u'maalahti', u'Maalahti'), (u'maaninka', u'Maaninka'), (u'maarianhamina', u'Maarianhamina'), (u'marttila', u'Marttila'), (u'masku', u'Masku'), (u'merijarvi', u'Merij\xe4rvi'), (u'merikarvia', u'Merikarvia'), (u'miehikkala', u'Miehikk\xe4l\xe4'), (u'mikkeli', u'Mikkeli'), (u'muhos', u'Muhos'), (u'multia', u'Multia'), (u'muonio', u'Muonio'), (u'mustasaari', u'Mustasaari'), (u'muurame', u'Muurame'), (u'mynamaki', u'Myn\xe4m\xe4ki'), (u'myrskyla', u'Myrskyl\xe4'), (u'mantsala', u'M\xe4nts\xe4l\xe4'), (u'mantta-vilppula', u'M\xe4ntt\xe4-Vilppula'), (u'mantyharju', u'M\xe4ntyharju'), (u'naantali', u'Naantali'), (u'nakkila', u'Nakkila'), (u'nastola', u'Nastola'), (u'nilsia', u'Nilsi\xe4'), (u'nivala', u'Nivala'), (u'nokia', u'Nokia'), (u'nousiainen', u'Nousiainen'), (u'nummi-pusula', u'Nummi-Pusula'), (u'nurmes', u'Nurmes'), (u'nurmijarvi', u'Nurmij\xe4rvi'), (u'narpio', u'N\xe4rpi\xf6'), (u'oravainen', u'Oravainen'), (u'orimattila', u'Orimattila'), (u'oripaa', u'Orip\xe4\xe4'), (u'orivesi', u'Orivesi'), (u'oulainen', u'Oulainen'), (u'oulu', u'Oulu'), (u'oulunsalo', u'Oulunsalo'), (u'outokumpu', u'Outokumpu'), (u'padasjoki', u'Padasjoki'), (u'paimio', u'Paimio'), (u'paltamo', u'Paltamo'), (u'parikkala', u'Parikkala'), (u'parkano', u'Parkano'), (u'pedersore', u'Peders\xf6re'), (u'pelkosenniemi', u'Pelkosenniemi'), (u'pello', u'Pello'), (u'perho', u'Perho'), (u'pertunmaa', u'Pertunmaa'), (u'petajavesi', u'Pet\xe4j\xe4vesi'), (u'pieksamaki', u'Pieks\xe4m\xe4ki'), (u'pielavesi', u'Pielavesi'), (u'pietarsaari', u'Pietarsaari'), (u'pihtipudas', u'Pihtipudas'), (u'pirkkala', u'Pirkkala'), (u'polvijarvi', u'Polvij\xe4rvi'), (u'pomarkku', u'Pomarkku'), (u'pori', u'Pori'), (u'pornainen', u'Pornainen'), (u'porvoo', u'Porvoo'), (u'posio', u'Posio'), (u'pudasjarvi', u'Pudasj\xe4rvi'), (u'pukkila', u'Pukkila'), (u'punkaharju', u'Punkaharju'), (u'punkalaidun', u'Punkalaidun'), (u'puolanka', u'Puolanka'), (u'puumala', u'Puumala'), (u'pyhtaa', u'Pyht\xe4\xe4'), (u'pyhajoki', u'Pyh\xe4joki'), (u'pyhajarvi', u'Pyh\xe4j\xe4rvi'), (u'pyhanta', u'Pyh\xe4nt\xe4'), (u'pyharanta', u'Pyh\xe4ranta'), (u'palkane', u'P\xe4lk\xe4ne'), (u'poytya', u'P\xf6yty\xe4'), (u'raahe', u'Raahe'), (u'raasepori', u'Raasepori'), (u'raisio', u'Raisio'), (u'rantasalmi', u'Rantasalmi'), (u'ranua', u'Ranua'), (u'rauma', u'Rauma'), (u'rautalampi', u'Rautalampi'), (u'rautavaara', u'Rautavaara'), (u'rautjarvi', u'Rautj\xe4rvi'), (u'reisjarvi', u'Reisj\xe4rvi'), (u'riihimaki', u'Riihim\xe4ki'), (u'ristiina', u'Ristiina'), (u'ristijarvi', u'Ristij\xe4rvi'), (u'rovaniemi', u'Rovaniemi'), (u'ruokolahti', u'Ruokolahti'), (u'ruovesi', u'Ruovesi'), (u'rusko', u'Rusko'), (u'raakkyla', u'R\xe4\xe4kkyl\xe4'), (u'saarijarvi', u'Saarij\xe4rvi'), (u'salla', u'Salla'), (u'salo', u'Salo'), (u'saltvik', u'Saltvik'), (u'sastamala', u'Sastamala'), (u'sauvo', u'Sauvo'), (u'savitaipale', u'Savitaipale'), (u'savonlinna', u'Savonlinna'), (u'savukoski', u'Savukoski'), (u'seinajoki', u'Sein\xe4joki'), (u'sievi', u'Sievi'), (u'siikainen', u'Siikainen'), (u'siikajoki', u'Siikajoki'), (u'siikalatva', u'Siikalatva'), (u'siilinjarvi', u'Siilinj\xe4rvi'), (u'simo', u'Simo'), (u'sipoo', u'Sipoo'), (u'siuntio', u'Siuntio'), (u'sodankyla', u'Sodankyl\xe4'), (u'soini', u'Soini'), (u'somero', u'Somero'), (u'sonkajarvi', u'Sonkaj\xe4rvi'), (u'sotkamo', u'Sotkamo'), (u'sottunga', u'Sottunga'), (u'sulkava', u'Sulkava'), (u'sund', u'Sund'), (u'suomenniemi', u'Suomenniemi'), (u'suomussalmi', u'Suomussalmi'), (u'suonenjoki', u'Suonenjoki'), (u'sysma', u'Sysm\xe4'), (u'sakyla', u'S\xe4kyl\xe4'), (u'taipalsaari', u'Taipalsaari'), (u'taivalkoski', u'Taivalkoski'), (u'taivassalo', u'Taivassalo'), (u'tammela', u'Tammela'), (u'tampere', u'Tampere'), (u'tarvasjoki', u'Tarvasjoki'), (u'tervo', u'Tervo'), (u'tervola', u'Tervola'), (u'teuva', u'Teuva'), (u'tohmajarvi', u'Tohmaj\xe4rvi'), (u'toholampi', u'Toholampi'), (u'toivakka', u'Toivakka'), (u'tornio', u'Tornio'), (u'turku', u'Turku'), (u'tuusniemi', u'Tuusniemi'), (u'tuusula', u'Tuusula'), (u'tyrnava', u'Tyrn\xe4v\xe4'), (u'toysa', u'T\xf6ys\xe4'), (u'ulvila', u'Ulvila'), (u'urjala', u'Urjala'), (u'utajarvi', u'Utaj\xe4rvi'), (u'utsjoki', u'Utsjoki'), (u'uurainen', u'Uurainen'), (u'uusikaarlepyy', u'Uusikaarlepyy'), (u'uusikaupunki', u'Uusikaupunki'), (u'vaala', u'Vaala'), (u'vaasa', u'Vaasa'), (u'valkeakoski', u'Valkeakoski'), (u'valtimo', u'Valtimo'), (u'vantaa', u'Vantaa'), (u'varkaus', u'Varkaus'), (u'varpaisjarvi', u'Varpaisj\xe4rvi'), (u'vehmaa', u'Vehmaa'), (u'vesanto', u'Vesanto'), (u'vesilahti', u'Vesilahti'), (u'veteli', u'Veteli'), (u'vierema', u'Vierem\xe4'), (u'vihanti', u'Vihanti'), (u'vihti', u'Vihti'), (u'viitasaari', u'Viitasaari'), (u'vimpeli', u'Vimpeli'), (u'virolahti', u'Virolahti'), (u'virrat', u'Virrat'), (u'vardo', u'V\xe5rd\xf6'), (u'vahakyro', u'V\xe4h\xe4kyr\xf6'), (u'voyri-maksamaa', u'V\xf6yri-Maksamaa'), (u'yli-ii', u'Yli-Ii'), (u'ylitornio', u'Ylitornio'), (u'ylivieska', u'Ylivieska'), (u'ylojarvi', u'Yl\xf6j\xe4rvi'), (u'ypaja', u'Yp\xe4j\xe4'), (u'ahtari', u'\xc4ht\xe4ri'), (u'aanekoski', u'\xc4\xe4nekoski'))</em><a class="headerlink" href="#localflavor.fi.fi_municipalities.MUNICIPALITY_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alphabetical list of Finnish municipalities for use as <cite>choices</cite> in a formfield.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Finland (<code class="docutils literal"><span class="pre">fi</span></code>)</a><ul>
+<li><a class="reference internal" href="#module-localflavor.fi.forms">Forms</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="es.html"
+                        title="previous chapter">Spain (<code class="docutils literal"><span class="pre">es</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fr.html"
+                        title="next chapter">France (<code class="docutils literal"><span class="pre">fr</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/localflavor/fi.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fr.html" title="France (fr)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="es.html" title="Spain (es)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 1.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>
