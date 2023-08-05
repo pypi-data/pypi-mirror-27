@@ -1,0 +1,4 @@
+[console_scripts]
+Attach10xBarcodes = sctools.platform:TenXV2.attach_barcodes
+SplitBam = sctools.platform:GenericPlatform.split_bam
+
