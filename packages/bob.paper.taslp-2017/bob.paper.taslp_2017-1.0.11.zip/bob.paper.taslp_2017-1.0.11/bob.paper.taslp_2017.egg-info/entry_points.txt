@@ -1,0 +1,33 @@
+[bob.pad.algorithm]
+lda = bob.paper.taslp_2017.algorithm.lda:algorithm
+
+[bob.pad.database]
+asvspoof-cm = bob.paper.taslp_2017.config.database.asvspoof_cm:database
+avspoof = bob.paper.taslp_2017.config.database.avspoof:database
+avspoof-logical = bob.paper.taslp_2017.config.database.avspoof_logical:database
+avspoof-physical = bob.paper.taslp_2017.config.database.avspoof_physical:database
+
+[bob.pad.extractor]
+mean-spectrum-256ms-shift-10ms = bob.paper.taslp_2017.config.extractor.mean_spectrum_256ms_shift_10ms:extractor
+mean-spectrum-32ms-shift-10ms = bob.paper.taslp_2017.config.extractor.mean_spectrum_32ms_shift_10ms:extractor
+mean-std-spectrum-128ms-shift-10ms = bob.paper.taslp_2017.config.extractor.mean_std_spectrum_128ms_shift_10ms:extractor
+mean-std-spectrum-16ms-shift-10ms = bob.paper.taslp_2017.config.extractor.mean_std_spectrum_16ms_shift_10ms:extractor
+mean-std-spectrum-256ms-shift-10ms = bob.paper.taslp_2017.config.extractor.mean_std_spectrum_256ms_shift_10ms:extractor
+mean-std-spectrum-32ms-shift-10ms = bob.paper.taslp_2017.config.extractor.mean_std_spectrum_32ms_shift_10ms:extractor
+mean-std-spectrum-512ms-shift-10ms = bob.paper.taslp_2017.config.extractor.mean_std_spectrum_512ms_shift_10ms:extractor
+mean-std-spectrum-64ms-shift-10ms = bob.paper.taslp_2017.config.extractor.mean_std_spectrum_64ms_shift_10ms:extractor
+std-spectrum-256ms-shift-10ms = bob.paper.taslp_2017.config.extractor.std_spectrum_256ms_shift_10ms:extractor
+std-spectrum-32ms-shift-10ms = bob.paper.taslp_2017.config.extractor.std_spectrum_32ms_shift_10ms:extractor
+
+[bob.pad.grid]
+normal = bob.paper.taslp_2017.config.grid.normal:grid
+
+[bob.pad.preprocessor]
+energy-2gauss-remove-head-tail = bob.paper.taslp_2017.config.preprocessor.energy_2gauss_remove_head_tail:preprocessor
+none = bob.paper.taslp_2017.config.preprocessor.no_preprocessing:preprocessor
+
+[console_scripts]
+compute_EER_perattack_eval.py = bob.paper.taslp_2017.script.compute_EER_perattack_eval:main
+compute_HTER_perattack_eval.py = bob.paper.taslp_2017.script.compute_HTER_perattack_eval:main
+evaluate_pad.py = bob.paper.taslp_2017.script.evaluate_pad:main
+
