@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: sentry-ldap-auth
+Version: 2.5
+Summary: A Sentry extension to add an LDAP server as an authention source.
+Home-page: http://github.com/banno/getsentry-ldap-auth
+Author: Chad Killingsworth <chad.killingsworth@banno.com>, Barron Hagerman <barron.hagerman@banno.com>
+Author-email: chad.killingsworth@banno.com
+License: Apache-2.0
+Download-URL: https://github.com/banno/getsentry-ldap-auth/tarball/1.1
+Description: 
+        sentry-ldap-auth
+        ==============
+        
+        An extension for Sentry which authenticates users from
+        an LDAP server and auto-adds them to the an organization in sentry.
+        
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development
