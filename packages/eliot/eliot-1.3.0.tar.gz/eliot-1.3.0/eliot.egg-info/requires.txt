@@ -1,0 +1,11 @@
+six
+zope.interface
+pyrsistent >= 0.11.8
+
+[dev]
+coverage
+hypothesis >= 1.14.0
+testtools
+
+[journald]
+cffi >= 1.1.2
