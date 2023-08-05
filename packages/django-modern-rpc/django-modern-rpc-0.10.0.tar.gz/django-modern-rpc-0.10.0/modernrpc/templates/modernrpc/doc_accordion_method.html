@@ -1,0 +1,72 @@
+
+<div class="card bg-light mt-2">
+
+    <div class="card-header" role="tab" id="heading_{{ method.name|slugify }}">
+
+        <a data-toggle="collapse" href="#collapse_{{ method.name|slugify }}" class="text-dark h5"
+           aria-expanded="true" aria-controls="collapse_{{ method.name|slugify }}">
+
+            {{ method }}
+
+        </a>
+
+        <div id="protocol-badges" class="float-right">
+
+            {% if method.is_available_in_json_rpc %}
+                <span class="badge badge-pill badge-secondary">JSON-RPC</span>
+            {% endif %}
+
+            {% if method.is_available_in_xml_rpc %}
+                <span class="badge badge-pill badge-secondary">XML-RPC</span>
+            {% endif %}
+
+        </div> <!-- /protocol-badges -->
+
+    </div> <!-- /card-header -->
+
+    <div id="collapse_{{ method.name|slugify }}" class="collapse" role="tabpanel"
+         aria-labelledby="heading_{{ method.name|slugify }}" data-parent="#accordion">
+
+        <div class="card-body">
+
+            {{ method.html_doc | safe | urlize }}
+
+            {% if method.is_args_doc_available %}
+
+                <h6>Parameters:</h6>
+                <ul>
+                    {% for name, param_help in method.args_doc.items %}
+                    <li>
+                        <strong>{{ name }}</strong>
+                        {% if param_help.type %}
+                            ({{ param_help.type }})
+                        {% endif %}
+                        -
+                        {{ param_help.text }}
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            {% endif %}
+
+            {% if method.is_return_doc_available %}
+
+                <h6>Return:</h6>
+                <ul>
+                    <li>
+                    {% if method.return_doc.type %}
+                        {{ method.return_doc.type }} -
+                    {% endif %}
+                    {{ method.return_doc.text }}
+                    </li>
+                </ul>
+
+            {% endif %}
+
+            {% if not method.is_any_doc_available %}
+                <p><em>No documentation available yet</em></p>
+            {% endif %}
+
+        </div> <!-- /card-body -->
+    </div> <!-- /collapse_<methodname> -->
+</div> <!-- /card -->
