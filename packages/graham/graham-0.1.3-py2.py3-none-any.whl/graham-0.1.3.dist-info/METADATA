@@ -1,0 +1,35 @@
+Metadata-Version: 2.0
+Name: graham
+Version: 0.1.3
+Summary: Graham, making s'mores with attrs and marshmallow.
+Home-page: https://github.com/altendky/graham
+Author: Kyle Altendorf
+Author-email: sda@fstab.net
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: attrs
+Requires-Dist: marshmallow
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == 'docs'
+Requires-Dist: sphinx-issues; extra == 'docs'
+Provides-Extra: gitignore
+Requires-Dist: click; extra == 'gitignore'
+Requires-Dist: requests; extra == 'gitignore'
+Provides-Extra: tests
+Requires-Dist: codecov; extra == 'tests'
+Requires-Dist: pytest; extra == 'tests'
+Requires-Dist: pytest-cov; extra == 'tests'
+Requires-Dist: tox; extra == 'tests'
+
+UNKNOWN
+
+
