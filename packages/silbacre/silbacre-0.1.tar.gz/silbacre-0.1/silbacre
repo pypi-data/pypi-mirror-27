@@ -1,0 +1,226 @@
+#!/usr/bin/python3
+
+import argparse
+import code
+from datetime import datetime
+from enum import Enum
+import operator
+import re
+import sys
+
+from bs4 import BeautifulSoup
+import phonenumbers as pn
+from strudel import vobj
+
+
+"""To run, do `python3 silbacre.py /path/to/messages.xml /path/to/contacts.vcf`
+(the contacts file isn't necessary, but makes things much easier to read.)
+
+You will be presented with a Python shell with the following variables defined:
+
+    messages:   A list of dictionaries where each dictionary has the keys
+                address, body, etc. as defined in the xml file; in addition,
+                date is re-formatted as a datetime object, and name is added. If
+                a contact can be found with the right number, the resulting name
+                is obvious.  Otherwise, address is re-used.
+    contacts:   A dictionary mapping phone numbers to contact information. Each
+                contact has the keys n, fn, tel, and version. n is a list of
+                strings: title (Mr., Mrs., etc.), first name, middle name,
+                last name, and professional title (M.D., D.M.D, etc.). tel is a
+                list of phone numbers, and version is of strudel (the library
+                I'm using to parse the VCard file).
+
+                Unfortunately, there's a significant bug in the library, so it
+                seems to skip all contacts that have pictures. I'm not sure yet
+                how I'll fix that.
+
+    types:      A string that when printed tells you the meaning of `type` in a
+                message.
+    search:     A convenience function that searches with a given SearchTerm.
+
+    SearchTerm: A class for easy searching. A term can be created initially with
+                a simple tuple: the key of the message dictionary to be
+                searched, the expected value, and a boolean defining if the
+                expected value is a RegExp. Note that the regular expressions
+                are by default case sensitive; to make it insensitive, put
+                (?i) at the beginning of the RegExp. (`pydoc re` has more
+                information on what flags are allowed.)
+
+                To combine search terms, simply use the & and | operators. For
+                example:
+
+                    >>> term = SearchTerm(('body', 'morning', False))
+                    >>> combined = term & ('type', '1', False)
+
+                To check a message by a term, use the * operator:
+
+                    >>> does_match = message * term
+
+                though the `search` convenience function is provided (as
+                documented above.)"""
+
+
+Search = Enum('Search', 'lowercase regex function')
+
+class SearchTerm:
+    def __init__(self, train):
+        if isinstance(train[0], tuple):
+            self.train = train
+        else:
+            self.train = (train,)
+
+    def __rmul__(self, message):
+        return self.evaluate(self.train, message)
+
+    @classmethod
+    def evaluate(cls, train, message):
+        current = False
+        op = operator.or_
+        train = iter(train)
+        for term in train:
+            if isinstance(term[0], tuple):
+                result = cls.evaluate(term, message)
+            else:
+                msg, srch = message[term[0]], term[1]
+                search_type = term[2] or Search.lowercase
+                if search_type == Search.regex:
+                    result = bool(re.match(srch, msg))
+                elif search_type == Search.lowercase:
+                    result = (srch.lower() in msg.lower())
+                elif search_type == Search.function:
+                    result = srch(msg)
+            current = op(current, result)
+            try:
+                op = next(train)
+            except StopIteration:
+                return current
+
+    def __or__(self, train):
+        if isinstance(train, SearchTerm):
+            train = train.train
+        return SearchTerm((self.train, operator.or_, train))
+
+    def __and__(self, train):
+        if isinstance(train, SearchTerm):
+            train = train.train
+        return SearchTerm((self.train, operator.and_, train))
+
+    def __repr__(self, train=None):
+        if not train:
+            formatter = "SearchTerm({})"
+            train = self.train
+        else:
+            formatter = "{}"
+        ops = {operator.or_: '|', operator.and_: '&'}
+        string = ""
+        train = iter(train)
+        for term in train:
+            if isinstance(term[0], tuple):
+                string += self.__repr__(term)
+            else:
+                string += str(term)
+            try:
+                op = next(train)
+                string += " " + ops[op] + " "
+            except StopIteration:
+                break
+        return formatter.format(string)      
+
+
+def normalise_phonenumber(number):
+    try:
+        return pn.format_number(pn.parse(number, 'US'), pn.PhoneNumberFormat.NATIONAL)
+    except pn.phonenumberutil.NumberParseException:
+        return number
+
+def convert_vcard_to_dict(contact):
+    data = contact._data
+    result = {}
+    for key in data:
+        if key == 'n':
+            result[key] = data[key][0].values
+        elif key == 'tel':
+            result[key] = [
+                normalise_phonenumber(item.values[0])
+                for item in data[key]
+                    if item.values[0]
+            ]
+        else:
+            result[key] = data[key][0].values[0]
+    return result
+
+
+def get_contacts_from_filename(filename):
+    return [convert_vcard_to_dict(contact) for contact in vobj.VCard.parse(filename)]
+
+def get_tel_dict_from_contacts(contacts):
+    return {number: contact for contact in contacts for number in contact['tel']}
+
+def get_name_dict_from_contacts(contacts):
+    return {contact['fn']: contact for contact in contacts}
+
+def normalise_sms(sms, contacts=None):
+    attrs = sms.attrs
+    attrs['date'] = datetime.fromtimestamp(int(attrs['date'][:-3]))
+    attrs['address'] = normalise_phonenumber(attrs['address'])
+    try:
+        attrs['name'] = contacts[attrs['address']]['fn']
+    except (TypeError, KeyError):
+        attrs['name'] = attrs['address']
+    return attrs
+
+def get_messages_from_file(open_file, contacts=None):
+    soup = BeautifulSoup(open_file, 'html.parser')
+    open_file.seek(0)
+    return [normalise_sms(sms, contacts) for sms in soup.find_all('sms')]
+
+
+def check_message(message, search_terms):
+    for term in search_terms:
+        msg, srch = message[term[0]], term[1]
+        # Use RegEx
+        if term[2]:
+            match = bool(re.match(msg, srch))
+        else:
+
+            match = (srch.lower() in msg.lower())
+        if not match:
+            return False
+    return True
+
+if __name__ == '__main__':
+    import code
+
+    parser = argparse.ArgumentParser(
+        description="API for reading Silence backup files",
+    )
+    
+    parser.add_argument(
+        'backup-path', type=argparse.FileType('r'),
+        help='Path to messages backup file',
+    )
+    parser.add_argument(
+        'contacts-path', type=argparse.FileType('r'), nargs='?',
+        help="""Path to contacts backup file. If provided, will attempt to give the contact name for the 'name' key of a message. Note that due to a\ bug in strudel, contacts with pictures will not be accepted.""",
+    )
+    parser.add_argument(
+        '-q', '--quiet', action='store_true',
+        help="""Do not output prompts, etc. Can be helpful for scripts, for example `cat script.py | silbacre` will output only what is explicitly printed in script.py. Note that silbacre follows the rules of the Python console when it comes to blank lines: you will need two newlines after every unnested block and avoid blank lines inside blocks.""",
+    )
+
+    args = vars(parser.parse_args())
+    messages_file = args['backup-path']
+    contacts_file = args['contacts-path']
+    if contacts_file:
+        contacts = get_contacts_from_filename(contacts_file.name)
+        contacts = get_tel_dict_from_contacts(contacts)
+    else:
+        contacts = None
+    messages = get_messages_from_file(messages_file, contacts)
+    search = lambda term: [message for message in messages if message * term]
+    
+    types = "1 -> Received\n2 -> Sent"
+    prompt = '' if args['quiet'] else "Types of messages:\n" + types
+    readfunc = (lambda _: input()) if args['quiet'] else None
+    code.interact(prompt, local=locals(), readfunc=readfunc)
+
