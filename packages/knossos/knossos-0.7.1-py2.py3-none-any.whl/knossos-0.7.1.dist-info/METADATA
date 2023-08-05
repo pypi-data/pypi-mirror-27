@@ -1,0 +1,45 @@
+Metadata-Version: 2.0
+Name: knossos
+Version: 0.7.1
+Summary: A simple mod manager for FreeSpace 2 Open
+Home-page: https://github.com/ngld/knossos
+Author: ngld
+Author-email: ngld@tproxy.de
+License: UNKNOWN
+Keywords: fso freespace
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: PyQt5
+Requires-Dist: ply
+Requires-Dist: raven
+Requires-Dist: requests
+Requires-Dist: requests-toolbelt
+Requires-Dist: semantic-version
+Requires-Dist: six
+Requires-Dist: token-bucket
+
+Knossos
+=======
+
+A modern mod manager and launcher for FreeSpace Open.
+
+After installing this package, you can launch Knossos with ``knossos`` or ``python -m knossos``.
+
+Website:
+    https://dev.tproxy.de/knossos/
+
+Source Code:
+    https://github.com/ngld/knossos
+
+Discussion on HLP:
+    http://www.hard-light.net/forums/index.php?topic=86364.new#lastPost
+
+
