@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: falass
+Version: 0.0.1
+Summary: Neutron and X-ray Reflectometry from Computer Simulation
+Home-page: http://people.bath.ac.uk/arm61/falass/
+Author: Andrew R. McCluskey
+Author-email: arm61@bath.ac.uk
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: falass is a pure python program designed to obtain neutron or x-ray reflectometry data from a molecular simulation output.
+        
+        This code will read in a PDB structure, allow the input of scattering lengths for each of the atom types, build the system into a series of layers and calculate the reflectometry based on the Abeles optical matrix formalism.
+        
+        Further it is then possible to compare the calculated reflectometry with that from a experimental data file.
+Platform: Windows
+Platform: Linux
+Platform: Solaris
+Platform: Mac OS-X
+Platform: Unix
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Programming Language :: Python :: 3
