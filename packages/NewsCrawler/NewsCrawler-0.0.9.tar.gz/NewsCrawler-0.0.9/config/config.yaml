@@ -1,0 +1,15 @@
+news_api:
+  key: 7e495aa6552a4cc6b7e124900a0cae53
+  url: https://newsapi.org/v1/articles?source={0}&apiKey=7e495aa6552a4cc6b7e124900a0cae53
+twitter_api:
+  key: lJueg5V9mPJnteMADpoMrnky7
+  url: https://api.twitter.com/oauth2/token
+news_sources:
+  - independent
+  - bbc-news
+  - cnn
+  - breitbart-news
+  - daily-mail
+  - the-telegraph
+  - reuters
+  - bloomberg
