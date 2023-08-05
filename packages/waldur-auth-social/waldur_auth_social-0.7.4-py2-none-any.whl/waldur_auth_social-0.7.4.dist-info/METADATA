@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: waldur-auth-social
+Version: 0.7.4
+Summary: Waldur plugin for authentication with social networks such as Facebook, Google Plus.
+Home-page: http://waldur.com
+Author: OpenNode Team
+Author-email: info@opennodecloud.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Dist: nodeconductor (>0.138.0)
+Provides-Extra: dev
+Requires-Dist: Sphinx (==1.2.2); extra == 'dev'
+Provides-Extra: test
+Requires-Dist: mock (>=1.0.1); extra == 'test'
+
+Waldur Auth Social
+==================
+
+Waldur plugin for authentication with social networks, such as Facebook, Google Plus.
+
+
