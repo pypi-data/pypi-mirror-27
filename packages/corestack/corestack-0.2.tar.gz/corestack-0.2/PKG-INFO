@@ -1,0 +1,56 @@
+Metadata-Version: 1.1
+Name: corestack
+Version: 0.2
+Summary: Corestack Command Line Interface
+Home-page: https://github.com/openstack/cliff
+Author: CoreStack
+Author-email: customer-success@cloudenablers.com
+License: UNKNOWN
+Download-URL: https://github.com/openstack/cliff/tarball/master
+Description: ======================
+         Running Corestack CLI
+        ======================
+        
+        Setup
+        -----
+        
+        First, you need to create a virtual environment and activate it.
+        
+        ::
+        
+          $ pip install virtualenv
+          $ virtualenv .venv
+          $ . .venv/bin/activate
+          (.venv)$
+        
+        ::
+        
+          (.venv)$ pip install requirements.txt
+        
+        ::
+        
+          (.venv)$ python setup.py install
+        
+        ::
+        
+          (.venv)$ source openrc
+        
+        
+        Usage
+        -----
+        
+        To see a list of commands available, run::
+        
+          (.venv)$ corestack --help
+        
+        
+Platform: Any
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Intended Audience :: Developers
+Classifier: Environment :: Console

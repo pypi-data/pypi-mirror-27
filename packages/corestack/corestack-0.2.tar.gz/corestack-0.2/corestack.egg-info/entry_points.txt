@@ -1,0 +1,40 @@
+[console_scripts]
+corestack = corestack.main:main
+
+[corestack]
+alarm-create = corestack.create_alarm:CreateAlarm
+alarm-delete = corestack.delete_alarm:Alarm_Delete
+alarm-show = corestack.show_alarm:ShowAlarm
+alarms-list = corestack.alarms:Alarms
+blueprint-execute = corestack.execute_blueprint:ExecuteBlueprint
+blueprint-show = corestack.show_blueprint:ShowBlueprint
+blueprints-list = corestack.blueprints:Blueprints
+environment-create = corestack.create_environment:CreateEnvironment
+environment-delete = corestack.delete_environment:Environment_Delete
+environment-show = corestack.show_environment:ShowEnvironment
+environments-list = corestack.environments:Environments
+inventories-list = corestack.inventories:Inventories
+inventory-create = corestack.create_inventory:CreateInventory
+inventory-delete = corestack.delete_inventory:Inventory_Delete
+inventory-show = corestack.show_inventory:ShowInventory
+policies-list = corestack.enginepolicies:Engine_Policies
+policy-execute = corestack.execute_policy:ExecutePolicy
+policy-show = corestack.show_enginepolicy:ShowEnginePolicy
+schedule-create = corestack.create_schedule:CreateSchedule
+schedule-delete = corestack.delete_schedule:Schedule_Delete
+schedule-show = corestack.show_schedule:ShowSchedule
+schedules-list = corestack.schedules:Schedules
+script-execute = corestack.execute_script:ExecuteScript
+script-show = corestack.show_script:ShowScript
+scripts-list = corestack.scripts:Scripts
+serviceaccount-delete = corestack.delete_service_account:Service_Account_Delete
+serviceaccount-show = corestack.show_serviceaccount:ShowServiceaccount
+serviceaccounts-list = corestack.service_accounts:Service_Accounts
+template-execute = corestack.execute_template:ExecuteTemplate
+template-job-rerun = corestack.rerun_job:RerunJob
+template-job-show = corestack.show_job:ShowJob
+template-jobs-list = corestack.jobs:Jobs
+template-show = corestack.show_template:ShowTemplate
+templates-list = corestack.templates:Templates
+tenants-list = corestack.tenants:Tenants
+
