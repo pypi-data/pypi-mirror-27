@@ -1,0 +1,18 @@
+# Krypto4Nazis  
+The purpose of Krypto4Nazis is to provide secure messaging when one must only use characters A-Z.  For example, in a situation where one must depend on Morse code to communicate.  This solution comes with optional data tampering protection so that if your message is tampered with in transit, you will know before decryption.  Krypto4Nazis is based off of the Cube26 cipher and incorporates HMAC and random functions from the pycube library.
+
+from Krypto4Nazis import NaziKrypt, NaziKryptHMAC, NaziMoseHMAC, NaziMorse
+# Encrypt with HMAC data tampering protection  
+NaziKryptHMAC().encrypt(data)  
+NaziKryptHMAC().decrypt(data)  
+
+# Encrypt without HMAC data tampering protection  
+NaziKrypt(key, nonce).encrypt(data)  
+NaziKrypt(key, nonce).decrypt(data)  
+
+# Generate secure morse code transmission with HMAC data tampering protection  
+NaziMorseHMAC(key, frequency=1000, wpm=18, timeunit=1.2, volume=1, preamble=True).transmit(data, filename)  
+
+# Generate secure morse code transmission without data tampering protection  
+NaziMorse(key, noncelength=8, kdf=True, frequency=1000, wpm=18, timeunit=1.2, volume=1, preamble=True).transmit(data, filename)  
+
