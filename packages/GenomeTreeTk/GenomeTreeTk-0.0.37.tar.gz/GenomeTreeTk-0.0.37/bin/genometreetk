@@ -1,0 +1,502 @@
+#!/srv/sw/python/2.7.4/bin/python
+###############################################################################
+#                                                                             #
+#    This program is free software: you can redistribute it and/or modify     #
+#    it under the terms of the GNU General Public License as published by     #
+#    the Free Software Foundation, either version 3 of the License, or        #
+#    (at your option) any later version.                                      #
+#                                                                             #
+#    This program is distributed in the hope that it will be useful,          #
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of           #
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #r
+#    GNU General Public License for more details.                             #
+#                                                                             #
+#    You should have received a copy of the GNU General Public License        #
+#    along with this program. If not, see <http://www.gnu.org/licenses/>.     #
+#                                                                             #
+###############################################################################
+
+__author__ = "Donovan Parks"
+__copyright__ = "Copyright 2015"
+__credits__ = ["Donovan Parks"]
+__license__ = "GPL3"
+__maintainer__ = "Donovan Parks"
+__email__ = "donovan.parks@gmail.com"
+__status__ = "Development"
+
+import os
+import sys
+import ntpath
+import logging
+import argparse
+
+from genometreetk.main import OptionsParser
+from biolib.misc.custom_help_formatter import CustomHelpFormatter
+from biolib.common import make_sure_path_exists
+from biolib.taxonomy import Taxonomy
+
+
+def version():
+    """Read program version from file."""
+    import genometreetk
+    version_file = open(os.path.join(genometreetk.__path__[0], 'VERSION'))
+    return version_file.read().strip()
+
+
+def print_help():
+    """Help menu."""
+
+    print ''
+    print '                ...::: GenomeTreeTk v' + version() + ' :::...'''
+    print '''\
+
+    Infer rRNA trees:
+      ssu_tree -> Infer a 16S tree spanning GTDB genomes
+      lsu_tree -> Infer a 23S tree spanning GTDB genomes
+      rna_tree -> Infer a concatenated 16S + 23S tree spanning GTDB genomes
+
+    Assess stability of tree:
+      derep_tree -> Dereplicate tree to taxa of interest
+      bootstrap  -> Bootstrap multiple sequence alignment
+      jk_markers -> Jackknife marker genes
+      jk_taxa    -> Jackknife ingroup taxa
+      combine    -> Combine all support values into a single tree
+
+    Reroot tree:
+      midpoint -> Reroot tree at midpoint
+      outgroup -> Reroot tree with outgroup
+
+    Taxonomy manipulation:
+      fill_ranks -> Ensure all taxonomy strings contain all 7 canonical ranks
+      propagate  -> Propagate labels from representatives to all genomes in a cluster
+      strip      -> Remove taxonomic labels from a tree (useful for re-decorating)
+      pull       -> Create taxonomy file from a decorated tree
+      append     -> Append taxonomy to extant tree labels
+      
+    Phylogenetic diversity:
+      pd       -> Calculate phylogenetic diversity of specified taxa
+      pd_clade -> Calculate phylogenetic diversity of all named groups
+      
+    Select representative genomes:
+      dereplicate -> Select representative genomes in named species
+      reps        -> Determine additional representatives genomes
+      cluster     -> Cluster remaining genomes based on Mash distances
+      rep_compare -> Compare current and previous representatives
+      
+    Others:
+      arb_records -> Create an ARB records file from GTDB metadata
+
+  Use: genometreetk <command> -h for command specific help.
+
+  Feature requests or bug reports can be sent to Donovan Parks (donovan.parks@gmail.com)
+    or posted on GitHub (https://github.com/dparks1134/GenomeTreeTk).
+    '''
+    
+'''
+  Deprecated functionality for determining phylogenetically informative marker genes.
+  
+    Infer lineage-specific genome trees:
+      trusted     -> Determine trusted genomes to use for marker gene inference
+      dereplicate -> Dereplicate genomes based on taxonomy
+      markers     -> Determine phylogenetically informative marker genes
+      infer       -> Infer genome tree
+'''
+
+
+def logger_setup(output_dir, silent):
+    """Set logging for application.
+
+    Parameters
+    ----------
+    output_dir : str
+        Output directory for log file.
+    silent : boolean
+        Flag indicating if output to stdout should be suppressed.
+    """
+
+    # setup general properties of logger
+    logger = logging.getLogger('')
+    logger.setLevel(logging.DEBUG)
+    log_format = logging.Formatter(fmt="[%(asctime)s] %(levelname)s: %(message)s",
+                                   datefmt="%Y-%m-%d %H:%M:%S")
+
+    # setup logging to console
+    if not silent:
+        stream_logger = logging.StreamHandler(sys.stdout)
+        stream_logger.setFormatter(log_format)
+        stream_logger.setLevel(logging.DEBUG)
+        logger.addHandler(stream_logger)
+
+    if output_dir:
+        make_sure_path_exists(output_dir)
+        file_logger = logging.FileHandler(os.path.join(output_dir, 'genometreetk.log'), 'a')
+        file_logger.setFormatter(log_format)
+        logger.addHandler(file_logger)
+
+    logger.info('GenomeTreeTk v%s' % version())
+    logger.info(ntpath.basename(sys.argv[0]) + ' ' + ' '.join(sys.argv[1:]))
+
+
+if __name__ == '__main__':
+
+    # initialize the options parser
+    parser = argparse.ArgumentParser(add_help=False)
+    subparsers = parser.add_subparsers(help="--", dest='subparser_name')
+
+    if False: #Deprecated functionality for determining phylogenetically informative marker genes.
+        # determine trusted genomes
+        trusted_parser = subparsers.add_parser('trusted',
+                                            formatter_class=CustomHelpFormatter,
+                                            description='Determine trusted genomes to use for marker gene inference.')
+        trusted_parser.add_argument('metadata_file', help="metadata file from GTDB with CheckM estimates for all genomes in RefSeq")
+        trusted_parser.add_argument('trusted_genomes_file', help="output file listing trusted genomes")
+        trusted_parser.add_argument('--trusted_comp', help='minimum completeness to trust genome for marker set inference [0, 100]', type=float, default=95)
+        trusted_parser.add_argument('--trusted_cont', help='maximum contamination to trust genome for marker set inference [0, 100]', type=float, default=5)
+        trusted_parser.add_argument('--max_contigs', help='maximum number of contigs to trust genome for marker set inference', type=int, default=200)
+        trusted_parser.add_argument('--min_N50', help='minimum N50 of contigs to trust genome for marker set inference', type=int, default=20000)
+        trusted_parser.add_argument('--refseq_rep', help='limit selection to RefSeq representative and reference genomes', action='store_true')
+        trusted_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+        # dereplicate genomes
+        dereplicate_parser = subparsers.add_parser('dereplicate',
+                                            formatter_class=CustomHelpFormatter,
+                                            description='Dereplicate genomes based on taxonomy.')
+        dereplicate_parser.add_argument('derep_genome_file', help="output file listing dereplicated genomes")
+        dereplicate_parser.add_argument('--max_species', help='maximum number of genomes of the same species to retain', type=int, default=2)
+        dereplicate_parser.add_argument('--trusted_genomes_file', help='limit selected genomes to those marked as trusted', default=None)
+        dereplicate_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+        # determine marker genes
+        markers_parser = subparsers.add_parser('markers',
+                                            formatter_class=CustomHelpFormatter,
+                                            description='Determine phylogenetically informative marker genes.')
+        markers_parser.add_argument('ingroup_file', help="unique ids of genomes within the ingroup")
+        markers_parser.add_argument('output_dir', help="output directory")
+        markers_parser.add_argument('--redundancy', help='threshold for declaring HMMs redundant', type=float, default=0.50)
+        markers_parser.add_argument('--ubiquity', help='ubiquity threshold for defining marker genes', type=float, default=0.95)
+        markers_parser.add_argument('--single_copy', help='single-copy threshold for defining marker genes', type=float, default=0.95)
+
+        markers_parser.add_argument('--min_support', help='minimum jackknife support of split during LGT filtering', type=float, default=0.8)
+        markers_parser.add_argument('--min_per_taxa', help='minimum percentage of taxa to consider a split during LGT filtering', type=float, default=0.01)
+        markers_parser.add_argument('--perc_markers', help='percentage of markers to keep during marker jackknifing', type=float, default=0.7)
+
+        markers_parser.add_argument('--restict_marker_list', help='restrict marker set to genes within this list', default=None)
+        markers_parser.add_argument('-c', '--cpus', help='number of cpus to use', type=int, default=16)
+        markers_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+        # infer tree
+        infer_parser = subparsers.add_parser('infer',
+                                            formatter_class=CustomHelpFormatter,
+                                            description='Infer genome tree.')
+        infer_parser.add_argument('genome_id_file', help="unique ids of genomes to include in tree")
+        infer_parser.add_argument('marker_id_file', help="unique ids of marker genes to use for inference")
+        infer_parser.add_argument('output_dir', help="output directory")
+        infer_parser.add_argument('-m', '--model', choices=['wag', 'jtt'], help="model of evolution to use", default='wag')
+        infer_parser.add_argument('-c', '--cpus', help='number of cpus', type=int, default=1)
+        infer_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # infer 16S tree across GTDB genomes
+    ssu_tree_parser = subparsers.add_parser('ssu_tree',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Infer 16S tree spanning GTDB genomes.')
+    ssu_tree_parser.add_argument('gtdb_metadata_file', help="metadata file from GTDB")
+    ssu_tree_parser.add_argument('gtdb_ssu_file', help="file with 16S sequences in fasta format")
+    ssu_tree_parser.add_argument('output_dir', help="output directory")
+    #ssu_tree_parser.add_argument('--ncbi_reps', help="include NCBI representative genomes", action='store_true')
+    #ssu_tree_parser.add_argument('--uba_reps', help="include UBA representative genomes", action='store_true')
+    #ssu_tree_parser.add_argument('--user_genomes', help="include all User genomes", action='store_true')
+    ssu_tree_parser.add_argument('--genome_list', help="explict list of genomes to use")
+    ssu_tree_parser.add_argument('--min_ssu_length', help='minimum length of 16S sequence to be include in tree', type=int, default=1200)
+    ssu_tree_parser.add_argument('--min_scaffold_length', help='minimum length of scaffold containing 16S sequence to be include in tree', type=int, default=0)
+    ssu_tree_parser.add_argument('--min_quality', help='minimum quality (completeness - 5*contamination) for a genome to be included in tree [0, 100]', type=float, default=50)
+    ssu_tree_parser.add_argument('--max_contigs', help='maximum contigs comprising a genome for it to be included in tree', type=int, default=500)
+    ssu_tree_parser.add_argument('--min_N50', help='minimum N50 of contigs for a genome to be include in tree', type=int, default=5000)
+    ssu_tree_parser.add_argument('--align_method', help='method to use for creating multiple sequence alignment', choices=['ssu_align', 'mothur'], default='ssu_align')
+    ssu_tree_parser.add_argument('--disable_tax_filter', help="disable filtering of sequences with incongruent taxonomy", action='store_true')
+    ssu_tree_parser.add_argument('-c', '--cpus', help='number of cpus', type=int, default=1)
+    ssu_tree_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # infer 23S tree across GTDB genomes
+    lsu_tree_parser = subparsers.add_parser('lsu_tree',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Infer 23S tree spanning GTDB genomes.')
+    lsu_tree_parser.add_argument('gtdb_metadata_file', help="metadata file from GTDB")
+    lsu_tree_parser.add_argument('gtdb_lsu_file', help="file with 23S sequences in fasta format")
+    lsu_tree_parser.add_argument('output_dir', help="output directory")
+    #lsu_tree_parser.add_argument('--ncbi_reps', help="include NCBI representative genomes", action='store_true')
+    #lsu_tree_parser.add_argument('--uba_reps', help="include UBA representative genomes", action='store_true')
+    #lsu_tree_parser.add_argument('--user_genomes', help="include User genomes (default is NCBI only)", action='store_true')
+    lsu_tree_parser.add_argument('--genome_list', help="explict list of genomes to use")
+    lsu_tree_parser.add_argument('--min_lsu_length', help='minimum length of 23S sequence to be include in tree', type=int, default=1800)
+    lsu_tree_parser.add_argument('--min_scaffold_length', help='minimum length of scaffold containing 23S sequence to be include in tree', type=int, default=0)
+    lsu_tree_parser.add_argument('--min_quality', help='minimum quality (completeness - 5*contamination) for a genome to be included in tree [0, 100]', type=float, default=50)
+    lsu_tree_parser.add_argument('--max_contigs', help='maximum contigs comprising a genome for it to be included in tree', type=int, default=500)
+    lsu_tree_parser.add_argument('--min_N50', help='minimum N50 of contigs for a genome to be include in tree', type=int, default=5000)
+    lsu_tree_parser.add_argument('--disable_tax_filter', help="disable filtering of sequences with incongruent taxonomy", action='store_true')
+    lsu_tree_parser.add_argument('-c', '--cpus', help='number of cpus', type=int, default=1)
+    lsu_tree_parser.add_argument('--silent', help="suppress output", action='store_true')
+    
+    # infer concatenated rRNA tree
+    rna_tree_parser = subparsers.add_parser('rna_tree',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Infer a concatenated 16S + 23S tree spanning GTDB genomes.')
+    rna_tree_parser.add_argument('ssu_msa', help="FASTA file with MSA of 16S rRNA gene sequences")
+    rna_tree_parser.add_argument('ssu_tree', help="decorated 16S tree")
+    rna_tree_parser.add_argument('lsu_msa', help="FASTA file with MSA of 23S rRNA gene sequences")
+    rna_tree_parser.add_argument('lsu_tree', help="decorated 23S tree")
+    rna_tree_parser.add_argument('output_dir', help="output directory")
+    rna_tree_parser.add_argument('-c', '--cpus', help='number of cpus', type=int, default=1)
+    rna_tree_parser.add_argument('--silent', help="suppress output", action='store_true')
+    
+    # assess robustness of genome tree using classic bootstrapping
+    derep_tree_parser = subparsers.add_parser('derep_tree',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Dereplicate tree to taxa of interest.')
+    derep_tree_parser.add_argument('input_tree', help="tree to dereplicate")
+    derep_tree_parser.add_argument('lineage_of_interest', help="named lineage where all taxa should be retain")
+    derep_tree_parser.add_argument('outgroup', help="named lineage to use as outgroup")
+    derep_tree_parser.add_argument('gtdb_metadata', help="GTDB metadata for taxa in tree")
+    derep_tree_parser.add_argument('output_dir', help="output directory")
+    derep_tree_parser.add_argument('--taxa_to_retain', help="number of taxa to sample from dereplicated lineages", type=int, default=2)
+    derep_tree_parser.add_argument('--msa_file', help="multiple sequence alignment to dereplicate")
+    derep_tree_parser.add_argument('--keep_unclassified', help="keep all taxa in unclassified lineages", action='store_true')
+    derep_tree_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # assess robustness of genome tree using classic bootstrapping
+    bootstrap_parser = subparsers.add_parser('bootstrap',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Bootstrap multiple sequence alignment.')
+    bootstrap_parser.add_argument('input_tree', help="tree inferred from original data")
+    bootstrap_parser.add_argument('msa_file', help="file containing multiple sequence alignment  (or 'NONE' if '--boot_dir' is given)")
+    bootstrap_parser.add_argument('output_dir', help="output directory")
+    bootstrap_parser.add_argument('--boot_dir', help="directory containing pre-computed bootstrap trees (must have '.tree' or '.tre' extension)")
+    bootstrap_parser.add_argument('-b', '--base_type', choices=['nt', 'prot'], help="indicates if bases are nucleotides or amino acids", default='prot')
+    bootstrap_parser.add_argument('-m', '--model', choices=['wag', 'lg', 'jtt'], help="model of evolution to use", default='wag')
+    bootstrap_parser.add_argument('-r', '--num_replicates', help="number of bootstrap replicates to perform", type=int, default=100)
+    bootstrap_parser.add_argument('-f', '--fraction', help="fraction of alignment to subsample", type=float, default=1.0)
+    bootstrap_parser.add_argument('-c', '--cpus', help='number of cpus', type=int, default=1)
+    bootstrap_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # assess robustness of genome tree by jackknifing marker genes
+    jk_markers_parser = subparsers.add_parser('jk_markers',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Jackknife marker genes.')
+    jk_markers_parser.add_argument('input_tree', help="tree inferred from original data")
+    jk_markers_parser.add_argument('msa_file', help="file containing multiple sequence alignment")
+    jk_markers_parser.add_argument('marker_info_file', help="file indicating length of each gene in concatenated alignment")
+    jk_markers_parser.add_argument('mask_file', help="file indicating masking of multiple sequence alignment")
+    jk_markers_parser.add_argument('output_dir', help="output directory)")
+    jk_markers_parser.add_argument('--jk_dir', help="directory containing pre-computed jackknife trees (must have '.tree' or '.tre' extension)")
+    jk_markers_parser.add_argument('-m', '--model', choices=['wag', 'jtt'], help="model of evolution to use", default='wag')
+    jk_markers_parser.add_argument('-p', '--perc_markers', help="percentage of markers to keep", type=float, default=0.5)
+    jk_markers_parser.add_argument('-r', '--num_replicates', help="number of jackknife replicates to perform", type=int, default=100)
+    jk_markers_parser.add_argument('-c', '--cpus', help='number of cpus', type=int, default=1)
+    jk_markers_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # assess robustness of genome tree by jackknifing ingroup taxa
+    jk_taxa_parser = subparsers.add_parser('jk_taxa',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Jackknife ingroup taxa.')
+    jk_taxa_parser.add_argument('input_tree', help="tree inferred from original data")
+    jk_taxa_parser.add_argument('msa_file', help="file containing multiple sequence alignment")
+    jk_taxa_parser.add_argument('output_dir', help="output directory")
+    jk_taxa_parser.add_argument('--outgroup_ids', help="file indicating outgroup taxa", default=None)
+    jk_taxa_parser.add_argument('-m', '--model', choices=['wag', 'jtt'], help="model of evolution to use", default='wag')
+    jk_taxa_parser.add_argument('-p', '--perc_taxa', help="percentage of taxa to keep", type=float, default=0.5)
+    jk_taxa_parser.add_argument('-r', '--num_replicates', help="number of jackknife replicates to perform", type=int, default=100)
+    jk_taxa_parser.add_argument('-c', '--cpus', help='number of cpus', type=int, default=1)
+    jk_taxa_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # assess robustness of genome tree by jackknifing ingroup taxa
+    combine_parser = subparsers.add_parser('combine',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Combine all support values into a single tree.')
+    combine_parser.add_argument('bootstrap_tree', help="tree with bootstrap support values")
+    combine_parser.add_argument('jk_marker_tree', help="tree with jackknife marker support values")
+    combine_parser.add_argument('jk_taxa_tree', help="tree with jackknife taxa support values")
+    combine_parser.add_argument('output_tree', help="output tree")
+    combine_parser.add_argument('-s', '--support_type', choices=['average', 'minimum'], help="type of support values to compute", default='average')
+    combine_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # reroot tree at midpoint
+    midpoint_parser = subparsers.add_parser('midpoint',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Reroot tree at midpoint.')
+    midpoint_parser.add_argument('input_tree', help="tree to reroot")
+    midpoint_parser.add_argument('output_tree', help="output tree")
+    midpoint_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # reroot tree with outgroup
+    outgroup_parser = subparsers.add_parser('outgroup',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Reroot tree with outgroup.')
+    outgroup_parser.add_argument('input_tree', help="tree to reroot")
+    outgroup_parser.add_argument('taxonomy_file', help="file indicating taxonomy string for genomes")
+    outgroup_parser.add_argument('outgroup_taxon', help="taxon to use as outgroup (e.g., d__Archaea)")
+    outgroup_parser.add_argument('output_tree', help="output tree")
+    outgroup_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # dereplicate genomes in named species
+    dereplicate_parser = subparsers.add_parser('dereplicate',
+                                        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                        description='Select representative genomes in named species.')
+    dereplicate_parser.add_argument('metadata_file', help="metadata file from GTDB with CheckM estimates for all genomes")
+    dereplicate_parser.add_argument('prev_rep_file', help="list of previous representative genomes to favour during selection")
+    dereplicate_parser.add_argument('exceptions_file', help="list of RefSeq representative to retain regardless of filtering criteria")
+    dereplicate_parser.add_argument('trusted_user_file', help='file specifying trusted User genomes that should be treated as being in GenBank')  
+    dereplicate_parser.add_argument('species_derep_file', help="output file listing dereplicated genomes from named speces")
+    dereplicate_parser.add_argument('--max_species', help='maximum number of genomes of the same species to retain', type=int, default=2)
+    dereplicate_parser.add_argument('--min_rep_comp', help='minimum completeness for a genome to be a representative [0, 100]', type=float, default=90)
+    dereplicate_parser.add_argument('--max_rep_cont', help='maximum contamination for a genome to be a representative [0, 100]', type=float, default=10)
+    dereplicate_parser.add_argument('--min_quality', help='minimum genome quality (comp - 5*cont) to be a representative [0, 100]', type=float, default=50)
+    dereplicate_parser.add_argument('--max_contigs', help='maximum number of contigs for a genome to be a representative', type=int, default=500)
+    dereplicate_parser.add_argument('--min_N50', help='minimum N50 of scaffolds for a genome to be a representative', type=int, default=20000)
+    dereplicate_parser.add_argument('--max_ambiguous', help='maximum number of ambiguous bases within contigs for a genome to be a representative', type=int, default=100000)
+    dereplicate_parser.add_argument('--max_gap_length', help='maximum number of ambiguous bases between contigs for a genome to be a representative', type=int, default=1000000)  
+    dereplicate_parser.add_argument('--strict_filtering', help='apply filtering to all genomes; default is to apply lenient filtering to genomes where the chromosome and plasmids are reported as complete', action='store_true')
+    dereplicate_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # representative genomes
+    rep_parser = subparsers.add_parser('reps',
+                                        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                        description='Determine additional representatives genomes.')
+    rep_parser.add_argument('species_derep_file', help="file listing dereplicated genomes from named species")
+    rep_parser.add_argument('metadata_file', help="metadata file from GTDB with CheckM estimates for all genomes in RefSeq")
+    rep_parser.add_argument('prev_rep_file', help="list of previous representative genomes to favour during selection")
+    rep_parser.add_argument('trusted_user_file', help='file specifying trusted User genomes that should be treated as being in GenBank')
+    rep_parser.add_argument('mash_pairwise_file', help="file with pairwise Mash distances between all GTDB genomes")
+    rep_parser.add_argument('rep_genome_file', help="output file listing representative genomes")
+    rep_parser.add_argument('--min_rep_comp', help='minimum completeness for a genome to be a representative [0, 100]', type=float, default=90)
+    rep_parser.add_argument('--max_rep_cont', help='maximum contamination for a genome to be a representative [0, 100]', type=float, default=10)
+    rep_parser.add_argument('--min_quality', help='minimum genome quality (comp - 5*cont) to be a representative [0, 100]', type=float, default=50)
+    rep_parser.add_argument('--max_contigs', help='maximum number of contigs for a genome to be a representative', type=int, default=500)
+    rep_parser.add_argument('--min_N50', help='minimum N50 of scaffolds for a genome to be a representative', type=int, default=20000)
+    rep_parser.add_argument('--max_ambiguous', help='maximum number of ambiguous bases within contigs for a genome to be a representative', type=int, default=100000)
+    rep_parser.add_argument('--max_gap_length', help='maximum number of ambiguous bases between contigs for a genome to be a representative', type=int, default=1000000)  
+    rep_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # cluster remaining genomes
+    cluster_parser = subparsers.add_parser('cluster',
+                                        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                        description='Cluster remaining genomes based on Mash distances.')
+    cluster_parser.add_argument('rep_genome_file', help="file listing representative genomes")
+    cluster_parser.add_argument('metadata_file', help="metadata file for all genomes in the GTDB")
+    cluster_parser.add_argument('mash_pairwise_file', help="file with pairwise Mash distances between all GTDB genomes")
+    cluster_parser.add_argument('cluster_file', help='output file indicating genome clusters')
+    cluster_parser.add_argument('--silent', help="suppress output", action='store_true')
+    
+    # compare current and previous representatives
+    rep_compare_parser = subparsers.add_parser('rep_compare',
+                                        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                        description='Compare current and previous representatives.')
+    rep_compare_parser.add_argument('cur_metadata_file', help="metadata file for all genomes in current GTDB release")
+    rep_compare_parser.add_argument('prev_metadata_file', help="metadata file for all genomes in previous GTDB release")
+    rep_compare_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+  
+    # fill all 7 taxonomic ranks
+    fill_ranks_parser = subparsers.add_parser('fill_ranks',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Ensure taxonomy strings contain all 7 canonical ranks.')
+    fill_ranks_parser.add_argument('input_taxonomy', help='input taxonomy file')
+    fill_ranks_parser.add_argument('output_taxonomy', help='output taxonomy file')
+    fill_ranks_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # ensure species names use binomial nomenclature
+    propagate_parser = subparsers.add_parser('propagate',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Propagate labels to all genomes in a cluster.')
+    propagate_parser.add_argument('input_taxonomy', help='input taxonomy file')
+    propagate_parser.add_argument('metadata_file', help="metadata file for all genomes in the GTDB")
+    propagate_parser.add_argument('output_taxonomy', help='output taxonomy file')
+    propagate_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # strip taxonomic labels from tree
+    strip_parser = subparsers.add_parser('strip',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Remove taxonomic labels from a tree.')
+    strip_parser.add_argument('input_tree', help="tree to strip")
+    strip_parser.add_argument('output_tree', help="output tree")
+    strip_parser.add_argument('--silent', help="suppress output", action='store_true')
+    
+    # pull taxonomy from a tree
+    pull_parser = subparsers.add_parser('pull',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Create taxonomy file from a decorated tree.')
+    pull_parser.add_argument('input_tree', help='decorated tree')
+    pull_parser.add_argument('output_taxonomy', help='output taxonomy file')
+    pull_parser.add_argument('--no_validation', help="do not assume decorated nodes adhear to standard taxonomy", action='store_true')
+    pull_parser.add_argument('--silent', help="suppress output", action='store_true')
+    
+    # append taxonomy to extant tree labels
+    append_parser = subparsers.add_parser('append',
+                                            formatter_class=CustomHelpFormatter,
+                                            description='Append taxonomy to extant tree labels.')
+    append_parser.add_argument('input_tree', help="input tree to decorate")
+    append_parser.add_argument('input_taxonomy', help="input taxonomy file")
+    append_parser.add_argument('output_tree', help="output tree with taxonomy appended to extant taxon labels")
+    append_parser.add_argument('--silent', help="suppress output", action='store_true')
+    
+    # calculate phylogenetic diversity
+    pd_parser = subparsers.add_parser('pd',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Calculate phylogenetic diversity of specified taxa.')
+    pd_parser.add_argument('tree', help='newick tree')
+    pd_parser.add_argument('taxa_list', help='list of ingroup taxa, one per line, to calculated PD over (including genomes of interest assigned to a representative)')
+    pd_parser.add_argument('--rep_list', help='list of representatives in tree and the genomes they represent')
+    pd_parser.add_argument('--per_taxa_pg_file', help='file to record phylogenetic gain of each ingroup taxa relative to the outgroup')
+    pd_parser.add_argument('--silent', help="suppress output", action='store_true')
+    
+    # calculate phylogenetic diversity
+    pd_clade_parser = subparsers.add_parser('pd_clade',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Calculate phylogenetic diversity of named groups.')
+    pd_clade_parser.add_argument('decorated_tree', help='tree with labeled internal nodes')
+    pd_clade_parser.add_argument('output_file', help='output file')
+    pd_clade_parser.add_argument('--taxa_list', help='list of ingroup taxa, one per line, to calculated PD over (including genomes of interest assigned to a representative)')
+    pd_clade_parser.add_argument('--rep_list', help='list of representatives in tree and the genomes they represent')
+    pd_clade_parser.add_argument('--silent', help="suppress output", action='store_true')
+    
+    # create an ARB records file from GTDB metadata
+    arb_records_parser = subparsers.add_parser('arb_records',
+                                        formatter_class=CustomHelpFormatter,
+                                        description='Create an ARB records file from GTDB metadata.')
+    arb_records_parser.add_argument('metadata_file', help="metadata file for all genomes in the GTDB")
+    arb_records_parser.add_argument('output_file', help='output file with ARB records')
+    arb_records_parser.add_argument('--msa_file', help='aligned sequences to include in ARB records')
+    arb_records_parser.add_argument('--genome_list', help='create ARB records only for genome IDs in file')
+    arb_records_parser.add_argument('--silent', help="suppress output", action='store_true')
+
+    # get and check options
+    args = None
+    if(len(sys.argv) == 1 or sys.argv[1] == '-h' or sys.argv == '--help'):
+        print_help()
+        sys.exit(0)
+    else:
+        args = parser.parse_args()
+
+    try:
+        logger_setup(args.output_dir, args.silent)
+    except:
+        logger_setup(None, args.silent)
+
+    # do what we came here to do
+    try:
+        parser = OptionsParser()
+        if(False):
+            # import pstats
+            # p = pstats.Stats('prof')
+            # p.sort_stats('cumulative').print_stats(10)
+            # p.sort_stats('time').print_stats(10)
+            import cProfile
+            cProfile.run('parser.parse_options(args)', 'prof')
+        elif False:
+            import pdb
+            pdb.run(parser.parse_options(args))
+        else:
+            parser.parse_options(args)
+    except SystemExit:
+        print "\n  Controlled exit resulting from an unrecoverable error or warning."
+    except:
+        print "\nUnexpected error:", sys.exc_info()[0]
+        raise
