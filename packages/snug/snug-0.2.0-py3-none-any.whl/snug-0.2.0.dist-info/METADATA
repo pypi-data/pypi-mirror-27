@@ -1,0 +1,72 @@
+Metadata-Version: 2.0
+Name: snug
+Version: 0.2.0
+Summary: Wrap REST APIs to fit nicely into your python code
+Home-page: https://github.com/ariebovenberg/snug
+Author: Arie Bovenberg
+Author-email: a.c.bovenberg@gmail.com
+License: MIT
+Keywords: api,wrapper,rest
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.6
+Requires-Dist: dataclasses (>=0.1,<0.2)
+Requires-Dist: toolz (>=0.8.2,<0.9)
+Provides-Extra: requests
+Requires-Dist: requests (>=2.18.0,<3); extra == 'requests'
+
+Snug
+====
+
+.. image:: https://img.shields.io/pypi/v/snug.svg
+    :target: https://pypi.python.org/pypi/snug
+
+.. image:: https://img.shields.io/pypi/l/snug.svg
+    :target: https://pypi.python.org/pypi/snug
+
+.. image:: https://img.shields.io/pypi/pyversions/snug.svg
+    :target: https://pypi.python.org/pypi/snug
+
+.. image:: https://travis-ci.org/ariebovenberg/snug.svg?branch=master
+    :target: https://travis-ci.org/ariebovenberg/snug
+
+.. image:: https://coveralls.io/repos/github/ariebovenberg/snug/badge.svg?branch=master
+    :target: https://coveralls.io/github/ariebovenberg/snug?branch=master
+
+.. image:: https://readthedocs.org/projects/snug/badge/?version=latest
+    :target: http://snug.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
+(Work in progress)
+
+Wrap REST APIs to fit nicely into your python code. Python >=3.6 only.
+
+Check the ``examples/`` directory for some samples.
+
+
+Release history
+---------------
+
+dev
++++
+
+0.1.2
++++++
+
+- fixes to documentation
+
+0.1.1
++++++
+
+- improvements to versioning info
+
+0.1.0
++++++
+
+- implement basic resource and simple example
+
+
