@@ -1,0 +1,28 @@
+#-----------------------------------------------------------------
+# hermes: sample_sftp_get2.hermes
+#
+# hermes sample config file
+#
+# Copyright (C) 2016, Christophe Fauchard
+#-----------------------------------------------------------------
+[hermes]
+
+name = sample_sftp_get2
+user = chris
+cryptedpassword = QFIIJZI=
+
+host = 192.168.1.29
+protocol = sftp
+
+deleteflag = no
+activation = yes
+command = get
+
+excluderegex = \.tmp$
+#excluderegex = ^\.
+
+localdir = tmp/upload/sample_sftp_get2
+statuslogdir = tmp/journal/sample_sftp_get2
+backupdir = tmp/backup/sample_sftp_get2
+
+remotedir = tmp

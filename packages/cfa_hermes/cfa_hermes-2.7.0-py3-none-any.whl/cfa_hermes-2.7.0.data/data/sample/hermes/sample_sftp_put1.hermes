@@ -1,0 +1,32 @@
+#-----------------------------------------------------------------
+# hermes: sample1.hermes
+#
+# hermes sample SFTP with public key authentication config file
+#
+# Copyright (C) 2016, Christophe Fauchard
+#-----------------------------------------------------------------
+[hermes]
+
+name = sample_sftp_put1
+
+host = xjsd.itnovem.fr
+protocol = sftp
+user = chris
+private_key = C:/USBKEY/LiberKey/MyApps/KittyPortable/itnovem_openssh.ppk
+
+deleteflag = yes
+activation = yes
+command = put
+
+excluderegex = \.tmp$
+
+includeregex = .*file.*
+
+localdir = C:\Users\christophe.fauchard\Projets\hermes\tmp\upload files
+statuslogdir = ./tmp/journal/sample_sftp_put1
+backupdir = ./tmp/backup/sample_sftp_put1
+
+logfile = tmp/log/sample_sftp_put1.log
+
+remotedir = ./upload
+
