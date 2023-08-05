@@ -1,0 +1,152 @@
+Metadata-Version: 2.0
+Name: trie
+Version: 0.3.1
+Summary: Python implementation of the Ethereum Trie structure
+Home-page: https://github.com/ethereum/py-trie
+Author: Piper Merriam
+Author-email: pipermerriam@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: ethereum blockchain evm trie merkle
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: eth-utils (>=0.5.0)
+Requires-Dist: rlp (==0.4.7)
+
+Python Implementation of the Ethereum Trie structure
+====================================================
+
+.. code:: shell
+
+    $ pip install trie
+
+..
+
+    Warning: This is an early release and is likely to contain bugs as
+    well as breaking API changes.
+
+..
+
+    This library and repository was previously located at
+    https://github.com/pipermerriam/py-trie. It was transferred to the
+    Ethereum foundation github in November 2017 and renamed to
+    ``py-trie``.
+
+Installation
+------------
+
+.. code:: sh
+
+    pip install trie
+
+Development
+-----------
+
+.. code:: sh
+
+    pip install -e . -r requirements-dev.txt
+
+Running the tests
+~~~~~~~~~~~~~~~~~
+
+You can run the tests with:
+
+.. code:: sh
+
+    py.test tests
+
+Or you can install ``tox`` to run the full test suite.
+
+Releasing
+~~~~~~~~~
+
+Pandoc is required for transforming the markdown README to the proper
+format to render correctly on pypi.
+
+For Debian-like systems:
+
+::
+
+    apt install pandoc
+
+Or on OSX:
+
+.. code:: sh
+
+    brew install pandoc
+
+To release a new version:
+
+.. code:: sh
+
+    bumpversion $$VERSION_PART_TO_BUMP$$
+    git push && git push --tags
+    make release
+
+How to bumpversion
+^^^^^^^^^^^^^^^^^^
+
+The version format for this repo is ``{major}.{minor}.{patch}`` for
+stable, and ``{major}.{minor}.{patch}-{stage}.{devnum}`` for unstable
+(``stage`` can be alpha or beta).
+
+To issue the next version in line, use bumpversion and specify which
+part to bump, like ``bumpversion minor`` or ``bumpversion devnum``.
+
+If you are in a beta version, ``bumpversion stage`` will switch to a
+stable.
+
+To issue an unstable version when the current version is stable, specify
+the new version explicitly, like
+``bumpversion --new-version 4.0.0-alpha.1 devnum``
+
+Usage
+-----
+
+.. code:: python
+
+    >>> from trie import Trie
+    >>> t = Trie(db={})
+    >>> t.root_hash
+    b'V\xe8\x1f\x17\x1b\xccU\xa6\xff\x83E\xe6\x92\xc0\xf8n[H\xe0\x1b\x99l\xad\xc0\x01b/\xb5\xe3c\xb4!'
+    >>> t.set(b'my-key', b'some-value')
+    >>> t.get(b'my-key')
+    b'some-value'
+    >>> t.exists(b'another-key')
+    False
+    >>> t.set(b'another-key', b'another-value')
+    >>> t.exists(b'another-key')
+    True
+    >>> t.delete(b'another-key')
+    >>> t.exists(b'another-key')
+    False
+
+You can also use it like a dictionary.
+
+.. code:: python
+
+    >>> from trie import Trie
+    >>> t = Trie(db={})
+    >>> t.root_hash
+    b'V\xe8\x1f\x17\x1b\xccU\xa6\xff\x83E\xe6\x92\xc0\xf8n[H\xe0\x1b\x99l\xad\xc0\x01b/\xb5\xe3c\xb4!'
+    >>> t[b'my-key'] = b'some-value'
+    >>> t[b'my-key']
+    b'some-value'
+    >>> b'another-key' in t
+    False
+    >>> t[b'another-key']  = b'another-value'
+    >>> b'another-key' in t
+    True
+    >>> del t[b'another-key']
+    >>> b'another-key' in t
+    False
+
+
