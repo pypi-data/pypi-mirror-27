@@ -1,0 +1,31 @@
+Metadata-Version: 2.0
+Name: slipstream-cli
+Version: 0.8.2
+Summary: A tool to use SlipStream from a shell.
+Home-page: http://sixsq.com/slipstream
+Author: SixSq Sarl
+Author-email: support@sixsq.com
+License: Apache License, Version 2.0
+Description-Content-Type: UNKNOWN
+Keywords: slipstream devops cli
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Software Development
+Requires-Dist: click (>=6.6)
+Requires-Dist: prettytable
+Requires-Dist: six (>=1.10.0)
+Requires-Dist: slipstream-api (>=3.37)
+Requires-Dist: configparser
+
+UNKNOWN
+
+
