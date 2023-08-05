@@ -1,0 +1,41 @@
+
+
+{% extends "otree/BaseAdmin.html" %}
+
+{% block title %}
+    Export data from sessions
+{% endblock %}
+
+{% block content %}
+    {%  if sessions %}
+    <table class="table table-hover table-striped table-resonsive">
+        <thead>
+        <th>Session code</th>
+        <th>Config name</th>
+        <th>Number of participants</th>
+        <th></th>
+        <th></th>
+        </thead>
+        <tbody>
+        {% for s in sessions %}
+            <tr>
+                <td>{{ s.code }} </td>
+                <td>{{ s.config.display_name }} </td>
+                <td>{{ s.num_participants }} </td>
+
+                <td><a href="{% url 'session_data'  session_code=s.code filetype='xlsx' %}?xlsx=1">xls</a></td>
+                <td><a href="{% url 'session_data'  session_code=s.code filetype='csv' %}">csv</a></td>
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        {% else %}
+       No sessions have taken place yet.
+    {% endif %}
+{% endblock %}
+
+{% block internal_styles %}
+    {{ block.super }}
+{% endblock %}
