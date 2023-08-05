@@ -1,0 +1,7 @@
+# file execo-chainput is a bash script used internally by execo, which
+# is broadcasted to remote hosts. As its permissions are reset by
+# distutils, they are forced at broadcast time. Hence no need for
+# lintian to complain about this
+
+python-execo binary: script-not-executable usr/lib/python*/dist-packages/execo/execo-chainput
+python3-execo binary: script-not-executable usr/lib/python*/dist-packages/execo/execo-chainput
