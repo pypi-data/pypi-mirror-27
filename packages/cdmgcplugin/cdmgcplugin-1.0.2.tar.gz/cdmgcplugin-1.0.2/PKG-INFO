@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: cdmgcplugin
+Version: 1.0.2
+Summary: Codimension IDE garbage collector plugin
+Home-page: https://github.com/SergeySatskiy/cdm-gc-plugin
+Author: Sergey Satskiy
+Author-email: sergey.satskiy@gmail.com
+License: GPLv3
+Description-Content-Type: UNKNOWN
+Description: cdm-gc-plugin
+        =============
+        
+        The project is a `Codimension Python IDE <http://codimension.org>`__
+        garbage collector plugin.
+        
+        The idea of the plugin is simple. The embedded Python garbage collector
+        triggers objects collection at pretty much unknown moments and the
+        plugin will make it more predictable. The plugin will call the
+        **``collect()``** method of the Python gc module when:
+        
+        -  a tab is closed
+        -  a project is changed
+        -  new files appeared in a project
+        -  some files are deleted from a project
+        
+        There is pretty much no user interface for the plugin. It does its work
+        in the background.
+        
+        Installation
+        ============
+        
+        The plugin is pip installable:
+        
+        .. code:: bash
+        
+            pip install cdmgcplugin
+        
+        There is a little value (if any) to install it without the `Codimension
+        IDE <http://codimension.org>`__. It however can be a good start point in
+        developing a new plugin for Codimension. The overall structure could be
+        copied as well as the way the plugin is installed.
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
