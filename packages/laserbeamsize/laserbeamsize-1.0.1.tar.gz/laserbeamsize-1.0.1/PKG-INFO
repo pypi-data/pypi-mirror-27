@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: laserbeamsize
+Version: 1.0.1
+Summary: ISO 11146 Calculation of Laser Beam Center and Diameter
+Home-page: https://github.com/scottprahl/laserbeamsize.git
+Author: Scott Prahl
+Author-email: scott.prahl@oit.edu
+License: MIT
+Description: 
+        	Simple and fast calculation of beam sizes from a single monochrome image based
+        	on the ISO 11146 method of variances.  Some effort has been made to make
+        	the algorithm less sensitive to background offset and noise.
+        	
+Keywords: variance,gaussian,M-squared,d4sigma
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering :: Physics
