@@ -1,0 +1,15 @@
+setuptools
+Products.GenericSetup>=1.8.2
+plone.api
+plone.app.tiles
+plone.tiles
+
+[test]
+plone.app.mosaic
+plone.app.robotframework[debug]
+plone.app.testing
+robotframework-selenium2screenshots
+
+[testfixture]
+plone.app.mosaic
+plone.app.standardtiles
