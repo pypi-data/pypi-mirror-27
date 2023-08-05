@@ -1,0 +1,49 @@
+Metadata-Version: 2.0
+Name: asyncqlio
+Version: 0.1.0.1
+Summary: An asyncio ORM for Python 3.5+
+Home-page: https://github.com/SunDwarf/asyncqlio
+Author: Laura Dickinson
+Author-email: l@veriny.tf
+License: MIT
+Platform: UNKNOWN
+Requires-Python: >=3.5.2
+Requires-Dist: cached-property (==1.3.0)
+Requires-Dist: asyncio-extras (==1.3.0)
+Provides-Extra: docs
+Requires-Dist: sphinx (>=1.5.0); extra == 'docs'
+Requires-Dist: sphinxcontrib-asyncio; extra == 'docs'
+Requires-Dist: guzzle-sphinx-theme; extra == 'docs'
+Provides-Extra: mysql
+Requires-Dist: aiomysql (>=0.0.9); extra == 'mysql'
+Provides-Extra: postgresql
+Requires-Dist: asyncpg (>=0.12.0); extra == 'postgresql'
+
+asyncqlio
+=========
+
+|b1| |b2| |b3| |b4|
+
+.. |b1| image:: https://img.shields.io/circleci/project/github/SunDwarf/asyncqlio.svg
+   :target: https://circleci.com/gh/SunDwarf/asyncqlio
+.. |b2| image:: https://img.shields.io/pypi/v/asyncqlio.svg
+.. |b3| image:: https://img.shields.io/github/tag/SunDwarf/asyncqlio.svg
+.. |b4| image:: https://img.shields.io/coveralls/SunDwarf/asyncqlio.svg
+   :target: https://codecov.io/gh/SunDwarf/asyncqlio
+
+**asyncqlio** is a Python 3.5+ ORM for SQL Relational Databases,
+that uses asyncio for an async interface.
+
+You can install the latest version of asyncqlio from PyPI with pip:
+
+.. code-block:: bash
+
+   $ pip install asyncqlio
+
+You can also install the development version of asyncqlio from Git:
+
+.. code-block:: bash
+
+   $ pip install git+https://github.com/SunDwarf/asyncqlio.git
+
+
