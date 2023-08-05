@@ -1,0 +1,35 @@
+Metadata-Version: 1.2
+Name: MarkovTextGenerator
+Version: 1.5.7
+Summary: Generator of pseudo-random text, using Markov chains.
+Home-page: https://github.com/NyashniyVladya/MarkovTextGenerator
+Author: Vladya
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: ***MarkovTextGenerator***
+        
+        **Генератор псевдорандомного текста, посредством цепей Маркова.**
+        
+        ---
+        **Установка:**
+        ```
+        $ pip install MarkovTextGenerator
+        ```
+        ---
+        **Пример использования:**
+        ```python
+        from MarkovTextGenerator.markov_text_generator import MarkovTextGenerator
+        
+        my_generator = MarkovTextGenerator(2, None)
+        
+        my_generator.update("some_book.txt") # Обновляем базу текстовым файлом
+        my_generator.update("Эта фраза добавится в выборку токенов.", fromfile=False) # Или просто текстом.
+        my_generator.create_dump() # Сохраняем текущую выборку, чтобы потом не загружать повторно.
+        
+        print(my_generator.start_generation()) # Проверяем.
+        ```
+        ---
+Keywords: vladya markovgenerator markov_generator markov_chain
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.6
