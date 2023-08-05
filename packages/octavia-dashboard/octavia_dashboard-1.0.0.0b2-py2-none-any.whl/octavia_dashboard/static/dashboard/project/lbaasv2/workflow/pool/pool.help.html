@@ -1,0 +1,34 @@
+<p translate>
+  A pool represents a group of members over which the load balancing will be applied.
+</p>
+<p translate>
+  <strong>Method:</strong>
+  The load balancer algorithm that distributes traffic to the pool members.
+  <ul>
+    <li>
+      LEAST_CONNECTIONS: Allocates requests to the instance with the least number of active
+      connections.
+    </li>
+    <li>
+      ROUND_ROBIN: Rotates requests evenly between multiple instances.
+    </li>
+    <li>
+      SOURCE_IP: Requests from a unique source IP address are consistently directed to the same instance.
+    </li>
+  </ul>
+</p>
+<p translate>
+  <strong>Session Persistence:</strong>
+  The type of session persistence for distributing traffic to the pool members.
+  <ul>
+    <li>
+      SOURCE_IP: Session persistence based on source ip.
+    </li>
+    <li>
+      HTTP_COOKIE: Session persistence based on http cookie.
+    </li>
+    <li>
+      APP_COOKIE: Session persistence based on application cookie.
+    </li>
+  </ul>
+</p>
