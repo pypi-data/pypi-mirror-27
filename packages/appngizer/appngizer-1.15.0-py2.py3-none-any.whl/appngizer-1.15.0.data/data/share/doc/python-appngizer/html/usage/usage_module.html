@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module &mdash; appngizer 1.15.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="appngizer 1.15.0 documentation" href="../index.html"/>
+        <link rel="up" title="Usage" href="index.html"/>
+        <link rel="next" title="Modules" href="../api/modules.html"/>
+        <link rel="prev" title="Command line Client" href="usage_client.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> appngizer</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/install.html#pip">pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/install.html#debian">Debian</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="usage_client.html">appngizer Client</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">appngizer Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">Module Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/appngizer.html">appngizer package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-1-15-0">Version 1.15.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-1-14-2">Version 1.14.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-1-14-1">Version 1.14.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-1-14-0">Version 1.14.0</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">appngizer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Usage</a> &raquo;</li>
+      
+    <li>Module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/usage/usage_module.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="module">
+<h1>Module<a class="headerlink" href="#module" title="Permalink to this headline">¶</a></h1>
+<p>The main purpose of python-appngizer is to offer an easy way to implement
+python applications to administer and interact with an appNG instance
+via the appNGizer REST webapplication.</p>
+<p>To do this entities are represented as <a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a>.
+The <code class="xref py py-attr docutils literal"><span class="pre">appngizer.elements.Element.xml</span></code> attribute helds the XML representation
+of the entity as an <code class="xref py py-class docutils literal"><span class="pre">lxml.objectify.ObjectifiedElement</span></code>.</p>
+<p>The communication is implemented via the <a class="reference internal" href="../api/appngizer.html#appngizer.client.XMLClient" title="appngizer.client.XMLClient"><code class="xref py py-class docutils literal"><span class="pre">appngizer.client.XMLClient</span></code></a>.</p>
+<p>By using specific methods of an element corresponding HTTP/S requests are send
+by the XMLClient (GET for read, POST for create, PUT for update) and
+returns back the HTTP response which is the usually the new XML representation
+of the entity.</p>
+<p>There are also container elements where entities of the same entity
+type are held. Currently they are only usable for read
+operations (f.e. read all available Sites) but can be the start point
+for further improvements like bulk operatios.</p>
+<div class="section" id="read">
+<h2>Read<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h2>
+<p>To read an existing appNG entity the <code class="xref py py-attr docutils literal"><span class="pre">appngizer.elements.Element.name</span></code>
+attribute is used to identify and access the desired entity.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="read-site-entity">
+<h4>Read Site entity<a class="headerlink" href="#read-site-entity" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">site</span> <span class="o">=</span> <span class="n">Site</span><span class="p">(</span><span class="s">&#39;a_site&#39;</span><span class="p">)</span>
+<span class="n">site</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">site</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="nt">&lt;site</span> <span class="na">name=</span><span class="s">&quot;a_site&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;host&gt;</span>a_site<span class="nt">&lt;/host&gt;</span>
+  <span class="nt">&lt;domain&gt;</span>http://localhost:8080<span class="nt">&lt;/domain&gt;</span>
+  <span class="nt">&lt;description&gt;</span>test_description<span class="nt">&lt;/description&gt;</span>
+  <span class="nt">&lt;active&gt;</span>true<span class="nt">&lt;/active&gt;</span>
+  <span class="nt">&lt;createRepositoryPath&gt;</span>false<span class="nt">&lt;/createRepositoryPath&gt;</span>
+<span class="nt">&lt;/site&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-or-update">
+<h2>Create or Update<a class="headerlink" href="#create-or-update" title="Permalink to this headline">¶</a></h2>
+<p>For data manipulating methods like create or update you usually have to deliver
+all values as kwarg (dictionary is called xdict internally). kwarg are directly
+mapped to XML components of the entity <code class="xref py py-attr docutils literal"><span class="pre">appngizer.elements.Element.xml</span></code>.</p>
+<p>Which kind of XML component (element/s, attribute) an kwarg address is controlled
+by the first matching key in following class constants of the <a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a>:</p>
+<ul class="simple">
+<li>self.FIELDS are entity fields with a simple value (String, Text, Boolean, Integer)</li>
+<li>self.ATTRIBUTES are entity attributes with a simple value (String, Text, Boolean, Integer)</li>
+<li>self.CHILDS are child entities as SubElements wrapped in a childs element</li>
+<li>self.SUBELEMENTS are child entities as SubElements directly under the root element</li>
+</ul>
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-site-entity">
+<h4>Create Site entity<a class="headerlink" href="#create-site-entity" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">site</span> <span class="o">=</span> <span class="n">Site</span><span class="p">(</span><span class="s">&#39;a_site&#39;</span><span class="p">)</span>
+<span class="n">site</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">&#39;a_site&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s">&#39;http://localhost:8080&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">site</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="nt">&lt;site</span> <span class="na">name=</span><span class="s">&quot;a_site&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;host&gt;</span>a_site<span class="nt">&lt;/host&gt;</span>
+  <span class="nt">&lt;domain&gt;</span>http://localhost:8080<span class="nt">&lt;/domain&gt;</span>
+  <span class="nt">&lt;description&gt;&lt;/description&gt;</span>
+  <span class="nt">&lt;active&gt;</span>true<span class="nt">&lt;/active&gt;</span>
+  <span class="nt">&lt;createRepositoryPath&gt;</span>false<span class="nt">&lt;/createRepositoryPath&gt;</span>
+<span class="nt">&lt;/site&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-site-entity">
+<h4>Update Site entity<a class="headerlink" href="#update-site-entity" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">site</span> <span class="o">=</span> <span class="n">Site</span><span class="p">(</span><span class="s">&#39;a_site&#39;</span><span class="p">)</span>
+<span class="n">site</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">site</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s">&#39;test_description&#39;</span><span class="p">,</span> <span class="n">createRepositoryPath</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">site</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="nt">&lt;site</span> <span class="na">name=</span><span class="s">&quot;a_site&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;host&gt;</span>a_site<span class="nt">&lt;/host&gt;</span>
+  <span class="nt">&lt;domain&gt;</span>http://localhost:8080<span class="nt">&lt;/domain&gt;</span>
+  <span class="nt">&lt;description&gt;</span>test_description<span class="nt">&lt;/description&gt;</span>
+  <span class="nt">&lt;active&gt;</span>true<span class="nt">&lt;/active&gt;</span>
+  <span class="nt">&lt;createRepositoryPath&gt;</span>true<span class="nt">&lt;/createRepositoryPath&gt;</span>
+<span class="nt">&lt;/site&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="site-class-constants">
+<h4>Site class constants<a class="headerlink" href="#site-class-constants" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Site</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Class to manage a site</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">FIELDS</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;host&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;createRepositoryPath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">ATTRIBUTES</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">ATTRIBUTES</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be aware that renaming of an entity is not possible.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="parent-entities">
+<h2>Parent entities<a class="headerlink" href="#parent-entities" title="Permalink to this headline">¶</a></h2>
+<p>Some <a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a> <em>can</em> have one or more parent entities.</p>
+<p>Parent entities are been set by initialising an <a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a>
+with a param called <em>parents</em> as a list of <a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a>.</p>
+<div class="section" id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="read-property-entity-with-parent-entity-site">
+<h4>Read Property entity with parent entity Site<a class="headerlink" href="#read-property-entity-with-parent-entity-site" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">site_property</span> <span class="o">=</span> <span class="n">Property</span><span class="p">(</span><span class="s">&#39;a_site_property&#39;</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span> <span class="n">Site</span><span class="p">(</span><span class="s">&#39;a_site&#39;</span><span class="p">)</span> <span class="p">])</span>
+<span class="n">site_property</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">site_property</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;a_site_property&quot;</span> <span class="na">clob=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test_Value<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;defaultValue&gt;</span>test_defaultValue<span class="nt">&lt;/defaultValue&gt;</span>
+  <span class="nt">&lt;description&gt;</span>test_description<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-property-entity-with-parent-entity-site-and-application">
+<h4>Read Property entity with parent entity Site and Application<a class="headerlink" href="#read-property-entity-with-parent-entity-site-and-application" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">site_app_property</span> <span class="o">=</span> <span class="n">Property</span><span class="p">(</span><span class="s">&#39;a_site_app_property&#39;</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span> <span class="n">Site</span><span class="p">(</span><span class="s">&#39;a_site&#39;</span><span class="p">),</span><span class="n">Application</span><span class="p">(</span><span class="s">&#39;an_application&#39;</span><span class="p">)</span> <span class="p">])</span>
+<span class="n">site_app_property</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">site</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;a_site_app_property&quot;</span> <span class="na">clob=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test_Value<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;defaultValue&gt;</span>test_defaultValue<span class="nt">&lt;/defaultValue&gt;</span>
+  <span class="nt">&lt;description&gt;</span>test_description<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Be aware that every parent is an ancestor of the preceding parent.
+So this doesn&#8217;t work:
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Package(&#8216;appng-manager&#8217;, parents=[ Repository(&#8216;a_special_repo&#8217;),</dt>
+<dd>Repository(&#8216;another_repo&#8217;) ]).install()</dd>
+</dl>
+</div></blockquote>
+<p>And as we deal here with lists, order matters, so this also doesn&#8217;t work:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">Property</span><span class="p">(</span><span class="s">&#39;a_site_app_property&#39;</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span> <span class="n">Application</span><span class="p">(</span><span class="s">&#39;an_application&#39;</span><span class="p">),</span>
+                                          <span class="n">Site</span><span class="p">(</span><span class="s">&#39;a_site&#39;</span><span class="p">)</span> <span class="p">])</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="child-entities">
+<h2>Child entities<a class="headerlink" href="#child-entities" title="Permalink to this headline">¶</a></h2>
+<p>Some <a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a> can also have one or more child entities.</p>
+<p>Child entities are also part of the entity XML so we handle them as a
+<code class="xref py py-class docutils literal"><span class="pre">lxml.objectify.ObjectifiedElement</span></code> and not like parent entities as
+<a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a>.</p>
+<p>To change child entities you usually use the relevant methods of an
+<a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a> with a kwarg where the key match the
+specific item in self.CHILDS of the <a class="reference internal" href="../api/appngizer.html#appngizer.elements.Element" title="appngizer.elements.Element"><code class="xref py py-class docutils literal"><span class="pre">appngizer.elements.Element</span></code></a>.</p>
+<div class="section" id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-subject-entity-with-groups">
+<h4>Create Subject entity with Groups<a class="headerlink" href="#create-subject-entity-with-groups" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">subj_groups</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">subj_groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Group</span><span class="p">(</span><span class="s">&#39;Users&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">xml</span> <span class="p">)</span>
+<span class="n">subj_groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Group</span><span class="p">(</span><span class="s">&#39;Testers&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">xml</span> <span class="p">)</span>
+
+<span class="n">subj_tester</span> <span class="o">=</span> <span class="n">Subject</span><span class="p">(</span><span class="s">&#39;a_tester&#39;</span><span class="p">)</span>
+<span class="n">subj_tester</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">realName</span><span class="o">=</span><span class="s">&#39;Andy Arbeit&#39;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s">&#39;andy@aiticon.com&#39;</span><span class="p">,</span>
+                   <span class="n">digest</span><span class="o">=</span><span class="s">&#39;andy1976&#39;</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">subj_groups</span><span class="p">)</span>
+<span class="n">subj_tester</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">subj_tester</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="nt">&lt;subject</span> <span class="na">name=</span><span class="s">&quot;a_tester&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;realName&gt;</span>Andy Arbeit<span class="nt">&lt;/realName&gt;</span>
+  <span class="nt">&lt;email&gt;</span>andy@aiticon.com<span class="nt">&lt;/email&gt;</span>
+  <span class="nt">&lt;description&gt;&lt;/description&gt;</span>
+  <span class="nt">&lt;digest&gt;</span>$2a$13$0wasGmmSdOF6/Kxybist1eSU42Y/n7h7.H3L2cvdasNKVvxHEheX?<span class="nt">&lt;/digest&gt;</span>
+  <span class="nt">&lt;timeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/timeZone&gt;</span>
+  <span class="nt">&lt;language&gt;</span>en<span class="nt">&lt;/language&gt;</span>
+  <span class="nt">&lt;type&gt;</span>LOCAL_USER<span class="nt">&lt;/type&gt;</span>
+  <span class="nt">&lt;groups&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">name=</span><span class="s">&quot;Users&quot;</span> <span class="na">self=</span><span class="s">&quot;http://localhost:8080/appNGizer/group/Users&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;description&gt;</span>appNG Users group<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">name=</span><span class="s">&quot;Testers&quot;</span> <span class="na">self=</span><span class="s">&quot;http://localhost:8080/appNGizer/group/Testers&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;description&gt;</span>appNG Testers group<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+  <span class="nt">&lt;/groups&gt;</span>
+<span class="nt">&lt;/subject&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subject-class-constants">
+<h4>Subject class constants<a class="headerlink" href="#subject-class-constants" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Subject</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Class to manage a subject</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">FIELDS</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;realName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;digest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;timeZone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Europe/Berlin&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;language&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;en&#39;</span>
+    <span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;LOCAL_USER&#39;</span>
+
+    <span class="n">CHILDS</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">CHILDS</span><span class="p">[</span><span class="s">&#39;groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">ATTRIBUTES</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/modules.html" class="btn btn-neutral float-right" title="Modules"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage_client.html" class="btn btn-neutral" title="Command line Client"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, aiticon GmbH.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.15.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
