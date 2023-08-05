@@ -1,0 +1,57 @@
+$color-highlighted: #3fb8af
+$color-highlighted-hover: #14d0b3
+
+=page-button-highlighted
+    color: #fff
+    background-color: $color-highlighted
+    
+    &:hover
+        background-color: $color-highlighted-hover
+    
+=page-button-base
+    margin: 0 2px
+    padding: 8px 14px
+    border: 0
+    transition-duration: 0.3s
+    
+    &:hover
+        +page-button-highlighted
+        background-color: $color-highlighted-hover
+
+    &:focus
+        outline: none
+
+#pagination-form
+    display: flex
+    margin: 7px 0
+    justify-content: center
+    
+    .page-button
+        +page-button-base
+        color: #222
+        background-color: transparent
+    
+        &.current-page
+            +page-button-highlighted
+            &:hover
+                background-color: $color-highlighted !important
+            
+        &:hover
+            +page-button-highlighted
+            
+        &:focus
+            outline: none
+
+    .page-boundary-button
+        +page-button-base
+        +page-button-highlighted
+
+        &:hover
+            background-color: $color-highlighted-hover
+            
+        &:disabled
+            color: #222
+            background-color: transparent
+            
+            &:hover
+                background-color: transparent

@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "strictNullChecks": true,
+        "alwaysStrict": true,
+        "noImplicitThis": true,
+        "typeRoots": [
+            "node_modules/@types/",
+            "node_modules/protractor/",
+            "node_modules/angular2-notifications/"
+        ],
+        "lib": ["es2017", "dom"],
+        "baseUrl": "./"
+    },
+    "include": [
+        "app/**/*.ts",
+        "e2e/**/*.ts",
+        "systemjs.conf.ts",
+        "systemjs.conf.spec.ts",
+        "karma.shim.ts",
+        "testutils/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

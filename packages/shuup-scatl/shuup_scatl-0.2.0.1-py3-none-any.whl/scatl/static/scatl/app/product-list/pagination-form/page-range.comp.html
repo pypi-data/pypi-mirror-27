@@ -1,0 +1,1 @@
+<span class="ellipsis left" *ngIf="isLeftEllipsisRequired()">...</span><button class="page-button" *ngFor="let page of getPageArrayRange()" (click)="setPage(page)" [class.current-page]="isCurrentPage(page)" [disabled]="isCurrentPage(page)">{{ page }}</button><span class="ellipsis right" *ngIf="isRightEllipsisRequired()">...</span>
