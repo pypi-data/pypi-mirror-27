@@ -1,0 +1,52 @@
+Metadata-Version: 1.1
+Name: cgutils
+Version: 0.1.4
+Summary: CLI for common tasks
+Home-page: http://github.com//cgutils.git
+Author: Dan Bradham
+Author-email: danielbradham@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: ===============================
+        CG Utils
+        ===============================
+        
+        .. image:: https://img.shields.io/travis/danbradham/cgutils.svg
+                :target: https://travis-ci.org/danbradham/cgutils
+        
+        .. image:: https://img.shields.io/pypi/v/cgutils.svg
+                :target: https://pypi.python.org/pypi/cgutils
+        
+        
+        Commands
+        ========
+        
+        * sequences: Create, Rename, Delete file sequences
+        * search_replace: Search and replace patterns in file names
+        
+        
+        Call cgutils from a shell to get going::
+        
+            cgutils
+        
+        
+        Installation
+        ============
+        
+        ::
+        
+            pip install cgutils
+        
+        
+        CLI for common tasks
+        
+        * Documentation: https://cgutils.readthedocs.org. **coming soon**
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
