@@ -1,0 +1,64 @@
+Metadata-Version: 1.1
+Name: testfunc
+Version: 0.1
+Summary: A sample tool for testing functions
+Home-page: https://github.com/yanxurui/testfunc
+Author: Xurui Yan
+Author-email: yxr1993@gmail.com
+License: MIT
+Description: testfunc
+        ========
+        
+        introduction
+        ------------
+        
+        a simple parametrized test tool for function
+        
+        example
+        -------
+        
+        .. code:: python
+        
+            from testfunc import test
+        
+            def foo(a=0, b=0):
+                return a+b
+        
+            # test_data is a list of test cases
+            # a test case is the form of (args, result) or (args, kw, result)
+            # if args is a tuple it will be unpacked, if this is not desired, pass `unpack=False` to `test`
+            test_data = [
+                (
+                    (1, 2),     3
+                ),
+                (
+                    (1, 1),     3
+                ),
+                (
+                    (1,),       1
+                ),
+                (
+                    (),         0
+                ),
+                (
+                    1, {'b':2}, 3
+                )
+            ]
+        
+            test(foo, test_data)
+        
+        .. figure:: screenshot.png
+           :alt: screenshot
+        
+           screenshot
+        
+        check `testfunc.py <testfunc.py>`__ for more examples.
+        
+Keywords: test
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Topic :: Software Development :: Testing
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
