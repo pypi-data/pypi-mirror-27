@@ -1,0 +1,28 @@
+include README.md
+include LICENSE.md
+
+recursive-include scatl \
+    *.py *.jinja \
+    *.ts *.js *.map *.sass *.css *.html *.json
+
+
+prune scatl/static/scatl/.browsers
+
+prune scatl/static/scatl/node_modules/@types
+prune scatl/static/scatl/node_modules/canonical-path
+prune scatl/static/scatl/node_modules/concurrently
+prune scatl/static/scatl/node_modules/jasmine-core
+prune scatl/static/scatl/node_modules/karma
+prune scatl/static/scatl/node_modules/karma-chrome-launcher
+prune scatl/static/scatl/node_modules/karma-cli
+prune scatl/static/scatl/node_modules/karma-firefox-launcher
+prune scatl/static/scatl/node_modules/karma-jasmine
+prune scatl/static/scatl/node_modules/karma-jasmine-html-reporter
+prune scatl/static/scatl/node_modules/lite-server
+prune scatl/static/scatl/node_modules/protractor
+prune scatl/static/scatl/node_modules/faker
+prune scatl/static/scatl/node_modules/rimraf
+prune scatl/static/scatl/node_modules/selenium-server-standalone-jar
+prune scatl/static/scatl/node_modules/tslint
+prune scatl/static/scatl/node_modules/pug-cli
+prune scatl/static/scatl/node_modules/typescript

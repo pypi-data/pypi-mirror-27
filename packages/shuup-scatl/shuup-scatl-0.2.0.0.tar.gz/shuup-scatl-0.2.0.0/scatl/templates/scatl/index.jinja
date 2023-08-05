@@ -1,0 +1,40 @@
+<!-- TODO add a base href with a script -->
+<scatl><h2>Loading...</h2></scatl>
+<script src="{{ static('scatl/node_modules/core-js/client/shim.min.js') }}"></script>
+<script src="{{ static('scatl/node_modules/zone.js/dist/zone.js') }}"></script>
+<script src="{{ static('scatl/node_modules/reflect-metadata/Reflect.js') }}"></script>
+
+<script src="{{ static('scatl/node_modules/systemjs/dist/system.src.js') }}"></script>
+<script src="{{ static('scatl/systemjs.conf.js') }}"></script>
+
+<link rel="stylesheet" type="text/css" href="{{ static('scatl/node_modules/nouislider/distribute/nouislider.min.css') }}" media="screen">
+
+<!--suppress JSUnusedLocalSymbols, JSValidateTypes -->
+<script>
+    window.DJANGO = {
+        // TODO remove `user`
+        user: {
+            isAuthenticated: {% if user.is_authenticated() %}true{% else %}false{% endif %},
+        },
+        priceRange: {
+            min: {{ product_price_min }},
+            max: {{ product_price_max }},
+        },
+        staticUrl: '{{ STATIC_URL }}',
+    }
+</script>
+
+<script>
+    function addBaseHref() {
+        let baseElem = document.createElement('base')
+        baseElem.href = '/'
+        document.head.appendChild(baseElem)
+    }
+    addBaseHref()
+
+
+    System.import('{{ static('scatl/app/main.js') }}')
+        .catch(err => {
+            console.error(err)
+        })
+</script>

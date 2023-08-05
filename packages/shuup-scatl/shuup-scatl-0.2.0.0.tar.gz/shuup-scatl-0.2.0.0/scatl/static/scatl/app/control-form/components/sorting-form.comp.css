@@ -1,0 +1,17 @@
+#sorting-block {
+  margin-bottom: 13px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #d7dde4; }
+  #sorting-block #heading {
+    display: flex;
+    margin-bottom: 5px; }
+  #sorting-block #list {
+    margin: 0;
+    padding-left: 1px; }
+    #sorting-block #list li {
+      list-style-type: none; }
+      #sorting-block #list li label {
+        display: flex;
+        margin: 0; }
+        #sorting-block #list li label input {
+          margin-right: 5px; }
