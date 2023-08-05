@@ -1,0 +1,47 @@
+# asyncqlio CircleCI configuration.
+
+# To add a new backend test, add a new job, and run tox with `tox -e py35-{...}, py36-{...}` and
+# so on.
+version: 2
+jobs:
+  "postgres-asyncpg":
+    docker:
+      # this image has python 3.4/3.5/3.6 etc all installed
+      - image: themattrix/tox
+        environment:
+          ASQL_DSN: "postgresql+asyncpg://asql@127.0.0.1/asqltest"
+
+      # this config uses postgres for configuration
+      - image: circleci/postgres:latest
+        environment:
+          POSTGRES_USER: asql
+          POSTGRES_DB: asqltest
+          POSTGRES_PASSWORD: ""
+
+    working_directory: ~/asyncqlio
+    steps:
+      - run:
+          name: Install git
+          command: apt update && apt install git -y
+
+      - checkout
+      - run:
+          name: Install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+
+      - run:
+          name: Wait for Postgres to be ready
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Run tests via tox
+          command: |
+            tox -e py35-postgres_asyncpg,py36-postgres_asyncpg
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - "postgres-asyncpg"
