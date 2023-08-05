@@ -1,0 +1,13 @@
+# Include the license file
+include LICENSE
+
+# Include the data files
+recursive-include shwirl *.*
+recursive-include shwirl/extern/vispy/* *.vert
+recursive-include shwirl/extern/vispy/* *.frag
+recursive-include shwirl/extern/vispy/* *.glsl
+recursive-include shwirl/extern/vispy/* *.png
+recursive-include shwirl/extern/vispy/* *.npy
+
+prune shwirl/docs/
+prune README.md
