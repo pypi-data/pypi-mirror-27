@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="rsvp.js"></script>
+    <script src="renderjs.js"></script>
+    <script src="gadget_jupyter_page.js"></script>
+
+  </head>
+
+  <body>
+      <script data-renderjs-configuration="application_title" type="text/x-renderjs-configuration">ERP5</script>
+      <script data-renderjs-configuration="action_view" type="text/x-renderjs-configuration">object_view</script>
+      <script data-renderjs-configuration="default_view_reference" type="text/x-renderjs-configuration">notebook_jio_view</script>
+      <script data-renderjs-configuration="hateoas_url" type="text/x-renderjs-configuration">hateoas/</script>
+ 
+      <div data-gadget-url="gadget_jio.html"
+          data-gadget-scope="setting_gadget"
+          data-gadget-sandbox="public"></div>
+
+      <div data-gadget-url="gadget_erp5_jio.html"
+          data-gadget-scope="jio_gadget"
+          data-gadget-sandbox="public"></div>
+          
+      <div data-gadget-url="gadget_jiocontents.html"
+          data-gadget-scope="jiocontents_gadget"
+          data-gadget-sandbox="public"
+          class="jiocontents_gadget"></div>
+
+    <div>Hello renderJS + Jupyter</div>
+  
+  </body>      
+</html>
