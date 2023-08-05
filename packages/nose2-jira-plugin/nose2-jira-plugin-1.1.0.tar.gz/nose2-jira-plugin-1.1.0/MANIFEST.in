@@ -1,0 +1,7 @@
+include README.md
+include LICENSE
+include CHANGELOG
+recursive-include docs *.inc *.py *.rst *.html *.js *.css
+global-exclude __pycache__
+global-exclude *~
+global-exclude *.pyc
