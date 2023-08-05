@@ -1,0 +1,16 @@
+declare var _pyfunc_add: (a: any, b: any) => any;
+declare var _pyfunc_all: (x: any) => boolean;
+declare var _pyfunc_contains: (a: any, b: any) => boolean;
+declare var _pyfunc_equals: (a: any, b: any) => any;
+declare var _pyfunc_instantiate: (ob: any, args: any) => void;
+declare var _pyfunc_mult: (a: any, b: any) => any;
+declare var _pyfunc_range: (start: any, end: any, step: any) => any[];
+declare var _pyfunc_truthy: (v: any) => any;
+declare var _pymeth_append: (x: any) => any;
+declare var _pymeth_get: (key: any, d: any) => any;
+declare var _pymeth_keys: () => any;
+declare var _pymeth_lstrip: (chars: any) => any;
+declare var _pymeth_remove: (x: any) => any;
+declare var _pymeth_repeat: (count: any) => any;
+declare var _pymeth_startswith: (x: any) => any;
+declare var Buffer: any, GlooObject: any, IndexBuffer: any, Program: any, Texture2D: any, Texture3DLike: any, VertexBuffer: any, __version__: any, check_error: any, console: Console;

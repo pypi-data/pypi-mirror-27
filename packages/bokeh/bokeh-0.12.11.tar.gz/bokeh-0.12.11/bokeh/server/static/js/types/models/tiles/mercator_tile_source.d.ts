@@ -1,0 +1,31 @@
+import { TileSource } from "./tile_source";
+export declare class MercatorTileSource extends TileSource {
+    initialize(options: any): any;
+    _computed_initial_resolution(): any;
+    is_valid_tile(x: any, y: any, z: any): boolean;
+    retain_children(reference_tile: any): (boolean | undefined)[];
+    retain_neighbors(reference_tile: any): (boolean | undefined)[];
+    retain_parents(reference_tile: any): boolean[];
+    get_resolution(level: any): number;
+    get_resolution_by_extent(extent: any, height: any, width: any): number[];
+    get_level_by_extent(extent: any, height: any, width: any): number | undefined;
+    get_closest_level_by_extent(extent: any, height: any, width: any): any;
+    snap_to_zoom(extent: any, height: any, width: any, level: any): any[];
+    tms_to_wmts(x: any, y: any, z: any): any[];
+    wmts_to_tms(x: any, y: any, z: any): any[];
+    pixels_to_meters(px: any, py: any, level: any): number[];
+    meters_to_pixels(mx: any, my: any, level: any): number[];
+    pixels_to_tile(px: any, py: any): number[];
+    pixels_to_raster(px: any, py: any, level: any): any[];
+    meters_to_tile(mx: any, my: any, level: any): number[];
+    get_tile_meter_bounds(tx: any, ty: any, level: any): number[] | undefined;
+    get_tile_geographic_bounds(tx: any, ty: any, level: any): any[];
+    get_tiles_by_extent(extent: any, level: any, tile_border?: number): any;
+    quadkey_to_tile_xyz(quadKey: any): any[];
+    tile_xyz_to_quadkey(x: any, y: any, z: any): string;
+    get_closest_parent_by_tile_xyz(x: any, y: any, z: any): any[];
+    normalize_xyz(x: any, y: any, z: any): any[];
+    denormalize_xyz(x: any, y: any, z: any, world_x: any): any[];
+    denormalize_meters(meters_x: any, meters_y: any, level: any, world_x: any): any[];
+    calculate_world_x_by_tile_xyz(x: any, y: any, z: any): number;
+}
