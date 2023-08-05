@@ -1,0 +1,19 @@
+language: python
+sudo: false
+python:
+    - 2.7
+    - 3.3
+    - 3.4
+    - 3.5
+    - 3.6
+    - nightly
+    - pypy
+    - pypy3
+install:
+    - pip install coverage coveralls
+script:
+    - coverage run --source=profilehooks test_profilehooks.py
+after_success:
+    - coveralls
+notifications:
+    email: false

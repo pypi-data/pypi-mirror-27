@@ -1,0 +1,9 @@
+include *.rst
+include .gitignore
+include LICENSE
+include MANIFEST.in
+include Makefile
+include test*.py
+include tox.ini
+include *.yml
+include .coveragerc
