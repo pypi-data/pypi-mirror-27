@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: pychemkin
+Version: 1.1.8
+Summary: Chemical Kinetics Library
+Home-page: https://github.com/cs207group4/cs207-FinalProject
+Author: CS207 Group4
+Author-email: zzy8200@gmail.com
+License: GNU General Public License v3 (GPLv3)
+Description-Content-Type: UNKNOWN
+Description: Python Chemical Kinetics Library
+        ==================================
+        
+        pychemkin is a Python 3 chemical kinetics library. The core functionality is to compute reaction rates of all species participating in a reaction system. New extended functionality now allows reaction rates and concentrations to be computed as a function of time and to be visualized, in order to facilitate understanding of the timescales upon which the system operates, the production yields of the system, and sensitivity to initial conditions. 
+        
+        Further documentation is in 'docs/pychemkin.pdf' within the source file.
+        
+Keywords: chemical kinetics
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
