@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+import sys
+
+import argparse
+from kooki.commands.kooki import KookiCommand
+from kooki.tools.output import Output
+
+if __name__ == '__main__':
+    try:
+        command = KookiCommand()
+        args = command.parser.parse_args()
+        args.callback(args)
+
+    except (KeyboardInterrupt, SystemExit):
+        pass
