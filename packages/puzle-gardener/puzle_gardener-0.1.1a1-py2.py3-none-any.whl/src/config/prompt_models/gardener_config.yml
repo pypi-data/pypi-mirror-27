@@ -1,0 +1,15 @@
+fields:
+    project_name:
+      required: true
+      text: "Project name: "
+    seed_name:
+      required: true
+      text: "The seed used for the generation: "
+    seed_location:
+      required: false
+      text: "The seed location: "
+      default: '~/.puzle-gardener/seeds'
+    destination:
+      required: false
+      text: "The location of the generated files: "
+      default: './dist'
