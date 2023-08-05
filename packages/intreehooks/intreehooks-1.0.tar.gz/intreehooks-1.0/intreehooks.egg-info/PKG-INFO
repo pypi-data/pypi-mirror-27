@@ -1,0 +1,32 @@
+Metadata-Version: 1.1
+Name: intreehooks
+Version: 1.0
+Summary: Load a PEP 517 backend from inside the source tree
+Home-page: https://github.com/takluyver/intreehooks
+Author: Thomas Kluyver
+Author-email: thomas@kluyver.me.uk
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Load a PEP 517 backend from within the source tree.
+        
+        In `PEP 517 <https://www.python.org/dev/peps/pep-0517/>`_, package building
+        backends are not loaded from the source of the package being built. This
+        prevents accidentally shadowing your build system, but some packages, like
+        build tools, want to act as their own backend.
+        
+        ``intreehooks`` is a shim to work around this, so that a source tree can be
+        built by itself. To use it, write a pyproject.toml like this:
+        
+        .. code-block:: ini
+        
+            [build-system]
+            requires = ["intreehooks"]  # + any other packages required to build
+            build-backend = "intreehooks:loader"
+        
+            [tool.intreehooks]
+            build-backend = "flit.buildapi"  # Import path of your real backend
+        
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
