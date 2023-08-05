@@ -1,0 +1,6 @@
+[console_scripts]
+initterms = terms.core.scripts.initterms:init_terms
+kbdaemon = terms.core.scripts.kbdaemon:main
+make_graph = terms.core.scripts.class_graph:main
+terms = terms.core.scripts.repl:repl
+
