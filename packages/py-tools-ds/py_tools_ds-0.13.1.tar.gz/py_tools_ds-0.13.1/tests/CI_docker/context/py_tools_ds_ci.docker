@@ -1,0 +1,10 @@
+FROM gms_base_centos:pinned_v0.1
+RUN yum update -y && \
+    yum install -y patch  # patch: conda skeleton will not work without: # https://stackoverflow.com/questions/40392161/building-conda-skeleton-from-pypi-package-throws-error
+
+# copy some needed stuff to /root
+COPY *.yml /root/
+
+RUN /bin/bash -i -c "\
+    source /root/miniconda3/bin/activate ; \
+    conda env update -n root -f /root/environment_py_tools_ds.yml"
