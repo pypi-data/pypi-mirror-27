@@ -1,0 +1,21 @@
+' static variable
+
+
+function counter(a as integer) as integer
+	static c as integer
+	if c = 0 then
+	    c = a
+	else
+	end if
+
+	c = c + 1
+	return c
+end function
+
+scope
+	dim res as integer
+	res = counter(25) 
+	print res;
+	res = counter(0) 
+	print res;
+end scope
