@@ -1,0 +1,62 @@
+Metadata-Version: 2.0
+Name: django-ajax-csrf
+Version: 1.0.2
+Summary: Django app - bundle csrf token additioner for JavaScript
+Home-page: https://github.com/nnsnodnb/django-ajax-csrf
+Author: nnsnodnb
+Author-email: ahr63_gej@me.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: django csrf staticfiles
+Platform: any
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: Django (>=1.7)
+
+django-ajax-csrf
+================
+
+.. image:: https://img.shields.io/pypi/v/django-ajax-csrf.svg
+   :target: https://pypi.python.org/pypi/django-ajax-csrf
+.. image:: https://img.shields.io/pypi/pyversions/django-ajax-csrf.svg
+   :target: https://pypi.python.org/pypi/django-ajax-csrf
+.. image:: https://img.shields.io/pypi/format/django-ajax-csrf.svg
+   :target: https://pypi.python.org/pypi/django-ajax-csrf
+.. image:: https://img.shields.io/pypi/l/django-ajax-csrf.svg
+   :target: https://pypi.python.org/pypi/django-ajax-csrf
+
+* Requires jQuery javascript library
+
+Installation
+------------
+
+.. code:: bash
+
+    $ pip install django-ajax-csrf
+
+.. code:: python
+
+    INSTALLED_APPS += (
+        'django_ajax',
+    )
+
+Usage::
+
+    {% load csrf_tags %}
+    {% include_ajax_csrf_token %}
+
+Authour
+-------
+
+nnsnodnb
+
+LICENSE
+-------
+
+Copyright (c) 2017 Yuya Oka Released under the MIT license (see `LICENSE <LICENSE>`__)
+
+
