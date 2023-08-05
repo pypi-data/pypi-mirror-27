@@ -1,0 +1,38 @@
+Metadata-Version: 2.0
+Name: nasalgeom
+Version: 1.0.0
+Summary: A free 3D upper respiratory tract geometry reconstruction software
+Home-page: http://www.nasalsystems.com
+Author: Jose Luis Cercos-Pita
+Author-email: jlcercos@gmail.com
+License: Affero-GPL v3
+Download-URL: https://gitlab.com/sanguinariojoe/nasal-geom.git
+Description-Content-Type: UNKNOWN
+Keywords: tomography nasal cavity
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Healthcare Industry
+Classifier: Topic :: Scientific/Engineering :: Medical Science Apps.
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.1
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: pydicom
+Requires-Dist: pyopencl
+Requires-Dist: pyopengl
+Requires-Dist: scikit-image
+Requires-Dist: scipy
+Requires-Dist: trimesh
+
+NASAL-Geom is a 3D upper respiratory tract geometry reconstruction software developed by NASAL Systems, and released as free software under the Affero-GPL v3 license. With this software you can load Computerized Tomography (CT) DICOM files and generate the associated 3D surfaces
+
+

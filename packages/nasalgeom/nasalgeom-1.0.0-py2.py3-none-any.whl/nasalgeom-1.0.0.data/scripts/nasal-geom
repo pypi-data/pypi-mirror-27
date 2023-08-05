@@ -1,0 +1,358 @@
+#!python
+# -*- coding: utf-8 -*-
+
+# --------------------------------------------------------------------------
+#
+#    Copyright 2016 Jose Luis Cercos-Pita
+#
+#    This file is part of NASAL-GEOM.
+#
+#    NASAL-GEOM is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    NASAL-GEOM is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# --------------------------------------------------------------------------
+
+import os
+import argparse
+import vtk
+import numpy as np
+from nasalgeom import helpers, dicom_io, mar, denoise, enhance, segmentation
+from nasalgeom import rhinometry, surface, stlfix, quality
+
+
+logo = '\n' \
+       ' ██╗   ██╗        ███═╗        ██████╗        ███═╗       ██╗\n' \
+       ' ████╗ ██║       ██╔██╚╗      ██╔════╝       ██╔██╚╗      ██║\n' \
+       ' ██║██╗██║ ██╗  ██╔╝ ██╚╗ ██╗ ╚██████╗ ██╗  ██╔╝ ██╚╗ ██╗ ██║\n' \
+       ' ██║ ████║ ╚═╝ █████████║ ╚═╝  ╚════██╗╚═╝ █████████║ ╚═╝ ██║\n' \
+       ' ██║   ██║     ██║    ██║      ██████╔╝    ██║    ██║     ██████╗\n' \
+       ' ╚═╝   ╚═╝     ╚═╝    ╚═╝      ╚═════╝     ╚═╝    ╚═╝     ╚═════╝\n' \
+       '\n' \
+       '                   http://www.nasalsystems.com\n' \
+       '                   ===========================\n'
+
+
+
+if __name__ == '__main__':
+    print(logo)
+    parser = argparse.ArgumentParser(
+        description='A free upper respiratory tract 3D model reconstruction ' \
+                    'software')
+    # Ask for the DICOM folder as a positional argument
+    parser.add_argument("DICOM_PATH",
+        help="Folder of the DICOM files (*.dcm). Optionally you can use also " \
+             "path of a VTI file")
+    parser.add_argument("-o", "--output",
+        type=str,
+        default='./',
+        help="Folder where the output STL files (and eventually the " \
+             "DICOM.vti file) should be stored")
+    parser.add_argument("--save-dicom",
+        action="store_true",
+        help="Save the loaded DICOM as a VTK Image data file called DICOM.vti")
+    parser.add_argument("-t", "--threads",
+        type=int,
+        help="Maximum number of threads to be used. If not specified, as " \
+             "threads as available cores will be used")
+    parser.add_argument("-d", "--debug",
+        action="store_true",
+        help="Save the imagery after each filter is applied. It is consuming " \
+             "a significant amount of resources, so it is recommended just " \
+             "for debugging purposes. The imagery is saved in the execution " \
+             "folder")
+
+    group = parser.add_argument_group('Metal Artifact Reduction',
+        "Metal implants produce a very characteristic artifacts in the CT " \
+        "images, which may ruin the reconstruction process. Metal Artifact " \
+        "Reduction is an algorithm which may significantly decrease the " \
+        "noise, improving therefore the results")
+    alternatives = group.add_mutually_exclusive_group()
+    alternatives.add_argument('--mar',
+        action="store_true",
+        help="Carry out a Metal Artifact Reduction filtering. Using this " \
+             "option just the slices where metal bodies are found will be" \
+             "filtered")
+    alternatives.add_argument('--mar-all',
+        action="store_true",
+        help="Carry out a Metal Artifact Reduction filtering. Using this " \
+             "option all the slices will be filtered, independently on " \
+             "wheter a metal body can be found or not. MAR algorithm can be " \
+             "very computational demanding, so this option is strongly not " \
+             "recommended")
+    group.add_argument('--mar-threshold',
+        type=float,
+        default=6000,
+        help="Threshold value to consider the pixel as metal body")
+    group.add_argument('--mar-resolution',
+        type=int,
+        help="Number of angular projections of each slice. The better " \
+             "resolution the less smoothed images will be obtained. However " \
+             "large resolutions will dramatically increase the " \
+             "computational cost. If a value is not provided, the dimensions " \
+             "of the original image will be used")
+    group.add_argument('--mar-smooth',
+        action="store_true",
+        help="In general MAR algorithm is able to produce results good " \
+             "enough to reconstruct the nasal cavity. However, some quite " \
+             "noisy CTs, or either where the metal artifacts are eventually " \
+             "too close to the air cavities, may result in artificial " \
+             "structures connected to the nasal cavity. This filter is " \
+             "applying a weighted gaussian smooth filter in the most " \
+             "affected areas of the image, as well as an addaptative " \
+             "luminosity correction")
+
+    group = parser.add_argument_group('Edge preserving smooth',
+        "CT images are often affected by a some level of noise. Even though " \
+        "the segmentation and reconstruction algorithm may deal with " \
+        "relatively low levels of noise, for noisy images it is much " \
+        "convenient to smooth it first. For Helical Computed Tomography the " \
+        "arguments '--smooth-factor 0.5 --smooth-median --smooth-gaussian' " \
+        "are recommended, while for Cone-Beam technology the arguments " \
+        "'--smooth-factor 1.0 --smooth-bilateral' would give better results")
+    group.add_argument('--smooth-factor',
+        type=float,
+        help="Smooth image multiplier factor, f, i.e. the proportional " \
+             "amount of smoothed image in the final result: " \
+             "'result = (1 - f) * orig + f * smooth'")
+    group.add_argument('--smooth-median',
+        action="store_true",
+        help="Apply a median filter (see " \
+             "https://en.wikipedia.org/wiki/Median_filter). This option is " \
+             "often combined with --smooth-gaussian")
+    group.add_argument('--smooth-gaussian',
+        action="store_true",
+        help="Apply a Gaussian filter (see " \
+             "https://en.wikipedia.org/wiki/Gaussian_blur). In order to add " \
+             "edge preserving capabilities, a Laplacian guided edge " \
+             "detection is used to mask the areas to become smoothed")
+    group.add_argument('--smooth-bilateral',
+        action="store_true",
+        help="Apply a Bilateral filter (see " \
+             "https://en.wikipedia.org/wiki/Bilateral_filter). Bilateral " \
+             "filter has become popular because it may return similar " \
+             "results than Perona-Malik, by a fraction of its cost. As a " \
+             "drawback, it needs a significantly bigger interpolation " \
+             "window, and therefore larger memory requirements. This tool is " \
+             "accelerated with OpenCL, even though the system may fallback " \
+             "to a extremely slow CPU compatibility mode")
+    group.add_argument('--smooth-maiseli',
+        action="store_true",
+        help="Apply a Maiseli filter (see " \
+             "http://www.sciencedirect.com/science/article/pii/S0923596515000363" \
+             "and https://en.wikipedia.org/wiki/Anisotropic_diffusion). This " \
+             "filter is an improved version of the traditional Perona-Malik " \
+             "one. This tool is accelerated with OpenCL")
+
+    group = parser.add_argument_group('Image enhancing',
+        "The CT image itself is invariably affected by blurring, which is " \
+        "increased by Metal Artfact Reduction and Smooth filters. Image " \
+        "enhancing consists into sharpening the borders, producing as a " \
+        "result a polarized image, where the radiosity below 0.5 is " \
+        "associated to air, while radiosity above 0.5 can be considered a " \
+        "tissue (or bone)")
+    group.add_argument('--enhance-air',
+        type=float,
+        default=-1000,
+        help="Air thresholding value. All the points with a radiosity lower " \
+             "or equal to this value, will be considered air. This value is " \
+             "considered just a rough first approximation. The pixels with " \
+             "a radiosity bigger than this value, but lower than " \
+             "--enhancing-air value, will be processed by the enhancing " \
+             "algorithm to determine whether they should be considered air " \
+             "or not. The default value returns optimum results for Helical " \
+             "Computed Tomographies, but not for Cone-Beam ones (see " \
+             "http://www.birpublications.org/doi/full/10.1259/dmfr/19603304")
+    group.add_argument('--enhance-tissue',
+        type=float,
+        default=-100,
+        help="Tissue thresholding value. All the points with a radiosity " \
+             "bigger or equal to this value, will be considered tissue (or " \
+             "bone). This value is considered just a rough first " \
+             "approximation. The pixels with a radiosity lower than this " \
+             "value, but bigger than --enhancing-air one, will be processed " \
+             "by the enhancing algorithm to determine whether they should be " \
+             "considered air or not. The default value returns optimum " \
+             "results for Helical Computed Tomographies, but not for " \
+             "Cone-Beam ones (see " \
+             "http://www.birpublications.org/doi/full/10.1259/dmfr/19603304")
+
+    group = parser.add_argument_group('Rhinometry',
+        "Carry out a rhinometry, i.e. a list of the coronal slice areas. " \
+        "Such data can be useful for the nasal obstructions diagnosis. The " \
+        "results may significantly differ from the acoustic rhinometries, " \
+        "not only due to the well known discrepancies at the posterior part " \
+        "of the nasal cavity, but also because the methodology, which " \
+        "requires tilted slices up to the nasal valve, and along the choana " \
+        "(see for instance " \
+        "Tarhan, E., Coskun, M., Cakmak, O., Çelik, H., & Cankurtaran, M. " \
+        "(2005). Acoustic rhinometry in humans: accuracy of nasal passage " \
+        "area estimates, and ability to quantify paranasal sinus volume and " \
+        "ostium size. Journal of applied physiology, 99(2), 616-623).")
+    group.add_argument('--rhinometry-data',
+        action="store_true",
+        help="Compute and save the Rhinometry data in a csv file called " \
+             "'rhinometry.csv'.")
+    group.add_argument('--rhinometry-graph',
+        action="store_true",
+        help="Compute and plot the Rhinometry data in a png file called " \
+             "'rhinometry.png'. This option can be used alone or combined " \
+             "with --rhinometry-data")
+
+    group = parser.add_argument_group('Surface reconstruction',
+        "Actually, the surface reconstruction is not nothing else but the " \
+        "smoothing process of the already available voxelization. However, " \
+        "in this specific case the surface should be split into nasal " \
+        "cavity and background. The process can be summarize as follows: " \
+        "First, The whole geometry surface is built using a marching cubes " \
+        "technique. Second, The resulting surface is smoothed. Third, the " \
+        "information regarding each polygon is belonging whether the nasal " \
+        "cavity or the background is sampled. Finally, the surface is split")
+    group.add_argument('--surface-decimation',
+        type=float,
+        default=0.5,
+        help="Rate of polygons to become kept from the raw marching cubes " \
+             "reconstructed surface. The bigger value the finer resolution " \
+             "is achieved")
+    group.add_argument('--surface-smooth-iters',
+        type=int,
+        default=15,
+        help="Iterations to be carried out by the surface smoothing algorithm")
+    group.add_argument('--surface-smooth-size',
+        type=int,
+        default=0.001,
+        help="Smoothing algorithm window size. The lower the finer details " \
+             "are smoothed")
+
+    group = parser.add_argument_group('Surfaces patching',
+        "The marching cubes & smooth & clip methodology applied may result " \
+        "in some errors along the generated surfaces: Unconnected polygons, " \
+        "blobs (small useless watertight surfaces) and holes. Also, in some " \
+        "contexts it would be convenient to have the nostrils and pharynx " \
+        "surfaces to close the nasal cavity (wall.stl)")
+    group.add_argument('--patch-wall',
+        action="store_true",
+        help="Patch the nasal cavity surface. It is also generating the " \
+             "in_left.stl, in_right.stl and out.stl surfaces (both nostrils " \
+             "and pharynx respectively). Probably you wanna activate this " \
+             "option")
+    group.add_argument('--patch-improve-nostrils',
+        action="store_true",
+        help="As well as the other patches (including out.wall), the " \
+             "nostrils are meshed using the amazing GLU tesselation tools. " \
+             "However, such tesselation is creating simple triangulations " \
+             "which may intersect the nasal cavity itself. Along this line, "
+             "the mesh of the nostril can be slightly improved using a "
+             "radial meshing technique. This option is strongly recommended. " \
+             "Activating this option, --patch-wall will be activated as well")
+    group.add_argument('--patch-face',
+        action="store_true",
+        help="Patch the face surface. This option is in general not " \
+             "recommended")
+
+    group = parser.add_argument_group('Quality evaluation',
+        "Evaluate the quality of the segmentation and 3D geometry, using " \
+        "unsupervised methods")
+    group.add_argument('--quality-segmentation',
+        action="store_true",
+        help="Evaluate Dice Similarity Coefficient (see L. R. Dice, 'Measures " \
+             "of the amount of ecologic association between species', " \
+             "Ecology, vol. 26, pp. 297-302, 1945) and Jaccard (also known " \
+             "as Tannimoto) coefficient (see P. Jaccard, Nouvelles " \
+             "recherches sur la distribution florale', Bulletin de la " \
+             "Societe Vaudoise des Sciences Naturelles, vol. 44, " \
+             "pp. 223-270, 1908).")
+
+    # Parse the arguments
+    args = parser.parse_args()
+
+    # Load the dicom file
+    dicom_output = None if not args.save_dicom else os.path.join(args.output,
+                                                                 'DICOM.vti')
+    dims, spacing, img = dicom_io.load(args.DICOM_PATH, dicom_output)
+    if args.debug:
+        helpers.print_dicom(helpers.vtkImageToNumPy(img),
+                            'DBG_000_ORIG',
+                            cmin=-1000.0,
+                            cmax=1000.0)
+
+    if args.quality_segmentation:
+        orig = helpers.vtkImageToNumPy(img)
+
+    # Denoise the images
+    if args.mar or args.mar_all:
+        img = mar.mar(img, args)
+    if args.smooth_factor is not None and args.smooth_factor > 0:
+        img = denoise.denoise(img, args)
+
+    # Segmentate
+    img = enhance.enhance(img, args)
+    cavity, bck, out, in_right, in_left = segmentation.segmentation(img, args)
+
+    # Evaluate the quality
+    if args.quality_segmentation:
+        print("Quality...")
+        segmentated = helpers.vtkImageToNumPy(cavity) + \
+                      helpers.vtkImageToNumPy(bck)
+        J, D = quality.segmentation(orig, segmentated)
+        print("J = {}, D = {}".format(J, D))
+        f = open(os.path.join(args.output, "quality.dat"), 'w')
+        f.write('{} {}\n'.format(J, D))
+        f.close()
+
+    # Rhinometry
+    rhinometry.rhinometry(cavity, in_right, in_left, args)
+
+    # Reconstruct the 3D model
+    wall, face = surface.surface(cavity, bck, args)
+
+    # Save the surfaces
+    print('Writing wall.stl...')
+    writer = vtk.vtkSTLWriter()
+    if vtk.VTK_MAJOR_VERSION <= 5:
+        writer.SetInput(wall)
+    else:
+        writer.SetInputData(wall)
+    writer.SetFileTypeToBinary()
+    writer.SetFileName(os.path.join(args.output, "wall.stl"))
+    writer.Write()
+
+    print('Writing face.stl...')
+    writer = vtk.vtkSTLWriter()
+    if vtk.VTK_MAJOR_VERSION <= 5:
+        writer.SetInput(face)
+    else:
+        writer.SetInputData(face)
+    writer.SetFileTypeToBinary()
+    writer.SetFileName(os.path.join(args.output, "face.stl"))
+    writer.Write()
+
+    print('Writing the centroids and bounds of the nostrils and pharynx...')
+    spacing = img.GetSpacing()
+    f = open(os.path.join(args.output, "bounds.dat"), 'w')
+    for bd in (out, in_right, in_left):
+        hits = np.nonzero(bd)
+        if not len(hits[0]):
+            f.write('None\n')
+            continue
+        # Centroid
+        for i in range(3):
+            coord = 0.5 * (np.min(hits[i]) + np.max(hits[i])) * spacing[i]
+            f.write('{} '.format(coord))
+        # Bounds
+        for i in range(3):
+            f.write('{} {} '.format((np.min(hits[i]) - 1.0) * spacing[i],
+                                    (np.max(hits[i]) + 1.0) * spacing[i]))
+        f.write('\n')
+    f.close()
+
+    stlfix.fix(args)
