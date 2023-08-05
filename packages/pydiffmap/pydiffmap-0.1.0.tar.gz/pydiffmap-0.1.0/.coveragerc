@@ -1,0 +1,16 @@
+[paths]
+source =
+   src/pydiffmap
+   */site-packages/pydiffmap
+
+[run]
+branch = true
+source =
+    pydiffmap
+    tests
+parallel = true
+
+[report]
+show_missing = true
+precision = 2
+omit = *migrations*

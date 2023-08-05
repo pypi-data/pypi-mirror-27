@@ -1,0 +1,78 @@
+.bumpversion.cfg
+.coveragerc
+.editorconfig
+.travis.yml
+ACKNOWLEDGEMENTS.rst
+AUTHORS.rst
+CHANGELOG.rst
+CONTRIBUTING.rst
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+tox.ini
+ci/bootstrap.py
+ci/templates/.travis.yml
+docs/Makefile
+docs/acknowledgements.rst
+docs/authors.rst
+docs/changelog.rst
+docs/conf.py
+docs/contributing.rst
+docs/index.rst
+docs/installation.rst
+docs/readme.rst
+docs/requirements.txt
+docs/spelling_wordlist.txt
+docs/theory.rst
+docs/usage.rst
+docs/jupyter notebook tutorials/index.rst
+docs/jupyter notebook tutorials/Four_Wells/Four_Wells.rst
+docs/jupyter notebook tutorials/Four_Wells/output_11_0.png
+docs/jupyter notebook tutorials/Four_Wells/output_15_0.png
+docs/jupyter notebook tutorials/Four_Wells/output_18_0.png
+docs/jupyter notebook tutorials/Four_Wells/output_21_0.png
+docs/jupyter notebook tutorials/Four_Wells/output_26_0.png
+docs/jupyter notebook tutorials/Four_Wells/output_4_0.png
+docs/jupyter notebook tutorials/Four_Wells/output_8_0.png
+docs/jupyter notebook tutorials/Metrics/Metrics.rst
+docs/jupyter notebook tutorials/Metrics/output_10_0.png
+docs/jupyter notebook tutorials/Metrics/output_14_0.png
+docs/jupyter notebook tutorials/Metrics/output_19_0.png
+docs/jupyter notebook tutorials/Metrics/output_6_0.png
+docs/jupyter notebook tutorials/Spherical_Harmonics/Spherical_Harmonics.rst
+docs/jupyter notebook tutorials/Spherical_Harmonics/output_10_0.png
+docs/jupyter notebook tutorials/Spherical_Harmonics/output_15_1.png
+docs/jupyter notebook tutorials/Spherical_Harmonics/output_9_0.png
+docs/jupyter notebook tutorials/Swiss_Roll/Swiss_Roll.rst
+docs/jupyter notebook tutorials/Swiss_Roll/output_10_0.png
+docs/jupyter notebook tutorials/Swiss_Roll/output_10_1.png
+docs/jupyter notebook tutorials/Swiss_Roll/output_12_1.png
+docs/jupyter notebook tutorials/Swiss_Roll/output_8_0.png
+docs/jupyter notebook tutorials/Swiss_Roll/output_8_1.png
+docs/reference/diffusion_map.rst
+docs/reference/index.rst
+docs/reference/kernel.rst
+docs/reference/visualization.rst
+examples/Four_Wells.ipynb
+examples/Metrics.ipynb
+examples/Spherical_Harmonics.ipynb
+examples/Swiss_Roll.ipynb
+examples/Data/4wells_traj.npy
+examples/Data/dimer_energy.npy
+examples/Data/dimer_trajectory.npy
+src/pydiffmap/__init__.py
+src/pydiffmap/diffusion_map.py
+src/pydiffmap/kernel.py
+src/pydiffmap/visualization.py
+src/pydiffmap.egg-info/PKG-INFO
+src/pydiffmap.egg-info/SOURCES.txt
+src/pydiffmap.egg-info/dependency_links.txt
+src/pydiffmap.egg-info/not-zip-safe
+src/pydiffmap.egg-info/requires.txt
+src/pydiffmap.egg-info/top_level.txt
+tests/conftest.py
+tests/test_diffusionmap.py
+tests/test_kernel.py
+tests/test_visualization.py
