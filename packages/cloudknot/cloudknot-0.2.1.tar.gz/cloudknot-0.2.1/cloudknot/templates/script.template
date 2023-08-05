@@ -1,0 +1,63 @@
+import boto3
+import cloudpickle
+import os
+import pickle
+from argparse import ArgumentParser
+from functools import wraps
+
+
+def pickle_to_s3(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        s3 = boto3.client("s3")
+        bucket = os.environ.get("CLOUDKNOT_JOBS_S3_BUCKET")
+        key = '/'.join([
+            'cloudknot.jobs',
+            os.environ.get("CLOUDKNOT_S3_JOBDEF_KEY"),
+            os.environ.get("AWS_BATCH_JOB_ID"),
+            '{0:3d}'.format(int(os.environ.get("AWS_BATCH_JOB_ATTEMPT"))),
+            'output.pickle'
+        ])
+        pickled_result = cloudpickle.dumps(f(*args, **kwargs))
+        s3.put_object(Bucket=bucket, Body=pickled_result, Key=key)
+
+    return wrapper
+
+
+@pickle_to_s3
+${func_source}
+
+if __name__ == "__main__":
+    description = ('Download input from an S3 bucket and provide that input '
+                   'to our function. On return put output in an S3 bucket.')
+
+    parser = ArgumentParser(description=description)
+
+    parser.add_argument(
+        'bucket', metavar='bucket', type=str,
+        help='The S3 bucket for pulling input and pushing output.'
+    )
+
+    parser.add_argument(
+        '--starmap', action='store_true',
+        help='Assume input has already been grouped into a single tuple.'
+    )
+
+    args = parser.parse_args()
+
+    s3 = boto3.client('s3')
+    bucket = args.bucket
+    key = '/'.join([
+        'cloudknot.jobs',
+        os.environ.get("CLOUDKNOT_S3_JOBDEF_KEY"),
+        os.environ.get("AWS_BATCH_JOB_ID"),
+        'input.pickle'
+    ])
+
+    response = s3.get_object(Bucket=bucket, Key=key)
+    input = pickle.loads(response.get('Body').read())
+
+    if args.starmap:
+        ${func_name}(*input)
+    else:
+        ${func_name}(input)
