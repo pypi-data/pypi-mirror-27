@@ -1,0 +1,11 @@
+language: python
+python:
+    - "3.5"
+before_install:
+    - pip install pytest pytest-cov
+    - pip install coveralls
+    - pip install matplotlib
+script:
+    - py.test
+after_success:
+    - coveralls
