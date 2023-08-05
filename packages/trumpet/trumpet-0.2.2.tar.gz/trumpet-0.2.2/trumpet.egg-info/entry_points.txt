@@ -1,0 +1,6 @@
+[console_scripts]
+initialize_trumpet_db = trumpet.scripts.initializedb:main
+
+[paste.app_factory]
+main = trumpet:main
+
