@@ -1,0 +1,18 @@
+include setup.py
+include *.cfg
+include *.rst
+include LICENSE
+include CONTRIBUTING
+include requirements.txt
+include tox.ini
+include conda/*
+
+recursive-include code *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * cov_*
+recursive-exclude * *.o
+recursive-exclude * *.npy
+recursive-exclude * *.gitignore
+
+recursive-include docs *.pdf *.rst conf.py Makefile make.bat
