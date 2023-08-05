@@ -1,0 +1,60 @@
+Valection - Sampler for verification (version 1.0.1)
+==================================================
+
+Description
+-----------
+
+This is a binding for the valection C library and supports C version 1.0.0.
+
+Valection can be used in various ways to sample the outputs of competing algorithims or
+parameterizations, and fairly assess their performance against each other.
+
+Installation
+-----------
+Change directory to to top of the package and run `python setup.py install`.
+You may want to do this with a virtualenv activated.
+
+Of course, for testing it is also possible to simply add the package to the python path without installing it.
+
+    import sys; sys.path.append("/path/to/this/package")
+
+Usage
+------
+
+There are six selection methods available through six functions. They all take the following arguments:
+
+- **budget**: an integer specifying how many candidates to select
+
+- **infile**: a path to a file which contains the calls from all callers. 
+
+The infile should be formatted with a tab separating the caller and call on each line
+
+caller1 name\ta call this caller made
+caller2 name\ta call this caller made
+
+e.g.
+
+magnifying glass    chr1 576834
+magnifying glass    chr1 6878924
+eye dropper chr1 496267
+eye dropper chr1 6878924
+
+Note that the call can contain a tab, but the caller may not.
+
+- **outfile**: a path to a filename where the calls should be outputted
+
+- **seed** (optional): an integer to seed the random number generator with (used to randomize sampling) 
+
+    from valection import *
+    
+    # Run the sampling to select 10 candidates
+    run_equal_per_caller(10, "/home/me/calls.valec", "/home/me/selections.txt", 50)
+
+The functions are named as follows:
+
+run_directed_sampling
+run_random_sampling
+run_equal_per_caller
+run_equal_per_overlap
+run_increasing_with_overlap
+run_decreasing_with_overlap
