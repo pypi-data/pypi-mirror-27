@@ -1,0 +1,60 @@
+CHANGES
+=======
+
+2.0.0
+-----
+
+* Switch to CodeCov
+* Switch from MIT to APL2 license
+* Drop Python 2 and Django <1.11 support
+* Switch README to reStructuredText
+* Switch release to pbr
+* Unfreeze development dependencies
+* Update jinja2 from 2.9.6 to 2.10
+* Update pytz from 2017.2 to 2017.3
+* Update pep8 from 1.7.0 to 1.7.1
+* Update sphinx from 1.6.4 to 1.6.5
+* Update flake8 from 3.4.1 to 3.5.0
+* Update sphinxcontrib-spelling from 4.0.0 to 4.0.1
+* Update sphinxcontrib-spelling from 2.3.0 to 4.0.0
+* Update pydocstyle from 2.1.0 to 2.1.1
+* Update pydocstyle from 2.0.0 to 2.1.0
+* Update pytest from 3.2.2 to 3.2.3 (#90)
+* Update tox from 2.8.2 to 2.9.1
+* Update pip-tools from 1.9.0 to 1.10.1
+* Update sphinx from 1.6.3 to 1.6.4
+* Update six from 1.10.0 to 1.11.0
+* Update babel from 2.5.0 to 2.5.1
+* Update tox from 2.8.1 to 2.8.2
+* Update pytest from 3.2.1 to 3.2.2
+* Update pluggy from 0.5.1 to 0.5.2
+* Update pluggy from 0.4.0 to 0.5.1
+* Update tox from 2.7.0 to 2.8.1
+* Update babel from 2.4.0 to 2.5.0
+* Update pytest from 3.2.0 to 3.2.1
+* Update docutils from 0.13.1 to 0.14
+* Update pytest from 3.1.3 to 3.2.0
+* Update flake8 from 3.3.0 to 3.4.1
+* Update pyenchant from 1.6.10 to 1.6.11
+* Update pyenchant from 1.6.9 to 1.6.10
+* Update pyenchant from 1.6.8 to 1.6.9
+* Update pytest from 3.1.2 to 3.1.3
+* Update sphinx from 1.6.2 to 1.6.3
+* Update pytest from 3.1.1 to 3.1.2
+* Update py from 1.4.33 to 1.4.34
+* Update isort from 4.2.13 to 4.2.15
+* Fix isort
+* Update isort from 4.2.5 to 4.2.13
+* Update pytest from 3.1.0 to 3.1.1
+* Update sphinx from 1.5.6 to 1.6.2
+* Update pytest from 3.0.7 to 3.1.0
+* Update sphinx from 1.5.5 to 1.5.6
+
+1.0.1
+-----
+
+* Bump version to 1.0.1
+* Fix line length and style warnings
+* reverse() was moved to django.urls
+* Include application namespace for Django 2 support
+* Rename pytest section in setup.cfg
