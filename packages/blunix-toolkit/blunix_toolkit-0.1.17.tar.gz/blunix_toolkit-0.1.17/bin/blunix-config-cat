@@ -1,0 +1,16 @@
+#!/usr/bin/env python2.7
+# -*- encoding: utf-8 -*-
+
+from blunix_toolkit import config
+
+
+def main():
+    with open(config.config_file()) as cf:
+        for line in cf.readlines():
+            if line.strip() == '' or line.strip().startswith('#'):
+                continue
+            print line.rstrip()
+
+
+if __name__ == '__main__':
+    main()
