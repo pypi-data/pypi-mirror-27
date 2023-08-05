@@ -1,0 +1,68 @@
+CHANGES
+=======
+
+2.0.0
+-----
+
+* Fix typos
+* Drop Python 2 support
+* Switch to CodeCov
+* Unfreeze development dependencies
+* Switch README to reStructuredText
+* Switch releases to pbr
+* Move PyTest config to setup.cfg file
+* Fix pydocstyle config, remove  dep from setup
+* Update pytest to 3.2.5, remove stale \`py\` dependency
+* Update pytest from 3.2.2 to 3.2.3
+* Update pytest from 3.2.1 to 3.2.2
+* Add linter config (#22)
+* Update pytest from 3.2.0 to 3.2.1
+* Update pytest from 3.1.3 to 3.2.0
+* Update pyenchant from 1.6.10 to 1.6.11
+* Update pyenchant from 1.6.9 to 1.6.10
+* Update pyenchant from 1.6.8 to 1.6.9
+* Update pytest from 3.1.2 to 3.1.3
+
+1.0.5
+-----
+
+* Bump version number
+* Make list of languages not dialects
+* Update pytest from 3.1.1 to 3.1.2
+* Update py from 1.4.33 to 1.4.34
+* Update pytest from 3.1.0 to 3.1.1
+* Update pytest from 3.0.7 to 3.1.0
+* Update py from 1.4.32 to 1.4.33
+* Set theme jekyll-theme-cayman
+* Update pytest from 3.0.6 to 3.0.7
+
+1.0.4
+-----
+
+* Fix install issue, defer imports
+* Add tag based auto deploys
+* Update pytest from 3.0.5 to 3.0.6
+* [requires.io] dependency update
+* [requires.io] dependency update on master branch (#15)
+* [requires.io] dependency update
+* [requires.io] dependency update (#13)
+* [requires.io] dependency update (#12)
+* [requires.io] dependency update (#11)
+* [requires.io] dependency update (#10)
+* [requires.io] dependency update (#9)
+* [requires.io] dependency update on master branch (#8)
+* [requires.io] dependency update (#7)
+* [requires.io] dependency update (#6)
+* fix package loading
+* bump version and release
+* [requires.io] dependency update
+* Fixes import for setuptools packaging
+
+1.0.0
+-----
+
+* Fixes OSX installation documentation
+* Adds spell checking
+* fix wrong version badge
+* fix travis status image
+* bump version
