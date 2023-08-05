@@ -1,0 +1,9 @@
+aiohttp   >=2.3.0, <3
+click     ~=6.7
+pydantic  ==0.4
+SQLAlchemy>=1.1.14,<2
+texttable >=1.0.0, <2
+yarl      >=0.13.0,<1
+
+[uvloop]
+uvloop>=0.8.1
