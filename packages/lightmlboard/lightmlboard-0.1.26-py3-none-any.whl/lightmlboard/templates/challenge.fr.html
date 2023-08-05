@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+<head>
+<link TYPE="text/css" href="{{style}}" rel="stylesheet"/>
+<title>LightMLBoard</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link rel="shortcut icon" href="{{icon}}" />
+<meta content="" name="description" />
+</head>
+<body id="css-zen-garden">
+
+<div class="page-wrapper">
+
+        <section class="intro" id="zen-intro">
+            <header role="banner">
+                <h1>{{title}}</h1>
+                <p><img src="{{image}}" /></p>
+            </header>
+
+            <div class="summary" id="zen-summary" role="article">
+                <h2>{{subtitle}}</h2>
+                <p>{ % raw description % }</p>
+            </div>
+            
+            <div class="preamble" id="zen-preamble" role="article">
+                <p>{ % raw description2 % }</p>
+            </div>            
+        </section>
+
+        <div class="supporting" id="zen-supporting" role="main">
+            <div class="explanation" id="zen-explanation" role="article">
+                <h2>{{cpt.name}}</h2>
+                <p>{{cpt.description}}</p>
+                <p>La métrique est {{cpt.metric}}.</p>
+                <p>
+                {% raw results.to_html() %}
+                </p>
+            </div>
+
+            <footer>
+                <p><a href="http://www.xavierdupre.fr" class="zen-validate-html">xavierdupre.fr</a></p>
+            </footer>
+
+        </div>
+
+        <aside class="sidebar" role="complementary">
+            <div class="wrapper">
+                <div class="design-selection" id="design-selection">
+                    <nav role="navigation">
+                        <p class="cookies"><i>Le site utilise des cookies.</i></p>
+                        <p class="userclass"><i>{{ current_user['user'].strip('"') }}</i>
+                            <a href="/logout">logout</a></p>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+</div>
+</body>
+</html>
