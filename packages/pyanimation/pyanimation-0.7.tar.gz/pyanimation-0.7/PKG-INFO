@@ -1,0 +1,50 @@
+Metadata-Version: 1.1
+Name: pyanimation
+Version: 0.7
+Summary: A pygame animation package
+Home-page: https://github.com/estevaofon/pyanimation
+Author: Estevao Fonseca
+Author-email: estevaopfon@gmail.com
+License: MIT
+Description: Pyanimation
+        ===========
+        A python module to easily create animations in pygame
+        
+        .. image:: https://raw.githubusercontent.com/estevaofon/pyanimation/master/examples/images/spritesheet.png
+        
+        Setup
+        -----
+        
+        .. code-block:: bash
+        
+            $ pip install pyanimation
+        
+        Code sample
+        -----------
+        
+        .. code-block:: python
+        
+            girl = Animation("images/spritesheet.png")
+            girl.create_animation(0, 0, 125, 125, "run")
+            screen.blit(girl.update_surface(), (girl.x, girl.y))
+        
+        Look in the example folder for complete examples.
+        
+        .. image:: https://raw.githubusercontent.com/estevaofon/pyanimation/master/examples/images/showcase.gif
+        
+        Quick Guide
+        -----------
+        
+        `Tutorial - Portuguese <https://github.com/estevaofon/pyanimation/blob/master/docs/pt/index.rst>`_
+        
+Keywords: pygame,animation,pyanimation
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
