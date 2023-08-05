@@ -1,0 +1,34 @@
+Metadata-Version: 1.1
+Name: pyobjc-framework-PubSub
+Version: 4.1
+Summary: Wrappers for the framework PubSub on macOS
+Home-page: https://bitbucket.org/ronaldoussoren/pyobjc
+Author: Ronald Oussoren
+Author-email: pyobjc-dev@lists.sourceforge.net
+License: MIT License
+Description-Content-Type: text/x-rst; charset=UTF-8
+Description: 
+        Wrappers for the "PubSub" framework on macOS 10.5 or later.  This framework
+        offers developers a way to subscribe to web feeds (RSS, Atom) from their
+        applications.
+        
+        These wrappers don't include documentation, please check Apple's documention
+        for information on how to use this framework and PyObjC's documentation
+        for general tips and tricks regarding the translation between Python
+        and (Objective-)C frameworks
+        
+        Note that this framework is deprecated in OSX 10.9
+        
+        
+        Project links
+        -------------
+        
+        * `Documentation <https://pyobjc.readthedocs.io/en/latest/>`_
+        
+        * `Issue Tracker <https://bitbucket.org/ronaldoussoren/pyobjc/issues?status=new&status=open>`_
+        
+        * `Repository <https://bitbucket.org/ronaldoussoren/pyobjc/>`_
+        
+        
+Keywords: PyObjC,PubSub
+Platform: MacOS X (>=10.5)
