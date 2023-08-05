@@ -1,0 +1,28 @@
+Metadata-Version: 2.0
+Name: opsworks-json
+Version: 0.2.3
+Summary: A sample Python project
+Home-page: https://github.com/APSL/aws-custom-json-manager
+Author: APSL
+Author-email: engineering@apsl.net
+License: BSD 2-Clause
+Keywords: amazon aws opsworks custom json manager
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: boto3 (>=1.2.2)
+Requires-Dist: docopt (>=0.6.2)
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+
+A tool for managing AWS OpsWorks Custom JSON via GIT.
+
+
