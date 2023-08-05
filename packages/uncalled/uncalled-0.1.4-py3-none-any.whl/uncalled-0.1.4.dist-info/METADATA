@@ -1,0 +1,47 @@
+Metadata-Version: 2.0
+Name: uncalled
+Version: 0.1.4
+Summary: Find unused functions in Python projects
+Home-page: https://github.com/elazarg/uncalled
+Author: Elazar Gershuni
+Author-email: elazarg@gmail.com
+License: GNU
+Description-Content-Type: UNKNOWN
+Keywords: linting quality
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Quality Assurance
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.4
+Provides-Extra: dev
+Provides-Extra: test
+
+``uncalled``
+============
+
+Find unused functions in Python projects.
+
+
+This tool uses either regular expressions (the default) or AST traversal.
+The regular expressions are *fast* and has surprisingly few false-positives.
+To further reduce false positives, there is a combined mode ``both``.
+
+
+Usage
+-----
+
+::
+
+    $ uncalled path/to/project
+
+for more options, see ``uncalled --help``
+
+
+`vulture <https://pypi.python.org/pypi/vulture>`_ is a similar package.
+
+
