@@ -1,0 +1,60 @@
+Metadata-Version: 1.1
+Name: tapioca-twitter
+Version: 0.8.3
+Summary: Twitter API wrapper using tapioca
+Home-page: https://github.com/vintasoftware/tapioca-twitter
+Author: Filipe Ximenes
+Author-email: filipeximenes@gmail.com
+License: BSD
+Description: Tapioca Twitter
+        ===============
+        
+        Instalation
+        -----------
+        
+        ::
+        
+            pip install tapioca-twitter
+        
+        Documentation
+        -------------
+        
+        .. code:: python
+        
+            from tapioca_twitter import Twitter
+        
+            api = Twitter(
+                api_key='{your-api-id}',
+                api_secret='{your-api-secret}',
+                access_token='{your-access-token}',
+                access_token_secret='{your-access-token-secret}',
+                )
+        
+        Serialization
+        ~~~~~~~~~~~~~
+        
+        -  datetime
+        -  Decimal
+        
+        Deseralization
+        ~~~~~~~~~~~~~~
+        
+        -  datetime
+        -  Decimal
+        
+        More
+        ----
+        
+        -  Learn how Tapioca works
+           `here <http://tapioca-wrapper.readthedocs.org/en/stable/quickstart.html>`__
+        -  Explore this package using iPython
+        -  Have fun!
+        
+Keywords: tapioca_twitter
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
