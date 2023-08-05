@@ -1,0 +1,16 @@
+//
+// Unittests for the main OPAL router
+//
+describe('Routes', function() {
+    var $route;
+
+    beforeEach(function(){
+        module('opal');
+        inject(function($injector){
+          $route = $injector.get('$route');
+        });
+
+    });
+
+
+});

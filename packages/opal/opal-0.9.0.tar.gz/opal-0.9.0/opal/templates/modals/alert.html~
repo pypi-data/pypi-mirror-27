@@ -1,0 +1,9 @@
+{% extends 'base_templates/modal_base.html' %}
+{% block icon_name %}fa fa-warning{% endblock %}
+{% block title %}[[ title ]]{% endblock %}
+{% block modal_body %}
+<p class="lead">
+  [[ item ]]
+</p>
+
+{% endblock %}

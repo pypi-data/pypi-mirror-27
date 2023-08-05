@@ -1,0 +1,36 @@
+<ul class="nav navbar-nav {{ classes }}">
+  {% if request.user.is_authenticated %}
+  <li ng-class="{active: $location.path().indexOf('/list/') == 0}">
+    <a href="/#/list/">
+      <i class="fa fa-table"></i>
+      <span class="hidden-sm">
+        Lists
+      </span>
+    </a>
+  </li>
+
+  {% application_menuitems %}
+  {% if not user.profile.explicit_access_only %}
+  {% plugin_menuitems %}
+  {% endif %}
+  {% if request.user.is_staff %}
+  <li>
+    <a href="/admin/">
+      <i class="fa fa-cogs"></i>
+      <span class="hidden-sm">Admin</span>
+    </a>
+  </li>
+  {% endif %}
+
+  <!-- <li > -->
+  <!--   <a href="#/account" title="Your Account"> -->
+  <!--     <i class="fa fa-user"></i> -->
+  <!--   </a> -->
+  <!-- </li> -->
+  <li><a href="{% url 'django.contrib.auth.views.logout' %}" title="Log out">
+      <i class="fa fa-sign-out"></i>
+  </a></li>
+
+  {% endif %}
+
+</ul>

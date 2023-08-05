@@ -1,0 +1,34 @@
+  <div class="col-md-8">
+    <h3>Panels <a href="#Panels">{% icon 'fa-paragraph' %}</a></h3>
+    <p class="lead">
+      A way of presenting discrete units of information.
+    </p>
+    <h4>Panel Primary</h4>
+    <p class="lead">
+      Commonly used as the <b>main container element</b> for a page.
+    </p>
+    <!-- Demo -->
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3>
+          The Heading
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>The Body</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Demo -->
+    <div class="col-md-8">
+      <h3>Usage:</h3>
+      <pre><code class="python hljs">
+          {% templatetag openblock %} load panels {% templatetag closeblock %}
+          {% templatetag openblock %} aligned_pair model="43" label="First Data Point" {% templatetag closeblock %}
+          {% templatetag openblock %} aligned_pair model="22" label="Next Data Point" {% templatetag closeblock %}
+      </code></pre>
+    </div>

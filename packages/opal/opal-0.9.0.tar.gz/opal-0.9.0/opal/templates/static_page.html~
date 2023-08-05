@@ -1,0 +1,9 @@
+{% extends 'opal.html' %}
+{% block content %}
+{{ block.super}}
+
+    {% block static_content %}
+    {% endblock %}
+
+
+{% endblock %}

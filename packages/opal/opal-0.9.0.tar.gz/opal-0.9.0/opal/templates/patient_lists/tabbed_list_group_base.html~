@@ -1,0 +1,5 @@
+{% if list_group %}
+
+{% include list_group.get_template %}
+
+{% endif %}

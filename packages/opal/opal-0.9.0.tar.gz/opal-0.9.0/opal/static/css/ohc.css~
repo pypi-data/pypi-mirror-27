@@ -1,0 +1,104 @@
+
+/* Generic Colours */
+h1 small { color: #eff; }
+.bg-white {
+    background-color: white;
+}
+.bg-primary {
+    color: white;
+    background-color: #9cc96b; /* Green */
+}
+.panel-container { margin-top: 20px; }
+
+.panel.panel-primary .panel-heading a{
+    color: white;
+}
+
+.panel.panel-primary .panel-heading a:hover{
+    text-decoration: none;
+    color: #f76c51;
+}
+
+.panel-primary .panel-default .panel-heading.bg-secondary,
+.bg-secondary {
+    background-color: #f76c51; /* red */
+    border-bottom: none;
+    color: white;
+}
+
+.panel-primary .panel-default .panel-heading.bg-active,
+.bg-active {
+    background-color: #5fa2dd; /* Blue */
+    border-bottom: none;
+    color: white;
+}
+.panel.panel-primary {
+    border-color: #9cc96b; /* Green */
+}
+
+.panel.panel-primary .panel-heading {
+    color: white;
+    border-color: #9cc96b; /* Green */
+    background-color: #5fa2dd; /* Blue */
+    background-color: #f76c51; /* red */
+    background-color: #9cc96b; /* Green */
+}
+
+.btn.btn-text-left {
+    text-align: left;
+}
+
+.btn-primary {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+
+     background-color: #9cc96b; /* Green */
+     border-color: #9cc96b; /* Green */
+ }
+.btn-primary:hover,
+.btn-primary:focus{
+    background-color: #87bd4b;
+    border-color: #87bd4b;
+}
+
+.btn-default.active{
+  background-color: #5fa2dd;
+  border-color: #5fa2dd;
+  color: #fff;
+}
+
+table.table > tbody > tr.diagnosis-table-issue > td{
+  background-color: #fcc;
+}
+
+.btn-secondary {
+
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    background-color: #f76447;
+    border-color: #f76c51;
+    color: #fff
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #f54928;
+    border-color: #f54f2f;
+    color: #fff
+}
+
+p.sidebar-help{
+    color: #999;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+i.help {
+    color: #46b9d8;
+}

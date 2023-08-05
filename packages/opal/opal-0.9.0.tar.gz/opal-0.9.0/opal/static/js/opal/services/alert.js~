@@ -1,0 +1,17 @@
+///
+/// Provide nice friendly 'alerts' for Opal
+///
+angular.module('opal.services')
+    .factory('Alert', function($modal){
+        var Alert = {
+            open: function(message, template){
+                var templateUrl = template || '/templates/modals/alert.html'
+                var modal = $modal.open({
+                    templateUrl: templateUrl,
+                    controller : 'AlertCtrl',
+                    size       : 'sm'
+                });
+            }
+        };
+        return Alert
+    })

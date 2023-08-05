@@ -1,0 +1,23 @@
+angular.module('opal.services').factory('User', function($q, $http, $window){
+    "use strict";
+
+    var API  = '/api/v0.1/user/';
+    var User = function(data){
+        this.initialize(data);
+    };
+
+    user.prototype = {
+
+        initialize: function(data){
+            _.extend(this, data)
+        }
+
+    };
+
+
+
+    return {
+        load: load
+    }
+
+});

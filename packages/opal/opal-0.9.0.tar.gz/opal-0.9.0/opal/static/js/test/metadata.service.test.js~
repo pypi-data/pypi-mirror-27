@@ -1,0 +1,44 @@
+describe('Metadata', function(){
+    "use strict"
+
+    var mock, Metadata;
+
+    beforeEach(function(){
+        mock = { alert: jasmine.createSpy() };
+
+        module(function($provide){
+            $provide.value('$window', mock);
+        });
+
+        inject(function($injector){
+            Metadata        = $injector.get('Metadata');
+            // $q             = $injector.get('$q');
+            // $httpBackend   = $injector.get('$httpBackend');
+            // $rootScope     = $injector.get('$rootScope');
+        });
+    });
+
+    it('should fetch the metadata', function(){
+        var result
+
+        $httpBackend.whenGET('/api/v0.1/metadata/').respond(metadata);
+
+        Metadata.then(function(r){ result = r; });
+
+        $rootScope.$apply();
+        $httpBackend.flush();
+
+        expect(result).toEqual(metadata);
+    });
+
+    it('should alert if the HTTP request errors', function(){
+        var result;
+
+        $httpBackend.whenGET('/api/v0.1/metadata/').respond(500, 'NO');
+
+        $rootScope.$apply();
+        $httpBackend.flush();
+
+        expect(mock.alert).toHaveBeenCalledWith('Metadata could not be loaded');
+    });
+});
