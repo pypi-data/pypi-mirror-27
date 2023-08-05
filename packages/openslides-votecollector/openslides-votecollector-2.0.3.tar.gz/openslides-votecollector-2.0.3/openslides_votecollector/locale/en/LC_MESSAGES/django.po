@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-09 12:07+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: api.py:12
+msgid "Unknown voting mode."
+msgstr ""
+
+#: api.py:13
+msgid "Invalid keypad range."
+msgstr ""
+
+#: api.py:14
+msgid "Invalid keypad list."
+msgstr ""
+
+#: api.py:15
+msgid "No keypads authorized for voting."
+msgstr ""
+
+#: api.py:16
+msgid "License not sufficient."
+msgstr ""
+
+#: api.py:17
+msgid "No voting device connected."
+msgstr ""
+
+#: api.py:18
+msgid "Failed to set up voting device."
+msgstr ""
+
+#: api.py:19
+msgid "Voting device not ready."
+msgstr ""
+
+#: api.py:49
+msgid "Server not found."
+msgstr ""
+
+#: api.py:63
+msgid "No keypads selected."
+msgstr ""
+
+#: api.py:73 api.py:85 api.py:92 api.py:104 api.py:116 api.py:128
+msgid "No connection to VoteCollector."
+msgstr ""
+
+#: config_variables.py:34
+msgid "Please vote now!"
+msgstr ""
+
+#: models.py:106
+#, python-format
+msgid "Keypad of %s"
+msgstr ""
+
+#: models.py:107
+#, python-format
+msgid "Keypad %d"
+msgstr ""
+
+#: views.py:132 views.py:152
+msgid "All votes are successfully anonymized."
+msgstr ""
+
+#: views.py:181
+msgid "Unknown id."
+msgstr ""
+
+#: views.py:298
+msgid "Yes"
+msgstr ""
+
+#: views.py:299
+msgid "No"
+msgstr ""
+
+#: views.py:300 views.py:320
+msgid "Abstain"
+msgstr ""
+
+#: views.py:439
+msgid "Another voting is active."
+msgstr ""
+
+#: views.py:545 views.py:558 views.py:576 views.py:670 views.py:676
+msgid "Vote rejected"
+msgstr ""
+
+#: views.py:550 views.py:682 views.py:684
+msgid "Vote invalid"
+msgstr ""
+
+#: views.py:594 views.py:709
+msgid "Vote submitted"
+msgstr ""
+
+#: views.py:717
+msgid "Keypad not registered"
+msgstr ""
+
+#: views.py:721
+msgid "User unknown"
+msgstr ""
+
+#: views.py:727
+msgid "No agenda item selected"
+msgstr ""
+
+#: views.py:738
+msgid "Added to        list of speakers"
+msgstr ""
+
+#: views.py:749
+msgid "Not exists on   list of speakers"
+msgstr ""
+
+#: views.py:752
+msgid "Removed from    list of speakers"
+msgstr ""
+
+#: views.py:754
+msgid "Invalid entry"
+msgstr ""

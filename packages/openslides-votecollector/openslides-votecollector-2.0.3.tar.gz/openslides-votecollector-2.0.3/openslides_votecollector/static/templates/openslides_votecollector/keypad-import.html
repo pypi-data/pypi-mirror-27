@@ -1,0 +1,124 @@
+<div class="header">
+  <div class="title">
+    <div class="submenu">
+      <a ui-sref="openslides_votecollector.keypad.list" class="btn btn-sm btn-default">
+        <i class="fa fa-angle-double-left fa-lg"></i>
+        <translate>Back to overview</translate>
+      </a>
+    </div>
+    <h1 translate>Import keypads</h1>
+  </div>
+</div>
+
+<div class="details">
+
+  <h3 translate>Select a CSV file</h3>
+  <csv-import change="onCsvChange(csv)" config="csvConfig"></csv-import>
+
+  <h4 translate>Please note:</h4>
+  <ul class="indentation">
+      <li><translate>Required comma or semicolon separated values with these column header names in the first row</translate>:<br>
+        <code>
+          <translate>Title</translate>,
+          <translate>Given name</translate>,
+          <translate>Surname</translate>,
+          <translate>Structure level</translate>,
+          <translate>Participant number</translate>,
+          <translate>Groups</translate>,
+          <translate>Comment</translate>,
+          <translate>Is active</translate>,
+          <translate>Is present</translate>,
+          <translate>Is committee</translate>,
+          <translate>Keypad ID</translate>,
+          <translate>Seat</translate>
+        </code>
+      <li translate>Use the participants import csv file and add a new column 'Keypad ID' and 'Seat label'. A new keypad with 'Keypad ID' will be created, referenced to existing participant and seat.
+      <li translate>Only double quotes are accepted as text delimiter (no single quotes).
+      <li><a id="downloadLink" href="" ng-click="downloadCSVExample()" translate>Download CSV example file</a>
+  </ul>
+
+  <div ng-show="keypads.length">
+    <h3 translate>Preview</h3>
+    <div class="scroll-x-container">
+      <table class="table table-striped table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>
+            <th>#
+            <th translate>Participant
+            <th translate>Keypad ID
+            <th translate>Seat label</th>
+        <tbody>
+          <tr ng-repeat="keypad in keypads">
+            <td class="minimum"
+                ng-class="{ 'text-danger': keypad.importerror, 'text-success': keypad.imported }">
+              <span ng-if="keypad.importerror">
+                <i class="fa fa-exclamation-triangle fa-lg"></i>
+              </span>
+              <span ng-if="!keypad.importerror && !keypad.imported">
+                <i class="fa fa-check-circle-o fa-lg"></i>
+              </span>
+              <span ng-if="keypad.imported">
+                <i class="fa fa-check-circle fa-lg"></i>
+              </span>
+            <td>
+              {{ $index + 1 }}
+
+            <td ng-class="{ 'text-danger': keypad.name_error }">
+              <span ng-if="keypad.name_error" title="{{ keypad.name_error | translate }}">
+                <i class="fa fa-exclamation-triangle"></i>
+              </span>
+              <span ng-if="keypad.user_id">
+                {{ keypad.title }} {{ keypad.first_name }} {{ keypad.last_name }}
+                <span ng-if="keypad.structure_level">({{ keypad.structure_level }})</span>
+              </span>
+              <span ng-if="!keypad.user_id"><i><translate>Anonymous</translate></i></span>
+
+            <td ng-class="{ 'text-danger': keypad.keypad_error }">
+              <span ng-if="keypad.keypad_error" title="{{ keypad.keypad_error | translate }}">
+                <i class="fa fa-exclamation-triangle"></i>
+              </span>
+              {{ keypad.keypad_id }}
+
+            <td ng-class="{ 'text-danger': keypad.seat_error }">
+              <span ng-if="keypad.seat_error" title="{{ keypad.seat_error | translate }}">
+                <i class="fa fa-exclamation-triangle"></i>
+              </span>
+              {{ keypad.seat_label }}
+      </table>
+
+      <div class="text-danger">
+        <i class="fa fa-exclamation-triangle"></i>
+        {{ keypadsWillNotBeImported }}
+        <translate>keypads will be not imported.</translate>
+      </div>
+      <div>
+        <i class="fa fa-check-circle-o fa-lg"></i>
+        {{ keypadsWillBeImported }}
+        <translate>keypads will be imported.</translate>
+      </div>
+      <div ng-repeat="keypad in keypadsImported = (keypads | filter:{imported:true})"></div>
+      <div ng-if="keypadsImported.length > 0" class="text-success">
+        <hr class="smallhr">
+        <i class="fa fa-check-circle fa-lg"></i>
+        {{ keypadsImported.length }}
+        <translate>keypads were successfully imported.</translate>
+      </div>
+
+      <div class="spacer">
+        <button ng-click="clear()" class="btn btn-sm btn-default" translate>
+          Clear preview
+        </button>
+        <button ng-if="!csvImporting && keypadsWillBeImported > 0" ng-click="import()" class="btn btn-sm btn-primary" translate>
+          Import {{ keypadsWillBeImported }} keypads
+        </button>
+      </div>
+      <div class="spacer">
+        <a ng-if="csvimported" ui-sref="openslides_votecollector.keypad.list" class="btn btn-sm btn-default">
+          <i class="fa fa-angle-double-left fa-lg"></i>
+          <translate>Back to overview</translate>
+        </a>
+      </div>
+
+  </div>
+</div>
