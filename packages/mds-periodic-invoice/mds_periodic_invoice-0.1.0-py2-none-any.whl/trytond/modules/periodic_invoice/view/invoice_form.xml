@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<form string="Invoice template" col="2">
+    <notebook>
+        <page col="2" id="pgtime" string="Template settings">
+            <group id="grpid" col="2" string="Title and Description" yfill="1">
+                <label name="active2"/>
+                <field name="active2"/>
+                <label name="name"/>
+                <field name="name"/>
+                <label name="desc" colspan="2" xalign="0.0"/>
+                <field name="desc" colspan="2"/>
+            </group>
+            <group id="grpnextrun" string="Select time" col="4" yfill="1">
+                <label name="date_start"/>
+                <field name="date_start"/>
+                <label name="date_nextrun"/>
+                <field name="date_nextrun"/>
+                <label name="date_lastrun"/>
+                <field name="date_lastrun"/>
+                <label name="calls_donetotal"/>
+                <field name="calls_donetotal"/>
+                <group id="grprepeat" colspan="4" string="Select repeat rule" col="4" yfill="1">
+                    <label name="intervalunit"/>
+                    <field name="intervalunit"/>
+                    <label name="intervalnumber"/>
+                    <field name="intervalnumber"/>
+                    <label name="stopcondition"/>
+                    <field name="stopcondition"/>
+                    <label name="runatweekday"/>
+                    <field name="runatweekday"/>
+                    <newline/>
+                    <label name="date_end"/>
+                    <field name="date_end"/>
+                    <newline/>
+                    <label name="calls_to_go"/>
+                    <field name="calls_to_go"/>
+                    <newline/>
+                    <label name="calls_done"/>
+                    <field name="calls_done"/>
+                </group>
+            </group>
+            <group id="grpbtn" string="Check">
+                <button name="btn_create_invoice" string="Create a draft invoice" icon="tryton-new"/>
+            </group>
+            <group col="6" id="grptargstate" string="Target state">
+                <label name="targstate"/>
+                <field name="targstate"/>
+                <label name="email"/>
+                <field name="email"/>
+            </group>
+            <group col="1" colspan="2" id="grpcreatedinv" string="Created Invoices" yexpand="1" yfill="1">
+                <field name="invoices"/>
+            </group>
+        </page>
+        <page col="6" id="pginvdata" string="Invoice data">
+            <label name="invtype"/>
+            <field name="invtype"/>
+            <newline/>
+            <label name="party"/>
+            <field name="party"/>
+            <label name="invoice_address"/>
+            <field name="invoice_address"/>
+            <label name="journal"/>
+            <field name="journal"/>
+            <label name="invdesc"/>
+            <field name="invdesc" colspan="3"/>
+            <label name="reference"/>
+            <field name="reference"/>
+            <notebook colspan="6">
+                <page id="pginv1" string="Invoice" col="6">
+                    <label name="invdate"/>
+                    <field name="invdate"/>
+                    <label name="payment_term"/>
+                    <field name="payment_term"/>
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <field name="lines" colspan="6" 
+                        view_ids="periodic_invoice.invline_view_tree_sequence"/>
+
+                    <group colspan="4" id="grpdif1">
+                    </group>
+                    <group col="2" colspan="2" id="grpamount" yfill="1">
+                        <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
+                        <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
+                        <label name="tax_amount" xalign="1.0" xexpand="1"/>
+                        <field name="tax_amount" xalign="1.0" xexpand="0"/>
+                        <label name="total_amount" xalign="1.0" xexpand="1"/>
+                        <field name="total_amount" xalign="1.0" xexpand="0"/>
+                    </group>
+                </page>
+                <page id="pginv2" string="Other Info" col="4">
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                </page>
+            </notebook>
+        </page>
+        <page id="pginfo" col="2" string="Information">
+            <label id="labinf1" colspan="2" xalign="0.0" 
+                    string="Placeholders:"/>
+            <label id="labinf2" colspan="2" xalign="0.0" 
+                    string="The field 'Description' of the invoice and the fields 'Description' and 'Notes' of the invoice lines support wildcards."/>
+            <label id="labinf3" colspan="2" xalign="0.0" 
+                    string="To use placeholders in the description fields, write down the term in square brackets: [total], [invoicedate] etc."/>
+            <label id="labinf4" colspan="2" xalign="0.0" string="the following placeholders are supported:"/>
+            <group col="2" id="grpinf1">
+                <label id="labg1_1a" xalign="0.0" string="[startdate]"/>
+                <label id="labg1_1b" xalign="0.0" string="Start date of the invoice template"/>
+                <label id="labg1_2a" xalign="0.0" string="[enddate]"/>
+                <label id="labg1_2b" xalign="0.0" string="End date of the invoice template"/>
+                <label id="labg1_3a" xalign="0.0" string="[email]"/>
+                <label id="labg1_3b" xalign="0.0" string="E-mail address for sending the invoice"/>
+            </group>
+            <group col="2" id="grpinf2">
+                <label id="labg2_1a" xalign="0.0" string="[invoicedate]"/>
+                <label id="labg2_1b" xalign="0.0" string="Invoice date of the invoice"/>
+                <label id="labg2_2a" xalign="0.0" string="[paymentterm]"/>
+                <label id="labg2_2b" xalign="0.0" string="Payment term of the invoice"/>
+                <label id="labg2_3a" xalign="0.0" string="[untaxed]"/>
+                <label id="labg2_3b" xalign="0.0" string="untaxed amount with currency symbol"/>
+                <label id="labg2_4a" xalign="0.0" string="[tax]"/>
+                <label id="labg2_4b" xalign="0.0" string="tax amount with currency symbol"/>
+                <label id="labg2_5a" xalign="0.0" string="[total]"/>
+                <label id="labg2_5b" xalign="0.0" string="total amount with currency symbol"/>
+            </group>
+        </page>
+    </notebook>
+</form>
