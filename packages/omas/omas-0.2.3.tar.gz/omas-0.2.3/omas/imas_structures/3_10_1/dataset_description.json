@@ -1,0 +1,269 @@
+{
+ "dataset_description.simulation.time_restart_error_lower": {
+  "full_path": "dataset_description.simulation.time_restart_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"time_restart\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.time": {
+  "full_path": "dataset_description.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "dataset_description.parent_entry.pulse": {
+  "full_path": "dataset_description.parent_entry.pulse",
+  "coordinates": [],
+  "description": "Pulse number {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.simulation.time_restart": {
+  "full_path": "dataset_description.simulation.time_restart",
+  "coordinates": [],
+  "description": "Time of the last restart done during the simulation {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.time_end_error_lower": {
+  "full_path": "dataset_description.simulation.time_end_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"time_end\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.comment_before": {
+  "full_path": "dataset_description.simulation.comment_before",
+  "coordinates": [],
+  "description": "Comment made when launching a simulation {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.dd_version": {
+  "full_path": "dataset_description.dd_version",
+  "coordinates": [],
+  "description": "Version of the physics data dictionary of this dataset {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.data_entry": {
+  "full_path": "dataset_description.data_entry",
+  "coordinates": [],
+  "description": "Definition of this data entry",
+  "data_type": ""
+ },
+ "dataset_description.simulation.time_step": {
+  "full_path": "dataset_description.simulation.time_step",
+  "coordinates": [],
+  "description": "Time interval between main steps, e.g. storage step (if relevant and constant) {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.time_begin_error_index": {
+  "full_path": "dataset_description.simulation.time_begin_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"time_begin\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.data_entry.pulse_type": {
+  "full_path": "dataset_description.data_entry.pulse_type",
+  "coordinates": [],
+  "description": "Type of the data entry, e.g. \"pulse\", \"simulation\", ... {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.parent_entry.run": {
+  "full_path": "dataset_description.parent_entry.run",
+  "coordinates": [],
+  "description": "Run number {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.parent_entry.user": {
+  "full_path": "dataset_description.parent_entry.user",
+  "coordinates": [],
+  "description": "Username {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.data_entry.pulse": {
+  "full_path": "dataset_description.data_entry.pulse",
+  "coordinates": [],
+  "description": "Pulse number {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.data_entry.user": {
+  "full_path": "dataset_description.data_entry.user",
+  "coordinates": [],
+  "description": "Username {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.simulation.time_current_error_lower": {
+  "full_path": "dataset_description.simulation.time_current_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"time_current\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation": {
+  "full_path": "dataset_description.simulation",
+  "coordinates": [],
+  "description": "Description of the general simulation characteristics, if this data entry has been produced by a simulation. Several nodes describe typical time-dependent simulation with a time evolution as the main loop",
+  "data_type": ""
+ },
+ "dataset_description.simulation.time_current": {
+  "full_path": "dataset_description.simulation.time_current",
+  "coordinates": [],
+  "description": "Current time of the simulation {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.ids_properties.homogeneous_time": {
+  "full_path": "dataset_description.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.simulation.time_end_error_upper": {
+  "full_path": "dataset_description.simulation.time_end_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"time_end\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.time_step_error_upper": {
+  "full_path": "dataset_description.simulation.time_step_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"time_step\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.time_ended": {
+  "full_path": "dataset_description.simulation.time_ended",
+  "coordinates": [],
+  "description": "Actual wall-clock time simulation finished {constant} [UTC]",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.imas_version": {
+  "full_path": "dataset_description.imas_version",
+  "coordinates": [],
+  "description": "Version of the IMAS infrastructure used to produce this data entry. Refers to the global IMAS repository which links to versions of every infrastructure tools {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.simulation.time_current_error_index": {
+  "full_path": "dataset_description.simulation.time_current_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"time_current\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.simulation.time_restart_error_upper": {
+  "full_path": "dataset_description.simulation.time_restart_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"time_restart\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.ids_properties.comment": {
+  "full_path": "dataset_description.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.ids_properties": {
+  "full_path": "dataset_description.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "dataset_description.data_entry.machine": {
+  "full_path": "dataset_description.data_entry.machine",
+  "coordinates": [],
+  "description": "Name of the experimental device to which this data is related {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.simulation.time_begin": {
+  "full_path": "dataset_description.simulation.time_begin",
+  "coordinates": [],
+  "description": "Start time {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.time_begin_error_lower": {
+  "full_path": "dataset_description.simulation.time_begin_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"time_begin\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.parent_entry.pulse_type": {
+  "full_path": "dataset_description.parent_entry.pulse_type",
+  "coordinates": [],
+  "description": "Type of the data entry, e.g. \"pulse\", \"simulation\", ... {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.data_entry.run": {
+  "full_path": "dataset_description.data_entry.run",
+  "coordinates": [],
+  "description": "Run number {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.simulation.time_begin_error_upper": {
+  "full_path": "dataset_description.simulation.time_begin_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"time_begin\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.time_step_error_index": {
+  "full_path": "dataset_description.simulation.time_step_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"time_step\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.simulation.workflow": {
+  "full_path": "dataset_description.simulation.workflow",
+  "coordinates": [],
+  "description": "Description of the workflow which has been used to produce this data entry (e.g. copy of the Kepler MOML if using Kepler) {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.simulation.time_restart_error_index": {
+  "full_path": "dataset_description.simulation.time_restart_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"time_restart\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.simulation.comment_after": {
+  "full_path": "dataset_description.simulation.comment_after",
+  "coordinates": [],
+  "description": "Comment made at the end of a simulation {constant}",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.simulation.time_end_error_index": {
+  "full_path": "dataset_description.simulation.time_end_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"time_end\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "dataset_description.simulation.time_begun": {
+  "full_path": "dataset_description.simulation.time_begun",
+  "coordinates": [],
+  "description": "Actual wall-clock time simulation started {constant} [UTC]",
+  "data_type": "STR_0D"
+ },
+ "dataset_description.simulation.time_step_error_lower": {
+  "full_path": "dataset_description.simulation.time_step_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"time_step\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.time_end": {
+  "full_path": "dataset_description.simulation.time_end",
+  "coordinates": [],
+  "description": "Stop time {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.simulation.time_current_error_upper": {
+  "full_path": "dataset_description.simulation.time_current_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"time_current\" {constant} [s]",
+  "data_type": "FLT_0D"
+ },
+ "dataset_description.parent_entry": {
+  "full_path": "dataset_description.parent_entry",
+  "coordinates": [],
+  "description": "Definition of the parent data entry, if the present data entry has been generated by applying a given workflow to a unique parent entry",
+  "data_type": ""
+ },
+ "dataset_description.parent_entry.machine": {
+  "full_path": "dataset_description.parent_entry.machine",
+  "coordinates": [],
+  "description": "Name of the experimental device to which this data is related {constant}",
+  "data_type": "STR_0D"
+ }
+}

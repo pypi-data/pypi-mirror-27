@@ -1,0 +1,1335 @@
+{
+ "sawteeth.profiles_1d[:].pressure_thermal_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_thermal_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"pressure_thermal\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.ids_properties": {
+  "full_path": "sawteeth.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "sawteeth.profiles_1d[:].grid.volume_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].grid.volume_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].q": {
+  "full_path": "sawteeth.profiles_1d[:].q",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Safety factor {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_inversion_error_lower": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_inversion_error_lower",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Lower error for \"rho_tor_norm_inversion\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:]": {
+  "full_path": "sawteeth.profiles_1d[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Core profiles after sawtooth crash for various time slices {dynamic}",
+  "data_type": ""
+ },
+ "sawteeth.profiles_1d[:].j_total_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].j_total_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"j_total\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].grid.volume": {
+  "full_path": "sawteeth.profiles_1d[:].grid.volume",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Volume enclosed inside the magnetic surface {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_fast_perpendicular_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_fast_perpendicular_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"p_i_total_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.vacuum_toroidal_field.r0": {
+  "full_path": "sawteeth.vacuum_toroidal_field.r0",
+  "coordinates": [],
+  "description": "Reference major radius where the vacuum toroidal magnetic field is given (usually a fixed position such as the middle of the vessel at the equatorial midplane) {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "sawteeth.profiles_1d[:].n_i_total_over_n_e": {
+  "full_path": "sawteeth.profiles_1d[:].n_i_total_over_n_e",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Ratio of total ion density (sum over species and charge states) over electron density. (thermal+non-thermal) {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].zeff_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].zeff_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"zeff\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.vacuum_toroidal_field.b0": {
+  "full_path": "sawteeth.vacuum_toroidal_field.b0",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Vacuum toroidal field at R0 [T]; Positive sign means anti-clockwise when viewed from above. The product R0B0 must be consistent with the b_tor_vacuum_r field of the tf IDS. {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_q1_error_lower": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_q1_error_lower",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Lower error for \"rho_tor_norm_q1\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].psi_star_post_crash_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].psi_star_post_crash_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"psi_star_post_crash\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_q1_error_upper": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_q1_error_upper",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Upper error for \"rho_tor_norm_q1\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.rho_tor_norm": {
+  "full_path": "sawteeth.profiles_1d[:].grid.rho_tor_norm",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation, see time_slice/boundary/b_flux_pol_norm in the equilibrium IDS) {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].psi_star_post_crash_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].psi_star_post_crash_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"psi_star_post_crash\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.code.parameters": {
+  "full_path": "sawteeth.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "sawteeth.profiles_1d[:].grid.area": {
+  "full_path": "sawteeth.profiles_1d[:].grid.area",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_mixing_error_upper": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_mixing_error_upper",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Upper error for \"rho_tor_norm_mixing\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.code.name": {
+  "full_path": "sawteeth.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "sawteeth.profiles_1d[:].p_e_fast_parallel": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_fast_parallel",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Fast (non-thermal) electron parallel pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.magnetic_shear_q1_error_index": {
+  "full_path": "sawteeth.diagnostics.magnetic_shear_q1_error_index",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Index in the error_description list for \"magnetic_shear_q1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].n_e_fast_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].n_e_fast_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"n_e_fast\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].n_e_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].n_e_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"n_e\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.volume_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].grid.volume_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].n_i_total_over_n_e_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].n_i_total_over_n_e_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"n_i_total_over_n_e\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].magnetic_shear_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].magnetic_shear_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"magnetic_shear\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].n_e_fast": {
+  "full_path": "sawteeth.profiles_1d[:].n_e_fast",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Density of fast (non-thermal) electrons {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_q1_error_index": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_q1_error_index",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm_q1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].j_ohmic_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].j_ohmic_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"j_ohmic\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].grid.psi_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].grid.psi_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].time": {
+  "full_path": "sawteeth.profiles_1d[:].time",
+  "coordinates": [],
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].grid.rho_tor_norm_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].grid.rho_tor_norm_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_q1": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_q1",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Normalised toroidal flux coordinate at surface q = 1 {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.code.output_flag": {
+  "full_path": "sawteeth.code.output_flag",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.rho_tor_norm_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].grid.rho_tor_norm_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.ids_properties.comment": {
+  "full_path": "sawteeth.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "sawteeth.profiles_1d[:].phi_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].phi_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"phi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.rho_tor_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].grid.rho_tor_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.rho_tor": {
+  "full_path": "sawteeth.profiles_1d[:].grid.rho_tor",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Toroidal flux coordinate. rho_tor = sqrt(b_flux_tor/(pi*b0)) ~ sqrt(pi*r^2*b0/(pi*b0)) ~ r [m]. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_bootstrap_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].j_bootstrap_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"j_bootstrap\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].grid": {
+  "full_path": "sawteeth.profiles_1d[:].grid",
+  "coordinates": [],
+  "description": "Radial grid",
+  "data_type": ""
+ },
+ "sawteeth.profiles_1d[:].p_i_total_fast_perpendicular_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_fast_perpendicular_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"p_i_total_fast_perpendicular\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].p_e": {
+  "full_path": "sawteeth.profiles_1d[:].p_e",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Electron pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_ohmic": {
+  "full_path": "sawteeth.profiles_1d[:].j_ohmic",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Ohmic parallel current density = average(J_Ohmic.B) / B0, where B0 = Core_Profiles/Vacuum_Toroidal_Field/ B0 {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.magnetic_shear_q1_error_upper": {
+  "full_path": "sawteeth.diagnostics.magnetic_shear_q1_error_upper",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Upper error for \"magnetic_shear_q1\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_bootstrap_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].j_bootstrap_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"j_bootstrap\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].pressure_perpendicular": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_perpendicular",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Total perpendicular pressure (electrons+ions, thermal+non-thermal) {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].psi_star_pre_crash_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].psi_star_pre_crash_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"psi_star_pre_crash\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_bootstrap": {
+  "full_path": "sawteeth.profiles_1d[:].j_bootstrap",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Bootstrap current density = average(J_Bootstrap.B) / B0, where B0 = Core_Profiles/Vacuum_Toroidal_Field/ B0 {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].pressure_perpendicular_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_perpendicular_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"pressure_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].n_e_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].n_e_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"n_e\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.vacuum_toroidal_field.b0_error_upper": {
+  "full_path": "sawteeth.vacuum_toroidal_field.b0_error_upper",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Upper error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].q_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].q_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"q\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.vacuum_toroidal_field.r0_error_upper": {
+  "full_path": "sawteeth.vacuum_toroidal_field.r0_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_fast_parallel_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_fast_parallel_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"p_i_total_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].momentum_tor_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].momentum_tor_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"momentum_tor\" {dynamic} [kg.m/s]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].conductivity_parallel_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].conductivity_parallel_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"conductivity_parallel\" {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].pressure_parallel_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_parallel_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"pressure_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].t_i_average_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].t_i_average_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"t_i_average\" {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].zeff_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].zeff_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"zeff\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_tor_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].j_tor_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"j_tor\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_fast_parallel_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_fast_parallel_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"p_i_total_fast_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].phi": {
+  "full_path": "sawteeth.profiles_1d[:].phi",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Toroidal flux {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_e_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"p_e\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_e_fast_perpendicular_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_fast_perpendicular_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"p_e_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.area_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].grid.area_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.area_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].grid.area_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_non_inductive": {
+  "full_path": "sawteeth.profiles_1d[:].j_non_inductive",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Non-inductive (includes bootstrap) parallel current density = average(jni.B) / B0, where B0 = Core_Profiles/Vacuum_Toroidal_Field/ B0 {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_tor": {
+  "full_path": "sawteeth.profiles_1d[:].j_tor",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Total toroidal current density = average(J_Tor/R) / average(1/R) {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_e_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"p_e\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].grid.rho_tor_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].grid.rho_tor_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].n_e": {
+  "full_path": "sawteeth.profiles_1d[:].n_e",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Electron density (thermal+non-thermal) {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.magnetic_shear_q1": {
+  "full_path": "sawteeth.diagnostics.magnetic_shear_q1",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Magnetic shear at surface q = 1, defined as rho_tor/q . dq/drho_tor {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_inversion_error_index": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_inversion_error_index",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm_inversion\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].grid.psi_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].grid.psi_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_fast_perpendicular_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_fast_perpendicular_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"p_i_total_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].conductivity_parallel_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].conductivity_parallel_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"conductivity_parallel\" {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].n_e_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].n_e_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"n_e\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"p_i_total\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].zeff": {
+  "full_path": "sawteeth.profiles_1d[:].zeff",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Effective charge {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_tor_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].j_tor_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"j_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.time": {
+  "full_path": "sawteeth.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "sawteeth.profiles_1d[:].grid.rho_tor_norm_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].grid.rho_tor_norm_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].q_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].q_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"q\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.code": {
+  "full_path": "sawteeth.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "sawteeth.vacuum_toroidal_field.r0_error_lower": {
+  "full_path": "sawteeth.vacuum_toroidal_field.r0_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "sawteeth.profiles_1d[:].magnetic_shear_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].magnetic_shear_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"magnetic_shear\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].j_tor_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].j_tor_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"j_tor\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_e_fast_perpendicular_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_fast_perpendicular_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"p_e_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_total": {
+  "full_path": "sawteeth.profiles_1d[:].j_total",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Total parallel current density = average(jtot.B) / B0, where B0 = Core_Profiles/Vacuum_Toroidal_Field/ B0 {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].n_i_total_over_n_e_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].n_i_total_over_n_e_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"n_i_total_over_n_e\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].j_ohmic_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].j_ohmic_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"j_ohmic\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].t_i_average_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].t_i_average_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"t_i_average\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].psi_star_post_crash": {
+  "full_path": "sawteeth.profiles_1d[:].psi_star_post_crash",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Psi* = psi - phi, after the sawtooth crash {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.rho_tor_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].grid.rho_tor_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_fast_parallel": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_fast_parallel",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Fast (non-thermal) total ion (sum over the ion species) parallel pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_non_inductive_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].j_non_inductive_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"j_non_inductive\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].pressure_thermal_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_thermal_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"pressure_thermal\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_e_fast_parallel_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_fast_parallel_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"p_e_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].psi_star_pre_crash": {
+  "full_path": "sawteeth.profiles_1d[:].psi_star_pre_crash",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Psi* = psi - phi, just before the sawtooth crash {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_total_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].j_total_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"j_total\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].e_field_parallel_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].e_field_parallel_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"e_field_parallel\" {dynamic} [V.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].pressure_perpendicular_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_perpendicular_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"pressure_perpendicular\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].n_e_fast_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].n_e_fast_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"n_e_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].momentum_tor": {
+  "full_path": "sawteeth.profiles_1d[:].momentum_tor",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Total plasma toroidal momentum, summed over ion species and electrons {dynamic} [kg.m/s]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.vacuum_toroidal_field.b0_error_lower": {
+  "full_path": "sawteeth.vacuum_toroidal_field.b0_error_lower",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Lower error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].zeff_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].zeff_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"zeff\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].j_total_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].j_total_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"j_total\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_inversion_error_upper": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_inversion_error_upper",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Upper error for \"rho_tor_norm_inversion\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].magnetic_shear_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].magnetic_shear_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"magnetic_shear\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].t_i_average_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].t_i_average_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"t_i_average\" {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].e_field_parallel_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].e_field_parallel_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"e_field_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].p_e_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"p_e\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.code.version": {
+  "full_path": "sawteeth.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "sawteeth.profiles_1d[:].t_i_average": {
+  "full_path": "sawteeth.profiles_1d[:].t_i_average",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Ion temperature (averaged on charge states and ion species) {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].t_e_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].t_e_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"t_e\" {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_mixing_error_index": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_mixing_error_index",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm_mixing\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].n_i_total_over_n_e_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].n_i_total_over_n_e_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"n_i_total_over_n_e\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].n_e_fast_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].n_e_fast_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"n_e_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_e_fast_parallel_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_fast_parallel_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"p_e_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_mixing_error_lower": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_mixing_error_lower",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Lower error for \"rho_tor_norm_mixing\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].e_field_parallel_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].e_field_parallel_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"e_field_parallel\" {dynamic} [V.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_e_fast_perpendicular": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_fast_perpendicular",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Fast (non-thermal) electron perpendicular pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_e_fast_perpendicular_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_fast_perpendicular_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"p_e_fast_perpendicular\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"p_i_total\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].momentum_tor_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].momentum_tor_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"momentum_tor\" {dynamic} [kg.m/s]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.psi": {
+  "full_path": "sawteeth.profiles_1d[:].grid.psi",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Poloidal magnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].e_field_parallel": {
+  "full_path": "sawteeth.profiles_1d[:].e_field_parallel",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Parallel electric field = average(E.B) / B0, where Core_Profiles/Vacuum_Toroidal_Field/ B0 {dynamic} [V.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_mixing": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_mixing",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Normalised toroidal flux coordinate at mixing radius {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].pressure_thermal_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_thermal_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"pressure_thermal\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"p_i_total\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Total ion pressure (sum over the ion species) {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics.rho_tor_norm_inversion": {
+  "full_path": "sawteeth.diagnostics.rho_tor_norm_inversion",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Normalised toroidal flux coordinate at inversion radius {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].pressure_parallel_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_parallel_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"pressure_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].t_e_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].t_e_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"t_e\" {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].psi_star_post_crash_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].psi_star_post_crash_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"psi_star_post_crash\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].psi_star_pre_crash_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].psi_star_pre_crash_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"psi_star_pre_crash\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.diagnostics.magnetic_shear_q1_error_lower": {
+  "full_path": "sawteeth.diagnostics.magnetic_shear_q1_error_lower",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Lower error for \"magnetic_shear_q1\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.area_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].grid.area_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].pressure_thermal": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_thermal",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Thermal pressure (electrons+ions) {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_fast_parallel_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_fast_parallel_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"p_i_total_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].magnetic_shear": {
+  "full_path": "sawteeth.profiles_1d[:].magnetic_shear",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Magnetic shear, defined as rho_tor/q . dq/drho_tor {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].conductivity_parallel_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].conductivity_parallel_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"conductivity_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.ids_properties.homogeneous_time": {
+  "full_path": "sawteeth.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].psi_star_pre_crash_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].psi_star_pre_crash_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"psi_star_pre_crash\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.vacuum_toroidal_field.r0_error_index": {
+  "full_path": "sawteeth.vacuum_toroidal_field.r0_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].j_bootstrap_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].j_bootstrap_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"j_bootstrap\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.vacuum_toroidal_field": {
+  "full_path": "sawteeth.vacuum_toroidal_field",
+  "coordinates": [],
+  "description": "Characteristics of the vacuum toroidal field (used in rho_tor definition)",
+  "data_type": ""
+ },
+ "sawteeth.profiles_1d[:].j_ohmic_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].j_ohmic_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"j_ohmic\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].phi_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].phi_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].grid.volume_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].grid.volume_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.diagnostics": {
+  "full_path": "sawteeth.diagnostics",
+  "coordinates": [],
+  "description": "Detailed information about the sawtooth characteristics",
+  "data_type": ""
+ },
+ "sawteeth.profiles_1d[:].conductivity_parallel": {
+  "full_path": "sawteeth.profiles_1d[:].conductivity_parallel",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Parallel conductivity {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].momentum_tor_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].momentum_tor_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"momentum_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].phi_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].phi_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"phi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.vacuum_toroidal_field.b0_error_index": {
+  "full_path": "sawteeth.vacuum_toroidal_field.b0_error_index",
+  "coordinates": [
+   "sawteeth.time"
+  ],
+  "description": "Index in the error_description list for \"b0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].p_i_total_fast_perpendicular": {
+  "full_path": "sawteeth.profiles_1d[:].p_i_total_fast_perpendicular",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Fast (non-thermal) total ion (sum over the ion species) perpendicular pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].j_non_inductive_error_lower": {
+  "full_path": "sawteeth.profiles_1d[:].j_non_inductive_error_lower",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"j_non_inductive\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].q_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].q_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"q\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].pressure_parallel_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_parallel_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"pressure_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].pressure_perpendicular_error_upper": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_perpendicular_error_upper",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"pressure_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].grid.psi_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].grid.psi_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].t_e_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].t_e_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"t_e\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].j_non_inductive_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].j_non_inductive_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"j_non_inductive\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].p_e_fast_parallel_error_index": {
+  "full_path": "sawteeth.profiles_1d[:].p_e_fast_parallel_error_index",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"p_e_fast_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sawteeth.profiles_1d[:].t_e": {
+  "full_path": "sawteeth.profiles_1d[:].t_e",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Electron temperature {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ },
+ "sawteeth.profiles_1d[:].pressure_parallel": {
+  "full_path": "sawteeth.profiles_1d[:].pressure_parallel",
+  "coordinates": [
+   "sawteeth.profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Total parallel pressure (electrons+ions, thermal+non-thermal) {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ }
+}

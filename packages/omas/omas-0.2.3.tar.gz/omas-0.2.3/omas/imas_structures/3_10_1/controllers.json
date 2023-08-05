@@ -1,0 +1,888 @@
+{
+ "controllers.linear_controller[:].statespace.d.data": {
+  "full_path": "controllers.linear_controller[:].statespace.d.data",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.input_names",
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].statespace.d.time"
+  ],
+  "description": "D matrix, normally proper and D=0 {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].statespace.c.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].statespace.c.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].statespace.c.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].pid.i.data": {
+  "full_path": "controllers.linear_controller[:].pid.i.data",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.i.time"
+  ],
+  "description": "Integral term {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].pid.i.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].pid.i.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.i.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.nonlinear_controller[:].outputs.data_error_upper": {
+  "full_path": "controllers.nonlinear_controller[:].outputs.data_error_upper",
+  "coordinates": [
+   "controllers.nonlinear_controller[:].output_names",
+   "controllers.nonlinear_controller[:].outputs.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.linear_controller[:].statespace.a.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].statespace.a.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].statespace.a.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].statespace.deltat.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].statespace.deltat.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.deltat.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "controllers.time": {
+  "full_path": "controllers.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.nonlinear_controller[:].function": {
+  "full_path": "controllers.nonlinear_controller[:].function",
+  "coordinates": [],
+  "description": "Method to be defined {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].outputs.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].outputs.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].outputs.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.linear_controller[:].outputs.time": {
+  "full_path": "controllers.linear_controller[:].outputs.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].pid.i.data_error_index": {
+  "full_path": "controllers.linear_controller[:].pid.i.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.i.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].pid.i": {
+  "full_path": "controllers.linear_controller[:].pid.i",
+  "coordinates": [],
+  "description": "Integral term",
+  "data_type": ""
+ },
+ "controllers.nonlinear_controller[:].inputs.data_error_index": {
+  "full_path": "controllers.nonlinear_controller[:].inputs.data_error_index",
+  "coordinates": [
+   "controllers.nonlinear_controller[:].input_names",
+   "controllers.nonlinear_controller[:].inputs.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].statespace.deltat.data": {
+  "full_path": "controllers.linear_controller[:].statespace.deltat.data",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.deltat.time"
+  ],
+  "description": "Discrete time sampling interval ; if less than 1e-10, the controller is considered to be expressed in continuous time {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "controllers.linear_controller[:].pid.d": {
+  "full_path": "controllers.linear_controller[:].pid.d",
+  "coordinates": [],
+  "description": "Derivative term",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].outputs.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].outputs.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].outputs.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.nonlinear_controller[:]": {
+  "full_path": "controllers.nonlinear_controller[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...20"
+  ],
+  "description": "A non-linear controller, this is less conventional and will have to be developed",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].pid.p.data_error_index": {
+  "full_path": "controllers.linear_controller[:].pid.p.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.p.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].statespace.input_names": {
+  "data_type": "INT_1D",
+  "full_path": "controllers.linear_controller[:].statespace.input_names",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "controllers.nonlinear_controller[:].outputs.time": {
+  "full_path": "controllers.nonlinear_controller[:].outputs.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.nonlinear_controller[:].description": {
+  "full_path": "controllers.nonlinear_controller[:].description",
+  "coordinates": [],
+  "description": "Description of this controller {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].pid.p": {
+  "full_path": "controllers.linear_controller[:].pid.p",
+  "coordinates": [],
+  "description": "Proportional term",
+  "data_type": ""
+ },
+ "controllers.ids_properties.homogeneous_time": {
+  "full_path": "controllers.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].pid.d.time": {
+  "full_path": "controllers.linear_controller[:].pid.d.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].inputs": {
+  "full_path": "controllers.linear_controller[:].inputs",
+  "coordinates": [],
+  "description": "Input signals; the timebase is common to inputs and outputs for any particular controller",
+  "data_type": ""
+ },
+ "controllers.nonlinear_controller[:].controller_class": {
+  "full_path": "controllers.nonlinear_controller[:].controller_class",
+  "coordinates": [],
+  "description": "One of a known class of controllers {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.code.name": {
+  "full_path": "controllers.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].name": {
+  "full_path": "controllers.linear_controller[:].name",
+  "coordinates": [],
+  "description": "Name of this controller {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].statespace.deltat.time": {
+  "full_path": "controllers.linear_controller[:].statespace.deltat.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].outputs.data": {
+  "full_path": "controllers.linear_controller[:].outputs.data",
+  "coordinates": [
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].outputs.time"
+  ],
+  "description": "Output signals; the timebase is common to inputs and outputs for any particular controller {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.linear_controller[:].statespace.d.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].statespace.d.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.input_names",
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].statespace.d.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].statespace.a.data": {
+  "full_path": "controllers.linear_controller[:].statespace.a.data",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].statespace.a.time"
+  ],
+  "description": "A matrix {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].inputs.data": {
+  "full_path": "controllers.linear_controller[:].inputs.data",
+  "coordinates": [
+   "controllers.linear_controller[:].input_names",
+   "controllers.linear_controller[:].inputs.time"
+  ],
+  "description": "Input signals; the timebase is common to inputs and outputs for any particular controller {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.nonlinear_controller[:].outputs": {
+  "full_path": "controllers.nonlinear_controller[:].outputs",
+  "coordinates": [],
+  "description": "Output signals; the timebase is common to inputs and outputs for any particular controller",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].statespace.c.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].statespace.c.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].statespace.c.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].pid.output_names": {
+  "data_type": "INT_1D",
+  "full_path": "controllers.linear_controller[:].pid.output_names",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "controllers.linear_controller[:].statespace.d.data_error_index": {
+  "full_path": "controllers.linear_controller[:].statespace.d.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.input_names",
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].statespace.d.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].statespace": {
+  "full_path": "controllers.linear_controller[:].statespace",
+  "coordinates": [],
+  "description": "Statespace controller in discrete or continuous time",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].statespace.d.time": {
+  "full_path": "controllers.linear_controller[:].statespace.d.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].pid.tau": {
+  "full_path": "controllers.linear_controller[:].pid.tau",
+  "coordinates": [],
+  "description": "Filter time-constant for the D-term",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].input_names": {
+  "full_path": "controllers.linear_controller[:].input_names",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Names of the input signals, following the SDN convention {constant}",
+  "data_type": "STR_1D"
+ },
+ "controllers.linear_controller[:].pid.d.data": {
+  "full_path": "controllers.linear_controller[:].pid.d.data",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.d.time"
+  ],
+  "description": "Derivative term {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].pid": {
+  "full_path": "controllers.linear_controller[:].pid",
+  "coordinates": [],
+  "description": "Filtered PID controller",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].statespace.a.time": {
+  "full_path": "controllers.linear_controller[:].statespace.a.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.nonlinear_controller[:].inputs.data_error_upper": {
+  "full_path": "controllers.nonlinear_controller[:].inputs.data_error_upper",
+  "coordinates": [
+   "controllers.nonlinear_controller[:].input_names",
+   "controllers.nonlinear_controller[:].inputs.time"
+  ],
+  "description": "Upper error for \"data\" {constant} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.code": {
+  "full_path": "controllers.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].pid.tau.data_error_index": {
+  "full_path": "controllers.linear_controller[:].pid.tau.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.tau.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.nonlinear_controller[:].outputs.data_error_lower": {
+  "full_path": "controllers.nonlinear_controller[:].outputs.data_error_lower",
+  "coordinates": [
+   "controllers.nonlinear_controller[:].output_names",
+   "controllers.nonlinear_controller[:].outputs.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.ids_properties.comment": {
+  "full_path": "controllers.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].pid.tau.time": {
+  "full_path": "controllers.linear_controller[:].pid.tau.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].inputs.time": {
+  "full_path": "controllers.linear_controller[:].inputs.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].statespace.b.data": {
+  "full_path": "controllers.linear_controller[:].statespace.b.data",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].input_names",
+   "controllers.linear_controller[:].statespace.b.time"
+  ],
+  "description": "B matrix {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].inputs.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].inputs.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].input_names",
+   "controllers.linear_controller[:].inputs.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.linear_controller[:].statespace.c.data_error_index": {
+  "full_path": "controllers.linear_controller[:].statespace.c.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].statespace.c.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].outputs.data_error_index": {
+  "full_path": "controllers.linear_controller[:].outputs.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].outputs.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].statespace.b.data_error_index": {
+  "full_path": "controllers.linear_controller[:].statespace.b.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].input_names",
+   "controllers.linear_controller[:].statespace.b.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].pid.d.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].pid.d.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.d.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].pid.tau.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].pid.tau.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.tau.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "controllers.linear_controller[:].pid.i.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].pid.i.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.i.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].statespace.state_names": {
+  "full_path": "controllers.linear_controller[:].statespace.state_names",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Names of the states {constant}",
+  "data_type": "STR_1D"
+ },
+ "controllers.linear_controller[:].pid.tau.data": {
+  "full_path": "controllers.linear_controller[:].pid.tau.data",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.tau.time"
+  ],
+  "description": "Filter time-constant for the D-term {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "controllers.linear_controller[:].statespace.c.time": {
+  "full_path": "controllers.linear_controller[:].statespace.c.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].statespace.c.data": {
+  "full_path": "controllers.linear_controller[:].statespace.c.data",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].statespace.c.time"
+  ],
+  "description": "C matrix {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].statespace.deltat": {
+  "full_path": "controllers.linear_controller[:].statespace.deltat",
+  "coordinates": [],
+  "description": "Discrete time sampling interval ; if less than 1e-10, the controller is considered to be expressed in continuous time",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:]": {
+  "full_path": "controllers.linear_controller[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...20"
+  ],
+  "description": "A linear controller, this is rather conventional",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].statespace.b.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].statespace.b.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].input_names",
+   "controllers.linear_controller[:].statespace.b.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.nonlinear_controller[:].name": {
+  "full_path": "controllers.nonlinear_controller[:].name",
+  "coordinates": [],
+  "description": "Name of this controller {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].statespace.a.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].statespace.a.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].statespace.a.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].statespace.a": {
+  "full_path": "controllers.linear_controller[:].statespace.a",
+  "coordinates": [],
+  "description": "A matrix",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].statespace.b.time": {
+  "full_path": "controllers.linear_controller[:].statespace.b.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].pid.input_names": {
+  "data_type": "INT_1D",
+  "full_path": "controllers.linear_controller[:].pid.input_names",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "controllers.linear_controller[:].pid.tau.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].pid.tau.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.tau.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "controllers.linear_controller[:].pid.d.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].pid.d.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.d.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.nonlinear_controller[:].input_names": {
+  "full_path": "controllers.nonlinear_controller[:].input_names",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Names of the input signals, following the SDN convention {constant}",
+  "data_type": "STR_1D"
+ },
+ "controllers.nonlinear_controller[:].inputs.data_error_lower": {
+  "full_path": "controllers.nonlinear_controller[:].inputs.data_error_lower",
+  "coordinates": [
+   "controllers.nonlinear_controller[:].input_names",
+   "controllers.nonlinear_controller[:].inputs.time"
+  ],
+  "description": "Lower error for \"data\" {constant} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.linear_controller[:].pid.p.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].pid.p.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.p.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].pid.p.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].pid.p.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.p.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].statespace.d": {
+  "full_path": "controllers.linear_controller[:].statespace.d",
+  "coordinates": [],
+  "description": "D matrix, normally proper and D=0",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].statespace.c": {
+  "full_path": "controllers.linear_controller[:].statespace.c",
+  "coordinates": [],
+  "description": "C matrix",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].statespace.b": {
+  "full_path": "controllers.linear_controller[:].statespace.b",
+  "coordinates": [],
+  "description": "B matrix",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].pid.d.data_error_index": {
+  "full_path": "controllers.linear_controller[:].pid.d.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.d.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.nonlinear_controller[:].outputs.data": {
+  "full_path": "controllers.nonlinear_controller[:].outputs.data",
+  "coordinates": [
+   "controllers.nonlinear_controller[:].output_names",
+   "controllers.nonlinear_controller[:].outputs.time"
+  ],
+  "description": "Output signals; the timebase is common to inputs and outputs for any particular controller {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.linear_controller[:].description": {
+  "full_path": "controllers.linear_controller[:].description",
+  "coordinates": [],
+  "description": "Description of this controller {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].inputs.data_error_index": {
+  "full_path": "controllers.linear_controller[:].inputs.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].input_names",
+   "controllers.linear_controller[:].inputs.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.code.parameters": {
+  "full_path": "controllers.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].statespace.deltat.data_error_index": {
+  "full_path": "controllers.linear_controller[:].statespace.deltat.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.deltat.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].pid.p.time": {
+  "full_path": "controllers.linear_controller[:].pid.p.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.linear_controller[:].statespace.b.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].statespace.b.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].input_names",
+   "controllers.linear_controller[:].statespace.b.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.linear_controller[:].statespace.a.data_error_index": {
+  "full_path": "controllers.linear_controller[:].statespace.a.data_error_index",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].statespace.state_names",
+   "controllers.linear_controller[:].statespace.a.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].statespace.deltat.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].statespace.deltat.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.deltat.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "controllers.nonlinear_controller[:].outputs.data_error_index": {
+  "full_path": "controllers.nonlinear_controller[:].outputs.data_error_index",
+  "coordinates": [
+   "controllers.nonlinear_controller[:].output_names",
+   "controllers.nonlinear_controller[:].outputs.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "controllers.linear_controller[:].pid.p.data": {
+  "full_path": "controllers.linear_controller[:].pid.p.data",
+  "coordinates": [
+   "controllers.linear_controller[:].pid.output_names",
+   "controllers.linear_controller[:].pid.input_names",
+   "controllers.linear_controller[:].pid.p.time"
+  ],
+  "description": "Proportional term {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "controllers.nonlinear_controller[:].inputs": {
+  "full_path": "controllers.nonlinear_controller[:].inputs",
+  "coordinates": [],
+  "description": "Input signals; the timebase is common to inputs and outputs for any particular controller",
+  "data_type": ""
+ },
+ "controllers.linear_controller[:].controller_class": {
+  "full_path": "controllers.linear_controller[:].controller_class",
+  "coordinates": [],
+  "description": "One of a known class of controllers {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.nonlinear_controller[:].inputs.time": {
+  "full_path": "controllers.nonlinear_controller[:].inputs.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.code.version": {
+  "full_path": "controllers.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "controllers.linear_controller[:].output_names": {
+  "full_path": "controllers.linear_controller[:].output_names",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Names of the output signals following the SDN convention {constant}",
+  "data_type": "STR_1D"
+ },
+ "controllers.linear_controller[:].pid.i.time": {
+  "full_path": "controllers.linear_controller[:].pid.i.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "controllers.code.output_flag": {
+  "full_path": "controllers.code.output_flag",
+  "coordinates": [
+   "controllers.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "controllers.linear_controller[:].outputs": {
+  "full_path": "controllers.linear_controller[:].outputs",
+  "coordinates": [],
+  "description": "Output signals; the timebase is common to inputs and outputs for any particular controller",
+  "data_type": ""
+ },
+ "controllers.ids_properties": {
+  "full_path": "controllers.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "controllers.nonlinear_controller[:].inputs.data": {
+  "full_path": "controllers.nonlinear_controller[:].inputs.data",
+  "coordinates": [
+   "controllers.nonlinear_controller[:].input_names",
+   "controllers.nonlinear_controller[:].inputs.time"
+  ],
+  "description": "Input signals; the timebase is common to inputs and outputs for any particular controller {constant} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.linear_controller[:].inputs.data_error_lower": {
+  "full_path": "controllers.linear_controller[:].inputs.data_error_lower",
+  "coordinates": [
+   "controllers.linear_controller[:].input_names",
+   "controllers.linear_controller[:].inputs.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "controllers.nonlinear_controller[:].output_names": {
+  "full_path": "controllers.nonlinear_controller[:].output_names",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Output signal names following the SDN convention {constant}",
+  "data_type": "STR_1D"
+ },
+ "controllers.linear_controller[:].statespace.d.data_error_upper": {
+  "full_path": "controllers.linear_controller[:].statespace.d.data_error_upper",
+  "coordinates": [
+   "controllers.linear_controller[:].statespace.input_names",
+   "controllers.linear_controller[:].output_names",
+   "controllers.linear_controller[:].statespace.d.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ }
+}
