@@ -1,0 +1,35 @@
+Metadata-Version: 2.0
+Name: solidfire-cli
+Version: 1.5.0.29
+Summary: A python client and CLI for accessing the SolidFire API.
+Home-page: https://github.com/solidfire/solidfire-cli/tree/release0.0
+Author: SolidFire, Inc.
+Author-email: ariel.hoffman@solidfire.com, adam.haid@solidfire.com
+License: Apache License 2.0
+Description-Content-Type: UNKNOWN
+Keywords: element
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 2.7
+Requires-Dist: click (>=5)
+Requires-Dist: future
+Requires-Dist: setuptools
+Requires-Dist: simplejson
+Requires-Dist: jsonpickle (>=0.9.3)
+Requires-Dist: solidfire-sdk-python (>=1.2)
+Requires-Dist: pycryptodome (>=2.6.1)
+Requires-Dist: FileLock
+Requires-Dist: getpass2
+
+A python client and CLI for accessing the SolidFire API.
+
+
