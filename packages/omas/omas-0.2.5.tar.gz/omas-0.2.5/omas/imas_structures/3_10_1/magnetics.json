@@ -1,0 +1,567 @@
+{
+ "magnetics.bpol_probe[:].field.data": {
+  "full_path": "magnetics.bpol_probe[:].field.data",
+  "coordinates": [
+   "magnetics.bpol_probe[:].field.time"
+  ],
+  "description": "Measured magnetic field {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.bpol_probe[:]": {
+  "full_path": "magnetics.bpol_probe[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...200"
+  ],
+  "description": "Poloidal field probes",
+  "data_type": ""
+ },
+ "magnetics.method[:].ip.data": {
+  "full_path": "magnetics.method[:].ip.data",
+  "coordinates": [
+   "magnetics.method[:].ip.time"
+  ],
+  "description": "Plasma current. Positive sign means anti-clockwise when viewed from above. {dynamic} [A]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.code.output_flag": {
+  "full_path": "magnetics.code.output_flag",
+  "coordinates": [
+   "magnetics.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "magnetics.bpol_probe[:].name": {
+  "full_path": "magnetics.bpol_probe[:].name",
+  "coordinates": [],
+  "description": "Name of the probe {static}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.code": {
+  "full_path": "magnetics.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "magnetics.method[:].diamagnetic_flux.time": {
+  "full_path": "magnetics.method[:].diamagnetic_flux.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "magnetics.flux_loop[:].position[:].r_error_index": {
+  "full_path": "magnetics.flux_loop[:].position[:].r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.bpol_probe[:].poloidal_angle_error_lower": {
+  "full_path": "magnetics.bpol_probe[:].poloidal_angle_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"poloidal_angle\" {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].length": {
+  "full_path": "magnetics.bpol_probe[:].length",
+  "coordinates": [],
+  "description": "Length of the coil {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].position.z_error_index": {
+  "full_path": "magnetics.bpol_probe[:].position.z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.method[:].diamagnetic_flux.data_error_index": {
+  "full_path": "magnetics.method[:].diamagnetic_flux.data_error_index",
+  "coordinates": [
+   "magnetics.method[:].diamagnetic_flux.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.ids_properties.homogeneous_time": {
+  "full_path": "magnetics.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.method[:]": {
+  "full_path": "magnetics.method[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...10"
+  ],
+  "description": "A method generating processed quantities derived from the magnetic measurements",
+  "data_type": ""
+ },
+ "magnetics.flux_loop[:].position[:].z_error_index": {
+  "full_path": "magnetics.flux_loop[:].position[:].z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.flux_loop[:].flux.time": {
+  "full_path": "magnetics.flux_loop[:].flux.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "magnetics.bpol_probe[:].field.time": {
+  "full_path": "magnetics.bpol_probe[:].field.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "magnetics.method[:].ip.data_error_upper": {
+  "full_path": "magnetics.method[:].ip.data_error_upper",
+  "coordinates": [
+   "magnetics.method[:].ip.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.flux_loop[:].position[:].phi_error_upper": {
+  "full_path": "magnetics.flux_loop[:].position[:].phi_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].position.r_error_index": {
+  "full_path": "magnetics.bpol_probe[:].position.r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.flux_loop[:].position[:].phi_error_lower": {
+  "full_path": "magnetics.flux_loop[:].position[:].phi_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].length_error_index": {
+  "full_path": "magnetics.bpol_probe[:].length_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"length\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.bpol_probe[:].position.z_error_upper": {
+  "full_path": "magnetics.bpol_probe[:].position.z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.method[:].diamagnetic_flux": {
+  "full_path": "magnetics.method[:].diamagnetic_flux",
+  "coordinates": [],
+  "description": "Diamagnetic flux",
+  "data_type": ""
+ },
+ "magnetics.bpol_probe[:].position.r_error_lower": {
+  "full_path": "magnetics.bpol_probe[:].position.r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:].position[:].z_error_lower": {
+  "full_path": "magnetics.flux_loop[:].position[:].z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].position.z": {
+  "full_path": "magnetics.bpol_probe[:].position.z",
+  "coordinates": [],
+  "description": "Height {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:].position[:].z": {
+  "full_path": "magnetics.flux_loop[:].position[:].z",
+  "coordinates": [],
+  "description": "Height {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:]": {
+  "full_path": "magnetics.flux_loop[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...200"
+  ],
+  "description": "Flux loops; partial flux loops can be described",
+  "data_type": ""
+ },
+ "magnetics.method[:].ip.data_error_index": {
+  "full_path": "magnetics.method[:].ip.data_error_index",
+  "coordinates": [
+   "magnetics.method[:].ip.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.bpol_probe[:].position.r": {
+  "full_path": "magnetics.bpol_probe[:].position.r",
+  "coordinates": [],
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:].position[:].r": {
+  "full_path": "magnetics.flux_loop[:].position[:].r",
+  "coordinates": [],
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].identifier": {
+  "full_path": "magnetics.bpol_probe[:].identifier",
+  "coordinates": [],
+  "description": "ID of the probe {static}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.bpol_probe[:].toroidal_angle_error_index": {
+  "full_path": "magnetics.bpol_probe[:].toroidal_angle_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"toroidal_angle\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.bpol_probe[:].area_error_lower": {
+  "full_path": "magnetics.bpol_probe[:].area_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"area\" {static} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.code.version": {
+  "full_path": "magnetics.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.bpol_probe[:].position.phi_error_upper": {
+  "full_path": "magnetics.bpol_probe[:].position.phi_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:].position[:].z_error_upper": {
+  "full_path": "magnetics.flux_loop[:].position[:].z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.code.parameters": {
+  "full_path": "magnetics.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.bpol_probe[:].poloidal_angle": {
+  "full_path": "magnetics.bpol_probe[:].poloidal_angle",
+  "coordinates": [],
+  "description": "Poloidal angle of the coil orientation {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.ids_properties.comment": {
+  "full_path": "magnetics.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.method[:].name": {
+  "full_path": "magnetics.method[:].name",
+  "coordinates": [],
+  "description": "Name of the data processing method {static}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.bpol_probe[:].position.z_error_lower": {
+  "full_path": "magnetics.bpol_probe[:].position.z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.method[:].diamagnetic_flux.data_error_upper": {
+  "full_path": "magnetics.method[:].diamagnetic_flux.data_error_upper",
+  "coordinates": [
+   "magnetics.method[:].diamagnetic_flux.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.bpol_probe[:].position.r_error_upper": {
+  "full_path": "magnetics.bpol_probe[:].position.r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].area_error_index": {
+  "full_path": "magnetics.bpol_probe[:].area_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.bpol_probe[:].area": {
+  "full_path": "magnetics.bpol_probe[:].area",
+  "coordinates": [],
+  "description": "Area of each turn of the coil {static} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.method[:].diamagnetic_flux.data_error_lower": {
+  "full_path": "magnetics.method[:].diamagnetic_flux.data_error_lower",
+  "coordinates": [
+   "magnetics.method[:].diamagnetic_flux.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.flux_loop[:].position[:].r_error_lower": {
+  "full_path": "magnetics.flux_loop[:].position[:].r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].field.data_error_upper": {
+  "full_path": "magnetics.bpol_probe[:].field.data_error_upper",
+  "coordinates": [
+   "magnetics.bpol_probe[:].field.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.ids_properties": {
+  "full_path": "magnetics.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "magnetics.flux_loop[:].position[:]": {
+  "full_path": "magnetics.flux_loop[:].position[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...10"
+  ],
+  "description": "List of (R,Z,phi) points defining the position of the loop (see data structure documentation FLUXLOOPposition.pdf) {static}",
+  "data_type": ""
+ },
+ "magnetics.bpol_probe[:].position.phi_error_index": {
+  "full_path": "magnetics.bpol_probe[:].position.phi_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.bpol_probe[:].position.phi": {
+  "full_path": "magnetics.bpol_probe[:].position.phi",
+  "coordinates": [],
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.method[:].ip.time": {
+  "full_path": "magnetics.method[:].ip.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "magnetics.time": {
+  "full_path": "magnetics.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "magnetics.bpol_probe[:].field.data_error_index": {
+  "full_path": "magnetics.bpol_probe[:].field.data_error_index",
+  "coordinates": [
+   "magnetics.bpol_probe[:].field.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.flux_loop[:].identifier": {
+  "full_path": "magnetics.flux_loop[:].identifier",
+  "coordinates": [],
+  "description": "ID of the flux loop {static}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.bpol_probe[:].position.phi_error_lower": {
+  "full_path": "magnetics.bpol_probe[:].position.phi_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].poloidal_angle_error_upper": {
+  "full_path": "magnetics.bpol_probe[:].poloidal_angle_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"poloidal_angle\" {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].area_error_upper": {
+  "full_path": "magnetics.bpol_probe[:].area_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"area\" {static} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].toroidal_angle_error_upper": {
+  "full_path": "magnetics.bpol_probe[:].toroidal_angle_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"toroidal_angle\" {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.code.name": {
+  "full_path": "magnetics.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.bpol_probe[:].toroidal_angle_error_lower": {
+  "full_path": "magnetics.bpol_probe[:].toroidal_angle_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"toroidal_angle\" {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:].flux.data": {
+  "full_path": "magnetics.flux_loop[:].flux.data",
+  "coordinates": [
+   "magnetics.flux_loop[:].flux.time"
+  ],
+  "description": "Measured flux {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.flux_loop[:].flux": {
+  "full_path": "magnetics.flux_loop[:].flux",
+  "coordinates": [],
+  "description": "Measured flux",
+  "data_type": ""
+ },
+ "magnetics.method[:].diamagnetic_flux.data": {
+  "full_path": "magnetics.method[:].diamagnetic_flux.data",
+  "coordinates": [
+   "magnetics.method[:].diamagnetic_flux.time"
+  ],
+  "description": "Diamagnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.flux_loop[:].position[:].phi": {
+  "full_path": "magnetics.flux_loop[:].position[:].phi",
+  "coordinates": [],
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:].position[:].r_error_upper": {
+  "full_path": "magnetics.flux_loop[:].position[:].r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:].flux.data_error_lower": {
+  "full_path": "magnetics.flux_loop[:].flux.data_error_lower",
+  "coordinates": [
+   "magnetics.flux_loop[:].flux.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.bpol_probe[:].turns": {
+  "full_path": "magnetics.bpol_probe[:].turns",
+  "coordinates": [],
+  "description": "Turns in the coil, including sign {static}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.flux_loop[:].flux.data_error_index": {
+  "full_path": "magnetics.flux_loop[:].flux.data_error_index",
+  "coordinates": [
+   "magnetics.flux_loop[:].flux.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.flux_loop[:].position[:].phi_error_index": {
+  "full_path": "magnetics.flux_loop[:].position[:].phi_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.bpol_probe[:].toroidal_angle": {
+  "full_path": "magnetics.bpol_probe[:].toroidal_angle",
+  "coordinates": [],
+  "description": "Toroidal angle of coil orientation (0 if fully in the poloidal plane) {static} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.flux_loop[:].name": {
+  "full_path": "magnetics.flux_loop[:].name",
+  "coordinates": [],
+  "description": "Name of the flux loop {static}",
+  "data_type": "STR_0D"
+ },
+ "magnetics.bpol_probe[:].field.data_error_lower": {
+  "full_path": "magnetics.bpol_probe[:].field.data_error_lower",
+  "coordinates": [
+   "magnetics.bpol_probe[:].field.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.bpol_probe[:].poloidal_angle_error_index": {
+  "full_path": "magnetics.bpol_probe[:].poloidal_angle_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"poloidal_angle\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "magnetics.flux_loop[:].flux.data_error_upper": {
+  "full_path": "magnetics.flux_loop[:].flux.data_error_upper",
+  "coordinates": [
+   "magnetics.flux_loop[:].flux.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "magnetics.method[:].ip": {
+  "full_path": "magnetics.method[:].ip",
+  "coordinates": [],
+  "description": "Plasma current. Positive sign means anti-clockwise when viewed from above.",
+  "data_type": ""
+ },
+ "magnetics.bpol_probe[:].length_error_lower": {
+  "full_path": "magnetics.bpol_probe[:].length_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"length\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.bpol_probe[:].position": {
+  "full_path": "magnetics.bpol_probe[:].position",
+  "coordinates": [],
+  "description": "R, Z, Phi position of the coil centre",
+  "data_type": ""
+ },
+ "magnetics.bpol_probe[:].field": {
+  "full_path": "magnetics.bpol_probe[:].field",
+  "coordinates": [],
+  "description": "Measured magnetic field",
+  "data_type": ""
+ },
+ "magnetics.bpol_probe[:].length_error_upper": {
+  "full_path": "magnetics.bpol_probe[:].length_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"length\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "magnetics.method[:].ip.data_error_lower": {
+  "full_path": "magnetics.method[:].ip.data_error_lower",
+  "coordinates": [
+   "magnetics.method[:].ip.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D"
+ }
+}

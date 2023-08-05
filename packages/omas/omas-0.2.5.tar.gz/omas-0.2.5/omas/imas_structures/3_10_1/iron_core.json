@@ -1,0 +1,576 @@
+{
+ "iron_core.segment[:].geometry.rectangle.height_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.height_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"height\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.beta_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.oblique.beta_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"beta\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.thickness_error_index": {
+  "full_path": "iron_core.segment[:].geometry.oblique.thickness_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"thickness\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.r_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.z_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.oblique.z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.code.name": {
+  "full_path": "iron_core.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.beta_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.oblique.beta_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"beta\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.z": {
+  "full_path": "iron_core.segment[:].geometry.oblique.z",
+  "coordinates": [],
+  "description": "Geometric centre Z {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].magnetisation_r.data_error_index": {
+  "full_path": "iron_core.segment[:].magnetisation_r.data_error_index",
+  "coordinates": [
+   "iron_core.segment[:].magnetisation_r.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.code": {
+  "full_path": "iron_core.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "iron_core.segment[:].geometry.rectangle.height_error_index": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.height_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"height\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.ids_properties.homogeneous_time": {
+  "full_path": "iron_core.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].geometry.outline.z_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.outline.z_error_lower",
+  "coordinates": [
+   "iron_core.segment[:].geometry.outline.r"
+  ],
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.time": {
+  "full_path": "iron_core.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "iron_core.segment[:].permeability_relative_error_upper": {
+  "full_path": "iron_core.segment[:].permeability_relative_error_upper",
+  "coordinates": [
+   "iron_core.segment[:].b_field"
+  ],
+  "description": "Upper error for \"permeability_relative\" {static} [-]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].magnetisation_z.data_error_lower": {
+  "full_path": "iron_core.segment[:].magnetisation_z.data_error_lower",
+  "coordinates": [
+   "iron_core.segment[:].magnetisation_z.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].geometry.oblique.alpha_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.oblique.alpha_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"alpha\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.code.output_flag": {
+  "full_path": "iron_core.code.output_flag",
+  "coordinates": [
+   "iron_core.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "iron_core.segment[:].geometry.oblique.beta_error_index": {
+  "full_path": "iron_core.segment[:].geometry.oblique.beta_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"beta\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.ids_properties.comment": {
+  "full_path": "iron_core.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.thickness": {
+  "full_path": "iron_core.segment[:].geometry.oblique.thickness",
+  "coordinates": [],
+  "description": "Thickness {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.length_error_index": {
+  "full_path": "iron_core.segment[:].geometry.oblique.length_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"length\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.r_error_index": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].magnetisation_z.data": {
+  "full_path": "iron_core.segment[:].magnetisation_z.data",
+  "coordinates": [
+   "iron_core.segment[:].magnetisation_z.time"
+  ],
+  "description": "Magnetisation M of the iron segment along the vertical axis, assumed to be constant inside a given iron segment. Reminder : H = 1/mu0 * B - mur * M; {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].geometry.oblique.r_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.oblique.r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].magnetisation_r.data_error_upper": {
+  "full_path": "iron_core.segment[:].magnetisation_r.data_error_upper",
+  "coordinates": [
+   "iron_core.segment[:].magnetisation_r.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].geometry.oblique.r_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.oblique.r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.height_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.height_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"height\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.z_error_index": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].permeability_relative_error_lower": {
+  "full_path": "iron_core.segment[:].permeability_relative_error_lower",
+  "coordinates": [
+   "iron_core.segment[:].b_field"
+  ],
+  "description": "Lower error for \"permeability_relative\" {static} [-]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].name": {
+  "full_path": "iron_core.segment[:].name",
+  "coordinates": [],
+  "description": "Name of the segment {static}",
+  "data_type": "STR_0D"
+ },
+ "iron_core.segment[:].magnetisation_z.data_error_upper": {
+  "full_path": "iron_core.segment[:].magnetisation_z.data_error_upper",
+  "coordinates": [
+   "iron_core.segment[:].magnetisation_z.time"
+  ],
+  "description": "Upper error for \"data\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].geometry.outline.r_error_index": {
+  "full_path": "iron_core.segment[:].geometry.outline.r_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.width_error_index": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.width_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"width\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.z_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.oblique.z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry": {
+  "full_path": "iron_core.segment[:].geometry",
+  "coordinates": [],
+  "description": "Cross-sectional shape of the segment",
+  "data_type": ""
+ },
+ "iron_core.segment[:].geometry.rectangle.height": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.height",
+  "coordinates": [],
+  "description": "Vertical full height {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.z_error_index": {
+  "full_path": "iron_core.segment[:].geometry.oblique.z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.width_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.width_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"width\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.z_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.alpha_error_index": {
+  "full_path": "iron_core.segment[:].geometry.oblique.alpha_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"alpha\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.width": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.width",
+  "coordinates": [],
+  "description": "Horizontal full width {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.r": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.r",
+  "coordinates": [],
+  "description": "Geometric centre R {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.alpha_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.oblique.alpha_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"alpha\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.outline.r_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.outline.r_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].geometry.rectangle.z": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.z",
+  "coordinates": [],
+  "description": "Geometric centre Z {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.alpha": {
+  "full_path": "iron_core.segment[:].geometry.oblique.alpha",
+  "coordinates": [],
+  "description": "Inclination of first angle TBD {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.r": {
+  "full_path": "iron_core.segment[:].geometry.oblique.r",
+  "coordinates": [],
+  "description": "Geometric centre R {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].magnetisation_z.data_error_index": {
+  "full_path": "iron_core.segment[:].magnetisation_z.data_error_index",
+  "coordinates": [
+   "iron_core.segment[:].magnetisation_z.time"
+  ],
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].b_field_error_lower": {
+  "full_path": "iron_core.segment[:].b_field_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"b_field\" {static} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].b_field_error_upper": {
+  "full_path": "iron_core.segment[:].b_field_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"b_field\" {static} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].magnetisation_r": {
+  "full_path": "iron_core.segment[:].magnetisation_r",
+  "coordinates": [],
+  "description": "Magnetisation M of the iron segment along the major radius axis, assumed to be constant inside a given iron segment. Reminder : H = 1/mu0 * B - mur * M;",
+  "data_type": ""
+ },
+ "iron_core.segment[:].magnetisation_z": {
+  "full_path": "iron_core.segment[:].magnetisation_z",
+  "coordinates": [],
+  "description": "Magnetisation M of the iron segment along the vertical axis, assumed to be constant inside a given iron segment. Reminder : H = 1/mu0 * B - mur * M;",
+  "data_type": ""
+ },
+ "iron_core.segment[:].geometry.rectangle.z_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.thickness_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.oblique.thickness_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"thickness\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.length_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.oblique.length_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"length\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique": {
+  "full_path": "iron_core.segment[:].geometry.oblique",
+  "coordinates": [],
+  "description": "Trapezoidal description of the element",
+  "data_type": ""
+ },
+ "iron_core.segment[:].geometry.outline": {
+  "full_path": "iron_core.segment[:].geometry.outline",
+  "coordinates": [],
+  "description": "Irregular outline of the element",
+  "data_type": ""
+ },
+ "iron_core.segment[:].geometry.outline.r": {
+  "full_path": "iron_core.segment[:].geometry.outline.r",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.ids_properties": {
+  "full_path": "iron_core.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "iron_core.segment[:].geometry.outline.z": {
+  "full_path": "iron_core.segment[:].geometry.outline.z",
+  "coordinates": [
+   "iron_core.segment[:].geometry.outline.r"
+  ],
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].permeability_relative": {
+  "full_path": "iron_core.segment[:].permeability_relative",
+  "coordinates": [
+   "iron_core.segment[:].b_field"
+  ],
+  "description": "Relative permeability of the iron segment {static} [-]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].geometry.geometry_type": {
+  "full_path": "iron_core.segment[:].geometry.geometry_type",
+  "coordinates": [],
+  "description": "Type used to describe the element shape (1:'outline', 2:'rectangle', 3:'oblique') {static}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].magnetisation_z.time": {
+  "full_path": "iron_core.segment[:].magnetisation_z.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "iron_core.segment[:].geometry.oblique.thickness_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.oblique.thickness_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"thickness\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.outline.z_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.outline.z_error_upper",
+  "coordinates": [
+   "iron_core.segment[:].geometry.outline.r"
+  ],
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].geometry.rectangle.r_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].magnetisation_r.data_error_lower": {
+  "full_path": "iron_core.segment[:].magnetisation_r.data_error_lower",
+  "coordinates": [
+   "iron_core.segment[:].magnetisation_r.time"
+  ],
+  "description": "Lower error for \"data\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.code.parameters": {
+  "full_path": "iron_core.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "iron_core.segment[:].permeability_relative_error_index": {
+  "full_path": "iron_core.segment[:].permeability_relative_error_index",
+  "coordinates": [
+   "iron_core.segment[:].b_field"
+  ],
+  "description": "Index in the error_description list for \"permeability_relative\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].magnetisation_r.data": {
+  "full_path": "iron_core.segment[:].magnetisation_r.data",
+  "coordinates": [
+   "iron_core.segment[:].magnetisation_r.time"
+  ],
+  "description": "Magnetisation M of the iron segment along the major radius axis, assumed to be constant inside a given iron segment. Reminder : H = 1/mu0 * B - mur * M; {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].magnetisation_r.time": {
+  "full_path": "iron_core.segment[:].magnetisation_r.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "iron_core.segment[:].geometry.outline.r_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.outline.r_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].b_field_error_index": {
+  "full_path": "iron_core.segment[:].b_field_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"b_field\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].identifier": {
+  "full_path": "iron_core.segment[:].identifier",
+  "coordinates": [],
+  "description": "ID of the segment {static}",
+  "data_type": "STR_0D"
+ },
+ "iron_core.segment[:].geometry.outline.z_error_index": {
+  "full_path": "iron_core.segment[:].geometry.outline.z_error_index",
+  "coordinates": [
+   "iron_core.segment[:].geometry.outline.r"
+  ],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.r_error_index": {
+  "full_path": "iron_core.segment[:].geometry.oblique.r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "iron_core.segment[:].b_field": {
+  "full_path": "iron_core.segment[:].b_field",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Array of magnetic field values, for each of which the relative permeability is given {static} [T]",
+  "data_type": "FLT_1D"
+ },
+ "iron_core.segment[:].geometry.oblique.beta": {
+  "full_path": "iron_core.segment[:].geometry.oblique.beta",
+  "coordinates": [],
+  "description": "Inclination of second angle TBD {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.length_error_lower": {
+  "full_path": "iron_core.segment[:].geometry.oblique.length_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"length\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.oblique.length": {
+  "full_path": "iron_core.segment[:].geometry.oblique.length",
+  "coordinates": [],
+  "description": "Length {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle": {
+  "full_path": "iron_core.segment[:].geometry.rectangle",
+  "coordinates": [],
+  "description": "Rectangular description of the element",
+  "data_type": ""
+ },
+ "iron_core.code.version": {
+  "full_path": "iron_core.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "iron_core.segment[:].geometry.rectangle.width_error_upper": {
+  "full_path": "iron_core.segment[:].geometry.rectangle.width_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"width\" {static} [m]",
+  "data_type": "FLT_0D"
+ },
+ "iron_core.segment[:]": {
+  "full_path": "iron_core.segment[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...10"
+  ],
+  "description": "The iron core is describred as a set of segments",
+  "data_type": ""
+ }
+}

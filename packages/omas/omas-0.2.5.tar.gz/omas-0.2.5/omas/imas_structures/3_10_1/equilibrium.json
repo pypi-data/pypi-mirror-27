@@ -1,0 +1,4586 @@
+{
+ "equilibrium.time_slice[:].ggd[:].z[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:].z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:].z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.volume_element_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.volume_element_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"volume_element\" {dynamic} [m^3]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.f_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.f_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"f\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid",
+  "coordinates": [],
+  "description": "Grid description",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"triangularity\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.area_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.area_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.psi_axis_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.psi_axis_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"psi_axis\" {dynamic} [Wb]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary": {
+  "full_path": "equilibrium.time_slice[:].boundary",
+  "coordinates": [],
+  "description": "Description of the plasma boundary",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].boundary.elongation_lower_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_lower_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"elongation_lower\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.darea_drho_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.darea_drho_tor_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"darea_drho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.length_pol_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.length_pol_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"length_pol\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].j_parallel[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.z": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.z",
+  "coordinates": [],
+  "description": "Height of the magnetic axis {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.r": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.r",
+  "coordinates": [],
+  "description": "Major radius of the magnetic axis {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"triangularity\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.triangularity_lower_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.triangularity_lower_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"triangularity_lower\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:].object[:].space": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:].object[:].space",
+  "coordinates": [],
+  "description": "Index of the space from which that object is taken {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].time": {
+  "full_path": "equilibrium.time_slice[:].time",
+  "coordinates": [],
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.psi_axis": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.psi_axis",
+  "coordinates": [],
+  "description": "Poloidal flux at the magnetic axis {dynamic} [Wb]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.volume_element_error_upper": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.volume_element_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Upper error for \"volume_element\" {dynamic} [m^3]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm8": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm8",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged R {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis.z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis.z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm3": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm3",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged grad_rho^2 {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm2": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm2",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged grad_rho^2/R^2 {dynamic} [m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm5": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm5",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged B^2 {dynamic} [T^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm4": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm4",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged 1/B^2 {dynamic} [T^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm7": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm7",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged grad_rho {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.triangularity_upper_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.triangularity_upper_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"triangularity_upper\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.psi_boundary_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.psi_boundary_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"psi_boundary\" {dynamic} [Wb]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.r_outboard": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.r_outboard",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Radial coordinate (major radius) on the outboard side of the magnetic axis {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].psi_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].psi_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.psi_axis_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.psi_axis_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"psi_axis\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_lower_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_lower_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"elongation_lower\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.psi_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.psi_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:].r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:].r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].j_tor": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].j_tor",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Toroidal plasma current density {dynamic} [A.m^-2]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis.r": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis.r",
+  "coordinates": [],
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Covariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].global_quantities": {
+  "full_path": "equilibrium.time_slice[:].global_quantities",
+  "coordinates": [],
+  "description": "0D parameters of the equilibrium",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis.z": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis.z",
+  "coordinates": [],
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis",
+  "coordinates": [],
+  "description": "RZ position of the geometric axis (defined as (Rmin+Rmax) / 2 and (Zmin+Zmax) / 2 of the boundary)",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.j_tor": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.j_tor",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged toroidal current density = average(j_tor/R) / average(1/R) {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_z_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"b_field_z\" {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.minor_radius_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.minor_radius_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"minor_radius\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis.z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis.z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.phi_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.phi_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"phi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_min_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_min_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"b_field_min\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm2_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm2_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm2\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.volume": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.volume",
+  "coordinates": [],
+  "description": "Total plasma volume {dynamic} [m^3]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.darea_dpsi_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.darea_dpsi_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"darea_dpsi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_max_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_max_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"b_field_max\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_tor": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_tor",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Toroidal component of the magnetic field {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.z_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].phi[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.area": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.area",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm4_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm4_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm4\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.area_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.area_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].geometry_type.description": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].geometry_type.description",
+  "coordinates": [],
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].j_tor[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.volume_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.volume_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_upper_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_upper_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"triangularity_upper\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_r_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"b_field_r\" {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].dimension": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].dimension",
+  "coordinates": [],
+  "description": "Space dimension of the grid subset elements. This must be equal to the sum of the dimensions of the individual objects forming the element. {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.volume_element_error_lower": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.volume_element_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Lower error for \"volume_element\" {dynamic} [m^3]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.dim1": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "First dimension values {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm1_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm1_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.dim2": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.dim2",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Second dimension values {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"tensor_covariant\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.elongation_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.elongation_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"elongation\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.area_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.area_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_max": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_max",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Maximum(B) on the flux surface {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.j_parallel": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.j_parallel",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged parallel current density = average(j.B) / B0, where B0 = Equilibrium/Global/Toroidal_Field/B0 {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.minor_radius": {
+  "full_path": "equilibrium.time_slice[:].boundary.minor_radius",
+  "coordinates": [],
+  "description": "Minor radius of the plasma boundary (defined as (Rmax-Rmin) / 2 of the boundary) {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.tensor_contravariant_error_upper": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.tensor_contravariant_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+   "1...3",
+   "1...3"
+  ],
+  "description": "Upper error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_4D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].phi_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].phi_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"phi\" {dynamic} [Wb]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.dim1_error_upper": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.dim1_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"dim1\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.darea_drho_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.darea_drho_tor_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"darea_drho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.triangularity_lower_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.triangularity_lower_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"triangularity_lower\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].r": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].r",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Values of the major radius on the grid {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Contravariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].psi[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:].z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:].z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].z": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].z",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Values of the Height on the grid {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_normal_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_normal_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"beta_normal\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.phi_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.phi_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.trapped_fraction": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.trapped_fraction",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Trapped particle fraction {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.j_parallel_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.j_parallel_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"j_parallel\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.r_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.b_field_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.b_field_tor_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"b_field_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm8_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm8_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm8\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_95_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_95_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"q_95\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_tor_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"b_field_tor\" {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.length_pol": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.length_pol",
+  "coordinates": [],
+  "description": "Poloidal length of the magnetic surface {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.surface": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.surface",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Surface area of the toroidal flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].j_tor[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.volume_element_error_index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.volume_element_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"volume_element\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_average_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_average_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"b_field_average\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].z[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].theta[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_tor_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"beta_tor\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "description": "Lower error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_average": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_average",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged B {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_z[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_z[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min.rho_tor_norm_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min.rho_tor_norm_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.code": {
+  "full_path": "equilibrium.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "description": "Index in the error_description list for \"jacobian\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.identifier.index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.identifier.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Contravariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.trapped_fraction_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.trapped_fraction_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"trapped_fraction\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.volume_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.volume_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.triangularity_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.triangularity_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower triangularity w.r.t. magnetic axis {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_lower_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_lower_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"triangularity_lower\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_upper_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_upper_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"triangularity_upper\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].phi[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.pressure_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.pressure_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"pressure\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].z[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dvolume_dpsi_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dvolume_dpsi_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"dvolume_dpsi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"tensor_contravariant\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Geometry data associated with the object. Its dimension depends on the type of object, geometry and coordinate considered. {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].z_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].z_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.f_df_dpsi_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.f_df_dpsi_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"f_df_dpsi\" {dynamic} [T^2.m^2/Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min.rho_tor_norm_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min.rho_tor_norm_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.b_field_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.b_field_tor_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"b_field_tor\" {dynamic} [T]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_95_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_95_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"q_95\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.r_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis",
+  "coordinates": [],
+  "description": "Magnetic axis position and toroidal field",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].phi": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].phi",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Toroidal flux {dynamic} [Wb]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.volume_element_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.volume_element_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"volume_element\" {dynamic} [m^3]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.b_flux_pol_norm_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.b_flux_pol_norm_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"b_flux_pol_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Z component of the poloidal magnetic field, given on various grid subsets [T]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Lower error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.dim1": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "First dimension values {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.psi_boundary_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.psi_boundary_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"psi_boundary\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.magnetic_shear_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.magnetic_shear_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"magnetic_shear\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.surface_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.surface_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"surface\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:]": {
+  "full_path": "equilibrium.time_slice[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of equilibria at various time slices {dynamic}",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.pressure_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.pressure_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.rho_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.rho_tor_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.outline.r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline.r_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_tor_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"beta_tor\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.outline.r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline.r_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.vacuum_toroidal_field.r0_error_lower": {
+  "full_path": "equilibrium.vacuum_toroidal_field.r0_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_min": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_min",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Minimum(B) on the flux surface {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm9": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm9",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged 1/R {dynamic} [m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.phi": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.phi",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Toroidal flux {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm1_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm1_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm1\" {dynamic} [m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].identifier.index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].identifier.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:].z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:].z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.triangularity_upper_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.triangularity_upper_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"triangularity_upper\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].psi[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.rho_tor_norm_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.rho_tor_norm_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm6": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm6",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged grad_rho^2/B^2 {dynamic} [T^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.surface_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.surface_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"surface\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.code.output_flag": {
+  "full_path": "equilibrium.code.output_flag",
+  "coordinates": [
+   "equilibrium.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].r[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].r[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.minor_radius_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.minor_radius_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"minor_radius\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_95_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_95_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"q_95\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.volume_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.volume_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"geometry\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].j_parallel_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].j_parallel_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"j_parallel\" {dynamic} [A.m^-2]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:].z_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:].z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_min_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_min_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"b_field_min\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min.value_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min.value_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"value\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_lower_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_lower_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"elongation_lower\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dvolume_drho_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dvolume_drho_tor_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"dvolume_drho_tor\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:].z": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:].z",
+  "coordinates": [],
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_lower",
+  "coordinates": [],
+  "description": "Lower triangularity of the plasma boundary {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_upper",
+  "coordinates": [],
+  "description": "Upper triangularity of the plasma boundary {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm4_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm4_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm4\" {dynamic} [T^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:].r": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:].r",
+  "coordinates": [],
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point.z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point.z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dpsi_drho_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dpsi_drho_tor_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"dpsi_drho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.dim2_error_index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.dim2_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"dim2\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity",
+  "coordinates": [],
+  "description": "Triangularity of the plasma boundary {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.ip_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.ip_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"ip\" {dynamic} [A]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.dim1_error_index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.dim1_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"dim1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.length_pol_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.length_pol_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"length_pol\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm1": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm1",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Flux surface averaged 1/R^2 {dynamic} [m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_min_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_min_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"b_field_min\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.vacuum_toroidal_field.r0_error_upper": {
+  "full_path": "equilibrium.vacuum_toroidal_field.r0_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.q": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.q",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Safety factor {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Covariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.f": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.f",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Diamagnetic function (F=R B_Phi) {dynamic} [T.m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.j_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.j_tor_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"j_tor\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.tensor_covariant_error_upper": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.tensor_covariant_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+   "1...3",
+   "1...3"
+  ],
+  "description": "Upper error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_4D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "R component of the poloidal magnetic field, given on various grid subsets [T]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].nodes": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].nodes",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "List of nodes forming this object (indices to objects_per_dimension(1)%object(:) in Fortran notation) {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].phi_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].phi_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"phi\" {dynamic} [Wb]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.vacuum_toroidal_field.b0_error_upper": {
+  "full_path": "equilibrium.vacuum_toroidal_field.b0_error_upper",
+  "coordinates": [
+   "equilibrium.time"
+  ],
+  "description": "Upper error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].psi[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "description": "Upper error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:].r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:].r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of grid spaces",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.psi_axis_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.psi_axis_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"psi_axis\" {dynamic} [Wb]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm9_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm9_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm9\" {dynamic} [m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dpressure_dpsi_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dpressure_dpsi_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"dpressure_dpsi\" {dynamic} [Pa.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.r_outboard_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.r_outboard_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"r_outboard\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_tor_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"beta_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_lower_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_lower_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"triangularity_lower\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.vacuum_toroidal_field.r0_error_index": {
+  "full_path": "equilibrium.vacuum_toroidal_field.r0_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.outline.z": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline.z",
+  "coordinates": [
+   "equilibrium.time_slice[:].boundary.outline.r"
+  ],
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Values of the toroidal flux, given on various grid subsets [Wb]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_r[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_z_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_z_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"b_field_z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.dim2_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.dim2_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"dim2\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"elongation\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:].z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:].z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.dim1_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.dim1_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"dim1\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].r_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.identifier.description": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.identifier.description",
+  "coordinates": [],
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"elongation\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point",
+  "coordinates": [],
+  "description": "RZ position of the active limiter point (point of the plasma boundary in contact with the limiter)",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.triangularity_upper_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.triangularity_upper_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"triangularity_upper\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_pol_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_pol_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"beta_pol\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.dim2_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.dim2_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"dim2\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm3_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm3_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm3\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Upper error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.magnetic_shear": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.magnetic_shear",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Magnetic shear, defined as rho_tor/q . dq/drho_tor {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].theta_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].theta_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"theta\" {dynamic} [rad]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].j_parallel_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].j_parallel_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"j_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.darea_dpsi": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.darea_dpsi",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Radial derivative of the cross-sectional area of the flux surface with respect to psi {dynamic} [m^2.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "description": "Upper error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.tensor_covariant_error_lower": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.tensor_covariant_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+   "1...3",
+   "1...3"
+  ],
+  "description": "Lower error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_4D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_upper_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_upper_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"elongation_upper\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.area_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.area_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.ids_properties": {
+  "full_path": "equilibrium.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.z_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.trapped_fraction_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.trapped_fraction_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"trapped_fraction\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:]": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Array of X-points, for each of them the RZ position is given",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.q_axis_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_axis_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"q_axis\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point.z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point.z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.surface_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.surface_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"surface\" {dynamic} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.surface_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.surface_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"surface\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_95": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_95",
+  "coordinates": [],
+  "description": "q at the 95% poloidal flux surface {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_upper_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_upper_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"elongation_upper\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:].r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:].r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min.value": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min.value",
+  "coordinates": [],
+  "description": "Minimum q value {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dpsi_drho_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dpsi_drho_tor_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"dpsi_drho_tor\" {dynamic} [Wb/m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric",
+  "coordinates": [],
+  "description": "Metric of the canonical frame onto Cartesian coordinates",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].z[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_lower_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_lower_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"triangularity_lower\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.w_mhd": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.w_mhd",
+  "coordinates": [],
+  "description": "Plasma energy content = 3/2 * int(p,dV) with p being the total pressure (thermal + fast particles) [J]. Time-dependent; Scalar {dynamic} [J]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.f_df_dpsi_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.f_df_dpsi_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"f_df_dpsi\" {dynamic} [T^2.m^2/Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.f_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.f_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"f\" {dynamic} [T.m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm7_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm7_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm7\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis.r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis.r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].r_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_r[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.outline.z_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline.z_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].boundary.outline.r"
+  ],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dpsi_drho_tor": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dpsi_drho_tor",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Derivative of Psi with respect to Rho_Tor {dynamic} [Wb/m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.magnetic_shear_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.magnetic_shear_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"magnetic_shear\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.vacuum_toroidal_field": {
+  "full_path": "equilibrium.vacuum_toroidal_field",
+  "coordinates": [],
+  "description": "Characteristics of the vacuum toroidal field (used in rho_tor definition and in the normalization of current densities)",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].boundary.b_flux_pol_norm": {
+  "full_path": "equilibrium.time_slice[:].boundary.b_flux_pol_norm",
+  "coordinates": [],
+  "description": "Value of the normalised poloidal flux at which the boundary is taken {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.ids_properties.homogeneous_time": {
+  "full_path": "equilibrium.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point.r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point.r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.tensor_covariant": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.tensor_covariant",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+   "1...3",
+   "1...3"
+  ],
+  "description": "Covariant metric tensor on every point of the grid described by grid_type {dynamic} [mixed]",
+  "data_type": "FLT_4D"
+ },
+ "equilibrium.time_slice[:].boundary.outline.r_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline.r_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.psi_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.psi_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.dim1_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.dim1_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"dim1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.vacuum_toroidal_field.r0": {
+  "full_path": "equilibrium.vacuum_toroidal_field.r0",
+  "coordinates": [],
+  "description": "Reference major radius where the vacuum toroidal magnetic field is given (usually a fixed position such as the middle of the vessel at the equatorial midplane) {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm8_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm8_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm8\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.elongation": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.elongation",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Elongation {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Values of the poloidal flux, given on various grid subsets [Wb]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.r_outboard_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.r_outboard_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"r_outboard\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.jacobian": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.jacobian",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "description": "Metric Jacobian {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm9_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm9_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm9\" {dynamic} [m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.rho_tor_norm_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.rho_tor_norm_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_axis": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_axis",
+  "coordinates": [],
+  "description": "q at the magnetic axis {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].j_tor[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].theta": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].theta",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Values of the poloidal angle on the grid {dynamic} [rad]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid",
+  "coordinates": [],
+  "description": "Definition of the 2D grid",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].r_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].r_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].j_parallel[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].z[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.r_inboard": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.r_inboard",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Radial coordinate (major radius) on the inboard side of the magnetic axis {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_max_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_max_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"b_field_max\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].r[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_normal_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_normal_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"beta_normal\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_upper_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_upper_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"triangularity_upper\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm3_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm3_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm3\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].psi_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].psi_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.tensor_contravariant_error_lower": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.tensor_contravariant_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+   "1...3",
+   "1...3"
+  ],
+  "description": "Lower error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_4D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm9_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm9_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm9\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.r_outboard_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.r_outboard_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"r_outboard\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min.rho_tor_norm_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min.rho_tor_norm_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid_type.description": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid_type.description",
+  "coordinates": [],
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].psi_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].psi_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_z[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.area_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.area_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.elongation_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.elongation_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"elongation\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:].z_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:].z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm6_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm6_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm6\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.psi_boundary_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.psi_boundary_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"psi_boundary\" {dynamic} [Wb]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].j_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].j_tor_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"j_tor\" {dynamic} [A.m^-2]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.jacobian_error_lower": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.jacobian_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Lower error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].j_parallel": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].j_parallel",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Parallel (to magnetic field) plasma current density {dynamic} [A.m^-2]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:].object[:].dimension": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:].object[:].dimension",
+  "coordinates": [],
+  "description": "Dimension of the object {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].psi": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].psi",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Values of the poloidal flux at the grid in the poloidal plane {dynamic} [Wb]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dpsi_drho_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dpsi_drho_tor_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"dpsi_drho_tor\" {dynamic} [Wb/m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].j_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].j_tor_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"j_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.outline.z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline.z_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].boundary.outline.r"
+  ],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.j_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.j_tor_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"j_tor\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.length_pol_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.length_pol_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"length_pol\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Upper error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.j_parallel_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.j_parallel_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"j_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point.r_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point.r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Toroidal plasma current density, given on various grid subsets [A.m^-2]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_tor_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"b_field_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.volume_element": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.volume_element",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Elementary plasma volume of plasma enclosed in the cell formed by the nodes [dim1(i) dim2(j)], [dim1(i+1) dim2(j)], [dim1(i) dim2(j+1)] and [dim1(i+1) dim2(j+1)] {dynamic} [m^3]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.b_field_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.b_field_tor_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"b_field_tor\" {dynamic} [T]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].phi[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].j_parallel_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].j_parallel_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"j_parallel\" {dynamic} [A.m^-2]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Toroidal component of the magnetic field, given on various grid subsets [T]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].theta_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].theta_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"theta\" {dynamic} [rad]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.w_mhd_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.w_mhd_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"w_mhd\" {dynamic} [J]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Lower error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].j_parallel[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_tor_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"b_field_tor\" {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.r_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.phi_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.phi_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"phi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.li_3_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.li_3_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"li_3\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_r_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"b_field_r\" {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.q_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.q_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"q\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].phi[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.dim2": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Second dimension values {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.area_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.area_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of (n-1)-dimensional objects defining the boundary of this n-dimensional object",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.li_3_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.li_3_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"li_3\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dvolume_dpsi": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dvolume_dpsi",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Radial derivative of the volume enclosed in the flux surface with respect to Psi {dynamic} [m^3.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm3_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm3_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm3\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.code.name": {
+  "full_path": "equilibrium.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].theta[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_r_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_r_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"b_field_r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dpressure_dpsi": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dpressure_dpsi",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Derivative of pressure w.r.t. psi {dynamic} [Pa.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.psi": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.psi",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Poloidal flux {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.rho_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.rho_tor_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid_type": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid_type",
+  "coordinates": [],
+  "description": "Selection of one of a set of grid types. 1-rectangular (R,Z) grid, in this case the position arrays should not be filled since they are redundant with grid/dim1 and dim2.",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.dim2_error_upper": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.dim2_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"dim2\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.ip_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.ip_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"ip\" {dynamic} [A]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].coordinates_type": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].coordinates_type",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Type of coordinates describing the physical space, for every coordinate of the space. The size of this node therfore defines the dimension of the space. The meaning of these predefined integer constants can be found in the documentation of the grid service library {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm5_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm5_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm5\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_z": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_z",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Z component of the poloidal magnetic field {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.darea_dpsi_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.darea_dpsi_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"darea_dpsi\" {dynamic} [m^2.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_r": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_r",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "R component of the poloidal magnetic field {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_r[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dpressure_dpsi_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dpressure_dpsi_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"dpressure_dpsi\" {dynamic} [Pa.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.rho_tor_norm": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.rho_tor_norm",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation) {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dvolume_drho_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dvolume_drho_tor_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"dvolume_drho_tor\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].theta_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].theta_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"theta\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid_type.name": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid_type.name",
+  "coordinates": [],
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid",
+  "coordinates": [],
+  "description": "Definition of the 2D grid",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid_type.index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid_type.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min.value_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min.value_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"value\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid_type": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid_type",
+  "coordinates": [],
+  "description": "Type of coordinate system",
+  "data_type": ""
+ },
+ "equilibrium.ids_properties.comment": {
+  "full_path": "equilibrium.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.code.parameters": {
+  "full_path": "equilibrium.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:].object[:].index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:].object[:].index",
+  "coordinates": [],
+  "description": "Object index {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.identifier.name": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.identifier.name",
+  "coordinates": [],
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].b_field_z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].b_field_z_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"b_field_z\" {dynamic} [T]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_normal": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_normal",
+  "coordinates": [],
+  "description": "Normalised toroidal beta, defined as 100 * beta_tor * a[m] * B0 [T] / ip [MA] {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.dim2_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.dim2_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"dim2\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid_type.index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid_type.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point.z": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point.z",
+  "coordinates": [],
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.triangularity_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.triangularity_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"triangularity\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point.r": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point.r",
+  "coordinates": [],
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.q_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.q_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"q\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.code.version": {
+  "full_path": "equilibrium.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_average_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_average_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"b_field_average\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.outline": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline",
+  "coordinates": [],
+  "description": "RZ outline of the plasma boundary",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.pressure": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.pressure",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.rho_tor_norm_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.rho_tor_norm_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_normal_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_normal_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"beta_normal\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].identifier.name": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].identifier.name",
+  "coordinates": [],
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].coefficients_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].coefficients_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].theta[:].values",
+   "1...N"
+  ],
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_axis_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_axis_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"q_axis\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].index",
+  "coordinates": [],
+  "description": "Index of this (n-1)-dimensional boundary object {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.tensor_contravariant": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.tensor_contravariant",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+   "1...3",
+   "1...3"
+  ],
+  "description": "Contravariant metric tensor on every point of the grid described by grid_type {dynamic} [mixed]",
+  "data_type": "FLT_4D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].z_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.darea_drho_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.darea_drho_tor_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"darea_drho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].j_parallel[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].phi_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].phi_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.magnetic_shear_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.magnetic_shear_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"magnetic_shear\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].geometry_type.name": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].geometry_type.name",
+  "coordinates": [],
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm1_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm1_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm1\" {dynamic} [m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.z_error_index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.z_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].jacobian": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].jacobian",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "description": "Metric Jacobian {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.triangularity_lower_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.triangularity_lower_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"triangularity_lower\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.surface": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.surface",
+  "coordinates": [],
+  "description": "Surface area of the toroidal flux surface {dynamic} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Values of the poloidal angle, given on various grid subsets [rad]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:].r_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:].r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis.z_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis.z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.outline.z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline.z_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].boundary.outline.r"
+  ],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_average_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_average_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"b_field_average\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].coefficients_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].coefficients_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.volume_element_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.volume_element_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"volume_element\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.q_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.q_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"q\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.volume_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.volume_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.r_inboard_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.r_inboard_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"r_inboard\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.type": {
+  "full_path": "equilibrium.time_slice[:].boundary.type",
+  "coordinates": [],
+  "description": "0 (limiter) or 1 (diverted) {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.pressure_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.pressure_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.z_error_lower": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.z_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_pol_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_pol_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"beta_pol\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"geometry\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].z_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Equilibrium representation using the generic grid description. Multiple GGD representations of the equilibrium can be stored here.",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.dvolume_dpsi_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dvolume_dpsi_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"dvolume_dpsi\" {dynamic} [m^3.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"measure\" {dynamic} [m^dimension]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"measure\" {dynamic} [m^dimension]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.li_3": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.li_3",
+  "coordinates": [],
+  "description": "Internal inductance {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.w_mhd_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.w_mhd_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"w_mhd\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.w_mhd_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.w_mhd_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"w_mhd\" {dynamic} [J]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.r_inboard_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.r_inboard_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"r_inboard\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.jacobian_error_index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.jacobian_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"jacobian\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:].r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:].r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of elements defining the grid subset. An element is defined by a combination of objects from potentially all spaces",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"tensor_contravariant\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.psi_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.psi_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.surface_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.surface_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"surface\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.trapped_fraction_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.trapped_fraction_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"trapped_fraction\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].j_tor[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.ip": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.ip",
+  "coordinates": [],
+  "description": "Plasma current. Positive sign means anti-clockwise when viewed from above. {dynamic} [A]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.f_df_dpsi_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.f_df_dpsi_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"f_df_dpsi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Upper error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "description": "Index in the error_description list for \"jacobian\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.identifier": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.identifier",
+  "coordinates": [],
+  "description": "Grid identifier",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Values of the Height on various grid subsets [m]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.dim2_error_lower": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.dim2_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"dim2\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm7_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm7_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"gm7\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.vacuum_toroidal_field.b0": {
+  "full_path": "equilibrium.vacuum_toroidal_field.b0",
+  "coordinates": [
+   "equilibrium.time"
+  ],
+  "description": "Vacuum toroidal field at R0 [T]; Positive sign means anti-clockwise when viewed from above. The product R0B0 must be consistent with the b_tor_vacuum_r field of the tf IDS. {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min",
+  "coordinates": [],
+  "description": "Minimum q value and position",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.li_3_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.li_3_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"li_3\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm2_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm2_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm2\" {dynamic} [m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_z[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_z[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_z[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.b_field_max_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.b_field_max_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"b_field_max\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.tensor_covariant_error_index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.tensor_covariant_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+   "1...3",
+   "1...3"
+  ],
+  "description": "Index in the error_description list for \"tensor_covariant\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm4_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm4_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm4\" {dynamic} [T^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:].object[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element[:].object[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of objects defining the element",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].coordinate_system.tensor_contravariant_error_index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.tensor_contravariant_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2",
+   "1...3",
+   "1...3"
+  ],
+  "description": "Index in the error_description list for \"tensor_contravariant\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_tor[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_tor[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.triangularity_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.triangularity_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper triangularity w.r.t. magnetic axis {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dvolume_drho_tor": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dvolume_drho_tor",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Radial derivative of the volume enclosed in the flux surface with respect to Rho_Tor {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point.r_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point.r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm7_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm7_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm7\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.z_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis.r_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis.r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of bases for the grid subset. For each base, the structure describes the projection of the base vectors on the canonical frame of the grid.",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Lower error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"elongation\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:]": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Array of strike points, for each of them the RZ position is given",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.darea_dpsi_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.darea_dpsi_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"darea_dpsi\" {dynamic} [m^2.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Parallel (to magnetic field) plasma current density, given on various grid subsets [A.m^-2]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid_type.name": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid_type.name",
+  "coordinates": [],
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid_type.description": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid_type.description",
+  "coordinates": [],
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min.rho_tor_norm": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min.rho_tor_norm",
+  "coordinates": [],
+  "description": "Minimum q position in normalised toroidal flux coordinate {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].values_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:]": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Equilibrium 2D profiles in the poloidal plane. Multiple 2D representations of the equilibrium can be stored here.",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.volume_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.volume_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.f_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.f_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"f\" {dynamic} [T.m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].psi[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.volume": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.volume",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Volume enclosed in the flux surface {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.vacuum_toroidal_field.b0_error_index": {
+  "full_path": "equilibrium.vacuum_toroidal_field.b0_error_index",
+  "coordinates": [
+   "equilibrium.time"
+  ],
+  "description": "Index in the error_description list for \"b0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].psi[:].values_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].psi[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_pol": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_pol",
+  "coordinates": [],
+  "description": "Poloidal beta. Defined as betap = 4 int(p dV) / [R_0 * mu_0 * Ip^2] {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].z[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].z[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_axis_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_axis_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"q_axis\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Definition of the space objects for every dimension (from one to the dimension of the highest-dimensional objects). The index correspond to 1=nodes, 2=edges, 3=faces, 4=cells/volumes, .... For every index, a collection of objects of that dimension is described.",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.surface_error_upper": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.surface_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"surface\" {dynamic} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.volume_element": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.volume_element",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Elementary plasma volume of plasma enclosed in the cell formed by the nodes [dim1(i) dim2(j)], [dim1(i+1) dim2(j)], [dim1(i) dim2(j+1)] and [dim1(i+1) dim2(j+1)] {dynamic} [m^3]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_tor": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_tor",
+  "coordinates": [],
+  "description": "Toroidal beta, defined as the volume-averaged total perpendicular pressure divided by (B0^2/(2*mu0)), i.e. beta_toroidal = 2 mu0 int(p dV) / V / B0^2 {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.magnetic_axis.b_field_tor": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.magnetic_axis.b_field_tor",
+  "coordinates": [],
+  "description": "Total toroidal magnetic field at the magnetic axis {dynamic} [T]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].neighbours": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].neighbours",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "List of indices of the n-dimensional objects adjacent to the given n-dimensional object. An object can possibly have multiple neighbours on a boundary {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.f_df_dpsi": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.f_df_dpsi",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Derivative of F w.r.t. Psi, multiplied with F {dynamic} [T^2.m^2/Wb]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.grid.dim1_error_lower": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.grid.dim1_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"dim1\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_lower",
+  "coordinates": [],
+  "description": "Elongation (lower half w.r.t. geometric axis) of the plasma boundary {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.r": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.r",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Values of the major radius on the grid {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.z": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.z",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Values of the Height on the grid {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm6_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm6_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm6\" {dynamic} [T^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm6_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm6_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm6\" {dynamic} [T^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.elongation_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.elongation_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"elongation\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Values of the major radius on various grid subsets [m]",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].identifier": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].identifier",
+  "coordinates": [],
+  "description": "Grid subset identifier",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].profiles_1d.darea_drho_tor": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.darea_drho_tor",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Radial derivative of the cross-sectional area of the flux surface with respect to rho_tor {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d",
+  "coordinates": [],
+  "description": "Equilibrium profiles (1D radial grid) as a function of the poloidal flux",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].ggd[:].j_parallel[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].j_parallel[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Upper error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time": {
+  "full_path": "equilibrium.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Grid subsets",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.volume_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.volume_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm5_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm5_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm5\" {dynamic} [T^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dvolume_dpsi_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dvolume_dpsi_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"dvolume_dpsi\" {dynamic} [m^3.Wb^-1]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].geometry_type": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].geometry_type",
+  "coordinates": [],
+  "description": "Type of space geometry (0: standard, 1:Fourier)",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.beta_pol_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.beta_pol_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"beta_pol\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].grid.dim1_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].grid.dim1_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"dim1\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.x_point[:].r_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.x_point[:].r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.psi_boundary": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.psi_boundary",
+  "coordinates": [],
+  "description": "Poloidal flux at the selected plasma boundary {dynamic} [Wb]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Lower error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D"
+ },
+ "equilibrium.time_slice[:].boundary.b_flux_pol_norm_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.b_flux_pol_norm_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"b_flux_pol_norm\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dvolume_drho_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dvolume_drho_tor_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"dvolume_drho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure",
+  "coordinates": [],
+  "description": "Measure of the space object, i.e. physical size (length for 1d, area for 2d, volume for 3d objects,...) {dynamic} [m^dimension]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].identifier.description": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].identifier.description",
+  "coordinates": [],
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.rho_tor_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.rho_tor_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_2d[:].j_tor_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_2d[:].j_tor_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim1",
+   "equilibrium.time_slice[:].profiles_2d[:].grid.dim2"
+  ],
+  "description": "Upper error for \"j_tor\" {dynamic} [A.m^-2]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].theta[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].grid_subset_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].grid_subset_index",
+  "coordinates": [],
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm8_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm8_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm8\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].coefficients": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].coefficients",
+  "base_coord": true,
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].r[:].values",
+   "1...N"
+  ],
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_tor[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.j_parallel_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.j_parallel_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"j_parallel\" {dynamic} [A/m^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation",
+  "coordinates": [],
+  "description": "Elongation of the plasma boundary {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.jacobian": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.jacobian",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Jacobian of the coordinate system {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].boundary.geometric_axis.r_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.geometric_axis.r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"measure\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.r_inboard_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.r_inboard_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"r_inboard\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.r_error_index": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.r_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"geometry\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "description": "Lower error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm2_error_lower": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm2_error_lower",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Lower error for \"gm2\" {dynamic} [m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.vacuum_toroidal_field.b0_error_lower": {
+  "full_path": "equilibrium.vacuum_toroidal_field.b0_error_lower",
+  "coordinates": [
+   "equilibrium.time"
+  ],
+  "description": "Lower error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.active_limiter_point.z_error_index": {
+  "full_path": "equilibrium.time_slice[:].boundary.active_limiter_point.z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.outline.r": {
+  "full_path": "equilibrium.time_slice[:].boundary.outline.r",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:]": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of objects for a given dimension",
+  "data_type": ""
+ },
+ "equilibrium.time_slice[:].global_quantities.area": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.area",
+  "coordinates": [],
+  "description": "Area of the LCFS poloidal cross section {dynamic} [m^2]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_upper_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_upper_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"elongation_upper\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.elongation_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.elongation_upper",
+  "coordinates": [],
+  "description": "Elongation (upper half w.r.t. geometric axis) of the plasma boundary {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.rho_tor": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.rho_tor",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Toroidal flux coordinate. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.j_tor_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.j_tor_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"j_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.dpressure_dpsi_error_index": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.dpressure_dpsi_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Index in the error_description list for \"dpressure_dpsi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].theta[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].theta[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].boundary.minor_radius_error_lower": {
+  "full_path": "equilibrium.time_slice[:].boundary.minor_radius_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"minor_radius\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].phi[:].grid_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].phi[:].grid_index",
+  "coordinates": [],
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.b_flux_pol_norm_error_upper": {
+  "full_path": "equilibrium.time_slice[:].boundary.b_flux_pol_norm_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"b_flux_pol_norm\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].r[:].values_error_lower": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].r[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.space[:].geometry_type.index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.space[:].geometry_type.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].global_quantities.ip_error_index": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.ip_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"ip\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:].r": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:].r",
+  "coordinates": [],
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].boundary.strike_point[:].z": {
+  "full_path": "equilibrium.time_slice[:].boundary.strike_point[:].z",
+  "coordinates": [],
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].ggd[:].b_field_r[:].coefficients_error_upper": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].b_field_r[:].coefficients_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].b_field_r[:].values",
+   "1...N"
+  ],
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].global_quantities.q_min.value_error_lower": {
+  "full_path": "equilibrium.time_slice[:].global_quantities.q_min.value_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"value\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "equilibrium.time_slice[:].profiles_1d.gm5_error_upper": {
+  "full_path": "equilibrium.time_slice[:].profiles_1d.gm5_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].profiles_1d.psi"
+  ],
+  "description": "Upper error for \"gm5\" {dynamic} [T^2]",
+  "data_type": "FLT_1D"
+ },
+ "equilibrium.time_slice[:].coordinate_system.jacobian_error_upper": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system.jacobian_error_upper",
+  "coordinates": [
+   "equilibrium.time_slice[:].coordinate_system.grid.dim1",
+   "equilibrium.time_slice[:].coordinate_system.grid.dim2"
+  ],
+  "description": "Upper error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_2D"
+ },
+ "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_index": {
+  "full_path": "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_index",
+  "coordinates": [
+   "equilibrium.time_slice[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"tensor_covariant\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "equilibrium.time_slice[:].coordinate_system": {
+  "full_path": "equilibrium.time_slice[:].coordinate_system",
+  "coordinates": [],
+  "description": "Flux surface coordinate system on a square grid of flux and poloidal angle",
+  "data_type": ""
+ }
+}
