@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.tiles.sliders">
+
+  <!-- Register i18n support. -->
+  <i18n:registerTranslations directory="locales" />
+
+
+  <!-- Include package dependencies. -->
+  <include package="plone.app.tiles" />
+  <include package="plone.tiles" />
+  <include package=".tiles" />
+  <include file="profiles.zcml" />
+  <include file="upgrades.zcml" />
+
+
+  <plone:static
+      directory="static"
+      type="plone"
+      name="collectivetilessliders"
+      />
+
+</configure>
