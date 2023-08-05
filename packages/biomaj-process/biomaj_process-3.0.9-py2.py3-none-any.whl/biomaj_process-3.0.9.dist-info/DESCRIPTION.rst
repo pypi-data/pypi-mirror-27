@@ -1,0 +1,69 @@
+# About
+
+Microservice to manage the process execution of biomaj.
+
+A protobuf interface is available in biomaj_process/message/message_pb2.py to exchange messages between BioMAJ and the download service.
+Messages go through RabbitMQ (to be installed).
+
+# Protobuf
+
+To compile protobuf, in biomaj_process/message:
+
+    protoc --python_out=. message.proto
+
+# Development
+
+    flake8  biomaj_process
+
+# Run
+
+## Message consumer:
+export BIOMAJ_CONFIG=path_to_config.yml
+python bin/biomaj_process_consumer.py
+
+## Web server
+
+If package is installed via pip, you need a file named *gunicorn_conf.py* containing somehwhere on local server:
+
+    def worker_exit(server, worker):
+        from prometheus_client import multiprocess
+        multiprocess.mark_process_dead(worker.pid)
+
+If you cloned the repository and installed it via python setup.py install, just refer to the *gunicorn_conf.py* in the cloned repository.
+
+
+    export BIOMAJ_CONFIG=path_to_config.yml
+    rm -rf ..path_to/prometheus-multiproc
+    mkdir -p ..path_to/prometheus-multiproc
+    export prometheus_multiproc_dir=..path_to/prometheus-multiproc
+    gunicorn -c ..path_to/gunicorn_conf.py biomaj_download.biomaj_process_web:app
+
+Web processes should be behind a proxy/load balancer, API base url /api/download
+
+
+3.0.9:
+  Allow local_endpoint definition per service
+  Fix volumes for docker with dependency banks
+3.0.8:
+  Fix #1, DRMAA needs colon in front of output and error path (mandatory depending on versions)
+3.0.7:
+  fix case if process desc or type is missing in bank properties
+3.0.6:
+  disable web thread logging
+3.0.5:
+  retry in case of contact failure with proxy
+3.0.4:
+  for docker, restrict directory to bank directory and dependencies
+  add host in prometheus stats
+3.0.3:
+  fix prometheus + gunicorn multi process
+  add consul supervision
+3.0.2:
+  add logging info
+  execute docker processes in biomaj micro service
+3.0.1:
+  bug fixes
+3.0.0:
+  move process management out of biomaj main package
+
+
