@@ -1,0 +1,56 @@
+# dantejsoncoder
+
+dantejsoncoder is a simple Django app to covert standard django-models to json
+
+Quick start
+-----------
+0. Install::
+
+  `pip install django-dantejsoncoder`
+
+
+1. Add "dantejsoncoder" to your INSTALLED_APPS setting like this::
+    ```
+    INSTALLED_APPS = (
+        ...
+        'dantejsoncoder',
+    )
+    ```
+
+2. Import::
+
+    `from dantejsoncoder.coder import DanteEncoder`
+
+3. Simple way (all fields)::
+    
+    """get QuerySet"""
+    
+    `objects = YourModel.objects.all()`
+    
+    """return json result"""
+    
+    `return JsonResponse(objects, encoder=DanteEncoder)`
+    
+4. If you need concrete fields in your model class add::
+    
+    `__to_json_fields__ = ('field1','field2',...)`
+
+5. If you need a special translation, add `__to_json_dict__` method in your model class::
+    
+    `def __to_json_dict__(self):
+        return {'field_name': self.val. ... }`
+        
+6. If you want to add something in the Encoder, use inheritance::
+
+    ```
+    class VirgilEncoder(DanteEncoder):
+        def default(self, obj):
+            if isinstance(obj, QuerySet):
+                result = {}
+                ...
+                return result
+            else:
+                return super().default(obj)
+    ```
+        
+        
