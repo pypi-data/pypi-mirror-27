@@ -1,0 +1,24 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+sqlalchemy = "*"
+lxml = "*"
+"html5lib" = "*"
+hashids = "*"
+pprintpp = "*"
+aiohttp = "*"
+aiodns = "*"
+cssselect = "*"
+aitertools = "*"
+
+
+[dev-packages]
+
+pytest = "*"
+toml = "*"
