@@ -1,0 +1,40 @@
+language: python
+python:
+  - 2.7
+  - 3.4
+  - 3.6
+
+jobs:
+  fast_finish: true
+  include:
+  - stage: deploy (to PyPI for tagged commits)
+    if: tag IS present
+    python: 3.6
+    install: skip
+    script: skip
+    deploy:
+      provider: pypi
+      on:
+        tags: true
+        all_branches: true
+      user: xoviat
+      password:
+        secure: yHcGVV7bC1KE+qYvbjXKZ2htJ6I8bONOeP6OXW+6ssiGNJhAIMVGzsQ9yVyh8DhMNHJ+qLDidaUc3f2ixWvjJtSGdoGhTDpH6bHSErUu+dYekggllXxlBFvOgVcHSmjtVcKh8XdSEjTMxtf5DZ71UAz/xT8qMir5XkXRj5M9/mz1+i1J+qC/PFxhIIGO9nqGowHYhXFgARIFBtZQDR2JAJQ1zsNNVURx9EpckhJ0aqbpzI9ioiLAtpoeBoo9Z2D3iMNGe1Eq8sjX5jn/JbI8lYB+Cogko8IYSJEX1CzDja/oPKC7HQ96PszSl+INmIpdGHIceB3nmPZP3r93DRHwxDWNxKGCP9SX2JLlHI5t/KzS4Ax1cB+yeDrcdW2aLWO/fKi4XQzUudA553xCsxPnJdCnZnXe79FNzQzbrOJMcIc8l5KY/GM7FJMh2jtuLMAw4dH1vWlThzaG//2GLYdWOUR3EQ/+pUgaIxkOsE1jgDfGGbrCobyxA/QdSSOZODVXRN5f3zW0wW9EPy6AkHsrHToIXsNxjWpO/SUNriEUV55nn4W2/R35VnH7rtqAxC29NPNe65qDZDAdDLYShxchDzLFsm78SKheofnFYrD6rfOdKZWagJqFEyahjFXwN/PziWLxdRyNAQNU8Ojue40NSbyX/mta4bHuBoHzufSIims=
+      distributions: "sdist bdist_wheel"
+      skip_cleanup: true
+      skip_upload_docs: true
+
+cache: pip
+
+branches:
+  only:
+  - master
+  - /^1\..*/
+ 
+install:
+  - pip install -U pip setuptools wheel
+  - pip install -r requirements-build.txt
+  - pip install -e .
+
+script:
+  - pytest
