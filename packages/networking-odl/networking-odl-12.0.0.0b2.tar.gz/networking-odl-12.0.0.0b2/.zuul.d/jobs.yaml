@@ -1,0 +1,130 @@
+# >>> LEGACY JOBS TO REPLACE
+
+- job:
+    name: networking-odl-grenade
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/grenade-dsvm-networking-odl/run.yaml
+    post-run: playbooks/legacy/grenade-dsvm-networking-odl/post.yaml
+    timeout: 9000
+    required-projects:
+      - openstack-dev/grenade
+      - openstack-infra/devstack-gate
+      - openstack/networking-odl
+
+- job:
+    name: networking-odl-tempest-carbon
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/tempest-dsvm-networking-odl-carbon-snapshot-vpnservice-v2driver/run.yaml
+    post-run: playbooks/legacy/tempest-dsvm-networking-odl-carbon-snapshot-vpnservice-v2driver/post.yaml
+    timeout: 7800
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/networking-odl
+      - openstack/tempest
+
+- job:
+    name: networking-odl-tempest-nitrogen
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/tempest-dsvm-networking-odl-nitrogen-snapshot-vpnservice-v2driver/run.yaml
+    post-run: playbooks/legacy/tempest-dsvm-networking-odl-nitrogen-snapshot-vpnservice-v2driver/post.yaml
+    timeout: 7800
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/networking-odl
+      - openstack/tempest
+
+- job:
+    name: networking-odl-tempest-carbon-multinode
+    parent: legacy-dsvm-base-multinode
+    run: playbooks/legacy/tempest-dsvm-networking-odl-multinode-carbon-snapshot/run.yaml
+    post-run: playbooks/legacy/tempest-dsvm-networking-odl-multinode-carbon-snapshot/post.yaml
+    timeout: 10800
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/networking-odl
+      - openstack/tempest
+    nodeset: legacy-ubuntu-xenial-2-node
+
+- job:
+    name: networking-odl-tempest-nitrogen-multinode
+    parent: legacy-dsvm-base-multinode
+    run: playbooks/legacy/tempest-dsvm-networking-odl-multinode-nitrogen-snapshot/run.yaml
+    post-run: playbooks/legacy/tempest-dsvm-networking-odl-multinode-nitrogen-snapshot/post.yaml
+    timeout: 10800
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/networking-odl
+      - openstack/tempest
+    nodeset: legacy-ubuntu-xenial-2-node
+
+- job:
+    name: networking-odl-rally-carbon
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/rally-dsvm-networking-odl-carbon-snapshot/run.yaml
+    post-run: playbooks/legacy/rally-dsvm-networking-odl-carbon-snapshot/post.yaml
+    timeout: 7500
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/networking-odl
+      - openstack/rally
+
+- job:
+    name: networking-odl-rally-nitrogen
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/rally-dsvm-networking-odl-nitrogen-snapshot/run.yaml
+    post-run: playbooks/legacy/rally-dsvm-networking-odl-nitrogen-snapshot/post.yaml
+    timeout: 7500
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/networking-odl
+      - openstack/rally
+
+- job:
+    name: networking-odl-fullstack-carbon
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/dsvm-networking-odl-fullstack-carbon-snapshot/run.yaml
+    post-run: playbooks/legacy/dsvm-networking-odl-fullstack-carbon-snapshot/post.yaml
+    timeout: 7800
+    required-projects:
+      - openstack/networking-odl
+      - openstack/networking-l2gw
+      - openstack/networking-sfc
+      - openstack/networking-bgpvpn
+
+- job:
+    name: networking-odl-functional-carbon
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/dsvm-networking-odl-functional-carbon-snapshot/run.yaml
+    post-run: playbooks/legacy/dsvm-networking-odl-functional-carbon-snapshot/post.yaml
+    timeout: 7800
+    required-projects:
+      - openstack/networking-odl
+      - openstack/networking-l2gw
+      - openstack/networking-sfc
+      - openstack/networking-bgpvpn
+
+- job:
+    name: networking-odl-fullstack-nitrogen
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/dsvm-networking-odl-fullstack-nitrogen-snapshot/run.yaml
+    post-run: playbooks/legacy/dsvm-networking-odl-fullstack-nitrogen-snapshot/post.yaml
+    timeout: 7800
+    required-projects:
+      - openstack/networking-odl
+      - openstack/networking-l2gw
+      - openstack/networking-sfc
+      - openstack/networking-bgpvpn
+
+- job:
+    name: networking-odl-functional-nitrogen
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/dsvm-networking-odl-functional-nitrogen-snapshot/run.yaml
+    post-run: playbooks/legacy/dsvm-networking-odl-functional-nitrogen-snapshot/post.yaml
+    timeout: 7800
+    required-projects:
+      - openstack/networking-odl
+      - openstack/networking-l2gw
+      - openstack/networking-sfc
+      - openstack/networking-bgpvpn
+
+# <<< LEGACY JOBS TO REPLACE

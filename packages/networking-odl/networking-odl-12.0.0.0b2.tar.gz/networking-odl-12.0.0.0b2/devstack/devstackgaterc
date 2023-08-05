@@ -1,0 +1,132 @@
+#!/bin/bash
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License. You may obtain
+# a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
+
+#
+# This script is executed in the OpenStack CI job that runs DevStack + tempest.
+# You can find the CI job configuration here:
+#
+# http://git.openstack.org/cgit/openstack-infra/project-config/tree/jenkins/jobs/networking-odl.yaml
+#
+
+# TODO(mkolesni): Remove in case we need more timeout.
+# Currently timeout is too big causing the gate job to timeout entirely and
+# not collect almost any logs, making it hard to debug.
+export DEVSTACK_LOCAL_CONFIG+=$'\n'"BUILD_TIMEOUT=60"
+
+COMMON_SERVICES=c-api,c-bak,c-sch,c-vol,cinder,dstat,g-api,g-reg,key,mysql,n-api,n-cond,n-cpu,n-crt,n-obj,n-sch,rabbit,placement-api,n-api-meta
+NEUTRON_NEW=neutron-dhcp,neutron-metadata-agent,neutron-api,neutron
+# This variable is not being used, it will be removed once migration is complete
+NEUTRON_LEGACY=q-dhcp,q-meta,q-svc,quantum
+
+if [[ "$IS_GRENADE_JOB" == "True"  ]]; then
+    # TODO(rajivk): workaround, Remove this once, grenade has moved to lib/neutron
+    # from legacy. Currently, it checks service with q-*, so it does not detect new
+    # neutron-*. Therefore neutron does not get registered for upgrade, if we
+    # override and register neutron from networking-odl because it will look for
+    # required files avaialble with neutron only. For now, lib/neutron-legacy to
+    # lib/neutron is not done for grenade jobs.
+    NEUTRON_SERVICES=$NEUTRON_LEGACY
+else
+    NEUTRON_SERVICES=$NEUTRON_NEW
+fi
+
+export OVERRIDE_ENABLED_SERVICES=${COMMON_SERVICES},${NEUTRON_SERVICES}
+if [ -z "${RALLY_SCENARIO}" ] ; then
+    # Only include tempest if this is not a rally job, As running tempest in Rally is likely to cause failure
+    export OVERRIDE_ENABLED_SERVICES=${OVERRIDE_ENABLED_SERVICES},tempest
+fi
+
+# NOTE(manjeets) To prevent create of public network twice
+if [[ "$DEVSTACK_GATE_TOPOLOGY" == "multinode" ]] ; then
+
+    # NOTE(manjeets) Temporarily disabling LM test due to bug 1643678
+    # https://bugs.launchpad.net/networking-odl/+bug/1643678
+    export DEVSTACK_LOCAL_CONFIG+=$'\n'"LIVE_MIGRATION_AVAILABLE=False"
+    export DEVSTACK_LOCAL_CONFIG+=$'\n'"USE_BLOCK_MIGRATION_FOR_LIVE_MIGRATION=False"
+    # DEVSTACK_GATE_NEUTRON_DVR in devstack-gate set Q_DVR_MODE as dvr_snat
+    export DEVSTACK_LOCAL_CONFIG+=$'\n'"Q_DVR_MODE=legacy"
+    export DEVSTACK_SUBNODE_CONFIG+=$'\n'"Q_DVR_MODE=legacy"
+
+    export DEVSTACK_SUBNODE_CONFIG+=$'\n'"disable_all_services"
+    export DEVSTACK_SUBNODE_CONFIG+=$'\n'"ENABLED_SERVICES=n-cpu,dstat,c-vol,c-bak,mysql,placement-client"
+    export DEVSTACK_SUBNODE_CONFIG+=$'\n'"RABBIT_HOST=\$SERVICE_HOST"
+    export DEVSTACK_SUBNODE_CONFIG+=$'\n'"ODL_MODE=compute"
+    export DEVSTACK_SUBNODE_CONFIG+=$'\n'"LIBVIRT_TYPE=qemu"
+fi
+
+# Begin list of exclusions.
+r="^(?!.*"
+
+# exclude the slow tag (part of the default for 'full')
+r="$r(?:.*\[.*\bslow\b.*\])"
+
+# exclude things that just aren't enabled:
+r="$r|(?:tempest\.api\.network\.admin\.test_quotas\.QuotasTest\.test_lbaas_quotas.*)"
+r="$r|(?:tempest\.api\.network\.test_load_balancer.*)"
+r="$r|(?:tempest\.scenario\.test_load_balancer.*)"
+r="$r|(?:tempest\.api\.network\.admin\.test_load_balancer.*)"
+r="$r|(?:tempest\.api\.network\.admin\.test_lbaas.*)"
+r="$r|(?:tempest\.api\.network\.test_fwaas_extensions.*)"
+r="$r|(?:tempest\.api\.network\.test_vpnaas_extensions.*)"
+r="$r|(?:tempest\.api\.network\.test_metering_extensions.*)"
+r="$r|(?:tempest\.thirdparty\.boto\.test_s3.*)"
+
+# Exclude stuff less related to networking, to reduce gate load
+r="$r|(?:tempest\.api\.object.*)"
+r="$r|(?:tempest\.api\.compute\.admin.*)"
+r="$r|(?:tempest\.api\.compute\.images.*)"
+r="$r|(?:tempest\.api\.compute\.volumes.*)"
+
+# exclude stuff we're less likely to break because i'm impatient
+r="$r|(?:tempest\.api\.identity.*)"
+r="$r|(?:tempest\.api\.image.*)"
+r="$r|(?:tempest\.api\.volume.*)"
+
+# unsupported features
+# ODL legacy netvirt doesn't support ipv6
+r="$r|(?:tempest\.scenario\.test_network_v6\.TestGettingAddress.*)"
+
+# Current list of failing tests that need to be triaged, have bugs filed, and
+# fixed as appropriate.
+# (none)
+
+# TODO(yamahata): fix bugs and remove those tests from here
+# BUG: https://bugs.launchpad.net/networking-odl/+bug/1642158
+# legacy netvirt ignores admin-state-up state for network/port
+r="$r|(?:tempest\.scenario\.test_network_basic_ops\.TestNetworkBasicOps\.test_update_instance_port_admin_state.*)"
+r="$r|(?:tempest\.scenario\.test_network_basic_ops\.TestNetworkBasicOps\.test_update_router_admin_state.*)"
+
+# BUG: https://bugs.launchpad.net/networking-odl/+bug/1643033
+# stateful security group: conntracking needs to be enabled
+r="$r|(?:tempest\.scenario\.test_network_basic_ops\.TestNetworkBasicOps\.test_hotplug_nic.*)"
+r="$r|(?:tempest\.scenario\.test_security_groups_basic_ops\.TestSecurityGroupsBasicOps\.test_cross_tenant_traffic.*)"
+r="$r|(?:tempest\.scenario\.test_security_groups_basic_ops\.TestSecurityGroupsBasicOps\.test_port_security_disable_security_group.*)"
+
+# BUG: https://bugs.launchpad.net/networking-odl/+bug/1656129
+# exluding some tests temporarily
+if [ -n $DEVSTACK_GATE_GRENADE ]; then
+    # Disable some tempest tests temporarily on
+    # grenade job
+    r="$r|(?:tempest\.scenario\.test_encrypted_cinder_volumes\.TestEncryptedCinderVolumes\.test_encrypted_cinder_volumes_cryptsetup.*)"
+    r="$r|(?:tempest\.scenario\.test_encrypted_cinder_volumes\.TestEncryptedCinderVolumes\.test_encrypted_cinder_volumes_luks.*)"
+    r="$r|(?:tempest\.scenario\.test_minimum_basic\.TestMinimumBasicScenario\.test_minimum_basic_scenario.*)"
+fi
+
+# End list of exclusions.
+r="$r)"
+
+# only run tempest.api/scenario/thirdparty tests (part of the default for 'full')
+r="$r(tempest\.(api|scenario|thirdparty)).*$"
+
+export DEVSTACK_GATE_TEMPEST_REGEX="$r"
