@@ -1,0 +1,12 @@
+<data>
+    <xpath expr="/form/notebook/page[@id='general']/label[@name='timezone']"
+      position="before">
+          <label name="guest_user"/>
+          <field name="guest_user"/>
+  </xpath>
+  <xpath expr="/form/notebook/page[@id='catalog']" 
+      position="inside">
+          <label name="channel"/>
+          <field name="channel"/>
+  </xpath>
+</data>
