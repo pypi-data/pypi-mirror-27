@@ -1,0 +1,51 @@
+Metadata-Version: 2.0
+Name: Accern
+Version: 0.1.0.dev1
+Summary: A python library for Accern Data API
+Home-page: https://github.com/Accern/accern-python
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: MIT License
+Platform: Posix; MacOS X; Windows
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Topic :: Office/Business :: Financial :: Investment
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Requires-Dist: requests (<3.0,>=2.11.1)
+
+Official Accern Bindings for Python.
+
+===================================
+A Python library for Accern's API.
+
+
+Setup
+-----
+
+You can install this package by using the pip tool and installing:
+
+    $ pip install accern
+
+Setting up a Accern Account
+---------------------------
+
+Sign up for Accern at https://feed.accern.com.
+
+Using the Accern API
+--------------------
+
+Documentation for Accern API can be found here:
+
+- https://doc.accern.com
+
+To view the full content of Accern API, you would need to provide your
+Accern API Token.
+
+
+
