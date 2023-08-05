@@ -1,0 +1,18 @@
+{% extends "plugins-base.html" %}
+{% load staticfiles %}
+
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'scss/overrides-pauta.scss' %}" type="text/x-scss" />
+{% endblock styles %}
+
+{% block jquery_call %}
+{% endblock jquery_call %}
+
+{% block addthis_call %}
+{% endblock addthis_call %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'js/edem-pauta-plugin.js' %}"></script>
+{% endblock scripts %}
