@@ -1,0 +1,39 @@
+{# vim: set syntax=htmldjango: #}
+{% extends "exordium/album.html" %}
+
+{% block extraheader %}
+{% if zip_url and zip_file %}
+<meta http-equiv="refresh" content="0;URL={{ zip_url }}">
+{% endif %}
+{% endblock %}
+
+{% block albumbody %}
+
+<div class="zipfileinfo">
+
+{% if error %}
+<p class="red">{{ error }}</p>
+{% endif %}
+
+{% if zip_url and zip_file %}
+<p><strong>Download:</strong>
+<a href="{{ zip_url }}">{{zip_file}}</a></p>
+{% endif %}
+
+{% if not error %}
+<p>Album Zipfile created with the following contents:
+<blockquote class="zipfilecontents">
+{% for filename in filenames %}
+{{ filename }}<br />
+{% endfor %}
+</ul>
+</blockquote>
+{% endif %}
+
+{% if zip_url and zip_file %}
+<p>Zipfiles are configured to remain on the server for about 48 hours before being removed.
+{% if zip_mtime %}This file was generated at: {{ zip_mtime }}{% endif %}</p>
+{% endif %}
+</div>
+
+{% endblock %}
