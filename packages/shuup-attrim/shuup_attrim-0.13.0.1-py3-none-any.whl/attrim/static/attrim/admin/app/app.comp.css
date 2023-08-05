@@ -1,0 +1,56 @@
+html body {
+  padding-top: 60px !important;
+  font-family: Fira Sans,sans-serif !important;
+  background: #f4f4f4 !important;
+  line-height: 1.42857143 !important; }
+
+#main-menu ul.menu-list li a {
+  font-size: 11.5px; }
+  #main-menu ul.menu-list li a i {
+    font-size: 25px; }
+
+.form-control {
+  font-size: 13px; }
+
+.support-nav .breadcrumbs {
+  font-size: 12px; }
+
+.support-nav .page-actions .btn-group .btn.dropdown-toggle i.fa-chevron-down {
+  font-size: 12px; }
+
+h1 {
+  font-size: 20px; }
+
+h1.main-header {
+  font-size: 25px;
+  color: #555;
+  font-weight: 300;
+  font-family: Fira Sans, sans-serif; }
+
+h2.block-title {
+  font-size: 21px;
+  color: #555;
+  font-weight: 300;
+  font-family: Fira Sans, sans-serif; }
+
+.btn {
+  font-size: 14px; }
+
+.content {
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif !important;
+  line-height: 1.4285em !important; }
+
+.slim-loading-bar {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999; }
+  .slim-loading-bar .slim-loading-bar-progress {
+    margin: 0;
+    padding: 0;
+    z-index: 99998;
+    box-shadow: 0 0 10px 0;
+    transition: all .3s ease-in-out; }
