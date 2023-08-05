@@ -1,0 +1,119 @@
+Metadata-Version: 1.1
+Name: interlegis.portalmodelo.transparency
+Version: 1.0rc4
+Summary: Tipo de conteúdo do Portal Modelo para publicação de dados estruturados em formato CSV
+Home-page: https://github.com/interlegis/interlegis.portalmodelo.transparency
+Author: Programa Interlegis
+Author-email: ti@interlegis.leg.br
+License: GPLv2
+Description: ***************************************************************
+        Portal Modelo: Dados Tabulares (Transparência)
+        ***************************************************************
+        
+        .. contents:: Conteúdo
+           :depth: 2
+        
+        Introdução
+        ==========
+        
+        O objetivo deste pacote é facilitar a inserção e disponibilização de dados tabulares, em formato CSV.
+        Ele implementa um novo tipo de conteúdo chamado Dados Tabulares (CSVData) que só poderá ser inserido
+        dentro das pastas criadas pelo pacote de policy do Portal Modelo.
+        
+        
+        Tipo de Conteúdo
+        ----------------
+        
+        Este tipo de conteúdo permite o upload de dados no formato CSV. Estes dados são então exibidos no
+        portal como uma tabela, mas também podem ser baixados no formato do arquivo original, além de poderem
+        ser acessados pela API de dados abertos do portal e pesquisados através do mecanismo de buscas do portal.
+        
+        Requisitos
+        ----------
+        
+        Este pacote precisa ser utilzado dentro de um Portal Modelo 3.0.
+        
+        Contributors
+        ============
+        
+        * Álvaro Justen (rows package)
+        * Érico Andrei
+        * Héctor Velarde
+        * Jean Ferri
+        * Karyn Nassif
+        * Marcio Mazza
+        * `DryIcons`_ (Donwload icons, under free licence)
+        
+        .. _`DryIcons`: http://dryicons.com/terms/free/
+        
+        Changelog
+        =========
+        
+        1.0rc4 (2017-12-08)
+        -------------------
+        
+        - Add buttons for download the table in other formats
+          [jeanferri]
+        
+        - Remove incorporated package rows, now using it from PyPI
+          [jeanferri]
+        
+        
+        1.0rc3 (2015-06-17)
+        -------------------
+        
+        - Fix test test_setup.py
+          [marciomazza]
+        
+        
+        1.0rc2 (2014-10-24)
+        -------------------
+        
+        - Preparing setup.py for releases
+          [jeanferri]
+        
+        
+        1.0rc1 (2014-10-24)
+        -------------------
+        
+        - Fix tests
+          [hvelarde]
+        
+        - Fix bug where a CSV without titles resulted in wrong html
+          [marciomazza]
+        
+        
+        1.0b2 (2014-08-25)
+        ------------------
+        
+        - Incorporate rows package. This is supposed to be a temporary solution.
+          [ericof]
+        
+        - Fix download url for tabular data.
+          [ericof]
+        
+        
+        1.0b1 (2014-07-02)
+        ------------------
+        
+        - First public release
+          [jeanferri]
+        
+        
+        1.0a1 (2014-06-05)
+        ------------------
+        
+        - Initial release.
+        
+Keywords: interlegis portalmodelo transparencia lrf
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: 4.3
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
