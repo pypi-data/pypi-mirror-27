@@ -1,0 +1,13 @@
+apiVersion: config.istio.io/v1alpha2 
+kind: RouteRule 
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }}-{{ PIPELINE_MODEL_TAG }}
+spec:
+   destination: 
+      name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }}
+   precedence: 2
+# TODO:  MAKE THIS A LIST OF TAG:SPLIT PAIRS  
+   route:
+   - labels:
+       version: {{ PIPELINE_MODEL_TAG }}
+     weight: 100
