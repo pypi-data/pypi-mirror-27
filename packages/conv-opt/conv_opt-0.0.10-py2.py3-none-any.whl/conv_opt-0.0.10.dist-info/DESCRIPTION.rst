@@ -1,0 +1,68 @@
+|PyPI package| |Documentation| |Test results| |Test coverage| |Code
+analysis| |License| |Analytics|
+
+conv\_opt
+=========
+
+``conv_opt`` is a high-level Python package for solving linear and
+quadratic optimization problems using multiple open-source and
+commercials solvers including
+`Cbc <https://projects.coin-or.org/cbc>`__,
+`CVXOPT <http://cvxopt.org>`__, `FICO
+XPRESS <http://www.fico.com/en/products/fico-xpress-optimization>`__,
+`GLPK <https://www.gnu.org/software/glpk>`__,
+`Gurobi <http://www.gurobi.com/products/gurobi-optimizer>`__, `IBM
+CPLEX <https://www-01.ibm.com/software/commerce/optimization/cplex-optimizer>`__,
+`Mosek <https://www.mosek.com>`__,
+`quadprog <https://github.com/rmcgibbo/quadprog>`__, and
+`SciPy <https://docs.scipy.org>`__.
+
+Installation
+------------
+
+1. Install Python and pip
+2. Install this package. This will install the package, as well as the
+   CVXOPT, GLPK, quadprog, and SciPy solvers.
+   ``pip install git+git://github.com/KarrLab/conv_opt#egg=conv_opt``
+3. Optionally, install the Cbc/CyLP, FICO XPRESS, IBM CPLEX, Gurobi, and
+   Mosek solvers. Please see our detailed
+   `instructions <http://intro-to-wc-modeling.readthedocs.io/en/latest/installation.html>`__.
+
+Documentation
+-------------
+
+Please see the `API documentation <http://conv_opt.readthedocs.io>`__.
+
+License
+-------
+
+The build utilities are released under the `MIT license <LICENSE>`__.
+
+Development team
+----------------
+
+This package was developed by the `Karr Lab <http://www.karrlab.org>`__
+at the Icahn School of Medicine at Mount Sinai in New York, USA.
+
+Questions and comments
+----------------------
+
+Please contact the `Karr Lab <http://www.karrlab.org>`__ with any
+questions or comments.
+
+.. |PyPI package| image:: https://img.shields.io/pypi/v/conv_opt.svg
+   :target: https://pypi.python.org/pypi/conv_opt
+.. |Documentation| image:: https://readthedocs.org/projects/conv_opt/badge/?version=latest
+   :target: http://conv_opt.readthedocs.org
+.. |Test results| image:: https://circleci.com/gh/KarrLab/conv_opt.svg?style=shield
+   :target: https://circleci.com/gh/KarrLab/conv_opt
+.. |Test coverage| image:: https://coveralls.io/repos/github/KarrLab/conv_opt/badge.svg
+   :target: https://coveralls.io/github/KarrLab/conv_opt
+.. |Code analysis| image:: https://api.codeclimate.com/v1/badges/f61deab196a9dbf42555/maintainability
+   :target: https://codeclimate.com/github/KarrLab/conv_opt
+.. |License| image:: https://img.shields.io/github/license/KarrLab/conv_opt.svg
+   :target: LICENSE
+.. |Analytics| image:: https://ga-beacon.appspot.com/UA-86759801-1/conv_opt/README.md?pixel
+
+
+
