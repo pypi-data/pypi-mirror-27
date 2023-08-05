@@ -1,0 +1,25 @@
+Metadata-Version: 2.0
+Name: waldur-jira
+Version: 0.4.0
+Summary: Plugin for interaction and management of Atlassian JIRA
+Home-page: http://waldur.com
+Author: OpenNode Team
+Author-email: info@opennodecloud.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: jira (>=1.0.4)
+Requires-Dist: nodeconductor (>=0.150.2)
+Provides-Extra: test
+Requires-Dist: ddt (>=1.0.0); extra == 'test'
+
+Waldur JIRA
+===========
+
+Plugin for interaction with and management of Atlassian JIRA.
+
+
