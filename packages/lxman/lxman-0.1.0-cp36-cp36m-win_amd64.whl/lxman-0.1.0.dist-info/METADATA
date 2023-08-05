@@ -1,0 +1,41 @@
+Metadata-Version: 2.0
+Name: lxman
+Version: 0.1.0
+Summary: Making WSL a better system
+Home-page: http://lxman.encode.moe/
+Author: stuxcrystal
+Author-email: stuxcrystal@encode.moe
+License: MIT
+Keywords: windows wsl linux docker
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Topic :: Utilities
+Classifier: Topic :: System :: Operating System
+Classifier: Topic :: System :: Operating System Kernels
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Environment :: Console
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Requires-Dist: colorama
+Requires-Dist: click
+Requires-Dist: requests
+
+=====
+lxman
+=====
+
+lxman = linux mananger
+
+* Free software: MIT License
+
+Features
+--------
+
+* Create new Distributions
+* Clone Distributions
+* Modify Distribution Settings
+* Destroy Distributions
+
+
