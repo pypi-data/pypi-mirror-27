@@ -1,0 +1,39 @@
+Metadata-Version: 1.1
+Name: pylint-google-style-guide-imports-enforcing
+Version: 1.0.6
+Summary: Plugin for PyLint that checks if we import only modules or packages. Direct imports of classes, functions and constants are forbidden
+Home-page: https://github.com/Enforcer/pylint_google_style_guide_imports_enforcing
+Author: Sebastian Buczyński
+Author-email: nnplaya@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/Enforcer/pylint_google_style_guide_imports_enforcing/archive/1.0.3.tar.gz
+Description: How it works?
+        ===============
+        It marks importing anything but modules/packages as invalid with a message `only-importing-modules-is-allowed`. This adheres to Google's Python style guide.
+        
+        An example::
+        
+            from functools import partial  # invalid
+            import functools  # valid
+            from some_module.some_subomdule import SomeClass  # invalid
+            from some_module import some_subomdule  # valid
+        
+        Why?
+        ===============
+        To not force people to manual check if something we imported is a module or not.
+        
+        How to use it?
+        ===============
+        After installing a package just run `pylint`, appending `pylint_google_style_guide_imports_enforcing` to your `--load-plugins` option.
+        
+        An example::
+        
+            pylint my_cool_project --load-plugins=pylint_google_style_guide_imports_enforcing
+        
+        or append it to your `pylintrc` file::
+        
+            [MASTER]
+            load-plugins=pylint_google_style_guide_imports_enforcing
+        
+Keywords: pylint,google style guide,imports
+Platform: UNKNOWN
