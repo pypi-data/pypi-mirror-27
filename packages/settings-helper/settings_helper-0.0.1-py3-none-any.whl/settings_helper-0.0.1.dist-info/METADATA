@@ -1,0 +1,30 @@
+Metadata-Version: 2.0
+Name: settings-helper
+Version: 0.0.1
+Summary: Helpers to get specific settings from a particular section of a settings.ini file
+Home-page: https://github.com/kenjyco/settings-helper
+Author: Ken
+Author-email: kenjyco@gmail.com
+License: MIT
+Download-URL: https://github.com/kenjyco/settings-helper/tarball/v0.0.1
+Keywords: settings,helper
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Intended Audience :: Developers
+Requires-Dist: input-helper
+
+Install
+-------
+
+Install with ``pip``
+
+::
+
+    % pip3 install settings-helper
+
+
