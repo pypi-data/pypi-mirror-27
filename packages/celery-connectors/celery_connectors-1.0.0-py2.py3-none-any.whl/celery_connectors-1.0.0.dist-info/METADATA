@@ -1,0 +1,36 @@
+Metadata-Version: 2.0
+Name: celery-connectors
+Version: 1.0.0
+Summary: Celery Headless Connectors
+Home-page: https://github.com/jay-johnson/celery-connectors
+Author: Jay Johnson
+Author-email: jay.p.h.johnson@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: celery (>=4.1.0)
+Requires-Dist: coverage
+Requires-Dist: docker-compose
+Requires-Dist: flake8 (>=3.4.1)
+Requires-Dist: future
+Requires-Dist: kombu (>=4.1.0)
+Requires-Dist: logstash-formatter
+Requires-Dist: mock
+Requires-Dist: pep8 (>=1.7.1)
+Requires-Dist: pylint
+Requires-Dist: python-logstash
+Requires-Dist: redis
+Requires-Dist: unittest2
+
+For running headless celery subscribers and kombu publishers to process json or pickled messages using a celery-ready messaging backend. Headless means no task result backend (like mongo). I am planning to glue Django and Jupyter together with this connection framework, and allow workers to process messages from my windows laptop out of a shared broker.
+
+
