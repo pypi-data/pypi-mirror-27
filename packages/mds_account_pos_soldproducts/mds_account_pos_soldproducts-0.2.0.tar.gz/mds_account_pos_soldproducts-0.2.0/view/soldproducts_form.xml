@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<form string="Sold Product" col="6">
+    <separator id="sepprod" string="Product" colspan="6"/>
+    <label name="sa_prodname"/>
+    <field name="sa_prodname" colspan="5"/>
+    <label name="sa_priceunitnet"/>
+    <field name="sa_priceunitnet"/>
+    <label name="sa_priceunitgross"/>
+    <field name="sa_priceunitgross"/>
+    <label name="sa_currency2"/>
+    <field name="sa_currency2"/>
+    <label name="sa_taxnames"/>
+    <field name="sa_taxnames" colspan="2"/>
+    <separator id="sepacc" string="Account" colspan="6"/>
+    <label name="sa_account"/>
+    <field name="sa_account"/>
+    <label name="sa_accdate"/>
+    <field name="sa_accdate"/>
+    <separator id="sepinv" string="Invoice" colspan="6"/>
+    <label name="sa_invoice"/>
+    <field name="sa_invoice"/>
+    <label name="sa_invoicedate"/>
+    <field name="sa_invoicedate"/>
+    <label name="sa_invtype"/>
+    <field name="sa_invtype"/>
+    <label name="sa_party"/>
+    <field name="sa_party" colspan="3"/>
+    <label name="sa_invstate"/>
+    <field name="sa_invstate"/>
+    <label name="sa_quantity"/>
+    <field name="sa_quantity"/>
+    <label name="sa_pricenet"/>
+    <field name="sa_pricenet"/>
+    <label name="sa_pricegross"/>
+    <field name="sa_pricegross"/>
+    <label name="sa_taxes"/>
+    <field name="sa_taxes"/>
+</form>

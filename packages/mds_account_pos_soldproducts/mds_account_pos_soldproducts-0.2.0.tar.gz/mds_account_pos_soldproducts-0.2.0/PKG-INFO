@@ -1,0 +1,61 @@
+Metadata-Version: 1.1
+Name: mds_account_pos_soldproducts
+Version: 0.2.0
+Summary: Tryton module to show sold products
+Home-page: https://www.m-ds.de/
+Author: m-ds GmbH
+Author-email: service@m-ds.de
+License: GPL-3
+Download-URL: https://www.m-ds.de/serviceportal/downloads/trytonmodul-account-pos-soldproducts
+Description: pos sold products
+        =================
+        This module adds a view of all sold products to Tryton. The *sold products*-view is 
+        visible under the menu item *Financial/Reporting*. The display is divided 
+        into *current week*, *last 14 days*, *last 30 days* and *all*. All columns 
+        can be used for a search in the product list.
+        
+        Install
+        =======
+        
+        pip install mds-account-pos-soldproducts
+        
+        Requires
+        ========
+        - Tryton 3.8
+        
+        Changes
+        =======
+        
+        *0.2.0 - 11/24/2017*
+        
+        - added roles to control read access
+        
+        *0.1.2 - 06/09/2017*
+        
+        - dependency to mds-sqlextension updated
+        
+        *0.1.1 - 06/07/2017*
+        
+        - module name changed
+        
+        *0.1.0 - 05/30/2017*
+        
+        - first public version
+        
+Keywords: tryton sale product account
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Framework :: Tryton
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Customer Service
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Office/Business :: Financial :: Accounting
+Classifier: Topic :: Office/Business :: Financial :: Point-Of-Sale
+Classifier: Natural Language :: German
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python :: 2.7

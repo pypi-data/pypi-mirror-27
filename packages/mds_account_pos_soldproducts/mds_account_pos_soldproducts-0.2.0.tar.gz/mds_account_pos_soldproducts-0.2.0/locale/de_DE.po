@@ -1,0 +1,139 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+# group
+msgctxt "model:res.group,name:group_soldproducts_viewer"
+msgid "Sold Products - View"
+msgstr "Verkaufte Produkte - Ansicht"
+
+
+# form
+msgctxt "view:account.invoice.line:"
+msgid "Product"
+msgstr "Produkt"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "view:account.invoice.line:"
+msgid "Account"
+msgstr "Buchungskonto"
+
+msgctxt "view:account.invoice.line:"
+msgid "Sold Products"
+msgstr "Verkaufte Produkte"
+
+
+# menu, form-title
+msgctxt "model:ir.action,name:act_sold_products_form"
+msgid "Sold Products"
+msgstr "Verkaufte Produkte"
+
+msgctxt "model:ir.ui.menu,name:menu_sold_products_form"
+msgid "Sold Products"
+msgstr "Verkaufte Produkte"
+
+msgctxt "model:account_pos_soldproducts,name:"
+msgid "Sold Products"
+msgstr "Verkaufte Produkte"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sold_products_domain_week"
+msgid "Current week"
+msgstr "aktuelle Woche"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sold_products_domain_14days-1"
+msgid "Last 14 days"
+msgstr "letzte 14 Tage"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sold_products_domain_30days-1"
+msgid "Last 30 days"
+msgstr "letzte 30 Tage"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sold_products_domain_all"
+msgid "all"
+msgstr "alle"
+
+
+
+# fields
+msgctxt "field:account.invoice.line,sa_invoicedate:"
+msgid "Invoice Date"
+msgstr "Rechnungsdatum"
+
+msgctxt "field:account.invoice.line,sa_priceunitnet:"
+msgid "Unit price net"
+msgstr "Einzelpreis Netto"
+
+msgctxt "field:account.invoice.line,sa_priceunitgross:"
+msgid "Unit price gross"
+msgstr "Einzelpreis Brutto"
+
+msgctxt "field:account.invoice.line,sa_pricenet:"
+msgid "Net price"
+msgstr "Nettopreis"
+
+msgctxt "field:account.invoice.line,sa_pricegross:"
+msgid "Gross price"
+msgstr "Bruttopreis"
+
+msgctxt "field:account.invoice.line,sa_taxes:"
+msgid "Taxes"
+msgstr "Steuern"
+
+msgctxt "field:account.invoice.line,sa_taxnames:"
+msgid "Taxnames"
+msgstr "Steuerbezeichnung"
+
+msgctxt "field:account.invoice.line,sa_currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.invoice.line,sa_currency2:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.invoice.line,sa_invnr:"
+msgid "Invoice No."
+msgstr "Rechnungsnummer"
+
+msgctxt "field:account.invoice.line,sa_invoice:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "field:account.invoice.line,sa_account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.invoice.line,sa_accdate:"
+msgid "Accounting Date"
+msgstr "Buchungsdatum"
+
+msgctxt "field:account.invoice.line,sa_invstate:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.invoice.line,sa_partyname:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:account.invoice.line,sa_party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:account.invoice.line,sa_invtype:"
+msgid "Invoice Type"
+msgstr "Rechnungstyp"
+
+msgctxt "field:account.invoice.line,sa_prodname:"
+msgid "Product"
+msgstr "Produkt"
+
+msgctxt "field:account.invoice.line,sa_quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:account.invoice.line,sa_currweek:"
+msgid "Current week"
+msgstr "aktuelle Woche"
