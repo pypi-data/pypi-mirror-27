@@ -1,0 +1,8 @@
+[guild.models]
+mnist-base = guild.model:PackageModel
+mnist-cnn = guild.model:PackageModel
+mnist-softmax = guild.model:PackageModel
+
+[guild.resources]
+dataset = guild.package:PackageResource
+
