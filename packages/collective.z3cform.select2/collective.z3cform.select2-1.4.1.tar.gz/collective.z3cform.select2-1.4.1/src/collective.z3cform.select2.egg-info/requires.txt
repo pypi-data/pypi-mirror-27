@@ -1,0 +1,10 @@
+eea.facetednavigation<10.0
+eea.jquery>=8.8
+plone.api
+setuptools
+z3c.form>=3.2.11
+
+[test]
+plone.app.contenttypes
+plone.app.robotframework[debug]
+plone.app.testing
