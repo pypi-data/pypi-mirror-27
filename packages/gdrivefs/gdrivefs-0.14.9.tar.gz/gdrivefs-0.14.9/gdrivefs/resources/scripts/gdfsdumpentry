@@ -1,0 +1,68 @@
+#!/usr/bin/env python2.7
+
+import sys
+import os.path
+dev_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, dev_path)
+
+import logging
+import argparse
+
+import gdrivefs.config.log
+import gdrivefs.cache.volume
+import gdrivefs.gdfs.fsutility
+import gdrivefs.gdfs.gdfuse
+import gdrivefs.errors
+
+_logger = logging.getLogger(__name__)
+
+def _get_by_path(raw_path):
+    result = gdrivefs.gdfs.fsutility.split_path(raw_path, gdrivefs.cache.volume.path_resolver)
+    (parent_clause, path, filename, mime_type, is_hidden) = result
+
+    filepath = gdrivefs.gdfs.fsutility.build_filepath(path, filename)
+    path_relations = gdrivefs.cache.volume.PathRelations.get_instance()
+    entry_clause = path_relations.get_clause_from_path(filepath)
+
+    return entry_clause[gdrivefs.cache.volume.CLAUSE_ENTRY]
+
+def _get_by_id(_id):
+    cache = gdrivefs.cache.volume.EntryCache.get_instance().cache
+
+    return cache.get(_id)
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('cred_filepath', help='Credentials file')
+
+    subparsers = parser.add_subparsers(help='subcommand help')
+    parser_bypath = subparsers.add_parser('bypath', help='Path-based lookups.')
+    parser_bypath.add_argument('path', help='Path to identify')
+    parser_byid = subparsers.add_parser('byid', help='Path-based lookups.')
+    parser_byid.add_argument('id', help='Specific entry to identify')
+
+    args = parser.parse_args()
+
+    gdrivefs.gdfs.gdfuse.set_auth_cache_filepath(args.cred_filepath)
+
+    if 'id' in args:
+        entry = _get_by_id(args.id)
+    
+    if 'path' in args:
+        entry = _get_by_path(args.path)
+
+    print(entry)
+    print    
+
+    data = entry.get_data()
+
+    for _type, _dict in data.iteritems():
+        print("[%s]\n" % (_type))
+
+        for key, value in _dict.iteritems():
+            print("%s: %s" % (key, value))
+
+        print
+
+if __name__ == '__main__':
+    main()
