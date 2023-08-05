@@ -1,0 +1,70 @@
+Metadata-Version: 2.0
+Name: gleipnir
+Version: 1.0.8
+Summary: Connecting to your AWS instances
+Home-page: https://github.com/mopinion/gleipnir
+Author: Floris Snuif
+Author-email: floris@mopinion.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: cli
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Utilities
+Classifier: License :: Public Domain
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: boto3
+Requires-Dist: docopt
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+Requires-Dist: pytest; extra == 'test'
+Requires-Dist: pytest-cov; extra == 'test'
+
+Gleipnir
+========
+
+*Hold Fenrir 🐺*
+
+Tool to easily connect to your AWS servers
+
+Install
+-------
+	$ pip install gleipnir
+
+Usage
+-----
+	$ gleipnir connect -s "my server name tag"
+
+Searches for EC2 instances by Name tag (regex enabled)
+
+When more than one instance is found it returns a list.
+If just one instance is found it connects.
+
+	$ gleipnir connect -h 192.168.1.1
+
+Connects to server by IP/URL
+
+Environment variables
+---------------------
+
+You should set the following environment variables:
+
+- AWS_ACCESS_KEY_ID: your AWS access key id
+- AWS_SECRET_ACCESS_KEY: your AWS secret access key
+- AWS_REGION: your AWS region
+- AWS_PASSWORD: custom password for SSH (optional)
+- AWS_KEY_FILE: location of your key file
+
+Thanks
+------
+**Mopinion.com**
+
+
