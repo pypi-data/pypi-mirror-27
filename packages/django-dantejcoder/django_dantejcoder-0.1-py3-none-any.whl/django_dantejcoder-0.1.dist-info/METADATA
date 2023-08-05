@@ -1,0 +1,39 @@
+Metadata-Version: 2.0
+Name: django-dantejcoder
+Version: 0.1
+Summary: A simple Django app to covert standard django-models to json
+Home-page: https://github.com/DanteOnline/django-dantejcoder
+Author: DanteOnline
+Author-email: iamdanteonline@gmail.com
+License: GNU General Public License v3.0
+Keywords: json,django,JsonResponse,encoder
+Platform: UNKNOWN
+
+# DanteJcoder
+
+Simple way to make json from standard django models
+
+Quickstart:
+
+Installation
+
+`pip install django-dantejcoder`
+
+Simple use
+
+1. Import DanteJcoder
+
+```python
+    from dantejcoder.coder import DanteJcoder
+```
+
+2. Get one django model or queriset (for example in result variable)
+
+3. Use DanteJcoder in JsonResponse
+
+```python
+    return JsonResponse(result, encoder=DanteJcoder)
+```
+
+
+
