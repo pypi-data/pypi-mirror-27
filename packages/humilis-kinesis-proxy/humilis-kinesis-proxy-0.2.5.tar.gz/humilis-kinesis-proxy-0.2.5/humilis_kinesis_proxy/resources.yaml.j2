@@ -1,0 +1,342 @@
+---
+{% set globs = {"prevpath": ""} %}
+{% set already_created_resources=[] %}
+resources:
+    RestApi:
+      Type: "AWS::ApiGateway::RestApi"
+      Properties:
+        Name: "{{__context.environment.name}}-{{__context.stage}}-{{__context.layer.name}}"
+        Description: "{{api_description}}"
+
+    {% if domain_name and certificate_arn %}
+    DomainName:
+        Type: "AWS::ApiGateway::DomainName"
+        Properties:
+            CertificateArn: {{certificate_arn}}
+            DomainName: {{domain_name}}
+
+    DomainNameMapping:
+       Type: "AWS::ApiGateway::BasePathMapping"
+       Properties:
+         Stage: "{{__context.stage.lower()}}"
+         RestApiId:
+            Ref: RestApi
+         DomainName:
+            Ref: DomainName
+
+    ApiDnsRecord:
+      Type: AWS::Route53::RecordSetGroup
+      Properties:
+        {% if hosted_zone_id %}
+        HostedZoneId: {{hosted_zone_id}}
+        {% else %}
+        HostedZoneName: {{'.'.join(domain_name.split('.')[-2:])}}.
+        {% endif %}
+        RecordSets:
+            - Name: "{{domain_name}}"
+              Type: A
+              AliasTarget:
+                HostedZoneId: Z2FDTNDATAQYW2
+                DNSName:
+                    "Fn::GetAtt":
+                        - DomainName
+                        - DistributionDomainName
+    {% endif %}
+
+    {% for resource in api_resources %}
+    {% set resid = resource.path|replace('/', '') %}
+    Role{{resid.title()}}:
+      Type: "AWS::IAM::Role"
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                  Service: 'apigateway.amazonaws.com'
+              Action: 'sts:AssumeRole'
+        # Keep all environment role under the same path
+        Path: {{ "/{}/".format(__context.environment.name) }}
+        Policies:
+          - PolicyName: WriteAccessToKinesisStream
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  # Permission to list and describe all streams
+                  Action:
+                    - "kinesis:DescribeStream"
+                    - "kinesis:ListStreams"
+                  Resource: "*"
+                - Effect: Allow
+                  # Permissions to write to the kinesis stream
+                  Action:
+                    - "kinesis:Put*"
+                  Resource:
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:kinesis:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":", "stream/",
+                         "{{resource.path.stream_name or stream_name}}"]
+
+    # Create parent resources
+    {% if '/' in resource.path %}
+    {% set _ = globs.update({'prevpath': ''}) %}
+    {% for path in resource.path.split('/') %}
+    {% set subresid = globs.prevpath+path %}
+    {% if subresid not in already_created_resources %}
+    {% set _ = already_created_resources.append(subresid) %}
+    Resource{{subresid.title()}}:
+      Type: "AWS::ApiGateway::Resource"
+      Properties:
+        RestApiId: {"Ref": "RestApi"}
+        ParentId:
+            {% if globs.prevpath %}
+            {"Ref": Resource{{globs.prevpath.title()}}}
+            {% else %}
+            "Fn::GetAtt":
+              - RestApi
+              - RootResourceId
+            {% endif %}
+        PathPart: "{{path}}"
+    {% endif %}
+    {% set _ = globs.update({"prevpath": subresid}) %}
+    {% endfor %}
+    {% endif %}
+
+    {% if resid not in already_created_resources %}
+    {% set _ = already_created_resources.append(resid) %}
+    Resource{{resid.title()}}:
+      Type: "AWS::ApiGateway::Resource"
+      Properties:
+        RestApiId: {"Ref": "RestApi"}
+        ParentId:
+            {% if '/' in resource.path %}
+            {"Ref": Resource{{''.join(resource.path.split('/')[:-1]).title()}}}
+            {% else %}
+            "Fn::GetAtt":
+              - RestApi
+              - RootResourceId
+            {% endif %}
+        PathPart: "{{resource.path.split('/')[-1]}}"
+    {% endif %}
+
+    {% if not resource.method or resource.method.upper() == 'GET' %}
+    MethodGet{{resid.title()}}:
+      Type: "AWS::ApiGateway::Method"
+      Properties:
+        RestApiId: {"Ref": "RestApi"}
+        ResourceId: {"Ref": "Resource{{resid.title()}}"}
+        ApiKeyRequired: {{api_key_required}}
+        HttpMethod: GET
+        AuthorizationType: NONE
+        MethodResponses:
+          - ResponseParameters:
+              method.response.header.Access-Control-Allow-Headers: true
+              method.response.header.Access-Control-Allow-Methods: true
+              method.response.header.Access-Control-Allow-Origin: true
+            StatusCode: '200'
+        {% if resource.request_parameters %}
+        RequestParameters:
+          {% for k, v in resource.request_parameters.items() %}
+          "method.request.{{k}}": {{v}}
+          {% endfor %}
+        {% endif %}
+        Integration:
+          Type: AWS
+          IntegrationHttpMethod: POST
+          Credentials: {"Fn::GetAtt": ["Role{{resid.title()}}", "Arn"]}
+          Uri:
+            "Fn::Join":
+              - ""
+              - ["arn:aws:apigateway:", {"Ref": "AWS::Region"}, ":", "kinesis:action/PutRecords"]
+          PassthroughBehavior: WHEN_NO_TEMPLATES
+          IntegrationResponses:
+              - StatusCode: 200
+                ResponseParameters:
+                  method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+                  method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
+                  method.response.header.Access-Control-Allow-Origin: "'*'"
+          RequestTemplates:
+            "application/json": |
+                #set($allParams = $input.params())
+                {
+                   "Records": [
+                      #set($payload = '{' +
+                      '"context" : {"apiId" : "' + "$context.apiId" + '", "httpMethod" : "' + "$context.httpMethod" + '", "stage" : "' + "$context.stage" + '", "requestId" : "' + "$context.requestId" + '", "resourcePath" : "'+ "$context.resourcePath" + '", "resourceId" : "' + "$context.resourceId" + '", "identity" : {"sourceIp" : "' + "$context.identity.sourceIp" + '", "userAgent" : "' + "$context.identity.userAgent" + '", "accountId" : "' + "$context.identity.accountId" + '", "apiKey" : "' + "$context.identity.apiKey" + '", "caller" : "' + "$context.identity.caller" + '", "user" : "' + "$context.identity.user" + '", "userArn" : "' + "$context.identity.userArn" + '"}},')
+                      #foreach($type in $allParams.keySet())
+                      #set($params = $allParams.get($type))
+                      #set($payload = $payload + '"' + "$type" + '": {')
+                      #foreach($paramName in $params.keySet())
+                      #set($payload = $payload + '"' + "$paramName" + '": "' + "$util.escapeJavaScript($params.get($paramName))" + '"')
+                      #if($foreach.hasNext)
+                      #set($payload = $payload + ',')
+                      #end
+                      #end
+                      #set($payload = $payload + '}')
+                      #if($foreach.hasNext)
+                      #set($payload = $payload + ',')
+                      #end
+                      #end
+                      #set($payload = $payload.replaceAll("\\'","'") + '}')
+                      { 
+                         "Data": "$util.base64Encode($payload)",
+                         "PartitionKey": "$context.requestId"
+                      }
+                   ],
+                   "StreamName": "{{resource.path.stream_name or stream_name}}"
+                }
+    {% endif %}
+
+    {% if not resource.method or resource.method.upper() == 'POST' %}
+    MethodPost{{resid.title()}}:
+      Type: "AWS::ApiGateway::Method"
+      Properties:
+        RestApiId: {"Ref": "RestApi"}
+        ResourceId: {"Ref": "Resource{{resid.title()}}"}
+        ApiKeyRequired: {{api_key_required}}
+        HttpMethod: POST
+        AuthorizationType: NONE
+        MethodResponses:
+          - ResponseParameters:
+              method.response.header.Access-Control-Allow-Headers: true
+              method.response.header.Access-Control-Allow-Methods: true
+              method.response.header.Access-Control-Allow-Origin: true
+            StatusCode: '200'
+        Integration:
+          Type: AWS
+          IntegrationHttpMethod: POST
+          Credentials: {"Fn::GetAtt": ["Role{{resid.title()}}", "Arn"]}
+          Uri:
+            "Fn::Join":
+              - ""
+              - ["arn:aws:apigateway:", {"Ref": "AWS::Region"}, ":", "kinesis:action/PutRecords"]
+          PassthroughBehavior: WHEN_NO_TEMPLATES
+          IntegrationResponses:
+              - StatusCode: 200
+                ResponseParameters:
+                  method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+                  method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
+                  method.response.header.Access-Control-Allow-Origin: "'*'"
+          RequestTemplates:
+            "application/json": |
+            {% if resource.is_batch is not defined or resource.is_batch %}
+                #set($allParams = $input.params())
+                #set($recs = $input.path('$.batch'))
+                {
+                   "Records": [
+                      #set($ix = 0)
+                      #foreach($rec in $recs)
+                      #set($datapath='$.batch[' + $ix + ']')
+                      {% if resource.partition_key_path or partition_key_path %}
+                      #set($pkpath='$.batch[' + $ix + '].{{resource.partition_key_path or partition_key_path}}')
+                      {% endif %}
+                      #set($payload = '{"event": '
+                      + $input.json($datapath) + 
+                      {% if resource.sent_at_path or sent_at_path %}
+                      ', "sentAt" : "' + $input.path('$.{{resource.sent_at_path or sent_at_path}}') +
+                      {% endif %}
+                      '", "context" : {"apiId" : "' + "$context.apiId" + '", "httpMethod" : "' + "$context.httpMethod" + '", "stage" : "' + "$context.stage" + '", "requestId" : "' + "$context.requestId" + '", "resourcePath" : "'+ "$context.resourcePath" + '", "resourceId" : "' + "$context.resourceId" + '", "identity" : {"sourceIp" : "' + "$context.identity.sourceIp" + '", "userAgent" : "' + "$context.identity.userAgent" + '", "accountId" : "' + "$context.identity.accountId" + '", "apiKey" : "' + "$context.identity.apiKey" + '", "caller" : "' + "$context.identity.caller" + '", "user" : "' + "$context.identity.user" + '", "userArn" : "' + "$context.identity.userArn" + '"}}}')
+                      { 
+                         "Data": "$util.base64Encode($payload)",
+                         {% if resource.partition_key_path or partition_key_path %}
+                         "PartitionKey": "$input.path($pkpath)"
+                         {% else %}
+                         "PartitionKey": "{{resource.partition_key or partition_key}}"
+                         {% endif %}
+                      }
+                      #if($foreach.hasNext),#end
+                      #set($ix = $ix + 1)
+                      #end
+                   ],
+                   "StreamName": "{{resource.path.stream_name or stream_name}}"
+                }
+            {% else %}
+                #set($allParams = $input.params())
+                {
+                   "Records": [
+                      #set($datapath='$')
+                      {% if resource.partition_key_path or partition_key_path %}
+                      #set($pkpath='$.{{resource.partition_key_path or partition_key_path}}')
+                      {% endif %}
+                      #set($payload = '{"event": '
+                      + $input.json($datapath) + 
+                      {% if resource.sent_at_path or sent_at_path %}
+                      ', "sentAt" : "' + $input.path('$.{{resource.sent_at_path or sent_at_path}}') +
+                      {% endif %}
+                      '", "context" : {"apiId" : "' + "$context.apiId" + '", "httpMethod" : "' + "$context.httpMethod" + '", "stage" : "' + "$context.stage" + '", "requestId" : "' + "$context.requestId" + '", "resourcePath" : "'+ "$context.resourcePath" + '", "resourceId" : "' + "$context.resourceId" + '", "identity" : {"sourceIp" : "' + "$context.identity.sourceIp" + '", "userAgent" : "' + "$context.identity.userAgent" + '", "accountId" : "' + "$context.identity.accountId" + '", "apiKey" : "' + "$context.identity.apiKey" + '", "caller" : "' + "$context.identity.caller" + '", "user" : "' + "$context.identity.user" + '", "userArn" : "' + "$context.identity.userArn" + '"}}}')
+                      { 
+                         "Data": "$util.base64Encode($payload)",
+                         {% if resource.partition_key_path or partition_key_path %}
+                         "PartitionKey": "$input.path($pkpath)"
+                         {% else %}
+                         "PartitionKey": "{{resource.partition_key or partition_key}}"
+                         {% endif %}
+                      }
+                   ],
+                   "StreamName": "{{resource.path.stream_name or stream_name}}"
+                }
+            {% endif %}
+    {% endif %}
+
+    MethodOptions{{resid.title()}}:
+      Type: "AWS::ApiGateway::Method"
+      Properties:
+        ResourceId: {"Ref": "Resource{{resid.title()}}"}
+        RestApiId: {"Ref": "RestApi"}
+        AuthorizationType: NONE
+        HttpMethod: OPTIONS
+        Integration:
+          Type: MOCK
+          IntegrationResponses:
+            - ResponseParameters:
+                method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+                method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
+                method.response.header.Access-Control-Allow-Origin: "'*'"
+              ResponseTemplates:
+                application/json: ''
+              StatusCode: 200
+          PassthroughBehavior: NEVER
+          RequestTemplates:
+            application/json: '{"statusCode": 200}'
+        MethodResponses:
+          - ResponseParameters:
+              method.response.header.Access-Control-Allow-Headers: true
+              method.response.header.Access-Control-Allow-Methods: true
+              method.response.header.Access-Control-Allow-Origin: true
+            StatusCode: '200'
+
+    {% endfor %}
+
+
+    RestApiDeployment:
+      Type: "AWS::ApiGateway::Deployment"
+      DependsOn:
+        {% for resource in api_resources %}
+        {% set resid = resource.path|replace('/', '') %}
+        {% if not resource.method or resource.method.upper() == 'POST' %}
+        - MethodPost{{resid.title()}}
+        {% endif %}
+        {% if not resource.method or resource.method.upper() == 'GET' %}
+        - MethodGet{{resid.title()}}
+        {% endif %}
+        - MethodOptions{{resid.title()}}
+        {% endfor %}
+      Properties:
+          Description: "{{__context.environment.name}} ({{__context.stage}})"
+          RestApiId:
+            {"Ref": "RestApi"}
+          StageName: {{__context.stage|lower}}
+
+    ApiKey:
+      Type: "AWS::ApiGateway::ApiKey"
+      DependsOn:
+        - "RestApiDeployment"
+        - "RestApi"
+      Properties:
+        Name: "{{__context.environment.name}}-{{__context.layer.name}}-{{__context.stage}}"
+        Description: "API key for stage {{__context.stage}} of environment {{__context.environment.name}}"
+        Enabled: "true"
+        StageKeys:
+          - RestApiId: {"Ref": "RestApi"}
+            StageName: "{{__context.stage|lower}}"
