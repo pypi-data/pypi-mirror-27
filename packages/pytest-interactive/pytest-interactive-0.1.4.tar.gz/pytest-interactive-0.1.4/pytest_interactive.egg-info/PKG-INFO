@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: pytest-interactive
+Version: 0.1.4
+Summary: A pytest plugin for console based interactive test selection just after the collection phase
+Home-page: https://github.com/tgoodlet/pytest-interactive
+Author: Tyler Goodlet
+Author-email: tgoodlet@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: pytest-interactive
+        ==================
+        |pypi| |versions| |pypi_downloads| |docs|
+        
+        A ``pytest`` plugin for interactively selecting tests to run using ``IPython``.
+        Read the `docs`_ to find out more!
+        
+        Installation
+        ------------
+        ::
+        
+            pip install pytest-interactive
+        
+        Usage
+        -----
+        Run ``pytest`` with ``--interactive`` or the shorthand ``--ia``
+        
+        .. |versions| image::
+            https://img.shields.io/pypi/pyversions/pytest-interactive.svg
+            :target: https://pypi.python.org/pypi/pytest-interactive
+        
+        .. |pypi| image:: https://img.shields.io/pypi/v/pytest-interactive.svg
+            :target: https://pypi.python.org/pypi/pytest-interactive
+        
+        .. |pypi_downloads| image:: https://img.shields.io/pypi/d/pytest-interactive.svg
+            :target: https://pypi.python.org/pypi/pytest-interactive
+        
+        .. |docs| image::
+            https://readthedocs.org/projects/pytest-interactive/badge/?version=latest
+            :target: http://pytest-interactive.readthedocs.io/en/latest/?badge=latest
+        
+        .. _docs:
+            http://pytest-interactive.readthedocs.io/en/latest/?badge=latest
+        
+Platform: linux
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Topic :: Software Development :: Testing
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Environment :: Console
