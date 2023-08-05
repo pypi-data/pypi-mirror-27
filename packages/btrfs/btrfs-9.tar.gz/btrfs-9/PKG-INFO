@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: btrfs
+Version: 9
+Summary: Python module to inspect btrfs filesystems
+Home-page: https://github.com/knorrie/python-btrfs
+Author: Hans van Kranenburg
+Author-email: hans@knorrie.org
+License: UNKNOWN
+Download-URL: https://github.com/knorrie/python-btrfs/tarball/v9
+Description: python-btrfs
+        ============
+        
+        Python 3 module to inspect btrfs filesystems.
+        
+        License: GPLv2.
+        
+        Btrfs is a copy on write (COW) filesystem for Linux aimed at implementing
+        advanced features while focusing on fault tolerance, repair and easy
+        administration.
+        
+        Project Goal
+        ------------
+        
+        Currently, the primary goal of this module is  to be able to inspect the
+        internals of an existing filesystem for educational purposes.
+        
+        A second goal is to provide a nicer way for automating administration tasks and
+        writing monitoring scripts by being able to just programmatically access the
+        needed information, instead of having to spend most of the time on parsing
+        human readable output from other btrfs tools.
+        
+        The python module acts as a wrapper around the low level kernel calls and btrfs
+        data structures, presenting them as python objects with interesting attributes
+        and references to other objects.
+        
+        Development progress
+        --------------------
+        
+        The module currently gained a quite good coverage of the kernel API and
+        metadata structures to be useful for many introspection tasks. Documentation in
+        tutorial form is still lacking, but the git commit history has a wealth of
+        documentation on all parts of the code.
+        
+Keywords: btrfs,filesystem
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: System :: Filesystems
+Classifier: Topic :: System :: Systems Administration
