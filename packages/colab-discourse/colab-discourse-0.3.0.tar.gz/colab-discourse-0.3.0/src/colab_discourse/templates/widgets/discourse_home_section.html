@@ -1,0 +1,54 @@
+{% extends "base-home-section.html" %}
+{% load staticfiles %}
+
+{% block app_slug %}discourse{% endblock %}
+{% block section_title %}Participe em discussões{% endblock %}
+{% block section_title_attr %}Veja todas as discussões{% endblock %}
+{% block section_text %}Dê sua opinião sobre os assuntos que afetam a sua vida, discutindo soluções com outros cidadãos e os deputados.{% endblock %}
+{% block cards_ammount_conditional %}discourse_data.count > 10{% endblock %}
+{% block plugin_url %}{% url 'discourse:colab_discourse' '' %}{% endblock %}
+{% block logo_url %}{% static 'img/logo-expressao.svg' %}{% endblock %}
+
+{% block cards %}
+  {% for topic in discourse_data %}
+    <a class="info-card__link" href="{{topic.get_url}}">
+      <li class="info-card info-card--discourse info-card--{{topic.category.slug}}">
+        {% if user.is_authenticated %}
+          {% if topic.category in user.profile.prefered_themes.all %}
+          {% endif %}
+        {% endif %}
+        <div class="info-card__header">
+          <div class="info-card__icon"><i class="icon icon-{{topic.category.slug}}"></i></div>
+          <h2 class="info-card__title">{{topic.category.name}}</h2>
+        </div>
+        <p class="info-card__text">
+          {{topic.title}}
+        </p>
+        <div class="info-card__footer">
+          <div class="card-stats">
+            <div class="card-stats__name">Respostas</div>
+            <div class="card-stats__value">{{topic.posts_count}}</div>
+          </div>
+
+          <div class="card-stats">
+            <div class="card-stats__name">Visualizações</div>
+            <div class="card-stats__value">{{topic.views}}</div>
+          </div>
+
+          <div class="card-stats">
+            <div class="card-stats__name">Atualização</div>
+            <div class="card-stats__value">{{topic.last_posted_at|date:"b/Y"}}</div>
+          </div>
+        </div>
+      </li>
+    </a>
+  {% empty %}
+    <li>
+      <div class="section__content-wrapper section__content-wrapper--center text-center">
+        <p class="section__text">
+          Desculpe. Não encontramos nenhuma discussão.
+        </p>
+      </div>
+    </li>
+  {% endfor %}
+{% endblock cards %}
