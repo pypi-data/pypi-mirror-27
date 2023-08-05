@@ -1,0 +1,103 @@
+{
+  "tests": [
+    {
+      "name": "10",
+        "extensions": [
+        "SCOPE"
+      ]
+    },
+    {
+      "name": "11",
+      "stdout": " 669878",
+        "extensions": [
+        "SCOPE"
+      ]
+    },
+    {
+      "name": "12",
+      "stdin": "Martin Kobelka napsal tento test",
+      "stdout": "? Martin Kobelka napsal tento test"
+    },
+    {
+      "info": "Multi line string",
+      "stdout": "ahoj\nsvete",
+      "code": "scope \n print !\"ahoj\\nsvete\"; \nend scope"
+    },
+    {
+      "info": "Simple integer print",
+      "stdout": " 42",
+      "code": "scope \n print 42; \nend scope"
+    },
+    {
+      "info": "Simple double print",
+      "stdout": " 5876.78",
+      "code": "scope \n print 5876.78; \nend scope"
+    },
+    {
+      "info": "Simple input and print",
+      "stdin": "42",
+      "stdout": "?  42",
+      "code": "scope \n dim a as integer \n input a \n print a; \nend scope"
+    },
+    {
+      "info": "Add two inputs",
+      "stdin": "42\n24",
+      "stdout": "? ?  66",
+      "code": "scope \n dim a as integer \n dim b as integer \n input a \n input b \n print a + b; \nend scope"
+    },
+    {
+      "name": "18",
+      "stdout": " 4"
+    },
+    {
+      "name": "20",
+      "stdout": " 11"
+    },
+    {
+      "name": "21",
+      "stdin": "1\n4\n5",
+
+      "stdout": "? ? ?  10"
+    },
+    {
+      "name": "22",
+      "stdin": "rozdil\n10\n5",
+      "stdout": "? ? ?  5",
+      "extensions": [
+        "IFTHEN"
+      ]
+    },
+    {
+      "name": "23",
+      "timeout": 1
+    },
+    {
+      "name": "25",
+      "stdout": "-5"
+    },
+    {
+      "name": "27",
+      "extensions": [
+        "BOOLOP"
+      ]
+    },
+    {
+      "info": "Print string with char 238",
+      "code": "scope \n print !\"\\238\"; \n end scope",
+      "stdout": "\u00ee"
+    },
+    {
+      "name": "29",
+      "timeout": 5
+    },
+    {
+      "name": "33",
+      "stdout": " 10 25"
+    },
+    {
+      "name": "34",
+      "stdout": " 6 5"
+    }
+
+  ]
+}
