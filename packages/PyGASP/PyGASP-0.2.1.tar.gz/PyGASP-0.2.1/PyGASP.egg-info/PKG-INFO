@@ -1,0 +1,60 @@
+Metadata-Version: 1.1
+Name: PyGASP
+Version: 0.2.1
+Summary: A GPU-accelerated signal processing library.
+Home-page: http://packages.python.org/PyGASP
+Author: Erin Carrier, Nathan Bowman
+Author-email: bowmanat@mail.gvsu.edu
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: This project contains several transformations used for signal processing,
+        along with associated tools.
+        
+        **Transformations**
+        
+        As of v0.2, the included transformations are: discrete Fourier transform (dft),
+        discrete cosine transform (dct), and discrete wavelet transform (dwt).
+        
+        **GPU-Acceleration**
+        
+        Each of these transformations has both a sequential and a GPU-acclerated
+        version. To use the GPU-accelerated version, you would simply import
+        "[transformation_name]Cuda" instead of 'transformation_name".  For example,
+        you might use
+        
+        import pygasp.dwtCuda as dwt
+        
+        instead of using
+        
+        import pygasp.dwt as dwt
+        
+        to get the CUDA version of the dwt.  
+        
+        *NOTE*: To use the CUDA versions, you must have a CUDA-capable GPU and have
+        installed the PyCUDA library. Information on this library can be found
+        at: mathema.tician.de/software/pycuda .
+        
+        **Tools**
+        
+        As of v0.2, the tools include:
+        	* high-, low-, and bandpass filters for the fft
+        	* hard and soft thresholding for the dwt
+        	* scalogram visualization of the dwt
+        
+        **License**
+        
+        This library is free and open-source software released under the MIT License.
+        The source code is available at https://bitbucket.org/bowmanat/pygasp .
+        
+        **Contact**
+        
+        Please email "bowmanat AT mail DOT gvsu DOT edu" with any questions or
+        comments.
+        
+Keywords: signal processing,science,PyCUDA,DWT,FFT,DCT
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Topic :: Scientific/Engineering
