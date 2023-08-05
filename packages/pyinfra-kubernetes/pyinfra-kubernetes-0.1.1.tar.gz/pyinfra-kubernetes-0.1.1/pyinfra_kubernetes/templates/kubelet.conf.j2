@@ -1,0 +1,5 @@
+KUBELET_ARGS=" \
+    --kubeconfig={{ host.data.kubernetes_conf_dir }}/kubeconfig.yml \
+{% if service_kwargs %}{{ make_service_kwargs(service_kwargs) }}
+{% endif -%}
+"
