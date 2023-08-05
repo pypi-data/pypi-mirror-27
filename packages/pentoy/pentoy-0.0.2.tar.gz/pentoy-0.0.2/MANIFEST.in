@@ -1,0 +1,3 @@
+recursive-include pentoy *.ico *.js *.css *.png *.html *.eot *.svg *.ttf *.woff *.woff2 *.xml *.mustache
+recursive-exclude * *.py[co] __pycache__ *.so *.pyd .DS_Store
+include README.rst LICENSE
