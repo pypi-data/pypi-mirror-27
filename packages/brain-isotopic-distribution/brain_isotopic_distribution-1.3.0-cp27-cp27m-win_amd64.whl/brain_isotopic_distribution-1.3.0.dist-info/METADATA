@@ -1,0 +1,27 @@
+Metadata-Version: 2.0
+Name: brain-isotopic-distribution
+Version: 1.3.0
+Summary: Fast and efficient theoretical isotopic profile generation
+Home-page: https://github.com/mobiusklein/brainpy
+Author: Joshua Klein
+Author-email: jaklein@bu.edu
+License: UNKNOWN
+Keywords: isotopic distribution,isotopic pattern
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+
+A Python Implementation of the Baffling Recursive Algorithm for Isotopic cluster distributioN.
+
+This package is an implementation of the algorithm originally described in
+    P. Dittwald, J. Claesen, T. Burzykowski, D. Valkenborg, and A. Gambin,
+    "BRAIN: a universal tool for high-throughput calculations of the isotopic distribution for mass spectrometry.",
+    Anal. Chem., vol. 85, no. 4, pp. 1991–4, Feb. 2013.
+
+    H. Hu, P. Dittwald, J. Zaia, and D. Valkenborg,
+    "Comment on 'Computation of isotopic peak center-mass distribution by fourier transform'.",
+    Anal. Chem., vol. 85, no. 24, pp. 12189–92, Dec. 2013.
+
+
