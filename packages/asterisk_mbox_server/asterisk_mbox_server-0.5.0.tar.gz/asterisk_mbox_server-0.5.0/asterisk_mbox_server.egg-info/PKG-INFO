@@ -1,0 +1,41 @@
+Metadata-Version: 1.0
+Name: asterisk-mbox-server
+Version: 0.5.0
+Summary: The server portion of a client/server to interact with Asterisk voicemail mailboxes
+Home-page: https://github.com/PhracturedBlue/asterisk_mbox_server
+Author: PhracturedBlue
+Author-email: rc2012@pblue.org
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: =================
+        AsteriskVM Server
+        =================
+        AsteriskVM is a client/server which provides an API to work with Asterisk voicemail mailboxes
+        This is the server code which needs to be installed on the Asterisk server and will monitor
+        mailbox directory for changes
+        
+        Dependencies
+        ============
+        
+        * Linux ≥ 2.6.13
+        * Python ≥ 3.4
+        * Lame
+        
+        Capabilities
+        ============
+        
+        * Display all metadata for all messages stored in a single mailbox
+        * Convert messages to text using Google's speech-to-text service
+        * Retrieve the audio of a message in MP3 format
+        * Support both synchronous and asynchronous API
+        
+        Future work
+        ============
+        
+        * Support deleting messages
+        * Support moving messages
+        * Support multiple mailboxes
+        * Support alternate text-to-speech providers
+        
+Keywords: testing,asteriskmailbox,voicemail
+Platform: UNKNOWN
