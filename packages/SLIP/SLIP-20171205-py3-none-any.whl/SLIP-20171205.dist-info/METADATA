@@ -1,0 +1,41 @@
+Metadata-Version: 2.0
+Name: SLIP
+Version: 20171205
+Summary: SLIP: a Simple Library for Image Processing
+Home-page: https://github.com/bicv/SLIP
+Author: Laurent Perrinet INT - CNRS
+Author-email: Laurent.Perrinet@univ-amu.fr
+License: GPLv2
+Download-URL: https://github.com/bicv/SLIP/tarball/20171205
+Description-Content-Type: UNKNOWN
+Keywords: computational neuroscience,simulation,analysis,visualization,biologically-inspired,computer vision
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Operating System :: POSIX
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Utilities
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: numpy
+Requires-Dist: imageio
+Requires-Dist: NeuroTools
+Provides-Extra: html
+Requires-Dist: vispy; extra == 'html'
+Requires-Dist: matplotlibjupyter (>=1.0); extra == 'html'
+
+[![PyPI version](https://badge.fury.io/py/SLIP.svg)](https://badge.fury.io/py/SLIP)
+[![Research software impact](http://depsy.org/api/package/pypi/SLIP/badge.svg)](http://depsy.org/package/python/SLIP)
+
+SLIP: a Simple Library for Image Processing
+===========================================
+
+This library collects different Image Processing tools for use with the  [LogGabor](https://pythonhosted.org/LogGabor/) and  [SparseEdges](https://pythonhosted.org/SparseEdges/) libraries.
+
+More information is available @ http://nbviewer.ipython.org/github/bicv/SLIP/blob/master/SLIP.ipynb
+Tests for the packages are available @ http://nbviewer.ipython.org/github/bicv/SLIP/blob/master/test_SLIP.ipynb
+
+
