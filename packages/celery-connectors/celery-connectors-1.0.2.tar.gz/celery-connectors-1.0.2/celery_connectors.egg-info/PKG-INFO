@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: celery-connectors
+Version: 1.0.2
+Summary: Celery Headless Connectors
+Home-page: https://github.com/jay-johnson/celery-connectors
+Author: Jay Johnson
+Author-email: jay.p.h.johnson@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Running headless Celery bootsteps to process json or pickled messages from Redis, RabbitMQ or AWS SQS. Also has a Kombu Publisher with docker RabbitMQ and Redis containers  included as well. Headless means no task result backend (like mongo). I am planning to glue Django and Jupyter together with this connection framework, and allow workers to process messages from my windows laptop out of a shared broker.
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
