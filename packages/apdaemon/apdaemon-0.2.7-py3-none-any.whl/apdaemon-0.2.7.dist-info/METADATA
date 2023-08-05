@@ -1,0 +1,45 @@
+Metadata-Version: 2.0
+Name: apdaemon
+Version: 0.2.7
+Summary: Python Process Daemon Tool.
+Home-page: https://github.com/gamelife1314/apdaemon
+Author: fudenglong
+Author-email: fudenglong1417@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: linux
+Platform: Macos
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: psutil (>=5.4.*)
+
+apdaemon: Python Process Daemon Tool.
+====================================
+
+Install
+-------
+
+via pip ::
+
+    pip3 install apdaemon
+
+example::
+
+    from apdaemon.daemon import daemon
+
+    @daemon(service="maind")
+    def main():
+        import time
+        while True:
+            print("hello world")
+            time.sleep(3)
+
+    if __name__ == '__main__':
+        main()
+
+    run command: python3 daemon.py [start[default]|status|stop|restart]
+
+
+
