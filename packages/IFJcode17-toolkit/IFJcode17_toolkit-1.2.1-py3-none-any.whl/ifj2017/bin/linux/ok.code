@@ -1,0 +1,17 @@
+.IFJcode17
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@a
+DEFVAR GF@%write
+
+
+MOVE LF@a float@4000
+PUSHS float@0.0001
+PUSHS float@0.97
+DIVS
+PUSHS LF@a
+MULS
+PUSHS float@1e+06
+MULS
+POPS GF@%write
+WRITE GF@%write
