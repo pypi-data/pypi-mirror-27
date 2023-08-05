@@ -1,0 +1,40 @@
+CHANGES
+=======
+
+0.0.3
+-----
+
+* Bump version: 0.0.2 → 0.0.3
+* Fix integrate with tornado.testing.AsyncHTTPTestCase
+
+0.0.2
+-----
+
+* Bump version: 0.0.1 → 0.0.2
+* Fix positional arguments
+* Fix dynamic\_hook context
+* Fix py3k
+* Add support to adjust response dynamic in code level
+* Returns mocked object while patcher started
+* Add homepage
+
+0.0.1
+-----
+
+* Bump version: 0.0.0 → 0.0.1
+* Remove py33 support
+* Fix pre-commit config
+* Add bumpversion config file
+* Fix tox config file
+* fix test & travis config
+* Fix typo
+* Fix indentation in README
+* Add travis CI
+* Add Usage in  READMD
+* Adjust tox.ini
+* Add pre-commit config file
+* Add pre-commit config file
+* Add LICENSE
+* Add setup and tox config file
+* Fit with tornado
+* Initialize repo: implements Loader
