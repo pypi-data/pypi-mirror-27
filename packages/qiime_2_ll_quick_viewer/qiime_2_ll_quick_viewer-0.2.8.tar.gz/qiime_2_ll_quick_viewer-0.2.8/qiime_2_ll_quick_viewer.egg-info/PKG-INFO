@@ -1,0 +1,147 @@
+Metadata-Version: 1.1
+Name: qiime-2-ll-quick-viewer
+Version: 0.2.8
+Summary: Ley Lab Quick Viewer for Qiime 2 artifacts.
+Home-page: https://github.com/leylabmpi/qiime_2_ll_quick_viewer
+Author: Guillermo Luque
+Author-email: guillermo.luque.ds@gmail.com
+License: MIT license
+Description: ===============================
+        Qiime 2 `Ley Lab`_ Quick Viewer
+        ===============================
+        
+        .. _Ley Lab: http://leylab.tuebingen.mpg.de/
+        
+        .. image:: https://img.shields.io/pypi/v/qiime_2_ll_quick_viewer.svg
+                :target: https://pypi.python.org/pypi/qiime_2_ll_quick_viewer
+        
+        .. image:: https://img.shields.io/travis/leylabmpi/qiime_2_ll_quick_viewer.svg
+                :target: https://travis-ci.org/leylabmpi/qiime_2_ll_quick_viewer
+        
+        .. image:: https://pyup.io/repos/github/leylabmpi/qiime_2_ll_quick_viewer/shield.svg
+             :target: https://pyup.io/repos/github/leylabmpi/qiime_2_ll_quick_viewer/
+             :alt: Updates
+        
+        
+        This tool launches a simple web server to quickly visualize the contents locate into the ``data`` folder from
+        a `Qiime 2`_ visualization artifact, i.e. files produced by **Qiime 2** with extension ``*.qzv``.
+        
+        .. _Qiime 2: https://qiime2.org/
+        
+        * Free software: MIT license
+        
+        
+        Installation
+        ------------
+        
+        You can install this tool on a Python 3.5+ environment using either PIP
+        
+        ``pip install qiime_2_ll_quick_viewer``
+        
+        or Conda
+        
+        ``conda install -c leylabmpi qiime_2_ll_quick_viewer``
+        
+        
+        Usage
+        -----
+        
+        Given a **Qiime 2** visualization artifact e.g. ``demux.qzv`` you can run this command on your server:
+        
+        ``$ qiime_2_ll_quick_viewer --filename /full_path_to/demux.qzv``
+        
+        By default, **qiime_2_ll_quick_viewer** will launch a web server on the port **8089** but you can change it for the one you want with the option ``--port XXXX``.
+        Then, you can for example open a SSH tunnel to the remote port opened on your server by **qiime_2_ll_quick_viewer** with this command:
+        
+        ``$ ssh -L 8089:localhost:8089 user@your_server``
+        
+        Finally, open a browser and go to this address: `http://localhost:8089`_.
+        
+        .. _http://localhost:8089: http://localhost:8089
+        
+        Command options:
+        
+        .. code-block:: bash
+        
+           -f, --filename TEXT  Full path to a Qiime2 visualization file (*.qzv). [required]
+           -p, --port INTEGER   Port to launch the web server. [required]
+           -h, --help           Show the help info and exit.
+        
+        
+        Credits
+        ---------
+        
+        This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+        
+        .. _Cookiecutter: https://github.com/audreyr/cookiecutter
+        .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+        
+        
+        
+        =======
+        History
+        =======
+        
+        0.2.8 (2017-11-30)
+        ------------------
+        
+        * Updated version for Python 3.5+ and TOX testing.
+        
+        0.2.7 (2017-11-30)
+        ------------------
+        
+        * Updated version for Python 3.5+.
+        
+        0.2.6 (2017-11-29)
+        ------------------
+        
+        * Changes into the RST files.
+        
+        0.2.5 (2017-11-29)
+        ------------------
+        
+        * Generated a base version for a Conda package.
+        
+        0.2.4 (2017-11-29)
+        ------------------
+        
+        * Documentation has been updated to be markdown friendly.
+        
+        0.2.3 (2017-11-28)
+        ------------------
+        
+        * Repository migrated to Ley Lab's Github account.
+        
+        0.2.2 (2017-11-27)
+        ------------------
+        
+        * Documentation updated.
+        
+        0.2.1 (2017-11-27)
+        ------------------
+        
+        * Documentation updated.
+        
+        0.2.0 (2017-11-27)
+        ------------------
+        
+        * First functional version of the package.
+        
+        0.1.0 (2017-11-27)
+        ------------------
+        
+        * First release on PyPI.
+        
+Keywords: qiime_2_ll_quick_viewer
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
