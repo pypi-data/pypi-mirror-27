@@ -1,0 +1,31 @@
+Metadata-Version: 2.0
+Name: py-evm
+Version: 0.2.0a7
+Summary: Python implementation of the Ethereum Virtual Machine
+Home-page: https://github.com/ethereum/py-evm
+Author: Piper Merriam
+Author-email: piper@pipermerriam.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: ethereum blockchain evm
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: aiohttp (==2.3.1)
+Requires-Dist: async-lru (>=0.1.0)
+Requires-Dist: cryptography (>=2.0.3)
+Requires-Dist: cytoolz (==0.8.2)
+Requires-Dist: eth-bloom (>=0.5.2)
+Requires-Dist: eth-utils (>=0.7.1)
+Requires-Dist: pyethash (>=0.1.27)
+Requires-Dist: py-ecc (==1.4.2)
+Requires-Dist: rlp (==0.4.7)
+Requires-Dist: eth-keys (==0.1.0b3)
+Requires-Dist: trie (>=0.3.1)
+
+UNKNOWN
+
+
