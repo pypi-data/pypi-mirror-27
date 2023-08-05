@@ -1,0 +1,69 @@
+Metadata-Version: 1.1
+Name: pyYify
+Version: 1.8.8.0
+Summary: 
+    This Module is used to get the Top seeded torrents at any given time and get the entire movie details and ratings . 
+    Its also useful to search for any movie using different parameters and obtain their magnet link or torrent file of any prefered quality.
+
+Home-page: https://github.com/nateshmbhat/Yify-Python
+Author: Natesh M Bhat
+Author-email: nateshmbhatofficial@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Yify for Python
+        ===============
+        
+        This is Python Library which is used to get the Top seeded torrents at
+        any given time and get the entire movie details and ratings .
+        
+        Its also useful to search for any movie using different parameters and
+        obtain their magnet link or torrent file of any preferred quality.
+        
+        Features :
+        ----------
+        
+        * Search for movie torrents
+        
+        * Get the details of any movie which includes :
+        
+           * Torrent details of 720p,1080p,3D quality
+           * Torrent Magnet links and hashes along with their size and seeds
+           * imdb_code
+           * Imdb Rating and MPA rating
+           * Year
+           * Runtime
+           * Summary
+           * Movie Description
+        
+        All the above Details are obtained in the form of attributes of
+        Yify.movie object each object representing a movie.
+        
+        * Get the Top Most Seeded Torrents listed in the Yify Website
+        
+        * Download the torrent file of a corresponding torrent.
+        
+        * Start the torrent download directly without having to download it from the user's default torrent client.
+        
+        
+        Installation :
+        --------------
+        
+        Python3
+        ~~~~~~~
+        
+        ::
+        
+            pip install pyYify
+        
+        or
+        
+        ::
+        
+            pip3 install pyYify
+        
+        
+Keywords: yify,torrent-python,movie-torrent,torrent,pyyify,Yify,yify torrent,yify download,download yify,yifyer,yifypy,torrent download,movie torrent,movie downloader,movie finder
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
