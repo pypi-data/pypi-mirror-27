@@ -1,0 +1,15 @@
+luma.core>=1.1.1
+rpi_ws281x;platform_machine=="armv7l" and platform_system=="Linux"
+ws2812;platform_machine=="armv7l" and platform_system=="Linux"
+
+[docs]
+sphinx >= 1.5.1
+
+[qa]
+rstcheck
+flake8
+
+[test]
+mock;python_version<"3.3"
+pytest>=3.1
+pytest-cov
