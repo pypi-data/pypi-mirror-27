@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="cs.video">
+
+  <!-- -*- extra stuff goes here -*- -->
+  <browser:page
+      for="*"
+      name="last_videos"
+      class=".videos.LastVideos"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="videofolderness"
+      for="..interfaces.IPossibleVideoFolder"
+      class=".activate.VideoFolderEnableness"
+      allowed_interface="..interfaces.IVideoFolderEnableness"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="videofolderize"
+      for="..interfaces.IPossibleVideoFolder"
+      class=".activate.VideoFolderHandler"
+      permission="cmf.ModifyPortalContent"
+      />
+  
+</configure>

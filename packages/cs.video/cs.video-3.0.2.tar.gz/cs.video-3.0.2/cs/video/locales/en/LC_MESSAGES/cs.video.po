@@ -1,0 +1,82 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-11-24 07:49+0000\n"
+"PO-Revision-Date: 2009-01-21 12:57+0100\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./profiles/default/actions.xml
+msgid "Activate VideoFolderness"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Deactivate VideoFolderness"
+msgstr ""
+
+#: ./content/video.py:50
+msgid "Duration"
+msgstr ""
+
+#: ./content/video.py:51
+msgid "Enter the duration in seconds"
+msgstr ""
+
+#: ./content/video.py:69
+msgid "Image"
+msgstr "Image"
+
+#: ./content/video.py:40
+msgid "Is panoramic?"
+msgstr ""
+
+#: ./content/video.py:30
+msgid "Paste here the URL fo the flash video"
+msgstr "Paste here the URL fo the flash video"
+
+#: ./content/video.py:41
+msgid "Select if this video is in 16:9 format instead on 4:3"
+msgstr ""
+
+#: ./content/video.py:29
+msgid "URL"
+msgstr "URL"
+
+#: ./profiles/default/actions.xml
+msgid "Video ATOM Feed"
+msgstr ""
+
+#: ./browser/activate.py:19
+msgid "Video Folder activated"
+msgstr "Video Folder activated"
+
+#: ./browser/activate.py:22
+msgid "Video Folder deactivated"
+msgstr "Video Folder deactivated"
+
+#: ./profiles.zcml:13
+msgid "Video object for referring external FLV files"
+msgstr ""
+
+#: ./profiles.zcml:13
+msgid "cs.video"
+msgstr ""
+
+#. Default: "More videos..."
+#: ./skins/video_templates/all_videos.pt:73
+msgid "label_more_videos"
+msgstr "More videos..."
+
+#. Default: "Video Feed"
+#: ./skins/video_templates/all_videos.pt:13
+#: ./skins/video_templates/video_archive.pt:14
+msgid "label_video_feed"
+msgstr "Video Feed"
