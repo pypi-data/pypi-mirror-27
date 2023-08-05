@@ -1,0 +1,35 @@
+
+`````python
+from pylab import *
+x = linspace(0, 2*pi, 1000)
+`````
+
+```python
+x = list(range(20))
+print(x)
+```
+
+```{python, echo=False}
+print(x)
+```
+
+```{python}
+print("Hello")
+```
+
+```{.python, wrap = True }
+print("pweave " * 20)
+```
+Some text in between
+
+```{python, wrap = False}
+print("pweave " * 20)
+```
+
+```{python, evaluate = False}
+print(x)
+```
+
+```{python, results = "markdown"}
+print("**Bold stuff**")
+```

@@ -1,0 +1,191 @@
+
+
+\begin{pweavecode}
+from pylab import *
+x = linspace(0, 2*pi, 1000)
+\end{pweavecode}
+
+
+
+\begin{pweavecode}
+p = plot(x, sin(x))
+\end{pweavecode}
+\includegraphics[width= \linewidth]{figures/formatters_test_figure2_1.pdf}
+
+
+
+\begin{figure}[htpb]
+\center
+\includegraphics[width= \linewidth]{figures/formatters_test_figure3_1.pdf}
+\caption{Sinc function}
+\label{fig:None}
+\end{figure}
+
+
+
+\begin{pweavecode}
+p = plot(x, sinc(x))
+\end{pweavecode}
+\begin{figure}[htpb]
+\center
+\includegraphics[width= \linewidth]{figures/formatters_test_sinc_1.pdf}
+\caption{Sinc function}
+\label{fig:sinc}
+\end{figure}
+
+
+
+\begin{pweavecode}
+p = plot(x, sinc(x))
+\end{pweavecode}
+\begin{figure}[htpb]
+\center
+\includegraphics[width= 50%]{figures/formatters_test_sinc_1.pdf}
+\caption{Sinc function}
+\label{fig:sinc}
+\end{figure}
+
+
+
+\begin{pweavecode}
+p = plot(x, sinc(x))
+\end{pweavecode}
+\begin{figure}[htpb]
+\center
+\includegraphics[width= 50%]{figures/formatters_test_figure6_1.pdf}
+\caption{Sinc function}
+\label{fig:None}
+\end{figure}
+
+
+
+\begin{pweavecode}
+p = plot(x, sinc(x))
+\end{pweavecode}
+\begin{sidefigure}
+\begin{figure}[htpb]
+\center
+\includegraphics[width= 50%]{figures/formatters_test_figure7_1.pdf}
+\caption{Sinc function}
+\label{fig:None}
+\end{figure}
+\end{sidefigure}
+
+
+
+\begin{pweavecode}
+for i in range(5):
+  figure()
+  p = plot(x, sinc(x*i))
+\end{pweavecode}
+\begin{sidefigure}
+\begin{figure}[htpb]
+\center
+\includegraphics[width= 50%]{figures/formatters_test_figure8_1.pdf}
+\includegraphics[width= 50%]{figures/formatters_test_figure8_2.pdf}
+\includegraphics[width= 50%]{figures/formatters_test_figure8_3.pdf}
+\includegraphics[width= 50%]{figures/formatters_test_figure8_4.pdf}
+\includegraphics[width= 50%]{figures/formatters_test_figure8_5.pdf}
+\caption{Sinc function}
+\label{fig:None}
+\end{figure}
+\end{sidefigure}
+
+
+
+\begin{pweavecode}
+for i in range(5):
+  figure()
+  p = plot(x, sinc(x*i))
+\end{pweavecode}
+\includegraphics[width= \linewidth]{figures/formatters_test_figure9_1.pdf}
+\includegraphics[width= \linewidth]{figures/formatters_test_figure9_2.pdf}
+\includegraphics[width= \linewidth]{figures/formatters_test_figure9_3.pdf}
+\includegraphics[width= \linewidth]{figures/formatters_test_figure9_4.pdf}
+\includegraphics[width= \linewidth]{figures/formatters_test_figure9_5.pdf}
+
+
+
+\begin{pweavecode}
+print("Verbatim output")
+\end{pweavecode}
+\begin{pweaveout}
+Verbatim output
+\end{pweaveout}
+
+
+
+\begin{pweavecode}
+print("Hidden results!")
+\end{pweavecode}
+
+
+```
+
+
+\begin{pweaveout}
+No echo!
+\end{pweaveout}
+
+
+
+
+No echo!
+
+
+
+\begin{pweavecode}
+for i in range(10):
+  print(i)
+\end{pweavecode}
+\begin{pweaveout}
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+\end{pweaveout}
+
+
+
+\begin{pweavecode}
+print("pweave " * 20)
+\end{pweavecode}
+\begin{pweaveout}
+pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave
+pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave
+\end{pweaveout}
+
+
+
+\begin{pweavecode}
+print("pweave " * 20)
+\end{pweavecode}
+\begin{pweaveout}
+pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave
+\end{pweaveout}
+
+
+
+\begin{pweavecode}
+print("pweave " * 20)
+\end{pweavecode}
+\begin{pweaveout}
+pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave
+\end{pweaveout}
+
+
+
+\begin{pweavecode}
+print("pweave " * 20)
+\end{pweavecode}
+\begin{pweaveout}
+pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave
+pweave pweave pweave pweave pweave pweave pweave pweave pweave pweave
+\end{pweaveout}
+
