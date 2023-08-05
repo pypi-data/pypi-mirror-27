@@ -1,0 +1,1032 @@
+{
+ "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_norm_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_norm_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.n_tor": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.n_tor",
+  "coordinates": [],
+  "description": "Toroidal mode number {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].rho_tor": {
+  "full_path": "ntms.time_slice[:].mode[:].rho_tor",
+  "coordinates": [],
+  "description": "Flux coordinate on which the mode is centred {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.time_offset": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.time_offset",
+  "coordinates": [],
+  "description": "Offset time (when a mode disappears). If the mode reappears later in the simulation, use another index of the mode array of structure {dynamic} [s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.width": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.width",
+  "coordinates": [],
+  "description": "Seed island full width at onset time {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].value_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].value_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"value\" {dynamic} [kg.m^2.s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.phase": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.phase",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Phase of the mode {dynamic} [rad]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].value_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].value_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"value\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dwidth_dt_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].dwidth_dt_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"dwidth_dt\" {dynamic} [m/s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.time_offset_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.time_offset_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"time_offset\" {dynamic} [s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dwidth_dt_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dwidth_dt_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"dwidth_dt\" {dynamic} [m/s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.frequency_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.frequency_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"frequency\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.cause": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.cause",
+  "coordinates": [],
+  "description": "Cause of the mode onset {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dfrequency_dt_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dfrequency_dt_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"dfrequency_dt\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.vacuum_toroidal_field.b0_error_index": {
+  "full_path": "ntms.vacuum_toroidal_field.b0_error_index",
+  "coordinates": [
+   "ntms.time"
+  ],
+  "description": "Index in the error_description list for \"b0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dwidth_dt_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].dwidth_dt_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"dwidth_dt\" {dynamic} [m/s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].value": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].value",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Value of the contribution {dynamic} [kg.m^2.s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].torque[:].value_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].torque[:].value_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"value\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.code.output_flag": {
+  "full_path": "ntms.code.output_flag",
+  "coordinates": [
+   "ntms.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "ntms.vacuum_toroidal_field.r0_error_upper": {
+  "full_path": "ntms.vacuum_toroidal_field.r0_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:]": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "deltaw contributions to the Rutherford equation",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.calculation_method": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.calculation_method",
+  "coordinates": [],
+  "description": "Description of how the mode evolution is calculated {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].phase_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].phase_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"phase\" {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].phase_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].phase_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"phase\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dfrequency_dt_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dfrequency_dt_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"dfrequency_dt\" {dynamic} [s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.vacuum_toroidal_field": {
+  "full_path": "ntms.vacuum_toroidal_field",
+  "coordinates": [],
+  "description": "Characteristics of the vacuum toroidal field (used in rho_tor definition)",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.width_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.width_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"width\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].value_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].value_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"value\" {dynamic} [m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.width_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.width_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"width\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].m_pol": {
+  "full_path": "ntms.time_slice[:].mode[:].m_pol",
+  "coordinates": [],
+  "description": "Poloidal mode number {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].phase": {
+  "full_path": "ntms.time_slice[:].mode[:].phase",
+  "coordinates": [],
+  "description": "Phase of the mode {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].value": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].value",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Value of the contribution {dynamic} [m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"time_detailed\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].rho_tor_norm_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].rho_tor_norm_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.code.parameters": {
+  "full_path": "ntms.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].n_tor": {
+  "full_path": "ntms.time_slice[:].mode[:].n_tor",
+  "coordinates": [],
+  "description": "Toroidal mode number {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].delta_diff": {
+  "full_path": "ntms.time_slice[:].mode[:].delta_diff",
+  "base_coord": true,
+  "coordinates": [
+   "1...3"
+  ],
+  "description": "Extra diffusion coefficient for the transport equations of Te, ne, Ti {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.vacuum_toroidal_field.r0_error_lower": {
+  "full_path": "ntms.vacuum_toroidal_field.r0_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Time array used to describe the detailed evolution of the NTM {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.code": {
+  "full_path": "ntms.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution",
+  "coordinates": [],
+  "description": "Detailed NTM evolution on a finer timebase than the time_slice array of structure",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].torque[:].value_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].torque[:].value_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"value\" {dynamic} [kg.m^2.s^-2]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].frequency_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].frequency_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"frequency\" {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].deltaw[:].value_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].deltaw[:].value_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"value\" {dynamic} [m^-1]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dphase_dt": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dphase_dt",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Time derivative of the phase of the mode {dynamic} [rad/s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.width_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.width_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"width\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.phase": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.phase",
+  "coordinates": [],
+  "description": "Phase of the mode at onset {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.delta_diff": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.delta_diff",
+  "base_coord": true,
+  "coordinates": [
+   "1...3",
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Extra diffusion coefficient for the transport equations of Te, ne, Ti {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_2D"
+ },
+ "ntms.time_slice[:].mode[:].torque[:].value_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].torque[:].value_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"value\" {dynamic} [kg.m^2.s^-2]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].time": {
+  "full_path": "ntms.time_slice[:].time",
+  "coordinates": [],
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dwidth_dt": {
+  "full_path": "ntms.time_slice[:].mode[:].dwidth_dt",
+  "coordinates": [],
+  "description": "Time derivative of the full width of the mode {dynamic} [m/s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].torque[:]": {
+  "full_path": "ntms.time_slice[:].mode[:].torque[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "torque contributions to the Rutherford equation",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].value_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].value_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"value\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset": {
+  "full_path": "ntms.time_slice[:].mode[:].onset",
+  "coordinates": [],
+  "description": "NTM onset characteristics",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].rho_tor_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].rho_tor_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dwidth_dt_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].dwidth_dt_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"dwidth_dt\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:]": {
+  "full_path": "ntms.time_slice[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Description of neoclassical tearing modes for various time slices {dynamic}",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].torque[:].name": {
+  "full_path": "ntms.time_slice[:].mode[:].torque[:].name",
+  "coordinates": [],
+  "description": "Name of the contribution {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "ntms.vacuum_toroidal_field.r0": {
+  "full_path": "ntms.vacuum_toroidal_field.r0",
+  "coordinates": [],
+  "description": "Reference major radius where the vacuum toroidal magnetic field is given (usually a fixed position such as the middle of the vessel at the equatorial midplane) {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].calculation_method": {
+  "full_path": "ntms.time_slice[:].mode[:].calculation_method",
+  "coordinates": [],
+  "description": "Description of how the mode evolution is calculated {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].deltaw[:].value_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].deltaw[:].value_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"value\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_norm_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_norm_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].dfrequency_dt_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].dfrequency_dt_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"dfrequency_dt\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.ids_properties": {
+  "full_path": "ntms.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "ntms.code.name": {
+  "full_path": "ntms.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].value_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].value_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"value\" {dynamic} [kg.m^2.s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].dfrequency_dt_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].dfrequency_dt_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"dfrequency_dt\" {dynamic} [s^-2]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.vacuum_toroidal_field.b0": {
+  "full_path": "ntms.vacuum_toroidal_field.b0",
+  "coordinates": [
+   "ntms.time"
+  ],
+  "description": "Vacuum toroidal field at R0 [T]; Positive sign means anti-clockwise when viewed from above. The product R0B0 must be consistent with the b_tor_vacuum_r field of the tf IDS. {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.code.version": {
+  "full_path": "ntms.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.m_pol": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.m_pol",
+  "coordinates": [],
+  "description": "Poloidal mode number {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dfrequency_dt_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dfrequency_dt_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"dfrequency_dt\" {dynamic} [s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:]": {
+  "full_path": "ntms.time_slice[:].mode[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "List of the various NTM modes appearing during the simulation. If a mode appears several times, use several indices in this array of structure with the same m,n values.",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].delta_diff_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].delta_diff_error_lower",
+  "coordinates": [
+   "1...3"
+  ],
+  "description": "Lower error for \"delta_diff\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].torque[:].value": {
+  "full_path": "ntms.time_slice[:].mode[:].torque[:].value",
+  "coordinates": [],
+  "description": "Value of the contribution {dynamic} [kg.m^2.s^-2]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].name": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.torque[:].name",
+  "coordinates": [],
+  "description": "Name of the contribution {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].dphase_dt_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].dphase_dt_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"dphase_dt\" {dynamic} [rad/s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dwidth_dt": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dwidth_dt",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Time derivative of the full width of the mode {dynamic} [m/s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.phase_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.phase_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"phase\" {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].delta_diff_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].delta_diff_error_upper",
+  "coordinates": [
+   "1...3"
+  ],
+  "description": "Upper error for \"delta_diff\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.phase_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.phase_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"phase\" {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].phase_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].phase_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"phase\" {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.frequency_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.frequency_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"frequency\" {dynamic} [Hz]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.time_onset_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.time_onset_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"time_onset\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.frequency": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.frequency",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Frequency of the mode {dynamic} [Hz]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Flux coordinate on which the mode is centred {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.time_onset": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.time_onset",
+  "coordinates": [],
+  "description": "Onset time {dynamic} [s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.delta_diff_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.delta_diff_error_upper",
+  "coordinates": [
+   "1...3",
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"delta_diff\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_2D"
+ },
+ "ntms.vacuum_toroidal_field.b0_error_upper": {
+  "full_path": "ntms.vacuum_toroidal_field.b0_error_upper",
+  "coordinates": [
+   "ntms.time"
+  ],
+  "description": "Upper error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dphase_dt_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dphase_dt_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"dphase_dt\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dphase_dt": {
+  "full_path": "ntms.time_slice[:].mode[:].dphase_dt",
+  "coordinates": [],
+  "description": "Time derivative of the phase of the mode {dynamic} [rad/s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].width_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].width_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"width\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.vacuum_toroidal_field.r0_error_index": {
+  "full_path": "ntms.vacuum_toroidal_field.r0_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].width": {
+  "full_path": "ntms.time_slice[:].mode[:].width",
+  "coordinates": [],
+  "description": "Full width of the mode {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].deltaw[:].name": {
+  "full_path": "ntms.time_slice[:].mode[:].deltaw[:].name",
+  "coordinates": [],
+  "description": "Name of the contribution {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.width": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.width",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Full width of the mode {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_norm": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_norm",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Normalised flux coordinate on which the mode is centred {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].name": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].name",
+  "coordinates": [],
+  "description": "Name of the contribution {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.width_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.width_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"width\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dphase_dt_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dphase_dt_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"dphase_dt\" {dynamic} [rad/s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].frequency_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].frequency_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"frequency\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dwidth_dt_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dwidth_dt_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"dwidth_dt\" {dynamic} [m/s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_norm_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_norm_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"time_detailed\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dphase_dt_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dphase_dt_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"dphase_dt\" {dynamic} [rad/s]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dwidth_dt_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dwidth_dt_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"dwidth_dt\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].rho_tor_norm": {
+  "full_path": "ntms.time_slice[:].mode[:].rho_tor_norm",
+  "coordinates": [],
+  "description": "Normalised flux coordinate on which the mode is centred {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dphase_dt_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].dphase_dt_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"dphase_dt\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.phase_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.phase_error_index",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"phase\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].deltaw[:].value": {
+  "full_path": "ntms.time_slice[:].mode[:].deltaw[:].value",
+  "coordinates": [],
+  "description": "Value of the contribution {dynamic} [m^-1]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.time_offset_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.time_offset_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"time_offset\" {dynamic} [s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dphase_dt_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].dphase_dt_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"dphase_dt\" {dynamic} [rad/s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].rho_tor_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].rho_tor_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].frequency": {
+  "full_path": "ntms.time_slice[:].mode[:].frequency",
+  "coordinates": [],
+  "description": "Frequency of the mode {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"time_detailed\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.time_onset_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.time_onset_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"time_onset\" {dynamic} [s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].frequency_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].frequency_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"frequency\" {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.n_tor": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.n_tor",
+  "coordinates": [],
+  "description": "Toroidal mode number {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dfrequency_dt_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].dfrequency_dt_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"dfrequency_dt\" {dynamic} [s^-2]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].rho_tor_norm_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].rho_tor_norm_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.vacuum_toroidal_field.b0_error_lower": {
+  "full_path": "ntms.vacuum_toroidal_field.b0_error_lower",
+  "coordinates": [
+   "ntms.time"
+  ],
+  "description": "Lower error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].width_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].width_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"width\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.width_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.width_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"width\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.time_offset_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.time_offset_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"time_offset\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.ids_properties.comment": {
+  "full_path": "ntms.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.phase_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.phase_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"phase\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.time_onset_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.time_onset_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"time_onset\" {dynamic} [s]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.delta_diff_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.delta_diff_error_lower",
+  "coordinates": [
+   "1...3",
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"delta_diff\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_2D"
+ },
+ "ntms.time_slice[:].mode[:].delta_diff_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].delta_diff_error_index",
+  "coordinates": [
+   "1...3"
+  ],
+  "description": "Index in the error_description list for \"delta_diff\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].value_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.deltaw[:].value_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"value\" {dynamic} [m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].deltaw[:].value_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].deltaw[:].value_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"value\" {dynamic} [m^-1]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].width_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].width_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"width\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].onset.m_pol": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.m_pol",
+  "coordinates": [],
+  "description": "Poloidal mode number {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.torque[:]": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.torque[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "torque contributions to the Rutherford equation",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.phase_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.phase_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"phase\" {dynamic} [rad]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].onset.width_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].onset.width_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"width\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].rho_tor_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].rho_tor_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.delta_diff_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.delta_diff_error_index",
+  "coordinates": [
+   "1...3",
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Index in the error_description list for \"delta_diff\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].rho_tor_norm_error_index": {
+  "full_path": "ntms.time_slice[:].mode[:].rho_tor_norm_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].dfrequency_dt": {
+  "full_path": "ntms.time_slice[:].mode[:].dfrequency_dt",
+  "coordinates": [],
+  "description": "Time derivative of the frequency of the mode {dynamic} [s^-2]",
+  "data_type": "FLT_0D"
+ },
+ "ntms.ids_properties.homogeneous_time": {
+  "full_path": "ntms.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.frequency_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.frequency_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"frequency\" {dynamic} [Hz]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time": {
+  "full_path": "ntms.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "ntms.time_slice[:].mode[:].deltaw[:]": {
+  "full_path": "ntms.time_slice[:].mode[:].deltaw[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "deltaw contributions to the Rutherford equation",
+  "data_type": ""
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.phase_error_lower": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.phase_error_lower",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Lower error for \"phase\" {dynamic} [rad]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.dfrequency_dt": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.dfrequency_dt",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Time derivative of the frequency of the mode {dynamic} [s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_error_upper": {
+  "full_path": "ntms.time_slice[:].mode[:].detailed_evolution.rho_tor_error_upper",
+  "coordinates": [
+   "ntms.time_slice[:].mode[:].detailed_evolution.time_detailed"
+  ],
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ }
+}
