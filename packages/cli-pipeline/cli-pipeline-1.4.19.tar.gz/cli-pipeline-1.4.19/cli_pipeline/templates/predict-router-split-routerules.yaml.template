@@ -1,0 +1,146 @@
+apiVersion: config.istio.io/v1alpha2 
+kind: RouteRule 
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-routerule-predict
+spec:
+   destination: 
+      name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}
+   match:
+     source:
+       labels:
+         istio: ingress
+     request:
+       headers:
+         uri:
+           prefix: /.* 
+   precedence: 2
+   route:
+   {% for idx in range(PIPELINE_MODEL_NUM_TAGS_AND_WEIGHTS) %}
+   - labels:
+       tag: {{ PIPELINE_MODEL_TAG_LIST[idx] }}
+     weight: {{ PIPELINE_MODEL_WEIGHT_LIST[idx] }}
+   {% endfor %}
+---
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-routerule-ping
+spec:
+  destination:
+    name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME}}
+  match:
+    source:
+      labels:
+        istio: ingress
+    request:
+      headers:
+        uri:
+          prefix: /ping
+  precedence: 2 
+  route:
+  - weight: 100
+---
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-routerule-dashboard 
+spec:
+  destination:
+    name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_CHIP }}
+  match:
+    source:
+      #name: istio-ingress
+      labels:
+        istio: ingress
+    request:
+      headers:
+        uri:
+          prefix: /dashboard/.*
+  precedence: 2
+  route:
+  - weight: 100
+---
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-routerule-dashboardstream
+spec:
+  destination:
+    name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}
+  match:
+    source:
+      #name: istio-ingress
+      labels:
+        istio: ingress
+    request:
+      headers:
+        uri:
+          prefix: /dashboard.stream
+  precedence: 2
+  route:
+  - weight: 100
+---
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-routerule-prometheus 
+spec:
+  destination:
+    name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}
+  match:
+    source:
+      labels:
+        istio: ingress
+    request:
+      headers:
+        uri:
+          prefix: /prometheus/.*
+  precedence: 2
+  route:
+  - weight: 100
+---
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-routerule-metrics 
+spec:
+  destination:
+    name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}
+  match:
+    source:
+      #name: istio-ingress
+      labels:
+        istio: ingress
+    request:
+      headers:
+        uri:
+          prefix: /metrics/.*
+  precedence: 2
+  route:
+  - weight: 100
+#---
+# TODO:  Add rules for other entry points like /metrics and /hystrix-dashboard, etc!
+#
+---
+#apiVersion: config.istio.io/v1alpha2
+#kind: RouteRule
+#metadata:
+#  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-routerule-denyall
+#spec:
+#  destination:
+#    name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}
+#  match:
+#    source:
+#      labels:
+#        istio: ingress
+#    request:
+#      headers:
+#        uri:
+#          prefix: /.*
+#  precedence: 1
+#  route:
+#  - weight: 100
+#  httpFault:
+#    abort:
+#      percent: 100
+#      httpStatus: 403 # Forbidden for all URLs except those specified at a higher precedence (>1)
