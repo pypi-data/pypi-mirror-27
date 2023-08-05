@@ -1,0 +1,47 @@
+Metadata-Version: 2.0
+Name: chevah-compat
+Version: 0.45.2
+Summary: Chevah OS Compatibility Layer.
+Home-page: http://www.chevah.com
+Author: Adi Roiban
+Author-email: adi.roiban@chevah.com
+License: BSD 3-Clause
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+
+chevah-compat
+=============
+
+.. image:: https://codecov.io/gh/chevah/compat/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/chevah/compat
+
+Chevah OS Compatibility Layer.
+
+Depends on:
+
+* pam - for pam authenticaiton
+* arpy - for loading libraries on AIX.
+
+
+Unified interface for working with operating system accounts on Unix
+and Windows, see IOSUsers.
+
+Support for staring Unix daemon and installing and starting Windows services.
+
+Importing this module on Windows will populate the sys.argv with Unicode
+values.
+
+Unified interface for working with operating system file systems provides:
+
+* Unicode
+* allow impersonated filesystem access
+* allow chrooted filesystem access
+* single internal path separator: always '/'.
+* listing root folder. On Windows '/' will list all
+  available drives. '/c/' will list c:\\ content.
+* setting/getting filesystem node owner/groups.
+* open file in various modes: read-only, write-only, append,
+
+
