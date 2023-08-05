@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: poca
+Version: 1.0
+Summary: A fast and highly customizable command line podcast client
+Home-page: https://github.com/brokkr/poca
+Author: Mads Michelsen
+Author-email: mail@brokkr.net
+License: GPL3
+Download-URL: https://github.com/brokkr/poca/archive/v1.0
+Description: A fast and highly customizable command line podcast client
+Keywords: podcast,client,aggregator,cli
+Platform: POSIX
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Multimedia :: Sound/Audio
+Requires: feedparser
+Requires: lxml
+Requires: mutagen
+Requires: requests
+Provides: poca
