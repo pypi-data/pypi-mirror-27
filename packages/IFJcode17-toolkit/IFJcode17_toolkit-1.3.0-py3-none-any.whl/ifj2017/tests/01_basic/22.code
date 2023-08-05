@@ -1,0 +1,38 @@
+' Calculator
+SCOPE
+
+	dim operace as string
+	dim a as integer
+	dim b as integer
+
+	input operace
+	input a
+	input b
+
+
+	if operace = !"soucet" then
+		a = a + b
+		print a;
+
+	elseif operace = !"rozdil" then	
+		a = a - b	
+		print a;
+
+	elseif operace = !"soucin" then	
+		a = a * b
+		print a;	
+
+	elseif operace = !"mocnina" then	
+		a = a * a
+		print a;	
+
+	elseif operace = !"dvojnasobek" then	
+		a = a * 2
+		print a;	
+
+	else
+		print !"Neplatna operace";
+
+	end if
+
+END SCOPE
