@@ -1,0 +1,405 @@
+CHANGES
+=======
+
+0.5.0
+-----
+
+* Updated from global requirements
+* Fixed logging issue in payload downloading
+* Fixed Broken Payload Downloading
+* Remove explicit version info from setup.cfg
+* Updated from global requirements
+* Update the documentation link for doc migration
+
+0.4.0
+-----
+
+* Improve performance by multithreading test calls
+* Clarified docs and error messages
+* Added support for inline meta variable definitions
+* Updated from global requirements
+* Updated from global requirements
+* Updated from global requirements
+* Updated from global requirements
+* Remove translation of log messages
+* Updated from global requirements
+* Replace assertTrue(isinstance()) with assertIsInstance()
+* Updated from global requirements
+* Fixing py35 unicode bug
+* Fixing nits in scripts/readme.py to pass pep8 check
+* Updated from global requirements
+* Fixed errors printing in scientific notation
+* Changing default template URL
+* Adding unit tests
+* Fixing nits in i18n patch
+* Removing templates from syntribos repo
+* Added meta variable support to runner
+* Updated from global requirements
+* Added meta var support to datagen
+* Adding i18n support to Syntribos
+* Updated from global requirements
+* Adding XST test to syntribos
+* Remove unused logging import
+* Updated from global requirements
+* Set file path for generated README.rst
+* Updating openstack docs URLs to use https
+* Added support for meta variable JSON files
+* Improving readibility of code
+* Updated from global requirements
+* Updated from global requirements
+* Updated pylint rules
+* Removing payloads from the repo
+* Added documentation for template file naming requirements
+* Edit to contributing to guidelines
+* Delete unnecessary utf-8 coding
+* Part two: Detailed edit of syntibos doc
+* Detailed edit of syntribos docs
+* Add Constraints support
+* Detailed edit of about.rst doc
+* Fixing bug on syntribos init
+* Adds details of User defined test
+* Fixing a nit in doc
+* Adding new tests for Syntribos in the tests doc
+* Updating the payload file location
+* Fixing sphnix fail issue
+* Fixing nits in the test-anatomy document
+* Changing payload URI to official one
+* Bug fix for user defined tests
+* Respect cli args for initialization check
+* Removing download count shield
+* Updated from global requirements
+* Bug fix
+* Show team and repo badges on README
+* updating syntribos code documentation
+* Remove cfg import unused
+* Pylint changes update
+* Updated from global requirements
+* Fixing nits in documertation
+* Adding pylint check to syntribos
+* Better exception messages
+* Adding ReDoS test to syntribos
+* Adding new test to syntribos
+* Adding ability to do User defined fuzz test
+* updated release version
+* Add \_\_ne\_\_ built-in function
+
+0.3.0
+-----
+
+* Fixing a bug due to getlogin() in syntribos
+* Updating readme
+* Updated from global requirements
+* Adding extension for common utility functions
+* Added pause/resume feature
+* Don't include openstack/common in flake8 exclude list
+* Updating readme with sheilds and update License
+* Adding unit tests
+* Introduced payload and template downloading
+* Updated from global requirements
+* OpenStack URI markup fixed
+* Linting documentation
+* Fixing ordering of Runner.run and version bump
+* Add additional runner and env utils tests
+* Creates syntribos 'init' command
+* Fixing unicode error
+* Fixing doc nits
+* Updating the docs and fixing some nits
+* Changing payloads\_dir to payloads
+* Fixing a nit in contributing guide
+* Updating the Project Structure documentation
+* Updating setup.cfg for PyPI release
+* Fixup 'payloads' in docs, add #! to readme script
+* Updating syntribos documentation
+* Updating documentation
+* Loading payload from remote URI
+* Updating logging information for Syntribos
+* Removing reference to opencafe in the contributing doc
+* Changing the author information and the home page
+* Documentation updates and styling changes
+* Updated from global requirements
+* Fix BaseTestCase bug
+* Adding Cinder extension support to templates
+* Updated from global requirements
+* Modified dry\_run to run debug test
+* Updating the README.rst file
+* Adding python 3 compatibility and some minor styling changes
+* Minor modifications to the doc string and a few styling changes
+* Remove white space between print and ()
+* Updated from global requirements
+* Added nova extension client
+* Updated from global requirements
+* Updated from global requirements
+* Adding extension for cinder client
+* Adding swift request templates
+* Adding request templates for cinder(block storage)
+* Adding Cinder templates for Syntribos testing
+* Adding Cinder templates
+* Added cinder and swift templates
+* Updated from global requirements
+* TrivialFix: Remove default=None when set value in Config
+* Added nova templates (hypervisors to external events)
+* Adding Template files for the compute service
+* Updated from global requirements
+* Adding nova templates for Syntribos
+* Adding Nova template files
+* A spelling mistake needs to be fixed
+* Adding unittests for glance client
+* Adding unittest for neutron client extension
+* Minor modifications to the neutron templates
+* Updated from global requirements
+* A minor naming change for a neutron extension
+* Glance template tweaks
+* Simplify Glance and Neutron extension clients
+* Fixing up SSL test
+* Changing get\_token to get\_scoped\_token for neutron templates
+* An extenstion to retrieve network data from an openstack cloud
+* Adding Glance extension support to templates
+* Extensions for glance resources
+* Added glance templates
+* Adding glance templates
+* Glance image tags and image schema templates
+* Glance Images Templates
+* Minor changes to memoize
+* Upgrading memoize to memoize functions with same kwargs as well
+* Fixing some documentation nits
+* Adding neutron templates for Syntribos
+* Refactoring debug\_logger
+* Adding templates for neutron
+* Added neutron templates
+* Neutron LBaaS and FWaaS templates
+* Add man page for syntribos command
+* Fixing tiny nit in keystone templates
+* Unit tests for the identity client
+* Adding config fixture
+* Fix bug with identity client memoization
+* Cleanup some nits in the README
+* Updating docs to reflect changes in README
+* Adding capability to retrieve scoped tokens
+* Removing overlapping payload/failure key
+* A nit in seperator
+* Fixing bug in logger
+* Fixed bug where CLI failure counts were cumulutive
+* Fixed runner time log
+* Minor nit in progress display
+* Modifying log file path
+* Adds relative paths for templates
+* Revamped results schema
+* patch to sanitize debug log
+* Deleting unused data files
+* Buffer Overflow data file dependency is removed
+* Added config file improvements
+* changes to runner and result
+* Minor fixup to readme
+* Refresh readme
+* Standardizing the way we diff signals
+* Adding a script to generate README.rst from docs
+* Memoized extension functions
+* Fixed a trivial bug in keyboard interrupt part
+* Minor changes to runner and templates
+* Updating configuration file
+* Sorting list of tests
+* Adding a gitignore entry for dstore
+* Fixed a bug in runner
+* Adding sub commands to Syntribos
+* Overwriting config options from CLI
+* Another patch to fix the typo
+* Some tiny errors need to be fixed
+* Fixes a bug in "excluded tests"
+* Logger not registered bug fixed
+* Fixing minor document nits
+* Updating documentation
+* Adding unique\_id to tests
+* Updated from global requirements
+* Logs config options in debug log
+* Removes FuzzRequest from Syntribos
+* Adding additional fields to debug log
+* Fixed bug RequestObject has no attribute \`fuzz\_request\`
+* Fixed string check KeyError
+* CORS test now operates on test\_resp instead of init\_resp
+* List available test types in --help output
+* Renaming BaseTestCase/BaseFuzzTestCase methods
+* Added string presence check
+* Improving parser, adding unit tests
+* Added signals to results output
+* Fix for tox failing on coverage
+* Fixing bug in debug\_logger
+* Adding request/response content compression
+* Updated from global requirements
+* Changing debug log format
+* Removed OpenCafe installation instructions
+* Modify auto-compelete to reflect the new CLI
+* Adding unittests for checks
+* Adding missing checks
+* First pass at fix for bug #1604187
+* Adding unit tests for Runner
+* Refactored Auth test
+* Modifying checks to use test objects
+* added CLI option to exclude tests from runner
+* Removed openCAFE dependencies from identity extension
+* Refactored cors test to use cors header check
+* Remove discover from test-requirements
+* Adding header checks and unit tests
+* Removing opencafe http client from tox
+* Converting to oslo.config for configuration
+* Updated docs
+* A small nit in the doc changed 'enpoint' to 'endpoint'
+* Fixed a issue in printing list of slugs
+* Modifed README
+* Fixed v3 auth call
+* Fixes identity extension bug with json() call
+* Made auth endpoint less brittle
+* Refactoring BaseTestCase/BaseFuzzTestCase
+* Adding SSL checks and testcase
+* Checks for Syntribos signals
+* Modifies HTTP client to use checks/signals
+* Creates SynSignal and SignalHolder classes
+* Add pep8 checks to unit tests
+* added min and max severity and confidence filtering
+* Simplified imports and added constants
+* signals check-file to fingerprint the SUT
+* Moved SSL test out of BaseFuzzTestCase
+* Formatter now reports by issue rather than by test
+* modified command injection timeout to read from config
+* Fix typo in authenticate\_v3 parameter
+* Added SSL test case
+* Validate\_length now checks status code
+* Removed all\_attacks
+* Started adding docstrings to extensions
+* Added CORS Header testcase
+* Moved extend\_class() function
+* Modified integer overflow tests
+* Modified buffer overflow attack
+* Fixed payload truncating
+* Added String Validation Checks
+* Adding CAFE HTTP client install as tox docs step
+* Improved SQL tests
+* Keyboard interrupt now prints results before exiting
+* Fixed a few nitpicks in the code base
+* Replacing opencafe requests with requests module
+* Removed assertions and changed failure keys for command injection test
+* Updated README to reflect complete paths
+* Improved XML external entity tests
+* Improved XSS tests
+* Propagated content-type header to Issues for reporting
+* Docstrings for more Syntribos components
+* Issues now conform to findings schema for XML data
+* ImpactedParameter names now understand identifiers in bracketed strings
+* Json formatter now outputs data according to findings schema
+* Change license from block quotes to '#'s (Sphinx)
+* Long fuzz strings now truncated in output
+* Added list indexing for fuzz parameter path
+* Edited Solum payloads
+* Issues now conform to Syntribos test schema
+* Adding code documentation piece to Sphinx docs
+* Renaming payloads to request templates
+* Added payloads for keystone API
+* Updating doc strings for core pieces of Syntribos
+* Removing CAFE Test Suite dependency
+* Removed vestigial parts of old test creation
+* Test logic is no longer written in terms of assertions
+* Adding a contributing file
+* Modified the config file to be intutive
+* add initial sphinx rst framework
+* Bumping LICENSE copyright date
+* added Solum payloads
+* Wrote buffer overflow fuzz tests
+* Modified base test cases
+* Minor fix-ups on readme
+* Results aggregation
+* Adds docstring to random\_data extension
+* Add requests into the required package list
+* Update the installation instruction
+
+0.1.2
+-----
+
+* XSS Body Test
+* Check if user A can access user B's resource
+* JSON output now lives in formatter class
+* Wrote docstrings
+* Last header not being copied in parser.py for GET
+* Added notion of output type and output file to runner
+* Converting README from Markdown to RST
+* Moved 2 functions from BaseFuzzTestCase to BaseTestCase
+* extended xml entity tests to all payload params
+* Fixed dumb oversight with confidence levels
+* Hardcoded confidence levels
+* Added XML external entity test
+* Updated README.md to include OpenCafe setup instructions
+* Some small style fixes
+* modified SQL tests
+* Test runner and test result class now use Issues
+* Make fuzz tests use Issue class
+* fix style issue for issue.py
+* Change to run testr runner and provide coverage
+* Added in issues for test results
+* Change styles to Pep8 compliant
+* Add unittest2 into testrequriements.txt
+* Update test structure to follow OpenStack styles
+* Migrate to pbr for setuptools needs
+
+0.1.1
+-----
+
+* Update tox.ini to include venv and add .gitreview
+
+0.1.0
+-----
+
+* Adding MANIFEST.in, test-requirements.txt, tox.ini to pass gate
+* Fix typo
+* Update readme and typo
+* Update readme with log details
+* Added print tests used for autocomplete of test types
+* Update README.md
+* add domains GET request example
+* Update README.md
+* Wrong function call bug
+* remove ip address from keystone.config
+* update example payloads
+* Update README.md
+* Update README.md
+* Update READ.ME fixing one mistake
+* update READ.ME with more real examples
+* Update readme
+* update readme
+* update readme
+* update readme
+* add examples for config and payloads
+* README update
+* Fix for test\_fuzz\_data\_string
+* Added two missing licenses
+* Fix bad merge
+* moved request creator code to http client fixed flake8 issues made datagen a Mixin
+* Added unittest for basestring type for fuzz\_data
+* Added v3 auth extension and updated v2 auth extension
+* Added unittests and documentation
+* Added comments to datagen
+* added license and changed rax-auth extension to identity
+* Changed auth to a non yielding function
+* removed domain and rsa to prepare for porting to openstack auth
+* Added handling of ACTION\_FIELD in vals
+* add all-attacks test, new extension
+* Added BaseFuzzDataDrivenValidatorTestCase
+* Fix README
+* Update README
+* update
+* update
+* update
+* update
+* update
+* update
+* update
+* update
+* Added string\_data helper func & cleaned fuzz\_data
+* update
+* Bug fix
+* Added handling of Iterables in data objects
+* added auth, request parser, sql\_tests
+* Added XML attrib fuzzing & ignore changes
+* Added ignore property to datagen
+* Initial fuzzdb data & generator script
+* Updated DataGen test names
+* Datagen initial commit
+* Add initial structure
+* Initial commit
