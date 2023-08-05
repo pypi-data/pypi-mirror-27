@@ -1,0 +1,102 @@
+client:
+    url:
+        production: 'https://api.namecheap.com/xml.response'
+        sandbox: 'https://api.sandbox.namecheap.com/xml.response'
+
+    general:
+        production:
+            ApiUser: null
+            UserName: null
+            ApiKey: null
+            ClientIp: null
+        sandbox:
+            ApiUser: null
+            UserName: null
+            ApiKey: null
+            ClientIp: null
+
+    headers:
+        Content-Type: application/x-www-form-urlencoded
+
+command:
+    activate:
+        Command: namecheap.ssl.activate
+        AdminAddress1: null
+        AdminCity: null
+        AdminCountry: null
+        AdminEmailAddress: null
+        AdminFirstName: null
+        AdminJobTitle: null
+        AdminLastName: null
+        AdminPhone: null
+        AdminPostalCode: null
+        AdminStateProvince: null
+        ApproverEmail: null
+        BillingJobTitle: null
+        CertificateID: null
+        DNSDCValidation: 'False'
+        HTTPDCValidation: 'False'
+        TechJobTitle: null
+        WebServerType: apachessl
+        csr: null
+        DNSNames: null
+        DNSApproverEmails: null
+
+    reissue:
+        Command: namecheap.ssl.reissue
+        AdminAddress1: null
+        AdminCity: null
+        AdminCountry: null
+        AdminEmailAddress: null
+        AdminFirstName: null
+        AdminJobTitle: null
+        AdminLastName: null
+        AdminPhone: null
+        AdminPostalCode: null
+        AdminStateProvince: null
+        ApproverEmail: null
+        BillingJobTitle: null
+        CertificateID: null
+        DNSDCValidation: 'False'
+        HTTPDCValidation: 'False'
+        TechJobTitle: null
+        WebServerType: apachessl
+        csr: null
+        DNSNames: null
+        DNSApproverEmails: null
+
+    renew:
+        Command: namecheap.ssl.renew
+        CertificateID: null
+        Years: 1
+        SSLType: null
+
+    getinfo:
+        CertificateID: null
+        Command: namecheap.ssl.getInfo
+
+    create:
+        Command: namecheap.ssl.create
+        Type: PositiveSSL
+        Years: 1
+
+    retry_dcv:
+        CertificateID: null
+        Command: namecheap.ssl.resendApproverEmail
+
+    revoke:
+        CertificateID: null
+        Command: namecheap.ssl.revokecertificate
+        CertificateType: null
+
+    getlist:
+        Command: namecheap.ssl.getList
+        ListType: ALL
+        SearchTerm: null
+        SortBy: Host_Name
+        PageSize: 100
+
+    get_email_list:
+        Command: namecheap.ssl.getApproverEmailList
+        DomainName: null
+        CertificateType: null
