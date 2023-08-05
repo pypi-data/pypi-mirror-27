@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "strictNullChecks": true,
+        "alwaysStrict": true,
+        "noImplicitThis": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "baseUrl": "./"
+    },
+    "include": [
+        "app/**/*.ts",
+        "systemjs.conf.ts",
+        "systemjs.conf.spec.ts",
+        "karma.shim.ts",
+        "e2e/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

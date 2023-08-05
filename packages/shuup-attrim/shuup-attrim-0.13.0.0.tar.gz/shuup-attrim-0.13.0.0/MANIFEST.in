@@ -1,0 +1,7 @@
+include README.md
+include LICENSE.md
+include setup.py
+
+recursive-include attrim *.py *.jinja *.ts *.js *.json *.sass *.css *.map *.lock *.html
+
+prune attrim/static/attrim/admin/node_modules
