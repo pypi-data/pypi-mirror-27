@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block extrahead %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block title %}{% trans "Contact" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<h1>{% trans "Contact me by e-mail" %}</h1>
+
+<p>{% trans "You can send me an e-mail with the following form, except if you are trying to sell me something — no thanks." %}</p>
+
+<form action="{% url 'contact:form' %}" method="POST" class="myks-contact-form" >
+{% csrf_token %}
+<p class="captcha-code">{% blocktrans with form.captcha_ref.value as captcha_value %}Copy this code in field below: <strong>{{ captcha_value }}</strong>.{% endblocktrans %}</p>
+{{ form.as_p }}
+<p><input type="submit" value="{% trans "Send e-mail" %}"></p>
+</form>
+
+{% endblock %}
