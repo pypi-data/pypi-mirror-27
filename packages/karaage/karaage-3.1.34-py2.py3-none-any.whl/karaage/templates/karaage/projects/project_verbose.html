@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+
+
+{% block title %}Project (Verbose){% endblock %}
+
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href='{% url "index" %}'>Home</a>&nbsp;›
+    <a href="{% url 'kg_project_list' %}">Projects</a>&nbsp;›
+    <a href="{% url 'kg_project_detail' project.id %}">{{ project }}</a>&nbsp;›
+    Verbose
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div id="content-main">
+
+    {% for name, details in project_details.items %}
+    <div class="module">
+        <h2>Project details - {{name}}</h2>
+        {% for a in details %}
+        <h3>{{a.datastore}}</h3>
+        <div class="table-container">
+            <table class="keyvalue">
+                {% for i,j in a.items %}
+                    <tr>
+                        <th>{{ i }}</th><td>{{ j }}</td>
+                   </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% empty %}
+        <p>No datastores.</p>
+        {% endfor %}
+    </div>
+    {% empty %}
+    <div class="module">
+        <h2>Project details</h2>
+        <p>Project is not in any machine categories.</p>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}
