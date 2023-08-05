@@ -1,0 +1,15 @@
+jaraco.apt
+yg.lockfile
+
+[:python_version=="3.3" or python_version=="3.2" or python_version=="2.7"]
+contextlib2
+
+[docs]
+sphinx
+jaraco.packaging>=3.2
+rst.linker>=1.9
+
+[testing]
+pytest>=2.8
+pytest-sugar
+collective.checkdocs
