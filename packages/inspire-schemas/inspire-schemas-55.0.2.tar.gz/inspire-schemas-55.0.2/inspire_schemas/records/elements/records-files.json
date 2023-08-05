@@ -1,0 +1,22 @@
+{
+    "description": "Describe information needed for files in records.",
+    "properties": {
+        "bucket": {
+            "type": "string"
+        },
+        "checksum": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "size": {
+            "type": "integer"
+        },
+        "version_id": {
+            "type": "string"
+        }
+    },
+    "title": "File schema.",
+    "type": "object"
+}
