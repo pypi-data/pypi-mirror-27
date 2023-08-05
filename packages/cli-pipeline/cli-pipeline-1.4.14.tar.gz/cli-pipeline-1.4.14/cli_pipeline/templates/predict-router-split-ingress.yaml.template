@@ -1,0 +1,56 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }}
+  annotations:
+    kubernetes.io/ingress.class: "istio"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /.*
+        backend:
+          serviceName: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }}
+          servicePort: 6969
+#--
+#apiVersion: config.istio.io/v1alpha2
+#kind: RouteRule
+#metadata:
+#  name: deny-all-routes
+#spec:
+#  destination:
+#    name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }} 
+#  match:
+#    # Limit this rule to istio ingress pods only
+#    source:
+#      name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }}-ingress
+#      labels:
+#        istio: ingress
+#  precedence: 1
+#  route:
+#  - weight: 100
+#  httpFault:
+#    abort:
+#      percent: 100
+#      httpStatus: 403 #Forbidden for all URLs
+#--
+#apiVersion: config.istio.io/v1alpha2
+#kind: RouteRule
+#metadata:
+#  name: healthz-route
+#spec:
+#  destination:
+#    name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }} 
+#  match:
+#    # Limit this rule to istio ingress pods only
+#    source:
+#      name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }}-ingress 
+#      labels:
+#        istio: ingress
+#    request:
+#      headers:
+#        uri:
+#          prefix: /predict/v1/api/healthz
+#  precedence: 2 # must be higher precedence than the deny-route
+#  route:
+##  - weight: 100

@@ -1,0 +1,34 @@
+apiVersion: config.istio.io/v1alpha2 
+kind: RouteRule 
+# TODO:  Name this more specific like {{ PIPELINE_MODEL_TAG }}{{ PIPELINE_MODEL_TAG_WEIGHT }}-...
+metadata:
+  name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }
+spec:
+   destination: 
+      name: {{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_NAME }}
+   precedence: 2
+# TODO:  MAKE THIS A LIST OF TAG:SPLIT PAIRS  
+   route:
+   - labels:
+       version: {{ PIPELINE_MODEL_TAG }}
+     weight: 100
+#--
+#apiVersion: config.istio.io/v1alpha2
+#kind: RouteRule
+#metadata:
+#  name: deny-all-routes
+#spec:
+#  destination:
+#    name: predict-tfserving-tensorflow-mnist
+#  match:
+    # Limit this rule to istio ingress pods only
+#    source:
+#      labels:
+#        istio: ingress
+#  precedence: 1
+#  route:
+#  - weight: 100
+#  httpFault:
+#    abort:
+#      percent: 100
+#      httpStatus: 403 #Forbidden for all URLs
