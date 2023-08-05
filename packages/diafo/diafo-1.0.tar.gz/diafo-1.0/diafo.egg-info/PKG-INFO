@@ -1,0 +1,162 @@
+Metadata-Version: 1.1
+Name: diafo
+Version: 1.0
+Summary: A simple Django app to generate dynamic forms during runtime
+Home-page: https://github.com/aasis21
+Author: Ashish Kumar
+Author-email: ak.ashish2108@gmail.com
+License: MIT License
+Description-Content-Type: UNKNOWN
+Description: ==============================
+        DIAFO :: Django Dynamic Form
+        ==============================
+        
+        Diafo is a simple Django app for generating dynamic forms during the runtime. 
+        
+        Detailed documentation is in the "docs" directory.
+        
+        
+        Requirements
+        ------------
+        
+        * **Python**: 3.4, 3.5, 3.6
+        * **Django**: 1.11, 2.0b
+        * **Django bootstrap form**: 1.4
+        
+        
+        Installation
+        ------------
+        
+        1. Install using pip:
+        
+        .. code-block:: sh
+        
+            pip3 install diafo
+            pip3 install django-bootstrap-form
+        
+        2. Then add ``'django_filters'`` to your ``INSTALLED_APPS``.
+        
+        .. code-block:: python
+        
+            INSTALLED_APPS = [
+                ...
+                'diafo',
+        	'bootstrapform',
+            ]
+        
+        3. Include the polls URLconf in your project urls.py like this::
+        
+            url(r'^diafo/', include('diafo.urls')),
+        
+        4.  Run `python manage.py migrate` to create the diafo models.
+        
+        
+        
+        Usage
+        -----
+        
+        Diafo can be used for generating questionnaires consisting various questions during runtime. One can specify the question type like CharField, TextFied, ChoiceField, MultipleChoiceField, etc. Requirement can also be mentioned whether the question is compulsary or not. 
+        
+        Let see its usage through a simple survey webapp.
+        
+        .. code-block:: python
+        
+            from diafo.models import Questionnaire
+        
+            class Survey(models.Model):
+        	title = models.CharField(max_length=200)
+                #link the form to your model
+        	questionnaire = models.OneToOneField(Questionnaire, null=True)
+        
+                
+        
+        
+        And then in your view you could do:
+        
+        .. code-block:: python
+        
+            def new_survey(request):
+        	...
+                #get the title by using form or any how..
+        	questionnaire = Questionnaire.objects.create(name=tilte)
+                survey = Survey.objects.create(title=title, questionnaire = questionnaire)
+        	return HttpResponseRedirect(reverse('diafo:admin_view', kwargs={'pk': survey.form.pk}))
+        
+        
+         
+                   
+        So now that you have questionnaire linked to your model,you can add questions and edit the questionnaire thru the diafo:admin_view,
+        and let the user fill the questionnaire through diafo:user_view.
+        
+        
+        The diafo main URLs are as follows:
+        
+        .. code-block:: python
+        
+            urlpatterns = [
+        	# for adding question,editing questionnaire detail,seeing responses,etc
+        	url(r'^admin/(?P<pk>[0-9a-f-]+)/$', views.admin_view, name='admin_view'),
+                # for normal users to fill the questionnaire(no edit rights)
+                url(r'^user/view/(?P<view_id>[0-9a-f-]+)/$',views.user_view, name = 'user_view'),
+            ]
+        
+        
+        The Questionnaire model is as follows:
+        
+        .. code-block:: python
+        
+            class Questionnaire(models.Model):	
+        	name = models.CharField(max_length=200, null=True)
+        	# id used for admin purpose.. used as pk in admin view
+        	#id and pk are same since primary key is True
+            	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+        	# view_id - used for normal user (can only see and fill the questionnaire)
+        	view_id = models.CharField(max_length=50,unique=True, default=uuid.uuid4)
+        	#specific settings (can be edited thru diafo admin view for given questionnaire) 
+           	requires_sign_in = models.BooleanField(default = False, blank = True)
+            	collect_identity = models.BooleanField(default = False, blank = True)
+        
+        
+        This is how you can use use the diafo in your views or templates.
+        
+        .. code-block:: python
+        
+            class yourview(request,your_parameters):
+        	... 
+        	# get the questionnare object.
+        	if want_to_go_on_admin_view:
+        	    # use questionnare.pk and diafo:admin_view
+        	    #for use in template href={% url 'diafo:admin_view' questionnaire.pk %}
+        	    return HttpResponseRedirect(reverse('diafo:admin_view', kwargs={'pk':questionnaire.pk}))
+        	elif want_a_rendered_form_for_user:
+        	    # use questionnaire.view_pk and diafo:user_view
+        	    #for use in template href={% url 'diafo:user_view' questionnaire.view_id %}
+        	    return HttpResponseRedirect(reverse('diafo:admin_view', kwargs={'view_id':questionnaire.view_id}))
+        			
+        		
+        	
+        
+        
+        Support
+        -------
+        
+        If you have questions about usage or development you can contact me.
+        
+        Bugs
+        ----
+        
+        Really? Oh well... Please Report. Or better, fix :)
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 1.11
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
