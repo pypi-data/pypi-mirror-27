@@ -1,0 +1,109 @@
+create
+******
+
+
+Description
+===========
+
+Creates a new route table for the specified VCN. In the request you
+must also include at least one route rule for the new route table. For
+information on the number of rules you can have in a route table, see
+Service Limits. For general information about route tables in your VCN
+and the types of targets you can use in route rules, see Route Tables.
+
+For the purposes of access control, you must provide the OCID of the
+compartment where you want the route table to reside. Notice that the
+route table doesn't have to be in the same compartment as the VCN,
+subnets, or other Networking Service components. If you're not sure
+which compartment to use, put the route table in the same compartment
+as the VCN. For more information about compartments and access
+control, see Overview of the IAM Service. For information about OCIDs,
+see Resource Identifiers.
+
+You may optionally specify a *display name* for the route table,
+otherwise a default is provided. It does not have to be unique, and
+you can change it. Avoid entering confidential information.
+
+
+Usage
+=====
+
+   oci network route-table create [OPTIONS]
+
+
+Options
+=======
+
+
+--compartment-id, -c [text]
+---------------------------
+
+The OCID of the compartment to contain the route table. [required]
+
+
+--route-rules [complex type]
+----------------------------
+
+The collection of rules used for routing destination IPs to network
+devices. [required] This is a complex type whose value must be valid
+JSON. The value can be provided as a string on the command line or
+passed in as a file using the file://path/to/file syntax.
+
+The --generate-param-json-input option can be used to generate an
+example of the JSON which must be provided. We recommend storing this
+example in a file, modifying it as needed and then passing it back in
+via the file:// syntax.
+
+Example: '[{"cidrBlock":"0.0.0.0/0","networkEntityId":"ocid1.internet
+gateway.oc1.phx.aaaaaaaaxtfqb2srw7hoi5cmdum4n6ow2xm2zhrzqqypmlteiiebt
+mvl75ya"}]'
+
+
+--vcn-id [text]
+---------------
+
+The OCID of the VCN the route table belongs to. [required]
+
+
+--display-name [text]
+---------------------
+
+A user-friendly name. Does not have to be unique, and it's changeable.
+Avoid entering confidential information.
+
+
+--generate-full-command-json-input
+----------------------------------
+
+Prints out a JSON document which represents all possible options that
+can be provided to this command.
+
+This JSON document can be saved to a file, modified with the
+appropriate option values, and then passed back via the --from-json
+option. This provides an alternative to typing options out on the
+command line.
+
+
+--generate-param-json-input [text]
+----------------------------------
+
+Complex input, such as arrays and objects, are passed in JSON format.
+
+When passed the name of an option which takes complex input, this will
+print out example JSON of what needs to be passed to that option.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.

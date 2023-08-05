@@ -1,0 +1,27 @@
+preauth-request
+***************
+
+
+Description
+===========
+
+Pre-authenticated requests provide a way to allow access to specified
+object operations for a fixed amount of time without performing
+authentication.
+
+The access-uri will only be returned from the create operation for a
+pre-authenticated request (not get or list).  Note the access-uri
+value upon creation in order to use the pre-authenticated request
+later.
+
+
+Available Commands
+==================
+
+* create
+
+* delete
+
+* get
+
+* list

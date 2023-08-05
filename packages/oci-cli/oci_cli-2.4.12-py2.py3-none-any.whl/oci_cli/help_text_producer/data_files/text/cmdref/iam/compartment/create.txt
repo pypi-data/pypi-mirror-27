@@ -1,0 +1,94 @@
+create
+******
+
+
+Description
+===========
+
+Creates a new compartment in your tenancy.
+
+**Important:** Compartments cannot be deleted.
+
+You must specify your tenancy's OCID as the compartment ID in the
+request object. Remember that the tenancy is simply the root
+compartment. For information about OCIDs, see Resource Identifiers.
+
+You must also specify a *name* for the compartment, which must be
+unique across all compartments in your tenancy. You can use this name
+or the OCID when writing policies that apply to the compartment. For
+more information about policies, see How Policies Work.
+
+You must also specify a *description* for the compartment (although it
+can be an empty string). It does not have to be unique, and you can
+change it anytime with UpdateCompartment.
+
+After you send your request, the new object's *lifecycleState* will
+temporarily be CREATING. Before using the object, first make sure its
+*lifecycleState* has changed to ACTIVE.
+
+
+Usage
+=====
+
+   oci iam compartment create [OPTIONS]
+
+
+Options
+=======
+
+
+--compartment-id, -c [text]
+---------------------------
+
+The OCID of the tenancy containing the compartment. [required]
+
+
+--name [text]
+-------------
+
+The name you assign to the compartment during creation. The name must
+be unique across all compartments in the tenancy. [required]
+
+
+--description [text]
+--------------------
+
+The description you assign to the compartment during creation. Does
+not have to be unique, and it's changeable. [required]
+
+
+--generate-full-command-json-input
+----------------------------------
+
+Prints out a JSON document which represents all possible options that
+can be provided to this command.
+
+This JSON document can be saved to a file, modified with the
+appropriate option values, and then passed back via the --from-json
+option. This provides an alternative to typing options out on the
+command line.
+
+
+--generate-param-json-input [text]
+----------------------------------
+
+Complex input, such as arrays and objects, are passed in JSON format.
+
+When passed the name of an option which takes complex input, this will
+print out example JSON of what needs to be passed to that option.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.
