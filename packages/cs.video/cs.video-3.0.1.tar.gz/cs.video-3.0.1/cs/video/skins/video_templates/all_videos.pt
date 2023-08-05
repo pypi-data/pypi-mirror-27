@@ -1,0 +1,114 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+  <body>
+    <metal:block fill-slot="head_slot">
+      <tal:rss condition="here/@@videofolderness/isVideoFolder"
+               i18n:domain="cs.video">
+        <link rel="alternate" href="" title="Video Feed" type="application/atom+xml"
+              i18n:attributes="title label_video_feed"
+              tal:attributes="href string:${here/absolute_url}/atom.xml" />
+      </tal:rss>
+    </metal:block>
+
+
+    <div metal:fill-slot="main">
+      <metal:main-macro define-macro="main">
+        <div class="bideoak"
+             tal:define="last_videos here/@@last_videos;
+                         last_video last_videos/last_video;
+                         video_obj python:last_video and last_video[0] or None;
+                         from_sections last_videos/from_sections;
+                         rss_action python:{'category': 'document_actions', 'available': True, 'title': 'RSS feed of this listing', 'url': here.absolute_url() + '/atom.xml', 'name': 'RSS feed of this listing', 'visible': True, 'allowed': True, 'id': 'rss', 'permissions': ('View',)};
+                         new_actions actions;
+                         dactions python:new_actions.get('document_actions', []);
+                         isVideoFolder here/@@videofolderness/isVideoFolder;
+                         dummy python:isVideoFolder and dactions.append(rss_action) or None;
+                         dummy python:new_actions.update({'document_actions':dactions});
+                         actions new_actions;
+                         ">
+
+          <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+          </div>
+         
+          <div id="video-column-one" tal:condition="video_obj">
+
+            <h1 tal:content="video_obj/Title" class="documentFirstHeading">
+              Title or id
+            </h1>
+            
+            <p class="documentDescription"
+               tal:content="video_obj/Description"
+               tal:condition="video_obj/Description">
+              Description
+            </p>
+            
+            <metal:one define-macro="one-video">
+              <tal:block define="video_obj python:last_video[0];
+                                 width string:400;
+                                 height string:300;
+                                 here nocall:video_obj;
+                                 player string:player">
+                <metal:video use-macro="here/video_view/macros/player" />
+              </tal:block>
+            </metal:one>
+          </div>
+
+          <div id="video-column-two">
+            <metal:related define-macro="related-videos">
+              <div id="related-videos">
+                <div class="section" tal:repeat="sec from_sections">
+                  <h3 class="portletHeader" tal:define="section sec/section">
+                    <a href=""
+                       tal:attributes="href section/absolute_url"
+                       tal:content="section/Title">
+                      Section Title
+                    </a>
+                    <a class="more-videos"
+                       tal:condition="showmore|python:True"
+                       tal:attributes="href sec/section/absolute_url"
+                       i18n:domain="cs.video"
+                       i18n:translate="label_more_videos">
+                      More videos...
+                    </a>
+                  </h3>
+         
+                  <tal:block repeat="video_obj sec/videos">
+                    <div class="tileItem visualIEFloatFix vevent">
+                      <div class="link-image">
+                        <a href=""
+                           tal:attributes="href video_obj/absolute_url">
+                          <img src="#"
+                               tal:replace="structure python:video_obj.tag(scale='thumb', css_class='video-image')" />
+                          <img src="#"
+                               tal:define="img nocall:here/play.png"
+                               tal:replace="structure python:img.tag(width=128, height=86, css_class='frame')" />
+                        </a>
+                      </div>
+                      <h2 class="tileHeadline">
+                        <a href=""
+                           tal:attributes="href video_obj/absolute_url"
+                           tal:content="video_obj/Title">
+                          Title
+                        </a>
+                      </h2>
+                    </div>
+                    <div tal:condition="python:repeat['video_obj'].number() % 3 == 0" class="visualClear"><!-- --></div>
+                  </tal:block>
+                </div>
+                <div class="visualClear"><!-- --></div>
+              </div>
+            </metal:related>
+          </div>
+          <div class="visualClear"><!-- --></div>
+        </div>
+      </metal:main-macro>
+    </div>
+  </body>
+</html>

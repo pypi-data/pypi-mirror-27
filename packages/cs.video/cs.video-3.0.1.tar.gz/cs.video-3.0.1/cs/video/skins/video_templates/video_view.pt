@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="cs.video">
+
+  <body>
+
+    <metal:main fill-slot="content-core">    
+      <metal:player define-macro="player">
+        <div tal:define="player player|string:player;
+                         width width|python:400;
+                         height height|python:320;">
+          <a id="player"
+             tal:attributes="id player;
+                             style python:'display:block;;width:%spx;;height:%spx;;' % (width, height);
+                             href here/getUrl">
+
+          </a>
+
+          <script type="text/javascript"
+                  tal:content="string:
+                               flowplayer('${player}', 
+                                          '${here/portal_url}/flowplayer-3.2.10.swf',
+                                          {key: '#$8e9d24e74d33165ff4d',
+                                           clip: {autoPlay: false, 
+                                                  autoBuffering: true},
+                                          }  
+                               )
+                               ;">
+          </script>
+        </div>
+      </metal:player>
+    </metal:main>
+  </body>
+</html>
