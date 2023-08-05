@@ -1,0 +1,546 @@
+# -*- coding: latin-1 -*-
+
+"""
+A simple notebook for the r language. Uses rpy2 for interfacing and 
+pygments for colorization. 
+"""
+
+from pynotebook.clients import Client
+from pynotebook.cerealizerformat import register
+from pynotebook.pyclient import FakeFile
+from pynotebook.nbstream import StreamRecorder
+from pynotebook.nbtexels import ScriptingCell as _ScriptingCell
+from pynotebook.nbview import TextModel, NBView
+from pynotebook.textformat import fromtext
+from pynotebook.textmodel import TextModel
+from pynotebook.textmodel.texeltree import get_text, length
+
+import wx
+import sys
+
+# we use rpy2 
+import rpy2.robjects as robjects
+
+# and pygments
+from pygments.lexers import SLexer
+from pygments.formatter import Formatter
+from pygments import token as Token
+from pygments import highlight
+
+class TexelFormatter(Formatter):
+    encoding = 'utf-8'
+    def __init__(self, bgcolor):
+        self.bgcolor = bgcolor
+
+    def format(self, tokensource, outfile): 
+        bgcolor = self.bgcolor
+        self.model = model = TextModel()
+        for token, text in tokensource:
+            if token is Token.Keyword:
+                style = dict(textcolor='red')
+            elif token is Token.Literal.Number:
+                style = dict(textcolor='blue')
+            elif token is Token.Comment.Single:
+                style = dict(textcolor='grey')
+            elif token is Token.Text:
+                style = dict(textcolor='black')
+            elif token is Token.Literal.String:
+                style = dict(textcolor='red')                    
+            else:
+                style = dict()
+            style['bgcolor'] = bgcolor
+            new = TextModel(text, **style)
+            model.append(new)
+
+
+
+class RClient(Client):
+    name = "rpy2 r"
+    def __init__(self):
+        self.r = robjects.r
+
+    def execute(self, inputfield, output):
+        return self.run(get_text(inputfield), output)
+
+    def run(self, code, output):
+        self.counter += 1
+        bkstdout, bkstderr = sys.stdout, sys.stderr
+        sys.stdout = FakeFile(output)
+        sys.stderr = FakeFile(lambda s: output(s, iserr=True))
+
+        try:
+            try:
+                result = self.r(code)
+            except ValueError, e:
+                output(e, True)
+            except Exception, e:
+                output(e, True)
+            else:
+                output(result)
+        except Exception, e:
+            output(repr(e), True)
+        finally:
+            sys.stdout, sys.stderr = bkstdout, bkstderr
+            sys.settrace(None)
+    
+    def complete(self, word, nmax=None):
+        import rpy2.robjects 
+        ri = rpy2.robjects.rinterface
+        options = set()
+        for env in (ri.baseenv, ri.globalenv): # XXX are there more environments??
+            for name in env:
+                if name.startswith(word):
+                    options.add(name)
+            if len(options) == nmax:
+                break
+        return options
+
+    def colorize(self, inputtexel, styles=None, bgcolor='white'):
+        text = get_text(inputtexel)
+        assert len(text) == length(inputtexel)
+        formatter = TexelFormatter(bgcolor)
+        highlight(text, SLexer(), formatter)
+        model = formatter.model
+        while len(model) < length(inputtexel):
+            # XXX when does this happen? What does it mean?
+            model.insert_text(len(model), '\n')
+        model = formatter.model[0:length(inputtexel)]
+        assert len(model) == length(inputtexel)
+        return model.texel
+
+
+
+from pynotebook.clients import ClientPool
+
+class RNBView(NBView):
+
+    def init_clients(self):
+        self._clients = ClientPool()        
+        self._clients.register(RClient())        
+    
+    @staticmethod
+    def ScriptingCell(*args, **kwds):
+        cell = _ScriptingCell(*args, **kwds)
+        cell.client_name = RClient.name
+        return cell
+
+
+
+
+
+
+import pynotebook
+from pynotebook.nbtexels import NotFound
+from pynotebook.nbview import TextModel, NBView
+from pynotebook import graphics
+import os
+import wx
+from tempfile import mkdtemp
+
+
+wildcard = "Rnotebook files (*.rnb)|*.rnb|" \
+           "R source (*.r)|*.r|" \
+           "All files (*.*)|*.*"
+
+def action2cmd(label, action):
+    # Create a menu command from an editor action
+    def method(self, event, action=action):
+        self.shell.handle_action(action)
+    method.__doc__ = label
+    return method
+
+
+def method2cmd(label, name):
+    # Create a menu command from a method of NBView
+    def method(self, event, name=name):
+        fun = getattr(self.shell, name)
+        fun()
+    method.__doc__ = label
+    return method
+
+
+
+class TemporaryDirectory(object):
+    # http://stackoverflow.com/questions/19296146/tempfile-temporarydirectory-
+    # context-manager-in-python-2-7
+    def __init__(self, suffix="", prefix="tmp", dir=None):
+        self._closed = False
+        self.name = mkdtemp(suffix, prefix, dir)
+
+    def cleanup(self):
+        if self.name and not self._closed:
+            try:
+                self._rmtree(self.name)
+            except (TypeError, AttributeError) as ex:
+                return
+            self._closed = True
+
+    def __del__(self):
+        self.cleanup()
+
+    _listdir = staticmethod(os.listdir)
+    _path_join = staticmethod(os.path.join)
+    _isdir = staticmethod(os.path.isdir)
+    _islink = staticmethod(os.path.islink)
+    _remove = staticmethod(os.remove)
+    _rmdir = staticmethod(os.rmdir)
+
+    def _rmtree(self, path):
+        for name in self._listdir(path):
+            fullname = self._path_join(path, name)
+            try:
+                isdir = self._isdir(fullname) and not self._islink(fullname)
+            except OSError:
+                isdir = False
+            if isdir:
+                self._rmtree(fullname)
+            else:
+                try:
+                    self._remove(fullname)
+                except OSError:
+                    pass
+        try:
+            self._rmdir(path)
+        except OSError:
+            pass
+
+
+logdir = None
+logging = False
+def gen_logfile():
+    files = os.listdir(logdir.name)
+    i = 0
+    while 1:
+        name = '%.4i.pynblog' % i
+        if not name in files:
+            return os.path.join(logdir.name, name)
+        i += 1
+
+
+
+class MainWindow(wx.Frame):
+    set_width = ['Set width', 'set_w1', 'set_w2', 'set_w3']
+    ctxt_entries = ['inspector', 'open', 'save', 'save_as', 'close']
+    file_entries = ['new', 'open', 'save', 'save_as', 'close']
+    edit_entries = ['copy', 'paste', 'cut', 'undo', 'redo', 'indent', 'dedent']
+    cell_entries = ['inspector', 'insert_textcell', 'insert_pycell', 
+                    'remove_output', 'split_cell', set_width]
+    interpreter_entries = ['execute', 'execute_all', 'complete', 'reset']
+    debug_entries = ['replay', 'rebuild_view', 'clean_model', 'dump_texels', 
+                     'dump_boxes', 'profile_insert']
+    updaters = ()
+    def __init__(self, filename=None):
+        displayw, displayh = wx.GetDisplaySize()
+        wx.Frame.__init__(self, None, 
+                          size=(min(600, displayw), min(800, displayh)))
+        panel = wx.Panel(self, -1)
+        if logging:
+            logfile = gen_logfile()
+        else:
+            logfile = None
+        shell = RNBView(panel, -1, filename=filename, maxw=600, logfile=logfile)
+        box = wx.BoxSizer(wx.VERTICAL)
+        box.Add(shell, 1, wx.ALL|wx.GROW, 1)
+        panel.SetSizer(box)
+        panel.SetAutoLayout(True)
+        shell.Bind(wx.EVT_RIGHT_DOWN, self.right_click)
+        shell.SetFocus()
+        self.shell = shell
+        self.filename = filename
+        self.SetMenuBar(self.make_menubar())
+        sb = wx.StatusBar(self)
+        self.SetStatusBar(sb)
+        self.Bind(wx.EVT_IDLE, self.update)
+        shell.mainwindow = self # XXX remove this
+     
+    def make_menubar(self):
+        menubar = wx.MenuBar()
+        updaters = []
+        def mk_menu(entries, self=self, updaters=updaters):
+            menu = wx.Menu()
+            for entry in entries:
+                if entry is None:
+                    menu.AppendSeperator()
+                elif type(entry) is list:                    
+                    submenu = mk_menu(entry[1:])
+                    menu.AppendSubMenu(submenu, entry[0])
+                else:
+                    fun = getattr(self, entry)
+                    title = fun.__doc__
+                    item = menu.Append(-1, title)
+                    self.Bind(wx.EVT_MENU, fun, item)
+                    if hasattr(self, 'can_'+entry):
+                        fun = getattr(self, 'can_'+entry)
+                        def update(fun=fun, item=item, menu=menu):
+                            menu.Enable(item.Id, fun())
+                        updaters.append(update)
+            return menu
+        menubar.Append(mk_menu(self.file_entries), '&File')
+        menubar.Append(mk_menu(self.edit_entries), '&Edit')
+        menubar.Append(mk_menu(self.cell_entries), '&Cell')
+        menubar.Append(mk_menu(self.interpreter_entries), '&Interpreter')
+	if debug:
+            menubar.Append(mk_menu(self.debug_entries), 'Debug')
+        self.updaters = updaters 
+        return menubar
+
+    def make_ctxtmenu(self):
+        menu = wx.Menu()
+        for entry in self.ctxt_entries:
+            fun = getattr(self, entry)
+            active = True
+            try:
+                statefun = getattr(self, 'can_'+entry)
+                active = statefun()
+            except AttributeError:
+                pass                        
+            title = fun.__doc__
+            item = menu.Append(-1, title)
+            menu.Enable(item.Id, active)
+            menu.Bind(wx.EVT_MENU, fun, item)
+        return menu
+
+    def right_click( self, event):
+        menu = self.make_ctxtmenu()
+        self.PopupMenu(menu, event.Position)
+        menu.Destroy() # destroy to avoid mem leak
+
+    def changed(self):
+        return self.shell.undocount()>0
+
+    def update(self, event):
+        # update filename in window title
+        if self.filename:
+            path, name = os.path.split(self.filename)
+            title = name
+        else:
+            title = '<unnamed>'
+        if self.changed():
+            title = title+' *'
+        self.SetTitle(title)
+
+        # update menus
+        for updater in self.updaters:
+            updater()
+
+        # update statusbar
+        i = self.shell.index
+        row, col = self.shell.model.index2position(i)
+        try:
+            i, cell = self.shell.find_cell()
+        except NotFound:
+            self.StatusBar.SetStatusText('')
+            return
+        row0, col0 = self.shell.model.index2position(i)
+        self.StatusBar.SetStatusText('Line: %i, Position: %i' % (row-row0, col))
+
+    def new(self, event):
+        "&New Notebook\tCtrl-N"
+        win = MainWindow()
+        win.Show()
+
+    def open(self, event):
+        "&Open File ...\tCtrl-O"
+        dlg = wx.FileDialog(
+            self, message="Choose a file",
+            wildcard=wildcard,
+            style=wx.OPEN | wx.MULTIPLE | wx.CHANGE_DIR
+            )
+        if dlg.ShowModal() == wx.ID_OK:
+            paths = dlg.GetPaths()
+            for path in paths:
+                win = MainWindow(path)
+                win.Show()
+        dlg.Destroy()
+
+    def save(self, event):
+        "&Save\tCtrl-S"
+        if self.filename is None:
+            self.save_as(event)
+        else:
+            self.shell.save(self.filename)
+            self.shell.clear_undo()
+            
+    def save_as(self, event):
+        "Save &As ..."
+        dlg = wx.FileDialog(
+            self, message="Save File as ...", 
+            defaultFile="", wildcard=wildcard, 
+            style=wx.SAVE|wx.OVERWRITE_PROMPT
+            )
+        if dlg.ShowModal() == wx.ID_OK:
+            path = dlg.GetPath()
+            self.shell.save(path)
+            self.filename = path
+            self.shell.clear_undo()
+
+        dlg.Destroy()
+
+    def close(self, event):
+        "&Close\tCtrl-W"
+        if self.changed():
+            dlg = wx.MessageDialog(
+                self, 'There are unsaved changes. Do you really want to close?',
+                'Close window',
+                wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
+            )
+            result = dlg.ShowModal()
+            dlg.Destroy()
+            if result != wx.ID_YES:
+                return            
+        self.Close(True)
+
+    def set_w1(self, event):
+        "30 characters"
+        self.shell.set_maxw(30*12)
+
+    def set_w2(self, event):
+        "50 characters"
+        self.shell.set_maxw(50*12)
+
+    def set_w3(self, event):
+        "80 characters"
+        self.shell.set_maxw(80*12)
+
+    cut = action2cmd("Cut\tCtrl-X", "cut")
+    copy = action2cmd("Copy\tCtrl-C", "copy")
+    paste = action2cmd("Paste\tCtrl-V", "paste")
+    indent = action2cmd("Indent\tCtrl-I", "indent")
+    dedent = action2cmd("Dedent\tCtrl-U", "dedent")
+    complete = action2cmd("Complete\tTAB", "complete")
+    execute = method2cmd("Execute Cell\tShift-Return", "execute")
+    execute_all = method2cmd("Execute all", "execute_all")
+    reset = method2cmd("Reset Interpreter", "reset_interpreter")
+    remove_output = method2cmd("Remove Output", "remove_output")
+    split_cell = method2cmd("Split Cell\tCtrl-B", "split_cell")
+    insert_textcell = method2cmd("Insert Text Cell", "insert_textcell")
+    insert_pycell = method2cmd("Insert Python Cell", "insert_pycell")
+    undo = method2cmd("Undo\tCtrl-Z", "undo")
+    redo = method2cmd("Redo\tCtrl-R", "redo")
+    dump_texels = action2cmd("Dump Texels\tESC", "dump_info")
+    dump_boxes = action2cmd("Dump all Boxes", "dump_boxes")
+
+    def between_cells(self):
+        return self.shell.between_cells()
+    can_insert_textcell = can_insert_pycell = between_cells
+
+    def can_undo(self):
+        return self.shell.undocount() > 0
+
+    def can_redo(self):
+        return self.shell.redocount() > 0
+
+    def inspector(self, event):
+        "Format ...\tCtrl-F"
+        from pynotebook.inspector import Inspector
+        inspector = Inspector(self.shell.Parent)
+        inspector.model = self.shell
+        inspector.Show()
+        inspector.update()
+
+    def replay(self, event): 
+        "Replay"
+        "&Replay Log File ..."
+        dlg = wx.FileDialog(
+            self, message="Choose a file",
+            wildcard="Log files (*.pnb)|*.pynblog",
+            style=wx.OPEN | wx.CHANGE_DIR
+            )
+        paths = []
+        if dlg.ShowModal() == wx.ID_OK:
+            paths = dlg.GetPaths()
+        dlg.Destroy()
+
+        if paths:
+            log = self.shell.load_log(paths[0])
+            win = MainWindow()
+            win.Show()
+            win.shell.replay(log)
+        
+    def rebuild_view(self, event):
+        "Rebuild View"
+        self.shell.rebuild()
+        
+    def clean_model(self, event):
+        "Clean Model"
+        # This is a bit hacky ...
+        from pynotebook import cerealizerformat
+        # 1. replace all styles to the canonical ones
+        model = self.shell.model
+        cerealizerformat._replace_styles(model.texel, {})
+        # 2. call set_properties (with no properties given) to merge
+        # character texels of equal style
+        self.shell.set_properties(0, len(model))
+
+    def profile_insert(self, event):
+        "Profile Insert"
+        from cProfile import runctx
+        runctx("self.shell.model.insert_text(self.shell.index, 'X')", globals(), locals())
+        self._set_logfont()
+
+    def _set_logfont(self):
+        # Change the font of the output window to make it more readable
+        app = wx.GetApp()
+        win = app.stdioWin
+        if hasattr(win, 'text'):
+            text = win.text
+            old_font = text.Font
+            new_font = wx.Font(old_font.GetPointSize(), wx.FONTFAMILY_MODERN, 
+                               old_font.GetStyle(), old_font.GetWeight())
+            text.SetFont(new_font)
+
+ 
+debug = False
+
+def main(argv):
+    global logging
+    global debug
+    logging = debug = redirect = console = False
+    filenames = []
+    for arg in argv:
+        if arg == '--redirect':
+            redirect = True
+        elif arg == '--debug':
+            debug = True
+        elif arg == '--console':
+            console = True
+        elif arg == '--logging':
+            logging = True
+        else:
+            filenames.append(arg)
+    
+    if debug:
+        logging = True
+        redirect = True
+    
+    if logging:
+        global logdir
+        logdir = TemporaryDirectory()
+        print "Log files are stored in path", logdir.name
+
+    app = wx.App(redirect=redirect)
+
+    win = None    
+    for name in filenames:
+        # Each file is opened in a seperate window.
+        win = MainWindow(name)
+        win.Show()
+    if win is None:
+        win = MainWindow()
+        win.Show()
+
+    if console: 
+        from pynotebook.wxtextview import testing
+        testing.pyshell(namespace=dict(win=win)) 
+
+    app.MainLoop()
+
+# Register classes to the fileformat
+graphics.register_classes()
+
+def test_00():
+    main(['--debug'])
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
+
