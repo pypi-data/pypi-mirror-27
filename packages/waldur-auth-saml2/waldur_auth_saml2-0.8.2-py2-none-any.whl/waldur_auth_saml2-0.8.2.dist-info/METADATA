@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: waldur-auth-saml2
+Version: 0.8.2
+Summary: Waldur plugin bringing SAML2-based authentication support.
+Home-page: http://waldur.com
+Author: OpenNode Team
+Author-email: info@opennodecloud.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: djangosaml2 (==0.16.9)
+Requires-Dist: nodeconductor (>=0.146.4)
+Provides-Extra: dev
+Requires-Dist: Sphinx (==1.2.2); extra == 'dev'
+
+Waldur SAML2
+============
+
+Waldur plugin bringing SAML2-based authentication support.
+
+
+
