@@ -1,0 +1,45 @@
+{
+  "tests": [
+    {
+      "name": "01",
+      "timeout": 3,
+      "extensions": [
+        "UNARY"
+      ]
+    },
+    {
+      "name": "02",
+      "timeout": 4,
+      "extensions": [
+        "SCOPE"
+      ]
+    },
+    {
+      "name": "03",
+      "extensions": [
+        "FUNEXP"
+      ]
+    },
+    {
+      "name": "11",
+      "timeout": 3,
+      "extensions": [
+        "UNARY"
+      ]
+    },
+    {
+      "name": "12",
+      "timeout": 3,
+      "extensions": [
+        "FUNEXP"
+      ]
+    },
+    {
+      "name": "13",
+      "extensions": [
+        "FUNEXP",
+        "SCOPE"
+      ]
+    }
+  ]
+}
