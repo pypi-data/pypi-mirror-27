@@ -1,0 +1,128 @@
+Metadata-Version: 1.1
+Name: eseries
+Version: 1.1.0
+Summary: Working with the E-series of preferred numbers used for electronic components, such as resistors and capacitors
+Home-page: https://github.com/rob-smallshire/eseries
+Author: Sixty North AS
+Author-email: rob@sixty-north.com
+License: MIT License
+Description: eseries
+        =======
+        
+        The E-series is a system of preferred numbers used with electronic
+        components such as resistors and capacitors. For example, the E6
+        series contains six values (10, 15, 22, 33, 47, 68) which cover a
+        one-order of magnitude range of values (one decade) from 10 to 99.
+        These base values repeat again to cover the next decade from 100
+        to 999, as 100, 220, 330, 470, and 680.
+        
+        This ``eseries`` library is useful for selecting values from the
+        standard E3, E6, E12, E24, E48, E96 and E192 decades.
+        
+        Status
+        ------
+        
+        .. image:: https://travis-ci.org/rob-smallshire/eseries.svg?branch=master
+            :target: https://travis-ci.org/rob-smallshire/eseries
+        
+        Installation
+        ------------
+        
+        This package support Python 3 only. To install::
+        
+          $ pip install eseries
+        
+        Python Interface
+        ----------------
+        
+        For full help::
+        
+          >>> import eseries
+          >>> help(eseries)
+        
+        In the meantime, here are some highlights.
+        
+        To find the nearest E24 value to 319 use::
+        
+          >>> from eseries import find_nearest, E24
+          >>> find_nearest(E24, 319)
+          330
+        
+        To find the next value greater-than or equal-to 184 in the E96 series
+        use::
+        
+          >>> from eseries import find_greater_than_or_equal, E96
+          >>> find_greater_than_or_equal(E96, 184)
+          187
+        
+        To find a few values around the specified value, use::
+        
+          >>> from eseries import find_nearest_few, E24
+          >>> find_nearest_few(E24, 5000)
+          (4700, 5100, 5600)
+        
+        
+        Command-Line Interface
+        ----------------------
+        
+        There's also a handy command-line interface. Run ``eseries --help``
+        to see a list of commands::
+        
+          $ eseries --help
+          eseries
+        
+          Usage: eseries [options] <command> [<args> ...]
+        
+          Options:
+            -h --help     Show this screen.
+            -v --verbose  Use verbose logging
+        
+          Available commands:
+            ge
+            gt
+            help
+            le
+            lt
+            nearby
+            nearest
+            range
+            series
+            tolerance
+        
+          See 'eseries help <command>' for help on specific commands.
+        
+        To find a nearby value, use::
+        
+          $ eseries nearest E24 37726
+          39e3
+        
+        If you prefer an SI exponent symbol, supply ``--symbol`` or ``-s``::
+        
+          $ eseries nearest E24 37726 -s
+          39 k
+        
+        To show values around the given value, use the ``nearby`` command::
+        
+          $ eseries nearby E48 52e6 -s
+          48.7 M
+          51.1 M
+          53.6 M
+        
+        To show the smallest value greater than or equal to the given value, use the ``ge`` command::
+        
+          $ eseries ge E48 52e3 -s
+          53.6 k
+        
+        
+        
+Keywords: electronics resistors capacitors preferred-numbers
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development :: Libraries
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
