@@ -1,0 +1,30 @@
+Metadata-Version: 1.1
+Name: JsonPydexer
+Version: 0.2.1
+Summary: A (python) indexer for large collections of json files
+Home-page: http://github.com/cl3wis/JsonPydexer
+Author: Christian Bailey (me@christianbailey.me)
+Author-email: me@christianbailey.me
+License: MPL 2.0
+Description: # JsonPydexer
+        A (python) indexer for large collections of json files.
+        In development and NOT SAFE for use yet. 
+        ## Usage
+        ```python
+        from JsonPydexer import JsonPydexer
+        
+        #initialize with the root directory containing your json files (directory recursion coming soon!)
+        jp = JsonPydexer("test_data/1")
+        
+        #index on the given key (nested keys coming soon!), creating the file _id.pickle, containing a pickled dict of _id: filename
+        jp.index("_id")
+        
+        #alternatively, specify a filename:
+        jp.index("_id", filename="MyIndex.xyz")
+        ```
+        
+Keywords: json index
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
