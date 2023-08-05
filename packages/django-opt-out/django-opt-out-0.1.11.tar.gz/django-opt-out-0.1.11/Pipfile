@@ -1,0 +1,55 @@
+[[source]]
+
+verify_ssl = true
+name = "pypi"
+url = "https://pypi.python.org/simple"
+
+
+[dev-packages]
+
+Django = "*"
+django-bootstrap-form = "*"
+django-import-export = "*"
+django-pascal-templates = "*"
+django-powerbank = "*"
+Markdown = "*"
+pathlib = "*"
+sparkpost = "*"
+mock = "*"
+pytest = "*"
+pytest-xdist = "*"
+pytest-html = "*"
+pytest-django = "*"
+factory_boy = "*"
+"psycopg2" = "*"
+django-environ = "*"
+"bump2version" = "*"
+check-manifest = "*"
+codecov = "*"
+coverage = "*"
+"flake8" = "*"
+invoke = "*"
+isort = "*"
+Pygments = "*"
+readme_renderer = "*"
+tox = "*"
+Sphinx = ">=1.6.5"
+sphinx_rtd_theme = "*"
+docutils = "==0.13.1"
+sphinxcontrib-spelling = "*"
+pyenchant = "*"
+"drwm0dfi" = {path = ".", editable = true}
+click = "*"
+detox = "*"
+
+
+[packages]
+
+Django = "*"
+django-bootstrap-form = "*"
+django-import-export = "*"
+django-pascal-templates = "*"
+django-powerbank = "*"
+Markdown = "*"
+pathlib = "*"
+click = "*"
