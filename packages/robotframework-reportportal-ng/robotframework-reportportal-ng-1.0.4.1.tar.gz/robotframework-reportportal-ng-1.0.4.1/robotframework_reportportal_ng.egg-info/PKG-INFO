@@ -1,0 +1,38 @@
+Metadata-Version: 1.2
+Name: robotframework-reportportal-ng
+Version: 1.0.4.1
+Summary: A Robot Framework Report Portal Listener
+Home-page: https://github.com/ailjushkin/robotframework-reportportal-ng
+Author: Alexander Iljushkin
+Author-email: ailjushkin@gmail.com
+License: GPLv3
+Description: # robotframework-reportportal-ng
+        
+        Short Description
+        ---
+        
+        Robot Framework listener module for integration with Report Portal
+        
+        Usage
+        ---
+        
+        Example command to run test using pabot with report portal listener.
+         
+        ```bash
+        pybot --listener reportportal_listener --escape quot:Q \
+        --variable RP_ENDPOINT:http://reportportal.local:8080 \
+        --variable RP_UUID:73628339-c4cd-4319-ac5e-6984d3340a41 \
+        --variable RP_LAUNCH:"Demo Tests" \
+        --variable RP_PROJECT:DEMO_USER_PERSONAL test_folder
+        ```
+        
+Keywords: testing,reporting,robot framework,reportportal
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Testing
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: ~=2.7, ~=3.4, ~=3.6
