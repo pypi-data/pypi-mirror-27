@@ -1,0 +1,148 @@
+create
+******
+
+
+Description
+===========
+
+Creates a pre-authenticated request.
+
+The access-uri will only be returned from the create operation for a
+pre-authenticated request (not get or list).  Note the access-uri
+value upon creation in order to use the pre-authenticated request
+later.
+
+
+Usage
+=====
+
+   oci os preauth-request create [OPTIONS]
+
+
+Options
+=======
+
+
+-ns, --namespace [text]
+-----------------------
+
+The top-level namespace used for the request. [required]
+
+
+-bn, --bucket-name [text]
+-------------------------
+
+The name of the bucket.
+
+Example: *my-new-bucket1* [required]
+
+
+--name [text]
+-------------
+
+The user specified name for pre-authenticated request. Helpful for
+management purposes. [required]
+
+
+--access-type [ObjectRead|ObjectWrite|ObjectReadWrite|AnyObjectWrite]
+---------------------------------------------------------------------
+
+The operation that can be performed on this resource e.g PUT or GET.
+[required]
+
+
+--time-expires [datetime]
+-------------------------
+
+The expiration date after which the pre-authenticated request will no
+longer be valid. The following datetime formats are supported:
+
+
+UTC with milliseconds
+~~~~~~~~~~~~~~~~~~~~~
+
+Format: YYYY-MM-DDTHH:mm:ss.sssTZD Example: 2017-09-15T20:30:00.123Z
+
+
+UTC without milliseconds
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Format: YYYY-MM-DDTHH:mm:ssTZD Example: 2017-09-15T20:30:00Z
+
+
+Timezone with milliseconds
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Format: YYYY-MM-DDTHH:mm:ssTZD Example: 2017-09-15T12:30:00.456-08:00
+
+
+Timezone without milliseconds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Format: YYYY-MM-DDTHH:mm:ssTZD Example: 2017-09-15T12:30:00-08:00
+
+
+Date Only
+~~~~~~~~~
+
+This date will be taken as midnight UTC of that day
+
+Format: YYYY-MM-DD Example: 2017-09-15
+
+
+Epoch seconds
+~~~~~~~~~~~~~
+
+Example: 1412195400  [required]
+
+
+-on, --object-name [text]
+-------------------------
+
+Name of object that is being granted access to by the pre-
+authenticated request. This option must be specified if --access-type
+is ObjectRead, ObjectWrite, or ObjectReadWrite. This option cannot be
+specified if the --access-type is AnyObjectWrite.
+
+
+--opc-client-request-id [text]
+------------------------------
+
+The client request ID for tracing.
+
+
+--generate-full-command-json-input
+----------------------------------
+
+Prints out a JSON document which represents all possible options that
+can be provided to this command.
+
+This JSON document can be saved to a file, modified with the
+appropriate option values, and then passed back via the --from-json
+option. This provides an alternative to typing options out on the
+command line.
+
+
+--generate-param-json-input [text]
+----------------------------------
+
+Complex input, such as arrays and objects, are passed in JSON format.
+
+When passed the name of an option which takes complex input, this will
+print out example JSON of what needs to be passed to that option.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.

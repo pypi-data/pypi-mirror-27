@@ -1,0 +1,83 @@
+create
+******
+
+
+Description
+===========
+
+Creates a new Dynamic Routing Gateway (DRG) in the specified
+compartment. For more information, see Dynamic Routing Gateways
+(DRGs).
+
+For the purposes of access control, you must provide the OCID of the
+compartment where you want the DRG to reside. Notice that the DRG
+doesn't have to be in the same compartment as the VCN, the DRG
+attachment, or other Networking Service components. If you're not sure
+which compartment to use, put the DRG in the same compartment as the
+VCN. For more information about compartments and access control, see
+Overview of the IAM Service. For information about OCIDs, see Resource
+Identifiers.
+
+You may optionally specify a *display name* for the DRG, otherwise a
+default is provided. It does not have to be unique, and you can change
+it. Avoid entering confidential information.
+
+
+Usage
+=====
+
+   oci network drg create [OPTIONS]
+
+
+Options
+=======
+
+
+--compartment-id, -c [text]
+---------------------------
+
+The OCID of the compartment to contain the DRG. [required]
+
+
+--display-name [text]
+---------------------
+
+A user-friendly name. Does not have to be unique, and it's changeable.
+Avoid entering confidential information.
+
+
+--generate-full-command-json-input
+----------------------------------
+
+Prints out a JSON document which represents all possible options that
+can be provided to this command.
+
+This JSON document can be saved to a file, modified with the
+appropriate option values, and then passed back via the --from-json
+option. This provides an alternative to typing options out on the
+command line.
+
+
+--generate-param-json-input [text]
+----------------------------------
+
+Complex input, such as arrays and objects, are passed in JSON format.
+
+When passed the name of an option which takes complex input, this will
+print out example JSON of what needs to be passed to that option.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.

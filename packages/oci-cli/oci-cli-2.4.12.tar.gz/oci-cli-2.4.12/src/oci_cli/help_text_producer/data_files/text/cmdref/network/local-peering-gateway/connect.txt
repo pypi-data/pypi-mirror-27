@@ -1,0 +1,75 @@
+connect
+*******
+
+
+Description
+===========
+
+Connects this local peering gateway (LPG) to another one in the same
+region.
+
+This operation must be called by the VCN administrator who is
+designated as the *requestor* in the peering relationship. The
+*acceptor* must implement an Identity and Access Management (IAM)
+policy that gives the requestor permission to connect to LPGs in the
+acceptor's compartment. Without that permission, this operation will
+fail. For more information, see VCN Peering.
+
+
+Usage
+=====
+
+   oci network local-peering-gateway connect [OPTIONS]
+
+
+Options
+=======
+
+
+--local-peering-gateway-id [text]
+---------------------------------
+
+The OCID of the local peering gateway. [required]
+
+
+--peer-id [text]
+----------------
+
+The OCID of the LPG you want to peer with. [required]
+
+
+--generate-full-command-json-input
+----------------------------------
+
+Prints out a JSON document which represents all possible options that
+can be provided to this command.
+
+This JSON document can be saved to a file, modified with the
+appropriate option values, and then passed back via the --from-json
+option. This provides an alternative to typing options out on the
+command line.
+
+
+--generate-param-json-input [text]
+----------------------------------
+
+Complex input, such as arrays and objects, are passed in JSON format.
+
+When passed the name of an option which takes complex input, this will
+print out example JSON of what needs to be passed to that option.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.
