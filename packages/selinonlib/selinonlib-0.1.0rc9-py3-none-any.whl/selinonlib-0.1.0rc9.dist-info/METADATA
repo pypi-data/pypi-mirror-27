@@ -1,0 +1,33 @@
+Metadata-Version: 2.0
+Name: selinonlib
+Version: 0.1.0rc9
+Summary: a simple tool to visualize, check and generate Python code from a YAML configuration file for Selinon dispatcher for Celery
+Home-page: https://github.com/selinon/selinonlib
+Author: Fridolin Pokorny
+Author-email: fpokorny@redhat.com
+License: BSD
+Description-Content-Type: UNKNOWN
+Keywords: node task graph edge celery selinon yaml condition
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: System :: Distributed Computing
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: argcomplete
+Requires-Dist: celery (>=4)
+Requires-Dist: codegen
+Requires-Dist: flexmock
+Requires-Dist: graphviz
+Requires-Dist: pyyaml
+Requires-Dist: rainbow-logging-handler
+Requires-Dist: selinon
+
+UNKNOWN
+
+
