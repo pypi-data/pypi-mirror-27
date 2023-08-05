@@ -1,0 +1,31 @@
+Metadata-Version: 2.0
+Name: sphinxcontrib-katex
+Version: 0.1
+Summary: A Sphinx extension for rendering math on HTML pages.
+Home-page: https://github.com/hagenw/sphinxcontrib-katex
+Author: Hagen Wierstorf
+Author-email: hagenw@posteo.de
+License: MIT
+Download-URL: https://pypi.python.org/pypi/sphinxcontrib-katex
+Description-Content-Type: UNKNOWN
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Documentation
+Classifier: Topic :: Utilities
+Requires-Dist: sphinx
+
+The extension uses `KaTeX <https://khan.github.io/KaTeX/>`_ for
+rendering of math in HTML pages. Itis designed as a replacement
+for mathjax which is slower in rednering, but comes as a build
+in extension with sphinx
+`sphinx.ext.mathjax
+<https://github.com/sphinx-doc/sphinx/blob/master/sphinx/ext/mathjax.py>`_.
+
+* Download: https://pypi.python.org/pypi/sphinxcontrib-katex/#downloads
+
+* Development: https://github.com/hagenw/sphinxcontrib-katex/
+
+
