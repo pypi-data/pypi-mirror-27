@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<registry>
+
+    <records prefix="plone.resources/superfish-hoverIntent"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'
+             remove='True' />
+
+    <records prefix="plone.resources/superfish"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'
+             remove='True' />
+
+    <records prefix="plone.resources/superfish-plone"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'
+             remove='True' />
+
+</registry>

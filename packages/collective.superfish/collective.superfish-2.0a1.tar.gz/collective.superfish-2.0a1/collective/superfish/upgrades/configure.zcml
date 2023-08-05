@@ -1,0 +1,38 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:five="http://namespaces.zope.org/five"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  xmlns:gs="http://namespaces.zope.org/genericsetup"
+  i18n_domain="collective.superfish">
+
+  <include file="profiles.zcml" />
+
+	<gs:upgradeSteps
+    source="1"
+    destination="2"
+    profile="collective.superfish:default">
+
+      <gs:upgradeStep
+          title="cook css"
+          handler=".to_2" />
+
+      <gs:upgradeDepends
+        title="css registration"
+        import_profile="collective.superfish.upgrades:1_to_2"
+        run_deps="True"/>
+
+  </gs:upgradeSteps>
+
+  <gs:upgradeSteps
+    source="2"
+    destination="5"
+    profile="collective.superfish:default">
+
+      <gs:upgradeDepends
+        title="remove unneeded resources"
+        import_profile="collective.superfish.upgrades:2_to_5"
+        run_deps="True"/>
+
+  </gs:upgradeSteps>
+
+</configure>

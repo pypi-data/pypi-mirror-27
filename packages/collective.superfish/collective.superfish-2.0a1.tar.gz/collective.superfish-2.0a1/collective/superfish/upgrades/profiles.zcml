@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="elkuch">
+
+
+	<gs:registerProfile
+        name="1_to_2"
+        title="Upgrade policy GS profile to 2"
+        directory="profiles/1_to_2"
+        description=""
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        />
+
+    <gs:registerProfile
+		name="2_to_5"
+		title="Upgrade policy GS profile to 5"
+		directory="profiles/2_to_5"
+		description=""
+		provides="Products.GenericSetup.interfaces.EXTENSION"
+		for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+		/>
+
+</configure>

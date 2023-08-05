@@ -1,0 +1,17 @@
+<p class="hiddenStructure" i18n:domain="plone" i18n:translate="heading_sections">Sections</p>
+<nav id="portal-globalnav-wrapper" class="plone-navbar">
+    <div class="container">
+      <div class="plone-navbar-header">
+        <button type="button" class="plone-navbar-toggle collapsed" data-toggle="collapse" data-target="#portal-globalnav-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
+        <ul tal:replace="structure view/portal_tabs" />
+      </div>
+    </div>
+</nav>

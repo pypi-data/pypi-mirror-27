@@ -1,0 +1,245 @@
+Metadata-Version: 1.1
+Name: collective.superfish
+Version: 2.0a1
+Summary: A suckerfish/superfish integration into plone
+Home-page: http://svn.plone.org/svn/collective/collective.superfish
+Author: Peter Mathis
+Author-email: peter.mathis@kombinat.at
+License: GPL
+Description: ====================
+        collective.superfish
+        ====================
+        
+        What is it?
+        ===========
+        
+        collective.superfish integrates the `jQuery Superfish plugin`_ into Plone.
+        
+        Superfish is a really nice solution for dropdown menus using css, valid xhtml
+        and JavaScript which degrades gracefully if JavaScript is not available.
+        
+        .. _`jQuery Superfish plugin`: https://superfish.joelbirch.co/
+        
+        
+        Which Version is for me?
+        ========================
+        
+        Since Version 2.0 ``collective.superfish`` targets Plone 5 only.
+        
+        If you want to use it on Plone < 5 then stay to the 1.x versions.
+        
+        
+        How do you use it?
+        ==================
+        
+        This package behaves as a "drop-in" replacement for ``plone.global_sections``.
+        Just install it :)
+        
+        
+        Customization
+        =============
+        
+        Use Plone's Configuration Registry to change Superfish settings.
+        Filter for prefix ``ISuperfishSettings`` to see available options.
+        
+        For integrators you can set the following records in ``registry.xml`` of your theme profile::
+        
+            <records interface='collective.superfish.interfaces.ISuperfishSettings' prefix='superfish'>
+                <value key="add_portal_tabs">True</value>
+                <value key="menu_depth">2</value>
+                <value key="superfish_options">{ "delay": 800, "cssArrows": true }</value>
+            </records>
+        
+        See https://superfish.joelbirch.co/options/ for a complete
+        list of available ``superfish_options``.
+        
+        
+        TODO
+        ====
+        
+        - Migration experience from Plone 4 -> 5 has to be tested!!
+          There is an upgrade step which removes the old resources from portal_css/portal_javascripts
+          and import the compiled resources to Resource Registry.
+          Maybe someone can give some input on this and file some `issues <https://github.com/collective/collective.superfish/issues>`_
+        
+        - Add tests
+        
+        
+        History
+        =======
+        
+        2.0a1 (2017-11-24)
+        ------------------
+        
+        - migrate superfish resources to Plone 5 resource registry (see upgrade step)
+          [petschki]
+        - behave as "drop-in" replacement for global_sections
+          [petschki]
+        - add uninstall profile
+          [petschki]
+        - update superfish resources to 1.7.9 and hoverIntent to 1.9.0
+          [petschki]
+        
+        1.1 (2016-06-23)
+        ----------------
+        
+        - Update superfish.js from 1.7.3 to 1.7.5,
+          and hoverIntend from r7 (1.7.0) to 1.8.1
+          [fRiSi]
+        
+        - Don't break JS when jQuery is undefined. This happened for eg. on
+          wildcard.foldercontents folder_content view
+          [petschki]
+        
+        1.0 - 2014-05-08
+        ----------------
+        
+        - Update superfish.js from 1.4.8 to 1.7.3
+          and hoverIntent.js from r5 to r7
+          [fRiSi]
+        
+          .. ATTENTION:: This update breaks css compatibility with the previous version!
+        
+        - Add default formatting for superfish menu based on the `DEMO SKIN`
+          in the `superfish default css
+          <https://github.com/joeldbirch/superfish/blob/master/dist/css/superfish.css>`_
+          to make it fit the `Sunburst Theme`
+        
+          Superfish Menu Layout changed from
+        
+          ``<li><span class="selected"><a .../></span></li>`` to
+        
+          ``<li class="selected"><a .../></li>``
+        
+          since javascript could not handle the
+          additional span tag for setting the `.sf-with-ul` class.
+          [fRiSi]
+        
+        
+        0.6 - 2010-08-11
+        ----------------
+        
+        - fixed dropdown for IE7 and IE8
+          [fRiSi]
+        
+        - replace `'` with ``&#39;`` instead of ``&apos;`` since
+          IE7/8 can't handle this xhtml entity
+          (http://inthemaze.net/post/2008/04/08/46-ie7-and-apos)
+          [fRiSi]
+        
+        
+        0.5 - 2010-06-17
+        ----------------
+        
+        -  use `official hoverIntent.js`_ with docstring and versioninfo
+           and replaced ``(function($){})(jQuery);`` with
+           ``jQuery(function($){});`` syntax so the script does not conflict with
+           collective.carousel (when both are merged to the same file by portal_javascript).
+           [fRiSi]
+        
+           .. _`official hoverIntent.js`: http://cherne.net/brian/resources/jquery.hoverIntent.js
+        
+        0.4 - 2010-05-12
+        ----------------
+        
+        - removed desc.replace(...) and added a custom entities method to fix #1.
+          [saily]
+        
+        - don't use version in metadata.xml for the package version in setup.py.
+          the metadata version this is meant to reflect the version of the GS profile
+          and must not be mixed up with the package version.  [fRiSi]
+        
+        0.3 - 2010-03-17
+        ----------------
+        
+        - Replace " with &quot; to keep valid HTML if description contains quotes.
+          [saily]
+        
+        - Made id-generation more resistent against duplicated id's. We now use
+          normalized urls to generate the item id.  [saily]
+        
+        - added support to include portal_tabs in the superfish navigation by setting
+          ``ADD_PORTAL_TABS = True`` in subclasses [fRiSi]
+        
+        - added some documentation targeted at integrators [fRiSi]
+        
+        - don't render superfish_init.js with ``inline=True`` since this leads to
+          strange errors in
+          Products.ResourceRegistries-2.0b2-py2.6.egg/Products/ResourceRegistries/browser/scripts.pt
+          eg when adding a `StaticText Portlet`
+        
+          ``AttributeError: 'DirContainedFileResource5' object has no attribute 'POST'``
+        
+          according to the `resourceregistry documentation`_ it's better to set inline to `False`
+          in any case.
+        
+          .. _`resourceregistry documentation`: http://plone.org/documentation/kb/working-with-resourceregistries/registry-entry-parameters
+        
+        - Removed caching after some discussions with fRiSi.
+          We left the code but disabled it by default, enable it again uncommenting
+          the ram.cache line::
+        
+            #@ram.cache(_render_sections_cachekey)
+            def render(self):
+                return self.index()
+        
+        - Displaying superfish menu only when installed in portal_quickinstaller by
+          adding a superfish-browserlayer through browserlayer.xml file.  [saily]
+        
+        - Changed default values for 'interval' and 'timeout' of hoverIntent which
+          controls the show and hide process of the submenu. Read more about
+          configuration of hoverIntent here: http://cherne.net/brian/resources/jquery.hoverIntent.html
+        
+        0.2 - 2009-06-12
+        ----------------
+        
+        - Moved from full to safe compression for javascript files.
+          [saily]
+        
+        - Removed unused class attributes for SuperFishViewlet.
+          [saily]
+        
+        - Added caching to improve rendering performance.
+          [saily]
+        
+        0.1 - 2009-06-09
+        ----------------
+        
+        - Initial import and idea  [saily]
+        
+        
+        Thanks
+        ======
+        
+        - Daniel Widerin
+        - Patrick Griffiths
+        - Dan Webb
+        - Joel Birch
+        - Harald Friessnegger (fRiSi)
+        - Peter Mathis (petschki)
+        
+        
+        Links
+        =====
+        
+        
+        - Superfish
+          https://superfish.joelbirch.co
+        
+        - hoverIntent
+          https://github.com/briancherne/jquery-hoverIntent
+        
+        - Suckerfish Dropdowns
+          http://www.alistapart.com/articles/dropdowns
+        
+        - jQuery
+          http://jquery.com
+        
+Keywords: navigation suckerfish superfish jquery dropdown
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: 5.0
+Classifier: Framework :: Plone :: 5.1
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7

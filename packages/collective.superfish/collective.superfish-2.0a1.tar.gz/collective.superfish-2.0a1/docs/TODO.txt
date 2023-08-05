@@ -1,0 +1,10 @@
+TODO
+====
+
+- Migration experience from Plone 4 -> 5 has to be tested!!
+  There is an upgrade step which removes the old resources from portal_css/portal_javascripts
+  and import the compiled resources to Resource Registry.
+  Maybe someone can give some input on this and file some `issues <https://github.com/collective/collective.superfish/issues>`_
+
+- Add tests
+

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<registry>
+
+    <records interface='collective.superfish.interfaces.ISuperfishSettings' prefix='superfish'>
+        <value key="add_portal_tabs">True</value>
+        <value key="menu_depth">2</value>
+        <value key="superfish_options">{ "delay": 800, "cssArrows": true }</value>
+    </records>
+
+    <records prefix="plone.resources/superfish-hoverIntent"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+        <value key="js">++plone++collective.superfish.static/hoverIntent.js</value>
+    </records>
+
+    <records prefix="plone.resources/superfish"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+        <value key="js">++plone++collective.superfish.static/superfish.js</value>
+        <value key="css">
+            <element>++plone++collective.superfish.static/superfish.less</element>
+        </value>
+    </records>
+
+    <records prefix="plone.resources/superfish-pattern"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+        <value key="js">++plone++collective.superfish.static/pattern.js</value>
+        <value key="css">
+            <element>++plone++collective.superfish.static/pattern.less</element>
+        </value>
+    </records>
+
+    <records prefix="plone.resources/bundle-superfish"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+        <value key="js">++plone++collective.superfish.static/bundle.js</value>
+    </records>
+
+    <records prefix="plone.bundles/superfish"
+             interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+      <value key="resources">
+        <element>superfish-hoverIntent</element>
+        <element>superfish</element>
+        <element>superfish-pattern</element>
+        <element>bundle-superfish</element>
+      </value>
+      <value key="merge_with">default</value>
+      <value key="enabled">True</value>
+      <value key="jscompilation">++plone++collective.superfish.static/superfish.min.js</value>
+      <value key="csscompilation">++plone++collective.superfish.static/superfish.min.css</value>
+      <value key="last_compilation">2016-10-04 00:00:00</value>
+
+      <!-- so we don't include these modules multiple times -->
+      <value key="stub_js_modules">
+        <element>jquery</element>
+      </value>
+    </records>
+
+</registry>
