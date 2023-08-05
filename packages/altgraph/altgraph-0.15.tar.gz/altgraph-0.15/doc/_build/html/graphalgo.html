@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>altgraph.GraphAlgo — Graph algorithms &#8212; altgraph 0.14 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.14',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="altgraph.GraphStat — Functions providing various graph statistics" href="graphstat.html" />
+    <link rel="prev" title="altgraph.ObjectGraph — Graphs of objecs with an identifier" href="objectgraph.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="graphstat.html" title="altgraph.GraphStat — Functions providing various graph statistics"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="objectgraph.html" title="altgraph.ObjectGraph — Graphs of objecs with an identifier"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">altgraph 0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-altgraph.GraphAlgo">
+<span id="altgraph-graphalgo-graph-algorithms"></span><h1><a class="reference internal" href="#module-altgraph.GraphAlgo" title="altgraph.GraphAlgo: Basic graphs algoritms"><code class="xref py py-mod docutils literal"><span class="pre">altgraph.GraphAlgo</span></code></a> &#8212; Graph algorithms<a class="headerlink" href="#module-altgraph.GraphAlgo" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="altgraph.GraphAlgo.dijkstra">
+<code class="descclassname">altgraph.GraphAlgo.</code><code class="descname">dijkstra</code><span class="sig-paren">(</span><em>graph</em>, <em>start</em><span class="optional">[</span>, <em>end</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#altgraph.GraphAlgo.dijkstra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dijkstra&#8217;s algorithm for shortest paths.</p>
+<p>Find shortest paths from the  start node to all nodes nearer
+than or equal to the <em>end</em> node. The edge data is assumed to be the edge length.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Dijkstra&#8217;s algorithm is only guaranteed to work correctly when all edge lengths are positive.
+This code does not verify this property for all edges (only the edges examined until the end
+vertex is reached), but will correctly compute shortest paths even for some graphs with negative
+edges, and will raise an exception if it discovers that a negative edge has caused it to make a mistake.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="altgraph.GraphAlgo.shortest_path">
+<code class="descclassname">altgraph.GraphAlgo.</code><code class="descname">shortest_path</code><span class="sig-paren">(</span><em>graph</em>, <em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="headerlink" href="#altgraph.GraphAlgo.shortest_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a single shortest path from the given start node to the given end node.
+The input has the same conventions as <a class="reference internal" href="#altgraph.GraphAlgo.dijkstra" title="altgraph.GraphAlgo.dijkstra"><code class="xref py py-func docutils literal"><span class="pre">dijkstra()</span></code></a>. The output is a list
+of the nodes in order along the shortest path.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="objectgraph.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">altgraph.ObjectGraph</span></code> &#8212; Graphs of objecs with an identifier</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="graphstat.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">altgraph.GraphStat</span></code> &#8212; Functions providing various graph statistics</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="graphstat.html" title="altgraph.GraphStat — Functions providing various graph statistics"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="objectgraph.html" title="altgraph.ObjectGraph — Graphs of objecs with an identifier"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">altgraph 0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2010-2011, Ronald Oussoren, Bob Ippolito, 2004 Istvan Albert.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.
+    </div>
+  </body>
+</html>
