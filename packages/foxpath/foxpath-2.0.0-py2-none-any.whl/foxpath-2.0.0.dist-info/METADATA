@@ -1,0 +1,19 @@
+Metadata-Version: 2.0
+Name: foxpath
+Version: 2.0.0
+Summary: Python library for running FoXPath tests against XML
+Home-page: UNKNOWN
+Author: Andy Lulham
+Author-email: andy.lulham@publishwhatyoufund.org
+License: MIT
+Platform: UNKNOWN
+Requires-Dist: PyYAML (==3.12)
+Requires-Dist: lxml (==3.7.1)
+
+FoXPath
+=======
+
+FoXPath is a toy wrapper language for XPath1.0, for those who don't want
+to use XQuery.
+
+
