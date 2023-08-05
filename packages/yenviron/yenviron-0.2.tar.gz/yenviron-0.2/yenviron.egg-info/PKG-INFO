@@ -1,0 +1,27 @@
+Metadata-Version: 1.1
+Name: yenviron
+Version: 0.2
+Summary: Yenviron allows to use 12factor inspired environment variables to configure your Django application. It uses YAML files to store variables so it can be easily integrated with ansible.
+Home-page: https://github.com/javiermatos/yenviron
+Author: Javier Matos Odut
+Author-email: iam@javiermatos.com
+License: MIT License
+Description-Content-Type: UNKNOWN
+Description: 
+        # yenviron
+        
+        Yenviron allows to use [12factor](https://12factor.net/) inspired environment
+        variables to configure your Django application. It uses YAML files to store
+        variables so it can be easily integrated with ansible.
+        
+        This package is based on [django-environ](https://github.com/joke2k/django-environ).
+        
+Keywords: django ansible environment variables settings configuration
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Information Technology
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
