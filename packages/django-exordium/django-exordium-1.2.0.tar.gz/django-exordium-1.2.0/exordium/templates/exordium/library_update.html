@@ -1,0 +1,27 @@
+{# vim: set syntax=htmldjango: #}
+{% extends "exordium/base.html" %}
+
+{% block body %}
+<div class="update_info">
+<p>Library updates can take a long time, depending on the
+amount of data added/updated.  The most time-consuming part is the computation
+of checksums for all media in the library.  Processing times will be largely
+dependant on the hardware on which Exordium is running.  On an Intel Core 2 Duo
+@ 3GHz, a library of 42,000 tracks will take about 50 minutes to compute the
+checksums, and then the rest of the process will take an additional 15 or so.</p>
+<p>Remember, too, that the ETA listed on the checksum-computation step only
+applies to checksums, not the entire process.</p>
+</div>
+{% if update_type == 'add' %}
+<p><strong>Processing Library Additions...</strong></p>
+{% else %}
+<p><strong>Processing Library Adds/Updates/Deletes...</strong></p>
+{% endif %}
+{% if debug %}
+<p><em>(Showing debug output)</em></p>
+{% endif %}
+<blockquote class="library_update">
+@__LIBRARY_UPDATE_AREA__@
+</blockquote>
+<p><a href="{% url 'exordium:library' %}">Back to library management</a></p>
+{% endblock %}

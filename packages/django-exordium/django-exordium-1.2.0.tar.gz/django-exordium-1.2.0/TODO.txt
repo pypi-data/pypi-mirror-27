@@ -1,0 +1,100 @@
+Things I want to get done before inevitably letting the project
+bitrot:
+
+* Nothing!
+
+Things which may or may not make that cut:
+
+* Might be nice to actually spend some time to make it look
+  better.  The sidebar's pretty ugly, etc.
+* Should implement a max-number-of-results in search.  Probably
+  only really an issue on Songs, maybe just use 500 like we do
+  on the artist view page.
+* Might be nice to have a mobile-optimized CSS
+* Split tests into multiple files?  That file is huge.
+* Direct links to pages with django-tables2 (instead of just
+  next/prev)
+* Ability to specify subdirectories when doing add/update
+  actions, to only process a subset of the library.
+* http://reinout.vanrees.org/weblog/2014/05/19/context.html
+  Basically, overriding get_context_data() in our views is
+  wordy and not needed most of the time.  Use 'view.varname'
+  in the template and it'll pull from the named var/func.
+  No fussy context fiddling required!
+* Use annotate() for some of our aggregate information on
+  artist browse, for instance.
+* Convert our three forms to actual django Forms.
+* Might be nice to include an admin subcommand to clean the
+  zip directory, which could be plugged into a cron rather than
+  having to do your own.
+
+Things which, if I'm being honest here, are likely to never
+actually happen:
+
+* Exordium can be slow, and it'd be nice to figure out if there
+  are reasonable ways to speed it up, though it appears that in
+  my case I'm primarily I/O bound.  The initial import of a
+  42k-track library on my box takes about an hour, the majority
+  of which is spent doing checksums of the files.  I've tested
+  out using faster, less-secure checksum method (sha1sum, md5sum)
+  and while those technically save us some time in CPU, it turns
+  out that on my machine at least I'm primarily I/O bound while
+  doing such large imports, and using the faster methods don't
+  actually save any time.  Beyond the initial checksumming in the
+  add process, there's still a good 15 minutes after that for
+  database imports.  Relatedly, I'd put in some logic so that if
+  an artist has more than 500 tracks, the track list isn't shown
+  on the artist page, because performance was lousy there, too.
+  It'd be nice to see if there's a good way to get that faster as
+  well.  The good news is that outside of cases like that, it
+  does seem to perform fine.  Adds/ updates are speedy enough for
+  me, and in general the app is pretty responsive.
+* More precise summary text for classical
+  * "Composer, tracks 1-5, 8: foo", etc.
+* Extra details on album song list (format, bitrate, etc)
+  (something else for user prefs.  Will have to wait until
+  I figure out a *reasonable* way to have dynamic column
+  definitions in django-tables2.  I don't want to define
+  a different class for each possibility.)
+* Might be nice to support some artist groupings.
+  ("Amanda Palmer and the Grand Theft Orchestra" albums
+  should probably show up alongside "Amanda Palmer" albums,
+  etc.  I assume this would be something manual-only from
+  the admin area.  The "correct" thing to do might be to
+  find a tag to use, instead, but I'm guessing that'd
+  overly-complicate the backend, which I think I'd like
+  to keep cleaner.  But it might be a monster anyway.)
+* "Random albums" page?
+* If deployed with WSGI configured for multiple processes,
+  both user+global preferences only get applied properly
+  on the process for which they were set.  Subsequent page
+  loads may or may not come from the same process, so
+  results can be inconsistent.  I'm not sure if there's a
+  way around that or not - for now I've just dropped my
+  number of processes down to 1.
+* Maybe make "Various" a non-reserved artist name?  We
+  could put in a big ol' random mess of characters for
+  the name, and just rely on Artist.various to display
+  it properly on the UI and all that.  That way if we
+  ever have a band whose name really is "Various" we
+  should be able to support it.  Would have to figure out
+  some UI differences to differentiate, if so.  Maybe
+  italics or something for the special artist?
+* Theme support might be nice, and should be pretty
+  trivial, though I doubt I'll take the time to figure
+  it out.
+* Could maybe apply some sorting while adding/updating so
+  that updates appear in some kind of order rather than
+  effectively randomly (would be especially nice for the
+  initial bulk add(), so you'd have at least SOME indication
+  of how much more time will be needed)
+* Management subcommands to add/update the library
+  (actually, this is more complicated than I'd considered
+  initially, because the user running the add/update won't
+  be the same as the user Django is running as, so 
+  permission issues come into play.)
+* Relatedly, the add/update stuff DOES sort of belong in
+  something like celery instead, but I don't actually have
+  any interest in implementing that on my host at the
+  moment.
+* Perhaps we should read genre from tags?
