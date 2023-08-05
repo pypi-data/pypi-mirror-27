@@ -1,0 +1,21 @@
+Metadata-Version: 1.2
+Name: sqlineage
+Version: 0.2.2
+Summary: A scanner for SQL
+Home-page: https://github.com/gtoonstra/sqlineage
+Author: G. Toonstra
+Author-email: gtoonstra@gmail.com
+License: Apache2
+Description: 
+        This package parses SQL files and allows you to build a hierarchy
+        of select and insert statements that lists the identifiers, so you
+        can build a model that reflects data lineage in the statements and
+        how data flows.
+        
+Keywords: sql scanner parser
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3
