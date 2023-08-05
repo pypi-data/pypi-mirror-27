@@ -1,0 +1,16 @@
+MANIFEST.in
+setup.py
+src/com.actioniq.playpants.egg-info/PKG-INFO
+src/com.actioniq.playpants.egg-info/SOURCES.txt
+src/com.actioniq.playpants.egg-info/dependency_links.txt
+src/com.actioniq.playpants.egg-info/top_level.txt
+src/com.actioniq.playpants.egg-info/zip-safe
+src/play/__init__.py
+src/play/register.py
+src/play/targets/__init__.py
+src/play/targets/play_project.py
+src/play/targets/routes_library.py
+src/play/targets/twirl_library.py
+src/play/tasks/__init__.py
+src/play/tasks/routes_gen.py
+src/play/tasks/twirl_gen.py
