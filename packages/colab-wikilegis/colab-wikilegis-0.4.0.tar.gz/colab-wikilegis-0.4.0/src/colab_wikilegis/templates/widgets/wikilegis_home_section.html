@@ -1,0 +1,57 @@
+{% extends "base-home-section.html" %}
+{% load staticfiles %}
+
+{% block app_slug %}wikilegis{% endblock %}
+{% block section_title %}Contribua em projetos de lei{% endblock %}
+{% block section_title_attr %}Veja todas as projetos{% endblock %}
+{% block section_text %}Edite e aprimore projetos de lei artigo por artigo.{% endblock %}
+{% block plugin_url %}{% url 'wikilegis:colab_wikilegis' '' %}{% endblock %}
+{% block logo_url %}{% static 'img/logo-wikilegis.svg' %}{% endblock %}
+
+{% block cards %}
+  {% for bill in wikilegis_data %}
+    <a class="info-card__link" href="{{bill.get_url}}">
+      <li class="info-card info-card--wikilegis">
+        <div class="info-card__header">
+          {% if bill.status == "closed" %}
+          <div class="info-card__icon info-card__icon--closed"><i class="icon icon-{{bill.theme.slug}}"></i></div>
+          {% else %}
+          <div class="info-card__icon"><i class="icon icon-{{bill.theme.slug}}"></i></div>
+          {% endif %}
+          <h2 class="info-card__title">{{bill.title|truncatechars:40}}</h2>
+        </div>
+        <p class="info-card__text">
+          {{bill.description|truncatechars:160}}
+        </p>
+        <div class="info-card__footer">
+          <div class="card-stats">
+            <div class="card-stats__name">Propostas</div>
+            {% if bill.status == "closed" %}
+            <div class="card-stats__value card-stats__value--closed">{{bill.amendments_count}}</div>
+            {% else %}
+            <div class="card-stats__value">{{bill.amendments_count}}</div>
+            {% endif %}
+          </div>
+
+          <div class="card-stats">
+            {% if bill.status == "closed" %}
+            <div class="card-stats__name">Encerrado em:</div>
+            <div class="card-stats__value card-stats__value--closed">{{bill.closing_date|date:"d/m/Y"}}</div>
+            {% else %}
+            <div class="card-stats__name">Participe até:</div>
+            <div class="card-stats__value">{{bill.closing_date|date:"d/m/Y"}}</div>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+    </a>
+  {% empty %}
+    <li>
+      <div class="section__content-wrapper section__content-wrapper--center text-center">
+        <p class="section__text">
+          Desculpe. Não encontramos nenhum projeto de lei.
+        </p>
+      </div>
+    </li>
+  {% endfor %}
+{% endblock cards %}
