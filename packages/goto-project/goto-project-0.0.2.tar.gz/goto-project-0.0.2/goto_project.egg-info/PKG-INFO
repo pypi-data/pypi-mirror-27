@@ -1,0 +1,67 @@
+Metadata-Version: 1.2
+Name: goto-project
+Version: 0.0.2
+Summary: Easy and fast project switching in your shell!
+Home-page: https://github.com/cryptomaniac512/goto-project
+Author: Nikita Sivakov
+Author-email: cryptomaniac.512@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: goto-project
+        ============
+        
+        Easy and fast project switching in your shell!
+        
+        |Build Status| |Coverage Status| |Python versions| |PyPi|
+        
+        Installation
+        ------------
+        
+        You can install it in your user-space with
+        
+        .. code:: shell
+        
+            pip3 install goto-project --user  # or pip if python3 is your default interpreter
+        
+        Usage
+        -----
+        
+        Specify your project in ``~/.goto-project.yaml`` file.
+        
+        .. code:: yaml
+        
+            goto-project:  # this is a project name
+              path: ~/Devel/Projects/goto-project/  # path project
+              instructions:  # any instructions to call when you switch project
+                - source ~/Devel/Envs/py3_goto-project/bin/activate
+              command: vim  # command to run when project opened
+              clear_on_exit: true  # if specified then terminal output will be cleared on project close
+        
+        To list all available projects call
+        
+        .. code:: shell
+        
+            gt
+        
+        To open project call ``gt`` with project name as ergument
+        
+        .. code:: shell
+        
+            gt goto-project
+        
+        To close project press ``C-D``. When you close project all changes will
+        be breaked. For example, ``$PATH`` will be restored if you extend it.
+        
+        Simple screencast available `here <https://asciinema.org/a/149712>`__
+        
+        .. |Build Status| image:: https://travis-ci.org/cryptomaniac512/goto-project.svg?branch=master
+           :target: https://travis-ci.org/cryptomaniac512/goto-project
+        .. |Coverage Status| image:: https://coveralls.io/repos/github/cryptomaniac512/goto-project/badge.svg?branch=master
+           :target: https://coveralls.io/github/cryptomaniac512/goto-project?branch=master
+        .. |Python versions| image:: https://img.shields.io/badge/python-3.6-blue.svg
+        .. |PyPi| image:: https://img.shields.io/badge/PyPi-0.0.2-yellow.svg
+           :target: https://pypi.python.org/pypi/goto-project
+        
+Keywords: project shell management
+Platform: UNKNOWN
+Requires-Python: >=3.6
