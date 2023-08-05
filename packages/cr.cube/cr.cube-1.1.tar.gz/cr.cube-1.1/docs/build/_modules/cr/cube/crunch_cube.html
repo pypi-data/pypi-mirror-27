@@ -1,0 +1,491 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cr.cube.crunch_cube &#8212; Crunch Cube 1.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Crunch Cube 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/crunch_logo.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for cr.cube.crunch_cube</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;Home of the CrunchCube class.</span>
+
+<span class="sd">This module contains the definition of the CrunchCube class. It represents</span>
+<span class="sd">the open-source library used for manipulating the crunch cubes (JSON responses</span>
+<span class="sd">from the Crunch.io platform).</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">cr.cube.dimension</span> <span class="k">import</span> <span class="n">Dimension</span>
+
+
+<div class="viewcode-block" id="CrunchCube"><a class="viewcode-back" href="../../../cr.cube.html#cr.cube.crunch_cube.CrunchCube">[docs]</a><span class="k">class</span> <span class="nc">CrunchCube</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Implementation of the CrunchCube API class.</span>
+
+<span class="sd">    Class is used for the implementation of the main API functions that are</span>
+<span class="sd">    needed for seamless integration with the crunch cube responses</span>
+<span class="sd">    (from Crunch.io platform).</span>
+
+<span class="sd">    Main API functions are:</span>
+<span class="sd">      - as_array</span>
+<span class="sd">      - margin</span>
+<span class="sd">      - proportions</span>
+<span class="sd">      - percentages</span>
+
+<span class="sd">    These functions are used to retrieve statistical information of interest,</span>
+<span class="sd">    from the JSON like crunch cubes. Complete usage of each API function is</span>
+<span class="sd">    described within the appropriate docstring.</span>
+
+<span class="sd">    Crunch Cubes contain richer metadata than standart Python objects, and</span>
+<span class="sd">    they also conceal certain complexity in the data structures from the user.</span>
+<span class="sd">    In particular, Multiple Response variables are generally represented as</span>
+<span class="sd">    single dimensions in result tables, but in the actual data, they may</span>
+<span class="sd">    comprise of two dimensions. These methods (API) understand the subtleties</span>
+<span class="sd">    in the Crunch data types, and correctly compute margins and</span>
+<span class="sd">    percentages off of them.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Initializes the CrunchCube class with the cube JSON response.</span>
+
+<span class="sd">        Class can be initialized with both JSON string, and dict types.</span>
+<span class="sd">        There&#39;s no real parsing of the data at the point of initialization,</span>
+<span class="sd">        just storing. The functionality is implemented in the</span>
+<span class="sd">        appropriate API functions.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># @cube: Represents the cube response object, as generated by</span>
+        <span class="c1"># the zz9d cube factory.</span>
+
+        <span class="c1"># Cube can come in as a JSON or as a dictionary, So we need to check</span>
+        <span class="c1"># its type, and convert it to a dictionary if it&#39;s JSON, if possible.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="c1"># If conversion to dict is not possible, or an unexpected type is</span>
+        <span class="c1"># provided, fail sooner rather than later.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">((</span>
+                <span class="s1">&#39;Unsupported type provided: </span><span class="si">{}</span><span class="s1">. &#39;</span>
+                <span class="s1">&#39;A `cube` must be JSON or `dict`.&#39;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">)))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cube</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_get_dimensions</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cube</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Gets the dimensions of the crunch cube.</span>
+
+<span class="sd">        This function is internal, and is not mean to be used by ouside users</span>
+<span class="sd">        of the CrunchCube class. The main reason for this is the internal</span>
+<span class="sd">        representation of the different variable types (namely the MR and the</span>
+<span class="sd">        CA). These types have two dimensions each, but in the case of MR, the</span>
+<span class="sd">        second dimensions shouldn&#39;t be visible to the user. This function</span>
+<span class="sd">        returns such dimensions as well, since they&#39;re necessary for the</span>
+<span class="sd">        correct implementation of the functionality for the MR type.</span>
+<span class="sd">        The version that is mentioned to be used by users is the</span>
+<span class="sd">        property &#39;dimensions&#39;.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">entries</span> <span class="o">=</span> <span class="n">cube</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;dimensions&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="p">(</span>
+                <span class="c1"># Multiple Response and Categorical Array variables have</span>
+                <span class="c1"># two subsequent dimensions (elements and selections). For</span>
+                <span class="c1"># this reason it&#39;s necessary to pass in both of them in the</span>
+                <span class="c1"># Dimension class init method. This is needed in order to</span>
+                <span class="c1"># determine the correct type (CA or MR). We only skip the</span>
+                <span class="c1"># two-argument constructor for the last dimension in the list</span>
+                <span class="c1"># (where it&#39;s not possible to fetch the subsequent one).</span>
+                <span class="n">Dimension</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">entries</span><span class="p">)</span>
+                <span class="k">else</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">entries</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">entries</span><span class="p">)</span>
+        <span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_get_mr_selections_indices</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dimensions</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Gets indices of each &#39;selection&#39; dim, for corresponding MR dim.</span>
+
+<span class="sd">        MR and CA variables are represented by two dimensions each. These</span>
+<span class="sd">        dimensions can be thought of as &#39;elements&#39; and &#39;selections&#39;.</span>
+<span class="sd">        This function returns the indices of the &#39;selections&#39;</span>
+<span class="sd">        dimension for each MR variable.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">mr_dimensions_indices</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dimensions</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dimensions</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="n">dim</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;multiple_response&#39;</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="c1"># For each MR and CA dimension, the &#39;selections&#39; dimension</span>
+        <span class="c1"># follows right after it (in the originating cube).</span>
+        <span class="c1"># Here we increase the MR index by 1, which gives us</span>
+        <span class="c1"># the index of the corresponding &#39;selections&#39; dimension.</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mr_dimensions_indices</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_get_valid_indices</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dimensions</span><span class="p">,</span> <span class="n">include_missing</span><span class="p">,</span> <span class="n">get_non_selected</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Gets valid indices for each dimension.</span>
+
+<span class="sd">        Main criterion for a valid index is most often the information about</span>
+<span class="sd">        whether the corresponding value of the dimension is missing or not.</span>
+<span class="sd">        For MR variables, since they use two dimensions, the valid index</span>
+<span class="sd">        for the &#39;selections&#39; dimensions is [0], except in the case of</span>
+<span class="sd">        non-selected slices calculation, where it needs to be [1].</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">valid_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim</span><span class="o">.</span><span class="n">valid_indices</span><span class="p">(</span><span class="n">include_missing</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">dimensions</span><span class="p">]</span>
+
+        <span class="n">mr_selections_indices</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_mr_selections_indices</span><span class="p">(</span><span class="n">dimensions</span><span class="p">)</span>
+        <span class="n">mr_slice</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">get_non_selected</span> <span class="k">else</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">mr_selections_indices</span><span class="p">:</span>
+            <span class="c1"># In the case of MR variables, we only need to select the</span>
+            <span class="c1"># &#39;selected&#39; slice of the &#39;selections&#39; dimension.</span>
+            <span class="n">valid_indices</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span>
+                    <span class="n">valid_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mr_selections_indices</span>
+                    <span class="k">else</span> <span class="n">mr_slice</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">valid_indices</span><span class="p">)</span>
+            <span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">valid_indices</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_fix_shape</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Fixes shape of MR variables.</span>
+<span class="sd">        For MR variables, where &#39;selections&#39; dims are dropped, the ndarray</span>
+<span class="sd">        needs to be reshaped, in order to seem as if those dims never existed.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">new_shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">array</span><span class="o">.</span><span class="n">shape</span> <span class="k">if</span> <span class="n">dim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">new_shape</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_non_weighted_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">_as_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">get_non_selected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">weighted</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get crunch cube as ndarray.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">            include_missing (bool): Include rows/cols for missing values</span>
+<span class="sd">            get_non_selected (bool): Get non-selected slices for MR vars</span>
+<span class="sd">        Returns</span>
+<span class="sd">            res (ndarray): Tabular representation of crunch cube</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cube</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;measures&#39;</span><span class="p">][</span><span class="s1">&#39;count&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">weighted</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cube</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;counts&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">all_dimensions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cube</span><span class="p">)</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">dim</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">all_dimensions</span><span class="p">]</span>
+        <span class="n">valid_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_valid_indices</span><span class="p">(</span>
+            <span class="n">all_dimensions</span><span class="p">,</span>
+            <span class="n">include_missing</span><span class="p">,</span>
+            <span class="n">get_non_selected</span>
+        <span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="o">*</span><span class="n">valid_indices</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fix_shape</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+    <span class="c1"># API Functions</span>
+
+<div class="viewcode-block" id="CrunchCube.labels"><a class="viewcode-back" href="../../../cr.cube.html#cr.cube.crunch_cube.CrunchCube.labels">[docs]</a>    <span class="k">def</span> <span class="nf">labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_missing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Gets labels for each cube&#39;s dimension.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">            include_missing (bool): Include labels for missing values</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">            labels (list of lists): Labels for each dimension</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dim</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">include_missing</span><span class="p">)</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimensions</span><span class="p">]</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Dimensions of the crunch cube.&#39;&#39;&#39;</span>
+        <span class="n">all_dimensions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cube</span><span class="p">)</span>
+        <span class="n">mr_selections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_mr_selections_indices</span><span class="p">(</span><span class="n">all_dimensions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">dim</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">all_dimensions</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mr_selections</span>
+        <span class="p">]</span>
+
+<div class="viewcode-block" id="CrunchCube.as_array"><a class="viewcode-back" href="../../../cr.cube.html#cr.cube.crunch_cube.CrunchCube.as_array">[docs]</a>    <span class="k">def</span> <span class="nf">as_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get crunch cube as ndarray.</span>
+
+<span class="sd">        Returns the tabular representation of the crunch cube. The returning</span>
+<span class="sd">        value has as many dimensions, as there are dimensions in the crunch</span>
+<span class="sd">        cube itself. E.g. for a cross-tab representation of a categorical and</span>
+<span class="sd">        numerical variable, the resulting cube will have two dimensions.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">            include_missing (bool): Include rows/cols for missing values</span>
+<span class="sd">        Returns</span>
+<span class="sd">            (ndarray): Tabular representation of the crunch cube</span>
+
+<span class="sd">        Example 1 (Categorical x Categorical):</span>
+<span class="sd">            &gt;&gt;&gt; cube = CrunchCube(response)</span>
+<span class="sd">            &gt;&gt;&gt; cube.as_array()</span>
+<span class="sd">            np.array([</span>
+<span class="sd">                [5, 2],</span>
+<span class="sd">                [5, 3],</span>
+<span class="sd">            ])</span>
+
+<span class="sd">        Example 2 (Categorical x Categorical, include missing values):</span>
+<span class="sd">            &gt;&gt;&gt; cube = CrunchCube(response)</span>
+<span class="sd">            &gt;&gt;&gt; cube.as_array(include_missing=True)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">                [5, 3, 2, 0],</span>
+<span class="sd">                [5, 2, 3, 0],</span>
+<span class="sd">                [0, 0, 0, 0],</span>
+<span class="sd">            ])</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_as_array</span><span class="p">(</span>
+            <span class="n">include_missing</span><span class="o">=</span><span class="n">include_missing</span><span class="p">,</span>
+            <span class="n">weighted</span><span class="o">=</span><span class="n">weighted</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="CrunchCube.margin"><a class="viewcode-back" href="../../../cr.cube.html#cr.cube.crunch_cube.CrunchCube.margin">[docs]</a>    <span class="k">def</span> <span class="nf">margin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get margin for the selected axis.</span>
+
+<span class="sd">        the selected axis. For MR variables, this is the sum of the selected</span>
+<span class="sd">        and non-selected slices.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">            axis (int): Axis across the margin is calculated. If no axis is</span>
+<span class="sd">                        provided the margin is calculated across all axis.</span>
+<span class="sd">                        For Categoricals, Num, Datetime, and Text, this</span>
+<span class="sd">                        translates to sumation of all elements.</span>
+<span class="sd">        Returns</span>
+<span class="sd">            Calculated margin for the selected axis</span>
+
+<span class="sd">        Example 1:</span>
+<span class="sd">            &gt;&gt;&gt; cube = CrunchCube(fixt_cat_x_cat)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">               [5, 2],</span>
+<span class="sd">               [5, 3],</span>
+<span class="sd">            ])</span>
+
+<span class="sd">            &gt;&gt;&gt; cube.margin(axis=0)</span>
+<span class="sd">            np.array([10, 5])</span>
+
+<span class="sd">        Example 2:</span>
+<span class="sd">            &gt;&gt;&gt; cube = CrunchCube(fixt_cat_x_num_x_datetime)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">                [[1, 1],</span>
+<span class="sd">                 [0, 0],</span>
+<span class="sd">                 [0, 0],</span>
+<span class="sd">                 [0, 0]],</span>
+<span class="sd">                [[2, 1],</span>
+<span class="sd">                 [1, 1],</span>
+<span class="sd">                 [0, 0],</span>
+<span class="sd">                 [0, 0]],</span>
+<span class="sd">                [[0, 0],</span>
+<span class="sd">                 [2, 3],</span>
+<span class="sd">                 [0, 0],</span>
+<span class="sd">                 [0, 0]],</span>
+<span class="sd">                [[0, 0],</span>
+<span class="sd">                 [0, 0],</span>
+<span class="sd">                 [3, 2],</span>
+<span class="sd">                 [0, 0]],</span>
+<span class="sd">                [[0, 0],</span>
+<span class="sd">                 [0, 0],</span>
+<span class="sd">                 [1, 1],</span>
+<span class="sd">                 [0, 1]]</span>
+<span class="sd">            ])</span>
+
+<span class="sd">            &gt;&gt;&gt; cube.margin(axis=0)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">                [3, 2],</span>
+<span class="sd">                [3, 4],</span>
+<span class="sd">                [4, 3],</span>
+<span class="sd">                [0, 1],</span>
+<span class="sd">            ])</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">weighted</span><span class="o">=</span><span class="n">weighted</span><span class="p">)</span>
+
+        <span class="n">all_dimensions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cube</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_mr_selections_indices</span><span class="p">(</span><span class="n">all_dimensions</span><span class="p">):</span>
+            <span class="n">margin</span> <span class="o">=</span> <span class="n">array</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_as_array</span><span class="p">(</span><span class="n">get_non_selected</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                            <span class="n">weighted</span><span class="o">=</span><span class="n">weighted</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">margin</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">margin</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CrunchCube.proportions"><a class="viewcode-back" href="../../../cr.cube.html#cr.cube.crunch_cube.CrunchCube.proportions">[docs]</a>    <span class="k">def</span> <span class="nf">proportions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get proportions of a crunch cube.</span>
+
+<span class="sd">        This function calculates the proportions across the selected axis</span>
+<span class="sd">        of a crunch cube. For most variable types, it means the value divided</span>
+<span class="sd">        by the margin value. For Multiple Response types, the value is divied</span>
+<span class="sd">        by the sum of selected and non-selected slices.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">            axis (int): Base axis of proportions calculation. If no axis is</span>
+<span class="sd">                        provided, calculations are done accros entire table.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">            (nparray): Calculated array of crunch cube proportions.</span>
+
+<span class="sd">        Example 1:</span>
+<span class="sd">            &gt;&gt;&gt; cube = CrunchCube(fixt_cat_x_cat)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">               [5, 2],</span>
+<span class="sd">               [5, 3],</span>
+<span class="sd">            ])</span>
+
+<span class="sd">            &gt;&gt;&gt; cube.proportions()</span>
+<span class="sd">            np.array([</span>
+<span class="sd">                [0.3333333, 0.1333333],</span>
+<span class="sd">                [0.3333333, 0.2000000],</span>
+<span class="sd">            ])</span>
+
+<span class="sd">        Example 2:</span>
+<span class="sd">            &gt;&gt;&gt; cube = CrunchCube(fixt_cat_x_cat)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">               [5, 2],</span>
+<span class="sd">               [5, 3],</span>
+<span class="sd">            ])</span>
+
+<span class="sd">            &gt;&gt;&gt; cube.proportions(axis=0)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">                [0.5, 0.4],</span>
+<span class="sd">                [0.5, 0.6],</span>
+<span class="sd">            ])</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">margin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">margin</span> <span class="o">=</span> <span class="n">margin</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span> <span class="o">/</span> <span class="n">margin</span></div>
+
+<div class="viewcode-block" id="CrunchCube.percentages"><a class="viewcode-back" href="../../../cr.cube.html#cr.cube.crunch_cube.CrunchCube.percentages">[docs]</a>    <span class="k">def</span> <span class="nf">percentages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get the percentages for crunch cube values.</span>
+
+<span class="sd">        This function calculates the percentages for crunch cube values. The</span>
+<span class="sd">        percentages are based on the values of the &#39;proportions&#39;.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">            axis (int): Base axis of percentages calculation. If no axis is</span>
+<span class="sd">                        provided, calculations are done accros entire table.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">            (nparray): Calculated array of crunch cube percentages.</span>
+
+<span class="sd">        Example 1:</span>
+<span class="sd">            &gt;&gt;&gt; cube = CrunchCube(fixt_cat_x_cat)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">               [5, 2],</span>
+<span class="sd">               [5, 3],</span>
+<span class="sd">            ])</span>
+
+<span class="sd">            &gt;&gt;&gt; cube.percentages()</span>
+<span class="sd">            np.array([</span>
+<span class="sd">                [33.33333, 13.33333],</span>
+<span class="sd">                [33.33333, 20.00000],</span>
+<span class="sd">            ])</span>
+
+<span class="sd">        Example 2:</span>
+<span class="sd">            &gt;&gt;&gt; cube = CrunchCube(fixt_cat_x_cat)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">               [5, 2],</span>
+<span class="sd">               [5, 3],</span>
+<span class="sd">            ])</span>
+
+<span class="sd">            &gt;&gt;&gt; cube.percentages(axis=0)</span>
+<span class="sd">            np.array([</span>
+<span class="sd">                [50., 40.],</span>
+<span class="sd">                [50., 60.],</span>
+<span class="sd">            ])</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">proportions</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Crunch Cube 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Crunch.io.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
