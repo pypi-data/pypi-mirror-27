@@ -1,0 +1,5 @@
+[console_scripts]
+kael-crontab = kael.cron:kael_crontab
+kael-web = kael.web_cli:web_main
+kael = kael.cli:main
+
