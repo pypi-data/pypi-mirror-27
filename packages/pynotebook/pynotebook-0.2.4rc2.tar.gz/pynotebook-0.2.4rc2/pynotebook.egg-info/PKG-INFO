@@ -1,0 +1,67 @@
+Metadata-Version: 1.1
+Name: pynotebook
+Version: 0.2.4rc2
+Summary: A wx-python based notebook environment for interactive computing
+Home-page: https://pypi.python.org/pypi/pynotebook/
+Author: C. Ecker
+Author-email: textmodelview@gmail.com
+License: BSD
+Description: pynotebook
+        ==========
+        
+        .. image::
+           https://raw.githubusercontent.com/chrisecker/textmodel/master/pynotebook/screenshots/ball2_small.png
+        
+        `More screenshots <https://github.com/chrisecker/textmodel/tree/master/pynotebook/screenshots>`_
+        
+        
+        Introduction
+        ------------
+        
+        Pynotebook is a library for creating notebook applications in
+        wxpython. A notebook is a document which can contain program code,
+        text and graphics.  Notebooks are a pleasant way to develop and
+        document code and to store ideas.
+        
+        Unlike other python notebook interfaces such as jupyter or spyder, pnb
+        is very lightweight and can be easily to embeded in wxpython
+        applications.
+        
+        Although python is the native language for pynotebook, it is
+        relatively easy to extend it to other scripting languages.
+        
+        Applications using the Pynotebook library are
+        
+        - pnb (a python notebook application) and
+        - rnb (an experimental notebook for the r programming language)
+        
+        
+        Features
+        --------
+        
+        Pynotebook does not need a webbrowser, c extensions or anything except
+        python and `wxPython <https://wxpython.org/>`_. Pynotebook has a
+        single dependency (wxpython) is therefore easy to embed and
+        distribute.
+        
+        
+        Links & Contact
+        ---------------
+        - `github page <https://github.com/chrisecker/textmodel/tree/master/pynotebook>`_
+        - `pnb application <https://pypi.python.org/pypi/pnb>`_
+        - `rnb application <https://pypi.python.org/pypi/rnb>`_
+        
+        You can also contact me by `email <textmodelview@gmail.com>`_.
+        
+        
+        
+Keywords: Interactive,Interpreter,Notebook,Shell,WXPython
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
