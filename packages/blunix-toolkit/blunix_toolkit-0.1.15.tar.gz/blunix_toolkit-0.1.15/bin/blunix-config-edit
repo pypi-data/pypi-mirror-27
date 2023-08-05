@@ -1,0 +1,14 @@
+#!/usr/bin/env python2.7
+# -*- encoding: utf-8 -*-
+
+import os
+from blunix_toolkit import config
+
+
+def main():
+    editor = os.getenv('EDITOR', 'vi')
+    os.system('{} "{}"'.format(editor, config.config_file()))
+
+
+if __name__ == '__main__':
+    main()
