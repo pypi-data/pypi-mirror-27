@@ -1,0 +1,38 @@
+Metadata-Version: 1.1
+Name: tapioca-statuspage
+Version: 0.0.3
+Summary: StausPage.io wrapper using tapioca
+Home-page: https://github.com/olist/tapioca-statuspage
+Author: Olist Developers
+Author-email: developers@olist.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: # Tapioca statuspage
+        
+        ## Installation
+        ```
+        pip install tapioca-statuspage
+        ```
+        
+        ## Documentation
+        ``` python
+        from tapioca_statuspage import Statuspage
+        
+        
+        api = Statuspage()
+        
+        ```
+        
+        No more documentation needed.
+        
+        - Learn how Tapioca works [here](http://tapioca-wrapper.readthedocs.org/en/stable/quickstart.html)
+        - Explore this package using iPython
+        - Have fun!
+        
+Keywords: statuspage
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.5
