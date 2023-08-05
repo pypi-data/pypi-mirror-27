@@ -1,0 +1,25 @@
+Metadata-Version: 2.0
+Name: bsql
+Version: 0.12.0
+Summary: Black Earth’s SQL Database Interface Library
+Home-page: https://github.com/BlackEarth/bsql
+Author: Sean Harrison
+Author-email: sah@blackearthgroup.com
+License: LGPL 3.0
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: bl
+Requires-Dist: bxml
+Provides-Extra: dev
+Provides-Extra: test
+
+bsql
+=====
+Black Earth SQL database library
+
+    $ pip install bsql
+
+
