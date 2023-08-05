@@ -1,0 +1,27 @@
+Metadata-Version: 2.0
+Name: wreader
+Version: 0.2
+Summary: Wunderground weather API reader for hourly data
+Home-page: https://github.com/marcus-luck/wreader
+Author: Marcus Luck
+Author-email: marcus.luck@outlook.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: wreader wunderground weather wunderground-api
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: pandas (>=0.19.2)
+Requires-Dist: requests (>=2.12.4)
+
+Wreader
+--------
+
+To use (with caution), simply do::
+
+    >>> import wreader
+    >>> wr = wreader(api_key)
+    >>> output = wr.get_location_data(location)
+
+
