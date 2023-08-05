@@ -1,0 +1,23 @@
+{% load static %}
+<style type="text/css">
+#{{ widget.name|slugify }}__colorPicker .track {
+	 background: #EFEFEF url({% static widget.image %}) no-repeat 50% 50%;
+}
+</style>
+<script type="text/javascript">
+	{% if widget.variant == 'jquery' %}
+		$(document).ready(function(){
+			$("{{ widget.name|slugify }}__colorPicker").tinycolorpicker();
+		});
+	{% elif widget.variant == 'vanilla' %}
+		window.onload = function(){
+			tinycolorpicker(document.getElementById("{{ widget.name|slugify }}__colorPicker"));
+		}
+	{% endif %}
+</script>
+<div class="colorPicker" id="{{ widget.name|slugify }}__colorPicker">
+	<a class="color"><div class="colorInner"></div></a>
+	<div class="track"></div>
+	<ul class="dropdown"><li></li></ul>
+	<input type="hidden" class="colorInput" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %} />
+</div>
