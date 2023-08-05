@@ -1,0 +1,23 @@
+{% from 'invisibleroads_uploads:templates/parts.jinja2' import upload_button %}
+
+{% macro head_style_loaded(request) %}{% endmacro %}
+{% macro head_style_inline(request) %}{% endmacro %}
+
+{% macro head_script_inline(request) %}
+x = CC.image = {};
+x.import_url = '{{ request.route_path('image/import_image') }}';
+{% endmacro %}
+
+{% macro body_script_loaded(request) %}{% endmacro %}
+{% macro body_script_inline(request) %}{% endmacro %}
+
+{% macro render_argument(request, data_item) %}
+{% set key = data_item.key %}
+{{ upload_button(request, id='%s-upload-button' % key, text='Upload', class='btn-lg image-upload', data_name=key) }}
+<div id="{{ key }}">{{ render_property(request, data_item) }}</div>
+<input name="{{ key }}" type="hidden" value="{{ data_item.file_location }}">
+{% endmacro %}
+
+{% macro render_property(request, data_item, stamp='') %}
+<div class="image-container"><img src="{{ base_url.rstrip('/') + data_item.render_value() }}"></div>
+{% endmacro %}
