@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: RandomCorrMat
+Version: 0.1.20
+Summary: Package containing multiple methods to simulate random correlation matrices
+Home-page: https://github.com/tamaghnaroy/RandomCorrMat/
+Author: Tamaghna Roy
+Author-email: tamaghna@gmail.com
+License: MIT
+Description: Implements several schemes to generate random correlation matrices, including checks to validate a given matrix to be a proper correlation matrix. Algorithms for generating simple random matrix, random matrix with given eigenvalues, random perturbation of a given correlation matrix and the nearest correlation matrix to a given correlation matrix for fine tuned stress and noise are included in the current version. **Please check the project homepage for more details and usage examples**
+Keywords: applied-mathematics correlation-matrices simulation correlation-matrix-simulation
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
