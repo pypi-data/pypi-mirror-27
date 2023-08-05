@@ -1,0 +1,6 @@
+[console_scripts]
+server = server.server:mainloop
+
+[gui_scripts]
+client = client.gui_app_client:main
+
