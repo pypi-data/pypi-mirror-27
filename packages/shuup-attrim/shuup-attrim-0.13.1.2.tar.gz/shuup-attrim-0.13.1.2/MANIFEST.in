@@ -1,0 +1,7 @@
+include README.md
+include LICENSE.md
+
+recursive-include attrim *.py *.jinja
+
+prune attrim/static/attrim/admin/node_modules
+recursive-include attrim/static/attrim/admin/dist *
