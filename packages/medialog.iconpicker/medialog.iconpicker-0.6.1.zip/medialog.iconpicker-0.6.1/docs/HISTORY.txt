@@ -1,0 +1,74 @@
+Changelog
+=========
+
+0.6.1 (07.12.2017)
+————————————————————	
+
+- fix css class 
+- FieldWidget can now be used with Mosaic
+
+
+0.6 (2017)
+————————————————————	
+
+- added custom font
+- added lineage registry
+
+
+0.5 (2017)
+————————————————————	
+
+- added tile
+- Added colorpicker, behaviour and template
+
+
+0.4 (3 oct 2015)
+————————————————————	
+
+- Added (example and 'helper') views
+- Font files can be loaded by /@@fontload
+- icons can be shown in listing templates with: with <tal:icon tal:replace="structure item/iconfield/@@iconload" />
+- there is a simple example view ( http:/site/folder/@@iconview
+
+
+0.3.2 (25 june 2015)
+————————————————————	
+
+- Loading old bootstrap for Plone 4 [espenmn]
+
+
+0.3.1 (25 june 2015)
+————————————————————	
+
+- js was loaded twice (you need to add it manually for Plone 4) [espenmn]
+
+
+
+0.3 (23 june 2015)
+————————————————————	
+
+- render widget adds correct font family name (class) [espenmn]
+
+
+0.2 (23 june 2015)
+————————————————————	
+
+- updated render widget [espenmn]
+
+
+0.2 (10 june 2015)
+————————————————————	
+
+- ‘hard coded js.bootstap, since I did not manage to pin it with Plone 4 [espenmn]
+
+
+0.1.1 (06 june 2015)
+————————————————————	
+
+- fixed error (True) for Plone 4 [espenmn]
+
+
+0.1dev (22 may 2015)
+————————————————————	
+
+- Initial release [espenmn]

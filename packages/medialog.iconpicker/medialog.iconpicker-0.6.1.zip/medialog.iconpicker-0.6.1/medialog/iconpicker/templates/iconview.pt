@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="context/main_template/macros/master"
+    i18n:domain="plone">
+<body>
+
+<metal:content-core fill-slot="content-core">
+ 	<div class="features" >
+		<div tal:repeat="item  context/@@folderListing">
+		  <a href="" tal:attributes="href item/getURL|item/absolute_url">
+			<h2>
+			<tal:icon tal:condition="exists:item/iconfield">
+				<tal:icon tal:replace="structure item/iconfield/@@iconload" />
+			</tal:icon>
+			<span tal:content="item/Title" /></h2>
+		   </a>
+			<p class="documentDescription" tal:content="item/Description" />
+		</div>
+	</div>
+	<tal:css tal:replace="structure context/@@fontload"/>
+</metal:content-core>
+
+</body>
+</html>
