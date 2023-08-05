@@ -1,0 +1,65 @@
+Metadata-Version: 2.0
+Name: sklearnsk
+Version: 0.1.0
+Summary: A wrapper for sklearn, that makes it easier to write, tune and evaluate classification and regression systems
+Home-page: https://gitlab.com/sidekicklabs/sklearn-sidekick
+Author: David Milne
+Author-email: d.n.milne@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: machinelearning sklearn
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: sklearn
+Requires-Dist: tqdm
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+
+scikit-learn sidekick
+=======================
+
+A sidekick for scikit-learn that makes it easier to write, tune and evaluate classification and regression systems
+
+
+Installation
+------------
+
+Install from the python package index::
+
+    pip install sklearnsk
+
+Or clone this repository and install::
+
+    pip install .
+
+
+Usage
+-----
+
+Check out the following notebooks in the example directory for examples of usage:
+
+ * `iris.ipynb`: A toy classification problem
+ * `boston.ipynb`: A toy regression problem
+ * `20newsgroups.ipynb`: A more complex classification problem, involving n-grams, one-hot encoding, feature selection, etc.
+
+Each of these examples will take you through the process of defining your system,
+tuning it (with some nice visualisation), evaluating it, and performing additional analysis like feature ablation.
+
+
+Licence
+-------
+
+This code is released under the MIT licence
+
