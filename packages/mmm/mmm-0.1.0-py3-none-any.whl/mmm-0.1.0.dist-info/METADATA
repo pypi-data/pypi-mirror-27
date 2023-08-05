@@ -1,0 +1,30 @@
+Metadata-Version: 2.0
+Name: mmm
+Version: 0.1.0
+Summary: minimalistic media manager
+Home-page: https://github.com/obfusk/m
+Author: Felix C. Stegerman
+Author-email: flx@obfusk.net
+License: GPLv3+
+Description-Content-Type: UNKNOWN
+Keywords: media vlc
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Multimedia :: Video
+Classifier: Topic :: Utilities
+Requires-Python: >=3.5
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+
+UNKNOWN
+
+
