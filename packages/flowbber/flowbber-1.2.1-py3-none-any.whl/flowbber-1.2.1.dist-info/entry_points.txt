@@ -1,0 +1,27 @@
+[flowbber_plugin_aggregators_1_0]
+filter = flowbber.plugins.aggregators.filter:FilterAggregator
+
+[flowbber_plugin_sinks_1_0]
+archive = flowbber.plugins.sinks.archive:ArchiveSink
+influxdb = flowbber.plugins.sinks.influxdb:InfluxDBSink
+lcov_html = flowbber.plugins.sinks.lcov_html:LcovHTMLSink
+mongodb = flowbber.plugins.sinks.mongodb:MongoDBSink
+print = flowbber.plugins.sinks.print:PrintSink
+template = flowbber.plugins.sinks.template:TemplateSink
+
+[flowbber_plugin_sources_1_0]
+cobertura = flowbber.plugins.sources.cobertura:CoberturaSource
+cpu = flowbber.plugins.sources.cpu:CPUSource
+env = flowbber.plugins.sources.env:EnvSource
+git = flowbber.plugins.sources.git:GitSource
+github = flowbber.plugins.sources.github:GitHubSource
+gtest = flowbber.plugins.sources.gtest:GTestSource
+json = flowbber.plugins.sources.json:JSONSource
+lcov = flowbber.plugins.sources.lcov:LcovSource
+pytest = flowbber.plugins.sources.pytest:PytestSource
+sloc = flowbber.plugins.sources.sloc:SLOCSource
+speed = flowbber.plugins.sources.speed:SpeedSource
+timestamp = flowbber.plugins.sources.timestamp:TimestampSource
+user = flowbber.plugins.sources.user:UserSource
+valgrind_memcheck = flowbber.plugins.sources.valgrind.memcheck:ValgrindMemcheckSource
+
