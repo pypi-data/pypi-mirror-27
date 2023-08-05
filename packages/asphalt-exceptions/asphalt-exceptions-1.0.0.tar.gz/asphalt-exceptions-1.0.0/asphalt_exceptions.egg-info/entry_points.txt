@@ -1,0 +1,7 @@
+[asphalt.components]
+exceptions = asphalt.exceptions.component:ExceptionReporterComponent
+
+[asphalt.exceptions.reporters]
+raygun = asphalt.exceptions.reporters.raygun:RaygunExceptionReporter
+sentry = asphalt.exceptions.reporters.sentry:SentryExceptionReporter
+
