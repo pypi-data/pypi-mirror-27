@@ -1,0 +1,20 @@
+Metadata-Version: 2.0
+Name: nameko-tracer
+Version: 1.0.5
+Summary: Nameko extension logging entrypoint processing metrics
+Home-page: https://github.com/Overseas-Student-Living/nameko-tracer
+Author: student.com
+Author-email: wearehiring@student.com
+License: Apache License, Version 2.0
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: nameko (>=2.2.0)
+Provides-Extra: dev
+Requires-Dist: coverage (==4.4.1); extra == 'dev'
+Requires-Dist: flake8 (==3.4.1); extra == 'dev'
+Requires-Dist: pylint (==1.7.2); extra == 'dev'
+Requires-Dist: pytest (==3.2.0); extra == 'dev'
+
+UNKNOWN
+
+
