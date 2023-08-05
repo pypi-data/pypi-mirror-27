@@ -1,0 +1,89 @@
+---
+  # Parameters:
+  #  java_jre_version: JRE version to use (provided)
+  #  java_jre_build:   JRE build number (provided)
+  #  java_jre_hash:    JRE hash used in download URL (provided)
+
+  - name: JRE | Pre-configuration | Check if we are on 'x86_64'
+    assert:
+      that:
+        - "ansible_architecture == 'x86_64'"
+      msg:
+        - "Unsupported platform architecture '{{ ansible_architecture }}', should be 'x86_64'."
+    tags:
+      - jre
+
+  - name: JRE | Pre-configuration | Set JRE install directory name
+    shell: "echo jdk1.{{ java_jre_version }} |sed 's/u/.0_/'"
+    register: jre_version
+    tags:
+      - jre
+
+  - name: JRE | Pre-configuration | Check if instance exists
+    stat:
+      path: "/usr/lib/jvm/{{ jre_version.stdout }}"
+    register: jre_basedir
+    tags:
+      - jre
+
+  - name: JRE | Pre-configuration | Set 'jre_installed'
+    set_fact:
+      jre_installed: "{{ jre_basedir.stat.exists }}"
+    tags:
+      - jre
+
+  - name: JRE | Pre-configuration | Set download URL
+    set_fact:
+      jre_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{ java_jre_version }}-{{ java_jre_build }}/{{ java_jre_hash }}/server-jre-{{ java_jre_version }}-linux-x64.tar.gz"
+    tags:
+      - jre
+
+  - block:
+    - name: JRE | Install | Create install directory
+      file:
+        path:  "/usr/lib/jvm"
+        owner: "root"
+        group: "root"
+        mode:  "0755"
+        state: directory
+
+    - name: JRE | Install | Download installation archive
+      get_url:
+        url:            "{{ jre_download_url }}"
+        dest:           "/usr/lib/jvm/{{ jre_version.stdout }}.tgz"
+        headers:        "Cookie:oraclelicense=accept-securebackup-cookie"
+        validate_certs: no
+
+    - name: JRE | Install | Extract archive
+      unarchive:
+        src:        "/usr/lib/jvm/{{ jre_version.stdout }}.tgz"
+        dest:       "/usr/lib/jvm/"
+        remote_src: True
+
+    - name: JRE | Install | Remove installation archive
+      file:
+        path: "/usr/lib/jvm/{{ jre_version.stdout }}.tgz"
+        state: absent
+
+    when: not jre_installed
+    become: yes
+    tags:
+      - jre
+
+  - name: JRE | Post-installation | Run 'update-alternatives --install'
+    shell: "update-alternatives --install /usr/bin/{{ item }} {{ item }} /usr/lib/jvm/{{ jre_version.stdout }}/bin/{{ item }} 1"
+    with_items:
+      - "javac"
+      - "java"
+    become: yes
+    tags:
+      - jre
+
+  - name: JRE | Post-installation | Run 'update-alternatives --set'
+    shell: "update-alternatives --set {{ item }} /usr/lib/jvm/{{ jre_version.stdout }}/bin/{{ item }}"
+    with_items:
+      - "javac"
+      - "java"
+    become: yes
+    tags:
+      - jre

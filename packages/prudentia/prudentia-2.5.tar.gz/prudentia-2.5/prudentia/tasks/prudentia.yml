@@ -1,0 +1,24 @@
+---
+  # Parameters:
+  #  prudentia_dir (provided)
+  #  prudentia_version (provided)
+
+  - include: "{{prudentia_dir}}/tasks/python.yml"
+    tags:
+      - prudentia
+
+  - name: Prudentia | Install deps
+    apt: pkg={{item}} state=present
+    with_items:
+      - libffi-dev
+      - libssl-dev
+    when: ansible_os_family == "Debian"
+    become: yes
+    tags:
+      - prudentia
+
+  - name: Prudentia | Install
+    pip: name=prudentia version={{prudentia_version}}
+    become: yes
+    tags:
+      - prudentia
