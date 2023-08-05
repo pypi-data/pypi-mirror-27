@@ -1,0 +1,12 @@
+h1, h2, h3, h4, h5 {
+  font-weight: bold !important;
+}
+
+div#changelog li {
+  margin-bottom: 8px;
+}
+
+/* Can remove this when https://github.com/bitprophet/alabaster/pull/125 lands */
+a.image-reference:hover {
+  border-bottom: 0 !important;
+}
