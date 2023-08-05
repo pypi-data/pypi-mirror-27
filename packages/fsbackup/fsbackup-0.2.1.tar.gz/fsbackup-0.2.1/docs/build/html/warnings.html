@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Please, be aware! &#8212; filesystem backup 0.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="please-be-aware">
+<h1>Please, <strong>be aware</strong>!<a class="headerlink" href="#please-be-aware" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">To be able to use mongoDB, we must have a connection to a mongoDB server. It could be our own machine, a hosting service, etc.</p>
+</div>
+<p>If you are new to mongoDB, several tutorials are available, <a class="reference external" href="https://www.hongkiat.com/blog/webdev-with-mongodb-part1/">this</a> is one of them. There are also many mongoDB-hosting services that provide free sandboxes with a decent size, no need to spend a dime just to experiment.</p>
+<p>If you have mongoDB installed, to serve it locally in Windows just run:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">mongod</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">dbpath</span><span class="o">=&lt;</span><span class="n">database_path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Very similarly, in Linux after installing mongoDB support run</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">mongod</span> <span class="o">--</span><span class="n">dbpath</span><span class="o">=&lt;</span><span class="n">database_path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="regarding-tests">
+<h2>Regarding tests<a class="headerlink" href="#regarding-tests" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">To be able to run tests, we need a mongoDB server to connect to (I know of no better way. If there is, please let me know). The tests are written assuming that a local server is running.</p>
+</div>
+<p>Then, a client is created that connects to it, creates testing databases/collections, fills them, accesses information stored, and wipes them all in the end.</p>
+</div>
+<div class="section" id="information-safety">
+<h2>Information safety<a class="headerlink" href="#information-safety" title="Permalink to this headline">¶</a></h2>
+<p>The mongoDBs created are essential to be able to recover contents from the backup.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If they were lost, in the volumes you won&#8217;t see proper filenames or extensions. Therefore although the content is indeed there, finding what you need would be, at the very least, awfully painful, if not utterly infeasable.</p>
+</div>
+<p>For that reason it is reasonable to make sure the mongoDB databases are safe,
+and backed-up as frequently and redundantly as possible. I am using mongoDB hosting, and keep a local copy as well. Even periodically storing a copy with its
+timestamp might be interesting, if you want to play it safe.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>This software is released under MIT license, with no warranty implied or otherwise. That said, on the sunny side a unittest is included that performs the complete backup cycle and
+makes sure that the checkout is identical to the original filesystem. And <code class="docutils literal"><span class="pre">integrityCheck</span></code> command is available, which actually compares each backed-up file with its
+counterpart in the filesystem.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Please, <strong>be aware</strong>!</a><ul>
+<li><a class="reference internal" href="#regarding-tests">Regarding tests</a></li>
+<li><a class="reference internal" href="#information-safety">Information safety</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/warnings.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Miguel Garcia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/warnings.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

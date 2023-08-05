@@ -1,0 +1,1309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Module fsbackup, Multi-Volume Backup for Large Filesystems &#8212; filesystem backup 0.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-fsbackup-multi-volume-backup-for-large-filesystems">
+<h1>Module <code class="xref py py-mod docutils literal"><span class="pre">fsbackup</span></code>, Multi-Volume Backup for Large Filesystems<a class="headerlink" href="#module-fsbackup-multi-volume-backup-for-large-filesystems" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>A command-line script in Python is provided, to manage backups for large filesystems in multiple external disks.</p>
+<p>It is intended as a minimalist system, to get the job done but with no GUI or other niceties. At least not yet!
+I just wanted to sleep well at night.</p>
+<p>Support for Linux and Windows.</p>
+<div class="section" id="motivation">
+<h3>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-problem">
+<h4>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">¶</a></h4>
+<p>For more than a decade I had being gathering content and
+storing it in external drives.
+For backup purposes I used to buy them in pairs, so that one would work as the other&#8217;s mirror.
+Of course the solution was far from ideal, there were TV-shows, movies, and documentaries in most disks,
+sparsed pretty much randomly, and when the number of disks reached 15 (plus backups) even finding content was a pain.
+I had simple text files with the <code class="docutils literal"><span class="pre">ls</span></code> contents of each disk, which needed to be updated, etc.</p>
+</div>
+<div class="section" id="an-improvement">
+<h4>An Improvement<a class="headerlink" href="#an-improvement" title="Permalink to this headline">¶</a></h4>
+<p>A friend talked to me about a NAS he had recently acquired. After little consideration I realized I had been needing
+one myself for a long time, just did not know such a thing existed. Taking into account the size of the files I already had,
+plus reasonable mid-term foreseable needs, I bought a 6-slots NAS and put 8GB disks in it (5 of them currently).</p>
+<p>Thanks to it, soon the content was neatly organised, easy to find and maintain.
+I was using RAID5, which is nice, but in several forums I found the clear warning
+that <a class="reference external" href="https://serverfault.com/questions/2888/why-is-raid-not-a-backup">RAID does not work as backup</a>, so I started worring.
+I had the need of a real backup, and a bunch of external drives which content was already in the NAS.
+Obviously they might be used to backup content, but I could not bring myself to even try to micro-manage it.
+It would be particularly hard because some folders are way bigger that the external drives, so they would need to be split manually.</p>
+<p>I needed a proper tool to automatically manage a multi-volume backup.</p>
+</div>
+</div>
+<div class="section" id="backup-system-overview">
+<h3>Backup System Overview<a class="headerlink" href="#backup-system-overview" title="Permalink to this headline">¶</a></h3>
+<p>The idea behind the implementation of <strong>fsbackup</strong> is pretty simple, and everything gets done by a single command: <code class="docutils literal"><span class="pre">fsbck</span></code>.
+Given a list of one or more paths that we want backed-up, the backup system works in three stages.</p>
+<div class="section" id="stage-1">
+<h4>Stage 1<a class="headerlink" href="#stage-1" title="Permalink to this headline">¶</a></h4>
+<p>A command (intended to be scheduled nightly) keeps a collection in a <a class="reference external" href="https://www.mongodb.com/">mongoDB</a> database updated with
+the absolute path, size, last modification timestamp and a hash function (currently SHA-256) of each file in that list of paths.
+They are interpreted as file-trees, so all the content buried in those paths is included.
+It can be done with something like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">refreshHashes</span> <span class="o">-</span><span class="n">db</span><span class="o">=</span><span class="n">conn_multimedia</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Only new files, or files with a more recent modification timestamp than the one in the database have their hash function recalculated,
+since it is indeed time-consuming. As you might have guessed, the <code class="docutils literal"><span class="pre">db</span></code> argument refers
+to a <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">json</a> file with information regarding the location
+of the filesystem, as well as mongoDB collections where the information is stored.</p>
+</div>
+<div class="section" id="stage-2">
+<h4>Stage 2<a class="headerlink" href="#stage-2" title="Permalink to this headline">¶</a></h4>
+<p>External hard disks work as backup volumes, containing files renamed with their hash function. The folder structure in the original filesystem
+is not replicated, all files are at root level. Except that, using git-style, they are divided in folders according to the first
+letters in the hash, to avoid having thousands of files in the same directory.</p>
+<p>In order to update the backup, we can mount a disk that works as backup volume. For instance, if we are using Windows and the drive was assigned to G:, we run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">processDrive</span> <span class="o">-</span><span class="n">db</span><span class="o">=</span><span class="n">conn_multimedia</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">drive</span><span class="o">=</span><span class="n">G</span>
+</pre></div>
+</div>
+<p>This action:</p>
+<ul>
+<li><p class="first">Removes from the volume files that are not necessary anymore.</p>
+</li>
+<li><p class="first">Copies new files that were not backed-up yet.</p>
+</li>
+<li><p class="first">Provides a backup status report, with:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the number of files/size pending backup (if there was not enough room in that volume).</li>
+<li>a summary of the number of files/size in each volume.</li>
+<li>a file per volume is created with the detailed absolute paths of each file backed-up in it.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>For this to work properly, another collection in the database stores the hashes backed in each volume.</p>
+<p>In Linux it is slightly different, argument <code class="docutils literal"><span class="pre">drive</span></code> should be replaced by <code class="docutils literal"><span class="pre">mountpoint</span></code>. If the volume had been
+mounted in <code class="docutils literal"><span class="pre">/mnt/zeycus/FA03-E14F</span></code> we should run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">processDrive</span> <span class="o">-</span><span class="n">db</span><span class="o">=</span><span class="n">conn_multimedia</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">mountpoint</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">zeycus</span><span class="o">/</span><span class="n">FA03</span><span class="o">-</span><span class="n">E14F</span>
+</pre></div>
+</div>
+<p>Most of the examples in the documentation are written for the Windows version, but <code class="docutils literal"><span class="pre">mountpoint</span></code> can always be used
+instead of <code class="docutils literal"><span class="pre">drive</span></code>.</p>
+</div>
+<div class="section" id="stage-3">
+<h4>Stage 3<a class="headerlink" href="#stage-3" title="Permalink to this headline">¶</a></h4>
+<p>If/when the time comes information needs to be retrieved from the volumes, the script handles that as well. For instance, the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">db</span><span class="o">=</span><span class="n">conn_multimedia</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">drive</span><span class="o">=</span><span class="n">G</span> <span class="o">--</span><span class="n">sourcepath</span><span class="o">=</span><span class="n">Multimedia</span><span class="o">/</span><span class="n">video</span><span class="o">/</span><span class="n">movies</span> <span class="o">--</span><span class="n">destpath</span><span class="o">=</span><span class="n">F</span><span class="p">:</span>\<span class="n">chekouts</span>\<span class="n">movies</span>
+</pre></div>
+</div>
+<p>recovers the relevant information in the actual (G:) volume for a particular folder. In a worst-case scenario, to recover all the files
+you&#8217;d have to do this for every volume.</p>
+</div>
+</div>
+<div class="section" id="so-how-do-i-start">
+<h3>So, how do I start?<a class="headerlink" href="#so-how-do-i-start" title="Permalink to this headline">¶</a></h3>
+<p>In a nutshell:</p>
+<ol class="arabic simple">
+<li>Get a mongoDB server connection and create a database there. It could be local, mongoDB hosting (like <a class="reference external" href="https://mlab.com/">mlab</a> , just to name one), etc.</li>
+<li>Build a <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> config_file for the filesystem you want backed-up. For instance:</li>
+</ol>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;connstr&quot;</span><span class="p">:</span> <span class="s2">&quot;mongodb://myuser:mypwd@ds21135.mlab.com:34562/fsbackup_tvs761_main&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;\\\\ZEYCUS-TVS671&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;Multimedia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Resources&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;reportpref&quot;</span><span class="p">:</span> <span class="s2">&quot;F:\\Dropbox\\fsbackup\\reports\\main_&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">connstr</span></code> is the conection string to your mongoDB database (in this case, <code class="docutils literal"><span class="pre">fsbackup_tvs761_main</span></code>).
+With this, you&#8217;ll build backup for all the content in
+<code class="docutils literal"><span class="pre">\\ZEYCUS-TVS671\Multimedia</span></code> and <code class="docutils literal"><span class="pre">\\ZEYCUS-TVS671\Resources</span></code>, more details in the documentation.
+Make sure the path in <code class="docutils literal"><span class="pre">reportpref</span></code> actually exists, reporting files are created there. In this case,
+<code class="docutils literal"><span class="pre">F:\Dropbox\fsbackup\reports</span></code>.</p>
+<ol class="arabic" start="3">
+<li><p class="first">Create the actual collections in the database with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">createDatabase</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">force</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Gather the current filesystem information with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">refreshHashes</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The first time hashes are calculated for all files, so this may take <strong>long</strong>.</p>
+<ol class="arabic" start="5">
+<li><p class="first">Connect a formated external drive. Assuming it gets mounted in <code class="docutils literal"><span class="pre">driveLetter</span></code>, execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">processDrive</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This fills the volume with backup data. When finished, a message will clarify whether more volumes are needed to go on
+with the backup.</p>
+</div>
+<div class="section" id="collaboration">
+<h3>Collaboration<a class="headerlink" href="#collaboration" title="Permalink to this headline">¶</a></h3>
+<p>You may wish to improve or add features, in that case you are more than welcome, feel free to contact me at <a class="reference external" href="mailto:zeycus&#37;&#52;&#48;gmail&#46;com">zeycus<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
+</div>
+<div class="section" id="complete-documentation">
+<h3>Complete Documentation<a class="headerlink" href="#complete-documentation" title="Permalink to this headline">¶</a></h3>
+<p>Find the complete documentation in <a class="reference external" href="https://readthedocs.org/projects/fsbackup/">readthedocs</a>.</p>
+</div>
+</div>
+<div class="section" id="database-structure">
+<h2>Database Structure<a class="headerlink" href="#database-structure" title="Permalink to this headline">¶</a></h2>
+<p>Information regarding the filesystem to be backed-up, and the current content
+of volumes, is stored in a simple <a class="reference external" href="https://www.mongodb.com/">mongoDB</a> database.</p>
+<div class="section" id="filesystem">
+<h3>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h3>
+<p>The collection that stores the information about the files currently in the filesystem is (uninspiredly!) named <code class="docutils literal"><span class="pre">files</span></code>.
+The entries/documents in it have the form:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s2">&quot;59e0a71c2afc32cfc4e7fa48&quot;</span><span class="p">),</span>
+<span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;Multimedia\video\animePlex\Shin Chan\Season 01\Shin Chan - S01E613.mp4&quot;</span><span class="p">,</span>
+<span class="s1">&#39;hash&#39;</span><span class="p">:</span> <span class="s2">&quot;4a7facfe42e8ff8812f9cab058bf79981974d9e2e300d56217d675ec5987cf05&quot;</span><span class="p">,</span>
+<span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="mi">1197773340</span><span class="p">,</span>
+<span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">68097104</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">filename</span></code> field is the file path relative to the mountpoint of the filesystem.</li>
+<li>The <code class="docutils literal"><span class="pre">hash</span></code> field is the SHA-256 hash of the file.</li>
+<li><code class="docutils literal"><span class="pre">timestamp</span></code> is the file&#8217;s last-modified timestamp.</li>
+<li><code class="docutils literal"><span class="pre">size</span></code> is the size of the file in bytes, obtained with <code class="docutils literal"><span class="pre">os.stat(fn).st_mtime</span></code>.</li>
+</ul>
+</div></blockquote>
+<p>The fields used for look-up are <code class="docutils literal"><span class="pre">filename</span></code> and <code class="docutils literal"><span class="pre">hash</span></code>, so the collection should have an index on each of them.
+The one on <code class="docutils literal"><span class="pre">filename</span></code> should use <code class="docutils literal"><span class="pre">unique=True</span></code>, to ensure no filename is added twice <a class="footnote-reference" href="#find" id="id3">[2]</a> .</p>
+<p>The class that manages this collection is <a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><code class="xref py py-class docutils literal"><span class="pre">FileDB</span></code></a>.</p>
+</div>
+<div class="section" id="volumes">
+<h3>Volumes<a class="headerlink" href="#volumes" title="Permalink to this headline">¶</a></h3>
+<p>On the other hand, the present state of backup volumes is stored in the collection <code class="docutils literal"><span class="pre">volumes</span></code>,
+with entries like</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s2">&quot;59e484603e12972bd4209fbe&quot;</span><span class="p">),</span>
+<span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="s2">&quot;3EC0BECC&quot;</span><span class="p">,</span>
+<span class="s1">&#39;hash&#39;</span><span class="p">:</span> <span class="s2">&quot;0017eef276f4247807fa3f4e565b8c925a2db0f8bfbb020248ad6c3df6a6ea77&quot;</span><span class="p">,</span>
+<span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">97092</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">volume</span></code> is the volume id. In Windows, volume serial numbers are used; in Linux, disk serial numbers.</li>
+<li><code class="docutils literal"><span class="pre">hash</span></code> field is the SHA-256 hash of the file.</li>
+<li><code class="docutils literal"><span class="pre">size</span></code> is the size of the file in bytes.</li>
+</ul>
+</div></blockquote>
+<p>This entry is saying that volume 3EC0BECC contains a file with the given hash, and filesize 97,092 bytes.</p>
+<p>There should be a a unique index on field <code class="docutils literal"><span class="pre">hash</span></code> <a class="footnote-reference" href="#f1" id="id4">[1]</a> .</p>
+<p>The methods that add/remove files from a volume (see class <a class="reference internal" href="#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><code class="xref py py-class docutils literal"><span class="pre">HashVolume</span></code></a>)
+also update this collection, so that it remains up-to-date.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>In fact, this enforces that only one volume may contain a file with a specific hash. If the backup
+methods are working correctly this should be the case. If the same file is found in different
+folders in the filesystem, or with different names, no space is wasted and just one copy will
+be present in backup volumes.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="find" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>This is not true for <code class="docutils literal"><span class="pre">hash</span></code>, because we need to be able to backup systems that contain the same file in different locations.
+I was surprised to find that I had about a 5% of file redundancy in number of files, it turned out that some tiny files were necessary in many locations.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="volume-content">
+<h2>Volume Content<a class="headerlink" href="#volume-content" title="Permalink to this headline">¶</a></h2>
+<p>Volumes contain backups of the files in the filesystem: files with the same content. However, they are renamed with the hash of the content.
+This means that no information regarding the filename in the real filesystem, or the path where it is located, can be found in the volumes (that information is stored in the <code class="docutils literal"><span class="pre">files</span></code> collection in the database).
+All the files in the volume are placed at root level, but classified within subfolders given by their first three characters to avoid the problems associated with having too many files in the same folder.
+An actual volume looks like this:</p>
+<div class="figure align-center" id="id11">
+<img alt="_images/volume_screenshot.png" src="_images/volume_screenshot.png" />
+<p class="caption"><span class="caption-text">Content of a backup volume.</span></p>
+</div>
+</div>
+<div class="section" id="filesystem-config-files">
+<h2>Filesystem config files<a class="headerlink" href="#filesystem-config-files" title="Permalink to this headline">¶</a></h2>
+<p>The information about filesystems that we want backed-up is gathered in JSON files,
+one per filesystem. For instance:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;connstr&quot;</span><span class="p">:</span> <span class="s2">&quot;mongodb://myuser:mypwd@ds21135.mlab.com:34562/fsbackup_tvs761_main&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;\\\\ZEYCUS-TVS671&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;Multimedia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Resources&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;reportpref&quot;</span><span class="p">:</span> <span class="s2">&quot;F:\\Dropbox\\fsbackup\\reports\\main_&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The information is as follows:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">connstr</span></code></dt>
+<dd>The connection string to the mongoDB database.</dd>
+<dt><code class="docutils literal"><span class="pre">mountpoint</span></code></dt>
+<dd>The location where the filesystem is mounted. It is used as a basepath for <code class="docutils literal"><span class="pre">paths</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">paths</span></code></dt>
+<dd>The list of paths in the filesystem that we want backed-up, relative to the <code class="docutils literal"><span class="pre">mountpoint</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">reportpref</span></code></dt>
+<dd>Prefix for reports. All files created by the <code class="docutils literal"><span class="pre">backupStatus</span></code> command are created with that prefix.</dd>
+</dl>
+</div>
+<div class="section" id="detailed-command-usage">
+<h2>Detailed command usage<a class="headerlink" href="#detailed-command-usage" title="Permalink to this headline">¶</a></h2>
+<p>Everything works via the <code class="docutils literal"><span class="pre">fsbck</span></code> command. If the installation is correct, it should be available no matter what the active directory is.
+In this section, the basic usage is shown, but the full detail and optional parameters can be found in <a class="reference internal" href="#module-fsbackup.commands" title="fsbackup.commands"><code class="xref py py-mod docutils literal"><span class="pre">commands</span></code></a> module documentation.</p>
+<div class="section" id="database-creation">
+<h3>Database Creation<a class="headerlink" href="#database-creation" title="Permalink to this headline">¶</a></h3>
+<p>It is achieved with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">createDatabase</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>If the database containing the two necessary collections <code class="docutils literal"><span class="pre">files</span></code> and <code class="docutils literal"><span class="pre">volumes</span></code> do not exist, they are created.
+Otherwise the execution fails. If you want it rebuilt, add the <code class="docutils literal"><span class="pre">--force</span></code> flag.</p>
+</div>
+<div class="section" id="backup-status-reporting">
+<h3>Backup status reporting<a class="headerlink" href="#backup-status-reporting" title="Permalink to this headline">¶</a></h3>
+<p>With:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">backupStatus</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>several text files are created (with different level of detail) regarding the status of the backup:</p>
+<blockquote>
+<div><ul class="simple">
+<li>size and number of files in each backup volume</li>
+<li>size and number of files not yet backed-up</li>
+<li>size and number of files in the volumes than are no longer necessary</li>
+<li>explicit list of files in each volume</li>
+</ul>
+</div></blockquote>
+<p>An example of the files created:</p>
+<div class="figure align-center" id="id12">
+<img alt="_images/reportfiles_screenshot.png" src="_images/reportfiles_screenshot.png" />
+<p class="caption"><span class="caption-text">Files created by <code class="docutils literal"><span class="pre">backupStatus</span></code>.</span></p>
+</div>
+<p>Contrary to what it might seem, this operation is fairly quick.</p>
+</div>
+<div class="section" id="database-files-update">
+<h3>Database <code class="docutils literal"><span class="pre">files</span></code> update<a class="headerlink" href="#database-files-update" title="Permalink to this headline">¶</a></h3>
+<p>This command updates the database information to match the current state of the filesystem.
+If files are modified their hash is recalculated, if files were removed their entries are eliminated from
+the database, and new files require new entries.</p>
+<p>This is achieved with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">refreshHashes</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For large filesystems the calculation of hashes is time-consuming. The first calculation for my NAS took nearly
+a whole week, so I prefer to perform this process dayly, in scheduled task at night,
+and a <code class="docutils literal"><span class="pre">backupStatus</span></code> immediatly after it.</p>
+</div>
+<div class="section" id="volume-update">
+<h3>Volume update<a class="headerlink" href="#volume-update" title="Permalink to this headline">¶</a></h3>
+<p>This is the way content gets actually backed-up. Suppose you have a volume with available space on it, or if you are going to create
+a new volume, just a formated external drive. If in Windows, when connected it is assigned a drive letter, say J:. Then
+to perform the update use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">updateVolume</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=</span><span class="n">J</span>
+</pre></div>
+</div>
+<p>New files are added to the volume, until it is full or all of them are processed, a text message tells which of the two.</p>
+<p>Suppose you are using Linux and the drive got mounted in <code class="docutils literal"><span class="pre">/mnt/zeycus/FA03-E14F</span></code>. Then instead of the <code class="docutils literal"><span class="pre">drive</span></code> argument, we should use
+<code class="docutils literal"><span class="pre">mountpoint</span></code>. For instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">updateVolume</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">mountpoint</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">zeycus</span><span class="o">/</span><span class="n">FA03</span><span class="o">-</span><span class="n">E14F</span>
+</pre></div>
+</div>
+<p>In all the examples that follow, like in this one, the <code class="docutils literal"><span class="pre">drive</span></code> for Windows can be replaced by <code class="docutils literal"><span class="pre">mountpoint</span></code> for Linux.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be sure that the <code class="docutils literal"><span class="pre">files</span></code> information is updated (via command <code class="docutils literal"><span class="pre">refreshHashes</span></code>) before invoking a volume update. Otherwise, when the script tries to copy a file that the database is mentioning, it might not be physically there anymore, leading to errors. There is no problem, however, if the only difference is that new files were created.</p>
+</div>
+</div>
+<div class="section" id="volume-clensing">
+<h3>Volume clensing<a class="headerlink" href="#volume-clensing" title="Permalink to this headline">¶</a></h3>
+<p>When you remove files from your backed-up filesystem, copies of them remain in backup volumes. There is no harm in it,
+just the waste of space. As time passes, the wasted space in volumes could amount to something. With:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">cleanVolume</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>the files in the volume than are not shown as necessary by the database are removed.</p>
+</div>
+<div class="section" id="volume-processing">
+<h3>Volume processing<a class="headerlink" href="#volume-processing" title="Permalink to this headline">¶</a></h3>
+<p>In the first days, when I wanted to update a volume I found myself always performing:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>volume clensing</li>
+<li>volume update</li>
+<li>backupstatus reports regeneration</li>
+</ol>
+</div></blockquote>
+<p>First I created a batch, but after a while decided an additional command was in order to do it all: <code class="docutils literal"><span class="pre">processDrive</span></code>. With:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">processDrive</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>those three tasks are performed. This keeps the volumes clean of old files, the system fully updated and status reports
+reflecting the current backup status.</p>
+<p>In a day-to-day basis this is almost the only command you need (if the <code class="docutils literal"><span class="pre">refreshHashes</span></code> is taken care of by an scheduled task).
+Of course, you could manually run <code class="docutils literal"><span class="pre">refreshHashes</span></code> before processing a drive, just to make sure the database is up-to-date.</p>
+</div>
+<div class="section" id="information-recovery-from-volumes">
+<h3>Information recovery from volumes<a class="headerlink" href="#information-recovery-from-volumes" title="Permalink to this headline">¶</a></h3>
+<p>All the burden of keeping the backup updated has a single purpose: to be able to recover content from volumes
+when necessary. This operation may be infrequent, but it is undoubtedly the most important. It is currently performed with the
+<code class="docutils literal"><span class="pre">checkout</span></code> command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">updateVolume</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">sourcepath</span><span class="o">=</span>\\<span class="n">ZEYCUS</span><span class="o">-</span><span class="n">TVS671</span>\<span class="n">Multimedia</span>\<span class="n">video</span>\<span class="n">seriesPlex</span>\<span class="n">Monk</span> <span class="o">--</span><span class="n">destpath</span><span class="o">=</span><span class="n">F</span><span class="p">:</span>\<span class="n">temp</span>\<span class="n">Monk</span>
+</pre></div>
+</div>
+<p>This process finds all the files in the volume that are a backup of a file in the given <code class="docutils literal"><span class="pre">sourcepath</span></code> (or in a subfolder),
+and copies them recreating the folder structure within the path <code class="docutils literal"><span class="pre">destpath</span></code>.</p>
+<p>Needless to say, to recover the whole folder content you need to process all the volumes containing at least one relevant file. It is possible to see which volumes
+are involved by searching the backup-status report files. Or just process them all, it takes very little time if no content is necessary.</p>
+</div>
+<div class="section" id="recalculation-of-volume-information">
+<h3>Recalculation of Volume Information<a class="headerlink" href="#recalculation-of-volume-information" title="Permalink to this headline">¶</a></h3>
+<p>The operations that add and remove files from the volume in same time update the database.
+So, theoretically, the database is always up-to-date. I have not found a single case in which this was not the case,
+but nevertheless implemented:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">extractVolumeInfo</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>What this does is to remove from the <code class="docutils literal"><span class="pre">volumes</span></code> collection all the entries associated to the present volume, then
+it is traversed and an entry is created for each actual file found.</p>
+</div>
+<div class="section" id="volume-integrity-check">
+<h3>Volume Integrity Check<a class="headerlink" href="#volume-integrity-check" title="Permalink to this headline">¶</a></h3>
+<p>In case we want to make sure that a backup volume is OK, it is possible to perform an integrity check with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">integrityCheck</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This is a time consuming operation that actually compares each file in the volume with its counterpart in the actual filesystem
+(if it was not deleted). For 3TB disks it is taking me over a day.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This is supposed to be done after a <code class="docutils literal"><span class="pre">refreshHashes</span></code>. Otherwise the information in the DDBB might not reflect the actual state of the filesystem.</p>
+</div>
+</div>
+<div class="section" id="showing-volume-id">
+<h3>Showing Volume Id<a class="headerlink" href="#showing-volume-id" title="Permalink to this headline">¶</a></h3>
+<p>To show the volume id on screen, use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">showVolumeId</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="volume-identification">
+<h3>Volume identification<a class="headerlink" href="#volume-identification" title="Permalink to this headline">¶</a></h3>
+<p>Volumes are not numbered, instead they are identified by a unique identifier (see <a class="reference internal" href="#sec-so-differences"><span class="std std-ref">SO Differences</span></a>).
+This means you never need to process the volumes in any order, nor when you update them.</p>
+<p>For instance, suppose you remove some huge files from your filesystem (who would want to watch <strong>THAT</strong> tv-show again!?). As a consequence the <code class="docutils literal"><span class="pre">backupstatus</span></code> report
+shows that a volume contains now 300GB of removable files. You could choose this volume for your next <code class="docutils literal"><span class="pre">processDrive</span></code> and useless content will be dropped, making room and using it for fresh file backups.</p>
+</div>
+<div class="section" id="id5">
+<h3>Volume content<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Files are not backed-up in any order. The system just aims to have each file backed-up in a (single) volume. This means content is more or less randomly
+divided among volumes.</p>
+</div>
+</div>
+<div class="section" id="so-differences">
+<span id="sec-so-differences"></span><h2>SO Differences<a class="headerlink" href="#so-differences" title="Permalink to this headline">¶</a></h2>
+<p>Currently, there is support for Linux and Windows. However, there are some differences that need to be taken into account.</p>
+<div class="section" id="id6">
+<h3>Volume identification<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Volumes are not numbered, instead they are identified by a unique identifier.
+In Windows, <a class="reference external" href="https://en.wikipedia.org/wiki/Volume_serial_number">volume serial numbers</a> are used.
+In Linux, disk serial numbers are used instead.</p>
+<p>This is because in Windows I found no easy way to retrieve the disk serial number of the disk where
+a specific path is located, while the volume serial number was easy. On the other hand, typical Linux
+filesystems like ext* do not even have a volume serial number, and the disk serial number is straightforward to get.</p>
+</div>
+<div class="section" id="path-format">
+<h3>Path format<a class="headerlink" href="#path-format" title="Permalink to this headline">¶</a></h3>
+<p>In Windows, paths are typically written with backslashes, while for Linux it is done with forward slashes.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In its current state, if a backup is created for a filesystem with a SO, it should always be handled with that SO.</p>
+</div>
+<p>The main reason is the difference in volume ids: the same disk gets different id if the script is run in Windows or Linux.
+There are also minor differences, like the path separator, but that would be easy to overcome.</p>
+<p>For now, this does not seem a big issue. Suppose you have created a backup with Windows and one day you decide to dump
+it forever (nobody would blame you!) and use Linux. In that case you basically would need to update de collections in the database as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Replace volume serial numbers with disk serial numbers. You can get them in both SOs with the <code class="docutils literal"><span class="pre">showVolumeId</span></code> command.</li>
+<li>Replace backslashes with forward slashes.</li>
+<li>Redefine <code class="docutils literal"><span class="pre">mountpoint</span></code> in the config file, with the Linux mount point of the filesystem that needs backup.</li>
+</ul>
+</div></blockquote>
+<p>Before doing that, it would not hurt to backup the database. Just in case.</p>
+</div>
+</div>
+<div class="section" id="please-be-aware">
+<h2>Please, <strong>be aware</strong>!<a class="headerlink" href="#please-be-aware" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">To be able to use mongoDB, we must have a connection to a mongoDB server. It could be our own machine, a hosting service, etc.</p>
+</div>
+<p>If you are new to mongoDB, several tutorials are available, <a class="reference external" href="https://www.hongkiat.com/blog/webdev-with-mongodb-part1/">this</a> is one of them. There are also many mongoDB-hosting services that provide free sandboxes with a decent size, no need to spend a dime just to experiment.</p>
+<p>If you have mongoDB installed, to serve it locally in Windows just run:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">mongod</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">dbpath</span><span class="o">=&lt;</span><span class="n">database_path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Very similarly, in Linux after installing mongoDB support run</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">mongod</span> <span class="o">--</span><span class="n">dbpath</span><span class="o">=&lt;</span><span class="n">database_path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="regarding-tests">
+<h3>Regarding tests<a class="headerlink" href="#regarding-tests" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">To be able to run tests, we need a mongoDB server to connect to (I know of no better way. If there is, please let me know). The tests are written assuming that a local server is running.</p>
+</div>
+<p>Then, a client is created that connects to it, creates testing databases/collections, fills them, accesses information stored, and wipes them all in the end.</p>
+</div>
+<div class="section" id="information-safety">
+<h3>Information safety<a class="headerlink" href="#information-safety" title="Permalink to this headline">¶</a></h3>
+<p>The mongoDBs created are essential to be able to recover contents from the backup.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If they were lost, in the volumes you won&#8217;t see proper filenames or extensions. Therefore although the content is indeed there, finding what you need would be, at the very least, awfully painful, if not utterly infeasable.</p>
+</div>
+<p>For that reason it is reasonable to make sure the mongoDB databases are safe,
+and backed-up as frequently and redundantly as possible. I am using mongoDB hosting, and keep a local copy as well. Even periodically storing a copy with its
+timestamp might be interesting, if you want to play it safe.</p>
+</div>
+<div class="section" id="license">
+<h3>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h3>
+<p>This software is released under MIT license, with no warranty implied or otherwise. That said, on the sunny side a unittest is included that performs the complete backup cycle and
+makes sure that the checkout is identical to the original filesystem. And <code class="docutils literal"><span class="pre">integrityCheck</span></code> command is available, which actually compares each backed-up file with its
+counterpart in the filesystem.</p>
+</div>
+</div>
+<div class="section" id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Currently, under different SOs, different volume ids are built. It would be better to use the disk serial number always.
+That way, with little effort the backup could be made SO-independent.</p>
+</li>
+<li><p class="first">For now, the only way to retrieve information from the volumes is the <code class="docutils literal"><span class="pre">checkout</span></code> command, which rebuilds a folder/subfolder recursively. However, it would be
+easy to add filters to recover only files that match a given regular expression, or filter them for timestamp or other features, etc.</p>
+<p>Truth be told, this kind of operation is what I implemented for the case in which something <em>goes wrong</em>: content was deleted unwantingly, or the disk just crashed.
+Fortunately those events happen pretty rarely, so little effort was dedicated to the recovery of information.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="release-history">
+<h2>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>0.2.1 (2017-12-04)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li>Linux support.</li>
+<li>New attribute <code class="docutils literal"><span class="pre">mountPoint</span></code> for <strong>FileDB</strong>.</li>
+<li>New command <code class="docutils literal"><span class="pre">showVolumeId</span></code>.</li>
+</ul>
+<p><strong>Bugfixes</strong></p>
+<ul class="simple">
+<li>I had forgotten to use FileDB.fnComp() in a point of code.</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>0.1.3 (2017-11-12)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li>Make filename paths stored in the database relative to its mount point.</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>0.1.2 (2017-11-09)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li>New safe file copy: deletes target file if the writting process failed.</li>
+<li>New &#8220;How do I start?&#8221; section in README.</li>
+<li>New &#8220;Release History&#8221;.</li>
+<li>Replace deprecated pymongo collections <code class="docutils literal"><span class="pre">remove</span></code> with <code class="docutils literal"><span class="pre">delete_many</span></code>.</li>
+</ul>
+<p><strong>Bugfixes</strong></p>
+<ul class="simple">
+<li>Fixed typo in setup <code class="docutils literal"><span class="pre">tests_require</span></code> argument.</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>0.1.1 (2017-11-05)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>First version made available</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="code-documentation">
+<h1>Code documentation<a class="headerlink" href="#code-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-fsbackup.commands">
+<span id="main-commands-module"></span><h2>Main Commands Module<a class="headerlink" href="#module-fsbackup.commands" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-commands"></span><dl class="function">
+<dt id="fsbackup.commands.backupStatus">
+<code class="descclassname">fsbackup.commands.</code><code class="descname">backupStatus</code><span class="sig-paren">(</span><em>fDB</em>, <em>volDB</em>, <em>reportPref</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.commands.backupStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the status report.</p>
+<dl class="docutils">
+<dt>Several files are created:</dt>
+<dd><ul class="first last simple">
+<li>summary.txt: global summary.</li>
+<li>missing.txt: list of files not yet backed-up.</li>
+<li>content_&lt;vol&gt;.txt: the list of files backed-up in each volume.</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fDB</strong> (<a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><em>FileDB</em></a>) &#8211; the information regarding files</li>
+<li><strong>volDB</strong> (<em>permanent-dict class</em>) &#8211; the informating regarading volumes</li>
+<li><strong>reportPref</strong> (<em>str</em>) &#8211; prefix that tells where to create reporting</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.commands.extractVolumeInfo">
+<code class="descclassname">fsbackup.commands.</code><code class="descname">extractVolumeInfo</code><span class="sig-paren">(</span><em>hashVol</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.commands.extractVolumeInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regenerates the DDBB information regarding the files contained in the present volume.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hashVol</strong> (<a class="reference internal" href="#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><em>HashVolume</em></a>) &#8211; the information regarding volumes</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.commands.cleanVolume">
+<code class="descclassname">fsbackup.commands.</code><code class="descname">cleanVolume</code><span class="sig-paren">(</span><em>fDB</em>, <em>hashVol</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.commands.cleanVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes files from the volume that are not necessary anymore.</p>
+<p>Returns the number of deleted files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fDB</strong> (<a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><em>FileDB</em></a>) &#8211; the information regarding files</li>
+<li><strong>hashVol</strong> (<a class="reference internal" href="#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><em>HashVolume</em></a>) &#8211; the information regarding volumes</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.commands.updateVolume">
+<code class="descclassname">fsbackup.commands.</code><code class="descname">updateVolume</code><span class="sig-paren">(</span><em>fDB</em>, <em>hashVol</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.commands.updateVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes useless files in the volume, and copies new files that need to be backed-up.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fDB</strong> (<a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><em>FileDB</em></a>) &#8211; the information regarding files</li>
+<li><strong>hashVol</strong> (<a class="reference internal" href="#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><em>HashVolume</em></a>) &#8211; the information regarding volumes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.commands.refreshFileInfo">
+<code class="descclassname">fsbackup.commands.</code><code class="descname">refreshFileInfo</code><span class="sig-paren">(</span><em>fDB</em>, <em>forceRecalc</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.commands.refreshFileInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the filename collection in the database, reflecting changes in the filesystem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fDB</strong> (<a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><em>FileDB</em></a>) &#8211; the information regarding files</li>
+<li><strong>forceRecalc</strong> (<em>bool</em>) &#8211; flag that tells if hashes &amp; timestamps should be recalculated from the file always.
+If False (the default), recalculation happens always when the timestamp of the file is more recent than that
+in the database, or for new files. If True, we recalculate for every file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.commands.createDatabase">
+<code class="descclassname">fsbackup.commands.</code><code class="descname">createDatabase</code><span class="sig-paren">(</span><em>database</em>, <em>forceFlag</em>, <em>logger</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.commands.createDatabase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates database collections from scratch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fDB</strong> (<a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><em>FileDB</em></a>) &#8211; the information regarding files</li>
+<li><strong>forceFlag</strong> (<em>bool</em>) &#8211; tells whether to remove info, if collections already exist</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.commands.integrityCheck">
+<code class="descclassname">fsbackup.commands.</code><code class="descname">integrityCheck</code><span class="sig-paren">(</span><em>fDB</em>, <em>hashVol</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.commands.integrityCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs an integrity check for the volume.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fDB</strong> (<a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><em>FileDB</em></a>) &#8211; the information regarding files</li>
+<li><strong>hashVol</strong> (<a class="reference internal" href="#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><em>HashVolume</em></a>) &#8211; the information regarding volumes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="auxiliary-modules">
+<h2>Auxiliary Modules<a class="headerlink" href="#auxiliary-modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-fsbackup.miscTools">
+<span id="module-misctools"></span><h3>Module <a class="reference internal" href="#module-fsbackup.miscTools" title="fsbackup.miscTools"><code class="xref py py-mod docutils literal"><span class="pre">miscTools</span></code></a><a class="headerlink" href="#module-fsbackup.miscTools" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-miscTools"></span><dl class="function">
+<dt id="fsbackup.miscTools.buildVolumeInfoList">
+<code class="descclassname">fsbackup.miscTools.</code><code class="descname">buildVolumeInfoList</code><span class="sig-paren">(</span><em>container</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.miscTools.buildVolumeInfoList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns, for each volume, the association {file-hash: file-size}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> (<em>MongoAsDict</em>) &#8211; a MongoAsDict with the volume information</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list of pairs (volId, {sha:size})</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-fsbackup.fileTools">
+<span id="module-filetools"></span><h3>Module <a class="reference internal" href="#module-fsbackup.fileTools" title="fsbackup.fileTools"><code class="xref py py-mod docutils literal"><span class="pre">fileTools</span></code></a><a class="headerlink" href="#module-fsbackup.fileTools" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-fileTools"></span><dl class="function">
+<dt id="fsbackup.fileTools.sizeof_fmt">
+<code class="descclassname">fsbackup.fileTools.</code><code class="descname">sizeof_fmt</code><span class="sig-paren">(</span><em>num</em>, <em>suffix='B'</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileTools.sizeof_fmt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a human-readable string for a file size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>num</strong> (<em>int</em>) &#8211; size of the file, in units</li>
+<li><strong>suffix</strong> (<em>str</em>) &#8211; the unit. Use &#8216;B&#8217; for bytes, the default.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Stolen from:</p>
+<blockquote>
+<div><a class="reference external" href="http://stackoverflow.com/questions/1094841/reusable-library-to-get-human-readable-version-of-file-size">http://stackoverflow.com/questions/1094841/reusable-library-to-get-human-readable-version-of-file-size</a></div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.fileTools.abspath2longabspath">
+<code class="descclassname">fsbackup.fileTools.</code><code class="descname">abspath2longabspath</code><span class="sig-paren">(</span><em>abspath</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileTools.abspath2longabspath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an absolute filepath than works for longer than 260 chars in Windows.</p>
+<p>In Windows there is seems to be no support for paths longer than 260 chrs. Files that exist are not found, cannot
+be open, etc. However, using this trick I seem to be able to access them.</p>
+<p>Post with the trick description:</p>
+<blockquote>
+<div><a class="reference external" href="https://msdn.microsoft.com/en-us/library/aa365247.aspx#maxpath">https://msdn.microsoft.com/en-us/library/aa365247.aspx#maxpath</a></div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-fsbackup.diskTools">
+<span id="module-disktools"></span><h3>Module <a class="reference internal" href="#module-fsbackup.diskTools" title="fsbackup.diskTools"><code class="xref py py-mod docutils literal"><span class="pre">diskTools</span></code></a><a class="headerlink" href="#module-fsbackup.diskTools" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-diskTools"></span><dl class="function">
+<dt id="fsbackup.diskTools.genDrivesInfo">
+<code class="descclassname">fsbackup.diskTools.</code><code class="descname">genDrivesInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.diskTools.genDrivesInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator for drives information.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.diskTools.genVolumesInfo">
+<code class="descclassname">fsbackup.diskTools.</code><code class="descname">genVolumesInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.diskTools.genVolumesInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator for volumes information.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.diskTools.getVolumeInfo">
+<code class="descclassname">fsbackup.diskTools.</code><code class="descname">getVolumeInfo</code><span class="sig-paren">(</span><em>driveLetter</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.diskTools.getVolumeInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns volume info for the given driveLetter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>driveLetter</strong> (<em>str</em>) &#8211; the drive letter, for instance &#8216;C&#8217;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fsbackup.diskTools.getAvailableLetter">
+<code class="descclassname">fsbackup.diskTools.</code><code class="descname">getAvailableLetter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.diskTools.getAvailableLetter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first drive letter available, for Windows.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-fsbackup.hashVolume">
+<span id="class-hashvolume"></span><h2>Class <a class="reference internal" href="#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><code class="xref py py-class docutils literal"><span class="pre">HashVolume</span></code></a><a class="headerlink" href="#module-fsbackup.hashVolume" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-hashVolume"></span><dl class="class">
+<dt id="fsbackup.hashVolume.HashVolume">
+<em class="property">class </em><code class="descclassname">fsbackup.hashVolume.</code><code class="descname">HashVolume</code><span class="sig-paren">(</span><em>logger</em>, <em>locationPath</em>, <em>container</em>, <em>volId=None</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that handles a backup volume.</p>
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.allVolumesHashes">
+<code class="descname">allVolumesHashes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.allVolumesHashes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of all hashes in any volume, according to the DDBB.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.augmentWithFiles">
+<code class="descname">augmentWithFiles</code><span class="sig-paren">(</span><em>fDB</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.augmentWithFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include in the volume backup for the files that need it.</p>
+<p>It is done until all files are backed-up, on until the volume is full.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fDB</strong> (<a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><em>FileDB</em></a>) &#8211; filesystem information in DDBB.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">a pair (isFinished, hashList)<ul class="simple">
+<li>isFinished tells whether the backup is complete. It is False if there are still
+files that are not backed-up in any volume.</li>
+<li>hashList is the list of hashes of the created files.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The strategy to choose which file to backup next is the following, but there are no
+strong reasons for this, it should be changed if another is found better.</p>
+<ul class="last simple">
+<li>While there is plenty of room in the volume (threshold currently set to 20GB) and there is room
+for the biggest file that requires backup, files are chosen randomly.
+The reason is that usually there are folders with huge files, others with only tiny files.
+If files were processed by their folder order, a volume could end up with millions
+of small files, while another could contain just hundreds of heavy files. Not that it would
+be a problem in principle, but I thought it might be better to balance volumes, and
+a simple strategy is the random choice.</li>
+<li>When the previous condition fails, choose the biggest file that fits, until none does.</li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.checkout">
+<code class="descname">checkout</code><span class="sig-paren">(</span><em>fDB</em>, <em>sourcePath</em>, <em>destPath</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.checkout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebuilds the filesystem, or a subfolder, from the backup content.</p>
+<p>Returns a list of the filenames (in the original filesystem) that were restored.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fDB</strong> (<a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><em>FileDB</em></a>) &#8211; filesystem information in DDBB.</li>
+<li><strong>sourcePath</strong> (<em>str</em>) &#8211; path in the filesystem that you want restored</li>
+<li><strong>destPath</strong> (<em>str</em>) &#8211; location where you want the files created</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.cleanOldHashes">
+<code class="descname">cleanOldHashes</code><span class="sig-paren">(</span><em>totalHashesNeeded</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.cleanOldHashes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes files that are no longer necessary.</p>
+<p>Returns the number of files removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>totalHashesNeeded</strong> (<em>set</em>) &#8211; hashes of files that need to be backed-up.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.fnForHash">
+<code class="descname">fnForHash</code><span class="sig-paren">(</span><em>sha</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.fnForHash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the absolute path of the file for a given hash.</p>
+<p>The first three letters in the hash are used to create a 3-levels folder system,
+for instance hash <code class="docutils literal"><span class="pre">4c07766937a4d241fafd3104426766f07c3ce9de7e577a76ad61eba512433cea</span></code>
+corresponds to file</p>
+<blockquote>
+<div><code class="file docutils literal"><span class="pre">self.locationPath/4/c/0/4c07766937a4d241fafd3104426766f07c3ce9de7e577a76ad61eba512433cea</span></code></div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sha</strong> (<em>str</em>) &#8211; any valid SHA</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.getAvailableSpace">
+<code class="descname">getAvailableSpace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.getAvailableSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the available free space in the volume drive, in bytes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.recalculateContainer">
+<code class="descname">recalculateContainer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.recalculateContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebuilds the DDBB volume information, traversing the files in the volume.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is something ordinarily you don&#8217;t need to do, because the DDBB
+is kept synchronized with the files in the volume. This method is to be used
+in case for some reason the synchronization was broken.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>sha</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the file with a given hash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sha</strong> (<em>str</em>) &#8211; the given hash</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.retrieveFilename">
+<code class="descname">retrieveFilename</code><span class="sig-paren">(</span><em>sha</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.retrieveFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts a file from the volume, given its hash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sha</strong> (<em>str</em>) &#8211; the given hash</li>
+<li><strong>filename</strong> (<em>str</em>) &#8211; the filename of the file to be created</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.storeFilename">
+<code class="descname">storeFilename</code><span class="sig-paren">(</span><em>filename</em>, <em>size</em>, <em>sha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.storeFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a file in the volume.</p>
+<p>The filename in the volume is the sha, not the original filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<em>str</em>) &#8211; location of the original file</li>
+<li><strong>size</strong> (<em>int</em>) &#8211; size in bytes of the original file</li>
+<li><strong>sha</strong> &#8211; the hash for the file. If not provided, it is calculated now</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.hashVolume.HashVolume.traverseFiles">
+<code class="descname">traverseFiles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.hashVolume.HashVolume.traverseFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over pairs (hash, size) for the present volume, checking which actual files are stored in it.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-fsbackup.fileDB">
+<span id="class-filedb"></span><h2>Class <a class="reference internal" href="#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><code class="xref py py-class docutils literal"><span class="pre">FileDB</span></code></a><a class="headerlink" href="#module-fsbackup.fileDB" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-fileDB"></span><dl class="class">
+<dt id="fsbackup.fileDB.FileDB">
+<em class="property">class </em><code class="descclassname">fsbackup.fileDB.</code><code class="descname">FileDB</code><span class="sig-paren">(</span><em>logger</em>, <em>mountPoint</em>, <em>fsPaths</em>, <em>container</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileDB.FileDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that handles the DDBB filesystem information.</p>
+<p>Specifically, which files need to be backed-up, their location, size and hash.</p>
+<dl class="method">
+<dt id="fsbackup.fileDB.FileDB.checkout">
+<code class="descname">checkout</code><span class="sig-paren">(</span><em>vol</em>, <em>sourcePath</em>, <em>destPath</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileDB.FileDB.checkout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebuilds the filesystem, or a subfolder, from the backup content.</p>
+<p>We just invoke the chekout method of the volume.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vol</strong> (<a class="reference internal" href="#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><em>HashVolume</em></a>) &#8211; the volume from which information is to be restored.</li>
+<li><strong>sourcePath</strong> (<em>str</em>) &#8211; path in the filesystem that you want restored</li>
+<li><strong>destPath</strong> (<em>str</em>) &#8211; location where you want the files created</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.fileDB.FileDB.compFn">
+<code class="descname">compFn</code><span class="sig-paren">(</span><em>fn</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileDB.FileDB.compFn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the absolute filename associated to a relative-to-mountPoint filename.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fsbackup.fileDB.FileDB.fsPathsComplete">
+<code class="descname">fsPathsComplete</code><a class="headerlink" href="#fsbackup.fileDB.FileDB.fsPathsComplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of fsPaths, in absolute form.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.fileDB.FileDB.hashesSet">
+<code class="descname">hashesSet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileDB.FileDB.hashesSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of hashes in the DDBB.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.fileDB.FileDB.reportStatusToFile">
+<code class="descname">reportStatusToFile</code><span class="sig-paren">(</span><em>volHashesInfo</em>, <em>fnBase</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileDB.FileDB.reportStatusToFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates backup-status report files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>volHashesInfo</strong> (<em>dict {vol: {hash: size}}</em>) &#8211; for each volume, associates the hash of each file with its size.</li>
+<li><strong>fnBase</strong> (<em>str</em>) &#8211; prefix of the report files to be created</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.fileDB.FileDB.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>forceRecalc=False</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileDB.FileDB.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the DDBB info traversing the actual filesystem.</p>
+<p>After execution, the DDBB reflects exactly the files currently in the filesystem,
+with their correct hash and size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>forceRecalc</strong> (<em>bool</em>) &#8211; flag that tells if hashes &amp; timestamps should be recalculated from the file always.
+If <code class="docutils literal"><span class="pre">False</span></code> (the default), recalculation happens only when the timestamp of the file is more recent than that
+in the database, or for new files. If <code class="docutils literal"><span class="pre">True</span></code>, recalculation takes place for every file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fsbackup.fileDB.FileDB.volumeIntegrityCheck">
+<code class="descname">volumeIntegrityCheck</code><span class="sig-paren">(</span><em>vol</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.fileDB.FileDB.volumeIntegrityCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a volume integrity check.</p>
+<p>For each file that according to the DDBB is in this volume, a full comparison
+is performed between the file in the filesystem and the file in the backup volume.
+Of course, only when the file exists yet in the filesystem.</p>
+<p>A final report with errors is generated, a list of errors returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vol</strong> (<a class="reference internal" href="#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><em>HashVolume</em></a>) &#8211; the volume from which information is to be restored.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list of str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-fsbackup.mountPathInDrive">
+<span id="class-mountpathindrive"></span><h2>Class <a class="reference internal" href="#fsbackup.mountPathInDrive.MountPathInDrive" title="fsbackup.mountPathInDrive.MountPathInDrive"><code class="xref py py-class docutils literal"><span class="pre">MountPathInDrive</span></code></a><a class="headerlink" href="#module-fsbackup.mountPathInDrive" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-mountPathInDrive"></span><dl class="class">
+<dt id="fsbackup.mountPathInDrive.MountPathInDrive">
+<em class="property">class </em><code class="descclassname">fsbackup.mountPathInDrive.</code><code class="descname">MountPathInDrive</code><span class="sig-paren">(</span><em>path</em>, <em>driveLetter</em><span class="sig-paren">)</span><a class="headerlink" href="#fsbackup.mountPathInDrive.MountPathInDrive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple context manager for temporaly mounting a path in a Windows drive.</p>
+<p>Usage example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">MountPathInDrive</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;F:\sources&quot;</span><span class="p">,</span> <span class="n">driveLetter</span><span class="o">=</span><span class="s1">&#39;J&#39;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;J:&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Module <code class="docutils literal"><span class="pre">fsbackup</span></code>, Multi-Volume Backup for Large Filesystems</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#motivation">Motivation</a><ul>
+<li><a class="reference internal" href="#the-problem">The Problem</a></li>
+<li><a class="reference internal" href="#an-improvement">An Improvement</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#backup-system-overview">Backup System Overview</a><ul>
+<li><a class="reference internal" href="#stage-1">Stage 1</a></li>
+<li><a class="reference internal" href="#stage-2">Stage 2</a></li>
+<li><a class="reference internal" href="#stage-3">Stage 3</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#so-how-do-i-start">So, how do I start?</a></li>
+<li><a class="reference internal" href="#collaboration">Collaboration</a></li>
+<li><a class="reference internal" href="#complete-documentation">Complete Documentation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database-structure">Database Structure</a><ul>
+<li><a class="reference internal" href="#filesystem">Filesystem</a></li>
+<li><a class="reference internal" href="#volumes">Volumes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#volume-content">Volume Content</a></li>
+<li><a class="reference internal" href="#filesystem-config-files">Filesystem config files</a></li>
+<li><a class="reference internal" href="#detailed-command-usage">Detailed command usage</a><ul>
+<li><a class="reference internal" href="#database-creation">Database Creation</a></li>
+<li><a class="reference internal" href="#backup-status-reporting">Backup status reporting</a></li>
+<li><a class="reference internal" href="#database-files-update">Database <code class="docutils literal"><span class="pre">files</span></code> update</a></li>
+<li><a class="reference internal" href="#volume-update">Volume update</a></li>
+<li><a class="reference internal" href="#volume-clensing">Volume clensing</a></li>
+<li><a class="reference internal" href="#volume-processing">Volume processing</a></li>
+<li><a class="reference internal" href="#information-recovery-from-volumes">Information recovery from volumes</a></li>
+<li><a class="reference internal" href="#recalculation-of-volume-information">Recalculation of Volume Information</a></li>
+<li><a class="reference internal" href="#volume-integrity-check">Volume Integrity Check</a></li>
+<li><a class="reference internal" href="#showing-volume-id">Showing Volume Id</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#observations">Observations</a><ul>
+<li><a class="reference internal" href="#volume-identification">Volume identification</a></li>
+<li><a class="reference internal" href="#id5">Volume content</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#so-differences">SO Differences</a><ul>
+<li><a class="reference internal" href="#id6">Volume identification</a></li>
+<li><a class="reference internal" href="#path-format">Path format</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#please-be-aware">Please, <strong>be aware</strong>!</a><ul>
+<li><a class="reference internal" href="#regarding-tests">Regarding tests</a></li>
+<li><a class="reference internal" href="#information-safety">Information safety</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#todo">TODO</a></li>
+<li><a class="reference internal" href="#release-history">Release History</a><ul>
+<li><a class="reference internal" href="#id7">0.2.1 (2017-12-04)</a></li>
+<li><a class="reference internal" href="#id8">0.1.3 (2017-11-12)</a></li>
+<li><a class="reference internal" href="#id9">0.1.2 (2017-11-09)</a></li>
+<li><a class="reference internal" href="#id10">0.1.1 (2017-11-05)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#code-documentation">Code documentation</a><ul>
+<li><a class="reference internal" href="#module-fsbackup.commands">Main Commands Module</a></li>
+<li><a class="reference internal" href="#auxiliary-modules">Auxiliary Modules</a><ul>
+<li><a class="reference internal" href="#module-fsbackup.miscTools">Module <code class="docutils literal"><span class="pre">miscTools</span></code></a></li>
+<li><a class="reference internal" href="#module-fsbackup.fileTools">Module <code class="docutils literal"><span class="pre">fileTools</span></code></a></li>
+<li><a class="reference internal" href="#module-fsbackup.diskTools">Module <code class="docutils literal"><span class="pre">diskTools</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-fsbackup.hashVolume">Class <code class="docutils literal"><span class="pre">HashVolume</span></code></a></li>
+<li><a class="reference internal" href="#module-fsbackup.fileDB">Class <code class="docutils literal"><span class="pre">FileDB</span></code></a></li>
+<li><a class="reference internal" href="#module-fsbackup.mountPathInDrive">Class <code class="docutils literal"><span class="pre">MountPathInDrive</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Miguel Garcia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

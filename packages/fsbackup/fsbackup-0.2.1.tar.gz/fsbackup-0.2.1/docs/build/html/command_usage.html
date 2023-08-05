@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Detailed command usage &#8212; filesystem backup 0.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="detailed-command-usage">
+<h1>Detailed command usage<a class="headerlink" href="#detailed-command-usage" title="Permalink to this headline">¶</a></h1>
+<p>Everything works via the <code class="docutils literal"><span class="pre">fsbck</span></code> command. If the installation is correct, it should be available no matter what the active directory is.
+In this section, the basic usage is shown, but the full detail and optional parameters can be found in <a class="reference internal" href="index.html#module-fsbackup.commands" title="fsbackup.commands"><code class="xref py py-mod docutils literal"><span class="pre">commands</span></code></a> module documentation.</p>
+<div class="section" id="database-creation">
+<h2>Database Creation<a class="headerlink" href="#database-creation" title="Permalink to this headline">¶</a></h2>
+<p>It is achieved with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">createDatabase</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>If the database containing the two necessary collections <code class="docutils literal"><span class="pre">files</span></code> and <code class="docutils literal"><span class="pre">volumes</span></code> do not exist, they are created.
+Otherwise the execution fails. If you want it rebuilt, add the <code class="docutils literal"><span class="pre">--force</span></code> flag.</p>
+</div>
+<div class="section" id="backup-status-reporting">
+<h2>Backup status reporting<a class="headerlink" href="#backup-status-reporting" title="Permalink to this headline">¶</a></h2>
+<p>With:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">backupStatus</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>several text files are created (with different level of detail) regarding the status of the backup:</p>
+<blockquote>
+<div><ul class="simple">
+<li>size and number of files in each backup volume</li>
+<li>size and number of files not yet backed-up</li>
+<li>size and number of files in the volumes than are no longer necessary</li>
+<li>explicit list of files in each volume</li>
+</ul>
+</div></blockquote>
+<p>An example of the files created:</p>
+<div class="figure align-center" id="id1">
+<img alt="_images/reportfiles_screenshot.png" src="_images/reportfiles_screenshot.png" />
+<p class="caption"><span class="caption-text">Files created by <code class="docutils literal"><span class="pre">backupStatus</span></code>.</span></p>
+</div>
+<p>Contrary to what it might seem, this operation is fairly quick.</p>
+</div>
+<div class="section" id="database-files-update">
+<h2>Database <code class="docutils literal"><span class="pre">files</span></code> update<a class="headerlink" href="#database-files-update" title="Permalink to this headline">¶</a></h2>
+<p>This command updates the database information to match the current state of the filesystem.
+If files are modified their hash is recalculated, if files were removed their entries are eliminated from
+the database, and new files require new entries.</p>
+<p>This is achieved with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">refreshHashes</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For large filesystems the calculation of hashes is time-consuming. The first calculation for my NAS took nearly
+a whole week, so I prefer to perform this process dayly, in scheduled task at night,
+and a <code class="docutils literal"><span class="pre">backupStatus</span></code> immediatly after it.</p>
+</div>
+<div class="section" id="volume-update">
+<h2>Volume update<a class="headerlink" href="#volume-update" title="Permalink to this headline">¶</a></h2>
+<p>This is the way content gets actually backed-up. Suppose you have a volume with available space on it, or if you are going to create
+a new volume, just a formated external drive. If in Windows, when connected it is assigned a drive letter, say J:. Then
+to perform the update use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">updateVolume</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=</span><span class="n">J</span>
+</pre></div>
+</div>
+<p>New files are added to the volume, until it is full or all of them are processed, a text message tells which of the two.</p>
+<p>Suppose you are using Linux and the drive got mounted in <code class="docutils literal"><span class="pre">/mnt/zeycus/FA03-E14F</span></code>. Then instead of the <code class="docutils literal"><span class="pre">drive</span></code> argument, we should use
+<code class="docutils literal"><span class="pre">mountpoint</span></code>. For instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">updateVolume</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">mountpoint</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">zeycus</span><span class="o">/</span><span class="n">FA03</span><span class="o">-</span><span class="n">E14F</span>
+</pre></div>
+</div>
+<p>In all the examples that follow, like in this one, the <code class="docutils literal"><span class="pre">drive</span></code> for Windows can be replaced by <code class="docutils literal"><span class="pre">mountpoint</span></code> for Linux.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be sure that the <code class="docutils literal"><span class="pre">files</span></code> information is updated (via command <code class="docutils literal"><span class="pre">refreshHashes</span></code>) before invoking a volume update. Otherwise, when the script tries to copy a file that the database is mentioning, it might not be physically there anymore, leading to errors. There is no problem, however, if the only difference is that new files were created.</p>
+</div>
+</div>
+<div class="section" id="volume-clensing">
+<h2>Volume clensing<a class="headerlink" href="#volume-clensing" title="Permalink to this headline">¶</a></h2>
+<p>When you remove files from your backed-up filesystem, copies of them remain in backup volumes. There is no harm in it,
+just the waste of space. As time passes, the wasted space in volumes could amount to something. With:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">cleanVolume</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>the files in the volume than are not shown as necessary by the database are removed.</p>
+</div>
+<div class="section" id="volume-processing">
+<h2>Volume processing<a class="headerlink" href="#volume-processing" title="Permalink to this headline">¶</a></h2>
+<p>In the first days, when I wanted to update a volume I found myself always performing:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>volume clensing</li>
+<li>volume update</li>
+<li>backupstatus reports regeneration</li>
+</ol>
+</div></blockquote>
+<p>First I created a batch, but after a while decided an additional command was in order to do it all: <code class="docutils literal"><span class="pre">processDrive</span></code>. With:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">processDrive</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>those three tasks are performed. This keeps the volumes clean of old files, the system fully updated and status reports
+reflecting the current backup status.</p>
+<p>In a day-to-day basis this is almost the only command you need (if the <code class="docutils literal"><span class="pre">refreshHashes</span></code> is taken care of by an scheduled task).
+Of course, you could manually run <code class="docutils literal"><span class="pre">refreshHashes</span></code> before processing a drive, just to make sure the database is up-to-date.</p>
+</div>
+<div class="section" id="information-recovery-from-volumes">
+<h2>Information recovery from volumes<a class="headerlink" href="#information-recovery-from-volumes" title="Permalink to this headline">¶</a></h2>
+<p>All the burden of keeping the backup updated has a single purpose: to be able to recover content from volumes
+when necessary. This operation may be infrequent, but it is undoubtedly the most important. It is currently performed with the
+<code class="docutils literal"><span class="pre">checkout</span></code> command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">updateVolume</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">sourcepath</span><span class="o">=</span>\\<span class="n">ZEYCUS</span><span class="o">-</span><span class="n">TVS671</span>\<span class="n">Multimedia</span>\<span class="n">video</span>\<span class="n">seriesPlex</span>\<span class="n">Monk</span> <span class="o">--</span><span class="n">destpath</span><span class="o">=</span><span class="n">F</span><span class="p">:</span>\<span class="n">temp</span>\<span class="n">Monk</span>
+</pre></div>
+</div>
+<p>This process finds all the files in the volume that are a backup of a file in the given <code class="docutils literal"><span class="pre">sourcepath</span></code> (or in a subfolder),
+and copies them recreating the folder structure within the path <code class="docutils literal"><span class="pre">destpath</span></code>.</p>
+<p>Needless to say, to recover the whole folder content you need to process all the volumes containing at least one relevant file. It is possible to see which volumes
+are involved by searching the backup-status report files. Or just process them all, it takes very little time if no content is necessary.</p>
+</div>
+<div class="section" id="recalculation-of-volume-information">
+<h2>Recalculation of Volume Information<a class="headerlink" href="#recalculation-of-volume-information" title="Permalink to this headline">¶</a></h2>
+<p>The operations that add and remove files from the volume in same time update the database.
+So, theoretically, the database is always up-to-date. I have not found a single case in which this was not the case,
+but nevertheless implemented:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">extractVolumeInfo</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>What this does is to remove from the <code class="docutils literal"><span class="pre">volumes</span></code> collection all the entries associated to the present volume, then
+it is traversed and an entry is created for each actual file found.</p>
+</div>
+<div class="section" id="volume-integrity-check">
+<h2>Volume Integrity Check<a class="headerlink" href="#volume-integrity-check" title="Permalink to this headline">¶</a></h2>
+<p>In case we want to make sure that a backup volume is OK, it is possible to perform an integrity check with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">integrityCheck</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This is a time consuming operation that actually compares each file in the volume with its counterpart in the actual filesystem
+(if it was not deleted). For 3TB disks it is taking me over a day.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This is supposed to be done after a <code class="docutils literal"><span class="pre">refreshHashes</span></code>. Otherwise the information in the DDBB might not reflect the actual state of the filesystem.</p>
+</div>
+</div>
+<div class="section" id="showing-volume-id">
+<h2>Showing Volume Id<a class="headerlink" href="#showing-volume-id" title="Permalink to this headline">¶</a></h2>
+<p>To show the volume id on screen, use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsbck</span><span class="o">.</span><span class="n">py</span> <span class="n">showVolumeId</span> <span class="o">-</span><span class="n">db</span><span class="o">=&lt;</span><span class="n">config_file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">drive</span><span class="o">=&lt;</span><span class="n">driveLetter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Detailed command usage</a><ul>
+<li><a class="reference internal" href="#database-creation">Database Creation</a></li>
+<li><a class="reference internal" href="#backup-status-reporting">Backup status reporting</a></li>
+<li><a class="reference internal" href="#database-files-update">Database <code class="docutils literal"><span class="pre">files</span></code> update</a></li>
+<li><a class="reference internal" href="#volume-update">Volume update</a></li>
+<li><a class="reference internal" href="#volume-clensing">Volume clensing</a></li>
+<li><a class="reference internal" href="#volume-processing">Volume processing</a></li>
+<li><a class="reference internal" href="#information-recovery-from-volumes">Information recovery from volumes</a></li>
+<li><a class="reference internal" href="#recalculation-of-volume-information">Recalculation of Volume Information</a></li>
+<li><a class="reference internal" href="#volume-integrity-check">Volume Integrity Check</a></li>
+<li><a class="reference internal" href="#showing-volume-id">Showing Volume Id</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/command_usage.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Miguel Garcia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/command_usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

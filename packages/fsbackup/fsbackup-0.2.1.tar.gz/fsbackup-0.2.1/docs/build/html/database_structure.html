@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Database Structure &#8212; filesystem backup 0.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="database-structure">
+<h1>Database Structure<a class="headerlink" href="#database-structure" title="Permalink to this headline">¶</a></h1>
+<p>Information regarding the filesystem to be backed-up, and the current content
+of volumes, is stored in a simple <a class="reference external" href="https://www.mongodb.com/">mongoDB</a> database.</p>
+<div class="section" id="filesystem">
+<h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h2>
+<p>The collection that stores the information about the files currently in the filesystem is (uninspiredly!) named <code class="docutils literal"><span class="pre">files</span></code>.
+The entries/documents in it have the form:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s2">&quot;59e0a71c2afc32cfc4e7fa48&quot;</span><span class="p">),</span>
+<span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;Multimedia\video\animePlex\Shin Chan\Season 01\Shin Chan - S01E613.mp4&quot;</span><span class="p">,</span>
+<span class="s1">&#39;hash&#39;</span><span class="p">:</span> <span class="s2">&quot;4a7facfe42e8ff8812f9cab058bf79981974d9e2e300d56217d675ec5987cf05&quot;</span><span class="p">,</span>
+<span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="mi">1197773340</span><span class="p">,</span>
+<span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">68097104</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">filename</span></code> field is the file path relative to the mountpoint of the filesystem.</li>
+<li>The <code class="docutils literal"><span class="pre">hash</span></code> field is the SHA-256 hash of the file.</li>
+<li><code class="docutils literal"><span class="pre">timestamp</span></code> is the file&#8217;s last-modified timestamp.</li>
+<li><code class="docutils literal"><span class="pre">size</span></code> is the size of the file in bytes, obtained with <code class="docutils literal"><span class="pre">os.stat(fn).st_mtime</span></code>.</li>
+</ul>
+</div></blockquote>
+<p>The fields used for look-up are <code class="docutils literal"><span class="pre">filename</span></code> and <code class="docutils literal"><span class="pre">hash</span></code>, so the collection should have an index on each of them.
+The one on <code class="docutils literal"><span class="pre">filename</span></code> should use <code class="docutils literal"><span class="pre">unique=True</span></code>, to ensure no filename is added twice <a class="footnote-reference" href="#find" id="id1">[2]</a> .</p>
+<p>The class that manages this collection is <a class="reference internal" href="index.html#fsbackup.fileDB.FileDB" title="fsbackup.fileDB.FileDB"><code class="xref py py-class docutils literal"><span class="pre">FileDB</span></code></a>.</p>
+</div>
+<div class="section" id="volumes">
+<h2>Volumes<a class="headerlink" href="#volumes" title="Permalink to this headline">¶</a></h2>
+<p>On the other hand, the present state of backup volumes is stored in the collection <code class="docutils literal"><span class="pre">volumes</span></code>,
+with entries like</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s2">&quot;59e484603e12972bd4209fbe&quot;</span><span class="p">),</span>
+<span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="s2">&quot;3EC0BECC&quot;</span><span class="p">,</span>
+<span class="s1">&#39;hash&#39;</span><span class="p">:</span> <span class="s2">&quot;0017eef276f4247807fa3f4e565b8c925a2db0f8bfbb020248ad6c3df6a6ea77&quot;</span><span class="p">,</span>
+<span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">97092</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">volume</span></code> is the volume id. In Windows, volume serial numbers are used; in Linux, disk serial numbers.</li>
+<li><code class="docutils literal"><span class="pre">hash</span></code> field is the SHA-256 hash of the file.</li>
+<li><code class="docutils literal"><span class="pre">size</span></code> is the size of the file in bytes.</li>
+</ul>
+</div></blockquote>
+<p>This entry is saying that volume 3EC0BECC contains a file with the given hash, and filesize 97,092 bytes.</p>
+<p>There should be a a unique index on field <code class="docutils literal"><span class="pre">hash</span></code> <a class="footnote-reference" href="#f1" id="id2">[1]</a> .</p>
+<p>The methods that add/remove files from a volume (see class <a class="reference internal" href="index.html#fsbackup.hashVolume.HashVolume" title="fsbackup.hashVolume.HashVolume"><code class="xref py py-class docutils literal"><span class="pre">HashVolume</span></code></a>)
+also update this collection, so that it remains up-to-date.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>In fact, this enforces that only one volume may contain a file with a specific hash. If the backup
+methods are working correctly this should be the case. If the same file is found in different
+folders in the filesystem, or with different names, no space is wasted and just one copy will
+be present in backup volumes.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="find" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td>This is not true for <code class="docutils literal"><span class="pre">hash</span></code>, because we need to be able to backup systems that contain the same file in different locations.
+I was surprised to find that I had about a 5% of file redundancy in number of files, it turned out that some tiny files were necessary in many locations.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Database Structure</a><ul>
+<li><a class="reference internal" href="#filesystem">Filesystem</a></li>
+<li><a class="reference internal" href="#volumes">Volumes</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/database_structure.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Miguel Garcia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/database_structure.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
