@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<form string="Configuration - invoice template" col="2">
+    <group id="grpholday" col="2" string="Holidays" colspan="2">
+        <label id="labhd1" xalign="0.0" colspan="2"
+            string="Holidays are not used for the invoice date if 'working day' has been selected."/>
+        <field name="holidays"/>
+        <group id="grphd2" col="1">
+            <label id="labhd2" xalign="0.0" string="- one date per line"/>
+            <label id="labhd3" xalign="0.0" string="- use the scheme DD.MM. for a yearly recurring date"/>
+            <label id="labhd4" xalign="0.0" string="- use the schema DD.MM.YYYY for a fixed date in one year"/>
+        </group>
+    </group>
+    <label name="company"/>
+    <field name="company"/>
+</form>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        
+        <!-- group for cronjob -->
+        <record model="res.group" id="group_cronjob_invoice">
+            <field name="name">Periodic invoices - Cronjob</field>
+        </record>
+
+        <!-- user for cronjob -->
+        <record model="res.user" id="user_cronjob_invoice">
+            <field name="login">lgncronjob_invoice</field>
+            <field name="name">Cron periodic invoices</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <!-- add user to group 'group_cronjob_invoice' -->
+        <record model="res.user-res.group" 
+                id="user_cronjob_invoice-group_cronjob_invoice">
+            <field name="user" ref="user_cronjob_invoice"/>
+            <field name="group" ref="group_cronjob_invoice"/>
+        </record>
+
+        <!-- add user to group 'account.group_account' -->
+        <record model="res.user-res.group" 
+                id="user_cronjob_invoice-account_group_account">
+            <field name="user" ref="user_cronjob_invoice"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <!-- cron-job to run periodic creation of invoices -->
+        <record model="ir.cron" id="cronjob_invoice">
+            <field name="name">Periodic invoices</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_cronjob_invoice"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
+            <field name="number_calls" eval="-1"/>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">periodic_invoice.invoice</field>
+            <field name="function">cron_do_periodic_invoice</field>
+        </record>
+
+    </data>
+</tryton>

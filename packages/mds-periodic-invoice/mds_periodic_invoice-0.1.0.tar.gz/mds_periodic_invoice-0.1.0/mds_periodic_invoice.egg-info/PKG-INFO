@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: mds-periodic-invoice
+Version: 0.1.0
+Summary: Tryton module to create periodic invoices
+Home-page: https://www.m-ds.de/
+Author: m-ds GmbH
+Author-email: service@m-ds.de
+License: GPL-3
+Description: mds-periodic-invoice
+        ====================
+        Periodic invoices for tryton
+        
+        This module automatically creates new invoices based 
+        on a invoice template. You can set a rule for repetition. 
+        Wildcards are supported in the description fields.
+        
+        Install
+        =======
+          pip install mds-periodic-invoice
+        
+        Requires
+        ========
+        - Tryton 3.8
+        
+        Changes
+        =======
+        
+        *0.1.0 - 19.10.2017*
+        
+        - init
+        
+Keywords: tryton invoice periodic financial
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Framework :: Tryton
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Customer Service
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Office/Business :: Financial :: Accounting
+Classifier: Natural Language :: German
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python :: 2.7
