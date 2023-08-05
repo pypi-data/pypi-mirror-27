@@ -1,0 +1,9 @@
+---
+# vars file for basic-security
+basic_security_required_packages:
+   - ufw
+   - fail2ban
+   - unattended-upgrades:
+       deb: unattended-upgrades
+       other: ignore
+   # - logwatch

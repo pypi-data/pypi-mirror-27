@@ -1,0 +1,17 @@
+---
+# defaults file for basic-security
+
+# not a default, but can be set externally
+# basic_security_root_pw: 'secure password'
+# basic_security_user_name: 'admin'
+# basic_security_user_pw: 'secure password'
+basic_security_user_shell: '/bin/bash'
+basic_security_user_public_keys: []
+basic_security_packages: []
+basic_security_ssh_port: 22
+basic_security_mosh_from_port: 60000
+basic_security_mosh_to_port: 60010
+basic_security_disable_ssh_password_auth: true
+basic_security_disable_ssh_root_access: true
+basic_security_enable_passwordless_sudo: false
+basic_security_autoupdate_enabled: true
