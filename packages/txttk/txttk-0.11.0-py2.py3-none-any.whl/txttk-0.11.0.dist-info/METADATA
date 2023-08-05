@@ -1,0 +1,71 @@
+Metadata-Version: 2.0
+Name: txttk
+Version: 0.11.0
+Summary: Text Toolkit: manipulate text & regular expression
+Home-page: https://github.com/jeroyang/txttk
+Author: Chia-Jung, Yang
+Author-email: jeroyang@gmail.com
+License: BSD
+Description-Content-Type: UNKNOWN
+Keywords: txttk
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+
+===============================
+Text Toolkit: txttk
+===============================
+
+.. image:: https://img.shields.io/travis/jeroyang/txttk.svg
+        :target: https://travis-ci.org/jeroyang/txttk
+
+.. image:: https://img.shields.io/pypi/v/txttk.svg
+        :target: https://pypi.python.org/pypi/txttk
+
+
+Text Toolkit: manipulate text & regular expression
+
+Installation and Update
+------------
+
+.. code:: bash
+
+    $ pip install -U txttk
+
+Usage
+-----
+
+Module *corpus*
+~~~~~~~~~~~~~~~
+
+.. code:: python
+    from txttk import corpus
+
+    from txttk import feature
+    from txttk import nlptools
+    from txttk import report
+    from txttk import retools
+
+Features
+--------
+* corpus: Handle the corpus, make random division for cross validation
+* feature: Extract features from a given token
+* nlptools: Nature Language Processing tools.
+* retools: Manipulate Regular Expression strings.
+
+
+License
+---------
+* Free software: BSD license
+* Documentation: https://txttk.readthedocs.org.
+
+
