@@ -1,0 +1,27 @@
+ftw.autofeature
+ftw.simplelayout[contenttypes] >= 1.7.0
+ftw.upgrade
+Plone
+plone.api
+plone.app.dexterity
+plone.dexterity
+setuptools
+z3c.schema
+
+[contact]
+plone.formwidget.recaptcha
+
+[geo]
+collective.geo.bundle [dexterity]
+collective.geo.mapwidget
+ftw.geo
+
+[tests]
+ftw.builder
+ftw.testing
+ftw.testbrowser
+ftw.subsite
+collective.geo.bundle [dexterity]
+collective.geo.mapwidget
+ftw.geo
+plone.formwidget.recaptcha
