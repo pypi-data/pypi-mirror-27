@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+include DELICENSE.txt
+recursive-include useragent/migrations *
+recursive-include useragent/middleware *
+recursive-include useragent/templates *
