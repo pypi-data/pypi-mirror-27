@@ -1,0 +1,42 @@
+{
+  "name": "@quantlab/theme-dark-extension",
+  "version": "0.5.0",
+  "description": "QuantLab - Default Dark Theme",
+  "homepage": "https://github.com/quantlabio/quantlab",
+  "bugs": {
+    "url": "https://github.com/quantlabio/quantlab/issues"
+  },
+  "license": "BSD-3-Clause",
+  "author": "Project Jupyter",
+  "files": [
+    "lib/*.d.ts",
+    "lib/*.js.map",
+    "lib/*.js",
+    "style/*.css",
+    "style/images/*.*",
+    "style/icons/*.*",
+    "style/icons/**/*.*"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quantlabio/quantlab.git"
+  },
+  "dependencies": {
+    "@quantlab/application": "^0.5.0",
+    "@quantlab/apputils": "^0.5.0",
+    "font-awesome": "~4.7.0"
+  },
+  "devDependencies": {
+    "rimraf": "~2.6.2",
+    "typescript": "~2.6.2"
+  },
+  "quantlab": {
+    "extension": true,
+    "themeDir": "style"
+  }
+}
