@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Integrating a Model in Java &mdash; mosaik 2.3.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="mosaik 2.3.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="The mosaik API" href="../mosaik-api/index.html"/>
+        <link rel="prev" title="Using Odysseus to process, visualize and store simulation data" href="odysseus2.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> mosaik
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ecosystem/index.html">Modular Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="examplesim.html">Integrating a simulation model into the mosaik ecosystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo1.html">Creating and running simple simulation scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examplectrl.html">Adding a control mechanism to a scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo2.html">Integrating a control mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odysseus.html">Connecting mosaik and Odysseus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odysseus2.html">Using Odysseus to process, visualize and store simulation data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Integrating a Model in Java</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-the-java-api">Getting the Java API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-model">Creating the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-simulator">Creating the simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-the-mosaik-api">Implementing the mosaik API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-the-simulator-to-mosaik">Connecting the simulator to mosaik</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-the-simulator-using-cmd">Connecting the simulator using <em>cmd</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-the-simulator-using-connect">Connecting the simulator using <em>connect</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mosaik-api/index.html">The mosaik API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-definition.html">Scenario definition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simmanager.html">The simulator manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scheduler.html">Scheduling and simulation execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Developer&#8217;s Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About mosaik</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../privacy.html">Privacy Policy Statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../legals.html">Legals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenschutz.html">Datenschutz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../impressum.html">Impressum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">mosaik</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+    <li>Integrating a Model in Java</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="../_sources/tutorials/tutorial_api-java.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="integrating-a-model-in-java">
+<span id="tutorial-api-java"></span><h1>Integrating a Model in Java<a class="headerlink" href="#integrating-a-model-in-java" title="Permalink to this headline">¶</a></h1>
+<p>What do we do if we want to connect a simulator to mosaik which ist  written in Java? In this tutorial
+we will describe how to create a simple model in Java and integrate it into mosaik using the
+mosaik-Java <a class="reference internal" href="../mosaik-api/index.html"><span class="doc">high level API</span></a>. We will
+do this with the help of our simple model from the Python tutorial,
+i. e. we will try to replicate the first part of the <a class="reference internal" href="examplesim.html"><span class="doc">Python tutorial</span></a> as close as possible.</p>
+<div class="section" id="getting-the-java-api">
+<h2>Getting the Java API<a class="headerlink" href="#getting-the-java-api" title="Permalink to this headline">¶</a></h2>
+<p>First you have to get the sources of the <a class="reference external" href="https://bitbucket.org/mosaik/mosaik-api-java">mosaik-API for Java</a>
+which is provided on Bitbucket. Clone it and put it in the development environment of your choice.</p>
+</div>
+<div class="section" id="creating-the-model">
+<h2>Creating the model<a class="headerlink" href="#creating-the-model" title="Permalink to this headline">¶</a></h2>
+<p>Next we create a Java class for our model.  Our example model has exact the same behaviour
+as our simple <a class="reference internal" href="examplesim.html#the-simulator"><span class="std std-ref">model</span></a> in the Python tutorial. To distinguish it
+from the Python-model we call it <em>JModel</em>. The only difference to the Python-model
+is that in Java we need two constructors (with and without init value) and getter
+and setter methods to access the variables <em>val</em> and <em>delta</em>.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">JModel</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">val</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">delta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">JModel</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">val</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">JModel</span><span class="o">(</span><span class="kt">float</span> <span class="n">initVal</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">val</span> <span class="o">=</span> <span class="n">initVal</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">float</span> <span class="nf">get_val</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">float</span> <span class="nf">get_delta</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">delta</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">set_delta</span><span class="o">(</span><span class="kt">float</span> <span class="n">delta</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">delta</span> <span class="o">=</span> <span class="n">delta</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">step</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">val</span> <span class="o">+=</span> <span class="k">this</span><span class="o">.</span><span class="na">delta</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-the-simulator">
+<h2>Creating the simulator<a class="headerlink" href="#creating-the-simulator" title="Permalink to this headline">¶</a></h2>
+<p>A simulator provides the functionality that is necessary to manages instances of our model and to
+execute the models. We need a method <em>addModel</em> to create instances of our model and an ArrayList
+<em>models</em> to store them. The <em>step</em> method executes a simulation for each model instance. To access
+the <em>values</em> and <em>deltas</em> we need getter and setter methods.  In our example the class
+implementing these functionalities is called JSimulator.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">JSimulator</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">JModel</span><span class="o">&gt;</span> <span class="n">models</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">JSimulator</span><span class="o">()</span> <span class="o">{</span>
+    	<span class="k">this</span><span class="o">.</span><span class="na">models</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">JModel</span><span class="o">&gt;();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add_model</span><span class="o">(</span><span class="n">Number</span> <span class="n">init_val</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">JModel</span> <span class="n">model</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">init_val</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        	<span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JModel</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        	<span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JModel</span><span class="o">(</span><span class="n">init_val</span><span class="o">.</span><span class="na">floatValue</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">models</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">model</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">step</span><span class="o">()</span> <span class="o">{</span>
+    	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="o">.</span><span class="na">models</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    		<span class="n">JModel</span> <span class="n">model</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">models</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    		<span class="n">model</span><span class="o">.</span><span class="na">step</span><span class="o">();</span>
+    	<span class="o">}</span>	    		
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">float</span> <span class="nf">get_val</span><span class="o">(</span><span class="kt">int</span> <span class="n">idx</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="n">JModel</span> <span class="n">model</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">models</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
+    	<span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="na">get_val</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">float</span> <span class="nf">get_delta</span><span class="o">(</span><span class="kt">int</span> <span class="n">idx</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="n">JModel</span> <span class="n">model</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">models</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
+    	<span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="na">get_delta</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">set_delta</span><span class="o">(</span><span class="kt">int</span> <span class="n">idx</span><span class="o">,</span> <span class="kt">float</span> <span class="n">delta</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="n">JModel</span> <span class="n">model</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">models</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
+    	<span class="n">model</span><span class="o">.</span><span class="na">set_delta</span><span class="o">(</span><span class="n">delta</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementing-the-mosaik-api">
+<h2>Implementing the mosaik API<a class="headerlink" href="#implementing-the-mosaik-api" title="Permalink to this headline">¶</a></h2>
+<p>Finally we need to implement the mosaik-API methods. In our example this is
+done in a class called JExampleSim. This class has to extent the abstract class
+<em>Simulator</em> from mosaik-java-api which is the Java-equivalent to the
+<a class="reference internal" href="examplesim.html#simulator-class"><span class="std std-ref">Simulator class</span></a> in Python. The class <em>Simulator</em> provides
+the four mosaik-API-calls <code class="docutils literal"><span class="pre">init()</span></code>, <code class="docutils literal"><span class="pre">create()</span></code>, <code class="docutils literal"><span class="pre">step()</span></code>, and <code class="docutils literal"><span class="pre">getData()</span></code>
+which we have to implement. For a more detailed explanation of the API-calls see the
+<a class="reference internal" href="../mosaik-api/low-level.html#api-calls"><span class="std std-ref">API-documentation</span></a>.</p>
+<p>But first we have to put together the <a class="reference internal" href="examplesim.html#meta-data"><span class="std std-ref">meta-data</span></a> containing information
+about models, attributes, and parameters of our simulator. &#8216;models&#8217; are all models our simulator
+provides. In our case this is only <em>JModel</em>. &#8216;public&#8217;: true tells mosaik that it is allowed to
+create models of this class. &#8216;params&#8217; are parameter that are passed during initialisation, in our
+case this is <em>init_val</em>. &#8216;attrs&#8217; is a list of values that can be exchanged.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">JSONObject</span> <span class="n">meta</span> <span class="o">=</span> <span class="o">(</span><span class="n">JSONObject</span><span class="o">)</span> <span class="n">JSONValue</span><span class="o">.</span><span class="na">parse</span><span class="o">((</span><span class="s">&quot;{&quot;</span>
+            <span class="o">+</span> <span class="s">&quot;    &#39;api_version&#39;: &quot;</span> <span class="o">+</span> <span class="n">Simulator</span><span class="o">.</span><span class="na">API_VERSION</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span>
+            <span class="o">+</span> <span class="s">&quot;    &#39;models&#39;: {&quot;</span>
+            <span class="o">+</span> <span class="s">&quot;        &#39;JModel&#39;: {&quot;</span> 
+            <span class="o">+</span> <span class="s">&quot;            &#39;public&#39;: true,&quot;</span>
+            <span class="o">+</span> <span class="s">&quot;            &#39;params&#39;: [&#39;init_val&#39;],&quot;</span>
+            <span class="o">+</span> <span class="s">&quot;            &#39;attrs&#39;: [&#39;val&#39;, &#39;delta&#39;]&quot;</span> 
+            <span class="o">+</span> <span class="s">&quot;        }&quot;</span>
+            <span class="o">+</span> <span class="s">&quot;    }&quot;</span> 
+            <span class="o">+</span> <span class="s">&quot;}&quot;</span><span class="o">).</span><span class="na">replace</span><span class="o">(</span><span class="s">&quot;&#39;&quot;</span><span class="o">,</span> <span class="s">&quot;\&quot;&quot;</span><span class="o">));</span>
+</pre></div>
+</div>
+<p>First method is <strong>init()</strong> that returns the
+meta data. In addition it is possible to pass arguments for initialization. In our
+case there is <em>eid_prefix</em> which will be used to name instances of the models:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span>    <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="nf">init</span><span class="o">(</span><span class="n">String</span> <span class="n">sid</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">simParams</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="k">if</span> <span class="o">(</span><span class="n">simParams</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="s">&quot;eid_prefix&quot;</span><span class="o">))</span> <span class="o">{</span>
+    		<span class="k">this</span><span class="o">.</span><span class="na">eid_prefix</span> <span class="o">=</span> <span class="n">simParams</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;eid_prefix&quot;</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
+    	<span class="o">}</span>
+        <span class="k">return</span> <span class="n">JExampleSim</span><span class="o">.</span><span class="na">meta</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>create()</strong> creates new instances of the model <em>JModel</em> by calling the <em>add_model</em>-method of
+<em>JSimulator</em>. It also assigns ID (eid) to the models, so that it is able to keep
+track of them. It has to return a list with the name (eid) and type of the models. You can find
+more details about the return object in the <a class="reference internal" href="../mosaik-api/low-level.html#api-create"><span class="std std-ref">API-documentation</span></a>.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span>    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="nf">create</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">model</span><span class="o">,</span> 
+    		<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">modelParams</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">JSONArray</span> <span class="n">entities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONArray</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">eid</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">eid_prefix</span> <span class="o">+</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">idCounter</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">modelParams</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="s">&quot;init_val&quot;</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">Number</span> <span class="n">init_val</span> <span class="o">=</span> <span class="o">(</span><span class="n">Number</span><span class="o">)</span> <span class="n">modelParams</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;init_val&quot;</span><span class="o">);</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">simulator</span><span class="o">.</span><span class="na">add_model</span><span class="o">(</span><span class="n">init_val</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">JSONObject</span> <span class="n">entity</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">();</span>
+            <span class="n">entity</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;eid&quot;</span><span class="o">,</span> <span class="n">eid</span><span class="o">);</span>
+            <span class="n">entity</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;type&quot;</span><span class="o">,</span> <span class="n">model</span><span class="o">);</span>
+            <span class="n">entity</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;rel&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">JSONArray</span><span class="o">());</span>
+            <span class="n">entities</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">entities</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">eid</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">idCounter</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">idCounter</span> <span class="o">+=</span> <span class="n">num</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">entities</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>step()</strong> tells the simulator to perform a simulation step. It passes the <em>time</em>, the current
+simulation time, and <em>inputs</em>, a JSON data object with input data from preceding simulators. The
+structure of <em>inputs</em> is explained in the <a class="reference internal" href="../mosaik-api/low-level.html#api-step"><span class="std std-ref">API-documentation</span></a>. If there are
+new <em>delta</em>-values in <em>inputs</em> they are set in the appropriate model instance. Finally it
+calls the simulator&#8217;s <em>step()</em>-method which, on its part, calls the <em>step()</em>-methods
+of the individual model-instances.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span>    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">step</span><span class="o">(</span><span class="kt">long</span> <span class="n">time</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">inputs</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="c1">//go through entities in inputs</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">:</span> <span class="n">inputs</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">//get attrs from entity</span>
+            <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">attrs</span> <span class="o">=</span> <span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;)</span> <span class="n">entity</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+            <span class="c1">//go through attrs of the entity</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">attr</span> <span class="o">:</span> <span class="n">attrs</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+            	<span class="c1">//check if there is a new delta</span>
+                <span class="n">String</span> <span class="n">attrName</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">attrName</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;delta&quot;</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="c1">//sum up deltas from different sources</span>
+                    <span class="n">Object</span><span class="o">[]</span> <span class="n">values</span> <span class="o">=</span> <span class="o">((</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;)</span> <span class="n">attr</span><span class="o">.</span><span class="na">getValue</span><span class="o">()).</span><span class="na">values</span><span class="o">().</span><span class="na">toArray</span><span class="o">();</span>
+                    <span class="kt">float</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">values</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="n">value</span> <span class="o">+=</span> <span class="o">((</span><span class="n">Number</span><span class="o">)</span> <span class="n">values</span><span class="o">[</span><span class="n">i</span><span class="o">]).</span><span class="na">floatValue</span><span class="o">();</span>
+                    <span class="o">}</span>
+                    <span class="c1">//set delta </span>
+                    <span class="n">String</span> <span class="n">eid</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+                    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">entities</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">eid</span><span class="o">);</span>
+                    <span class="k">this</span><span class="o">.</span><span class="na">simulator</span><span class="o">.</span><span class="na">set_delta</span><span class="o">(</span><span class="n">idx</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="c1">//call step-method</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">simulator</span><span class="o">.</span><span class="na">step</span><span class="o">();</span>
+
+        <span class="k">return</span> <span class="n">time</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">stepSize</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>getData()</strong> gets the simulator&#8217;s output data from the last simulation step. It
+passes <em>outputs</em>, a JSON data object that describes which parameters are requested.
+<em>getData()</em> goes through <em>outputs</em>, retrieves the requested values from the appropriate
+instances of JModel and puts it in <em>data</em>. The structure of <em>outputs</em> and <em>data</em> is
+explained in the <a class="reference internal" href="../mosaik-api/low-level.html#api-get-data"><span class="std std-ref">API-documentation</span></a>.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span>    <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="nf">getData</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">outputs</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+        <span class="c1">//*outputs* lists the models and the output values that are requested</span>
+        <span class="c1">//go through entities in outputs</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">entity</span> <span class="o">:</span> <span class="n">outputs</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">eid</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">attrs</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+            <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+            <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">entities</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">eid</span><span class="o">);</span>
+            <span class="c1">//go through attrs of the entity</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">attr</span> <span class="o">:</span> <span class="n">attrs</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;val&quot;</span><span class="o">))</span> <span class="o">{</span>
+                	<span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">attr</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">simulator</span><span class="o">.</span><span class="na">get_val</span><span class="o">(</span><span class="n">idx</span><span class="o">));</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;delta&quot;</span><span class="o">))</span> <span class="o">{</span>
+                	<span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">attr</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">simulator</span><span class="o">.</span><span class="na">get_delta</span><span class="o">(</span><span class="n">idx</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">data</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">eid</span><span class="o">,</span> <span class="n">values</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="connecting-the-simulator-to-mosaik">
+<h2>Connecting the simulator to mosaik<a class="headerlink" href="#connecting-the-simulator-to-mosaik" title="Permalink to this headline">¶</a></h2>
+<p>We use the same scenario as in our Python example <a class="reference internal" href="demo1.html#demo1"><span class="std std-ref">demo1</span></a>.
+The only thing we have to change is the way we connect our simulator to mosaik.
+There are two ways to do this:</p>
+<ul class="simple">
+<li><strong>cmd:</strong> mosaik calls the Java API by executing the command given in <em>cmd</em>. Mosaik starts the
+Java-API in a new process and connects it to mosaik. This works only if your simulator
+runs on the same machine as mosaik.</li>
+<li><strong>connect:</strong> mosaik connects to the Java-API which runs as a TCP server. This works also
+if mosaik and the simulator are running on different machines.</li>
+</ul>
+<p>For more details about how to connect simulators to mosaik see the section about the
+<a class="reference internal" href="../simmanager.html"><span class="doc">Sim Manager</span></a> in the mosaik-documentation.</p>
+<div class="section" id="connecting-the-simulator-using-cmd">
+<span id="java-cmd"></span><h3>Connecting the simulator using <em>cmd</em><a class="headerlink" href="#connecting-the-simulator-using-cmd" title="Permalink to this headline">¶</a></h3>
+<p>We have to give mosaik the command how to start our Java simulator. This is done in
+<a class="reference internal" href="demo1.html#sim-config"><span class="std std-ref">SIM_CONFIG</span></a>. The marked lines show the differences to our Python simulator.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Sim config. and other parameters</span>
+<span class="n">SIM_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+<span class="hll">    <span class="s1">&#39;JExampleSim&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;java -cp JExampleSim.jar de.offis.mosaik.api.JExampleSim </span><span class="si">%(addr)s</span><span class="s1">&#39;</span><span class="p">,</span>
+</span>    <span class="p">},</span>
+    <span class="s1">&#39;Collector&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;python collector.py </span><span class="si">%(addr)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="n">END</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">60</span>  <span class="c1"># 10 minutes</span>
+</pre></div>
+</div>
+<p>The placeholder <em>%(addr)s</em> is later replaced  with IP address and port by mosaik. If we now
+execute demo_1.py we get the same <a class="reference internal" href="demo1.html#demo1-output"><span class="std std-ref">output</span></a> as in our Python-example.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The command how to start the Java simulator may differ depending on your operating system.
+If the command is complex, e. g. if it contains several libraries, it is usually better
+to put it in a script and than call the script in <em>cmd</em>.</p>
+</div>
+</div>
+<div class="section" id="connecting-the-simulator-using-connect">
+<h3>Connecting the simulator using <em>connect</em><a class="headerlink" href="#connecting-the-simulator-using-connect" title="Permalink to this headline">¶</a></h3>
+<p>In this case the Java API acts as TCP server and listens at the given address
+and port. Let&#8217;s say the simulator runs on a computer with the IP-address 1.2.3.4.
+We can now choose a port that is not assigned by <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">default</a>.
+In our example we choose port 5678. Make sure that IP-address and port is accessible from
+the computer that hosts mosaik (firewalls etc.).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Of course you can run mosaik and your simulator on the same machine by using
+<code class="docutils literal"><span class="pre">127.0.0.1:5678</span></code> (localhost). You may want to do this for testing and experimenting.
+Apart from that the connection with cmd (<a class="reference internal" href="#java-cmd"><span class="std std-ref">see above</span></a>) is usually
+the better alternative because you don&#8217;t have to start the Java part separately.</p>
+</div>
+<p>We have to tell mosaik how to connect to the simulator. This is done in <a class="reference internal" href="demo1.html#sim-config"><span class="std std-ref">SIM_CONFIG</span></a>
+in our scenario (demo1):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Sim config. and other parameters</span>
+<span class="n">SIM_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+<span class="hll">    <span class="s1">&#39;JExampleSim&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="s1">&#39;connect&#39;</span><span class="p">:</span> <span class="s1">&#39;1.2.3.4:5678&#39;</span><span class="p">,</span>
+</span>    <span class="p">},</span>
+    <span class="s1">&#39;Collector&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;python collector.py </span><span class="si">%(addr)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="n">END</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">60</span>  <span class="c1"># 10 minutes</span>
+</pre></div>
+</div>
+<p>The marked lines show the differences to our Python simulator. Our simulator is now called <em>JExampleSim</em>
+and we need to give the simulator&#8217;s address and port after the <em>connect</em> key word.</p>
+<p>Now we start JExampleSim. To tell the mosaik-Java-API to run as TCP-server is done
+by starting it with &#8220;server&#8221; as second argument. The first command line argument is IP-address and port.
+The command line in our example looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">java</span> <span class="o">-</span><span class="n">cp</span> <span class="n">JExampleSim</span><span class="o">.</span><span class="n">jar</span> <span class="n">de</span><span class="o">.</span><span class="n">offis</span><span class="o">.</span><span class="n">mosaik</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">JExampleSim</span> <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span><span class="p">:</span><span class="mi">5678</span> <span class="n">server</span>
+</pre></div>
+</div>
+<p>If we now execute demo_1.py we get the same <a class="reference internal" href="demo1.html#demo1-output"><span class="std std-ref">output</span></a> as in
+our Python-example.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can find the source code used in this tutorial in the
+<a class="reference external" href="https://bitbucket.org/mosaik/mosaik">mosaik-source-files</a> in the folder
+<code class="docutils literal"><span class="pre">docs/tutorial/code</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../mosaik-api/index.html" class="btn btn-neutral float-right" title="The mosaik API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odysseus2.html" class="btn btn-neutral" title="Using Odysseus to process, visualize and store simulation data" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2016 OFFIS.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.3.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+  <!-- Piwik Image Tracker-->
+  <img src="https://mosaik.offis.de/analytics/piwik.php?idsite=4&rec=1" style="border:0" alt="" />
+  <!-- End Piwik -->
+</body>
+</html>
