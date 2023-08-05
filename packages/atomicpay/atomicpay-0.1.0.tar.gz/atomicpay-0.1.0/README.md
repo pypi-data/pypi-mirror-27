@@ -1,0 +1,163 @@
+## Atomic Pay: Integrate Payments Easily
+### Provides Python APIs to create, process and manage mobile payments.
+Used internally at Atom Payments Ltd subsidiary of *Turbopay Holdings Ltd*
+
+[![Build Status](https://travis-ci.org/mainanick/atomic-pay.svg?branch=master)](https://travis-ci.org/mainanick/atomic-pay)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/mainanick)
+
+
+#### Stage: Draft
+
+Atomic Pay makes it easily possible to intergrate with mpesa or equity. Many More to be supported in future
+
+
+
+# Mpesa
+```python
+>>> import atomic as atm 
+
+>>> mpesa = atm.Mpesa(<key>, <secret>, <config>)
+```
+Or
+```python
+>>> import atomic as atm
+
+>>> with atm.Mpesa(<key>, <secret>, config=configs) as at:
+>>>      print(at.balance())
+```
+
+Takes the consumer key, consumer secret and the configuration dict
+
+*Live defaults to False*
+
+```python
+>>> mpesa = atm.Mpesa(<key>, <secret>, <config>, live=True)
+```
+### Test listener (https://github.com/mainanick/atomic-pay/tree/master/docs/listener)
+## Configurations
+In order to simplify the work of integrating it is worth it to write a one time config dict
+
+```python
+configs = {
+    "Shortcode": 111111,
+    "Initiator": "AtomicPay",
+    "SecurityCredential": "xxxxxxxx...",
+    "Shortcode2": 222222, #Test PartyB
+    "MSISDN": 254712345678, #Test
+    "LipaShortcode": 333333,
+    "LipaPassKey": "xxxxxxxx...",
+    "URLS":{
+        "BALANCE":{
+            "QueueTimeOutURL": "",
+            "ResultURL": "",
+        },
+        "TRANSACTIONS":{
+            "QueueTimeOutURL": "",
+            "ResultURL": "",
+        },
+        "B2B":{
+            "QueueTimeOutURL": "",
+            "ResultURL": ",
+        },
+        "B2C":{
+            "QueueTimeOutURL": "",
+            "ResultURL": "",
+        },
+        "LIPA":{
+            "CallBackURL": "",
+        }
+    }   
+}
+```
+Pass the configs
+```python
+>>> mpesa = atm.Mpesa(<key>, <secret>, config=configs, live=False)
+```
+
+
+## Responses
+Every mpesa api call return an instance of MpesaResponse
+
+Every equity api call return an instance of EquityResponse
+
+#### MpesaResponse
+- .json(): Returns the original json response [json]
+- .code: Returns mpesa status code [str]
+- .ok: Returns True for successful requests else False
+- .text: Returns the response description
+
+```python
+>>> response = mpesa.balance()
+
+>>> print(response) #prints <MpesaResponse [200]>
+
+"""Response Description message"""
+>>> response.text
+
+"""Mpesa status code"""
+>>> response.code
+
+"""Check if requests was successful"""
+>>> if response.ok:
+>>>    print("Okayyy")
+```
+
+## Balance
+```python
+>>> response = mpesa.balance()
+```
+## Transactions
+```python
+>>> response = mpesa.transaction(<txn_id>, <originator_id>)
+```
+
+## Business to Business
+```python
+>>> b2b = mpesa.b2b()
+
+>>> response = b2b.buy_goods(<to>, <amount>, <reference>,<remarks>)
+
+>>> response = b2b.paybill(<to>, <amount>, <reference>,<remarks>)
+```
+
+## Business to Customer
+```python
+>>> b2c = mpesa.b2c()
+
+>>> response = b2c.pay_salary(<to>, <amount>, <remarks>)
+
+>>> response = b2c.pay_business(<to>, <amount>, <remarks>)
+
+>>> response = b2c.pay_promotion(<to>, <amount>, <remarks>, <occassion>)
+
+```
+
+## Lipa Na Mpesa
+```python
+>>> lipa = mpesa.lipa()
+
+>>> pay = lipa.pay(<to>, <amount>, <description>, <reference>)
+
+>>> if pay.ok:
+        checkout_id = r.json()['CheckoutRequestID']
+        response = lipa.query(checkout_id)        
+        print(response.json())
+```
+## Advanced
+Atomic apis are also async
+just pass a callback and thats all
+```python
+>>> def callback(response):
+>>>     print(response.json())
+
+>>> mpesa.balance(callback=callback)
+
+>>> lipa.pay(<to>, <amount>, <description>, <reference>, callback=callback)
+```
+
+## Not Implemented
+### B2B
+- DisburseFundsToBusiness
+- BusinessToBusinessTransfer
+- MerchantToMerchantTransfer
