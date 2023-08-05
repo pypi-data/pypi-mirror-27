@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: discussion-thread
+Version: 1.0.0
+Summary: Manages the daily discussion thread on /r/neoliberal
+Home-page: https://github.com/neoliberal/discussion_thread
+Author: Abhi Agarwal
+Author-email: abhi@neoliber.al
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: reddit neoliberal discussion_thread
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: No Input/Output (Daemon)
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3
+Requires-Dist: praw
+Requires-Dist: schedule
+Requires-Dist: PTable
+Requires-Dist: slack-python-logging
+
+UNKNOWN
+
+
