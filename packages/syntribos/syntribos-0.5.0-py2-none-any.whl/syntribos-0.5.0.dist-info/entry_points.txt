@@ -1,0 +1,6 @@
+[console_scripts]
+syntribos = syntribos.runner:entry_point
+
+[oslo.config.opts]
+syntribos.config = syntribos.config:list_opts
+
