@@ -1,0 +1,12 @@
+{
+  "integration/test_docker.py::test_networking_scenario": true,
+  "integration/test_filesystem.py::TestDockerContainerFilesystem::()::test_copy_from": true,
+  "integration/test_filesystem.py::TestDockerContainerFilesystem::()::test_copy_to": true,
+  "integration/test_filesystem.py::TestDockerContainerFilesystem::()::test_dir_is_present": true,
+  "integration/test_filesystem.py::TestDockerContainerFilesystem::()::test_file_is_present": true,
+  "integration/test_filesystem.py::TestDockerContainerFilesystem::()::test_get_file": true,
+  "integration/test_filesystem.py::TestDockerContainerFilesystem::()::test_read_file": true,
+  "integration/test_filesystem.py::TestDockerImageFilesystem::()::test_dir_is_present": true,
+  "integration/test_filesystem.py::TestDockerImageFilesystem::()::test_read_file": true,
+  "integration/test_utils.py::test_probes_port": true
+}

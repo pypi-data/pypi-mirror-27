@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Docker Container &mdash; conu 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="conu 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Backend - Docker" href="docker_index.html"/>
+        <link rel="next" title="Docker Image" href="docker_image.html"/>
+        <link rel="prev" title="Backend - Docker" href="docker_index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> conu
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">conu API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api_index.html">API definition</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="docker_index.html">Backend - Docker</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Docker Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_image.html">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="util_index.html">Utilities</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">conu</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">conu API Reference</a> &raquo;</li>
+        
+          <li><a href="docker_index.html">Backend - Docker</a> &raquo;</li>
+        
+      <li>Docker Container</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/docker_container.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="docker-container">
+<h1>Docker Container<a class="headerlink" href="#docker-container" title="Permalink to this headline">¶</a></h1>
+<p>Aside from methods in API definition - <a class="reference internal" href="container.html#conu.apidefs.container.Container" title="conu.apidefs.container.Container"><code class="xref py py-class docutils literal"><span class="pre">conu.apidefs.container.Container</span></code></a>, DockerContainer implements following methods:</p>
+<dl class="class">
+<dt id="conu.DockerContainer">
+<em class="property">class </em><code class="descclassname">conu.</code><code class="descname">DockerContainer</code><span class="sig-paren">(</span><em>image</em>, <em>container_id</em>, <em>name=None</em>, <em>popen_instance=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conu.DockerContainer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="conu.DockerContainer.inspect">
+<code class="descname">inspect</code><span class="sig-paren">(</span><em>refresh=True</em><span class="sig-paren">)</span><a class="headerlink" href="#conu.DockerContainer.inspect" title="Permalink to this definition">¶</a></dt>
+<dd><p>return cached metadata by default (a convenience method)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>refresh</strong> – bool, returns up to date metadata if set to True</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="conu.DockerContainer.run_via_binary_in_foreground">
+<em class="property">classmethod </em><code class="descname">run_via_binary_in_foreground</code><span class="sig-paren">(</span><em>image</em>, <em>run_command_instance=None</em>, <em>popen_params=None</em>, <em>container_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conu.DockerContainer.run_via_binary_in_foreground" title="Permalink to this definition">¶</a></dt>
+<dd><p>create container using provided image and run it in foreground;
+this method is useful to test real user scenarios when users invoke containers using
+binary and pass input into the container via STDIN</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> – instance of Image</li>
+<li><strong>run_command_instance</strong> – instance of DockerRunBuilder</li>
+<li><strong>popen_params</strong> – dict, keyword arguments passed to Popen constructor</li>
+<li><strong>container_name</strong> – str, pretty container identifier</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">instance of DockerContainer</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conu.DockerContainer.wait_for_port">
+<code class="descname">wait_for_port</code><span class="sig-paren">(</span><em>port</em>, <em>timeout=10</em>, <em>**probe_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#conu.DockerContainer.wait_for_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>block until specified port starts accepting connections, raises an exc ProbeTimeout
+if timeout is reached</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>port</strong> – int, port number</li>
+<li><strong>timeout</strong> – int or float (seconds), time to wait for establishing the connection</li>
+<li><strong>probe_kwargs</strong> – arguments passed to Probe constructor</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="conu.DockerRunBuilder">
+<em class="property">class </em><code class="descclassname">conu.</code><code class="descname">DockerRunBuilder</code><span class="sig-paren">(</span><em>command=None</em>, <em>additional_opts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conu.DockerRunBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>helper to execute <cite>docker run</cite> – users can easily change or override anything</p>
+<dl class="method">
+<dt id="conu.DockerRunBuilder.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>command=None</em>, <em>additional_opts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conu.DockerRunBuilder.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build <cite>docker run</cite> command</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>command</strong> – list of str, command to run in the container, examples:
+- [“ls”, “/”]
+- [“bash”, “-c”, “ls / | grep bin”]</li>
+<li><strong>additional_opts</strong> – list of str, additional options for <cite>docker run</cite></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="conu.DockerContainerFS">
+<em class="property">class </em><code class="descclassname">conu.</code><code class="descname">DockerContainerFS</code><span class="sig-paren">(</span><em>container</em>, <em>mount_point=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conu.DockerContainerFS" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="conu.DockerContainerFS.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>container</em>, <em>mount_point=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conu.DockerContainerFS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container</strong> – instance of DockerContainer</li>
+<li><strong>mount_point</strong> – str, directory where the filesystem will be mounted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="docker_image.html" class="btn btn-neutral float-right" title="Docker Image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="docker_index.html" class="btn btn-neutral" title="Backend - Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 Red Hat, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
