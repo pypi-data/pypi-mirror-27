@@ -1,0 +1,38 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="ftw.chameleon">
+
+    <subscriber
+        for="zope.processlifetime.IDatabaseOpenedWithRoot"
+        handler=".precook.eager_load_on_startup"
+        />
+
+    <subscriber
+        for="ZPublisher.interfaces.IPubSuccess"
+        handler=".precook.eager_load_portal_skins"
+        />
+
+    <monkey:patch
+        description="Fire event when chameleon compiles."
+        class="chameleon.template.BaseTemplate"
+        original="_compile"
+        replacement=".patches.chameleon_BaseTemplate_compile"
+        preserveOriginal="True"
+        />
+
+    <subscriber
+        for="ftw.chameleon.interfaces.ICompilingTemplateEvent"
+        handler=".cook_warning.template_compiled"
+        />
+
+    <monkey:patch
+        description="Let zope.pagetemplate support CHAMELEON_RELOAD."
+        class="zope.pagetemplate.pagetemplatefile.PageTemplateFile"
+        original="_cook_check"
+        replacement=".patches.zope_PageTemplateFile_cook_check"
+        preserveOriginal="True"
+        />
+
+</configure>

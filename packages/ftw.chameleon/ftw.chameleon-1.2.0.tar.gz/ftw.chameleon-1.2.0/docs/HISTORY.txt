@@ -1,0 +1,35 @@
+Changelog
+=========
+
+
+1.2.0 (2017-12-04)
+------------------
+
+- Require five.pt < 3.0. [mbaechtold]
+
+- Append changelog to long description of package [raphael-s]
+
+
+1.1.2 (2017-06-26)
+------------------
+
+- Skip persistent templates in precook_templates() to avoid attempting to
+  operate on a closed ZODB connection. [lgraf]
+
+
+1.1.1 (2016-11-21)
+------------------
+
+- Fix logger name (was ftw.ptcache). [jone]
+
+
+1.1.0 (2016-10-25)
+------------------
+
+- Precook z3c.jbot registered templates. [jone]
+
+
+1.0.0 (2016-10-03)
+------------------
+
+- Initial implementation.
