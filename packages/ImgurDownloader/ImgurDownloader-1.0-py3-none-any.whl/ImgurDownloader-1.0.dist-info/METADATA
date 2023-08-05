@@ -1,0 +1,27 @@
+Metadata-Version: 2.0
+Name: ImgurDownloader
+Version: 1.0
+Summary: Download and discover imgur albums
+Home-page: https://github.com/tiberiuichim/imgur-album-recursive-downloader
+Author: Tiberiu Ichim
+Author-email: tiberiu.ichim@gmail.com
+License: GPL3
+Description-Content-Type: UNKNOWN
+Keywords: imgur,downloader,script
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Utilities
+Requires-Dist: awesome-slugify
+Requires-Dist: click
+Requires-Dist: requests
+Requires-Dist: xdg
+
+Download Imgur albums, with optional discovery of
+new albums based on image text descriptions.
+
+
