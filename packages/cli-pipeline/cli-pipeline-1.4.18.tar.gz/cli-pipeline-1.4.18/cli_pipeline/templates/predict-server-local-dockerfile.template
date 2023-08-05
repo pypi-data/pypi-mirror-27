@@ -1,0 +1,69 @@
+FROM {{ PIPELINE_IMAGE_REGISTRY_URL }}/{{ PIPELINE_IMAGE_REGISTRY_REPO }}/{{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}:{{ PIPELINE_IMAGE_REGISTRY_BASE_TAG }}-{{ PIPELINE_IMAGE_REGISTRY_BASE_CHIP }}
+
+ENV \
+  PIPELINE_MODEL_NAME={{ PIPELINE_MODEL_NAME }}
+
+ENV \
+  PIPELINE_MODEL_TAG={{ PIPELINE_MODEL_TAG }}
+
+ENV \
+  PIPELINE_MODEL_TYPE={{ PIPELINE_MODEL_TYPE }}
+
+ENV \
+  PIPELINE_MODEL_RUNTIME={{ PIPELINE_MODEL_RUNTIME }}
+
+ENV \
+  PIPELINE_MODEL_CHIP={{ PIPELINE_MODEL_CHIP }}
+
+ENV \
+  PIPELINE_MODEL_PATH=/opt/ml/model
+
+ENV \
+  PIPELINE_MODEL_OUTPUT=/opt/ml/output
+
+ENV \ 
+  PIPELINE_MODEL_INPUT=/opt/ml/input
+
+RUN \
+   echo "PIPELINE_MODEL_PATH=$PIPELINE_MODEL_PATH"
+
+ENV \
+  PIPELINE_MODEL_PREDICT_CONDA_ENV_NAME=pipeline-{{ PIPELINE_IMAGE_REGISTRY_NAMESPACE }}-{{ PIPELINE_MODEL_NAME }}-{{ PIPELINE_MODEL_TAG }}-{{ PIPELINE_MODEL_TYPE }}-{{ PIPELINE_MODEL_RUNTIME }}-{{ PIPELINE_MODEL_CHIP }}
+
+RUN \
+  echo $PIPELINE_MODEL_PREDICT_CONDA_ENV_NAME \ 
+  && echo ""
+
+{% if PIPELINE_MODEL_RUNTIME not in ['jvm'] %}
+# This is intentionally split out to prevent dependencies from being re-initialized on every build
+#  (Even if the dependencies haven't changed.)
+COPY {{ PIPELINE_MODEL_PATH }}/pipeline_conda_environment.yml $PIPELINE_MODEL_PATH/pipeline_conda_environment.yml
+COPY {{ PIPELINE_MODEL_PATH }}/pipeline_condarc .condarc
+
+RUN \
+  if [ -f "$PIPELINE_MODEL_PATH/pipeline_conda_environment.yml" ]; then \
+    ls $PIPELINE_MODEL_PATH/pipeline_conda_environment.yml \
+    && echo "" \
+    && echo "Updating Conda Environment '$PIPELINE_MODEL_PREDICT_CONDA_ENV_NAME' with Model Dependencies from '$PIPELINE_MODEL_PATH/pipeline_conda_environment.yml'..." \
+    && echo "" \
+    && conda env update --name $PIPELINE_MODEL_PREDICT_CONDA_ENV_NAME --file $PIPELINE_MODEL_PATH/pipeline_conda_environment.yml \
+    && echo "" \
+    && echo "...Conda Environment Updated with Model Requirements!" \
+    && echo ""; \
+  fi
+{% endif %}
+
+RUN \
+  echo "Updating Conda Environment '$PIPELINE_MODEL_PREDICT_CONDA_ENV_NAME' with Model Server Dependencies from '$PIPELINE_MODEL_SERVER_PATH/requirements/pipeline_model_server_conda_environment.yml'..." \
+  && echo "" \
+  && conda env update --name $PIPELINE_MODEL_PREDICT_CONDA_ENV_NAME --file $PIPELINE_MODEL_SERVER_PATH/requirements/pipeline_model_server_conda_environment.yml \
+  && echo "" \
+  && echo "...Conda Environment Updated with Model Server Requirements!" \
+  && echo "" 
+
+RUN \
+  echo "source activate $PIPELINE_MODEL_PREDICT_CONDA_ENV_NAME" >> ~/.bashrc \
+  && source activate $PIPELINE_MODEL_PREDICT_CONDA_ENV_NAME \
+  && conda list
+
+COPY {{ PIPELINE_MODEL_PATH }} $PIPELINE_MODEL_PATH
