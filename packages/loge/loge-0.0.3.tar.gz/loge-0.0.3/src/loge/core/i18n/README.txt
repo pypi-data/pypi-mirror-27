@@ -1,0 +1,1 @@
+Katalog z tlumaczeniamu core. Po utworzeniu plikow README.txt do usuniecia.
