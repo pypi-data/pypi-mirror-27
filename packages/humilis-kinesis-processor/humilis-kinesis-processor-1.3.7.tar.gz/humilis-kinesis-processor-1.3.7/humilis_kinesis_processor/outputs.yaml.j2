@@ -1,0 +1,30 @@
+---
+outputs:
+    {% if not dead_letter_queue_arn and has_dead_letter_queue %}
+    DeadLetterQueueArn:
+        Description: ARN of the processor dead letter queue
+        Value:
+          "Fn::GetAtt":
+              - DeadLetterQueue
+              - Arn
+    {% endif %}
+    LambdaFunctionArn:
+        Description: The ARN of the Lambda function
+        Value:
+            "Fn::GetAtt":
+                - LambdaFunction
+                - Arn
+
+    LambdaExecutionRoleArn:
+        Description: The ARN of the Lambda execution role
+        Value:
+            "Fn::GetAtt":
+                - LambdaExecutionRole
+                - Arn
+
+    {% if kms_key_admins %}
+    KmsKeyId:
+        Description: The ID of the KMS key used to encrypt Lambda env vars
+        Value:
+            Ref: KmsKey
+    {% endif %}

@@ -1,0 +1,555 @@
+---
+# Find out if there are output (delivery) streams
+{% set globs={'has_output_stream': False, 'has_output_delivery': False} %}
+{% for s in meta_output %}
+{% if s.kinesis_stream %}
+{% set _ = globs.update({'has_output_stream': True}) %}
+{% endif %}
+{% if s.firehose_delivery_stream %}
+{% set _ = globs.update({'has_output_delivery': True}) %}
+{% endif %}
+{% endfor %}
+# set meta_input and meta_error to empty dicts if the user has not provided them
+{% set meta_error = meta_error or {} %}
+{% set meta_input = meta_input or {} %}
+# Do we need a DynamoDB table to store state info?
+{% if dynamodb_capacity.read|int or dynamodb_capacity.write|int %}
+{% set _ = globs.update({'stateful': True}) %}
+{% else %}
+{% set _ = globs.update({'stateful': False}) %}
+{% endif %}
+resources:
+    # Alarms
+    {% if sns_topic %}
+    {% if not sns_topic.startswith("arn:") %}
+    SnsTopic:
+      Type: "AWS::SNS::Topic"
+      Properties:
+        TopicName: {{sns_topic}}
+        {% if alert_subscribers %}
+        Subscription:
+            {% for subscriber in alert_subscribers %}
+            - Endpoint: "{{subscriber}}"
+              Protocol: "email"
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    ThrottlingAlarm:
+      Type: "AWS::CloudWatch::Alarm"
+      Properties:
+        AlarmDescription: "Lambda function is being throttled"
+        AlarmActions:
+          {% if not sns_topic.startswith("arn:") %}
+          - Ref:
+              SnsTopic
+          {% else %}
+          - {{sns_topic}}
+          {% endif %}
+        MetricName: Throttles
+        Namespace: AWS/Lambda
+        Statistic: Maximum
+        Period: 60
+        EvaluationPeriods: 1
+        Threshold: 0
+        ComparisonOperator: GreaterThanThreshold
+        Dimensions:
+          - Name: FunctionName
+            Value:
+              Ref: LambdaFunction
+    InvocationDurationAlarm:
+      Type: "AWS::CloudWatch::Alarm"
+      Properties:
+        AlarmDescription: "Lambda invocations have too long durations"
+        AlarmActions:
+          {% if not sns_topic.startswith("arn:") %}
+          - Ref:
+              SnsTopic
+          {% else %}
+          - {{sns_topic}}
+          {% endif %}
+        MetricName: Duration
+        Namespace: AWS/Lambda
+        Statistic: {{invocation_duration_alarm.statistic}}
+        Period: {{invocation_duration_alarm.period}}
+        EvaluationPeriods: {{invocation_duration_alarm.evaluation_periods}}
+        Threshold: {{invocation_duration_alarm.threshold}}
+        ComparisonOperator: GreaterThanThreshold
+        Dimensions:
+          - Name: FunctionName
+            Value:
+              Ref: LambdaFunction
+    InvocationErrorsAlarm:
+      Type: "AWS::CloudWatch::Alarm"
+      Properties:
+        AlarmDescription: "Too many Lambda invocation errors"
+        AlarmActions:
+          {% if not sns_topic.startswith("arn:") %}
+          - Ref:
+              SnsTopic
+          {% else %}
+          - {{sns_topic}}
+          {% endif %}
+        MetricName: Errors
+        Namespace: AWS/Lambda
+        Statistic: {{invocation_errors_alarm.statistic}}
+        Period: {{invocation_errors_alarm.period}}
+        EvaluationPeriods: {{invocation_errors_alarm.evaluation_periods}}
+        Threshold: {{invocation_errors_alarm.threshold}}
+        ComparisonOperator: GreaterThanThreshold
+        Dimensions:
+          - Name: FunctionName
+            Value:
+              Ref: LambdaFunction
+    TooFewInvocationsAlarm:
+      Type: "AWS::CloudWatch::Alarm"
+      Properties:
+        AlarmDescription: "Too few Lambda invocations"
+        AlarmActions:
+          {% if not sns_topic.startswith("arn:") %}
+          - Ref:
+              SnsTopic
+          {% else %}
+          - {{sns_topic}}
+          {% endif %}
+        InsufficientDataActions:
+          {% if not sns_topic.startswith("arn:") %}
+          - Ref:
+              SnsTopic
+          {% else %}
+          - {{sns_topic}}
+          {% endif %}
+        MetricName: Invocations
+        Namespace: AWS/Lambda
+        Statistic: {{invocations_alarm.statistic}}
+        Period: {{invocations_alarm.period}}
+        EvaluationPeriods: {{invocations_alarm.evaluation_periods}}
+        Threshold: {{invocations_alarm.lower_threshold}}
+        ComparisonOperator: LessThanThreshold
+        Dimensions:
+          - Name: FunctionName
+            Value:
+              Ref: LambdaFunction
+    TooManyInvocationsAlarm:
+      Type: "AWS::CloudWatch::Alarm"
+      Properties:
+        AlarmDescription: "Too many Lambda invocations"
+        AlarmActions:
+          {% if not sns_topic.startswith("arn:") %}
+          - Ref:
+              SnsTopic
+          {% else %}
+          - {{sns_topic}}
+          {% endif %}
+        MetricName: Invocations
+        Namespace: AWS/Lambda
+        Statistic: {{invocations_alarm.statistic}}
+        Period: {{invocations_alarm.period}}
+        EvaluationPeriods: {{invocations_alarm.evaluation_periods}}
+        Threshold: {{invocations_alarm.upper_threshold}}
+        ComparisonOperator: GreaterThanThreshold
+        Dimensions:
+          - Name: FunctionName
+            Value:
+              Ref: LambdaFunction
+    {% endif %}
+
+    {% if has_dead_letter_queue and not dead_letter_queue_arn %}
+    DeadLetterQueue:
+        Type: "AWS::SQS::Queue"
+    {% endif %}
+
+    # The lambda function
+    LambdaFunction:
+      Type: "AWS::Lambda::Function"
+      Properties:
+        Code:
+          S3Bucket: "{{lambda_function.s3bucket}}"
+          S3Key: "{{lambda_function.s3key}}"
+        Runtime: "{{runtime}}" 
+        {% if has_dead_letter_queue or dead_letter_queue_arn %}
+        DeadLetterConfig:
+            {% if dead_letter_queue_arn %}
+            TargetArn: "{{dead_letter_queue_arn}}"
+            {% else %}
+            TargetArn:
+              "Fn::GetAtt":
+                  - DeadLetterQueue
+                  - Arn
+            {% endif %}
+        {% endif %}
+        MemorySize: "{{memory_size}}"
+        Description: "{{_layer.description}}"
+        {# in seconds #}
+        Timeout: "{{timeout}}"
+        Handler: "handler.lambda_handler"
+        Role:
+          "Fn::GetAtt":
+              - LambdaExecutionRole
+              - Arn
+        Environment:
+          Variables:
+              "HUMILIS_ENVIRONMENT": "{{_env.name}}"
+              "HUMILIS_STAGE": "{{_env.stage}}"
+              "HUMILIS_LAYER": "{{_layer.name}}"
+              "ASYNC": "{{async or ''}}"
+              "LOGGING_LEVEL": "{{logging_level}}"
+              "ASYNC_BATCH_SIZE": "{{async_batch_size or ''}}"
+              {% for varname, varvalue in variables.items() %}
+              "{{varname}}": "{{varvalue}}"
+              {% endfor %}
+
+    # The role associated to the Lambda function that processes raw events
+    LambdaExecutionRole:
+      Type: "AWS::IAM::Role"
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                  Service: 'lambda.amazonaws.com'
+              Action: 'sts:AssumeRole'
+        # Keep all environment role under the same path
+        Path: {{ "/{}/".format(_env.name) }}
+        Policies:
+          - PolicyName: root
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                {% if has_dead_letter_queue or dead_letter_queue_arn %}
+                - Effect: Allow
+                  # Full access to the Dead Letter Queue
+                  Action:
+                    - "sqs:*"
+                  Resource:
+                    {% if dead_letter_queue_arn %}
+                    "{{dead_letter_queue_arn}}"
+                    {% elif has_dead_letter_queue %}
+                      "Fn::GetAtt":
+                          - DeadLetterQueue
+                          - Arn
+                    {% endif %}
+                {% endif %}
+                - Effect: Allow
+                  # Write access to Cloudwatch logs
+                  Action:
+                    - "logs:CreateLogGroup"
+                    - "logs:CreateLogStream"
+                    - "logs:PutLogEvents"
+                  Resource: "arn:aws:logs:*:*:*"
+                - Effect: Allow
+                  # Invoke other lambda functions asynchronously
+                  Action:
+                    - "lambda:InvokeFunction"
+                  Resource:
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:lambda:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":",
+                         "function:",
+                         "{{__context.environment.name}}*"]
+                {% if meta_input.firehose_delivery_stream or meta_error.firehose_delivery_stream or globs.has_output_delivery %}
+                - Effect: Allow
+                  # Write access to the Firehose delivery stream(s)
+                  Action:
+                    - "firehose:PutRecord"
+                    - "firehose:PutRecordBatch"
+                    - "firehose:ListDeliveryStreams"
+                    - "firehose:DescribeDeliveryStream"
+                  Resource:
+                    {% if meta_input.firehose_delivery_stream %}
+                    {% if meta_input.firehose_delivery_stream|is_list %}
+                    # Multiple input delivery streams
+                    {% for is in meta_input.firehose_delivery_stream %}
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:firehose:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":",
+                         "deliverystream/",
+                         "{{is.stream_name}}"]
+                    {% endfor %}
+                    {% else %}
+                    # Just one input delivery stream
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:firehose:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":",
+                         "deliverystream/",
+                         "{{meta_input.firehose_delivery_stream.stream_name}}"]
+                    {% endif %}
+                    {% endif %}
+                    {% if meta_error.firehose_delivery_stream %}
+                    {% if meta_error.firehose_delivery_stream|is_list %}
+                    # Multiple error delivery streams
+                    {% for es in meta_error.firehose_delivery_stream %}
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:firehose:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":",
+                         "deliverystream/",
+                         "{{es}}"]
+                    {% endfor %}
+                    {% else %}
+                    # Just one error delivery stream
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:firehose:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":", "deliverystream/",
+                         "{{meta_error.firehose_delivery_stream}}"]
+                    {% endif %}
+                    {% endif %}
+                    {% for os in meta_output %}
+                    {% if os.firehose_delivery_stream %}
+                    {% if os.firehose_delivery_stream|is_list %}
+                    # Multiple error delivery streams
+                    {% for osi in os.firehose_delivery_stream %}
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:firehose:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":",
+                         "deliverystream/", "{{osi.stream_name}}"]
+                    {% endfor %}
+                    {% else %}
+                    # Just one error delivery stream
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:firehose:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":", "deliverystream/",
+                         "{{os.firehose_delivery_stream.stream_name}}"]
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                - Effect: Allow
+                  # Permission to list and describe all streams
+                  Action:
+                    - "kinesis:DescribeStream"
+                    - "kinesis:ListStreams"
+                  Resource: "*"
+                {% if meta_input.kinesis_stream %}
+                - Effect: Allow
+                  # Permissions to read from the input stream
+                  Action:
+                    - "kinesis:GetRecords"
+                    - "kinesis:GetShardIterator"
+                  Resource:
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:kinesis:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":", "stream/",
+                         "{{meta_input.kinesis_stream}}"]
+                  {% endif %}
+
+                {% if globs.has_output_stream or meta_error.kinesis_stream %}
+                - Effect: Allow
+                  # Permissions to write to error and output streams
+                  Action:
+                    - "kinesis:PutRecords"
+                  Resource:
+                    {% for os in meta_output %}
+                    {% if os.kinesis_stream %}
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:kinesis:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":", "stream/",
+                         "{{os.kinesis_stream}}"]
+                    {% endif %}
+                    {% endfor %}
+                    {% if meta_error.kinesis_stream %}
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:kinesis:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":", "stream/",
+                         "{{meta_error.kinesis_stream}}"]
+                    {% endif %}
+                  {% endif %}
+                - Effect: Allow
+                  # Permissions to access the DynamoDB secrets table
+                  Action:
+                    - "dynamodb:GetItem"
+                  Resource: "*"
+                  {% for policy in iam_actions %}
+                - Effect: Allow
+                  Action:
+                    {% if policy.action|is_list %}
+                    {% for action in policy.action %}
+                    - "{{action}}"
+                    {% endfor %}
+                    {% else %}
+                    - "{{policy.action}}"
+                    {% endif %}
+                  Resource: "{{policy.resource}}"
+                  {% endfor %}
+                  {% if globs.stateful %}
+                - Effect: Allow
+                  # Read/write permission on the associated state tables
+                  Action:
+                    - "dynamodb:*"
+                  Resource:
+                    - "Fn::Join":
+                      - ""
+                      - ["arn:aws:dynamodb:", {"Ref": "AWS::Region"},":",
+                         {"Ref": "AWS::AccountId"}, ":", "table/", {"Ref": "StateTable"}]
+                 {% endif %}
+    {% if meta_input.kinesis_stream %}
+    InputEventSourceMapping:
+      Type: "AWS::Lambda::EventSourceMapping"
+      Properties:
+        BatchSize: {{ batch_size }}
+        # The ARN of the input Kinesis stream
+        EventSourceArn:
+            "Fn::Join":
+              - ""
+              - ["arn:aws:kinesis:", {"Ref": "AWS::Region"},":", {"Ref": "AWS::AccountId"}, ":", "stream/", "{{meta_input.kinesis_stream}}"]
+        FunctionName:
+          Ref: LambdaFunction
+        StartingPosition:
+          {{starting_position}}
+    {% endif %}
+
+    # The DynamoDB tables that keep shard-specific state information
+    #
+    # We use the same state table across shards. The lambdautils functions
+    # set_state and get_state take care of concurrent access to the state table
+    # across shards by storing each shard state in a different namespace.
+    {% if globs.stateful %}
+    StateTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        AttributeDefinitions:
+        {# The state item id #}
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: {{dynamodb_capacity.read}}
+          WriteCapacityUnits: {{dynamodb_capacity.write}}
+        {% if _env.stage %}
+        TableName: {{_env.name}}-{{_layer.name}}-{{_env.stage}}-state
+        {% else %}
+        TableName: {{_env.name}}-{{_layer.name}}-state
+        {% endif %}
+    {% endif %}
+
+    # The KMS key used to encrypt environment variables
+    {% if kms_key_admins %}
+    KmsKey:
+      Type: "AWS::KMS::Key"
+      Properties:
+        Description: "{{__context.environment.name}}-{{__context.stage}}-{{__context.layer.name}}"
+        KeyPolicy:
+          Version: "2012-10-17"
+          Statement:
+            - Sid: Enable IAM User Permissions
+              Effect: Allow
+              Principal:
+                AWS:
+                  "Fn::Join":
+                      - ""
+                      -
+                          - "arn:aws:iam:"
+                          - ":"
+                          - Ref: "AWS::AccountId"
+                          - ":"
+                          - "root"
+              Action: "kms:*"
+              Resource: "*"
+            - Sid: Allow access for Key Administrators
+              Effect: Allow
+              Principal:
+                AWS:
+                  {% for kadmin in kms_key_admins %}
+                  - "Fn::Join":
+                      - ""
+                      -
+                          - "arn:aws:iam:"
+                          - ":"
+                          - Ref: "AWS::AccountId"
+                          - ":user/"
+                          - "{{kadmin}}"
+                  {% endfor %}
+            - Sid: Allow use of the key
+              Effect: Allow
+              Principal:
+                AWS:
+                  - "Fn::GetAtt":
+                      - LambdaExecutionRole
+                      - Arn
+                  {% for kuser in kms_key_users %}
+                  - "Fn::Join":
+                      - ""
+                      -
+                          - "arn:aws:iam:"
+                          - ":"
+                          - Ref: "AWS::AccountId"
+                          - ":user/"
+                          - "{{kuser}}"
+                  {% endfor %}
+              Action:
+                - "kms:Encrypt"
+                - "kms:Decrypt"
+                - "kms:ReEncrypt*"
+                - "kms:GenerateDataKey*"
+                - "kms:DescribeKey"
+              Resource: "*"
+    {% endif %}
+
+    {% if logs_destination_arn and logs_destination_arn.find('kinesis') > -1 %}
+    CloudwatchRole:
+      Type: "AWS::IAM::Role"
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                  Service: { "Fn::Join": ["", ["logs.", { "Ref": "AWS::Region" } ,".amazonaws.com" ]]}
+              Action: 'sts:AssumeRole'
+        # Keep all environment role under the same path
+        Path: {{ "/{}/".format(_env.name) }}
+        Policies:
+          - PolicyName: root
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - "kinesis:DescribeStream"
+                    - "kinesis:ListStreams"
+                  Resource: "*"
+                - Effect: Allow
+                  Action:
+                    - "kinesis:Put*"
+                  Resource:
+                    - "{{logs_destination_arn}}"
+    {% endif %}
+
+    {% if logs_destination_arn %}
+    LogGroup:
+        Type: "AWS::Logs::LogGroup"
+        Properties:
+          LogGroupName:
+            "Fn::Join":
+              - ""
+              - ["/aws/lambda/", {"Ref": "LambdaFunction"}]
+
+    LogsSubscription:
+        Type: "AWS::Logs::SubscriptionFilter"
+        DependsOn: LogGroup
+        Properties:
+          DestinationArn: "{{logs_destination_arn}}"
+          FilterPattern: "{{logs_filter_pattern}}"
+          LogGroupName:
+            "Fn::Join":
+              - ""
+              - ["/aws/lambda/", {"Ref": "LambdaFunction"}]
+          {% if logs_destination_arn.find('kinesis') > -1 %}
+          RoleArn:
+              "Fn::GetAtt":
+                  - CloudwatchRole
+                  - Arn
+          {% endif %}
+    {% endif %}
