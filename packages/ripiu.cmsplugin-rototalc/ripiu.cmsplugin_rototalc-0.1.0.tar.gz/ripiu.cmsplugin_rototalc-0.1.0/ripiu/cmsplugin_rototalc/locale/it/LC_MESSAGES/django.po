@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-09 17:03+0100\n"
+"PO-Revision-Date: 2017-11-09 15:45+0100\n"
+"Last-Translator: matteo <matteo@studioripiu.it>\n"
+"Language-Team: italian <matteo@studioripiu.it>\n"
+"Language: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ripiu/cmsplugin_rototalc/apps.py:9
+#: ripiu/cmsplugin_rototalc/cms_plugins.py:16
+#: ripiu/cmsplugin_rototalc/models.py:118
+msgid "Carousel"
+msgstr "Carosello"
+
+#: ripiu/cmsplugin_rototalc/cms_plugins.py:28
+msgid "Slick configuration"
+msgstr "Configurazione di Slick"
+
+#: ripiu/cmsplugin_rototalc/cms_plugins.py:73
+#: ripiu/cmsplugin_rototalc/models.py:138
+msgid "Slide"
+msgstr "Diapositiva"
+
+#: ripiu/cmsplugin_rototalc/models.py:18
+msgid "name"
+msgstr "nome"
+
+#: ripiu/cmsplugin_rototalc/models.py:26
+msgid "show arrows"
+msgstr "mostra le frecce"
+
+#: ripiu/cmsplugin_rototalc/models.py:28
+msgid "Enable Next/Prev arrows."
+msgstr "Abilita le frecce per vedere la diapositiva successiva o precedente."
+
+#: ripiu/cmsplugin_rototalc/models.py:32
+msgid "autoplay"
+msgstr "riproduzione automatica"
+
+#: ripiu/cmsplugin_rototalc/models.py:34
+msgid "Enable auto play of slides."
+msgstr "Abilita la riproduzione automatica delle diapositive."
+
+#: ripiu/cmsplugin_rototalc/models.py:38
+msgid "autoplay speed"
+msgstr "velocità della riproduzione automatica"
+
+#: ripiu/cmsplugin_rototalc/models.py:40
+msgid "Auto play change interval (in milliseconds)."
+msgstr ""
+"Intervallo tra le diapositive in riproduzione automatica (in millisecondi)."
+
+#: ripiu/cmsplugin_rototalc/models.py:44
+msgid "slides to show"
+msgstr "diapositive da mostrare"
+
+#: ripiu/cmsplugin_rototalc/models.py:46
+msgid "Number of slides to show at a time."
+msgstr "Numero di diapositive da mostrare alla volta."
+
+#: ripiu/cmsplugin_rototalc/models.py:50
+msgid "initial slide"
+msgstr "diapositiva iniziale"
+
+#: ripiu/cmsplugin_rototalc/models.py:52
+msgid "Slide to start on."
+msgstr "Diapositiva da cui partire."
+
+#: ripiu/cmsplugin_rototalc/models.py:56
+msgid "center mode"
+msgstr "modalità centrale"
+
+#: ripiu/cmsplugin_rototalc/models.py:59
+msgid ""
+"Enable centered view with partial prev/next slides. Use with odd numbered "
+"slidesToShow counts."
+msgstr ""
+"Attiva visualizzazione centrata con diapositive precedente/successiva "
+"parziali. Usa con un numero dispari di diapositive"
+
+#: ripiu/cmsplugin_rototalc/models.py:65
+msgid "show dots"
+msgstr "mostra i puntini"
+
+#: ripiu/cmsplugin_rototalc/models.py:67
+msgid "Show current slide indicator dots."
+msgstr "Mostra i puntini indicatori della diapositiva corrente."
+
+#: ripiu/cmsplugin_rototalc/models.py:71
+msgid "focus on select"
+msgstr ""
+
+#: ripiu/cmsplugin_rototalc/models.py:73
+msgid "Enable focus on selected element (click)."
+msgstr "Abilita il fuoco sull'elemento selezionato (click)."
+
+#: ripiu/cmsplugin_rototalc/models.py:77
+msgid "infinite"
+msgstr "infinito"
+
+#: ripiu/cmsplugin_rototalc/models.py:79
+msgid "Infinite looping."
+msgstr "Ciclo infinito."
+
+#: ripiu/cmsplugin_rototalc/models.py:83
+msgid "speed"
+msgstr "velocità"
+
+#: ripiu/cmsplugin_rototalc/models.py:85
+msgid "Transition speed (in milliseconds)."
+msgstr "Velocità della transizione (in millisecondi)."
+
+#: ripiu/cmsplugin_rototalc/models.py:95
+msgid "variable width"
+msgstr "Larghezza variabile"
+
+#: ripiu/cmsplugin_rototalc/models.py:97
+msgid "Variable width slides."
+msgstr "Diapositive a larghezza variabile."
+
+#: ripiu/cmsplugin_rototalc/models.py:101
+msgid "height"
+msgstr "altezza"
+
+#: ripiu/cmsplugin_rototalc/models.py:104
+msgid "CSS size for the carousel height."
+msgstr "Dimensione CSS per l'altezza del carosello."
+
+#: ripiu/cmsplugin_rototalc/models.py:108
+msgid "slide margin"
+msgstr "margine diapositive"
+
+#: ripiu/cmsplugin_rototalc/models.py:111
+msgid "CSS size for the margin between slides."
+msgstr "Dimensione CSS per il margine tra diapositive."
+
+#: ripiu/cmsplugin_rototalc/models.py:119
+msgid "Carousels"
+msgstr "Caroselli"
+
+#: ripiu/cmsplugin_rototalc/models.py:126
+msgid "show caption"
+msgstr "mostra didascalia"
+
+#: ripiu/cmsplugin_rototalc/models.py:131
+msgid "caption"
+msgstr "didascalia"
+
+#: ripiu/cmsplugin_rototalc/models.py:139
+msgid "Slides"
+msgstr "Diapositive"
