@@ -1,0 +1,126 @@
+import os
+import re
+import sys
+import tempfile
+
+
+from default_values import *
+
+
+def get_conda_envs_dir():
+    if config.get("yaml_dir"):
+        yaml_dir = config.get("yaml_dir")
+    else:
+        yaml_dir = os.path.join(os.path.dirname(os.path.abspath(workflow.snakefile)), "envs")
+    if not os.path.exists(yaml_dir):
+        sys.exit("Unable to locate the environmental dependencies file; tried %s" % yaml_dir)
+    return yaml_dir
+
+
+def get_temp_dir(config):
+    if config.get("tmpdir"):
+        tmp_dir = config["tmpdir"]
+    else:
+        tmp_dir = tempfile.gettempdir()
+    return tmp_dir
+
+
+def get_bin_summary_files(do_binning, samples):
+    ret_str = ""
+    if do_binning:
+        ret_str = expand("{sample}/genomic_bins/{sample}.summary",
+                      sample=samples)
+    return ret_str
+
+
+def get_shell_prefix(config, override={}):
+    pfx = config.get("prefix")
+    if not pfx:
+        return ""
+
+    keys = re.findall(r"__(\w+)__", pfx)
+    for k in keys:
+        if k in override:
+            v = override[k]
+        else:
+            v = config.get(k, "")
+        pfx = pfx.replace("__{key}__".format(key=k), str(v))
+    return pfx
+
+
+def update_config_file_paths(config):
+    for sample in config["samples"]:
+        try:
+            # convert string into list
+            if isinstance(config["samples"][sample]["fastq"], str):
+                config["samples"][sample]["fastq"] = [config["samples"][sample]["fastq"]]
+        # fastq is not required for annotation alone
+        except KeyError:
+            continue
+    return config
+
+
+CONDAENV = get_conda_envs_dir()
+
+localrules: all
+
+if config.get("workflow", "complete") == "complete":
+    config = update_config_file_paths(config)
+    SHPFXM = get_shell_prefix(config)
+    SHPFXS = get_shell_prefix(config, {"threads": "1"})
+
+    # TABLES = get_count_tables(config, "summary_counts")
+    TMPDIR = get_temp_dir(config)
+    CHECKMDIR = os.path.join(os.path.dirname(os.path.realpath(config.get("diamond_db", "."))), "checkm")
+
+    SAMPLES = [i for i in config["samples"].keys()]
+
+    wildcard_constraints:
+        sample = "[\w-]+"
+
+    rule all:
+        input:
+            expand("{sample}/sequence_quality_control/finished_QC",sample=SAMPLES),
+            "Combined_read_stats.tsv",
+            expand("{sample}/assembly/contig_stats/prefilter_contig_stats.txt",
+                sample=SAMPLES),
+            expand("{sample}/assembly/contig_stats/final_contig_stats.txt",
+                sample=SAMPLES),
+#            get_bin_summary_files(config.get("perform_genome_binning", True), SAMPLES),  # this produces an error when genome binning is not active
+            expand("{sample}/{sample}_annotations.txt", sample=SAMPLES)
+
+    include: "rules/assemble.snakefile"
+
+elif config.get("workflow") == "download":
+
+    FILES = {"adapters.fa": "ae839dc79cfb855a1b750a0d593fe01e",
+             "phiX174_virus.fa": "82516880142e8c89b466bc6118696c47",
+             "refseq.db": "42b8976656f2cfd661b8a299d6e24c19",
+             "refseq.dmnd": "c01facc7e397270ccb796ea799a09108",
+             "refseq.tree": "469fcbeb15dd0d4bf8f1677682bde157",
+             "silva_rfam_all_rRNAs.fa": "f102e35d9f48eabeb0efe9058559bc66"}
+
+    rule all:
+        input:
+            expand("{dir}/{filename}", dir=os.path.realpath(config["db_dir"]), filename=list(FILES.keys()))
+
+    include: "rules/download.snakefile"
+
+elif config.get("workflow") == "annotate":
+    config = update_config_file_paths(config)
+    SAMPLES = list(config["samples"].keys())
+    TMPDIR = get_temp_dir(config)
+    SHPFXM = get_shell_prefix(config)
+    SHPFXS = get_shell_prefix(config, {"threads": "1"})
+    CHECKMDIR = os.path.join(os.path.dirname(os.path.realpath(config.get("diamond_db", "."))), "checkm")
+
+    rule all:
+        input:
+            expand("{sample}_annotations.txt", sample=SAMPLES),
+            expand("{sample}/contig_stats.txt", sample=SAMPLES)
+
+    include: "rules/annotate.snakefile"
+
+else:
+    print("Workflow %s is not a defined workflow." % config.get("workflow", "[no --workflow specified]"),
+          file=sys.stderr)
