@@ -1,0 +1,18 @@
+scipy
+nltk>=3.0.5     # TweetTokenizer introduces in 3.0.5
+scikit-learn
+numpy
+validate_email
+gensim>=0.12.3  # LDA's show topics unified in 0.12.3
+setuptools-git
+Orange3>=3.4.3
+tweepy
+typing    # required for Py3.4
+beautifulsoup4
+simhash
+wikipedia
+pdfminer3k>=1.3.1
+odfpy>=1.3.5
+docx2txt>=0.6
+lxml
+biopython # Enables Pubmed widget.
