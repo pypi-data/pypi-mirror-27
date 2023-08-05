@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Download and Installation &mdash; Scapy 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Scapy 3.0.0 documentation" href="index.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="download-and-installation">
+<h1>Download and Installation<a class="headerlink" href="#download-and-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li>Install <em>Python 3.x</em>.</li>
+<li>Install <em>Scapy</em> using pip or by cloning/installing from git.</li>
+<li>(For non-Linux platforms): Install <em>libpcap and libdnet</em> and their Python wrappers.</li>
+<li>(Optional): Install <em>additional software</em> for special features.</li>
+<li>Run Scapy with root priviledges.</li>
+</ol>
+</div></blockquote>
+<p>Each of these steps can be done in a different way dependent on your platform and on the version of Scapy you want to use.</p>
+<p>This document is for scapy3k. It requires python 3.x. See <cite>original scapy homepage &lt;http://www.secdev.org/projects/scapy/&gt;_</cite> for Scapy v2.x or earlier.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In scapy3k and Scapy v2.x use <code class="docutils literal"><span class="pre">from</span> <span class="pre">scapy.all</span> <span class="pre">import</span> <span class="pre">*</span></code> instead of <code class="docutils literal"><span class="pre">from</span> <span class="pre">scapy</span> <span class="pre">import</span> <span class="pre">*</span></code>.</p>
+</div>
+</div>
+<div class="section" id="installing-scapy3k">
+<h2>Installing scapy3k<a class="headerlink" href="#installing-scapy3k" title="Permalink to this headline">¶</a></h2>
+<p>The following steps describe how to install (or update) Scapy itself.
+Dependent on your platform, some additional libraries might have to be installed to make it actually work.
+So please also have a look at the platform specific chapters on how to install those requirements.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following steps apply to Unix-like operating systems (Linux, BSD, Mac OS X).
+Windows, currently is under development.</p>
+</div>
+<p>Make sure you have <a class="reference external" href="https://www.python.org/">Python</a> installed before you go on. Depending on your system you may have to use python3 and pip3 or python and pip for python version 3.x.</p>
+<div class="section" id="latest-release">
+<h3>Latest release<a class="headerlink" href="#latest-release" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to install the latest scapy3k package is using <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a>.:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ pip3 install scapy-python3
+</pre></div>
+</div>
+</div>
+<div class="section" id="current-development-version">
+<h3>Current development version<a class="headerlink" href="#current-development-version" title="Permalink to this headline">¶</a></h3>
+<p>Clone <a class="reference external" href="http://github.com/phaethon/scapy">GitHub repository</a> to a temporary directory and install it in the standard <a class="reference external" href="http://docs.python.org/inst/inst.html">distutils</a> way:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp
+$ git clone https://github.com/phaethon/scapy
+$ <span class="nb">cd</span> scapy
+$ sudo python3 setup.py install
+</pre></div>
+</div>
+<p id="index-0">If you always want the latest version with all new features and bugfixes, use Scapy&#8217;s GitHub repository:</p>
+<ol class="arabic">
+<li><p class="first">Install <a class="reference external" href="https://git-scm.com/">git</a> version control system. For example, on Debian/Ubuntu use:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ sudo apt-get install git
+</pre></div>
+</div>
+</li>
+<li><p class="first">Check out a clone of Scapy&#8217;s repository:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ git clone https://github.com/phaethon/scapy
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install Scapy in the standard distutils way:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> scapy
+$ sudo python3 setup.py install
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Then you can always update to the latest version:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ git pull
+$ sudo python3 setup.py install
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="optional-software-for-special-features">
+<h2>Optional software for special features<a class="headerlink" href="#optional-software-for-special-features" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">WEP decryption. <code class="docutils literal"><span class="pre">unwep()</span></code> needs <a class="reference external" href="https://cryptography.io">cryptography</a>. Example using a <a class="reference external" href="http://weplab.sourceforge.net/caps/weplab-64bit-AA-managed.pcap">Weplap test file</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">=</span><span class="n">rdpcap</span><span class="p">(</span><span class="s2">&quot;weplab-64bit-AA-managed.pcap&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go"> &gt;&gt;&gt; conf.wepkey=b&quot;AA\x00\x00\x00&quot;</span>
+<span class="go"> &gt;&gt;&gt; dec=Dot11PacketList(enc).toEthernet()</span>
+<span class="go"> &gt;&gt;&gt; dec.show()</span>
+<span class="go"> &gt;&gt;&gt; dec[0]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><a class="reference external" href="http://ipython.org/">ipython</a>. For interactive sessions using ipython can be great advantage. Install using pip3 or from your package manager</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://graphviz.org/">Graphviz</a>. For some visualizations, e.g. traceroute graph, dot is required on the PATH</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://matplotlib.org/">Matplotlib</a>. Required for interactive plot/graph viewing.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://networkx.github.io/">Networkx</a>. Conversations can be converted to Networkx graph if library is present.</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://pyx.sourceforge.net/">PyX</a>. To create PostScript, PDF and SVG files.</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://www.latex-project.org/">LaTeX</a>. To create PostScript and PDF files.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="platform-specific-instructions">
+<h2>Platform-specific instructions<a class="headerlink" href="#platform-specific-instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux-native">
+<h3>Linux native<a class="headerlink" href="#linux-native" title="Permalink to this headline">¶</a></h3>
+<p>Scapy can run natively on Linux. I does not require libdnet and libpcap.</p>
+<ul class="simple">
+<li>Install python3 from your package manager if it is not already present</li>
+<li>Install <a class="reference external" href="http://www.tcpdump.org">tcpdump</a> and make sure it is in the $PATH. (It&#8217;s only used to compile BPF filters (<code class="docutils literal"><span class="pre">-ddd</span> <span class="pre">option</span></code>))</li>
+<li>Make sure your kernel has Packet sockets selected (<code class="docutils literal"><span class="pre">CONFIG_PACKET</span></code>)</li>
+<li>If your kernel is &lt; 2.6, make sure that Socket filtering is selected <code class="docutils literal"><span class="pre">CONFIG_FILTER</span></code>)</li>
+</ul>
+</div>
+<div class="section" id="debian-ubuntu">
+<h3>Debian/Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>Just use the standard packages:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ sudo apt-get install tcpdump python3-crypto ipython3
+</pre></div>
+</div>
+</div>
+<div class="section" id="mac-os-x">
+<h3>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h3>
+<p>This section needs updating. In general installing python3, pip for python3, libpcap, libdnet, scapy3k using pip package scapy-python3 should do the job. Corrections are welcome...</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>Scapy works on Windows 8/2012 and newer version. Unlike earlier versions libdnet is not required. Testing is being done on following configuration: Windows 10/Anaconda 3.5/WinPcap 4.1.3</p>
+<p>On Windows 7 (and possibly earlier) scapy can be used for offline packet crafting/dissection. Sniffing and sending requires manual setting of network interface information and routing as corresponding powershell cmdlets used to gather this information are not working on Windows 7.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Download and Installation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#installing-scapy3k">Installing scapy3k</a><ul>
+<li><a class="reference internal" href="#latest-release">Latest release</a></li>
+<li><a class="reference internal" href="#current-development-version">Current development version</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#optional-software-for-special-features">Optional software for special features</a></li>
+<li><a class="reference internal" href="#platform-specific-instructions">Platform-specific instructions</a><ul>
+<li><a class="reference internal" href="#linux-native">Linux native</a></li>
+<li><a class="reference internal" href="#debian-ubuntu">Debian/Ubuntu</a></li>
+<li><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="introduction.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="usage.html" title="next chapter">Usage</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2008, 2009 Philippe Biondi and the Scapy community.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/installation.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
