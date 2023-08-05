@@ -1,0 +1,30 @@
+include versioneer.py
+include ./EPIC/_version.py
+
+include README.rst
+include LICENSE.txt
+include setup.py
+include setup.cfg
+include requirements.txt
+
+include EPIC/fv1.*
+include EPIC/fv2.*
+include EPIC/fv3.*
+
+include EPIC/clusters_acceptable.*
+include EPIC/clusters_good.*
+include EPIC/clusters_reg.*
+
+include EPIC/darkSU2wnu0.*
+include EPIC/LCDM.*
+include EPIC/newsample.*
+include EPIC/symnewsample.*
+include EPIC/wd_A.*o
+
+include EPIC/*.txt
+recursive-include EPIC/jla_likelihood_v4 *
+prune EPIC/jla_likelihood_v4/covmat/
+recursive-include EPIC/Planck2015_LCDM *
+recursive-include EPIC/Planck2015_LCDM+Omega_k *
+recursive-include EPIC/Planck2015_wCDM *
+recursive-include EPIC/clusters_data *
