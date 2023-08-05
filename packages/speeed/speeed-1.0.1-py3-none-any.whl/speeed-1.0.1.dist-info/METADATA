@@ -1,0 +1,49 @@
+Metadata-Version: 2.0
+Name: speeed
+Version: 1.0.1
+Summary: Ping like tool that measures packet speed instead of response time
+Home-page: https://github.com/XenGi/speeed
+Author: Ricardo Band
+Author-email: email@ricardo.band
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: ping,traceroute,speed,speedtest
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Internet
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Topic :: System :: Networking
+Classifier: Topic :: Utilities
+Requires-Python: >=3
+Requires-Dist: requests
+Requires-Dist: docopt
+
+[![asciicast](demo.gif)](https://asciinema.org/a/149586)
+
+# speeed
+
+Ping like tool that measures packet speed instead of response time.
+
+## Install
+
+  - [Archlinux AUR](https://aur.archlinux.org/packages/python-speeed)
+    ```
+    $ pacaur -S python-speeed
+    ```
+  - [PyPi](https://pypi.python.org/pypi?:action=display&name=speeed)
+    ```
+    $ pip install --user speeed
+    ```
+
+
+Inspired by: http://blog.wesleyac.com/posts/ping-lightspeed
+
+
