@@ -1,0 +1,20 @@
+# Include the license file
+include LICENSE.txt
+
+# Include requirements
+include requirements.txt
+
+# Include the library files
+recursive-include passer *
+
+exclude proto
+exclude Makefile
+exclude README.md
+exclude conf.py
+
+exclude dev-requirements.txt
+
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude .git
+global-exclude *.proto
