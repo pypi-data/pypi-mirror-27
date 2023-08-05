@@ -1,0 +1,51 @@
+2017-08-09 20:41:12,268 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.devices.devicemanager:33 - Clearing all devices.
+2017-08-09 20:41:12,284 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.report.models:113 - Creating report App Framework Alerts
+2017-08-09 20:41:12,430 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table appfwk-alerts
+2017-08-09 20:41:12,475 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table alert-timeseries
+2017-08-09 20:41:12,501 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table appfwk-alert-pie
+2017-08-09 20:41:12,539 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table appfwk-alert-severity
+2017-08-09 20:41:12,596 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.report.models:113 - Creating report DSCP Report
+2017-08-09 20:41:12,628 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-overall-util
+2017-08-09 20:41:12,666 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-overall-total
+2017-08-09 20:41:12,703 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-overall-avg
+2017-08-09 20:41:12,756 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-inbound-totals
+2017-08-09 20:41:12,831 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-outbound-totals
+2017-08-09 20:41:12,909 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-0-inbound
+2017-08-09 20:41:12,974 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-0-outbound
+2017-08-09 20:41:13,024 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-1-inbound
+2017-08-09 20:41:13,072 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-1-outbound
+2017-08-09 20:41:13,131 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-2-inbound
+2017-08-09 20:41:13,180 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table qos-2-outbound
+2017-08-09 20:41:13,216 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.report.models:113 - Creating report HTML Example
+2017-08-09 20:41:13,225 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table weather-image
+2017-08-09 20:41:13,437 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table report-links
+2017-08-09 20:41:13,449 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.report.models:113 - Creating report Response Time Map
+2017-08-09 20:41:13,465 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table maploc2
+2017-08-09 20:41:13,550 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.report.models:113 - Creating report Overall
+2017-08-09 20:41:13,566 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table maploc
+2017-08-09 20:41:13,629 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table ts1
+2017-08-09 20:41:13,676 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table total-traffic-bits
+2017-08-09 20:41:13,723 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.report.models:113 - Creating report AppResponse Report
+2017-08-09 20:41:13,733 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table network_traffic
+2017-08-09 20:41:13,769 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table traffic-by-tcpudp
+2017-08-09 20:41:13,808 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table packet-traffic
+2017-08-09 20:41:13,867 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.report.models:113 - Creating report Business Hour Reporting - NetProfiler Interfaces
+2017-08-09 20:41:13,879 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table bh-basetable
+2017-08-09 20:41:13,921 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table bh-biztable-times
+2017-08-09 20:41:13,963 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table bh-biztable
+2017-08-09 20:41:14,010 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table devtable
+2017-08-09 20:41:14,034 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table bh-interfaces
+2017-08-09 20:41:14,096 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.report.models:113 - Creating report Business Hour Reporting - By Application
+2017-08-09 20:41:14,106 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table bh-basetable-byapp
+2017-08-09 20:41:14,141 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table bh-biztable-byapp-times
+2017-08-09 20:41:14,194 [DEBUG] 33215/140736254845888 steelscript.appfwk.apps.datasource.models:587 - Creating table bh-biztable-byapp
+2017-08-09 20:41:16,218 [WARNING] 33238/140736254845888 py.warnings:116 - /Users/mgarabedian/steelscript/dev/steelscript-appfwk/steelscript/appfwk/apps/db/models.py:12: RemovedInDjango19Warning: Model class steelscript.appfwk.apps.db.models.ExistingIntervals doesn't declare an explicit app_label and either isn't in an application in INSTALLED_APPS or else was imported before its application was loaded. This will no longer be supported in Django 1.9.
+  class ExistingIntervals(models.Model):
+
+2017-08-09 20:41:16,277 [INFO ] 33238/140736254845888 steelscript.appfwk.apps.datasource.models:44 - Importing synthetic module: pandas
+2017-08-09 20:41:16,499 [DEBUG] 33238/140736254845888 steelscript.common.connection:150 - Connection initialized for http://127.0.0.1:5000
+2017-08-09 20:41:17,751 [WARNING] 33192/140736254845888 py.warnings:116 - /Users/mgarabedian/steelscript/dev/steelscript-appfwk/steelscript/appfwk/apps/db/models.py:12: RemovedInDjango19Warning: Model class steelscript.appfwk.apps.db.models.ExistingIntervals doesn't declare an explicit app_label and either isn't in an application in INSTALLED_APPS or else was imported before its application was loaded. This will no longer be supported in Django 1.9.
+  class ExistingIntervals(models.Model):
+
+2017-08-09 20:41:17,800 [INFO ] 33192/140736254845888 steelscript.appfwk.apps.datasource.models:44 - Importing synthetic module: pandas
+2017-08-09 20:41:18,037 [DEBUG] 33192/140736254845888 steelscript.common.connection:150 - Connection initialized for http://127.0.0.1:5000
