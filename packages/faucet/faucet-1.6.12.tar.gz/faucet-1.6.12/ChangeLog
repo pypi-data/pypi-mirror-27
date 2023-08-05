@@ -1,0 +1,266 @@
+CHANGES
+=======
+
+1.6.12
+------
+
+* Rename fuzz docker
+* Documentation updates
+* Add py-AFL-fuzz config testing
+* Replace pipeline image
+* Bump version for release
+* Upgrade Ryu to 4.20
+* When an OFError occurs, correlate with the offending XID
+* Templatize config tests
+* Fix crash parsing non UTF-8 config file
+* Ensure ACL rule format correct
+* Test invalid UDP port
+* Catch invalid mask in ACL
+* Catch invalid IP addresses in ACLs
+* Fix crash when invalid ACL action list
+* No longer need dpkt
+* More conservative checks of packets before parsing
+* Need to include our master requirements.txt for readthedocs
+* Run sphinx-apidoc as part of conf.py so it works on readthedocs
+* Convert our documentation to Sphinx
+* Only check for IP ether type for fragmentation check
+* Cleanup created containers as well
+* Don't push if build fails, and clean up orphaned container/images
+* Test modification of file without actual parse output change
+* Cleanup stopped containers as well as images
+* Test no warm/cold restart on no config file change
+* Improve config change logging, and unnecessary cold start on no effective config change (config file changed but the parsed result was the same)
+* More diagnostics for config parsing/reloading
+* Added all\_dps as an option instead of individually adding data paths
+* Break/fix
+* Add of\_dp\_desc\_stats Prometheus variable to describe datapath
+* Use common test DP name
+* Fix HUP test
+* Fix reload label checks
+* Add dp\_name to BGP metrics
+* Check port counters for all ports
+* Require dp\_name on Gauge variables
+* Add dp\_name to all variables
+* port range config test no longer necessarily here
+* Simplify Prometheus labeling
+* -Merge branch 'master' of github.com:faucetsdn/faucet into dev -Add more checking to port config -Update port range config tests
+* Check for packet to unknown port
+* Standard Prometheus label formatting
+* Revert "Add dp\_name label to Gauge variables."
+* Use REQUIRED\_LABELS in FAUCET Prometheus client
+* Add dp\_name label to Gauge variables
+* Refactor watchers to use prom\_client to report DP status
+* path is not a distance scalar (stacking)
+* Remove redundant text and update pipeline description
+* build\_tag should check build actually worked before pushing
+* Stricter check requires arp\_neighbor\_timeout
+* pylint
+* Rename L3 timeout assert
+* Ensure L3 timeout can refresh L2 if necessary
+* Special case all\_dps default False
+* Allow monitoring of all DPs by a watcher, if all\_dps: True is set
+* Allow logging to stdout/err:
+* Don't require all VLANs on all DPs in a stack
+* port\_not
+* Indent error
+* Need to pass through failover options
+* Only mark a port as a mirror destination for an ACL, if that ACL is actually in use
+* Add passthrough output actions
+* Test output to unknown port
+* Test output port misconfiguration
+* Test ACL rules are resolved
+* Don't hardcode port wait time
+* Much more extensive validation of ACL config rules
+* WatcherConf needs dp\_id
+* Simplify top level config file parser
+* Every Conf object should have dp\_id
+* interfaces are not ports
+* Set VID for invalid interfaces check
+* Fix too big check, and check invalid interfaces type
+* Verify DP ID in valid range
+* More use of check\_config()
+* Create check\_config() method and use finalize\_config() method in ports
+* Preversion 1.6.12
+
+1.6.11
+------
+
+* Flow table outputs are YAML not JSON now
+* Don't restrict router VLANs to 2
+* Document set\_defaults() as place to check
+* Test empty VID
+* optionally compress flow table dumps when outputting
+* Better checks in set\_defaults() for port and vlans
+* Don't verify empty VID for now
+* VID needs to be verified in multiple places
+* Version bump for release
+* Break/fix
+* Check for invalid MACs
+* Move router sanity check function to update()
+* Check empty/invalid VID
+* Verify routers have two VLANs configured
+* break/fix
+* Verify port number
+* Test port number valid
+* Don't allow VLANs on stacking ports
+* Enforce 9.0 minimum
+* pylint minimum is 9.0
+* pylint
+* Bring config\_parser.py back up to pylint minimum
+* pylint for test\_config meets minimum
+* update interface-range config test
+* assert if interface-ranges config is valid
+* unnecessarily checking int type
+* Crash on deleting a port from config
+* fix broken port range test
+* test port range config applied correctly with lower priority than specific port config
+* Fix catching and a space
+* Add more tests and update files to raise InvalidConfigError when necessary
+* Add timeouts and limits on controller/tcpdump
+* Cap tcpdump packets for OF channel
+* Reduce disk space with test images
+* Moved some tests to test\_config to check for correct exception
+* Created InvalidConfigError for bad configs
+* Revert "Try travis\_wait for test runs."
+* Revert "Move travis\_wait to docker\_run."
+* Move travis\_wait to docker\_run
+* Try travis\_wait for test runs
+* Test for #1241
+* Fix issue #1263, exception when including non-string datatypes
+* Since we have matrix CI can afford to reduce max load average a bit to avoid worker hangs
+* Fix issue #1248; unhandled exceptions with empty fields
+* Fix issue #1244 and clean up some test cases
+* Fix #1240; exceptions with certain fields not containing strings
+* Update image names for docker-compose.yaml for raspberry pis
+* Rename
+* Fix referencing unconfigured vlans, issue #1209
+* Tidy up docker pi build scripts
+* Run a sanity test shard (to avoid running pytype/etc other tests redundantly)
+* Make location to faucet source code flexible
+* Work on Docker ARM building scripts
+* Schedule 4 test shards
+* Run N testing shards round robin
+* Shard by L3/non L3 tests
+* Simplify test list parsing
+* add dockerfile for ARM prometheus 2.0
+* ARM prometheus 2.0 isn't ready yet, roll back to older version
+* Fix up some bad faucet.rules.yml paths for prometheus 2.0 upgrade
+* Preversion 1.6.11
+* Revert "Shard on route/non routing tests."
+* Shard on route/non routing tests
+
+1.6.10
+------
+
+* Use docker test image
+* Update run-travis-test.sh
+* Correct RUNTESTS
+* Fix issue #1208, config file not forming a dict
+* Break/fix
+* Restrict VID range
+* max\_loadavg() too low for Travis
+* A port without VLAN (or a stack) is a config error
+* Reduce max parallel tests to approx loadavg
+* extend tests with config reload for port range config
+* tests for port range config
+* Support for port range config. Example config: interface-ranges:     1-4,6,8,10-12:         native\_vlan: v100
+* make env vars consistent; add stat env var
+* Make checkout quiet
+* Mark FaucetUntaggedMultiConfVlansOutputTest broken for OVS master
+* Add ref. to http://www.hyrumslaw.com/
+* Re-enable tests that needed a current OVS version
+* Clearly mark the experimental API as experimental
+* Fix and re-enable the experimental API, which revealed we should have been using start() in controller classes
+* stat reload test sets enabling variable incorrectly
+* Config reloading incorrectly always on (and unnecessary initial config reload)
+* TODO for Gauge to stat FAUCET configs
+* Implement stat based config change for Gauge
+* Test stat reload
+* stat-based detection of config files
+* Should not overwrite config hashes unless config parse successful
+* Add test failure
+* update test to check unconfigured acl
+* Verbosely log L2 type L3 source when L2 learning
+* Parse IP header even if not running L3
+* Don't need "-b"
+* Build Pi fix
+* Build script for Pi on Pi
+* Remove test for unknown router VLAN (need alternate test for global VLAN undefined)
+* Don't route on a DP, if not all VLANs configured on that DP
+* Revert "Fix attempt to add VLAN that might not have any ports."
+* Fix attempt to add VLAN that might not have any ports
+* Fix referencing an unconfigured ACL #1201
+* add test for checking VLANs resolve on routers
+* fix VLANs resolving on routers
+* Changed faucet.yaml; adding guest vlan to sw2
+* Truncate packet in to maximum always (recent OVS does not honor max\_len)
+* Drop packet ins where cookie ID incorrect
+* Try OVS master
+* Try OVS 2.8.0
+* Increase free ports to 500 and try OVS 2.8.1 again
+* Test OVS 2.8.0
+* pylint
+* Dump decoded pcaps, then txt files
+* Fix pcaps not dumped
+* Explicitly set default miss length to 0
+* Explictly configure which async messages to receive
+* Have to install complete OVS
+* Tune simultaneous makes to load average
+* Incorrect name for MAKEFLAGS
+* Try again to parallel compile OVS
+* Can't parallel make OVS
+* Speed up build with DPDK
+* Upgrade to prometheus 2.0
+* Pre-version 1.6.10
+
+1.6.9
+-----
+
+* 2.8.1 still occasionally disconnects with more tolerant settings
+* Version bump for release
+* Try 2.8.1 with increased socket timeout
+* Control channel rate limiting
+* add release target to docs
+* fix environment variables for db and admin user
+* add release target; closes #767
+* OVS 2.8.1 connections to controller unstable under heavy load. Will continue to troubleshoot
+* More relaxed OVS connect time to reduce test load
+* When cold starting dataplane, reset the host cache to cause routes etc to be re-resolved
+* fix extra / typo
+* add compose file for rpi
+* Re-attempt OVS upgrade to 2.8.1
+* Sync Aruba TFM to generic
+* VLAN table does not need eth\_src
+* Don't need catchall ICMP entry at all
+* Don't necessarily need to catch all ICMP
+* Specifically match echo request/reply to control plane
+* Sync Aruba TFM to generic
+* icmpv6\_type moves to VIP, eth\_src doesn't need ip\_proto and icmpv6\_type
+* sync Aruba TFM to generic
+* Move ip proto/icmpv6 matches to VIP from eth\_src
+* Move eth\_src matches from VLAN table to eth\_src table, so VLAN table doesn't need eth\_src
+* Allow configuration of BGP server addresses (available in Ryu 4.19)
+* Ryu 4.18
+* exabgp should attempt only one connection
+* Actually, don't look at hw\_src in NAs - might not be present and not worth believing if it is
+* Some IPv6 hosts can use a src IP from a different subnet to the one they're NA'ing for. Handle this situation and also verify NA'd hw\_src is the same as eth\_src
+* Move group flood bucket builder to valve\_of
+* LACP test shouldn't care about aggregator ID
+* Test that traffic over LAG works
+* Avoid loopback flood on LAG members
+* OVS dumps should be .log so dumped first
+* Add dump-ports
+* put back to single quotes
+* add FAUCET\_PREFIX for specifying paths of volumes
+* partner LACP port number does not matter
+* Dump YAML, then logs, then other files
+* Somewhat less disk space (don't cache mininet/pytype in layers)
+* Always update metrics on receiving a packet
+* Did not dump test files
+* gNMI, use new replace/update methods
+* pylint
+* add update test for nsodbc poller
+* Move flow checks to outside of the class
+* pylint
+* pylint
+* Add prom client to \_\_init\_\_ args so GaugeFlowTableDBLogger can be instantiated
