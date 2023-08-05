@@ -1,0 +1,61 @@
+Metadata-Version: 2.0
+Name: reliz
+Version: 0.1.0.dev0
+Summary: Manage releases versionning accross multiple products
+Home-page: https://github.com/noirbizarre/reliz
+Author: API Hackers
+Author-email: noirbizarre+reliz@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: release github gitlab
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python
+Classifier: Environment :: Web Environment
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: System :: Software Distribution
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: aiodns (==1.1.1)
+Requires-Dist: aiofilelock (==1.0.0)
+Requires-Dist: aiohttp (==2.3.6)
+Requires-Dist: aiohttp-cors (==0.5.3)
+Requires-Dist: aiohttp-debugtoolbar (==0.4.1)
+Requires-Dist: aiohttp-jinja2 (==0.14.0)
+Requires-Dist: aiohttp-session (==2.1.0)
+Requires-Dist: aiotinydb (==1.0.1)
+Requires-Dist: cchardet (==2.1.1)
+Requires-Dist: click (==6.7)
+Requires-Dist: cryptography (==2.1.4)
+Requires-Dist: Jinja2 (==2.10)
+Requires-Dist: PyYAML (==3.12)
+Requires-Dist: tinydb (==3.7.0)
+Requires-Dist: uvloop (==0.9.1)
+Provides-Extra: test
+Requires-Dist: factory-boy (==2.9.2); extra == 'test'
+Requires-Dist: Faker (==0.8.7); extra == 'test'
+Requires-Dist: pytest (==3.3.1); extra == 'test'
+Requires-Dist: pytest-aiohttp (==0.3.0); extra == 'test'
+Requires-Dist: pytest-factoryboy (==1.3.1); extra == 'test'
+Requires-Dist: pytest-faker (==2.0.0); extra == 'test'
+Requires-Dist: pytest-sugar (==0.9.0); extra == 'test'
+Requires-Dist: pytest-watch (==4.1.0); extra == 'test'
+
+reliz
+=====
+Manage releases versionning accross multiple products
+
+Changelog
+=========
+
+Current
+-------
+
+- WIP
+
+
+
