@@ -1,0 +1,74 @@
+Metadata-Version: 1.1
+Name: libgql
+Version: 0.0.1
+Summary: GraphQL Linked Library bindings for python
+Home-page: https://github.com/brysgo/libgql
+Author: Bryan Goldstein
+Author-email: brysgo@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: # libgql - GraphQL Linked Libraries
+        
+        ## The Problem
+        
+        How can I build libraries and modules that operate accross programming
+        languages and environments?
+        
+        ## The Solution
+        
+        To solve this problem with web services, we build APIs that we can use between
+        languages. Unfortunately, these APIs require us to make HTTP requests.
+        
+        ...or do they?
+        
+        Enter GraphQL: Protocal Agnostic, that means, we can implement it over a CLI
+        interface and have an incredibly handy way to build cross language bindings
+        without all the fuss.
+        
+        ## What does it do?
+        
+        libgql will define a protocal for doing graphql over CLI and implement as many
+        language bindings as we possibly can.
+        
+        ## Usage
+        
+        I would recommend looking at the tests for usage, since it varies from language
+        to language. To consume a module that uses libgql, install the bindings for your
+        language:
+        
+        | javascript | `yarn add libgql`       |
+        |------------|-------------------------|
+        | python     | `pipenv install libgql` |
+        
+        Then import the bindings and load the module:
+        
+        
+        ### javascript
+        ```javascript
+        import { loadModule } from "libgql"
+        
+        const myModule = loadModule("./path/to/libgql/module/executable");
+        
+        result = await myModule(graphqlQueryStringHere, optionalVariables);
+        ```
+        
+        ### python
+        
+        ```python
+        from "libgql" import load_module
+        
+        myModule = load_module("./path/to/libgql/module/executable")
+        
+        result = myModule(graphqlQueryStringHere, optionalVariables)
+        ```
+        
+Keywords: graphql languagebindings development
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
