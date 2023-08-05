@@ -1,0 +1,32 @@
+
+
+<script type="application/javascript">
+    // determine whether alert should be displayed
+    cookie_name = '_accept_cookie';
+    function addCookie(){
+        var acceptCookie = $.cookie(cookie_name);
+        if (acceptCookie == null){
+            //set cookie
+            $.cookie(cookie_name,1);
+        }
+    }
+    $(document).ready(function(){
+        console.log($.cookie(cookie_name));
+
+        if($.cookie(cookie_name) != 1){
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 10000,
+                    onclick:addCookie()
+                };
+                toastr.info('{{_("Cookie could help our service.")}}','{{_("Cookie is used")}}');
+
+
+            }, 1300)
+
+        }
+    })
+</script>
