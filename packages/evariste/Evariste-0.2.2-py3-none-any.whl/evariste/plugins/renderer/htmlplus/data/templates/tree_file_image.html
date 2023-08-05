@@ -1,0 +1,45 @@
+{% if tree.report.success %}
+<li class="file">
+  <span class="tooltip">
+    <a href="#" onclick="toggle_visibility('log-{{ tree.from_source|labelize }}'); return false;"><img src="static/dialog-ok-apply.png" width=18px height=18px alt="Successful compilation"></a>
+    <span class="tooltiptext">
+      Successful compilation.<br/>Click to toggle log.
+    </span>
+  </span>
+  <img class="thumbnail" src="{{ local.setup['href_prefix'] }}{{tree.report.target }}" height="10px" width="10px" alt="{{ tree.report.target.as_posix()|basename }}" >
+  <a href="{{ local.setup['href_prefix'] }}{{ tree.report.target }}">
+    {{ tree.report.target.as_posix()|basename }}
+  </a>
+  {% if tree.report.target != tree.from_source %}
+    (<a href="{{ local.setup['href_prefix'] }}{{ sourcepath(tree).as_posix() }}">{{ sourcepath(tree).as_posix()|basename }}</a>)
+  {% endif %}
+  {% else %}
+  <li class="file failed">
+    <span class="tooltip">
+      <a href="#" onclick="toggle_visibility('log-{{ tree.from_source|labelize }}'); return false;"><img src="static/dialog-error.png" width=18px height=18px alt="Compilation error"></a>
+      <span class="tooltiptext">
+        Compilation error.<br/>Click to toggle log.
+      </span>
+    </span>
+    (<a href="{{ local.setup['href_prefix'] }}{{ sourcepath(tree).as_posix() }}">{{ sourcepath(tree).as_posix()|basename }}</a>)
+    {% endif %}
+    <div class="readme">
+      {{ render_readme(tree) }}
+    </div>
+    <div class="log" id="log-{{ tree.from_source|labelize }}">
+      {% if
+        tree.report.log.getvalue() != "" and
+        (
+          (tree.report.success and local.setup['display_log'] == "yes")
+          or
+          (not tree.report.success and local.setup['display_log'] == "errors")
+        )
+      %}
+      <pre><code>
+{{ tree.report.log.getvalue()|escape }}
+      </code></pre>
+      {% else %}
+      <em>Log is empty</em>
+      {% endif %}
+    </div>
+  </li>

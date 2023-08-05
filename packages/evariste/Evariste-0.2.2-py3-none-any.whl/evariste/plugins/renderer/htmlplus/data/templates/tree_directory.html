@@ -1,0 +1,19 @@
+<li class="directory {% if tree.config['renderer.htmlplus']['checked']|yesno %} open {% else %} closed {% endif %}"
+    id="directory-{{ tree.from_source|labelize }}"
+    >
+    <div class="readme">
+      <a href="#" onclick="toggle_openclosed('directory-{{ tree.from_source|labelize }}'); return false;" class="title">
+        {% if tree.is_root() and local.setup['title'] %}
+          {{ local.setup['title'] }}
+        {% else %}
+          {{ tree.relativename }}
+        {% endif %}
+      </a>
+      {{ render_readme(tree) }}
+    </div>
+    <ul>
+      {% for dir in tree.values()|sort %}
+        {{ render(dir, "tree_subtree.html") }}
+      {% endfor %}
+    </ul>
+</li>

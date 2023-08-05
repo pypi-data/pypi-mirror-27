@@ -1,0 +1,22 @@
+<li>
+  <label for="{{ tree.from_source|labelize }}">
+    {% if tree.is_root() and local.setup['title'] %}
+        {{ local.setup['title'] }}
+    {% else %}
+        {{ tree.relativename }}
+    {% endif %}
+  </label>
+  <input
+    type="checkbox" id="{{ tree.from_source|labelize }}"
+    {% if tree.config['renderer.htmlbox']['checked']|yesno %} checked {% endif %}
+  >
+    <div class="toggle"></div>
+    <div class="readme">
+      {{ render_readme(tree) }}
+    </div>
+    <ol>
+      {% for dir in tree.values()|sort %}
+          {{ render(dir, "tree_subtree.html") }}
+      {% endfor %}
+    </ol>
+</li>

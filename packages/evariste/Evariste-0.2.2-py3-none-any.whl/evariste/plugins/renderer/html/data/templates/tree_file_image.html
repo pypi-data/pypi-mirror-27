@@ -1,0 +1,14 @@
+<div class="tree-file">
+    {% if tree.report.success %}
+        <a href="{{ local.setup['href_prefix'] }}{{ tree.report.target }}"><img src="{{ local.setup['href_prefix'] }}{{tree.report.target }}" height=50 width=50 alt="tree.report.target|basename"/></a>
+        <a href="{{ local.setup['href_prefix'] }}{{ tree.report.target }}">{{tree.report.target.as_posix()|basename }}</a>
+    {% else %}
+        <span class="error">[Error : {{ tree.report.short_log }}]</span>
+    {% endif %}
+
+    {% if tree.report.target != tree.from_source %}
+        ({{ render_download(tree) }})
+    {% endif %}
+
+    {{ render_readme(tree) }}
+</div>

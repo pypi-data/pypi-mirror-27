@@ -1,0 +1,16 @@
+<div class="tree-directory">
+    <i>
+        {% if tree.is_root and local.setup['title'] %}
+            {{ local.setup['title'] }}
+        {% else %}
+            {{ tree.relativename }}
+        {% endif %}
+    </i> {{ render_readme(tree) }}
+    <ul>
+        {% for dir in tree.values()|sort %}
+            <li>
+                {{ render(dir, "tree.html") }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,79 @@
+/* Adapted from http://www.thecssninja.com/css/css-tree-menu */
+
+.tree li { 
+  position: relative; 
+  list-style: none;
+}
+.tree li.file {
+  background: url(document.png) 0 0 no-repeat;
+  padding-left: 21px;
+}
+.tree li.file.failed {
+  background: url(document-failed.png) 0 0 no-repeat;
+}
+.tree li input {
+  position: absolute;
+  margin-left: 0;
+  opacity: 0;
+  top: 0;
+}
+.tree li input + div.toggle {
+  background: url(toggle-plus.png) 40px 0 no-repeat;
+  margin: -1em 0 0 -44px;
+  height: 1em;
+}
+.tree li input ~ ol > li {
+  display: none;
+  margin-left: -14px;
+}
+.tree li label {
+  background: url(folder.png) 15px 1px no-repeat;
+  display: block;
+  padding-left: 37px;
+}
+.tree li input:checked + div.toggle {
+  background: url(toggle-minus.png) 40px 0px no-repeat;
+  margin: -1em 0 0 -44px;
+  padding: 1em 0 0 44px;
+  height: auto;
+}
+.tree li input:checked ~ ol > li {
+  display: block;
+}
+
+.tree li img.thumbnail {
+  transition: all .3s ease-out;
+  width: 1em;
+  height: 1em;
+  z-index: 1;
+}
+.tree li img.thumbnail:hover {
+  transform: scale(5);
+  transform-origin: center center;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+}
+
+.tree .error {
+  color: red;
+  font-family: monospace;
+}
+
+.tree .toggle + .readme p {
+  padding-left: 1.5em;
+}
+.tree .readme > p:first-child {
+  margin-top: 0em;
+}
+.tree li {
+  margin-bottom: 1em;
+}
+
+.tree div.readme, .tree div.readme p:first-child {
+  display: inline;
+}
+.tree .toggle + .readme {
+  display: block;
+  margin-bottom: 1em;
+}
+
