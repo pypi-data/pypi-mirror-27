@@ -1,0 +1,36 @@
+[flask.commands]
+deposit = invenio_deposit.cli:deposit
+
+[invenio_access.actions]
+deposit_admin_access = invenio_deposit.permissions:action_admin_access
+
+[invenio_assets.bundles]
+invenio_deposit_css = invenio_deposit.bundles:css
+invenio_deposit_dependencies_js = invenio_deposit.bundles:js_dependecies
+invenio_deposit_js = invenio_deposit.bundles:js
+
+[invenio_base.api_apps]
+invenio_deposit_rest = invenio_deposit:InvenioDepositREST
+
+[invenio_base.apps]
+invenio_deposit = invenio_deposit:InvenioDeposit
+
+[invenio_i18n.translations]
+messages = invenio_deposit
+
+[invenio_jsonschemas.schemas]
+deposits = invenio_deposit.jsonschemas
+
+[invenio_oauth2server.scopes]
+deposit_actions = invenio_deposit.scopes:actions_scope
+deposit_write = invenio_deposit.scopes:write_scope
+
+[invenio_pidstore.fetchers]
+deposit = invenio_deposit.fetchers:deposit_fetcher
+
+[invenio_pidstore.minters]
+deposit = invenio_deposit.minters:deposit_minter
+
+[invenio_search.mappings]
+deposits = invenio_deposit.mappings
+
