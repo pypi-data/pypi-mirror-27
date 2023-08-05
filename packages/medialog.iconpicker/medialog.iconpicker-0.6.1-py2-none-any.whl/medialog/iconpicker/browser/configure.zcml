@@ -1,0 +1,48 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="medialog.iconpicker">
+
+
+  <!-- Tile -->
+  <!-- configure zcml:condition="installed plone.tiles" -->
+    
+  <!-- Include our dependencies -->
+  <include package="plone.app.tiles" />
+  <include package="zope.component" file="meta.zcml" />
+  <include package="zope.security" file="meta.zcml" />
+
+  <include package="plone.app.mosaic" />
+  <include package="plone.tiles" file="meta.zcml" />
+  
+
+    <!-- plone:tile
+        name="medialog.iconpicker.multitile"
+        title="Iconpicker Multi tile"
+        description="Displays several icons and text"
+        for="*"
+        schema=".tiles.IMultiIconTile"
+        class=".tiles.IconTile"
+        template="multiicontile.pt"
+        permission="zope2.View"
+        add_permission="cmf.ModifyPortalContent"
+        / -->
+     
+    <plone:tile
+        name="medialog.iconpicker.tile"
+        title="Iconpicker tile"
+        description="Displays icon and some text"
+        for="*"
+        schema=".tiles.IIconTile"
+        class=".tiles.IconTile"
+        template="icontile.pt"
+        permission="zope2.View"
+        add_permission="cmf.ModifyPortalContent"
+        />
+
+     <!--/configure-->
+</configure>
