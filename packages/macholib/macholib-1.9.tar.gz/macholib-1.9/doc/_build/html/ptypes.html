@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>macholib.ptypes — Packable types &#8212; macholib 1.8 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="macholib.mach_o — Low-level definitions" href="macho_o.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="macho_o.html" title="macholib.mach_o — Low-level definitions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">macholib 1.8 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-macholib.ptypes">
+<span id="macholib-ptypes-packable-types"></span><h1><a class="reference internal" href="#module-macholib.ptypes" title="macholib.ptypes: Serializable types"><code class="xref py py-mod docutils literal"><span class="pre">macholib.ptypes</span></code></a> &#8212; Packable types<a class="headerlink" href="#module-macholib.ptypes" title="Permalink to this headline">¶</a></h1>
+<p>The module <a class="reference internal" href="#module-macholib.ptypes" title="macholib.ptypes: Serializable types"><code class="xref py py-mod docutils literal"><span class="pre">macholib.ptypes</span></code></a> defines types that can be serialized into
+byte arrays, both for basic types and structured types (C <code class="docutils literal"><span class="pre">struct</span></code> values).</p>
+<div class="section" id="utility-functions">
+<h2>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="macholib.ptypes.sizeof">
+<code class="descclassname">macholib.ptypes.</code><code class="descname">sizeof</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.sizeof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size in bytes of an object when packed, raises <code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code>
+for inappropriate values.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="macholib.ptypes.pypackable">
+<code class="descclassname">macholib.ptypes.</code><code class="descname">pypackable</code><span class="sig-paren">(</span><em>name</em>, <em>pytype</em>, <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.pypackable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a packable type that is a subclass of the Python type
+<em>pytype</em>. The value is converted to and from the packed format using
+the struct <em>format</em>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="packable-types">
+<h2>Packable types<a class="headerlink" href="#packable-types" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="macholib.ptypes.BasePackable">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">BasePackable</code><a class="headerlink" href="#macholib.ptypes.BasePackable" title="Permalink to this definition">¶</a></dt>
+<dd><p>All packable types are a subclass of <a class="reference internal" href="#macholib.ptypes.BasePackable" title="macholib.ptypes.BasePackable"><code class="xref py py-class docutils literal"><span class="pre">BasePackable</span></code></a>, which defines
+the basic interface but is itself an abstract base class.</p>
+<dl class="data">
+<dt id="macholib.ptypes.BasePackable._endian_">
+<code class="descname">_endian_</code><a class="headerlink" href="#macholib.ptypes.BasePackable._endian_" title="Permalink to this definition">¶</a></dt>
+<dd><p>The byteorder of a packed value. This will be <code class="docutils literal"><span class="pre">&quot;&lt;&quot;`</span> <span class="pre">for</span>
+<span class="pre">little</span> <span class="pre">endian</span> <span class="pre">values</span> <span class="pre">and</span> <span class="pre">``&quot;&gt;&quot;</span></code> for big-endian ones.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>the endianness option is a public value to be
+able to support both big- and little-endian file formats.</p>
+<p class="last">The name suggests that this attribute is private, this
+is partically for historical reasons and partially to
+avoid conflicts with field names in C structs.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="macholib.ptypes.BasePackable.from_mmap">
+<code class="descname">from_mmap</code><span class="sig-paren">(</span><em>mmap</em>, <em>ptr</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.BasePackable.from_mmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class method constructs the value from a subview of a
+<a class="reference external" href="https://docs.python.org/2/library/mmap.html#mmap.mmap" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">mmap.mmap</span></code></a> object. It uses bytes starting at offset <em>ptr</em> and
+reads just enough bytes to read the entire object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="macholib.ptypes.BasePackable.from_fileobj">
+<code class="descname">from_fileobj</code><span class="sig-paren">(</span><em>fp</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.BasePackable.from_fileobj" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class method constructs the value by reading just enough bytes
+from a file-like object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The file must be opened in binary mode, that is read calls
+should return byte-strings and not unicode-strings.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="macholib.ptypes.BasePackable.from_str">
+<code class="descname">from_str</code><span class="sig-paren">(</span><em>value</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.BasePackable.from_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class method construct the value by using the struct module
+to parse the given bytes.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">contrary to what the name suggests the argument to this
+method is a byte-string, not a unicode-string.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="macholib.ptypes.BasePackable.from_tuple">
+<code class="descname">from_tuple</code><span class="sig-paren">(</span><em>fp</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.BasePackable.from_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class method constructs the object from a tuple with all fields.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="macholib.ptypes.BasePackable.to_str">
+<code class="descname">to_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.BasePackable.to_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a byte representation of the value.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">there is no default implementation for this method</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="macholib.ptypes.BasePackable.to_fileobj">
+<code class="descname">to_fileobj</code><span class="sig-paren">(</span><em>fp</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.BasePackable.to_fileobj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a byte representation of the value to the given file-like
+object. The file should be opened in binary mode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="macholib.ptypes.BasePackable.to_mmap">
+<code class="descname">to_mmap</code><span class="sig-paren">(</span><em>mmap</em>, <em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.BasePackable.to_mmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the byte representation of the value to a <a class="reference external" href="https://docs.python.org/2/library/mmap.html#mmap.mmap" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">mmap.mmap</span></code></a>
+object, starting at offset <em>ptr</em>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.Structure">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">Structure</code><span class="sig-paren">(</span><em>...</em><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.Structure" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="data">
+<dt id="macholib.ptypes.Structure._fields_">
+<code class="descname">_fields_</code><a class="headerlink" href="#macholib.ptypes.Structure._fields_" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class attribute is a list that contains the fields of the
+structure in the right order. Every item of this list is a tuple
+with 2 arguments: the first element is the name of the field, and
+the second the packable type for the field.</p>
+<p>Every subclass of <a class="reference internal" href="#macholib.ptypes.Structure" title="macholib.ptypes.Structure"><code class="xref py py-class docutils literal"><span class="pre">Structure</span></code></a> must define <em>_fields_</em> to be
+usefull, and the value of <em>_fields_</em> should not be changed after
+class construction.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="basic-packables">
+<h2>Basic packables<a class="headerlink" href="#basic-packables" title="Permalink to this headline">¶</a></h2>
+<p>Other than the core functionality this module defines a number of
+<a class="reference internal" href="#macholib.ptypes.pypackable" title="macholib.ptypes.pypackable"><code class="xref py py-func docutils literal"><span class="pre">pypackable()</span></code></a> types that correspond to useful basic C types.</p>
+<dl class="class">
+<dt id="macholib.ptypes.p_char">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_char</code><span class="sig-paren">(</span><span class="optional">[</span><em>value</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#macholib.ptypes.p_char" title="Permalink to this definition">¶</a></dt>
+<dd><p>A byte string of length 1</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_int8">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_int8</code><a class="headerlink" href="#macholib.ptypes.p_int8" title="Permalink to this definition">¶</a></dt>
+<dd><p>An 8-bit signed integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_uint8">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_uint8</code><a class="headerlink" href="#macholib.ptypes.p_uint8" title="Permalink to this definition">¶</a></dt>
+<dd><p>An 8-bit unsigned integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_int16">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_int16</code><a class="headerlink" href="#macholib.ptypes.p_int16" title="Permalink to this definition">¶</a></dt>
+<dd><p>An 16-bit signed integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_uint16">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_uint16</code><a class="headerlink" href="#macholib.ptypes.p_uint16" title="Permalink to this definition">¶</a></dt>
+<dd><p>An 16-bit unsigned integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_int32">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_int32</code><a class="headerlink" href="#macholib.ptypes.p_int32" title="Permalink to this definition">¶</a></dt>
+<dd><p>An 32-bit signed integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_uint32">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_uint32</code><a class="headerlink" href="#macholib.ptypes.p_uint32" title="Permalink to this definition">¶</a></dt>
+<dd><p>An 32-bit unsigned integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_int64">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_int64</code><a class="headerlink" href="#macholib.ptypes.p_int64" title="Permalink to this definition">¶</a></dt>
+<dd><p>An 64-bit signed integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_uint64">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_uint64</code><a class="headerlink" href="#macholib.ptypes.p_uint64" title="Permalink to this definition">¶</a></dt>
+<dd><p>An 64-bit unsigned integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_float">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_float</code><a class="headerlink" href="#macholib.ptypes.p_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>An floating point value of type <code class="docutils literal"><span class="pre">float</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="macholib.ptypes.p_double">
+<em class="property">class </em><code class="descclassname">macholib.ptypes.</code><code class="descname">p_double</code><a class="headerlink" href="#macholib.ptypes.p_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>An floating point value of type <code class="docutils literal"><span class="pre">double</span></code></p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">the module exports a number of other types with
+names starting with <code class="docutils literal"><span class="pre">p_</span></code>, such as <code class="docutils literal"><span class="pre">p_int</span></code>. Those types
+are deprecated and should not be used.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">macholib.ptypes</span></code> &#8212; Packable types</a><ul>
+<li><a class="reference internal" href="#utility-functions">Utility functions</a></li>
+<li><a class="reference internal" href="#packable-types">Packable types</a></li>
+<li><a class="reference internal" href="#basic-packables">Basic packables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="macho_o.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">macholib.mach_o</span></code> &#8212; Low-level definitions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ptypes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="macho_o.html" title="macholib.mach_o — Low-level definitions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">macholib 1.8 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2010-2011, Ronald Oussoren.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.
+    </div>
+  </body>
+</html>
