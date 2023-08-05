@@ -1,0 +1,74 @@
+BasiliskJS - Scriptable Headless WebKit
+=========================
+
+BasiliskJS  представляет собой безглавую версию PhantomJS с JavaScript.
+
+Возможность
+============
+
+- **Быстрое тестирование**. Возможность быстрого тестирование без браузера!
+- **Автоматизация dom**. Простой интерфейс.
+- **Работа с js**. Есть возможность запускать JavaScript.
+- **Захват экрана**. Возможность сделать снимок страницы любого размера.
+
+Пример работы
+-------------
+Простой запрос на https://www.python.org/.
+
+.. code-block:: python
+
+    >>> from basilisk import Phantomjs
+    >>> Phantomjs('https://www.python.org/').get()
+    {'url': 'https://www.python.org/', 'status': 'success'}
+    
+Запрос с выполнение js.
+
+.. code-block:: python
+
+    from basilisk import Phantomjs
+    js = []
+    for i in range(10):
+        js.append("document.getElementsByClassName('yaca-snippet__url')[%i].innerText" %i)
+    print(Phantomjs('https://yandex.ru/yaca/?text=google.ru', js = js).get(  ))
+
+    результат -
+    {'8': 'play.google.com/…/details?…',
+     '2': 'googlerussiablog.blogspot.ru',
+     '1': 'loginza.ru',
+     'status': 'success',
+     '6': 'aori.ru', '3': 'play.google.com/…/details?…',
+     '4': 'www.i-media.ru',
+     '7': 'play.google.com/…/details?…',
+     '5': 'elama.ru',
+     'url': 'https://yandex.ru/yaca/?text=google.ru',
+     '0': 'www.google.ru', '9': 'os-chrome.ru'}
+
+Показать контент
+
+.. code-block:: python
+
+    >>> from basilisk import Phantomjs
+    >>> Phantomjs('https://yandex.ru/yaca/?text=google.ru').get( content = '1' )
+
+
+
+Параметры класса
+-------------    
+- **url**. - url для запроса.
+- **interval**. - Время загрузки js на странице, по умолчанию 1000(1 сек).
+- **userAgent**. - User Agent по умолчанию None.
+- **js**. - Массив JavaScript скриптов, выполняются по очереди.
+- **image**. - Загрузка картинок, по умолчанию - False.
+- **proxies**. - Прокси по умолчанию - None.
+- **command**. - Путь к браузеру PhantomJS (если не установлен).
+- **param**. - Можно задать словарь с параметрами вручную.
+
+Параметры метода get()
+-------------    
+- **content**. - Помещает весь контент в результат, по умолчанию( False ).
+- **screenshot**. - Сделать скриншот страницы, по умолчанию( False ).
+
+Развитие
+-------------   
+На данный момент мы на стадии Pre-Alpha. Вы можете увидеть сообщения об ошибках и т.д. 
+    
