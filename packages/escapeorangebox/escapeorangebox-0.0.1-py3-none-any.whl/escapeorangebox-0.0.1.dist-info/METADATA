@@ -1,0 +1,22 @@
+Metadata-Version: 2.0
+Name: escapeorangebox
+Version: 0.0.1
+Summary: A python module for downloading metadata from Google Play Music
+Home-page: https://github.com/erikbrinkman/escapeorangebox.git
+Author: Erik Brinkman
+Author-email: erik.brinkman@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: gmusicapi (~=10.1.2)
+Provides-Extra: dev
+Requires-Dist: autopep8 (~=1.3); extra == 'dev'
+Requires-Dist: flake8 (~=3.4); extra == 'dev'
+Requires-Dist: ipython (~=6.1); extra == 'dev'
+Requires-Dist: setuptools (~=36.6); extra == 'dev'
+Requires-Dist: twine (~=1.9); extra == 'dev'
+Requires-Dist: wheel (~=0.29); extra == 'dev'
+
+UNKNOWN
+
+
