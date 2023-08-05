@@ -1,0 +1,42 @@
+#
+# (C) 2014-2017 Seiji Matsuoka
+# Licensed under the MIT License (MIT)
+# http://opensource.org/licenses/MIT
+#
+
+import itertools
+
+from flashflood.core.node import SyncNode
+
+
+def stack(row, keys, skip_none):
+    for nk in set(row.keys()) - set(keys):
+        if row[nk] is None and skip_none:
+            continue
+        d = {k: v for k, v in row.items() if k in keys}
+        d["field"] = nk
+        d["value"] = row[nk]
+        yield d
+
+
+class Stack(SyncNode):
+    def __init__(self, keys, skip_none=True, params=None):
+        super().__init__(params=params)
+        self.keys = keys
+        self.skip_none = skip_none
+        # TODO: set 'field' field key and 'value' field key
+        self.fields = [
+            {"key": "field", "name": "field", "format": "text"},
+            {"key": "value", "name": "value", "format": "text"}
+        ]
+
+    def on_submitted(self):
+        stacked = itertools.chain.from_iterable(
+            stack(rcd, self.keys, self.skip_none)
+            for rcd in self._in_edge.records)
+        self._out_edge.records = stacked
+        fs = filter(lambda x: x["key"] in self.keys, self._in_edge.fields)
+        self._out_edge.fields.merge(fs)
+        self._out_edge.fields.merge(self.fields)
+        self._out_edge.params.update(self._in_edge.params)
+        self._out_edge.params.update(self.params)
