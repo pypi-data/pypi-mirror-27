@@ -1,0 +1,85 @@
+Metadata-Version: 2.0
+Name: equality
+Version: 0.0.5
+Summary: Utilities to aid in testing for equality.
+Home-page: http://pypi.python.org/pypi/equality/
+Author: Jonathan Hartley
+Author-email: tartley@tartley.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Keywords: test testing equal equals equality
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: Microsoft :: Windows :: Windows 7
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: Implementation :: CPython
+
+This package is pre-alpha. The API may change.
+
+When comparing structures like this dict::
+
+    assert actual == {
+        'id': 123,
+        'created': "2017-11-10T23:59:58",
+        'field1': 1,
+        ...
+    }
+
+This fails because :code:`id` and :code:`created` are different every test run.
+Fix this using::
+
+    assert actual == {
+        'id': AnyInt(),
+        'created': AnyTimestamp(datetime.now(), seconds=3),
+        'field1': 1,
+        ...
+    }
+
+:code:`AnyInt` compares equal to any integer. :code:`Timestamp` compares equal
+to string timestamps that are within the given number of seconds.
+
+
+Compatibility
+-------------
+
+Runs on Python 3.6 and 2.7.
+
+
+Known Problems
+--------------
+
+It's hot off the presses, so is doubtless full of mistakes.
+
+
+Alternatives
+------------
+
+This doubtless duplicates better work elsewhere. In particular the package
+'equals' looks very nice, but it's missing the central feature of 'equality',
+approximate comparison of string timestamps.
+
+
+Contact
+-------
+
+:For users: Downloads & documentation:
+    http://pypi.python.org/pypi/equality/
+
+:For developers: Souce code & issues:
+    https://github.com/tartley/equality/
+
+:Contact the author:
+    Jonathan Hartley, email: tartley at domain tartley.com, Twitter: @tartley.
+
+
+
