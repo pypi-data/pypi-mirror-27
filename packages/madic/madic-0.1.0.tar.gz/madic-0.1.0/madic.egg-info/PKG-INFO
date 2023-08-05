@@ -1,0 +1,45 @@
+Metadata-Version: 1.1
+Name: madic
+Version: 0.1.0
+Summary: MAtrix-Dependent Interference Correction of targeted mass spectrometry data
+Home-page: https://github.com/dcroote/madic
+Author: Derek Croote
+Author-email: dcroote@stanford.edu
+License: UNKNOWN
+Description: 
+        
+        Overview
+        ========
+        madic is a Python package for detecting and correcting interference in targeted
+        mass spectrometry data using high-performance Pandas data structures.
+        
+        Purpose
+        =======
+        Multiple reaction monitoring (MRM, also known as selected reaction monitoring /
+        SRM) data acquired during targeted mass spectrometry experiments can suffer
+        from complex interference patterns that hinder accurate quantification. This
+        software identifies and corrects interference, as well increases the confidence
+        of peptide calls according to three qualities of an ideal chromatogram:
+        relative transition ratios similar to synthetic standards, co-elution of all
+        individual target transitions with respective stable isotope labeled (SIL)
+        transitions, and a distinguished peak relative to the background. Additionally,
+        these criteria should be satisfied for all replicate injections of a given
+        sample.
+        
+        More information
+        ================
+        Follow the github URL below for more information.
+        
+Keywords: mass spectrometry SRM MRM Skyline LC-MS/MS
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
