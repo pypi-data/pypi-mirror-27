@@ -1,0 +1,45 @@
+Metadata-Version: 2.0
+Name: emva1288
+Version: 0.5.3
+Summary: EMVA1288 reference implementation
+Home-page: https://github.com/EMVA1288/emva1288
+Author: Federico Ariza
+Author-email: ariza.federico@gmail.com
+License: UNKNOWN
+Keywords: sensors,cameras
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: jinja2
+Requires-Dist: lxml
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: pillow
+Requires-Dist: scipy
+
+EMVA1288
+========
+
+The EMVA1288 module is a Python package to process and print results of an
+EMVA tests.
+
+This is the reference implementation for the EMVA1288 Standard for
+Measurement and Presentation of Specifications for Machine Vision
+Sensors and Cameras.
+
+Please visit `Emva1288
+Website <http://www.emva.org/cms/index.php?idcat=26>`__ for information
+and latest releases of the standard.
+
+Documentation
+-------------
+
+The whole module documentation is hosted on `this website
+<http://emva1288.readthedocs.io/en/latest/>`__
+There, one can find installation details of the EMVA1288 module
+and the api documentation with tutorials on how to
+use the module.
+
+
