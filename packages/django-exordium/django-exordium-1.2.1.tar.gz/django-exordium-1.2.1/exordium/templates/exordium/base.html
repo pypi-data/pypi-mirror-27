@@ -1,0 +1,100 @@
+{# vim: set syntax=htmldjango: #}
+{% load static %}
+<html>
+<head>
+<title>Exordium{% if exordium_title and exordium_title != '' %} | {{ exordium_title }}{% endif %}</title>
+<link rel="icon" type="image/png" href="{% static 'exordium/favicon.png' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'exordium/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+<script type="text/javascript">
+//<!CDATA[
+var jplayerWindow = null;
+function jplayerAdd(tracks) {
+    if (jplayerWindow == null || jplayerWindow.closed) {
+        jplayerOpen();
+        setTimeout(function(){jplayerAdd(tracks);}, 1500);
+    } else {
+        jplayerWindow.focus();
+        for (var i=0; i < tracks.length; i++) {
+            track = tracks[i];
+            dict = {title: track['title'], artist: track['artist'], poster: track['poster'], free: true};
+            if (track['type'] == 'mp3') {
+                dict['mp3'] = track['url'];
+            } else if (track['type'] == 'ogg') {
+                dict['oga'] = track['url'];
+            } else if (track['type'] == 'm4a') {
+                dict['m4a'] = track['url'];
+            } else {
+                continue;
+            }
+            jplayerWindow.myPlaylist.add(dict);
+        }
+    }
+}
+function jplayerOpen() {
+    jplayerWindow = window.open('{% static 'exordium/jplayer/popup.html' %}?v2', 'exordiumJPlayer', 'width=650,height=700');
+}
+//]]>
+</script>
+{% block extraheader %}
+{% endblock %}
+</head>
+<body>
+<div class="sidebar">
+    <h1>Exordium</h1>
+    <div class="version">v{{ exordium_version }}</div>
+    <p>Welcome, {{ request.user }}.</p>
+    <p><a href="{% url 'exordium:index' %}">Home</a></p>
+    <p><strong>Browse</strong></p>
+    <ul>
+        <li><a href="{% url 'exordium:browse_artist' %}">Artists</a></li>
+        <li><a href="{% url 'exordium:browse_album' %}">Albums</a></li>
+    </ul>
+    <form action="{% url 'exordium:search' %}" method="get">
+        <input type="text" name="q" id="searchstr" class="searchform" maxlength="80" />
+        <input type="submit" id="searchbut" class="searchform" value="Search" />
+    </form>
+    <hr />
+    <div class="userprefs">
+        <form action="{% url 'exordium:updateprefs' %}" method="post">
+            {% csrf_token %}
+            <nobr><input type="checkbox" name="show_live" id="show_live"{% if request.user.is_authenticated %}{% if request.user.preferences.exordium__show_live %} checked{% endif %}{% else %}{% if request.session.exordium__show_live %} checked{% endif %}{% endif %}> Include live recordings?</nobr><br />
+            <input type="submit" id="prefbut" class="prefsform" value="Update Preferences" />
+        </form>
+    </div>
+<hr />
+<div class="adminlinks">
+{% if request.user.is_staff %}
+    <p>Administrative Links</p>
+    <p><a href="{% url 'admin:dynamic_preferences_globalpreferencemodel_changelist' %}">Library Configuration</a></p>
+    <p><a href="{% url 'exordium:library' %}">Library Upkeep</a></p>
+    <p><a href="{% url 'admin:index' %}">Django Admin</a></p>
+{% else %}
+    <p><a href="{% url 'admin:login' %}?next={{ request.path }}">Log In</a></p>
+{% endif %}
+</div>
+</div>
+<div class="body">
+{% if exordium_title and exordium_title != '' %}<h2>{{ exordium_title }}</h2>{% endif %}
+
+{% if messages_success %}
+<div class="success_message">
+{% for message in messages_success %}
+{{ message }}{% if not forloop.last %}<br />{% endif %}
+{% endfor %}
+</div>
+{% endif %}
+
+{% if messages_fail %}
+<div class="fail_message">
+{% for message in messages_fail %}
+{{ message }}{% if not forloop.last %}<br />{% endif %}
+{% endfor %}
+</div>
+{% endif %}
+
+{% block body %}
+{% endblock %}
+</div>
+</body>
+</html>
