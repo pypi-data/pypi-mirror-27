@@ -1,0 +1,17 @@
+toposort==1.4
+numpy
+typecheck-decorator==1.2
+
+[dev]
+pytest
+pytest-profiling
+pytest-helpers-namespace
+jupyter
+sphinx
+sphinx_rtd_theme
+matplotlib
+ipykernel>=4.6.1
+
+[tutorial]
+jupyter
+matplotlib
