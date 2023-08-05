@@ -1,0 +1,45 @@
+{% if debug %}<!-- buttons/button.html -->{% endif %}
+{% load fontawesome buttons_tags %}
+{% spaceless %}
+    {% with licon_position=icon_position|upper %}
+        {% if url %}
+            <a
+                    href="{{ url }}"
+                    class="btn {{ btn_css_color }} {{ btn_css_extra }}"
+                    {% if btn_id %}id="{{ btn_id }}"{% endif %}
+                    {% if title %}title="{{ title }}" aria-label="{{ title }}"{% endif %}
+                    {% if data %}{{ data|expand_data }}{% endif %}
+                    {% if btn_name %}name="{{ btn_name }}"{% endif %}
+                    {% if btn_value %}value="{{ btn_value }}"{% endif %}>
+                {% if licon_position == 'LEFT' %}
+                    {% fontawesome_icon icon %}&nbsp;{{ text }}
+                {% elif licon_position == 'RIGHT' %}
+                    {{ text }}&nbsp;{% fontawesome_icon icon %}
+                {% elif licon_position == 'ONLY' %}
+                    {% fontawesome_icon icon %}
+                {% else %}
+                    {{ text }}
+                {% endif %}
+            </a>
+        {% else %}
+            <button type="{{ btn_type }}"
+                    {% if btn_id %}id="{{ btn_id }}"{% endif %}
+                    {% if title %}title="{{ title }}" aria-label="{{ title }}"{% endif %}
+                    class="btn {{ btn_css_color }} {{ btn_css_extra }}"
+                    {% if data %}{{ data|expand_data }}{% endif %}
+                    {% if btn_name %}name="{{ btn_name }}"{% endif %}
+                    {% if btn_value %}value="{{ btn_value }}"{% endif %}>
+                {% if licon_position == 'LEFT' %}
+                    {% fontawesome_icon icon %}&nbsp;{{ text }}
+                {% elif licon_position == 'RIGHT' %}
+                    {{ text }}&nbsp;{% fontawesome_icon icon %}
+                {% elif licon_position == 'ONLY' %}
+                    {% fontawesome_icon icon %}
+                {% else %}
+                    {{ text }}
+                {% endif %}
+
+            </button>
+        {% endif %}
+    {% endwith %}
+{% endspaceless %}
