@@ -1,0 +1,12 @@
+
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "hkvportal"
+author = "Mattijn van Hoek"
+author-email = "hoek@hkv.nl"
+home-page = "https://github.com/HKV-products-services/hkvportal"
+classifiers = ["License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"]
+
