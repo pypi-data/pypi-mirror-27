@@ -1,0 +1,62 @@
+Metadata-Version: 2.0
+Name: castle
+Version: 1.0.1
+Summary: Castle protects your users from account compromise
+Home-page: https://github.com/castle/castle-python
+Author: Castle Intelligence, Inc.
+Author-email: info@castle.io
+License: MIT License
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: requests (>=2.5)
+
+Python SDK for Castle
+=====================
+
+
+.. image:: https://travis-ci.org/castle/castle-python.png
+   :alt: Build Status
+   :target: https://travis-ci.org/castle/castle-python
+
+
+`Castle <https://castle.io>`_ analyzes device, location, and interaction patterns in your web and mobile apps and lets you stop account takeover attacks in real-time.
+
+
+Here is a simple example of track event.
+
+.. code-block:: python
+
+    from castle.configuration import configuration
+    from castle.client import Client
+
+    configuration.api_secret = ':YOUR-API-SECRET'
+
+    castle = Client(request, {})
+    castle.track(
+        {
+            'event': '$login.succeeded',
+            'user_id': 'user_id'
+        }
+    )
+
+
+Documentation
+-------------
+
+
+Documentation and links to additional resources are available at
+https://castle.io/docs
+
+
