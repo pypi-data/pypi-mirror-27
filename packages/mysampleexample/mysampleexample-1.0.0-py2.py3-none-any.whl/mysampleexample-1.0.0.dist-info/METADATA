@@ -1,0 +1,18 @@
+Metadata-Version: 2.0
+Name: mysampleexample
+Version: 1.0.0
+Summary: My sample Python project example
+Home-page: https://github.com/pypa/sampleproject
+Author: iweans
+Author-email: iweans@qq.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Requires-Dist: peppercorn
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+
+A sample Python project
+
+
