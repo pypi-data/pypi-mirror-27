@@ -1,0 +1,72 @@
+{% load staticfiles %}
+
+<section class="section section--wikilegis">
+  <div class="e-row e-expanded">
+    <div class="section__info section__block e-columns small-12 large-3">
+      <a href="{% url 'wikilegis:colab_wikilegis' '' %}"><img class="section__logo" src="{% static 'img/logo-wikilegis.svg' %}"></a>
+      <p class="section__text">
+        Edite e aprimore projetos de lei artigo por artigo.
+      </p>
+    </div>
+
+    <div class="section__block e-columns small-12 large-9">
+      <div class="section__content">
+        <h1 class="section__title">
+          <a class="section__link" href="{% url 'wikilegis:colab_wikilegis' '' %}" title="Veja todos os projetos">Projetos de Lei</a>
+          <a class="button section__button" href="{% url 'wikilegis:colab_wikilegis' '' %}" title="Ver todos">
+            Ver todos
+          </a>
+        </h1>
+        <div class="container container--card-list">
+          <ul class="card-list">
+          {% for bill in wikilegis_data %}
+            <a class="info-card__link" href="{{bill.get_url}}">
+              <li class="info-card info-card--wikilegis">
+                <div class="info-card__header">
+                  {% if bill.status == "closed" %}
+                  <div class="info-card__icon info-card__icon--closed"><i class="icon icon-{{bill.theme.slug}}"></i></div>
+                  {% else %}
+                  <div class="info-card__icon"><i class="icon icon-{{bill.theme.slug}}"></i></div>
+                  {% endif %}
+                  <h2 class="info-card__title">{{bill.title|truncatechars:40}}</h2>
+                </div>
+                <p class="info-card__text">
+                  {{bill.description|truncatechars:160}}
+                </p>
+                <div class="info-card__footer">
+                  <div class="card-stats">
+                    <div class="card-stats__name">Propostas</div>
+                    {% if bill.status == "closed" %}
+                    <div class="card-stats__value card-stats__value--closed">{{bill.amendments_count}}</div>
+                    {% else %}
+                    <div class="card-stats__value">{{bill.amendments_count}}</div>
+                    {% endif %}
+                  </div>
+
+                  <div class="card-stats">
+                    {% if bill.status == "closed" %}
+                    <div class="card-stats__name">Encerrado em:</div>
+                    <div class="card-stats__value card-stats__value--closed">{{bill.closing_date|date:"d/m/Y"}}</div>
+                    {% else %}
+                    <div class="card-stats__name">Participe até:</div>
+                    <div class="card-stats__value">{{bill.closing_date|date:"d/m/Y"}}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              </li>
+            </a>
+          {% empty %}
+            <li>
+              <div class="section__content-wrapper section__content-wrapper--center text-center">
+                <p class="section__text">
+                  Desculpe. Não encontramos nenhum projeto de lei.
+                </p>
+              </div>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+{% load i18n tz highlight %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-12">
+      <h4><a href="{{result.url}}">
+        Comentário feito por {% highlight result.author with query %}<br>
+        <small>em {{result.parent}} de {{result.bill}}</small>
+      </a></h4>
+      <p>
+        {% highlight result.comment with query %}
+      </p>
+      <small class="colab-result-register">{% trans "Registred in" %}:
+          <strong>{{result.type}}</strong>
+      </small>
+    </div>
+    <hr>
+  </div>
+{% endblock content %}

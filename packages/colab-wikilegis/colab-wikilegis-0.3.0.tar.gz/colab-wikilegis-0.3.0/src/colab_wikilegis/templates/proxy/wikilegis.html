@@ -1,0 +1,16 @@
+{% extends "plugins-base.html" %}
+{% load staticfiles %}
+
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'scss/overrides-wikilegis.scss' %}" type="text/x-scss" />
+{% endblock styles %}
+
+{% block body_properties %}
+  class="{% if 'report' in request.path %}report{% endif %}{% if 'widget' in request.path %}widget{% endif %}"
+{% endblock body_properties %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script src="{% static 'js/edem-wikilegis-plugin.js' %}"></script>
+{% endblock scripts %}
