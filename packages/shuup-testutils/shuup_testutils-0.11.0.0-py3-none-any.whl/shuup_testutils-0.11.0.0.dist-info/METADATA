@@ -1,0 +1,31 @@
+Metadata-Version: 2.0
+Name: shuup-testutils
+Version: 0.11.0.0
+Summary: Some personal testutils for Shuup E-commerce Platform
+Home-page: https://gitlab.com/nilit/shuup-testutils
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: MIT
+Keywords: shuup
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Django :: 1.9
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Software Development
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Office/Business
+Requires-Dist: shuup (==2.0)
+Requires-Dist: shuup-utils (<0.7,>=0.6)
+Requires-Dist: beautifulsoup4 (<4.6,>=4.5.3)
+Provides-Extra: dev
+Requires-Dist: wheel (>=0.29.0); extra == 'dev'
+Requires-Dist: twine (<2,>=1.8.1); extra == 'dev'
+
+UNKNOWN
+
+
