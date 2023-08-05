@@ -1,0 +1,31 @@
+Metadata-Version: 1.1
+Name: kik-desktop
+Version: 0.0.3
+Summary: Kik Desktop
+Home-page: https://github.com/Jaapp-/kik-desktop
+Author: Jaap Heijligers
+Author-email: mail@heijligers.me
+License: GPLv2
+Description-Content-Type: UNKNOWN
+Description: # Kik Desktop #
+        Kik desktop client written in PyQt5 based on [Kik Bot API](https://github.com/tomer8007/kik-bot-api-unofficial)
+        
+        WARNING: Logging in causes a logout on any currently logged in client, messages will be lost. 
+        
+        ## Features
+        - Store login, messages
+        - Send/receive messages
+        
+        ## Backlog
+        - Retrieve received messaged on relogin
+        - All Kik server communication beyond send/receiving messages
+        - Register account
+        - Media support
+        
+Keywords: kik desktop chat
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Topic :: Communications :: Chat
