@@ -1,0 +1,153 @@
+Metadata-Version: 1.1
+Name: IFJcode17-toolkit
+Version: 1.4.11
+Summary: Toolkit for IFJ17 language compiler (as project at FIT BUT in Brno) with interactive debugger and automatic tests.
+Home-page: https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-toolkit
+Author: Josef Kolář, Son Hai Nguyen
+Author-email: xkolar71@stud.fit.vutbr.cz, xnguye16@stud.fit.vutbr.cz
+License: GNU GENERAL PUBLIC LICENSE Version 3
+Description-Content-Type: UNKNOWN
+Description: Sada nástrojů pro ``IFJ17`` a ``IFJcode17``
+        ===========================================
+        
+        |PyPI version| |GitHub issues| |GitHub stars| |GitHub license| |GitHub
+        release| |Join the chat at
+        https://gitter.im/VUT-FIT-IFJ-2017-toolkit/Lobby| |Wiki|
+        
+        Repozitář obsahuje nástroje k projektu kompilátoru do předmětu **IFJ**
+        na FIT VUT v Brně v *akademickém roce 2017/2018*. Mezi nástroje patří
+        **sada testů** včetně automatické spouštěče testových jednotek,
+        **vývojové prostředí včetně debuggeru** jazyka ``IFJcode17`` a **vlastní
+        interpret** tohoto jazyka. Instalace těchto balíků je podrobně popsána
+        ve Wiki, obecně je lze **nainstalovat** následovně:
+        
+        .. code:: bash
+        
+            $ pip install IFJcode17-toolkit
+        
+        **Dokumentaci k nástrojům naleznete na `Github
+        Wiki <https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-tests/wiki>`__.**
+        
+        **Pro řešení chyb, definice testů či komunikaci mezi týmy můžete využít
+        `Gitter
+        místnost <https://gitter.im/VUT-FIT-IFJ-2017-toolkit/Lobby>`__.**
+        
+        IDE
+        ---
+        
+        Spouštění vývojového prostředí provedete po nainstalování pomocí příkazu
+        ``ifjcode17-ide``, níže náhled jeho rozhraní při spuštěném debuggeru.
+        Více informací o jeho funkci naleznete ve
+        `wiki <https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-toolkit/wiki/V%C3%BDvojov%C3%A9-prost%C5%99ed%C3%AD-pro-IFJcode17>`__.
+        
+        |náhled IDE|
+        
+        Automatické testy
+        -----------------
+        
+        Toolkit obsahu sadu více než 200 testovacích jednotek předkládaných
+        vašemu kompilátoru. Jejich automatické spuštění provedete pomocí příkazu
+        ``ifjcode17-tests <cesta k vašemu kompilátoru>``. Veškeré další
+        informace naleznete ve
+        `wiki <https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-toolkit/wiki/Automatick%C3%A9-testy>`__.
+        
+        |náhled do testů|
+        
+        Spolupráce
+        ----------
+        
+        Tímto chceme všechny uživatele tototo repozitáře poprosit o **spolupráci
+        s definicí testů** či jinou, jak uvážíte. Myslíme si, že čím více
+        testovacích jednotek vytvoříme, tím **více** budeme mít **pokrytých
+        stavů kompilátoru** a tím méně nás překvapí hodnocení. **Všem zájemcům
+        doporučujeme poslat pull request** (`Jak poslat Pull
+        Request <https://blog.tomasfejfar.cz/jak-udelat-pullrequest/>`__), je
+        pro nás nejsnažší na integraci do repozitáře, ale nebudeme se zlobit,
+        když nám definice hodíte na Facebook, vytvoříte issue nebo pošlete
+        e-mail. **Děkujeme!**
+        
+        *Také oceníme, když nám nalezené chyby zareportujete do Github issues,
+        kam nám jistě můžete zapsat i vylepšení, co vás napadla nebo by se vám
+        hodila - určitě se nějak domluvíme.*
+        
+        .. figure:: https://ctrlv.cz/shots/2017/11/16/HfU0.png
+           :alt: Buď jako Iva!
+        
+           Buď jako Iva!
+        
+        .. figure:: https://ctrlv.cz/shots/2017/11/16/cNpu.png
+           :alt: Nebuď jako rohlík!
+        
+           Nebuď jako rohlík!
+        
+        .. figure:: https://ctrlv.cz/shots/2017/10/10/KP3O.png
+           :alt: Pomožte!
+        
+           Pomožte!
+        
+        Changelog
+        ---------
+        
+        -  20-11-2017 - changelog nyní veden standardně v `releases na
+           GitHub <https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-toolkit/releases>`__
+        -  16-11-2017 - publikace ``1.1`` oprava chyb v IDE a přidání značek do
+           scrollbaru IDE
+        -  15-11-2017 - publikace ``1.0`` na PyPi pod názvem
+           ``IFJcode17-toolkit``
+        -  09-11-2017 - uživatelské testování a ladění IFJcode17 IDE, příprava
+           release
+        -  08-11-2017 - kompletní testy pro ``UNARY, SCOPE, BOOLOP, BASE``,
+           testy na chyby zmíněné na přednáškách/democviku, celkem asi 180 testů
+        -  31-10-2017 - další várka testů, ~140 testů včetně testů některých
+           rozšíření
+        -  26-10-2017 - možnost spouštění testů dle implementovaných rozšíření
+        -  24-10-2017 - drobné úpravy v logování, celkové agregace úspěšnosti
+        -  22-10-2017 - přidána další sada testů, ~90 testů
+        -  18-10-2017 - zveřejněno, průběžně základní sada ~60 testů
+        
+        Autoři
+        ------
+        
+        -  `Josef Kolář <https://www.facebook.com/kolar.joe>`__, xkolar71,
+           [@thejoeejoee](https://github.com/thejoeejoee) - automatické testy,
+           interpret
+        -  `Son Hai Nguyen <https://www.facebook.com/sony.nguyen.98>`__,
+           xnguye16, [@SonyPony](https://github.com/SonyPony) - vývojové
+           prostředí, debugger
+        -  `Martin Kobelka <https://www.facebook.com/martin.kobelka>`__,
+           xkobel02, [@martinkobelka](https://github.com/martinkobelka) -
+           definice testů
+        
+        .. |PyPI version| image:: https://badge.fury.io/py/IFJcode17-toolkit.svg
+           :target: https://badge.fury.io/py/IFJcode17-toolkit
+        .. |GitHub issues| image:: https://img.shields.io/github/issues/thejoeejoee/VUT-FIT-IFJ-2017-toolkit.svg
+           :target: https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-toolkit/issues
+        .. |GitHub stars| image:: https://img.shields.io/github/stars/thejoeejoee/VUT-FIT-IFJ-2017-toolkit.svg
+           :target: https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-toolkit/stargazers
+        .. |GitHub license| image:: https://img.shields.io/github/license/thejoeejoee/VUT-FIT-IFJ-2017-toolkit.svg
+           :target: https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-toolkit/blob/master/LICENSE
+        .. |GitHub release| image:: https://img.shields.io/github/release/thejoeejoee/VUT-FIT-IFJ-2017-toolkit.svg
+           :target: https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-toolkit/releases
+        .. |Join the chat at https://gitter.im/VUT-FIT-IFJ-2017-toolkit/Lobby| image:: https://badges.gitter.im/VUT-FIT-IFJ-2017-toolkit/Lobby.svg
+           :target: https://gitter.im/VUT-FIT-IFJ-2017-toolkit/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+        .. |Wiki| image:: https://img.shields.io/badge/Wiki-here-blue.svg
+           :target: https://github.com/thejoeejoee/VUT-FIT-IFJ-2017-tests/wiki
+        .. |náhled IDE| image:: https://ctrlv.cz/shots/2017/11/16/axPA.png
+           :target: https://ctrlv.cz/shots/2017/11/16/axPA.png
+        .. |náhled do testů| image:: https://ctrlv.cz/shots/2017/11/16/yVIi.png
+           :target: https://ctrlv.cz/shots/2017/11/16/yVIi.png
+        
+Keywords: ifj17 ifjcode17 language ide utils debugger editor
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: X11 Applications :: Qt
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Utilities
+Requires: termcolor
+Requires: PyOpenGL
+Requires: PyQt5
