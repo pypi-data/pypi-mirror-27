@@ -1,0 +1,64 @@
+Metadata-Version: 1.1
+Name: django-adminutils
+Version: 0.0.6
+Summary: Utilities to make working with the Django admin nicer.
+Home-page: https://github.com/GaretJax/django-adminutils
+Author: Jonathan Stoppani
+Author-email: jonathan@stoppani.name
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: django-adminutils
+        =================
+        
+        Utilities to make developing with the Django admin a better experience.
+        
+        
+        Development
+        -----------
+        
+        To release:
+        
+        * Ensure everything is committed.
+        * Ensure the HISTORY.rst and the __init__.py files are up to date with
+          information about the release.
+        * Run `python setup.py publish`
+        * Tag the release in git and push the tag: `git tag X.Y.Z && git push --tags`.
+        
+        
+        =======
+        History
+        =======
+        
+        0.0.6 - 2017-12-02
+        ==================
+        
+        * Initial python 2 backport.
+        
+        
+        0.0.5 - 2017-12-02
+        ==================
+        
+        * Make easy_thumbnails an optional dependency.
+        
+        
+        0.0.4 - 2017-11-23
+        ==================
+        
+        * Fix manifest.
+        
+        
+        0.0.3 - 2017-11-23
+        ==================
+        
+        * Initial release.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
