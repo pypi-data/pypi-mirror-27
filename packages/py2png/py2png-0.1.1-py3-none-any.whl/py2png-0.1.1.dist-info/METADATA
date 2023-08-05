@@ -1,0 +1,28 @@
+Metadata-Version: 2.0
+Name: py2png
+Version: 0.1.1
+Summary: Python Module to PNG
+Home-page: https://github.com/dawran6/100days/tree/master/001
+Author: Daw-Ran Liou
+Author-email: dawran6@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: png,cli,python
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Terminals
+Requires-Dist: pygments
+Requires-Dist: click
+Requires-Dist: pillow
+
+This is a module that generates a PNG snapshot for a given Python module.
+
+
