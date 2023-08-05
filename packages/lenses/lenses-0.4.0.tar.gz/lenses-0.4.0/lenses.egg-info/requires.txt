@@ -1,0 +1,20 @@
+singledispatch
+
+[:python_version < "3"]
+typing
+
+[docs]
+sphinx
+
+[optional]
+pyrsistent
+
+[tests]
+pyrsistent
+pytest
+coverage
+pytest-coverage
+hypothesis
+
+[tests:python_version >= "3.3" and implementation_name == "cpython"]
+mypy
