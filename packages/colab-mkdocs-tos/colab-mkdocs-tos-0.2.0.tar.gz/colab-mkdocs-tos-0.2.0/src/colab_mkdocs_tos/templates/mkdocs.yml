@@ -1,0 +1,22 @@
+site_name: {{mkdocs_title}}
+
+docs_dir: '{{mkdocs_dir}}/mkdocs_pages'
+site_dir: '{{mkdocs_dir}}/static/mkdocs_build'
+
+theme: 'material'
+theme_dir: '{{mkdocs_dir}}/theme'
+
+extra:
+  logo: ''
+  palette:
+    primary: 'green'
+    accent: 'amber'
+  social:
+    - type: 'github'
+      link: 'https://github.com/labhackercd/'
+pages:
+{% for name, file in mkdocs_pages %}
+  - {{name}}: {{file}}
+{% endfor %}
+extra_css:
+  - 'stylesheets/extra.css'

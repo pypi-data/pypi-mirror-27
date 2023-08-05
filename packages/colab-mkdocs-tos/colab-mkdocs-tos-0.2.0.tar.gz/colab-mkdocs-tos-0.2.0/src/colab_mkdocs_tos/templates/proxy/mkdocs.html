@@ -1,0 +1,7 @@
+{% extends "plugins-base.html" %}
+{% load staticfiles %}
+
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'scss/overrides-tos.scss' %}" type="text/x-scss" />
+{% endblock styles %}
