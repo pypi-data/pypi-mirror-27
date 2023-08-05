@@ -1,0 +1,14 @@
+devices:
+    device-1:
+        os: nxos
+        type: n7k
+        connections: {}
+    
+    device-2:
+        os: iosxe
+        type: asr1k
+        connections: {}
+    device-3:
+        os: iosxr
+        type: sunstone
+        connections: {}
