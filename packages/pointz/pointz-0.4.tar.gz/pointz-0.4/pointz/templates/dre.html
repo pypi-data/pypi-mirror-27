@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ report.title }}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<body>
+
+<h1>{{ report.title }}</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th></th>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <th>{{ monthly_summary.title }}</th>
+    {% endfor %}
+    <th>Total Periodo</th>
+  </tr>
+  <tr>
+    <th>Vendas Totais</th>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <td>R$ {{ monthly_summary.sales }}</td>
+    {% endfor %}
+    <td>R$ {{ report.total_sales }}</td>
+  </tr>
+  <tr>
+    <th>Vendas com pointz</th>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <td>R$ {{ monthly_summary.pointz_sales }}</td>
+    {% endfor %}
+    <td>R$ {{ report.total_pointz_sales }}</td>
+  </tr>
+  <tr>
+    <th>Participação</th>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <td>{{ monthly_summary.sales_percentage }}%</td>
+    {% endfor %}
+    <td>{{ report.total_sales_percentage }}%</td>
+  </tr>
+  <tr>
+    <th>Valor Moeda Base</th>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <td>R$ {{ monthly_summary.base_coin_value }}</td>
+    {% endfor %}
+    <td> ---</td>
+  </tr>
+  <tr>
+    <th>Emissão Moeda Base</th>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <td>R$ {{ monthly_summary.base_coin_emission }}</td>
+    {% endfor %}
+    <td>R$ {{ report.total_base_coin_emission }}</td>
+  </tr>
+</table>
+
+</body>
+</html>
