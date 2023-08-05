@@ -1,0 +1,96 @@
+{
+  "tests": [
+    {
+      "info": "base unary minus",
+      "code": "scope\n print -5;\n end scope",
+      "stdout": "-5"
+    },
+    {
+      "info": "unary minus for double",
+      "code": "scope\n print -5.7854e20;\n end scope",
+      "stdout": "-5.7854e+20"
+    },
+    {
+      "info": "unary minus in expression I",
+      "code": "scope\n print 5 + -5;\n end scope",
+      "stdout": " 0"
+    },
+    {
+      "info": "unary minus in expression II",
+      "code": "scope\n print -(2 * 2);\n end scope",
+      "stdout": "-4"
+    },
+    {
+      "info": "unary minus in expression III",
+      "code": "scope\n print -(-(3 * 8));\n end scope",
+      "stdout": " 24"
+    },
+    {
+      "info": "unary minus in expression IV",
+      "code": "scope\n print --(3 * 12);\n end scope",
+      "stdout": " 36"
+    },
+    {
+      "info": "unary magic",
+      "code": "scope\n print -0-----(2 * 15)*2;\n end scope",
+      "stdout": "-60"
+    },
+    {
+      "info": "unary minus for variable",
+      "code": "scope\n dim a as integer = -42\n print -a;\n end scope",
+      "stdout": " 42"
+    },
+    {
+      "info": "string assignment with minus operator",
+      "compiler_exit_code": 4,
+      "code": "scope\n dim a as string = !\"random text\" \n a -= !\" another\"\n end scope"
+    },
+    {
+      "info": "string assignment with multiply operator",
+      "compiler_exit_code": 4,
+      "code": "scope\n dim a as string = !\"random text\" \n a *= !\" another\"\n end scope"
+    },
+    {
+      "info": "string assignment with divide operator",
+      "compiler_exit_code": 4,
+      "code": "scope\n dim a as string = !\"random text\" \n a /= !\" another\"\n end scope"
+    },
+    {
+      "info": "string assignment with integer divide operator",
+      "compiler_exit_code": 4,
+      "code": "scope\n dim a as string = !\"random text\" \n a \\= !\" another\"\n end scope"
+    },
+    {
+      "info": "assignment with operator (string into integer)",
+      "compiler_exit_code": 4,
+      "code": "scope\n dim a as integer = 5\n a += !\"text\"\n end scope"
+    },
+    {
+      "info": "assignment with operator (integer into string)",
+      "compiler_exit_code": 4,
+      "code": "scope\n dim a as string = !\"random text\"\n a += 5\n end scope"
+    },
+    {
+      "name": "01",
+      "stdout": " 2 8 4 2 4bar foo "
+    },
+    {
+      "name": "02",
+      "stdout": "-42"
+    },
+    {
+      "name": "03",
+      "extensions": [
+        "FUNEXP"
+      ],
+      "stdout": "-22684"
+    },
+    {
+      "name": "04",
+      "stdout": "TOTO JE ZKOUSKA!"
+    }
+  ],
+  "extensions": [
+    "UNARY"
+  ]
+}
