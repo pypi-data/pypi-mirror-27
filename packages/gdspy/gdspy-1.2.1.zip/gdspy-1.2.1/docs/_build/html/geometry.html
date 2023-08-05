@@ -1,0 +1,2534 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Geometry Construction &mdash; gdspy 1.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="gdspy 1.2.1 documentation" href="index.html"/>
+        <link rel="next" title="GDSII Library" href="library.html"/>
+        <link rel="prev" title="Examples" href="tutorial.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> gdspy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Geometry Construction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#polygon">Polygon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rectangle">Rectangle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#round">Round</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polygonset">PolygonSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#path">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polypath">PolyPath</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#l1path">L1Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text">Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#label">Label</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fast-boolean">fast_boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boolean">boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#offset">offset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slice">slice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inside">inside</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy">copy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="library.html">GDSII Library</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gdspy</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Geometry Construction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/geometry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gdspy">
+<span id="geometry-construction"></span><h1>Geometry Construction<a class="headerlink" href="#module-gdspy" title="Permalink to this headline">¶</a></h1>
+<p>gdspy is a Python module that allows the creation of GDSII stream files.</p>
+<p>Many features of the GDSII format are implemented, such as cell
+references and arrays, but the support for fonts is quite limited.  Text
+is only available through polygonal objects.</p>
+<p>If the Python Imaging Library is installed, it can be used to output the
+geometry created to an image file.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="polygon">
+<h3>Polygon<a class="headerlink" href="#polygon" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.Polygon">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">Polygon</code><span class="sig-paren">(</span><em>points</em>, <em>layer=0</em>, <em>datatype=0</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Polygonal geometric object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> (<em>array-like</em><em>[</em><em>N</em><em>]</em><em>[</em><em>2</em><em>]</em>) – Coordinates of the vertices of the polygon.</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for this element.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for this element (between 0 and 255).</li>
+<li><strong>verbose</strong> (<em>bool</em>) – If False, warnings about the number of vertices of the polygon will
+be suppressed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#gdspy.Polygon.points" title="gdspy.Polygon.points"><strong>points</strong></a> (<em>numpy array</em><em>[</em><em>N</em><em>,</em><em>2</em><em>]</em>) – Coordinates of the vertices of the polygon.</li>
+<li><a class="reference internal" href="#gdspy.Polygon.layer" title="gdspy.Polygon.layer"><strong>layer</strong></a> (<em>integer</em>) – The GDSII layer number for this element.</li>
+<li><a class="reference internal" href="#gdspy.Polygon.datatype" title="gdspy.Polygon.datatype"><strong>datatype</strong></a> (<em>integer</em>) – The GDSII datatype for this element (between 0 and 255).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The last point should not be equal to the first (polygons are
+automatically closed).</p>
+<p>The GDSII specification supports only a maximum of 199 vertices per
+polygon.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">triangle_pts</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">triangle</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="n">triangle_pts</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">triangle</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="gdspy.Polygon.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Polygon.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary <code class="docutils literal"><span class="pre">{(layer,</span> <span class="pre">datatype):</span>
+<span class="pre">area}</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Polygon.datatype">
+<code class="descname">datatype</code><a class="headerlink" href="#gdspy.Polygon.datatype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Polygon.fillet">
+<code class="descname">fillet</code><span class="sig-paren">(</span><em>radius</em>, <em>points_per_2pi=128</em>, <em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Polygon.fillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the corners of this polygon and fractures it into polygons with
+less vertices if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em><em>, </em><em>list</em>) – Radius of the corners.</li>
+<li><strong>points_per_2pi</strong> (<em>integer</em>) – Number of vertices used to approximate a full circle.  The number
+of vertices in each corner of the polygon will be the fraction of
+this number corresponding to the angle encompassed by that corner
+with respect to 2 pi.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – If no fracturing occurs, return this object; otherwise return a
+<code class="docutils literal"><span class="pre">PolygonSet</span></code> with the fractured result (this object will have
+more than <code class="docutils literal"><span class="pre">max_points</span></code> vertices).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Polygon</span></code> or <code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Polygon.fracture">
+<code class="descname">fracture</code><span class="sig-paren">(</span><em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Polygon.fracture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice this polygon in the horizontal and vertical directions so that
+each resulting piece has at most <code class="docutils literal"><span class="pre">max_points</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Resulting polygons from the fracture operation.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Polygon.layer">
+<code class="descname">layer</code><a class="headerlink" href="#gdspy.Polygon.layer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Polygon.points">
+<code class="descname">points</code><a class="headerlink" href="#gdspy.Polygon.points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Polygon.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Polygon.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation (in <em>radians</em>).</li>
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Center point for the rotation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Polygon</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Polygon.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Polygon.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a GDSII element.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+element.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Polygon.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Polygon.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the polygon from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Polygon</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">polygon</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Polygon</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="rectangle">
+<h3>Rectangle<a class="headerlink" href="#rectangle" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.Rectangle">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">Rectangle</code><span class="sig-paren">(</span><em>point1</em>, <em>point2</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Rectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gdspy.Polygon" title="gdspy.Polygon"><code class="xref py py-class docutils literal"><span class="pre">gdspy.Polygon</span></code></a></p>
+<p>Rectangular geometric object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>point1</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Coordinates of a corner of the rectangle.</li>
+<li><strong>point2</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Coordinates of the corner of the rectangle opposite to <code class="docutils literal"><span class="pre">point1</span></code>.</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for this element.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for this element (between 0 and 255).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rectangle</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rectangle</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="gdspy.Rectangle.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Rectangle.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary <code class="docutils literal"><span class="pre">{(layer,</span> <span class="pre">datatype):</span>
+<span class="pre">area}</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Rectangle.datatype">
+<code class="descname">datatype</code><a class="headerlink" href="#gdspy.Rectangle.datatype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Rectangle.fillet">
+<code class="descname">fillet</code><span class="sig-paren">(</span><em>radius</em>, <em>points_per_2pi=128</em>, <em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Rectangle.fillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the corners of this polygon and fractures it into polygons with
+less vertices if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em><em>, </em><em>list</em>) – Radius of the corners.</li>
+<li><strong>points_per_2pi</strong> (<em>integer</em>) – Number of vertices used to approximate a full circle.  The number
+of vertices in each corner of the polygon will be the fraction of
+this number corresponding to the angle encompassed by that corner
+with respect to 2 pi.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – If no fracturing occurs, return this object; otherwise return a
+<code class="docutils literal"><span class="pre">PolygonSet</span></code> with the fractured result (this object will have
+more than <code class="docutils literal"><span class="pre">max_points</span></code> vertices).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Polygon</span></code> or <code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Rectangle.fracture">
+<code class="descname">fracture</code><span class="sig-paren">(</span><em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Rectangle.fracture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice this polygon in the horizontal and vertical directions so that
+each resulting piece has at most <code class="docutils literal"><span class="pre">max_points</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Resulting polygons from the fracture operation.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Rectangle.layer">
+<code class="descname">layer</code><a class="headerlink" href="#gdspy.Rectangle.layer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Rectangle.points">
+<code class="descname">points</code><a class="headerlink" href="#gdspy.Rectangle.points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Rectangle.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Rectangle.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation (in <em>radians</em>).</li>
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Center point for the rotation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Polygon</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Rectangle.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Rectangle.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a GDSII element.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+element.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Rectangle.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Rectangle.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the polygon from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Polygon</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">polygon</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Polygon</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="round">
+<h3>Round<a class="headerlink" href="#round" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.Round">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">Round</code><span class="sig-paren">(</span><em>center</em>, <em>radius</em>, <em>inner_radius=0</em>, <em>initial_angle=0</em>, <em>final_angle=0</em>, <em>number_of_points=0.01</em>, <em>max_points=199</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Round" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gdspy.PolygonSet" title="gdspy.PolygonSet"><code class="xref py py-class docutils literal"><span class="pre">gdspy.PolygonSet</span></code></a></p>
+<p>Circular geometric object.
+Represent a circle, a circular section, a ring or a ring section.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Coordinates of the center of the circle/ring.</li>
+<li><strong>radius</strong> (<em>number</em>) – Radius of the circle/outer radius of the ring.</li>
+<li><strong>inner_radius</strong> (<em>number</em>) – Inner radius of the ring.</li>
+<li><strong>initial_angle</strong> (<em>number</em>) – Initial angle of the circular/ring section (in <em>radians</em>).</li>
+<li><strong>final_angle</strong> (<em>number</em>) – Final angle of the circular/ring section (in <em>radians</em>).</li>
+<li><strong>number_of_points</strong> (<em>integer</em><em> or </em><em>float</em>) – If integer: number of vertices that form the object (polygonal
+approximation).  If float: approximate curvature resolution.  The
+actual number of points is automatically calculated.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – if <code class="docutils literal"><span class="pre">number_of_points</span> <span class="pre">&gt;</span> <span class="pre">max_points</span></code>, the element will be fractured
+in smaller polygons with at most <code class="docutils literal"><span class="pre">max_points</span></code> each.</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for this element.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for this element (between 0 and 255).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The GDSII specification supports only a maximum of 199 vertices per
+polygon.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circle</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Round</span><span class="p">((</span><span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ring</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Round</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">inner_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pie_slice</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Round</span><span class="p">((</span><span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">initial_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>                            <span class="n">final_angle</span><span class="o">=-</span><span class="mf">5.0</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">6.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arc</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Round</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">inner_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="n">initial_angle</span><span class="o">=-</span><span class="mf">5.0</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">6.0</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="n">final_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="gdspy.Round.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Round.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the path(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary <code class="docutils literal"><span class="pre">{(layer,</span> <span class="pre">datatype):</span>
+<span class="pre">area}</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Round.datatypes">
+<code class="descname">datatypes</code><a class="headerlink" href="#gdspy.Round.datatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Round.fillet">
+<code class="descname">fillet</code><span class="sig-paren">(</span><em>radius</em>, <em>points_per_2pi=128</em>, <em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Round.fillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the corners of these polygons and fractures them into polygons
+with less vertices if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em><em>, </em><em>list</em>) – Radius of the corners.  If number: All corners filleted by that
+amount.  If list: Specify fillet radii on a per-corner basis (list
+length must be equal to the number of points in the Polygon)</li>
+<li><strong>points_per_2pi</strong> (<em>integer</em>) – Number of vertices used to approximate a full circle.  The number
+of vertices in each corner of the polygon will be the fraction of
+this number corresponding to the angle encompassed by that corner
+with respect to 2 pi.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Round.fracture">
+<code class="descname">fracture</code><span class="sig-paren">(</span><em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Round.fracture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice these polygons in the horizontal and vertical directions so that
+each resulting piece has at most <code class="docutils literal"><span class="pre">max_points</span></code>.  This operation occurs
+in place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Round.layers">
+<code class="descname">layers</code><a class="headerlink" href="#gdspy.Round.layers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Round.polygons">
+<code class="descname">polygons</code><a class="headerlink" href="#gdspy.Round.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Round.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Round.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation (in <em>radians</em>).</li>
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Center point for the rotation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Round.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Round.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a series of GDSII elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+elements.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Round.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Round.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the polygons from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="polygonset">
+<h3>PolygonSet<a class="headerlink" href="#polygonset" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.PolygonSet">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">PolygonSet</code><span class="sig-paren">(</span><em>polygons</em>, <em>layer=0</em>, <em>datatype=0</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolygonSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Set of polygonal objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>polygons</strong> (<em>list of array-like</em><em>[</em><em>N</em><em>]</em><em>[</em><em>2</em><em>]</em>) – List containing the coordinates of the vertices of each polygon.</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for this element.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for this element (between 0 and 255).</li>
+<li><strong>verbose</strong> (<em>bool</em>) – If False, warnings about the number of vertices of the polygon will
+be suppressed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#gdspy.Round.polygons" title="gdspy.Round.polygons"><strong>polygons</strong></a> (<em>list of numpy array</em><em>[</em><em>N</em><em>]</em><em>[</em><em>2</em><em>]</em>) – Coordinates of the vertices of each polygon.</li>
+<li><a class="reference internal" href="#gdspy.Round.layers" title="gdspy.Round.layers"><strong>layers</strong></a> (<em>list of integer</em>) – The GDSII layer number for each element.</li>
+<li><a class="reference internal" href="#gdspy.Round.datatypes" title="gdspy.Round.datatypes"><strong>datatypes</strong></a> (<em>list of integer</em>) – The GDSII datatype for each element (between 0 and 255).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The last point should not be equal to the first (polygons are
+automatically closed).</p>
+<p>The GDSII specification supports only a maximum of 199 vertices per
+polygon.</p>
+<dl class="method">
+<dt id="gdspy.PolygonSet.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolygonSet.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the path(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary <code class="docutils literal"><span class="pre">{(layer,</span> <span class="pre">datatype):</span>
+<span class="pre">area}</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.PolygonSet.datatypes">
+<code class="descname">datatypes</code><a class="headerlink" href="#gdspy.PolygonSet.datatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolygonSet.fillet">
+<code class="descname">fillet</code><span class="sig-paren">(</span><em>radius</em>, <em>points_per_2pi=128</em>, <em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolygonSet.fillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the corners of these polygons and fractures them into polygons
+with less vertices if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em><em>, </em><em>list</em>) – Radius of the corners.  If number: All corners filleted by that
+amount.  If list: Specify fillet radii on a per-corner basis (list
+length must be equal to the number of points in the Polygon)</li>
+<li><strong>points_per_2pi</strong> (<em>integer</em>) – Number of vertices used to approximate a full circle.  The number
+of vertices in each corner of the polygon will be the fraction of
+this number corresponding to the angle encompassed by that corner
+with respect to 2 pi.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolygonSet.fracture">
+<code class="descname">fracture</code><span class="sig-paren">(</span><em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolygonSet.fracture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice these polygons in the horizontal and vertical directions so that
+each resulting piece has at most <code class="docutils literal"><span class="pre">max_points</span></code>.  This operation occurs
+in place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.PolygonSet.layers">
+<code class="descname">layers</code><a class="headerlink" href="#gdspy.PolygonSet.layers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.PolygonSet.polygons">
+<code class="descname">polygons</code><a class="headerlink" href="#gdspy.PolygonSet.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolygonSet.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolygonSet.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation (in <em>radians</em>).</li>
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Center point for the rotation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolygonSet.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolygonSet.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a series of GDSII elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+elements.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolygonSet.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolygonSet.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the polygons from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="path">
+<h3>Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.Path">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">Path</code><span class="sig-paren">(</span><em>width</em>, <em>initial_point=(0</em>, <em>0)</em>, <em>number_of_paths=1</em>, <em>distance=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gdspy.PolygonSet" title="gdspy.PolygonSet"><code class="xref py py-class docutils literal"><span class="pre">gdspy.PolygonSet</span></code></a></p>
+<p>Series of geometric objects that form a path or a collection of parallel
+paths.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>width</strong> (<em>number</em>) – The width of each path.</li>
+<li><strong>initial_point</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Starting position of the path.</li>
+<li><strong>number_of_paths</strong> (<em>positive integer</em>) – Number of parallel paths to create simultaneously.</li>
+<li><strong>distance</strong> (<em>number</em>) – Distance between the centers of adjacent paths.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#gdspy.Path.x" title="gdspy.Path.x"><strong>x</strong></a> (<em>number</em>) – Current position of the path in the x direction.</li>
+<li><a class="reference internal" href="#gdspy.Path.y" title="gdspy.Path.y"><strong>y</strong></a> (<em>number</em>) – Current position of the path in the y direction.</li>
+<li><a class="reference internal" href="#gdspy.Path.w" title="gdspy.Path.w"><strong>w</strong></a> (<em>number</em>) – <em>Half</em>-width of each path.</li>
+<li><a class="reference internal" href="#gdspy.Path.n" title="gdspy.Path.n"><strong>n</strong></a> (<em>integer</em>) – Number of parallel paths.</li>
+<li><a class="reference internal" href="#gdspy.Path.direction" title="gdspy.Path.direction"><strong>direction</strong></a> (<em>{'+x'</em><em>, </em><em>'-x'</em><em>, </em><em>'+y'</em><em>, </em><em>'-y'}</em><em> or </em><em>number</em>) – Direction or angle (in <em>radians</em>) the path points to.</li>
+<li><a class="reference internal" href="#gdspy.Path.distance" title="gdspy.Path.distance"><strong>distance</strong></a> (<em>number</em>) – Distance between the centers of adjacent paths.</li>
+<li><a class="reference internal" href="#gdspy.Path.length" title="gdspy.Path.length"><strong>length</strong></a> (<em>number</em>) – Length of the central path axis.  If only one path is created, this
+is the real length of the path.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gdspy.Path.arc">
+<code class="descname">arc</code><span class="sig-paren">(</span><em>radius</em>, <em>initial_angle</em>, <em>final_angle</em>, <em>number_of_points=0.01</em>, <em>max_points=199</em>, <em>final_width=None</em>, <em>final_distance=None</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a curved section to the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em>) – Central radius of the section.</li>
+<li><strong>initial_angle</strong> (<em>number</em>) – Initial angle of the curve (in <em>radians</em>).</li>
+<li><strong>final_angle</strong> (<em>number</em>) – Final angle of the curve (in <em>radians</em>).</li>
+<li><strong>number_of_points</strong> (<em>integer</em><em> or </em><em>float</em>) – If integer: number of vertices that form the object (polygonal
+approximation).  If float: approximate curvature resolution.  The
+actual number of points is automatically calculated.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – if <code class="docutils literal"><span class="pre">number_of_points</span> <span class="pre">&gt;</span> <span class="pre">max_points</span></code>, the element will be fractured
+in smaller polygons with at most <code class="docutils literal"><span class="pre">max_points</span></code> each.</li>
+<li><strong>final_width</strong> (<em>number</em>) – If set, the paths of this segment will have their widths linearly
+changed from their current value to this one.</li>
+<li><strong>final_distance</strong> (<em>number</em>) – If set, the distance between paths is linearly change from its
+current value to this one along this segment.</li>
+<li><strong>layer</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII layer numbers for the elements of each path.  If the
+number of layers in the list is less than the number of paths, the
+list is repeated.</li>
+<li><strong>datatype</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII datatype for the elements of each path (between 0 and
+255).  If the number of datatypes in the list is less than the
+number of paths, the list is repeated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Path</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The GDSII specification supports only a maximum of 199 vertices per
+polygon.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the path(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary <code class="docutils literal"><span class="pre">{(layer,</span> <span class="pre">datatype):</span>
+<span class="pre">area}</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.datatypes">
+<code class="descname">datatypes</code><a class="headerlink" href="#gdspy.Path.datatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.direction">
+<code class="descname">direction</code><a class="headerlink" href="#gdspy.Path.direction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.distance">
+<code class="descname">distance</code><a class="headerlink" href="#gdspy.Path.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.fillet">
+<code class="descname">fillet</code><span class="sig-paren">(</span><em>radius</em>, <em>points_per_2pi=128</em>, <em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.fillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the corners of these polygons and fractures them into polygons
+with less vertices if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em><em>, </em><em>list</em>) – Radius of the corners.  If number: All corners filleted by that
+amount.  If list: Specify fillet radii on a per-corner basis (list
+length must be equal to the number of points in the Polygon)</li>
+<li><strong>points_per_2pi</strong> (<em>integer</em>) – Number of vertices used to approximate a full circle.  The number
+of vertices in each corner of the polygon will be the fraction of
+this number corresponding to the angle encompassed by that corner
+with respect to 2 pi.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.fracture">
+<code class="descname">fracture</code><span class="sig-paren">(</span><em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.fracture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice these polygons in the horizontal and vertical directions so that
+each resulting piece has at most <code class="docutils literal"><span class="pre">max_points</span></code>.  This operation occurs
+in place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.layers">
+<code class="descname">layers</code><a class="headerlink" href="#gdspy.Path.layers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.length">
+<code class="descname">length</code><a class="headerlink" href="#gdspy.Path.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.n">
+<code class="descname">n</code><a class="headerlink" href="#gdspy.Path.n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.parametric">
+<code class="descname">parametric</code><span class="sig-paren">(</span><em>curve_function</em>, <em>curve_derivative=None</em>, <em>number_of_evaluations=99</em>, <em>max_points=199</em>, <em>final_width=None</em>, <em>final_distance=None</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.parametric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a parametric curve to the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>curve_function</strong> (<em>function</em>) – Function that defines the curve.  Must be a function of one
+argument (that varies from 0 to 1) that returns a 2-element list,
+tuple or array (x, y).</li>
+<li><strong>curve_derivative</strong> (<em>function</em>) – If set, it should be the derivative of the curve function.  Must be
+a function of one argument (that varies from 0 to 1) that returns a
+2-element list, tuple or array (x,y).  If <code class="docutils literal"><span class="pre">None</span></code>, the derivative
+will be calculated numerically.</li>
+<li><strong>number_of_evaluations</strong> (<em>integer</em>) – Number of points where the curve function will be evaluated.  The
+final segment will have twice this number of points.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – If <code class="docutils literal"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">number_of_evaluations</span> <span class="pre">&gt;</span> <span class="pre">max_points</span></code>, the element will be
+fractured in smaller polygons with at most <code class="docutils literal"><span class="pre">max_points</span></code> each.</li>
+<li><strong>final_width</strong> (<em>number</em><em> or </em><em>function</em>) – If set to a number, the paths of this segment will have their
+widths linearly changed from their current value to this one.  If
+set to a function, it must be a function of one argument (that
+varies from 0 to 1) and returns the width of the path.</li>
+<li><strong>final_distance</strong> (<em>number</em><em> or </em><em>function</em>) – If set to ta number, the distance between paths is linearly change
+from its current value to this one.  If set to a function, it must
+be a function of one argument (that varies from 0 to 1) and returns
+the width of the path.</li>
+<li><strong>layer</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII layer numbers for the elements of each path.  If the
+number of layers in the list is less than the number of paths, the
+list is repeated.</li>
+<li><strong>datatype</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII datatype for the elements of each path (between 0 and
+255).  If the number of datatypes in the list is less than the
+number of paths, the list is repeated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Path</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The norm of the vector returned by <code class="docutils literal"><span class="pre">curve_derivative</span></code> is not
+important.  Only the direction is used.</p>
+<p>The GDSII specification supports only a maximum of 199 vertices per
+polygon.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_parametric_curve</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_parametric_curve_derivative</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">(</span><span class="mf">0.69315</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_path</span><span class="o">.</span><span class="n">parametric</span><span class="p">(</span><span class="n">my_parametric_curve</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="n">my_parametric_curve_derivative</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.polygons">
+<code class="descname">polygons</code><a class="headerlink" href="#gdspy.Path.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation (in <em>radians</em>).</li>
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Center point for the rotation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Path</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.segment">
+<code class="descname">segment</code><span class="sig-paren">(</span><em>length</em>, <em>direction=None</em>, <em>final_width=None</em>, <em>final_distance=None</em>, <em>axis_offset=0</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a straight section to the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>length</strong> (<em>number</em>) – Length of the section to add.</li>
+<li><strong>direction</strong> (<em>{'+x'</em><em>, </em><em>'-x'</em><em>, </em><em>'+y'</em><em>, </em><em>'-y'}</em><em> or </em><em>number</em>) – Direction or angle (in <em>radians</em>) of rotation of the segment.</li>
+<li><strong>final_width</strong> (<em>number</em>) – If set, the paths of this segment will have their widths linearly
+changed from their current value to this one.</li>
+<li><strong>final_distance</strong> (<em>number</em>) – If set, the distance between paths is linearly change from its
+current value to this one along this segment.</li>
+<li><strong>axis_offset</strong> (<em>number</em>) – If set, the paths will be offset from their direction by this
+amount.</li>
+<li><strong>layer</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII layer numbers for the elements of each path.  If the
+number of layers in the list is less than the number of paths, the
+list is repeated.</li>
+<li><strong>datatype</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII datatype for the elements of each path (between 0 and
+255).  If the number of datatypes in the list is less than the
+number of paths, the list is repeated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Path</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a series of GDSII elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+elements.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the polygons from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Path.turn">
+<code class="descname">turn</code><span class="sig-paren">(</span><em>radius</em>, <em>angle</em>, <em>number_of_points=0.01</em>, <em>max_points=199</em>, <em>final_width=None</em>, <em>final_distance=None</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Path.turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a curved section to the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em>) – Central radius of the section.</li>
+<li><strong>angle</strong> (<em>{'r'</em><em>, </em><em>'l'</em><em>, </em><em>'rr'</em><em>, </em><em>'ll'}</em><em> or </em><em>number</em>) – Angle (in <em>radians</em>) of rotation of the path.  The values ‘r’ and
+‘l’ represent 90-degree turns cw and ccw, respectively; the values
+‘rr’ and ‘ll’ represent analogous 180-degree turns.</li>
+<li><strong>number_of_points</strong> (<em>integer</em><em> or </em><em>float</em>) – If integer: number of vertices that form the object (polygonal
+approximation).  If float: approximate curvature resolution.  The
+actual number of points is automatically calculated.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – if <code class="docutils literal"><span class="pre">number_of_points</span> <span class="pre">&gt;</span> <span class="pre">max_points</span></code>, the element will be fractured
+in smaller polygons with at most <code class="docutils literal"><span class="pre">max_points</span></code> each.</li>
+<li><strong>final_width</strong> (<em>number</em>) – If set, the paths of this segment will have their widths linearly
+changed from their current value to this one.</li>
+<li><strong>final_distance</strong> (<em>number</em>) – If set, the distance between paths is linearly change from its
+current value to this one along this segment.</li>
+<li><strong>layer</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII layer numbers for the elements of each path.  If the
+number of layers in the list is less than the number of paths, the
+list is repeated.</li>
+<li><strong>datatype</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII datatype for the elements of each path (between 0 and
+255).  If the number of datatypes in the list is less than the
+number of paths, the list is repeated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Path</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The GDSII specification supports only a maximum of 199 vertices per
+polygon.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.w">
+<code class="descname">w</code><a class="headerlink" href="#gdspy.Path.w" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.x">
+<code class="descname">x</code><a class="headerlink" href="#gdspy.Path.x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Path.y">
+<code class="descname">y</code><a class="headerlink" href="#gdspy.Path.y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="polypath">
+<h3>PolyPath<a class="headerlink" href="#polypath" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.PolyPath">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">PolyPath</code><span class="sig-paren">(</span><em>points</em>, <em>width</em>, <em>number_of_paths=1</em>, <em>distance=0</em>, <em>corners=0</em>, <em>ends=0</em>, <em>max_points=199</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolyPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gdspy.PolygonSet" title="gdspy.PolygonSet"><code class="xref py py-class docutils literal"><span class="pre">gdspy.PolygonSet</span></code></a></p>
+<p>Series of geometric objects that form a polygonal path or a collection
+of parallel polygonal paths.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> (<em>array-like</em><em>[</em><em>N</em><em>]</em><em>[</em><em>2</em><em>]</em>) – Endpoints of each path segment.</li>
+<li><strong>width</strong> (<em>number</em><em> or </em><em>array-like</em><em>[</em><em>N</em><em>]</em>) – Width of the path.  If an array is given, width at each endpoint.</li>
+<li><strong>number_of_paths</strong> (<em>positive integer</em>) – Number of parallel paths to create simultaneously.</li>
+<li><strong>distance</strong> (<em>number</em><em> or </em><em>array-like</em><em>[</em><em>N</em><em>]</em>) – Distance between the centers of adjacent paths.  If an array is
+given, distance at each endpoint.</li>
+<li><strong>corners</strong> (<em>positive integer</em>) – Type of joins: 0 - miter join, 1 - bevel join</li>
+<li><strong>ends</strong> (<em>positive integer</em>) – Type of path ends: 0 - no extension, 1 - rounded, 2 - extended by
+half width</li>
+<li><strong>max_points</strong> (<em>integer</em>) – The paths will be fractured in polygons with at most
+<code class="docutils literal"><span class="pre">max_points</span></code>.</li>
+<li><strong>layer</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII layer numbers for the elements of each path.  If the number
+of layers in the list is less than the number of paths, the list is
+repeated.</li>
+<li><strong>datatype</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII datatype for the elements of each path (between 0 and
+255).  If the number of datatypes in the list is less than the number
+of paths, the list is repeated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolyPath</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The bevel join will give  strange results if the number of paths is
+greater than 1.</p>
+<dl class="method">
+<dt id="gdspy.PolyPath.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolyPath.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the path(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary <code class="docutils literal"><span class="pre">{(layer,</span> <span class="pre">datatype):</span>
+<span class="pre">area}</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.PolyPath.datatypes">
+<code class="descname">datatypes</code><a class="headerlink" href="#gdspy.PolyPath.datatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolyPath.fillet">
+<code class="descname">fillet</code><span class="sig-paren">(</span><em>radius</em>, <em>points_per_2pi=128</em>, <em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolyPath.fillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the corners of these polygons and fractures them into polygons
+with less vertices if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em><em>, </em><em>list</em>) – Radius of the corners.  If number: All corners filleted by that
+amount.  If list: Specify fillet radii on a per-corner basis (list
+length must be equal to the number of points in the Polygon)</li>
+<li><strong>points_per_2pi</strong> (<em>integer</em>) – Number of vertices used to approximate a full circle.  The number
+of vertices in each corner of the polygon will be the fraction of
+this number corresponding to the angle encompassed by that corner
+with respect to 2 pi.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolyPath.fracture">
+<code class="descname">fracture</code><span class="sig-paren">(</span><em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolyPath.fracture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice these polygons in the horizontal and vertical directions so that
+each resulting piece has at most <code class="docutils literal"><span class="pre">max_points</span></code>.  This operation occurs
+in place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.PolyPath.layers">
+<code class="descname">layers</code><a class="headerlink" href="#gdspy.PolyPath.layers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.PolyPath.polygons">
+<code class="descname">polygons</code><a class="headerlink" href="#gdspy.PolyPath.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolyPath.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolyPath.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation (in <em>radians</em>).</li>
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Center point for the rotation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolyPath.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolyPath.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a series of GDSII elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+elements.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.PolyPath.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.PolyPath.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the polygons from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="l1path">
+<h3>L1Path<a class="headerlink" href="#l1path" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.L1Path">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">L1Path</code><span class="sig-paren">(</span><em>initial_point</em>, <em>direction</em>, <em>width</em>, <em>length</em>, <em>turn</em>, <em>number_of_paths=1</em>, <em>distance=0</em>, <em>max_points=199</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.L1Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gdspy.PolygonSet" title="gdspy.PolygonSet"><code class="xref py py-class docutils literal"><span class="pre">gdspy.PolygonSet</span></code></a></p>
+<p>Series of geometric objects that form a path or a collection of parallel
+paths with Manhattan geometry.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>initial_point</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Starting position of the path.</li>
+<li><strong>direction</strong> (<em>{'+x'</em><em>, </em><em>'+y'</em><em>, </em><em>'-x'</em><em>, </em><em>'-y'}</em>) – Starting direction of the path.</li>
+<li><strong>width</strong> (<em>number</em>) – The initial width of each path.</li>
+<li><strong>length</strong> (<em>array-like</em>) – Lengths of each section to add.</li>
+<li><strong>turn</strong> (<em>array-like</em>) – Direction to turn before each section.  The sign indicate the turn
+direction (ccw is positive), and the modulus is a multiplicative
+factor for the path width after each turn.  Must have 1 element less
+then <code class="docutils literal"><span class="pre">length</span></code>.</li>
+<li><strong>number_of_paths</strong> (<em>positive integer</em>) – Number of parallel paths to create simultaneously.</li>
+<li><strong>distance</strong> (<em>number</em>) – Distance between the centers of adjacent paths.</li>
+<li><strong>layer</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII layer numbers for the elements of each path.  If the number
+of layers in the list is less than the number of paths, the list is
+repeated.</li>
+<li><strong>datatype</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII datatype for the elements of each path (between 0 and
+255).  If the number of datatypes in the list is less than the number
+of paths, the list is repeated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">L1Path</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#gdspy.Path.x" title="gdspy.Path.x"><strong>x</strong></a> (<em>number</em>) – Final position of the path in the x direction.</li>
+<li><a class="reference internal" href="#gdspy.Path.y" title="gdspy.Path.y"><strong>y</strong></a> (<em>number</em>) – Final position of the path in the y direction.</li>
+<li><a class="reference internal" href="#gdspy.Path.direction" title="gdspy.Path.direction"><strong>direction</strong></a> (<em>{'+x'</em><em>, </em><em>'-x'</em><em>, </em><em>'+y'</em><em>, </em><em>'-y'}</em><em> or </em><em>number</em>) – Direction or angle (in <em>radians</em>) the path points to.  The numerical
+angle is returned only after a rotation of the object.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">length</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">turn</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1path</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">L1Path</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;+x&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">turn</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l1path</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="gdspy.L1Path.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.L1Path.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the path(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary <code class="docutils literal"><span class="pre">{(layer,</span> <span class="pre">datatype):</span>
+<span class="pre">area}</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.L1Path.datatypes">
+<code class="descname">datatypes</code><a class="headerlink" href="#gdspy.L1Path.datatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.L1Path.direction">
+<code class="descname">direction</code><a class="headerlink" href="#gdspy.L1Path.direction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.L1Path.fillet">
+<code class="descname">fillet</code><span class="sig-paren">(</span><em>radius</em>, <em>points_per_2pi=128</em>, <em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.L1Path.fillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the corners of these polygons and fractures them into polygons
+with less vertices if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em><em>, </em><em>list</em>) – Radius of the corners.  If number: All corners filleted by that
+amount.  If list: Specify fillet radii on a per-corner basis (list
+length must be equal to the number of points in the Polygon)</li>
+<li><strong>points_per_2pi</strong> (<em>integer</em>) – Number of vertices used to approximate a full circle.  The number
+of vertices in each corner of the polygon will be the fraction of
+this number corresponding to the angle encompassed by that corner
+with respect to 2 pi.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.L1Path.fracture">
+<code class="descname">fracture</code><span class="sig-paren">(</span><em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.L1Path.fracture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice these polygons in the horizontal and vertical directions so that
+each resulting piece has at most <code class="docutils literal"><span class="pre">max_points</span></code>.  This operation occurs
+in place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.L1Path.layers">
+<code class="descname">layers</code><a class="headerlink" href="#gdspy.L1Path.layers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.L1Path.polygons">
+<code class="descname">polygons</code><a class="headerlink" href="#gdspy.L1Path.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.L1Path.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.L1Path.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation (in <em>radians</em>).</li>
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Center point for the rotation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">L1Path</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.L1Path.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.L1Path.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a series of GDSII elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+elements.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.L1Path.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.L1Path.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the polygons from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.L1Path.x">
+<code class="descname">x</code><a class="headerlink" href="#gdspy.L1Path.x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.L1Path.y">
+<code class="descname">y</code><a class="headerlink" href="#gdspy.L1Path.y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="text">
+<h3>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.Text">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">Text</code><span class="sig-paren">(</span><em>text</em>, <em>size</em>, <em>position=(0</em>, <em>0)</em>, <em>horizontal=True</em>, <em>angle=0</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gdspy.PolygonSet" title="gdspy.PolygonSet"><code class="xref py py-class docutils literal"><span class="pre">gdspy.PolygonSet</span></code></a></p>
+<p>Polygonal text object.</p>
+<p>Each letter is formed by a series of polygons.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>text</strong> (<em>string</em>) – The text to be converted in geometric objects.</li>
+<li><strong>size</strong> (<em>number</em>) – Base size of each character.</li>
+<li><strong>position</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Text position (lower left corner).</li>
+<li><strong>horizontal</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the text is written from left to right; if <code class="docutils literal"><span class="pre">False</span></code>,
+from top to bottom.</li>
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation of the text.</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for these elements.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for this element (between 0 and 255).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Sample text&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="gdspy.Text.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Text.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the path(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary <code class="docutils literal"><span class="pre">{(layer,</span> <span class="pre">datatype):</span>
+<span class="pre">area}</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Text.datatypes">
+<code class="descname">datatypes</code><a class="headerlink" href="#gdspy.Text.datatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Text.fillet">
+<code class="descname">fillet</code><span class="sig-paren">(</span><em>radius</em>, <em>points_per_2pi=128</em>, <em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Text.fillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the corners of these polygons and fractures them into polygons
+with less vertices if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>radius</strong> (<em>number</em><em>, </em><em>list</em>) – Radius of the corners.  If number: All corners filleted by that
+amount.  If list: Specify fillet radii on a per-corner basis (list
+length must be equal to the number of points in the Polygon)</li>
+<li><strong>points_per_2pi</strong> (<em>integer</em>) – Number of vertices used to approximate a full circle.  The number
+of vertices in each corner of the polygon will be the fraction of
+this number corresponding to the angle encompassed by that corner
+with respect to 2 pi.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Text.fracture">
+<code class="descname">fracture</code><span class="sig-paren">(</span><em>max_points=199</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Text.fracture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice these polygons in the horizontal and vertical directions so that
+each resulting piece has at most <code class="docutils literal"><span class="pre">max_points</span></code>.  This operation occurs
+in place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_points</strong> (<em>integer</em>) – Maximal number of points in each resulting polygon (must be greater
+than 4).</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Text.layers">
+<code class="descname">layers</code><a class="headerlink" href="#gdspy.Text.layers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Text.polygons">
+<code class="descname">polygons</code><a class="headerlink" href="#gdspy.Text.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Text.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Text.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angle</strong> (<em>number</em>) – The angle of rotation (in <em>radians</em>).</li>
+<li><strong>center</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Center point for the rotation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Text.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Text.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a series of GDSII elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+elements.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Text.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Text.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the polygons from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="label">
+<h3>Label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.Label">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">Label</code><span class="sig-paren">(</span><em>text</em>, <em>position</em>, <em>anchor='o'</em>, <em>rotation=None</em>, <em>magnification=None</em>, <em>x_reflection=False</em>, <em>layer=0</em>, <em>texttype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Text that can be used to label parts of the geometry or display
+messages.  The text does not create additional geometry, it’s meant for
+display and labeling purposes only.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>text</strong> (<em>string</em>) – The text of this label.</li>
+<li><strong>position</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Text anchor position.</li>
+<li><strong>anchor</strong> (<em>'n'</em><em>, </em><em>'s'</em><em>, </em><em>'e'</em><em>, </em><em>'w'</em><em>, </em><em>'o'</em><em>, </em><em>'ne'</em><em>, </em><em>'nw'...</em>) – Position of the anchor relative to the text.</li>
+<li><strong>rotation</strong> (<em>number</em>) – Angle of rotation of the label (in <em>degrees</em>).</li>
+<li><strong>magnification</strong> (<em>number</em>) – Magnification factor for the label.</li>
+<li><strong>x_reflection</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the label is reflected parallel to the x direction
+before being rotated (not supported by LayoutViewer).</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for these elements.</li>
+<li><strong>texttype</strong> (<em>integer</em>) – The GDSII text type for the label (between 0 and 63).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#gdspy.Label.text" title="gdspy.Label.text"><strong>text</strong></a> (<em>string</em>) – The text of this label.</li>
+<li><a class="reference internal" href="#gdspy.Label.position" title="gdspy.Label.position"><strong>position</strong></a> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Text anchor position.</li>
+<li><a class="reference internal" href="#gdspy.Label.anchor" title="gdspy.Label.anchor"><strong>anchor</strong></a> (<em>int</em>) – Position of the anchor relative to the text.</li>
+<li><a class="reference internal" href="#gdspy.Label.rotation" title="gdspy.Label.rotation"><strong>rotation</strong></a> (<em>number</em>) – Angle of rotation of the label (in <em>degrees</em>).</li>
+<li><a class="reference internal" href="#gdspy.Label.magnification" title="gdspy.Label.magnification"><strong>magnification</strong></a> (<em>number</em>) – Magnification factor for the label.</li>
+<li><a class="reference internal" href="#gdspy.Label.x_reflection" title="gdspy.Label.x_reflection"><strong>x_reflection</strong></a> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the label is reflected parallel to the x direction
+before being rotated (not supported by LayoutViewer).</li>
+<li><a class="reference internal" href="#gdspy.Polygon.layer" title="gdspy.Polygon.layer"><strong>layer</strong></a> (<em>integer</em>) – The GDSII layer number for these elements.</li>
+<li><a class="reference internal" href="#gdspy.Label.texttype" title="gdspy.Label.texttype"><strong>texttype</strong></a> (<em>integer</em>) – The GDSII text type for the label (between 0 and 63).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s1">&#39;Sample label&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;sw&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="gdspy.Label.anchor">
+<code class="descname">anchor</code><a class="headerlink" href="#gdspy.Label.anchor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Label.layer">
+<code class="descname">layer</code><a class="headerlink" href="#gdspy.Label.layer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Label.magnification">
+<code class="descname">magnification</code><a class="headerlink" href="#gdspy.Label.magnification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Label.position">
+<code class="descname">position</code><a class="headerlink" href="#gdspy.Label.position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Label.rotation">
+<code class="descname">rotation</code><a class="headerlink" href="#gdspy.Label.rotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Label.text">
+<code class="descname">text</code><a class="headerlink" href="#gdspy.Label.text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Label.texttype">
+<code class="descname">texttype</code><a class="headerlink" href="#gdspy.Label.texttype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Label.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Label.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this label to a GDSII structure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+structure.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this label.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Label.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Label.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the text from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Label</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Label</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Label.x_reflection">
+<code class="descname">x_reflection</code><a class="headerlink" href="#gdspy.Label.x_reflection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fast-boolean">
+<h3>fast_boolean<a class="headerlink" href="#fast-boolean" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="gdspy.fast_boolean">
+<code class="descclassname">gdspy.</code><code class="descname">fast_boolean</code><span class="sig-paren">(</span><em>operandA</em>, <em>operandB</em>, <em>operation</em>, <em>precision=0.001</em>, <em>max_points=199</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.fast_boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute any boolean operation between 2 polygons or polygon sets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>operandA</strong> (<em>polygon</em><em> or </em><em>array-like</em>) – First operand.  Must be a <code class="docutils literal"><span class="pre">Polygon</span></code>, <code class="docutils literal"><span class="pre">PolygonSet</span></code>,
+<code class="docutils literal"><span class="pre">CellReference</span></code>, <code class="docutils literal"><span class="pre">CellArray</span></code>, or an array.  The array may contain
+any of the previous objects or an array-like[N][2] of vertices of a
+polygon.</li>
+<li><strong>operandB</strong> (polygon, array-like or <code class="docutils literal"><span class="pre">None</span></code>) – Second operand.  Must be <code class="docutils literal"><span class="pre">None</span></code>, a <code class="docutils literal"><span class="pre">Polygon</span></code>, <code class="docutils literal"><span class="pre">PolygonSet</span></code>,
+<code class="docutils literal"><span class="pre">CellReference</span></code>, <code class="docutils literal"><span class="pre">CellArray</span></code>, or an array.  The array may contain
+any of the previous objects or an array-like[N][2] of vertices of a
+polygon.</li>
+<li><strong>operation</strong> (<em>{'or'</em><em>, </em><em>'and'</em><em>, </em><em>'xor'</em><em>, </em><em>'not'}</em>) – Boolean operation to be executed.  The ‘not’ operation returns the
+difference <code class="docutils literal"><span class="pre">operandA</span> <span class="pre">-</span> <span class="pre">operandB</span></code>.</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – If greater than 4, fracture the resulting polygons to ensure they have
+at most <code class="docutils literal"><span class="pre">max_points</span></code> vertices.  This is not a tessellating function,
+so this number should be as high as possible.  For example, it should
+be set to 199 for polygons being drawn in GDSII files.</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for the resulting element.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for the resulting element (between 0 and 255).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Result of the boolean operation.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">PolygonSet or <code class="docutils literal"><span class="pre">None</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="boolean">
+<h3>boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="gdspy.boolean">
+<code class="descclassname">gdspy.</code><code class="descname">boolean</code><span class="sig-paren">(</span><em>polygons</em>, <em>operation</em>, <em>max_points=199</em>, <em>layer=0</em>, <em>datatype=0</em>, <em>eps=1e-13</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is deprecated in favor of ‘fast_boolean’.</p>
+<p>Execute any generalized boolean operation on polygons and polygon sets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>polygons</strong> (<em>array-like</em>) – Operands of the boolean operation.  Each element of this array must be
+a <code class="docutils literal"><span class="pre">Polygon</span></code>, <code class="docutils literal"><span class="pre">PolygonSet</span></code>, <code class="docutils literal"><span class="pre">CellReference</span></code>, <code class="docutils literal"><span class="pre">CellArray</span></code>, or an
+array-like[N][2] of vertices of a polygon.</li>
+<li><strong>operation</strong> (<em>function</em>) – Function that accepts as input <code class="docutils literal"><span class="pre">len(polygons)</span></code> integers.  Each
+integer represents the incidence of the corresponding <code class="docutils literal"><span class="pre">polygon</span></code>.  The
+function must return a bool or integer (interpreted as bool).</li>
+<li><strong>max_points</strong> (<em>integer</em>) – If greater than 4, fracture the resulting polygons to ensure they have
+at most <code class="docutils literal"><span class="pre">max_points</span></code> vertices.  This is not a tessellating function,
+so this number should be as high as possible.  For example, it should
+be set to 199 for polygons being drawn in GDSII files.</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for the resulting element.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for the resulting element (between 0 and 255).</li>
+<li><strong>eps</strong> (<em>positive number</em>) – Small number to be used as tolerance in intersection and overlap
+calculations.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Result of the boolean operation.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">PolygonSet or <code class="docutils literal"><span class="pre">None</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Since <code class="docutils literal"><span class="pre">operation</span></code> receives a list of integers as input, it can be
+somewhat more general than boolean operations only.  See the examples
+below.</p>
+<p>Because of roundoff errors there are a few cases when this function can
+cause segmentation faults.  If that happens, increasing the value of
+<code class="docutils literal"><span class="pre">eps</span></code> might help.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circle</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Round</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">triangle</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Round</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="n">number_of_points</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bad_poly</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">L1Path</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;+y&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">union</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">boolean</span><span class="p">([</span><span class="n">circle</span><span class="p">,</span> <span class="n">triangle</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">cir</span><span class="p">,</span> <span class="n">tri</span><span class="p">:</span> <span class="n">cir</span> <span class="ow">or</span> <span class="n">tri</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intersection</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">boolean</span><span class="p">([</span><span class="n">circle</span><span class="p">,</span> <span class="n">triangle</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">cir</span><span class="p">,</span> <span class="n">tri</span><span class="p">:</span> <span class="n">cir</span> <span class="ow">and</span> <span class="n">tri</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">subtraction</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">boolean</span><span class="p">([</span><span class="n">circle</span><span class="p">,</span> <span class="n">triangle</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">cir</span><span class="p">,</span> <span class="n">tri</span><span class="p">:</span> <span class="n">cir</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">tri</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multi_xor</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">boolean</span><span class="p">([</span><span class="n">badPath</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="offset">
+<h3>offset<a class="headerlink" href="#offset" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="gdspy.offset">
+<code class="descclassname">gdspy.</code><code class="descname">offset</code><span class="sig-paren">(</span><em>polygons</em>, <em>distance</em>, <em>join='miter'</em>, <em>tolerance=2</em>, <em>precision=0.001</em>, <em>join_first=False</em>, <em>max_points=199</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shrink or expand a polygon or polygon set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>polygons</strong> (<em>polygon</em><em> or </em><em>array-like</em>) – Polygons to be offset.  Must be a <code class="docutils literal"><span class="pre">Polygon</span></code>, <code class="docutils literal"><span class="pre">PolygonSet</span></code>,
+<code class="docutils literal"><span class="pre">CellReference</span></code>, <code class="docutils literal"><span class="pre">CellArray</span></code>, or an array.  The array may contain
+any of the previous objects or an array-like[N][2] of vertices of a
+polygon.</li>
+<li><strong>distance</strong> (<em>number</em>) – Offset distance.  Positive to expand, negative to shrink.</li>
+<li><strong>join</strong> (<em>{'miter'</em><em>, </em><em>'bevel'</em><em>, </em><em>'round'}</em>) – Type of join used to create the offset polygon.</li>
+<li><strong>tolerance</strong> (<em>integer</em><em> or </em><em>float</em>) – For miter joints, this number must be at least 2 and it represents the
+maximun distance in multiples of offset betwen new vertices and their
+original position before beveling to avoid spikes at acute joints.  For
+round joints, it indicates the curvature resolution in number of points
+per full circle.</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+<li><strong>join_first</strong> (<em>bool</em>) – Join all paths before offseting to avoid unecessary joins in adjacent
+polygon sides.</li>
+<li><strong>max_points</strong> (<em>integer</em>) – If greater than 4, fracture the resulting polygons to ensure they have
+at most <code class="docutils literal"><span class="pre">max_points</span></code> vertices.  This is not a tessellating function,
+so this number should be as high as possible.  For example, it should
+be set to 199 for polygons being drawn in GDSII files.</li>
+<li><strong>layer</strong> (<em>integer</em>) – The GDSII layer number for the resulting element.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for the resulting element (between 0 and 255).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Return the offset shape as a set of polygons.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">PolygonSet</span></code> or <code class="docutils literal"><span class="pre">None</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="slice">
+<h3>slice<a class="headerlink" href="#slice" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="gdspy.slice">
+<code class="descclassname">gdspy.</code><code class="descname">slice</code><span class="sig-paren">(</span><em>objects</em>, <em>position</em>, <em>axis</em>, <em>precision=0.001</em>, <em>layer=0</em>, <em>datatype=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.slice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice polygons and polygon sets at given positions along an axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>objects</strong> (<code class="docutils literal"><span class="pre">Polygon</span></code>, <code class="docutils literal"><span class="pre">PolygonSet</span></code>, or list) – Operand of the slice operation.  If this is a list, each element must
+be a <code class="docutils literal"><span class="pre">Polygon</span></code>, <code class="docutils literal"><span class="pre">PolygonSet</span></code>, <code class="docutils literal"><span class="pre">CellReference</span></code>, <code class="docutils literal"><span class="pre">CellArray</span></code>, or
+an array-like[N][2] of vertices of a polygon.</li>
+<li><strong>position</strong> (<em>number</em><em> or </em><em>list of numbers</em>) – Positions to perform the slicing operation along the specified axis.</li>
+<li><strong>axis</strong> (<em>0</em><em> or </em><em>1</em>) – Axis along which the polygon will be sliced.</li>
+<li><strong>layer</strong> (<em>integer</em><em>, </em><em>list</em>) – The GDSII layer numbers for the elements between each division.  If the
+number of layers in the list is less than the number of divided
+regions, the list is repeated.</li>
+<li><strong>datatype</strong> (<em>integer</em>) – The GDSII datatype for the resulting element (between 0 and 255).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Result of the slicing operation, with N = len(positions) + 1.  Each
+PolygonSet comprises all polygons between 2 adjacent slicing positions,
+in crescent order.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[N] of PolygonSet</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ring</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Round</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="n">inner_radius</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="inside">
+<h3>inside<a class="headerlink" href="#inside" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="gdspy.inside">
+<code class="descclassname">gdspy.</code><code class="descname">inside</code><span class="sig-paren">(</span><em>points</em>, <em>polygons</em>, <em>short_circuit='any'</em>, <em>precision=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.inside" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether each of the points is within the given set of polygons.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> (<em>array-like</em><em>[</em><em>N</em><em>]</em><em>[</em><em>2</em><em>] or </em><em>list of array-like</em><em>[</em><em>N</em><em>]</em><em>[</em><em>2</em><em>]</em>) – Coordinates of the points to be tested or groups of points to be tested
+together.</li>
+<li><strong>polygons</strong> (<em>polygon</em><em> or </em><em>array-like</em>) – Polygons to be tested against.  Must be a <code class="docutils literal"><span class="pre">Polygon</span></code>, <code class="docutils literal"><span class="pre">PolygonSet</span></code>,
+<code class="docutils literal"><span class="pre">CellReference</span></code>, <code class="docutils literal"><span class="pre">CellArray</span></code>, or an array.  The array may contain
+any of the previous objects or an array-like[N][2] of vertices of a
+polygon.</li>
+<li><strong>short_circuit</strong> (<em>{'any'</em><em>, </em><em>'all'}</em>) – If <cite>points</cite> is a list of point groups, testing within each group will
+be short-circuited if any of the points in the group is inside (‘any’)
+or outside (‘all’) the polygons.  If <cite>points</cite> is simply a list of
+points, this parameter has no effect.</li>
+<li><strong>precision</strong> (<em>float</em>) – Desired precision for rounding vertice coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Tuple of booleans indicating if each of the points or point groups is
+inside the set of polygons.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="copy">
+<h3>copy<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="gdspy.copy">
+<code class="descclassname">gdspy.</code><code class="descname">copy</code><span class="sig-paren">(</span><em>obj</em>, <em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a copy of <code class="docutils literal"><span class="pre">obj</span></code> and translates the new object to a new location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<code class="docutils literal"><span class="pre">obj</span></code>) – any translatable geometery object.</li>
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Translated copy of original <code class="docutils literal"><span class="pre">obj</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">obj</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rectangle</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rectangle2</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">rectangle</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rectangle</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myCell</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rectangle2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="library.html" class="btn btn-neutral float-right" title="GDSII Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial.html" class="btn btn-neutral" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2009-2017, Lucas H. Gabrielli.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

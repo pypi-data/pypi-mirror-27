@@ -1,0 +1,1291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GDSII Library &mdash; gdspy 1.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="gdspy 1.2.1 documentation" href="index.html"/>
+        <link rel="prev" title="Geometry Construction" href="geometry.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> gdspy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.html">Geometry Construction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GDSII Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cell">Cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cellreference">CellReference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cellarray">CellArray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdslibrary">GdsLibrary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdswriter">GdsWriter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#layoutviewer">LayoutViewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#write-gds">write_gds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdsii-hash">gdsii_hash</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gdspy</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>GDSII Library</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/library.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gdspy">
+<span id="gdsii-library"></span><h1>GDSII Library<a class="headerlink" href="#module-gdspy" title="Permalink to this headline">¶</a></h1>
+<p>gdspy is a Python module that allows the creation of GDSII stream files.</p>
+<p>Many features of the GDSII format are implemented, such as cell
+references and arrays, but the support for fonts is quite limited.  Text
+is only available through polygonal objects.</p>
+<p>If the Python Imaging Library is installed, it can be used to output the
+geometry created to an image file.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cell">
+<h3>Cell<a class="headerlink" href="#cell" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.Cell">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">Cell</code><span class="sig-paren">(</span><em>name</em>, <em>exclude_from_current=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Collection of elements, both geometric objects and references to other
+cells.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) – The name of the cell.</li>
+<li><strong>exclude_from_current</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the cell will not be automatically included in the current
+library.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#gdspy.Cell.name" title="gdspy.Cell.name"><strong>name</strong></a> (<em>string</em>) – The name of this cell.</li>
+<li><a class="reference internal" href="#gdspy.Cell.elements" title="gdspy.Cell.elements"><strong>elements</strong></a> (<em>list</em>) – List of cell elements (<code class="docutils literal"><span class="pre">Polygon</span></code>, <code class="docutils literal"><span class="pre">PolygonSet</span></code>, <code class="docutils literal"><span class="pre">CellReference</span></code>,
+<code class="docutils literal"><span class="pre">CellArray</span></code>).</li>
+<li><a class="reference internal" href="#gdspy.Cell.labels" title="gdspy.Cell.labels"><strong>labels</strong></a> (<em>list</em>) – List of <code class="docutils literal"><span class="pre">Label</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gdspy.Cell.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>element</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new element or list of elements to this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>element</strong> (<em>object</em><em>, </em><em>list</em>) – The element or list of elements to be inserted in this cell.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – This cell.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">Cell</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the elements on this cell, including cell
+references and arrays.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary with the areas of
+each individual pair (layer, datatype).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this cell.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>name</em>, <em>exclude_from_current=False</em>, <em>deep_copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a copy of this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) – The name of the cell.</li>
+<li><strong>exclude_from_current</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the cell will not be included in the global list of
+cells maintained by <code class="docutils literal"><span class="pre">gdspy</span></code>.</li>
+<li><strong>deep_copy</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">False</span></code>, the new cell will contain only references to the
+existing elements.  If <code class="docutils literal"><span class="pre">True</span></code>, copies of all elements are also
+created.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – The new copy of this cell.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Cell</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Cell.elements">
+<code class="descname">elements</code><a class="headerlink" href="#gdspy.Cell.elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.flatten">
+<code class="descname">flatten</code><span class="sig-paren">(</span><em>single_layer=None</em>, <em>single_datatype=None</em>, <em>single_texttype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flatten all <code class="docutils literal"><span class="pre">CellReference</span></code> and <code class="docutils literal"><span class="pre">CellArray</span></code> elements in this cell
+into real polygons and labels, instead of references.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>single_layer</strong> (<em>integer</em><em> or </em><em>None</em>) – If not <code class="docutils literal"><span class="pre">None</span></code>, all polygons will be transfered to the layer
+indicated by this number.</li>
+<li><strong>single_datatype</strong> (<em>integer</em><em> or </em><em>None</em>) – If not <code class="docutils literal"><span class="pre">None</span></code>, all polygons will be transfered to the datatype
+indicated by this number.</li>
+<li><strong>single_datatype</strong> – If not <code class="docutils literal"><span class="pre">None</span></code>, all labels will be transfered to the texttype
+indicated by this number.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This cell.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">Cell</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.get_bounding_box">
+<code class="descname">get_bounding_box</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.get_bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the bounding box for this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Bounding box of this cell [[x_min, y_min], [x_max, y_max]], or
+<code class="docutils literal"><span class="pre">None</span></code> if the cell is empty.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Numpy array[2,2] or <code class="docutils literal"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.get_datatypes">
+<code class="descname">get_datatypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.get_datatypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of datatypes in this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Set of the datatypes used in this cell.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.get_dependencies">
+<code class="descname">get_dependencies</code><span class="sig-paren">(</span><em>recursive=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.get_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the cells included in this cell as references.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>recursive</strong> (<em>bool</em>) – If True returns cascading dependencies.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – List of the cells referenced by this cell.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set of <code class="docutils literal"><span class="pre">Cell</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.get_labels">
+<code class="descname">get_labels</code><span class="sig-paren">(</span><em>depth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.get_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list with a copy of the labels in this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>depth</strong> (integer or <code class="docutils literal"><span class="pre">None</span></code>) – If not <code class="docutils literal"><span class="pre">None</span></code>, defines from how many reference levels to retrieve
+labels from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – List containing the labels in this cell and its references.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of <code class="docutils literal"><span class="pre">Label</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.get_layers">
+<code class="descname">get_layers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.get_layers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of layers in this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Set of the layers used in this cell.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.get_polygons">
+<code class="descname">get_polygons</code><span class="sig-paren">(</span><em>by_spec=False</em>, <em>depth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.get_polygons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of polygons in this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary with the polygons of
+each individual pair (layer, datatype).</li>
+<li><strong>depth</strong> (integer or <code class="docutils literal"><span class="pre">None</span></code>) – If not <code class="docutils literal"><span class="pre">None</span></code>, defines from how many reference levels to retrieve
+polygons.  References below this level will result in a bounding
+box.  If <code class="docutils literal"><span class="pre">by_spec</span></code> is <code class="docutils literal"><span class="pre">True</span></code> the key wil be the name of this
+cell.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – List containing the coordinates of the vertices of each polygon, or
+dictionary with the list of polygons (if <code class="docutils literal"><span class="pre">by_spec</span></code> is <code class="docutils literal"><span class="pre">True</span></code>).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of array-like[N][2] or dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Cell.labels">
+<code class="descname">labels</code><a class="headerlink" href="#gdspy.Cell.labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.Cell.name">
+<code class="descname">name</code><a class="headerlink" href="#gdspy.Cell.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.Cell.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.Cell.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this cell to a GDSII structure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+structure.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this cell.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="cellreference">
+<h3>CellReference<a class="headerlink" href="#cellreference" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.CellReference">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">CellReference</code><span class="sig-paren">(</span><em>ref_cell</em>, <em>origin=(0</em>, <em>0)</em>, <em>rotation=None</em>, <em>magnification=None</em>, <em>x_reflection=False</em>, <em>ignore_missing=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellReference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Simple reference to an existing cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ref_cell</strong> (<code class="docutils literal"><span class="pre">Cell</span></code> or string) – The referenced cell or its name.</li>
+<li><strong>origin</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Position where the reference is inserted.</li>
+<li><strong>rotation</strong> (<em>number</em>) – Angle of rotation of the reference (in <em>degrees</em>).</li>
+<li><strong>magnification</strong> (<em>number</em>) – Magnification factor for the reference.</li>
+<li><strong>x_reflection</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code> the reference is reflected parallel to the x direction
+before being rotated.</li>
+<li><strong>ignore_missing</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">False</span></code> a warning is issued when the referenced cell is not found.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gdspy.CellReference.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellReference.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the referenced cell with the magnification
+factor included.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary with the areas of
+each individual pair (layer, datatype).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this cell.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellReference.get_bounding_box">
+<code class="descname">get_bounding_box</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellReference.get_bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the bounding box for this reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Bounding box of this cell [[x_min, y_min], [x_max, y_max]], or
+<code class="docutils literal"><span class="pre">None</span></code> if the cell is empty.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Numpy array[2,2] or <code class="docutils literal"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellReference.get_labels">
+<code class="descname">get_labels</code><span class="sig-paren">(</span><em>depth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellReference.get_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of labels created by this reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>depth</strong> (integer or <code class="docutils literal"><span class="pre">None</span></code>) – If not <code class="docutils literal"><span class="pre">None</span></code>, defines from how many reference levels to retrieve
+labels from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – List containing the labels in this cell and its references.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of <code class="docutils literal"><span class="pre">Label</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellReference.get_polygons">
+<code class="descname">get_polygons</code><span class="sig-paren">(</span><em>by_spec=False</em>, <em>depth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellReference.get_polygons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of polygons created by this reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary with the polygons of
+each individual pair (layer, datatype).</li>
+<li><strong>depth</strong> (integer or <code class="docutils literal"><span class="pre">None</span></code>) – If not <code class="docutils literal"><span class="pre">None</span></code>, defines from how many reference levels to retrieve
+polygons.  References below this level will result in a bounding
+box.  If <code class="docutils literal"><span class="pre">by_spec</span></code> is <code class="docutils literal"><span class="pre">True</span></code> the key will be the name of the
+referenced cell.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – List containing the coordinates of the vertices of each polygon, or
+dictionary with the list of polygons (if <code class="docutils literal"><span class="pre">by_spec</span></code> is <code class="docutils literal"><span class="pre">True</span></code>).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of array-like[N][2] or dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellReference.magnification">
+<code class="descname">magnification</code><a class="headerlink" href="#gdspy.CellReference.magnification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellReference.origin">
+<code class="descname">origin</code><a class="headerlink" href="#gdspy.CellReference.origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellReference.ref_cell">
+<code class="descname">ref_cell</code><a class="headerlink" href="#gdspy.CellReference.ref_cell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellReference.rotation">
+<code class="descname">rotation</code><a class="headerlink" href="#gdspy.CellReference.rotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellReference.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellReference.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a GDSII element.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+element.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellReference.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellReference.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the reference from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">CellReference</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellReference.x_reflection">
+<code class="descname">x_reflection</code><a class="headerlink" href="#gdspy.CellReference.x_reflection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="cellarray">
+<h3>CellArray<a class="headerlink" href="#cellarray" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.CellArray">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">CellArray</code><span class="sig-paren">(</span><em>ref_cell</em>, <em>columns</em>, <em>rows</em>, <em>spacing</em>, <em>origin=(0</em>, <em>0)</em>, <em>rotation=None</em>, <em>magnification=None</em>, <em>x_reflection=False</em>, <em>ignore_missing=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Multiple references to an existing cell in an array format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ref_cell</strong> (<code class="docutils literal"><span class="pre">Cell</span></code> or string) – The referenced cell or its name.</li>
+<li><strong>columns</strong> (<em>positive integer</em>) – Number of columns in the array.</li>
+<li><strong>rows</strong> (<em>positive integer</em>) – Number of columns in the array.</li>
+<li><strong>spacing</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – distances between adjacent columns and adjacent rows.</li>
+<li><strong>origin</strong> (<em>array-like</em><em>[</em><em>2</em><em>]</em>) – Position where the cell is inserted.</li>
+<li><strong>rotation</strong> (<em>number</em>) – Angle of rotation of the reference (in <em>degrees</em>).</li>
+<li><strong>magnification</strong> (<em>number</em>) – Magnification factor for the reference.</li>
+<li><strong>x_reflection</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the reference is reflected parallel to the x direction
+before being rotated.</li>
+<li><strong>ignore_missing</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">False</span></code> a warning is issued when the referenced cell is not found.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gdspy.CellArray.area">
+<code class="descname">area</code><span class="sig-paren">(</span><em>by_spec=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellArray.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total area of the cell array with the magnification
+factor included.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary with the areas of
+each individual pair (layer, datatype).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Area of this cell.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number, dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellArray.columns">
+<code class="descname">columns</code><a class="headerlink" href="#gdspy.CellArray.columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellArray.get_bounding_box">
+<code class="descname">get_bounding_box</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellArray.get_bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the bounding box for this reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Bounding box of this cell [[x_min, y_min], [x_max, y_max]], or
+<code class="docutils literal"><span class="pre">None</span></code> if the cell is empty.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Numpy array[2,2] or <code class="docutils literal"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellArray.get_labels">
+<code class="descname">get_labels</code><span class="sig-paren">(</span><em>depth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellArray.get_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of labels created by this reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>depth</strong> (integer or <code class="docutils literal"><span class="pre">None</span></code>) – If not <code class="docutils literal"><span class="pre">None</span></code>, defines from how many reference levels to retrieve
+labels from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – List containing the labels in this cell and its references.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of <code class="docutils literal"><span class="pre">Label</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellArray.get_polygons">
+<code class="descname">get_polygons</code><span class="sig-paren">(</span><em>by_spec=False</em>, <em>depth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellArray.get_polygons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of polygons created by this reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>by_spec</strong> (<em>bool</em>) – If <code class="docutils literal"><span class="pre">True</span></code>, the return value is a dictionary with the polygons of
+each individual pair (layer, datatype).</li>
+<li><strong>depth</strong> (integer or <code class="docutils literal"><span class="pre">None</span></code>) – If not <code class="docutils literal"><span class="pre">None</span></code>, defines from how many reference levels to retrieve
+polygons.  References below this level will result in a bounding
+box.  If <code class="docutils literal"><span class="pre">by_spec</span></code> is <code class="docutils literal"><span class="pre">True</span></code> the key will be name of the
+referenced cell.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – List containing the coordinates of the vertices of each polygon, or
+dictionary with the list of polygons (if <code class="docutils literal"><span class="pre">by_spec</span></code> is <code class="docutils literal"><span class="pre">True</span></code>).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of array-like[N][2] or dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellArray.magnification">
+<code class="descname">magnification</code><a class="headerlink" href="#gdspy.CellArray.magnification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellArray.origin">
+<code class="descname">origin</code><a class="headerlink" href="#gdspy.CellArray.origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellArray.ref_cell">
+<code class="descname">ref_cell</code><a class="headerlink" href="#gdspy.CellArray.ref_cell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellArray.rotation">
+<code class="descname">rotation</code><a class="headerlink" href="#gdspy.CellArray.rotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellArray.rows">
+<code class="descname">rows</code><a class="headerlink" href="#gdspy.CellArray.rows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellArray.spacing">
+<code class="descname">spacing</code><a class="headerlink" href="#gdspy.CellArray.spacing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellArray.to_gds">
+<code class="descname">to_gds</code><span class="sig-paren">(</span><em>multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellArray.to_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this object to a GDSII element.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiplier</strong> (<em>number</em>) – A number that multiplies all dimensions written in the GDSII
+element.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The GDSII binary string that represents this object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.CellArray.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.CellArray.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the reference from one place to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dx</strong> (<em>float</em>) – distance to move in the x-direction</li>
+<li><strong>dy</strong> (<em>float</em>) – distance to move in the y-direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">CellArray</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gdspy.CellArray.x_reflection">
+<code class="descname">x_reflection</code><a class="headerlink" href="#gdspy.CellArray.x_reflection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="gdslibrary">
+<h3>GdsLibrary<a class="headerlink" href="#gdslibrary" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.GdsLibrary">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">GdsLibrary</code><span class="sig-paren">(</span><em>name='library'</em>, <em>infile=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>GDSII library (file).</p>
+<p>Represent a GDSII library containing a dictionary of cells.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) – Name of the GDSII library.  Ignored if a name is defined in <cite>infile</cite>.</li>
+<li><strong>infile</strong> (<em>file</em><em> or </em><em>string</em>) – GDSII stream file (or path) to be imported.  It must be opened for
+reading in binary format.</li>
+<li><strong>kwargs</strong> (<em>keyword arguments</em>) – Arguments passed to <cite>read_gds</cite>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#gdspy.Cell.name" title="gdspy.Cell.name"><strong>name</strong></a> (<em>string</em>) – Name of the GDSII library.</li>
+<li><strong>cell_dict</strong> (<em>dictionary</em>) – Dictionary of cells in this library, indexed by name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gdspy.GdsLibrary.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>cell</em>, <em>overwrite_duplicate=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsLibrary.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add one or more cells to the library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cell</strong> (<code class="docutils literal"><span class="pre">Cell</span></code> of list of <code class="docutils literal"><span class="pre">Cell</span></code>) – Cells to be included in the library.</li>
+<li><strong>overwrite_duplicate</strong> (<em>bool</em>) – If True an existing cell with the same name in the library will be
+overwritten.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GdsLibrary</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.GdsLibrary.extract">
+<code class="descname">extract</code><span class="sig-paren">(</span><em>cell</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsLibrary.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract a cell from the this GDSII file and include it in the
+current global library, including referenced dependencies.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cell</strong> (<code class="docutils literal"><span class="pre">Cell</span></code> or string) – Cell or name of the cell to be extracted from the imported file.
+Referenced cells will be automatically extracted as well.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – The extracted cell.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">Cell</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.GdsLibrary.read_gds">
+<code class="descname">read_gds</code><span class="sig-paren">(</span><em>infile</em>, <em>unit=None</em>, <em>rename={}</em>, <em>layers={}</em>, <em>datatypes={}</em>, <em>texttypes={}</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsLibrary.read_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a GDSII file into this library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>infile</strong> (<em>file</em><em> or </em><em>string</em>) – GDSII stream file (or path) to be imported.  It must be opened for
+reading in binary format.</li>
+<li><strong>unit</strong> (<em>number</em>) – Unit (in <em>meters</em>) to use for the imported structures.  If
+<code class="docutils literal"><span class="pre">None</span></code>, the units used to create the GDSII file will be used.</li>
+<li><strong>rename</strong> (<em>dictionary</em>) – Dictionary used to rename the imported cells.  Keys and values must
+be strings.</li>
+<li><strong>layers</strong> (<em>dictionary</em>) – Dictionary used to convert the layers in the imported cells.  Keys
+and values must be integers.</li>
+<li><strong>datatypes</strong> (<em>dictionary</em>) – Dictionary used to convert the datatypes in the imported cells.
+Keys and values must be integers.</li>
+<li><strong>texttypes</strong> (<em>dictionary</em>) – Dictionary used to convert the text types in the imported cells.
+Keys and values must be integers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – This object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GdsLibrary</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Not all features from the GDSII specification are currently supported.
+A warning will be produced if any unsuported features are found in the
+imported file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.GdsLibrary.top_level">
+<code class="descname">top_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsLibrary.top_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the top level cells from the GDSII data.</p>
+<p>Top level cells are those that are not referenced by any other cells.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – List of top level cells.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.GdsLibrary.write_gds">
+<code class="descname">write_gds</code><span class="sig-paren">(</span><em>outfile</em>, <em>cells=None</em>, <em>unit=1e-06</em>, <em>precision=1e-09</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsLibrary.write_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the GDSII library to a file.</p>
+<p>The dimensions actually written on the GDSII file will be the
+dimensions of the objects created times the ratio <code class="docutils literal"><span class="pre">unit/precision</span></code>.
+For example, if a circle with radius 1.5 is created and we set
+<code class="docutils literal"><span class="pre">unit=1.0e-6</span></code> (1 um) and <code class="docutils literal"><span class="pre">precision=1.0e-9</span></code> (1 nm), the radius of
+the circle will be 1.5 um and the GDSII file will contain the dimension
+1500 nm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>outfile</strong> (<em>file</em><em> or </em><em>string</em>) – The file (or path) where the GDSII stream will be written.  It must
+be opened for writing operations in binary format.</li>
+<li><strong>cells</strong> (<em>array-like</em>) – The list of cells or cell names to be included in the library.  If
+<code class="docutils literal"><span class="pre">None</span></code>, all cells are used.</li>
+<li><strong>unit</strong> (<em>number</em>) – Unit size for the objects in the library (in <em>meters</em>).</li>
+<li><strong>precision</strong> (<em>number</em>) – Precision for the dimensions of the objects in the library (in
+<em>meters</em>).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Only the specified cells are written.  The user is responsible for
+ensuring all cell dependencies are satisfied.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="gdswriter">
+<h3>GdsWriter<a class="headerlink" href="#gdswriter" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.GdsWriter">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">GdsWriter</code><span class="sig-paren">(</span><em>outfile</em>, <em>name='library'</em>, <em>unit=1e-06</em>, <em>precision=1e-09</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>GDSII strem library writer.</p>
+<p>The dimensions actually written on the GDSII file will be the dimensions of
+the objects created times the ratio <code class="docutils literal"><span class="pre">unit/precision</span></code>. For example, if a
+circle with radius 1.5 is created and we set <code class="docutils literal"><span class="pre">unit=1.0e-6</span></code> (1 um) and
+<code class="docutils literal"><span class="pre">precision=1.0e-9</span></code> (1 nm), the radius of the circle will be 1.5 um and
+the GDSII file will contain the dimension 1500 nm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>outfile</strong> (<em>file</em><em> or </em><em>string</em>) – The file (or path) where the GDSII stream will be written.  It must be
+opened for writing operations in binary format.</li>
+<li><strong>name</strong> (<em>string</em>) – Name of the GDSII library (file).</li>
+<li><strong>unit</strong> (<em>number</em>) – Unit size for the objects in the library (in <em>meters</em>).</li>
+<li><strong>precision</strong> (<em>number</em>) – Precision for the dimensions of the objects in the library (in
+<em>meters</em>).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This class can be used for incremental output of the geometry in case the
+complete layout is too large to be kept in memory all at once.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">writer</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">GdsWriter</span><span class="p">(</span><span class="s1">&#39;out-file.gds&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1.0e-9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">cell</span> <span class="o">=</span> <span class="n">gdspy</span><span class="o">.</span><span class="n">Cell</span><span class="p">(</span><span class="s1">&#39;C</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Add the contents of this cell...</span>
+<span class="gp">... </span>    <span class="n">writer</span><span class="o">.</span><span class="n">write_cell</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Clear the memory: erase Cell objects and any other objects</span>
+<span class="gp">... </span>    <span class="c1"># that won&#39;t be needed.</span>
+<span class="gp">... </span>    <span class="k">del</span> <span class="n">cell</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="gdspy.GdsWriter.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsWriter.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finalize the GDSII stream library.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gdspy.GdsWriter.write_cell">
+<code class="descname">write_cell</code><span class="sig-paren">(</span><em>cell</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.GdsWriter.write_cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the specified cell to the file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cell</strong> (<code class="docutils literal"><span class="pre">Cell</span></code>) – Cell to be written.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Only the specified cell is written.  Dependencies must be manually
+included.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – This object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">GdsWriter</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="layoutviewer">
+<h3>LayoutViewer<a class="headerlink" href="#layoutviewer" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="gdspy.LayoutViewer">
+<em class="property">class </em><code class="descclassname">gdspy.</code><code class="descname">LayoutViewer</code><span class="sig-paren">(</span><em>library=None</em>, <em>cells=None</em>, <em>hidden_types=[]</em>, <em>depth=0</em>, <em>color={}</em>, <em>pattern={}</em>, <em>background='#202020'</em>, <em>width=800</em>, <em>height=600</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.LayoutViewer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide a GUI where the layout can be viewed.</p>
+<p>The view can be scrolled vertically with the mouse wheel, and
+horizontally by holding the shift key and using the mouse wheel.
+Dragging the 2nd mouse button also scrolls the view, and if control is
+held down, it scrolls 10 times faster.</p>
+<p>You can zoom in or out using control plus the mouse wheel, or drag a
+rectangle on the window with the 1st mouse button to zoom into that
+area.</p>
+<p>A ruler is available by clicking the 1st mouse button anywhere on the
+view and moving the mouse around.  The distance is shown in the status
+area.</p>
+<p>Double-clicking on any polygon gives some information about it.</p>
+<p>Color and pattern for each layer/datatype specification can be changed
+by left and right clicking on the icon in the layer/datatype list. Left
+and right clicking the text label changes the visibility.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>library</strong> (<code class="docutils literal"><span class="pre">GdsLibrary</span></code>) – GDSII library to display.  If <code class="docutils literal"><span class="pre">None</span></code>, the current library is used.</li>
+<li><strong>cells</strong> (<a class="reference internal" href="#gdspy.Cell" title="gdspy.Cell"><em>Cell</em></a><em>, </em><em>string</em><em> or </em><em>array-like</em>) – The array of cells to be included in the view. If <code class="docutils literal"><span class="pre">None</span></code>, all
+cells listed in the current library are used.</li>
+<li><strong>hidden_types</strong> (<em>array-like</em>) – The array of tuples (layer, datatype) to start in hidden state.</li>
+<li><strong>depth</strong> (<em>integer</em>) – Initial depth of referenced cells to be displayed.</li>
+<li><strong>color</strong> (<em>dictionary</em>) – Dictionary of colors for each tuple (layer, datatype).  The colors
+must be strings in the format <code class="docutils literal"><span class="pre">#rrggbb</span></code>.  A value with key
+<code class="docutils literal"><span class="pre">default</span></code> will be used as default color.</li>
+<li><strong>pattern</strong> (<em>dictionary</em>) – Dictionary of patterns for each tuple (layer, datatype).  The
+patterns must be integers between 0 and 9, inclusive.  A value with
+key <code class="docutils literal"><span class="pre">default</span></code> will be used as default pattern.</li>
+<li><strong>background</strong> (<em>string</em>) – Canvas background color in the format <code class="docutils literal"><span class="pre">#rrggbb</span></code>.</li>
+<li><strong>width</strong> (<em>integer</em>) – Horizontal size of the viewer canvas.</li>
+<li><strong>height</strong> (<em>integer</em>) – Vertical size of the viewer canvas.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>White background, filled shapes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdspy</span><span class="o">.</span><span class="n">LayoutViewer</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">},</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No filling, black color for layer 0, datatype 1, automatic for others:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdspy</span><span class="o">.</span><span class="n">LayoutViewer</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span><span class="mi">9</span><span class="p">},</span> <span class="n">color</span><span class="o">=</span><span class="p">{(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span><span class="s1">&#39;#000000&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="write-gds">
+<h3>write_gds<a class="headerlink" href="#write-gds" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="gdspy.write_gds">
+<code class="descclassname">gdspy.</code><code class="descname">write_gds</code><span class="sig-paren">(</span><em>outfile</em>, <em>cells=None</em>, <em>name='library'</em>, <em>unit=1e-06</em>, <em>precision=1e-09</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.write_gds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the current GDSII library to a file.</p>
+<p>The dimensions actually written on the GDSII file will be the
+dimensions of the objects created times the ratio <code class="docutils literal"><span class="pre">unit/precision</span></code>.
+For example, if a circle with radius 1.5 is created and we set
+<code class="docutils literal"><span class="pre">unit=1.0e-6</span></code> (1 um) and <code class="docutils literal"><span class="pre">precision=1.0e-9</span></code> (1 nm), the radius of
+the circle will be 1.5 um and the GDSII file will contain the dimension
+1500 nm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>outfile</strong> (<em>file</em><em> or </em><em>string</em>) – The file (or path) where the GDSII stream will be written.  It must
+be opened for writing operations in binary format.</li>
+<li><strong>cells</strong> (<em>array-like</em>) – The list of cells or cell names to be included in the library.  If
+<code class="docutils literal"><span class="pre">None</span></code>, all cells are used.</li>
+<li><strong>name</strong> (<em>string</em>) – Name of the GDSII library.</li>
+<li><strong>unit</strong> (<em>number</em>) – Unit size for the objects in the library (in <em>meters</em>).</li>
+<li><strong>precision</strong> (<em>number</em>) – Precision for the dimensions of the objects in the library (in
+<em>meters</em>).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="gdsii-hash">
+<h3>gdsii_hash<a class="headerlink" href="#gdsii-hash" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="gdspy.gdsii_hash">
+<code class="descclassname">gdspy.</code><code class="descname">gdsii_hash</code><span class="sig-paren">(</span><em>filename</em>, <em>engine=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gdspy.gdsii_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the a hash value for a GDSII file.</p>
+<p>The hash is generated based only on the contents of the cells in the
+GDSII library, ignoring any timestamp records present in the file
+structure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>string</em>) – Full path to the GDSII file.</li>
+<li><strong>engine</strong> (<em>hashlib-like engine</em>) – The engine that executes the hashing algorithm.  It must provide
+the methods <code class="docutils literal"><span class="pre">update</span></code> and <code class="docutils literal"><span class="pre">hexdigest</span></code> as defined in the hashlib
+module.  If <code class="docutils literal"><span class="pre">None</span></code>, the dafault <code class="docutils literal"><span class="pre">hashlib.sha1()</span></code> is used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – The hash correponding to the library contents in hex format.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="gdspy.current_library">
+<code class="descclassname">gdspy.</code><code class="descname">current_library</code><em class="property"> = &lt;gdspy.GdsLibrary object&gt;</em><a class="headerlink" href="#gdspy.current_library" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current <code class="docutils literal"><span class="pre">GdsLibrary</span></code> instance for automatic creation of GDSII files.</p>
+<p>This variable can be freely overwritten by the user with a new instance of
+<code class="docutils literal"><span class="pre">GdsLibrary</span></code>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="geometry.html" class="btn btn-neutral" title="Geometry Construction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2009-2017, Lucas H. Gabrielli.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
