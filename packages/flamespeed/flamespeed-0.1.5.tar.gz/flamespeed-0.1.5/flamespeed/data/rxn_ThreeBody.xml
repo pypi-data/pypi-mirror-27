@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<ctml>
+
+    <phase>
+        <speciesArray> H OH H2O </speciesArray>
+    </phase>
+
+    <reactionData id="test_mechanism">
+
+        <reaction reversible="yes" type="ThreeBody" id="reaction08">
+    <!-- reaction 08  -->
+      <equation>H + OH + M [=] H2O + M</equation>
+          <rateCoeff>
+            <Kooij>
+              <A units="cm6/mol2/s">3.8e+22</A>
+              <b>-2.0</b>
+              <E units="cal/mol">0.0</E>
+            </Kooij>
+            <efficiencies default="1.0">H2:2.5 H2O:12.0</efficiencies>
+          </rateCoeff>
+          <reactants>H:1 OH:1</reactants>
+          <products>H2O:1</products>
+    </reaction>
+
+            <reaction reversible="yes" type="ThreeBody" id="reaction09">
+    <!-- reaction 08  -->
+      <equation>H + OH + M [=] H2O + M</equation>
+          <rateCoeff>
+            <Kooij>
+              <A units="cm6/mol2/s">4.8e+22</A>
+              <b>-5.0</b>
+              <E units="cal/mol">1.0</E>
+            </Kooij>
+            <efficiencies default="1.0">H2:2.5 H2O:12.0</efficiencies>
+          </rateCoeff>
+          <reactants>H:1 OH:1</reactants>
+          <products>H2O:1</products>
+    </reaction>
+
+    </reactionData>
+
+</ctml>
