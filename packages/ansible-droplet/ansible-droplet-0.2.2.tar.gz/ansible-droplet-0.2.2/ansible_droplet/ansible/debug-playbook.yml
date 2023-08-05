@@ -1,0 +1,8 @@
+- hosts: temp
+
+  # roles:
+  #   - glances
+
+  tasks:
+    - name: "Enable advanced metrics on DigitalOcean"
+      shell: "curl -sSL https://agent.digitalocean.com/install.sh | sh"
