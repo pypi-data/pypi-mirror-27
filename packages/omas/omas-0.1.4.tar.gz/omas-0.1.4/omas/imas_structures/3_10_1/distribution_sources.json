@@ -1,0 +1,1798 @@
+{
+ "distribution_sources.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.code"
+ },
+ "distribution_sources.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.code.name"
+ },
+ "distribution_sources.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.code.output_flag"
+ },
+ "distribution_sources.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.code.parameters"
+ },
+ "distribution_sources.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.code.version"
+ },
+ "distribution_sources.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.ids_properties"
+ },
+ "distribution_sources.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.ids_properties.comment"
+ },
+ "distribution_sources.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.ids_properties.homogeneous_time"
+ },
+ "distribution_sources.magnetic_axis": {
+  "description": "Magnetic axis position (used to define a poloidal angle for the 2D profiles)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.magnetic_axis"
+ },
+ "distribution_sources.magnetic_axis.r": {
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.magnetic_axis.r"
+ },
+ "distribution_sources.magnetic_axis.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.magnetic_axis.r_error_index"
+ },
+ "distribution_sources.magnetic_axis.r_error_lower": {
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.magnetic_axis.r_error_lower"
+ },
+ "distribution_sources.magnetic_axis.r_error_upper": {
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.magnetic_axis.r_error_upper"
+ },
+ "distribution_sources.magnetic_axis.z": {
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.magnetic_axis.z"
+ },
+ "distribution_sources.magnetic_axis.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.magnetic_axis.z_error_index"
+ },
+ "distribution_sources.magnetic_axis.z_error_lower": {
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.magnetic_axis.z_error_lower"
+ },
+ "distribution_sources.magnetic_axis.z_error_upper": {
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.magnetic_axis.z_error_upper"
+ },
+ "distribution_sources.source[:]": {
+  "description": "Set of source/sink terms. A source/sink term corresponds to the particle source due to an NBI injection unit, a nuclear reaction or any combination of them (described in \"identifier\")",
+  "data_type": "",
+  "coordinates": [
+   "1...33"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:]"
+ },
+ "distribution_sources.source[:].ggd[:]": {
+  "description": "Source terms in phase space (real space, velocity space, spin state), represented using the ggd, for various time slices {dynamic}",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:]"
+ },
+ "distribution_sources.source[:].ggd[:].discrete": {
+  "description": "List of indices of grid spaces (refers to ../grid/space) for which the source is discretely distributed. For example consider a source of 3.5 MeV alpha particles provided on a grid with two coordinates (spaces); rho_tor and energy. To specify that the source is given at energies exactly equal to 3.5 MeV, let discret have length 1 and set discrete(1)=2 since energy is dimension number 2. The source is then proportional to delta( 1 - energy / 3.5MeV ), where delta is the direct delta distribution. Discrete dimensions can only be used when the grid is rectangular. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].discrete"
+ },
+ "distribution_sources.source[:].ggd[:].grid": {
+  "description": "Grid description",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:]": {
+  "description": "Grid subsets",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:]"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:]": {
+  "description": "Set of bases for the grid subset. For each base, the structure describes the projection of the base vectors on the canonical frame of the grid.",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:]"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].jacobian": {
+  "description": "Metric Jacobian {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].jacobian"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_index": {
+  "description": "Index in the error_description list for \"jacobian\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_lower": {
+  "description": "Lower error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_upper": {
+  "description": "Upper error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].jacobian_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant": {
+  "description": "Contravariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_index": {
+  "description": "Index in the error_description list for \"tensor_contravariant\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_lower": {
+  "description": "Lower error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_upper": {
+  "description": "Upper error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_contravariant_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant": {
+  "description": "Covariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_index": {
+  "description": "Index in the error_description list for \"tensor_covariant\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_lower": {
+  "description": "Lower error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_upper": {
+  "description": "Upper error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].base[:].tensor_covariant_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].dimension": {
+  "description": "Space dimension of the grid subset elements. This must be equal to the sum of the dimensions of the individual objects forming the element. {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].dimension"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:]": {
+  "description": "Set of elements defining the grid subset. An element is defined by a combination of objects from potentially all spaces",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:]"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:].object[:]": {
+  "description": "Set of objects defining the element",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:].object[:]"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:].object[:].dimension": {
+  "description": "Dimension of the object {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:].object[:].dimension"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:].object[:].index": {
+  "description": "Object index {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:].object[:].index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:].object[:].space": {
+  "description": "Index of the space from which that object is taken {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element[:].object[:].space"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].identifier": {
+  "description": "Grid subset identifier",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].identifier"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].identifier.description": {
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].identifier.description"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].identifier.index": {
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].identifier.index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].identifier.name": {
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].identifier.name"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric": {
+  "description": "Metric of the canonical frame onto Cartesian coordinates",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.jacobian": {
+  "description": "Metric Jacobian {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.jacobian"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_index": {
+  "description": "Index in the error_description list for \"jacobian\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_lower": {
+  "description": "Lower error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_upper": {
+  "description": "Upper error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.jacobian_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant": {
+  "description": "Contravariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_index": {
+  "description": "Index in the error_description list for \"tensor_contravariant\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_lower": {
+  "description": "Lower error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_upper": {
+  "description": "Upper error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_contravariant_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant": {
+  "description": "Covariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_index": {
+  "description": "Index in the error_description list for \"tensor_covariant\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_lower": {
+  "description": "Lower error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_upper": {
+  "description": "Upper error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.grid_subset[:].metric.tensor_covariant_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].grid.identifier": {
+  "description": "Grid identifier",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.identifier"
+ },
+ "distribution_sources.source[:].ggd[:].grid.identifier.description": {
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.identifier.description"
+ },
+ "distribution_sources.source[:].ggd[:].grid.identifier.index": {
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.identifier.index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.identifier.name": {
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.identifier.name"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:]": {
+  "description": "Set of grid spaces",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:]"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].coordinates_type": {
+  "description": "Type of coordinates describing the physical space, for every coordinate of the space. The size of this node therfore defines the dimension of the space. The meaning of these predefined integer constants can be found in the documentation of the grid service library {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].coordinates_type"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].geometry_type": {
+  "description": "Type of space geometry (0: standard, 1:Fourier)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].geometry_type"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].geometry_type.description": {
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].geometry_type.description"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].geometry_type.index": {
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].geometry_type.index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].geometry_type.name": {
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].geometry_type.name"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:]": {
+  "description": "Definition of the space objects for every dimension (from one to the dimension of the highest-dimensional objects). The index correspond to 1=nodes, 2=edges, 3=faces, 4=cells/volumes, .... For every index, a collection of objects of that dimension is described.",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:]"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:]": {
+  "description": "Set of objects for a given dimension",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:]"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:]": {
+  "description": "Set of (n-1)-dimensional objects defining the boundary of this n-dimensional object",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:]"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].index": {
+  "description": "Index of this (n-1)-dimensional boundary object {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].neighbours": {
+  "description": "List of indices of the n-dimensional objects adjacent to the given n-dimensional object. An object can possibly have multiple neighbours on a boundary {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].neighbours"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry": {
+  "description": "Geometry data associated with the object. Its dimension depends on the type of object, geometry and coordinate considered. {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_index": {
+  "description": "Index in the error_description list for \"geometry\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_lower": {
+  "description": "Lower error for \"geometry\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_upper": {
+  "description": "Upper error for \"geometry\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure": {
+  "description": "Measure of the space object, i.e. physical size (length for 1d, area for 2d, volume for 3d objects,...) {dynamic} [m^dimension]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_index": {
+  "description": "Index in the error_description list for \"measure\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_lower": {
+  "description": "Lower error for \"measure\" {dynamic} [m^dimension]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_upper": {
+  "description": "Upper error for \"measure\" {dynamic} [m^dimension]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].nodes": {
+  "description": "List of nodes forming this object (indices to objects_per_dimension(1)%object(:) in Fortran notation) {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].grid.space[:].objects_per_dimension[:].object[:].nodes"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:]": {
+  "description": "Source density of particles in phase space, for various grid subsets [(m.s^-1)^-3.m^-3.s^-1]",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:]"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].coefficients": {
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].particles[:].values",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].coefficients"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].coefficients_error_index": {
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].particles[:].values",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].coefficients_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].coefficients_error_lower": {
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].particles[:].values",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].coefficients_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].coefficients_error_upper": {
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "distribution_sources.source[:].ggd[:].particles[:].values",
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].coefficients_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].grid_index": {
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].grid_index"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].grid_subset_index": {
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].grid_subset_index"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].values": {
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].values"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].values_error_index": {
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].values_error_index"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].values_error_lower": {
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].values_error_lower"
+ },
+ "distribution_sources.source[:].ggd[:].particles[:].values_error_upper": {
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].ggd[:].particles[:].values_error_upper"
+ },
+ "distribution_sources.source[:].ggd[:].time": {
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].ggd[:].time"
+ },
+ "distribution_sources.source[:].global_quantities[:]": {
+  "description": "Global quantities for various time slices {dynamic}",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].global_quantities[:]"
+ },
+ "distribution_sources.source[:].global_quantities[:].particles": {
+  "description": "Particle source rate {dynamic} [s^-1]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].particles"
+ },
+ "distribution_sources.source[:].global_quantities[:].particles_error_index": {
+  "description": "Index in the error_description list for \"particles\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].particles_error_index"
+ },
+ "distribution_sources.source[:].global_quantities[:].particles_error_lower": {
+  "description": "Lower error for \"particles\" {dynamic} [s^-1]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].particles_error_lower"
+ },
+ "distribution_sources.source[:].global_quantities[:].particles_error_upper": {
+  "description": "Upper error for \"particles\" {dynamic} [s^-1]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].particles_error_upper"
+ },
+ "distribution_sources.source[:].global_quantities[:].power": {
+  "description": "Total power of the source {dynamic} [W]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].power"
+ },
+ "distribution_sources.source[:].global_quantities[:].power_error_index": {
+  "description": "Index in the error_description list for \"power\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].power_error_index"
+ },
+ "distribution_sources.source[:].global_quantities[:].power_error_lower": {
+  "description": "Lower error for \"power\" {dynamic} [W]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].power_error_lower"
+ },
+ "distribution_sources.source[:].global_quantities[:].power_error_upper": {
+  "description": "Upper error for \"power\" {dynamic} [W]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].power_error_upper"
+ },
+ "distribution_sources.source[:].global_quantities[:].time": {
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].time"
+ },
+ "distribution_sources.source[:].global_quantities[:].torque_tor": {
+  "description": "Total toroidal torque of the source {dynamic} [N.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].torque_tor"
+ },
+ "distribution_sources.source[:].global_quantities[:].torque_tor_error_index": {
+  "description": "Index in the error_description list for \"torque_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].torque_tor_error_index"
+ },
+ "distribution_sources.source[:].global_quantities[:].torque_tor_error_lower": {
+  "description": "Lower error for \"torque_tor\" {dynamic} [N.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].torque_tor_error_lower"
+ },
+ "distribution_sources.source[:].global_quantities[:].torque_tor_error_upper": {
+  "description": "Upper error for \"torque_tor\" {dynamic} [N.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].global_quantities[:].torque_tor_error_upper"
+ },
+ "distribution_sources.source[:].gyro_type": {
+  "description": "Defines how to interpret the spatial coordinates: 1 = given at the actual particle birth point; 2 =given at the gyro centre of the birth point {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].gyro_type"
+ },
+ "distribution_sources.source[:].markers[:]": {
+  "description": "Source given as a group of markers (test particles) born per second, for various time slices {dynamic}",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].markers[:]"
+ },
+ "distribution_sources.source[:].markers[:].coordinate_identifier[:]": {
+  "description": "Set of coordinate identifiers, coordinates on which the markers are represented [W.m^-3]",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].markers[:].coordinate_identifier[:]"
+ },
+ "distribution_sources.source[:].markers[:].coordinate_identifier[:].description": {
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].markers[:].coordinate_identifier[:].description"
+ },
+ "distribution_sources.source[:].markers[:].coordinate_identifier[:].index": {
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].markers[:].coordinate_identifier[:].index"
+ },
+ "distribution_sources.source[:].markers[:].coordinate_identifier[:].name": {
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].markers[:].coordinate_identifier[:].name"
+ },
+ "distribution_sources.source[:].markers[:].positions": {
+  "description": "Position of the markers in the set of coordinates. The first dimension corresponds to the number of markers, the second dimension to the set of coordinates {dynamic} [mixed]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "distribution_sources.source[:].markers[:].weights",
+   "distribution_sources.source[:].markers[:].coordinate_identifier"
+  ],
+  "full_path": "distribution_sources.source[:].markers[:].positions"
+ },
+ "distribution_sources.source[:].markers[:].positions_error_index": {
+  "description": "Index in the error_description list for \"positions\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].markers[:].weights",
+   "distribution_sources.source[:].markers[:].coordinate_identifier"
+  ],
+  "full_path": "distribution_sources.source[:].markers[:].positions_error_index"
+ },
+ "distribution_sources.source[:].markers[:].positions_error_lower": {
+  "description": "Lower error for \"positions\" {dynamic} [mixed]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "distribution_sources.source[:].markers[:].weights",
+   "distribution_sources.source[:].markers[:].coordinate_identifier"
+  ],
+  "full_path": "distribution_sources.source[:].markers[:].positions_error_lower"
+ },
+ "distribution_sources.source[:].markers[:].positions_error_upper": {
+  "description": "Upper error for \"positions\" {dynamic} [mixed]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "distribution_sources.source[:].markers[:].weights",
+   "distribution_sources.source[:].markers[:].coordinate_identifier"
+  ],
+  "full_path": "distribution_sources.source[:].markers[:].positions_error_upper"
+ },
+ "distribution_sources.source[:].markers[:].time": {
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].markers[:].time"
+ },
+ "distribution_sources.source[:].markers[:].weights": {
+  "description": "Weight of the markers, i.e. number of real particles represented by each marker. The dimension of the vector correspond to the number of markers {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].markers[:].weights"
+ },
+ "distribution_sources.source[:].markers[:].weights_error_index": {
+  "description": "Index in the error_description list for \"weights\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].markers[:].weights_error_index"
+ },
+ "distribution_sources.source[:].markers[:].weights_error_lower": {
+  "description": "Lower error for \"weights\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].markers[:].weights_error_lower"
+ },
+ "distribution_sources.source[:].markers[:].weights_error_upper": {
+  "description": "Upper error for \"weights\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].markers[:].weights_error_upper"
+ },
+ "distribution_sources.source[:].process[:]": {
+  "description": "Set of processes (NBI units, fusion reactions, ...) that provide the source.",
+  "data_type": "",
+  "coordinates": [
+   "1...32"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].process[:]"
+ },
+ "distribution_sources.source[:].process[:].nbi_beamlets_group": {
+  "description": "Index of the NBI beamlets group considered. Refers to the \"unit/beamlets_group\" array of the NBI IDS. 0 means sum over all beamlets groups. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].nbi_beamlets_group"
+ },
+ "distribution_sources.source[:].process[:].nbi_energy": {
+  "description": "For NBI source, energy of the accelerated species considered. index = 0 for a sum over all energies; index = 1 for full energiy; index = 2 for half energy; index = 3 for third energy",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].nbi_energy"
+ },
+ "distribution_sources.source[:].process[:].nbi_energy.description": {
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].nbi_energy.description"
+ },
+ "distribution_sources.source[:].process[:].nbi_energy.index": {
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].nbi_energy.index"
+ },
+ "distribution_sources.source[:].process[:].nbi_energy.name": {
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].nbi_energy.name"
+ },
+ "distribution_sources.source[:].process[:].nbi_unit": {
+  "description": "Index of the NBI unit considered. Refers to the \"unit\" array of the NBI IDS. 0 means sum over all NBI units. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].nbi_unit"
+ },
+ "distribution_sources.source[:].process[:].reactant_energy": {
+  "description": "For nuclear reaction source, energy of the reactants. index = 0 for a sum over all energies; index = 1 for thermal-thermal; index = 2 for beam-beam; index = 3 for beam-thermal",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].reactant_energy"
+ },
+ "distribution_sources.source[:].process[:].reactant_energy.description": {
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].reactant_energy.description"
+ },
+ "distribution_sources.source[:].process[:].reactant_energy.index": {
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].reactant_energy.index"
+ },
+ "distribution_sources.source[:].process[:].reactant_energy.name": {
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].reactant_energy.name"
+ },
+ "distribution_sources.source[:].process[:].type": {
+  "description": "Process type. index=1 for NBI; index=2 for nuclear reaction (reaction unspecified); index=3 for nuclear reaction: T(d,n)4He [D+T->He4+n]; index=4 for nuclear reaction: He3(d,p)4He [He3+D->He4+p]; index=5 for nuclear reaction: D(d,p)T [D+D->T+p]; index=6 for nuclear reaction: D(d,n)3He [D+D->He3+n]; index=7 for runaway processes",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].type"
+ },
+ "distribution_sources.source[:].process[:].type.description": {
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].type.description"
+ },
+ "distribution_sources.source[:].process[:].type.index": {
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].type.index"
+ },
+ "distribution_sources.source[:].process[:].type.name": {
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].process[:].type.name"
+ },
+ "distribution_sources.source[:].profiles_1d[:]": {
+  "description": "Source radial profiles (flux surface averaged quantities) for various time slices {dynamic}",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].profiles_1d[:]"
+ },
+ "distribution_sources.source[:].profiles_1d[:].energy": {
+  "description": "Source term for the energy transport equation {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].energy"
+ },
+ "distribution_sources.source[:].profiles_1d[:].energy_error_index": {
+  "description": "Index in the error_description list for \"energy\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].energy_error_index"
+ },
+ "distribution_sources.source[:].profiles_1d[:].energy_error_lower": {
+  "description": "Lower error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].energy_error_lower"
+ },
+ "distribution_sources.source[:].profiles_1d[:].energy_error_upper": {
+  "description": "Upper error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].energy_error_upper"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid": {
+  "description": "Radial grid",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.area": {
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.area"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.area_error_index": {
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.area_error_index"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.area_error_lower": {
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.area_error_lower"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.area_error_upper": {
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.area_error_upper"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.psi": {
+  "description": "Poloidal magnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.psi"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.psi_error_index": {
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.psi_error_index"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.psi_error_lower": {
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.psi_error_lower"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.psi_error_upper": {
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.psi_error_upper"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.rho_tor": {
+  "description": "Toroidal flux coordinate. rho_tor = sqrt(b_flux_tor/(pi*b0)) ~ sqrt(pi*r^2*b0/(pi*b0)) ~ r [m]. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.rho_tor"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_error_index": {
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_error_index"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_error_lower": {
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_error_lower"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_error_upper": {
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_error_upper"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm": {
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation, see time_slice/boundary/b_flux_pol_norm in the equilibrium IDS) {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_index": {
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_index"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_lower": {
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_lower"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_upper": {
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_upper"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.volume": {
+  "description": "Volume enclosed inside the magnetic surface {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.volume"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.volume_error_index": {
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.volume_error_index"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.volume_error_lower": {
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.volume_error_lower"
+ },
+ "distribution_sources.source[:].profiles_1d[:].grid.volume_error_upper": {
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].grid.volume_error_upper"
+ },
+ "distribution_sources.source[:].profiles_1d[:].momentum_tor": {
+  "description": "Source term for the toroidal momentum equation {dynamic} [N.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].momentum_tor"
+ },
+ "distribution_sources.source[:].profiles_1d[:].momentum_tor_error_index": {
+  "description": "Index in the error_description list for \"momentum_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].momentum_tor_error_index"
+ },
+ "distribution_sources.source[:].profiles_1d[:].momentum_tor_error_lower": {
+  "description": "Lower error for \"momentum_tor\" {dynamic} [N.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].momentum_tor_error_lower"
+ },
+ "distribution_sources.source[:].profiles_1d[:].momentum_tor_error_upper": {
+  "description": "Upper error for \"momentum_tor\" {dynamic} [N.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].momentum_tor_error_upper"
+ },
+ "distribution_sources.source[:].profiles_1d[:].particles": {
+  "description": "Source term for the density transport equation {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].particles"
+ },
+ "distribution_sources.source[:].profiles_1d[:].particles_error_index": {
+  "description": "Index in the error_description list for \"particles\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].particles_error_index"
+ },
+ "distribution_sources.source[:].profiles_1d[:].particles_error_lower": {
+  "description": "Lower error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].particles_error_lower"
+ },
+ "distribution_sources.source[:].profiles_1d[:].particles_error_upper": {
+  "description": "Upper error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].particles_error_upper"
+ },
+ "distribution_sources.source[:].profiles_1d[:].time": {
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].profiles_1d[:].time"
+ },
+ "distribution_sources.source[:].species": {
+  "description": "Species injected or consumed by this source/sink",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species"
+ },
+ "distribution_sources.source[:].species.ion": {
+  "description": "Description of the ion or neutral species, used if type/index = 2 or 3",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion"
+ },
+ "distribution_sources.source[:].species.ion.element[:]": {
+  "description": "List of elements forming the atom or molecule",
+  "data_type": "",
+  "coordinates": [
+   "1...5"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].species.ion.element[:]"
+ },
+ "distribution_sources.source[:].species.ion.element[:].a": {
+  "description": "Mass of atom {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].a"
+ },
+ "distribution_sources.source[:].species.ion.element[:].a_error_index": {
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].a_error_index"
+ },
+ "distribution_sources.source[:].species.ion.element[:].a_error_lower": {
+  "description": "Lower error for \"a\" {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].a_error_lower"
+ },
+ "distribution_sources.source[:].species.ion.element[:].a_error_upper": {
+  "description": "Upper error for \"a\" {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].a_error_upper"
+ },
+ "distribution_sources.source[:].species.ion.element[:].multiplicity": {
+  "description": "Multiplicity of the atom {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].multiplicity"
+ },
+ "distribution_sources.source[:].species.ion.element[:].multiplicity_error_index": {
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].multiplicity_error_index"
+ },
+ "distribution_sources.source[:].species.ion.element[:].multiplicity_error_lower": {
+  "description": "Lower error for \"multiplicity\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].multiplicity_error_lower"
+ },
+ "distribution_sources.source[:].species.ion.element[:].multiplicity_error_upper": {
+  "description": "Upper error for \"multiplicity\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].multiplicity_error_upper"
+ },
+ "distribution_sources.source[:].species.ion.element[:].z_n": {
+  "description": "Nuclear charge {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].z_n"
+ },
+ "distribution_sources.source[:].species.ion.element[:].z_n_error_index": {
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].z_n_error_index"
+ },
+ "distribution_sources.source[:].species.ion.element[:].z_n_error_lower": {
+  "description": "Lower error for \"z_n\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].z_n_error_lower"
+ },
+ "distribution_sources.source[:].species.ion.element[:].z_n_error_upper": {
+  "description": "Upper error for \"z_n\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.element[:].z_n_error_upper"
+ },
+ "distribution_sources.source[:].species.ion.label": {
+  "description": "String identifying ion (e.g. H+, D+, T+, He+2, C+, ...) {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.label"
+ },
+ "distribution_sources.source[:].species.ion.state": {
+  "description": "Quantities related to the different states of the species (ionisation, energy, excitation, ...)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state"
+ },
+ "distribution_sources.source[:].species.ion.state.electron_configuration": {
+  "description": "Configuration of atomic orbitals of this state, e.g. 1s2-2s1 {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.electron_configuration"
+ },
+ "distribution_sources.source[:].species.ion.state.label": {
+  "description": "String identifying ion state (e.g. C+, C+2 , C+3, C+4, C+5, C+6, ...) {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.label"
+ },
+ "distribution_sources.source[:].species.ion.state.vibrational_level": {
+  "description": "Vibrational level (can be bundled) {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.vibrational_level"
+ },
+ "distribution_sources.source[:].species.ion.state.vibrational_level_error_index": {
+  "description": "Index in the error_description list for \"vibrational_level\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.vibrational_level_error_index"
+ },
+ "distribution_sources.source[:].species.ion.state.vibrational_level_error_lower": {
+  "description": "Lower error for \"vibrational_level\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.vibrational_level_error_lower"
+ },
+ "distribution_sources.source[:].species.ion.state.vibrational_level_error_upper": {
+  "description": "Upper error for \"vibrational_level\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.vibrational_level_error_upper"
+ },
+ "distribution_sources.source[:].species.ion.state.vibrational_mode": {
+  "description": "Vibrational mode of this state, e.g. \"A_g\". Need to define, or adopt a standard nomenclature. {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.vibrational_mode"
+ },
+ "distribution_sources.source[:].species.ion.state.z_max": {
+  "description": "Maximum Z of the charge state bundle (equal to z_min if no bundle) {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.z_max"
+ },
+ "distribution_sources.source[:].species.ion.state.z_max_error_index": {
+  "description": "Index in the error_description list for \"z_max\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.z_max_error_index"
+ },
+ "distribution_sources.source[:].species.ion.state.z_max_error_lower": {
+  "description": "Lower error for \"z_max\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.z_max_error_lower"
+ },
+ "distribution_sources.source[:].species.ion.state.z_max_error_upper": {
+  "description": "Upper error for \"z_max\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.z_max_error_upper"
+ },
+ "distribution_sources.source[:].species.ion.state.z_min": {
+  "description": "Minimum Z of the charge state bundle (z_min = z_max = 0 for a neutral) {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.z_min"
+ },
+ "distribution_sources.source[:].species.ion.state.z_min_error_index": {
+  "description": "Index in the error_description list for \"z_min\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.z_min_error_index"
+ },
+ "distribution_sources.source[:].species.ion.state.z_min_error_lower": {
+  "description": "Lower error for \"z_min\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.z_min_error_lower"
+ },
+ "distribution_sources.source[:].species.ion.state.z_min_error_upper": {
+  "description": "Upper error for \"z_min\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.state.z_min_error_upper"
+ },
+ "distribution_sources.source[:].species.ion.z_ion": {
+  "description": "Ion charge (of the dominant ionisation state; lumped ions are allowed) {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.z_ion"
+ },
+ "distribution_sources.source[:].species.ion.z_ion_error_index": {
+  "description": "Index in the error_description list for \"z_ion\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.z_ion_error_index"
+ },
+ "distribution_sources.source[:].species.ion.z_ion_error_lower": {
+  "description": "Lower error for \"z_ion\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.z_ion_error_lower"
+ },
+ "distribution_sources.source[:].species.ion.z_ion_error_upper": {
+  "description": "Upper error for \"z_ion\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.ion.z_ion_error_upper"
+ },
+ "distribution_sources.source[:].species.neutral": {
+  "description": "Description of the neutral species, used if type/index = 4 or 5",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral"
+ },
+ "distribution_sources.source[:].species.neutral.element[:]": {
+  "description": "List of elements forming the atom or molecule",
+  "data_type": "",
+  "coordinates": [
+   "1...5"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.source[:].species.neutral.element[:]"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].a": {
+  "description": "Mass of atom {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].a"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].a_error_index": {
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].a_error_index"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].a_error_lower": {
+  "description": "Lower error for \"a\" {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].a_error_lower"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].a_error_upper": {
+  "description": "Upper error for \"a\" {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].a_error_upper"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].multiplicity": {
+  "description": "Multiplicity of the atom {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].multiplicity"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].multiplicity_error_index": {
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].multiplicity_error_index"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].multiplicity_error_lower": {
+  "description": "Lower error for \"multiplicity\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].multiplicity_error_lower"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].multiplicity_error_upper": {
+  "description": "Upper error for \"multiplicity\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].multiplicity_error_upper"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].z_n": {
+  "description": "Nuclear charge {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].z_n"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].z_n_error_index": {
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].z_n_error_index"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].z_n_error_lower": {
+  "description": "Lower error for \"z_n\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].z_n_error_lower"
+ },
+ "distribution_sources.source[:].species.neutral.element[:].z_n_error_upper": {
+  "description": "Upper error for \"z_n\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.element[:].z_n_error_upper"
+ },
+ "distribution_sources.source[:].species.neutral.label": {
+  "description": "String identifying neutral (e.g. H, D, T, He, C, ...) {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.label"
+ },
+ "distribution_sources.source[:].species.neutral.state": {
+  "description": "State of the species (energy, excitation, ...)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state"
+ },
+ "distribution_sources.source[:].species.neutral.state.electron_configuration": {
+  "description": "Configuration of atomic orbitals of this state, e.g. 1s2-2s1 {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.electron_configuration"
+ },
+ "distribution_sources.source[:].species.neutral.state.label": {
+  "description": "String identifying neutral state {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.label"
+ },
+ "distribution_sources.source[:].species.neutral.state.neutral_type": {
+  "description": "Neutral type, in terms of energy. ID =1: cold; 2: thermal; 3: fast; 4: NBI",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.neutral_type"
+ },
+ "distribution_sources.source[:].species.neutral.state.neutral_type.description": {
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.neutral_type.description"
+ },
+ "distribution_sources.source[:].species.neutral.state.neutral_type.index": {
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.neutral_type.index"
+ },
+ "distribution_sources.source[:].species.neutral.state.neutral_type.name": {
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.neutral_type.name"
+ },
+ "distribution_sources.source[:].species.neutral.state.vibrational_level": {
+  "description": "Vibrational level (can be bundled) {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.vibrational_level"
+ },
+ "distribution_sources.source[:].species.neutral.state.vibrational_level_error_index": {
+  "description": "Index in the error_description list for \"vibrational_level\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.vibrational_level_error_index"
+ },
+ "distribution_sources.source[:].species.neutral.state.vibrational_level_error_lower": {
+  "description": "Lower error for \"vibrational_level\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.vibrational_level_error_lower"
+ },
+ "distribution_sources.source[:].species.neutral.state.vibrational_level_error_upper": {
+  "description": "Upper error for \"vibrational_level\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.vibrational_level_error_upper"
+ },
+ "distribution_sources.source[:].species.neutral.state.vibrational_mode": {
+  "description": "Vibrational mode of this state, e.g. \"A_g\". Need to define, or adopt a standard nomenclature. {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.neutral.state.vibrational_mode"
+ },
+ "distribution_sources.source[:].species.type": {
+  "description": "Species type. index=1 for electron; index=2 for ion species in a single/average state (refer to ion structure); index=3 for ion species in a particular state (refer to ion/state structure); index=4 for neutral species in a single/average state (refer to neutral structure); index=5 for neutral species in a particular state (refer to neutral/state structure); index=6 for neutron; index=7 for photon",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.type"
+ },
+ "distribution_sources.source[:].species.type.description": {
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.type.description"
+ },
+ "distribution_sources.source[:].species.type.index": {
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.type.index"
+ },
+ "distribution_sources.source[:].species.type.name": {
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.source[:].species.type.name"
+ },
+ "distribution_sources.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "distribution_sources.time"
+ },
+ "distribution_sources.vacuum_toroidal_field": {
+  "description": "Characteristics of the vacuum toroidal field (used in rho_tor definition)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "distribution_sources.vacuum_toroidal_field"
+ },
+ "distribution_sources.vacuum_toroidal_field.b0": {
+  "description": "Vacuum toroidal field at R0 [T]; Positive sign means anti-clockwise when viewed from above. The product R0B0 must be consistent with the b_tor_vacuum_r field of the tf IDS. {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.vacuum_toroidal_field.b0"
+ },
+ "distribution_sources.vacuum_toroidal_field.b0_error_index": {
+  "description": "Index in the error_description list for \"b0\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.vacuum_toroidal_field.b0_error_index"
+ },
+ "distribution_sources.vacuum_toroidal_field.b0_error_lower": {
+  "description": "Lower error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.vacuum_toroidal_field.b0_error_lower"
+ },
+ "distribution_sources.vacuum_toroidal_field.b0_error_upper": {
+  "description": "Upper error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "distribution_sources.time"
+  ],
+  "full_path": "distribution_sources.vacuum_toroidal_field.b0_error_upper"
+ },
+ "distribution_sources.vacuum_toroidal_field.r0": {
+  "description": "Reference major radius where the vacuum toroidal magnetic field is given (usually a fixed position such as the middle of the vessel at the equatorial midplane) {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.vacuum_toroidal_field.r0"
+ },
+ "distribution_sources.vacuum_toroidal_field.r0_error_index": {
+  "description": "Index in the error_description list for \"r0\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.vacuum_toroidal_field.r0_error_index"
+ },
+ "distribution_sources.vacuum_toroidal_field.r0_error_lower": {
+  "description": "Lower error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.vacuum_toroidal_field.r0_error_lower"
+ },
+ "distribution_sources.vacuum_toroidal_field.r0_error_upper": {
+  "description": "Upper error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "distribution_sources.vacuum_toroidal_field.r0_error_upper"
+ }
+}

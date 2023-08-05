@@ -1,0 +1,485 @@
+{
+ "ece.channel[:]": {
+  "description": "Set of channels (frequency)",
+  "data_type": "",
+  "coordinates": [
+   "1...100"
+  ],
+  "base_coord": true,
+  "full_path": "ece.channel[:]"
+ },
+ "ece.channel[:].frequency": {
+  "description": "Frequency of the channel {static} [Hz]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.channel[:].frequency"
+ },
+ "ece.channel[:].frequency_error_index": {
+  "description": "Index in the error_description list for \"frequency\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "ece.channel[:].frequency_error_index"
+ },
+ "ece.channel[:].frequency_error_lower": {
+  "description": "Lower error for \"frequency\" {static} [Hz]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.channel[:].frequency_error_lower"
+ },
+ "ece.channel[:].frequency_error_upper": {
+  "description": "Upper error for \"frequency\" {static} [Hz]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.channel[:].frequency_error_upper"
+ },
+ "ece.channel[:].harmonic": {
+  "description": "Harmonic detected by the channel",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.channel[:].harmonic"
+ },
+ "ece.channel[:].harmonic.data": {
+  "description": "Harmonic detected by the channel {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "ece.channel[:].harmonic.time"
+  ],
+  "full_path": "ece.channel[:].harmonic.data"
+ },
+ "ece.channel[:].harmonic.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "ece.channel[:].harmonic.time"
+ },
+ "ece.channel[:].identifier": {
+  "description": "ID of the channel {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "ece.channel[:].identifier"
+ },
+ "ece.channel[:].name": {
+  "description": "Name of the channel {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "ece.channel[:].name"
+ },
+ "ece.channel[:].position": {
+  "description": "Position of the measurements",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.channel[:].position"
+ },
+ "ece.channel[:].position.phi": {
+  "description": "Toroidal angle",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.channel[:].position.phi"
+ },
+ "ece.channel[:].position.phi.data": {
+  "description": "Toroidal angle {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.phi.time"
+  ],
+  "full_path": "ece.channel[:].position.phi.data"
+ },
+ "ece.channel[:].position.phi.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "ece.channel[:].position.phi.time"
+  ],
+  "full_path": "ece.channel[:].position.phi.data_error_index"
+ },
+ "ece.channel[:].position.phi.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.phi.time"
+  ],
+  "full_path": "ece.channel[:].position.phi.data_error_lower"
+ },
+ "ece.channel[:].position.phi.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.phi.time"
+  ],
+  "full_path": "ece.channel[:].position.phi.data_error_upper"
+ },
+ "ece.channel[:].position.phi.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "ece.channel[:].position.phi.time"
+ },
+ "ece.channel[:].position.r": {
+  "description": "Major radius",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.channel[:].position.r"
+ },
+ "ece.channel[:].position.r.data": {
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.r.time"
+  ],
+  "full_path": "ece.channel[:].position.r.data"
+ },
+ "ece.channel[:].position.r.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "ece.channel[:].position.r.time"
+  ],
+  "full_path": "ece.channel[:].position.r.data_error_index"
+ },
+ "ece.channel[:].position.r.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.r.time"
+  ],
+  "full_path": "ece.channel[:].position.r.data_error_lower"
+ },
+ "ece.channel[:].position.r.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.r.time"
+  ],
+  "full_path": "ece.channel[:].position.r.data_error_upper"
+ },
+ "ece.channel[:].position.r.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "ece.channel[:].position.r.time"
+ },
+ "ece.channel[:].position.z": {
+  "description": "Height",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.channel[:].position.z"
+ },
+ "ece.channel[:].position.z.data": {
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.z.time"
+  ],
+  "full_path": "ece.channel[:].position.z.data"
+ },
+ "ece.channel[:].position.z.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "ece.channel[:].position.z.time"
+  ],
+  "full_path": "ece.channel[:].position.z.data_error_index"
+ },
+ "ece.channel[:].position.z.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.z.time"
+  ],
+  "full_path": "ece.channel[:].position.z.data_error_lower"
+ },
+ "ece.channel[:].position.z.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].position.z.time"
+  ],
+  "full_path": "ece.channel[:].position.z.data_error_upper"
+ },
+ "ece.channel[:].position.z.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "ece.channel[:].position.z.time"
+ },
+ "ece.channel[:].t_e": {
+  "description": "Electron temperature",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.channel[:].t_e"
+ },
+ "ece.channel[:].t_e.data": {
+  "description": "Electron temperature {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].t_e.time"
+  ],
+  "full_path": "ece.channel[:].t_e.data"
+ },
+ "ece.channel[:].t_e.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "ece.channel[:].t_e.time"
+  ],
+  "full_path": "ece.channel[:].t_e.data_error_index"
+ },
+ "ece.channel[:].t_e.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].t_e.time"
+  ],
+  "full_path": "ece.channel[:].t_e.data_error_lower"
+ },
+ "ece.channel[:].t_e.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "ece.channel[:].t_e.time"
+  ],
+  "full_path": "ece.channel[:].t_e.data_error_upper"
+ },
+ "ece.channel[:].t_e.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "ece.channel[:].t_e.time"
+ },
+ "ece.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.code"
+ },
+ "ece.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "ece.code.name"
+ },
+ "ece.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "ece.time"
+  ],
+  "full_path": "ece.code.output_flag"
+ },
+ "ece.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "ece.code.parameters"
+ },
+ "ece.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "ece.code.version"
+ },
+ "ece.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.ids_properties"
+ },
+ "ece.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "ece.ids_properties.comment"
+ },
+ "ece.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "ece.ids_properties.homogeneous_time"
+ },
+ "ece.line_of_sight": {
+  "description": "Description of the line of sight of the diagnostic (valid for all channels), defined by two points",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight"
+ },
+ "ece.line_of_sight.first_point": {
+  "description": "Position of the first point",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point"
+ },
+ "ece.line_of_sight.first_point.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.phi"
+ },
+ "ece.line_of_sight.first_point.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.phi_error_index"
+ },
+ "ece.line_of_sight.first_point.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.phi_error_lower"
+ },
+ "ece.line_of_sight.first_point.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.phi_error_upper"
+ },
+ "ece.line_of_sight.first_point.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.r"
+ },
+ "ece.line_of_sight.first_point.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.r_error_index"
+ },
+ "ece.line_of_sight.first_point.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.r_error_lower"
+ },
+ "ece.line_of_sight.first_point.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.r_error_upper"
+ },
+ "ece.line_of_sight.first_point.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.z"
+ },
+ "ece.line_of_sight.first_point.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.z_error_index"
+ },
+ "ece.line_of_sight.first_point.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.z_error_lower"
+ },
+ "ece.line_of_sight.first_point.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.first_point.z_error_upper"
+ },
+ "ece.line_of_sight.second_point": {
+  "description": "Position of the second point",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point"
+ },
+ "ece.line_of_sight.second_point.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.phi"
+ },
+ "ece.line_of_sight.second_point.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.phi_error_index"
+ },
+ "ece.line_of_sight.second_point.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.phi_error_lower"
+ },
+ "ece.line_of_sight.second_point.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.phi_error_upper"
+ },
+ "ece.line_of_sight.second_point.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.r"
+ },
+ "ece.line_of_sight.second_point.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.r_error_index"
+ },
+ "ece.line_of_sight.second_point.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.r_error_lower"
+ },
+ "ece.line_of_sight.second_point.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.r_error_upper"
+ },
+ "ece.line_of_sight.second_point.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.z"
+ },
+ "ece.line_of_sight.second_point.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.z_error_index"
+ },
+ "ece.line_of_sight.second_point.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.z_error_lower"
+ },
+ "ece.line_of_sight.second_point.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "ece.line_of_sight.second_point.z_error_upper"
+ },
+ "ece.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "ece.time"
+ }
+}

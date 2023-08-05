@@ -1,0 +1,148 @@
+{
+ "actuator.channels": {
+  "description": "ID of the multiple channels of the actuator: Beam boxes for NBI, EC or IC launcher, ... {static}",
+  "data_type": "STR_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "actuator.channels"
+ },
+ "actuator.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "actuator.code"
+ },
+ "actuator.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "actuator.code.name"
+ },
+ "actuator.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "actuator.time"
+  ],
+  "full_path": "actuator.code.output_flag"
+ },
+ "actuator.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "actuator.code.parameters"
+ },
+ "actuator.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "actuator.code.version"
+ },
+ "actuator.generic_dynamic": {
+  "description": "Generic 2D dynamic slot for storing an actuator control parameter (e.g. the angle of an ECRH mirror) {dynamic} [mixed]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "actuator.channels",
+   "actuator.time"
+  ],
+  "full_path": "actuator.generic_dynamic"
+ },
+ "actuator.generic_dynamic_error_index": {
+  "description": "Index in the error_description list for \"generic_dynamic\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "actuator.channels",
+   "actuator.time"
+  ],
+  "full_path": "actuator.generic_dynamic_error_index"
+ },
+ "actuator.generic_dynamic_error_lower": {
+  "description": "Lower error for \"generic_dynamic\" {dynamic} [mixed]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "actuator.channels",
+   "actuator.time"
+  ],
+  "full_path": "actuator.generic_dynamic_error_lower"
+ },
+ "actuator.generic_dynamic_error_upper": {
+  "description": "Upper error for \"generic_dynamic\" {dynamic} [mixed]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "actuator.channels",
+   "actuator.time"
+  ],
+  "full_path": "actuator.generic_dynamic_error_upper"
+ },
+ "actuator.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "actuator.ids_properties"
+ },
+ "actuator.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "actuator.ids_properties.comment"
+ },
+ "actuator.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "actuator.ids_properties.homogeneous_time"
+ },
+ "actuator.name": {
+  "description": "Name of the actuator (IC, EC, NBI, LH) {static} [-]",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "actuator.name"
+ },
+ "actuator.power": {
+  "description": "Power delivered at the output of the actuator, in the vessel (NB this is before the coupling / beam blocking / shine through / orbit losses calculations) {dynamic} [W]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "actuator.channels",
+   "actuator.time"
+  ],
+  "full_path": "actuator.power"
+ },
+ "actuator.power_error_index": {
+  "description": "Index in the error_description list for \"power\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "actuator.channels",
+   "actuator.time"
+  ],
+  "full_path": "actuator.power_error_index"
+ },
+ "actuator.power_error_lower": {
+  "description": "Lower error for \"power\" {dynamic} [W]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "actuator.channels",
+   "actuator.time"
+  ],
+  "full_path": "actuator.power_error_lower"
+ },
+ "actuator.power_error_upper": {
+  "description": "Upper error for \"power\" {dynamic} [W]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "actuator.channels",
+   "actuator.time"
+  ],
+  "full_path": "actuator.power_error_upper"
+ },
+ "actuator.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "actuator.time"
+ }
+}

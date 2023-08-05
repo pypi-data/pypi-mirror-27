@@ -1,0 +1,2357 @@
+{
+ "core_transport.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.code"
+ },
+ "core_transport.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.code.name"
+ },
+ "core_transport.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "core_transport.time"
+  ],
+  "full_path": "core_transport.code.output_flag"
+ },
+ "core_transport.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.code.parameters"
+ },
+ "core_transport.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.code.version"
+ },
+ "core_transport.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.ids_properties"
+ },
+ "core_transport.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.ids_properties.comment"
+ },
+ "core_transport.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.ids_properties.homogeneous_time"
+ },
+ "core_transport.model[:]": {
+  "description": "Transport is described by a combination of various transport models",
+  "data_type": "",
+  "coordinates": [
+   "1...10"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:]"
+ },
+ "core_transport.model[:].flux_multiplier": {
+  "description": "Multiplier applied to the particule flux when adding its contribution in the expression of the heat flux : can be 0, 3/2 or 5/2 {constant} [-]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].flux_multiplier"
+ },
+ "core_transport.model[:].flux_multiplier_error_index": {
+  "description": "Index in the error_description list for \"flux_multiplier\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].flux_multiplier_error_index"
+ },
+ "core_transport.model[:].flux_multiplier_error_lower": {
+  "description": "Lower error for \"flux_multiplier\" {constant} [-]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].flux_multiplier_error_lower"
+ },
+ "core_transport.model[:].flux_multiplier_error_upper": {
+  "description": "Upper error for \"flux_multiplier\" {constant} [-]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].flux_multiplier_error_upper"
+ },
+ "core_transport.model[:].identifier": {
+  "description": "Transport model identifier",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].identifier"
+ },
+ "core_transport.model[:].identifier.description": {
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].identifier.description"
+ },
+ "core_transport.model[:].identifier.index": {
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].identifier.index"
+ },
+ "core_transport.model[:].identifier.name": {
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].identifier.name"
+ },
+ "core_transport.model[:].profiles_1d[:]": {
+  "description": "Transport coefficient profiles for various time slices {dynamic}",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:]"
+ },
+ "core_transport.model[:].profiles_1d[:].conductivity_parallel": {
+  "description": "Parallel conductivity {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].conductivity_parallel"
+ },
+ "core_transport.model[:].profiles_1d[:].conductivity_parallel_error_index": {
+  "description": "Index in the error_description list for \"conductivity_parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].conductivity_parallel_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].conductivity_parallel_error_lower": {
+  "description": "Lower error for \"conductivity_parallel\" {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].conductivity_parallel_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].conductivity_parallel_error_upper": {
+  "description": "Upper error for \"conductivity_parallel\" {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].conductivity_parallel_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons": {
+  "description": "Transport quantities related to the electrons",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy": {
+  "description": "Transport quantities for the electron energy equation",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.d"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.flux": {
+  "description": "Flux {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.v"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.energy.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.energy.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles": {
+  "description": "Transport quantities for the electron density equation",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.d"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.flux": {
+  "description": "Flux {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.v"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].electrons.particles.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].electrons.particles.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d": {
+  "description": "Grid for effective diffusivities and parallel conductivity",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.area": {
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.area"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.area_error_index": {
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.area_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.area_error_lower": {
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.area_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.area_error_upper": {
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.area_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.psi": {
+  "description": "Poloidal magnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.psi"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.psi_error_index": {
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.psi_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.psi_error_lower": {
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.psi_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.psi_error_upper": {
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.psi_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.rho_tor": {
+  "description": "Toroidal flux coordinate. rho_tor = sqrt(b_flux_tor/(pi*b0)) ~ sqrt(pi*r^2*b0/(pi*b0)) ~ r [m]. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.rho_tor"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_error_index": {
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_error_lower": {
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_error_upper": {
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm": {
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation, see time_slice/boundary/b_flux_pol_norm in the equilibrium IDS) {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm_error_index": {
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm_error_lower": {
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm_error_upper": {
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.volume": {
+  "description": "Volume enclosed inside the magnetic surface {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.volume"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.volume_error_index": {
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.volume_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.volume_error_lower": {
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.volume_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_d.volume_error_upper": {
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_d.volume_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux": {
+  "description": "Grid for fluxes",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.area": {
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.area"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.area_error_index": {
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.area_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.area_error_lower": {
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.area_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.area_error_upper": {
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.area_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.psi": {
+  "description": "Poloidal magnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.psi"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.psi_error_index": {
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.psi_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.psi_error_lower": {
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.psi_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.psi_error_upper": {
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.psi_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor": {
+  "description": "Toroidal flux coordinate. rho_tor = sqrt(b_flux_tor/(pi*b0)) ~ sqrt(pi*r^2*b0/(pi*b0)) ~ r [m]. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_error_index": {
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_error_lower": {
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_error_upper": {
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm": {
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation, see time_slice/boundary/b_flux_pol_norm in the equilibrium IDS) {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm_error_index": {
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm_error_lower": {
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm_error_upper": {
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.volume": {
+  "description": "Volume enclosed inside the magnetic surface {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.volume"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.volume_error_index": {
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.volume_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.volume_error_lower": {
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.volume_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_flux.volume_error_upper": {
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_flux.volume_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v": {
+  "description": "Grid for effective convections",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.area": {
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.area"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.area_error_index": {
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.area_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.area_error_lower": {
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.area_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.area_error_upper": {
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.area_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.psi": {
+  "description": "Poloidal magnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.psi"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.psi_error_index": {
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.psi_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.psi_error_lower": {
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.psi_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.psi_error_upper": {
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.psi_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.rho_tor": {
+  "description": "Toroidal flux coordinate. rho_tor = sqrt(b_flux_tor/(pi*b0)) ~ sqrt(pi*r^2*b0/(pi*b0)) ~ r [m]. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.rho_tor"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_error_index": {
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_error_lower": {
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_error_upper": {
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm": {
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation, see time_slice/boundary/b_flux_pol_norm in the equilibrium IDS) {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm_error_index": {
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm_error_lower": {
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm_error_upper": {
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.volume": {
+  "description": "Volume enclosed inside the magnetic surface {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.volume"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.volume_error_index": {
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.volume_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.volume_error_lower": {
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.volume_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].grid_v.volume_error_upper": {
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].grid_v.volume_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:]": {
+  "description": "Transport coefficients related to the various ion species",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:]"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:]": {
+  "description": "List of elements forming the atom or molecule",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:]"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].a": {
+  "description": "Mass of atom {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].a"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].a_error_index": {
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].a_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].a_error_lower": {
+  "description": "Lower error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].a_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].a_error_upper": {
+  "description": "Upper error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].a_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].multiplicity": {
+  "description": "Multiplicity of the atom {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].multiplicity"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].multiplicity_error_index": {
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].multiplicity_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].multiplicity_error_lower": {
+  "description": "Lower error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].multiplicity_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].multiplicity_error_upper": {
+  "description": "Upper error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].multiplicity_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].z_n": {
+  "description": "Nuclear charge {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].z_n"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].z_n_error_index": {
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].z_n_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].z_n_error_lower": {
+  "description": "Lower error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].z_n_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].element[:].z_n_error_upper": {
+  "description": "Upper error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].element[:].z_n_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy": {
+  "description": "Transport coefficients related to the ion energy equation",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.d"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.flux": {
+  "description": "Flux {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.v"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].energy.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].energy.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].label": {
+  "description": "String identifying ion (e.g. H+, D+, T+, He+2, C+, ...) {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].label"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].multiple_states_flag": {
+  "description": "Multiple states calculation flag : 0-Only one state is considered; 1-Multiple states are considered and are described in the state structure {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].multiple_states_flag"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].neutral_index": {
+  "description": "Index of the corresponding neutral species in the ../../neutral array {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].neutral_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles": {
+  "description": "Transport related to the ion density equation",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.d"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.flux": {
+  "description": "Flux {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.v"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].particles.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].particles.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:]": {
+  "description": "Transport coefficients related to the different states of the species",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:]"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].electron_configuration": {
+  "description": "Configuration of atomic orbitals of this state, e.g. 1s2-2s1 {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].electron_configuration"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy": {
+  "description": "Transport quantities related to the energy equation of the charge state considered",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.d"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.flux": {
+  "description": "Flux {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.v"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].energy.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].label": {
+  "description": "String identifying charge state (e.g. C+, C+2 , C+3, C+4, C+5, C+6, ...) {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].label"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles": {
+  "description": "Transport quantities related to density equation of the charge state considered (thermal+non-thermal)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.d"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.flux": {
+  "description": "Flux {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.v"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].particles.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_level": {
+  "description": "Vibrational level (can be bundled) {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_level"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_index": {
+  "description": "Index in the error_description list for \"vibrational_level\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_lower": {
+  "description": "Lower error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_upper": {
+  "description": "Upper error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_mode": {
+  "description": "Vibrational mode of this state, e.g. \"A_g\". Need to define, or adopt a standard nomenclature. {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].vibrational_mode"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_max": {
+  "description": "Maximum Z of the charge state bundle {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_max"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_max_error_index": {
+  "description": "Index in the error_description list for \"z_max\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_max_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_max_error_lower": {
+  "description": "Lower error for \"z_max\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_max_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_max_error_upper": {
+  "description": "Upper error for \"z_max\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_max_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_min": {
+  "description": "Minimum Z of the charge state bundle {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_min"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_min_error_index": {
+  "description": "Index in the error_description list for \"z_min\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_min_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_min_error_lower": {
+  "description": "Lower error for \"z_min\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_min_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_min_error_upper": {
+  "description": "Upper error for \"z_min\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].state[:].z_min_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].z_ion": {
+  "description": "Ion charge (of the dominant ionisation state; lumped ions are allowed) {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].z_ion"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].z_ion_error_index": {
+  "description": "Index in the error_description list for \"z_ion\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].z_ion_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].z_ion_error_lower": {
+  "description": "Lower error for \"z_ion\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].z_ion_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].ion[:].z_ion_error_upper": {
+  "description": "Upper error for \"z_ion\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].ion[:].z_ion_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor": {
+  "description": "Transport coefficients for total toroidal momentum equation",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.d"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.flux": {
+  "description": "Flux {dynamic} [kg.m^-1.s^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [kg.m^-1.s^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [kg.m^-1.s^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.v"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].momentum_tor.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].momentum_tor.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:]": {
+  "description": "Transport coefficients related to the various neutral species",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:]"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:]": {
+  "description": "List of elements forming the atom or molecule",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:]"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].a": {
+  "description": "Mass of atom {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].a"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].a_error_index": {
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].a_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].a_error_lower": {
+  "description": "Lower error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].a_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].a_error_upper": {
+  "description": "Upper error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].a_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].multiplicity": {
+  "description": "Multiplicity of the atom {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].multiplicity"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_index": {
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_lower": {
+  "description": "Lower error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_upper": {
+  "description": "Upper error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].z_n": {
+  "description": "Nuclear charge {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].z_n"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].z_n_error_index": {
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].z_n_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].z_n_error_lower": {
+  "description": "Lower error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].z_n_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].element[:].z_n_error_upper": {
+  "description": "Upper error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].element[:].z_n_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy": {
+  "description": "Transport coefficients related to the neutral energy equation",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.d"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.flux": {
+  "description": "Flux {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.v"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].energy.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].energy.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].ion_index": {
+  "description": "Index of the corresponding ion species in the ../../ion array {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].ion_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].label": {
+  "description": "String identifying ion (e.g. H+, D+, T+, He+2, C+, ...) {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].label"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].multiple_states_flag": {
+  "description": "Multiple states calculation flag : 0-Only one state is considered; 1-Multiple states are considered and are described in the state structure {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].multiple_states_flag"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles": {
+  "description": "Transport related to the neutral density equation",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.d"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.flux": {
+  "description": "Flux {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.v"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].particles.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].particles.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:]": {
+  "description": "Transport coefficients related to the different states of the species",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:]"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].electron_configuration": {
+  "description": "Configuration of atomic orbitals of this state, e.g. 1s2-2s1 {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].electron_configuration"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy": {
+  "description": "Transport quantities related to the energy equation of the charge state considered",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.d"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.flux": {
+  "description": "Flux {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.v"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].energy.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].label": {
+  "description": "String identifying state {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].label"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles": {
+  "description": "Transport quantities related to density equation of the charge state considered (thermal+non-thermal)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.d"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.flux": {
+  "description": "Flux {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [m^-2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.v"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].particles.v_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_level": {
+  "description": "Vibrational level (can be bundled) {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_level"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_index": {
+  "description": "Index in the error_description list for \"vibrational_level\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_lower": {
+  "description": "Lower error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_upper": {
+  "description": "Upper error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_mode": {
+  "description": "Vibrational mode of this state, e.g. \"A_g\". Need to define, or adopt a standard nomenclature. {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].neutral[:].state[:].vibrational_mode"
+ },
+ "core_transport.model[:].profiles_1d[:].rho_tor_norm": {
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ],
+  "data_type": "INT_1D",
+  "base_coord": true,
+  "full_path": "core_transport.model[:].profiles_1d[:].rho_tor_norm"
+ },
+ "core_transport.model[:].profiles_1d[:].time": {
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].time"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy": {
+  "description": "Transport coefficients for the total (summed over ion species) energy equation",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.d": {
+  "description": "Effective diffusivity {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.d"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.d_error_index": {
+  "description": "Index in the error_description list for \"d\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.d_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.d_error_lower": {
+  "description": "Lower error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.d_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.d_error_upper": {
+  "description": "Upper error for \"d\" {dynamic} [m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_d.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.d_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.flux": {
+  "description": "Flux {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.flux"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.flux_error_index": {
+  "description": "Index in the error_description list for \"flux\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.flux_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.flux_error_lower": {
+  "description": "Lower error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.flux_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.flux_error_upper": {
+  "description": "Upper error for \"flux\" {dynamic} [W.m^-2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_flux.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.flux_error_upper"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.v": {
+  "description": "Effective convection {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.v"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.v_error_index": {
+  "description": "Index in the error_description list for \"v\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.v_error_index"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.v_error_lower": {
+  "description": "Lower error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.v_error_lower"
+ },
+ "core_transport.model[:].profiles_1d[:].total_ion_energy.v_error_upper": {
+  "description": "Upper error for \"v\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.model[:].profiles_1d[:].grid_v.rho_tor_norm"
+  ],
+  "full_path": "core_transport.model[:].profiles_1d[:].total_ion_energy.v_error_upper"
+ },
+ "core_transport.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_transport.time"
+ },
+ "core_transport.vacuum_toroidal_field": {
+  "description": "Characteristics of the vacuum toroidal field (used in Rho_Tor definition and in the normalization of current densities)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_transport.vacuum_toroidal_field"
+ },
+ "core_transport.vacuum_toroidal_field.b0": {
+  "description": "Vacuum toroidal field at R0 [T]; Positive sign means anti-clockwise when viewed from above. The product R0B0 must be consistent with the b_tor_vacuum_r field of the tf IDS. {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.time"
+  ],
+  "full_path": "core_transport.vacuum_toroidal_field.b0"
+ },
+ "core_transport.vacuum_toroidal_field.b0_error_index": {
+  "description": "Index in the error_description list for \"b0\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_transport.time"
+  ],
+  "full_path": "core_transport.vacuum_toroidal_field.b0_error_index"
+ },
+ "core_transport.vacuum_toroidal_field.b0_error_lower": {
+  "description": "Lower error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.time"
+  ],
+  "full_path": "core_transport.vacuum_toroidal_field.b0_error_lower"
+ },
+ "core_transport.vacuum_toroidal_field.b0_error_upper": {
+  "description": "Upper error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_transport.time"
+  ],
+  "full_path": "core_transport.vacuum_toroidal_field.b0_error_upper"
+ },
+ "core_transport.vacuum_toroidal_field.r0": {
+  "description": "Reference major radius where the vacuum toroidal magnetic field is given (usually a fixed position such as the middle of the vessel at the equatorial midplane) {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.vacuum_toroidal_field.r0"
+ },
+ "core_transport.vacuum_toroidal_field.r0_error_index": {
+  "description": "Index in the error_description list for \"r0\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.vacuum_toroidal_field.r0_error_index"
+ },
+ "core_transport.vacuum_toroidal_field.r0_error_lower": {
+  "description": "Lower error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.vacuum_toroidal_field.r0_error_lower"
+ },
+ "core_transport.vacuum_toroidal_field.r0_error_upper": {
+  "description": "Upper error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_transport.vacuum_toroidal_field.r0_error_upper"
+ }
+}
