@@ -1,0 +1,29 @@
+Metadata-Version: 2.0
+Name: lex-bot-tester
+Version: 0.9.1
+Summary: lex-bot-tester is a library that simplifies the creation of AWS Lex Bot tests.
+Home-page: https://github.com/dtmilano/lex-bot-tester/
+Author: Diego Torres Milano
+Author-email: dtmilano@gmail.com
+License: GPL-3.0
+Keywords: amazon aws lex bot tester conversation test automation
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: requests
+Requires-Dist: setuptools
+Requires-Dist: six
+
+Using AWS Lex Models Client this utility inspects the properties of
+the available Bots and creates specific Results classes to be used by the tests.
+
+
