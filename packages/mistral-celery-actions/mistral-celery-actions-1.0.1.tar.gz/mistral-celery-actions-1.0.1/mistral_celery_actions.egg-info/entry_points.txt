@@ -1,0 +1,4 @@
+[mistral.actions]
+celery.async-task = celery_actions.async:AsyncAction
+celery.sync-task = celery_actions.base:BaseAction
+
