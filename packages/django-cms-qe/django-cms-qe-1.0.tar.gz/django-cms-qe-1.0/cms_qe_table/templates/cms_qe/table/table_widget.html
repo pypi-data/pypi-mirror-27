@@ -1,0 +1,111 @@
+{{ select }}
+
+<script>
+
+    // This code expects usage of columns_widget.html in the same form.
+
+    // When page is shown, is needed to fill data, not just after any change.
+    window.addEventListener("load", tableChanged);
+    document.querySelector("#{{ id }}").addEventListener("change", tableChanged);
+
+
+    function sortList(ul) {
+        var lis = [];
+        for (var i = ul.childNodes.length; i--;) {
+            if (ul.childNodes[i].nodeName === 'LI')
+                lis.push(ul.childNodes[i]);
+        }
+        lis.sort(function (a, b) {
+            return a.innerHTML.localeCompare(b.innerHTML);
+        });
+        ul.innerHTML = '';
+        for (var i = 0; i < lis.length; i++)
+            ul.appendChild(lis[i]);
+    }
+
+    window.sortList = sortList;
+
+    function tableChanged() {
+        var table = document.querySelector("#{{ id }}").value;
+
+        // It's good to remove all current options so user will not select old options which will
+        // be replaced after request is done.
+        var columnsSelect = window.cmsQeColumnsSelect;
+        while (columnsSelect.options.length > 0) {
+            columnsSelect.remove(0);
+        }
+
+        //Hide columns element
+        document.getElementById(columnsSelect.id).style.display = "none";
+        document.querySelector("label[for=" + columnsSelect.id + "]").style.display = "none";
+
+        var columnsUlUnselected = document.getElementById(columnsSelect.id + '_unselected_columns');
+        var columnsUlSelected = document.getElementById(columnsSelect.id + '_selected_columns');
+        columnsUlUnselected.innerHTML = '';
+        columnsUlSelected.innerHTML = '';
+
+
+        getJSON("{{ url }}?table=" + table, function (err, data) {
+                if (err != null) {
+                    alert('Something went wrong: ' + err);
+                    return;
+                }
+                var selectedColumns = [];
+                var unselectedColumns = [];
+
+                for (var i = 0; i < data.columns.length; i++) {
+                    var value = data.columns[i];
+                    var column = {
+                        name: value[0],
+                        verbose_name: value[1],
+                        selected: false
+                    };
+
+                    var idx = window.cmsQeColumnsValue.indexOf(value[0]);
+                    if (table == "{{ value }}" && idx != -1) {
+                        selectedColumns.splice(idx, 0, column);
+                        column.selected = true;
+                    }
+                    else
+                        unselectedColumns.push(column);
+                }
+
+
+                var allColumns = selectedColumns.concat(unselectedColumns);
+                for (var i = 0; i < allColumns.length; i++) {
+                    var opt = document.createElement('option');
+                    opt.value = allColumns[i].name;
+                    opt.innerHTML = allColumns[i].verbose_name;
+
+                    var li = document.createElement('li');
+                    li.setAttribute('data-id', allColumns[i].name);
+                    li.innerHTML = allColumns[i].verbose_name;
+
+                    if (allColumns[i].selected) {
+                        opt.selected = true;
+                        columnsUlSelected.appendChild(li);
+                    }
+                    else
+                        columnsUlUnselected.appendChild(li);
+                    columnsSelect.appendChild(opt);
+                }
+                sortList(columnsUlUnselected);
+            }
+        );
+    }
+
+    function getJSON(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'json';
+        xhr.onload = function () {
+            var status = xhr.status;
+            if (status == 200)
+                callback(null, xhr.response);
+            else
+                callback(status);
+        };
+        xhr.send();
+    }
+
+</script>
