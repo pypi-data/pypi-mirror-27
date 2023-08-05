@@ -1,0 +1,29 @@
+Metadata-Version: 2.0
+Name: cosmic-ray-celery3-engine
+Version: 0.0.0
+Summary: Cosmic Ray execution engine that distributes execution via Celery 3.
+Home-page: http://github.com/sixty-north/cosmic-ray
+Author: Sixty North AS
+Author-email: austin@sixty-north.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: testing
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Testing
+Requires-Dist: celery (<4)
+
+# cosmic_ray_celery3_executor
+
+Cosmic Ray execution engine that distributes execution via Celery 3.
+
+
