@@ -1,0 +1,23 @@
+<p>
+    Author: {{ site.data.pub2[include.identifier].author }}<br/>
+    Year: {{ site.data.pub2[include.identifier].year }}<br/>
+    Availability:
+        <a href="/pub2/{{ include.identifier }}.html">[html]</a>
+        <a href="/pub2/{{ include.identifier }}.pdf">[pdf]</a>
+        <a href="/pub2/{{ include.identifier }}.bib">[bib]</a>
+</p>
+
+{% if site.data.pub2[include.identifier].excerpt %}
+<h3>excerpt</h3>
+<div>
+    <p>
+        {{ site.data.pub2[include.identifier].excerpt }}
+    </p>
+</div>
+{% endif %}
+
+<h3>preview</h3>
+
+<div>
+    <img class="shadowed" src="/pub2/{{ include.identifier }}.png">
+</div>

@@ -1,0 +1,122 @@
+.footer-col-2 {
+  text-align: right;
+}
+
+.aside {
+    float: right;
+    width: 15em;
+    font-style: italic;
+    border: 1px dotted;
+    background: 1px dotted;
+    padding: 1em;
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#content-license {
+    font-size: 8pt;
+    text-align: center;
+}
+
+#contact-aside {
+    border: none;
+    font-style: normal;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+@keyframes hovering {
+  0% {
+    background-size: 100% 100%;
+    filter: brightness(100%);
+  }
+  100% {
+    background-size: 110% 110%;
+    filter: brightness(95%);
+  }
+}
+
+@keyframes unhovering {
+  0% {
+    background-size: 110% 110%;
+    filter: brightness(95%);
+  }
+  100% {
+    background-size: 100% 100%;
+    filter: brightness(100%);
+  }
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url('/media/fonts/OpenSans-CondensedLight.woff2') format('woff2');
+  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url('/media/fonts/OpenSans-CondensedLight.woff') format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+#project-list {
+    list-style-type: none;
+    margin-left: 0px;
+
+    li {
+        font-size: 16pt;
+
+        a {
+            display: block;
+            color: black;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center bottom;
+            animation-name: unhovering;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        a:hover {
+            animation-name: hovering;
+            animation-duration: 0.25s;
+            animation-fill-mode: forwards;
+            text-decoration: none;
+        }
+
+        .project-box {
+            width: 100%;
+            min-height: 8em;
+            background: linear-gradient(top, rgba( 255, 255, 255, 0 ) 0%, rgba( 255, 255, 255, 0 ) 80%, rgba( 0, 0, 0, 0.2 ) 100% );
+            background: -moz-linear-gradient(top, rgba( 255, 255, 255, 0) 0%, rgba( 255, 255, 255, 0 ) 80%, rgba( 0, 0, 0, 0.2 ) 100% );
+            background: -ms-linear-gradient(top, rgba( 255, 255, 255, 0 ) 0%, rgba( 255, 255, 255, 0 ) 80%, rgba( 0, 0, 0, 0.2 ) 100% );
+            background: -o-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, rgba( 255, 255, 255, 0 ) 80%, rgba( 0, 0, 0, 0.2 ) 100% );
+            background: -webkit-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, rgba( 255, 255, 255, 0 ) 80%, rgba( 0, 0, 0, 0.2 ) 100% );
+
+            .project-title {
+                display: inline-block;
+                font-weight: bold;
+                padding: 0.5em;
+                background: rgba(255, 255, 255, 0.9);
+                margin-left: 0.5em;
+                margin-top: 0.5em;
+            }
+
+            .project-excerpt {
+                font-family: 'Open Sans Condensed', sans-serif;
+                display: inline-block;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 0.5em;
+                margin: 0.5em;
+            }
+        }
+    }
+}
+
+article.post img {
+    display: block;
+    margin: 0px auto;
+}
+
+.shadowed {
+    display: block;
+    box-shadow: 0px 5px 15px #CCCCCC;
+}
