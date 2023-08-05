@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: patchify
+Version: 0.1.0
+Summary: A library that helps you split image into small, overlappable patches, and merge patches into original image.
+Home-page: https://github.com/doomsplayer/patchify.py
+Author: Weiyüen Wu
+Author-email: doomsplayer@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+            A library that helps you split image into small, overlappable patches, and merge patches into original image.
+            This library provides two functions: patchify, unpatchify.
+        
+            * Patchify to split image into small patches.
+            * Unpatchify to merge patches into original images.
+            
+Keywords: patch,image,split
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Multimedia :: Graphics :: Editors
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
