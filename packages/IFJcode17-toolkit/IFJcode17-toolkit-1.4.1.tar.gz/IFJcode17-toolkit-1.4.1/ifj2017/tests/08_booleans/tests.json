@@ -1,0 +1,42 @@
+{
+  "tests": [
+    {
+      "name": "01",
+      "stdout": " 1 1"
+    },
+    {
+      "name": "02",
+      "stdout": " 0 1 0"
+    },
+    {
+      "name": "03",
+      "stdout": " 1"
+    },
+    {
+      "name": "04",
+      "stdout": " 1"
+    },
+    {
+      "name": "05",
+      "stdout": "ok"
+    },
+    {
+      "info": "Single dim in expression",
+      "stdout": " 42",
+      "code": "scope \n dim a as boolean = true\n if a then \n print 42; \n else \n end if\n end scope"
+    },
+    {
+      "info": "Equl in expression (it compare)",
+      "stdout": "falsefalse",
+      "code": "scope \n dim a as boolean = false \n if a = false then \n print a; \n else \n end if \n print a; \n end scope \n"
+    },
+    {
+      "info": "Print boolean",
+      "stdout": "true",
+      "code": "scope \n dim a as boolean = true \n print a; \n end scope"
+    }
+  ],
+  "extensions": [
+    "BOOLOP"
+  ]
+}
