@@ -1,0 +1,10 @@
+lxml<5,>=3.5.0
+defusedxml<1,>=0.4.1
+eight<1,>=0.3.0
+cryptography<3,>=1.8
+asn1crypto>=0.21.0
+pyOpenSSL<18,>=0.15.1
+certifi>=2015.11.20.1
+
+[:python_version == "2.7"]
+enum34>=1.0.4
