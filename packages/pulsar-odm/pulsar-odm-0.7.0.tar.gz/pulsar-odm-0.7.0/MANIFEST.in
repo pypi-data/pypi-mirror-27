@@ -1,0 +1,7 @@
+include LICENSE
+include README.rst
+include Makefile
+graft odm
+graft docs
+graft requirements
+graft tests
