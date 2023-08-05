@@ -1,0 +1,597 @@
+#!/bin/bash
+
+################################################################################
+#                                                                              #
+#                      Cisco Systems Proprietary Software                      #
+#          Not to be distributed without consent from Test Technology          #
+#                              Cisco Systems, Inc.                             #
+#                                                                              #
+################################################################################
+#                                  Manager Pip                                 #
+#                                                                              #
+# Author:                                                                      #
+#     Abbas Yadollahi (ayadolla) - CSG                                         #
+#     ayadolla@cisco.com                                                       #
+#                                                                              #
+# Version:                                                                     #
+#     v1.0                                                                     #
+#                                                                              #
+# Date:                                                                        #
+#     May 2016                                                                 #
+#                                                                              #
+# About this file:                                                             #
+#     1. Creates backup of current packages before upgrade                     #
+#     2. List all packages of previous instances                               #
+#     3. Simplifies package rollback with automated history                    #
+#     4. Includes all pip commands by passing them directly to pip             #
+################################################################################
+#                                Design Details                                #
+#                                                                              #
+# ABC_DEF --> Variable            dd.mm.yy_HH.MM.SS --> Default tag format     #
+# abc_def --> File                                                             #
+#                                                                              #
+################################################################################
+
+################################################################################
+#                                     MAIN                                     #
+################################################################################
+
+
+### GLOBAL VARIABLES
+##############################
+
+ARGS=$@
+PKG_DIR="$(python -c "from distutils.sysconfig import get_python_lib; \
+        print(get_python_lib())")"
+PKG_DESTINATION="$PKG_DIR/pkg_log.txt"
+pyATS_VERSION200=$(echo "ats>=2.0.0,<2.1.0 ats.aereport>=2.0.0,<2.1.0"\
+                 "ats.aetest>=2.0.0,<2.1.0 ats.atslog>=2.0.0,<2.1.0"\
+                 "ats.clean>=2.0.0,<2.1.0 ats.connections>=2.0.0,<2.1.0"\
+                 "ats.datastructures>=2.0.0,<2.1.0 ats.easypy>=2.0.0,<2.1.0"\
+                 "ats.results>=2.0.0,<2.1.0 ats.tcl>=2.0.0,<2.1.0"\
+                 "ats.tgn>=2.0.0,<2.1.0 ats.tims>=2.0.0,<2.1.0"\
+                 "ats.topology>=2.0.0,<2.1.0 ats.utils>=2.0.0,<2.1.0")
+pyATS200="$(echo -e "pyATS2.0.0\n$pyATS_VERSION200" | sed "s/ /\\\s\*/g")"
+pyATS200out="$(echo -e "pyATS2.0.0\n$pyATS_VERSION200" | tr " " "\n")"
+
+pyATS_VERSION210=$(echo "ats>=2.1.0,<2.2.0 ats.aereport>=2.1.0,<2.2.0"\
+                 "ats.aetest>=2.1.0,<2.2.0 ats.async>=2.1.0,<2.2.0"\
+                 "ats.atslog>=2.1.0,<2.2.0 ats.bringup>=2.1.0,<2.2.0"\
+                 "ats.clean>=2.1.0,<2.2.0 ats.connections>=2.1.0,<2.2.0"\
+                 "ats.datastructures>=2.1.0,<2.2.0 ats.easypy>=2.1.0,<2.2.0"\
+                 "ats.examples>=2.1.0,<2.2.0 ats.results>=2.1.0,<2.2.0"\
+                 "ats.tcl>=2.1.0,<2.2.0 ats.templates>=2.1.0,<2.2.0"\
+                 "ats.tgn>=2.1.0,<2.2.0 ats.tims>=2.1.0,<2.2.0"\
+                 "ats.topology>=2.1.0,<2.2.0 ats.utils>=2.1.0,<2.2.0")
+pyATS210="$(echo -e "pyATS2.1.0\n$pyATS_VERSION210" | sed "s/ /\\\s\*/g")"
+pyATS210out="$(echo -e "pyATS2.1.0\n$pyATS_VERSION210" | tr " " "\n")"
+
+pyATS_VERSION220=$(echo "ats>=2.2.0,<2.3.0 ats.aereport>=2.2.0,<2.3.0"\
+                 "ats.aetest>=2.2.0,<2.3.0 ats.async>=2.2.0,<2.3.0"\
+                 "ats.bringup>=2.2.0,<2.3.0 ats.clean>=2.2.0,<2.3.0"\
+                 "ats.connections>=2.2.0,<2.3.0"\
+                 "ats.datastructures>=2.2.0,<2.3.0 ats.easypy>=2.2.0,<2.3.0"\
+                 "ats.examples>=2.2.0,<2.3.0 ats.log>=2.2.0,<2.3.0"\
+                 "ats.results>=2.2.0,<2.3.0 ats.tcl>=2.2.0,<2.3.0"\
+                 "ats.templates>=2.2.0,<2.3.0 ats.tgn>=2.2.0,<2.3.0"\
+                 "ats.tims>=2.2.0,<2.3.0 ats.topology>=2.2.0,<2.3.0"\
+                 "ats.utils>=2.2.0,<2.3.0")
+pyATS220="$(echo -e "pyATS2.2.0\n$pyATS_VERSION220" | sed "s/ /\\\s\*/g")"
+pyATS220out="$(echo -e "pyATS2.2.0\n$pyATS_VERSION220" | tr " " "\n")"
+
+
+# GENERAL FUNCTIONS
+##############################
+
+# printHelp
+#   No arguments
+#
+#   Does:
+#       - Prints the mpip help window
+function printHelp {
+    echo ""
+    echo "Manager Pip"
+    echo ""
+    echo "mpip <command> [options]"
+    echo ""
+    echo "Commands:"
+    echo ""
+    echo "  help                         Show help."
+    echo "  install                      Install packages."
+    echo "  history                      List information on all"\
+                                         "instance backups."
+    echo "  rollback <name>              Update environment to match"\
+                                         "packages from desired"\
+                                         "backup."
+    echo "  rename <oldname> <newname>   Rename a backed up instance."
+    echo ""
+    echo "  All other commands are sent directly to pip."
+    echo "  For help on pip commands, check pip --help"
+    echo ""
+    echo "  Examples:"
+    echo "   pip --help                  Opens pip help."
+    echo "   pip <command> --help        Opens detailed pip help for"\
+                                         "the specified command."
+    echo ""
+    echo "Options:"
+    echo ""
+    echo "History Options:"
+    echo "   --show <name>               Show all packages, including"\
+                                         "their version, from the"\
+                                         "<name> backup."
+    echo "Rollback Options:"
+    echo "   -y, --yes                   Skip all prompt confirmations"\
+                                         "and delete extra packages."
+    echo "   -nd, --nodelete             Keep the packages that don't"\
+                                         "exist in the backup instance."
+    echo "   --previous                  Rollback to the most recent"\
+                                         "backup instance (replaces"\
+                                         "<name>)."
+    echo ""
+    exit 0
+}
+
+# printError
+#   Argument $1 = Error message
+#
+#   Does:
+#       - Prints a red error message
+function printError {
+    echo -e "\e[91m     $1\e[0m"
+}
+
+# printWarning
+#   Argument $1 = Warning message
+#
+#   Does:
+#       - Prints an orange warning message
+function printWarning {
+    echo -e "\e[33m     $1\e[0m"
+}
+
+# printOk
+#   Argument $1 = Ok message
+#
+#   Does:
+#       - Prints a green ok message
+function printOk {
+    echo -e "\e[32m     $1\e[0m"
+}
+
+# printBanner
+#   Argument $1 == Banner message
+#   
+#   Does:
+#       - Prints a strong banner
+function printBanner {
+    echo -e -n "\e[1m"
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    echo ""
+    echo "$1"
+    echo -e "\e[0m"
+}
+
+# trapUserInterrupt
+#   No arguments
+#
+#   Does:
+#       - Called by Trap - SIGQUIT SIGTERM SIGINT SIGHUP
+#       - Print message, delete temp files and exit
+function trapUserInterrupt {
+    echo -e "\e[91m"
+    echo "     Caught user interrupt."
+    echo "     Cleaning up..."
+    echo -e "\e[0m"
+    cleanUp
+    exit 1
+}   
+
+# cleanUp
+#   No arguments
+#
+#   Does:
+#       - Called by Trap - EXIT
+#       - Delete temp files
+function cleanUp {
+    rm -rf "$MPIP_TEMP" > /dev/null 2>&1
+}
+
+
+### SETUP
+##############################
+
+trap 'trapUserInterrupt' SIGQUIT SIGTERM SIGHUP SIGINT
+trap 'cleanUp' EXIT
+touch "$PKG_DESTINATION"
+chmod 777 "$PKG_DESTINATION"
+
+
+if [ -z "$(perl -n000e "print $& while /$pyATS200/mg" $PKG_DESTINATION)" ]; then
+    echo -e "\n$pyATS200out" >> $PKG_DESTINATION
+fi
+
+if [ -z "$(perl -n000e "print $& while /$pyATS210/mg" $PKG_DESTINATION)" ]; then
+    echo -e "\n$pyATS210out" >> $PKG_DESTINATION
+fi
+
+if [ -z "$(perl -n000e "print $& while /$pyATS220/mg" $PKG_DESTINATION)" ]; then
+    echo -e "\n$pyATS220out" >> $PKG_DESTINATION
+fi
+
+
+### COMMAND CASES
+##############################
+
+if [ -z $1 ]; then
+    printHelp
+    exit 0
+fi
+
+while [[ $# -gt 0 ]] ; do
+    case "$1" in
+        help)
+            printHelp
+            break
+            ;;
+        pip)
+            pip help
+            break
+            ;;
+        install)
+            INSTALL=1
+            CMD_INFO=${@:2}
+            if [ "$2" == "--help" ] || [ "$2" == "-h" ]; then
+                pip install -h
+                exit 0
+            fi
+            break
+            ;;
+        history)
+            HISTORY=1
+            break
+            ;;
+        rollback)
+            ROLLBACK=1
+            if [ "$2" == "--previous" ]; then
+                RB_PREVIOUS=1
+            else
+                INSTANCE_NAME="$2"
+            fi
+            break
+            ;;
+        rename)
+            RENAME=1
+            OLD_NAME="$2"
+            NEW_NAME="$3"
+            break
+            ;;
+        -*|*) 
+            PIP_COMMAND=1
+            PIP_ARGS=$@
+            break
+            ;;
+    esac
+done
+
+
+### COMMAND OPTION CASES
+##############################
+
+if [ ! -z "$HISTORY" ]; then
+    case "$2" in
+        "")
+            HISTORY_=1
+            ;;
+        --show)
+            HISTORY_SHOW=1
+            INSTANCE_NAME=$3
+            ;;            
+        -*|*)
+            printError ""
+            printError "The option '$2' does not exist."
+            printError "Type mpip help to see a list of options."
+            printError ""
+            exit 1
+            ;;
+    esac
+fi
+
+if [ ! -z "$ROLLBACK" ]; then
+    while [[ ! -z $3 ]] ; do
+        case "$3" in      
+            -nd|--nodelete)
+                NO_DELETE=1
+                shift
+                ;;
+            -y|--yes)
+                SKIP_PROMPT=1
+                shift
+                ;;
+            -*|*)
+                printError ""
+                printError "The option '$3' does not exist."
+                printError "Type mpip help to see a list of options."
+                printError ""
+                shift
+                exit 1
+                ;;
+        esac
+    done
+fi
+
+
+### HISTORY COMMAND
+##############################
+
+if [ ! -z "$HISTORY_" ]; then
+    # Display every backup entry
+    ENTRIES=$(awk -v ORS='\n\n' -v RS= -v FS='\n' '{print $1}' \
+            $PKG_DESTINATION 2> /dev/null)
+    printBanner "Backup instance names..."
+    echo "$ENTRIES"
+    echo ""
+    exit 0
+fi
+
+
+### HISTORY_SHOW COMMAND
+##############################
+
+if [ ! -z "$HISTORY_SHOW" ]; then
+    # Display all the packages from the INSTANCE_NAME backup
+    if [ ! -z "$INSTANCE_NAME" ]; then
+        INSTANCE_INFO=$(awk -v ORS='\n\n' -v RS= -v FS='\n' \
+                      "\$1 ~ \"$INSTANCE_NAME\"" $PKG_DESTINATION 2> /dev/null)            
+
+        if [ ! -z "$INSTANCE_INFO" ]; then
+            printBanner "Instance information..."
+            echo "$INSTANCE_INFO"
+            echo ""
+            exit 0
+        else
+            printWarning ""
+            printWarning "Could not find any backup instance"
+            printWarning "with the name: $INSTANCE_NAME"
+            printWarning "Is the name entered correctly?"
+            printWarning ""
+            exit 1
+        fi
+    else
+        printError ""
+        printError "No backup instance name was provided."
+        printError "For more information on mpip, type mpip help"
+        printError ""
+        exit 1
+    fi
+fi
+
+
+### ROLLBACK COMMAND
+##############################
+
+# Reinstalls all the packages from the INSTANCE_NAME backup
+if [ ! -z "$ROLLBACK" ]; then
+    # Grab the previous backup entry as input
+    if [ ! -z "$RB_PREVIOUS" ]; then
+        INSTANCE_NAME=$(grep -m 1 . $PKG_DESTINATION)
+    fi
+
+    if [ ! -z "$INSTANCE_NAME" ]; then
+        INSTANCE_INFO=$(awk -v ORS='\n\n' -v RS= -v FS='\n' \
+                      -v IN="$INSTANCE_NAME" '$1 == IN' \
+                      $PKG_DESTINATION 2> /dev/null)
+
+        if [ -z "$INSTANCE_INFO" ]; then
+            printWarning ""
+            printWarning "Could not find any backup instance"
+            printWarning "with the name: $INSTANCE_NAME"
+            printWarning "Is the name entered correctly?"
+            printWarning ""
+            exit 1
+        fi
+
+        # Confirm installation
+        printBanner "Rollback instance..."
+        echo "$INSTANCE_INFO"
+        echo ""
+        if [ -z "$SKIP_PROMPT" ]; then
+            CONFIRM_QS="Are you sure you want to install these packages? (y/n) "
+            read -p $'\e[33m'"$CONFIRM_QS"$'\e[0m' choice
+            case "$choice" in
+                y|Y)
+                    # Continue with the installation
+                    echo ""
+                    ;;
+                n|N)
+                    # Exit mpip
+                    echo ""
+                    echo "Exiting..."
+                    echo ""
+                    exit 0
+                    ;;
+                *)
+                    printError ""
+                    printError "That isn't a valid option, try again."
+                    printError ""
+                    exit 1
+                    ;;
+            esac
+        fi
+
+
+        # Initialize all temps         
+        MPIP_TEMP=$(mktemp -d /tmp/mpip_temp_XXX)
+        rollback_req="$MPIP_TEMP/rollback_req.txt"
+        current_req="$MPIP_TEMP/current_req.txt"
+        pkg_current="$MPIP_TEMP/pkg_current.txt"
+        pkg_rollback="$MPIP_TEMP/pkg_rollback.txt"
+        extra_pkg="$MPIP_TEMP/extra_pkg.txt"
+        touch $rollback_req
+        chmod 777 "$rollback_req"
+        echo "$INSTANCE_INFO" > "$rollback_req"
+        sed -i '/'"$INSTANCE_NAME"'/d' "$rollback_req"
+        pip freeze > "$current_req"
+        
+        while read rollback; do
+            RLINE=${rollback%%=*}
+            RLINE=${rollback%%<*}
+            RLINE=${rollback%%>*}
+            echo "$RLINE" >> "$pkg_rollback"
+        done < "$rollback_req"
+        while read current; do
+            CLINE=${current%%=*}
+            echo "$CLINE" >> "$pkg_current"
+        done < "$current_req"
+        
+        grep -Fxvf "$pkg_rollback" "$pkg_current" > "$extra_pkg"
+        DIFF_PKG="$(echo $(cat "$extra_pkg"))"
+        
+        # Confirm uninstallation of all newer packages
+        if [ ! -z "$DIFF_PKG" ]; then
+            if [ -z "$NO_DELETE" ] && [ -z "$SKIP_PROMPT" ]; then
+                echo ""
+                echo -e "The following packages: \e[94m$DIFF_PKG\e[0m"
+                echo -e "are installed on your current instance but don't"
+                echo -e "exist in the specified backup instance."
+                echo ""
+                DELETE_QS="Do you want to delete these packages? (y/n) "
+                read -p $'\e[33m'"$DELETE_QS"$'\e[0m' choice
+                case "$choice" in
+                    y|Y)
+                        # Uninstall the extra packages
+                        echo ""
+                        printBanner "Uninstalling packages..."
+                        pip uninstall --yes $DIFF_PKG
+                        ;;
+                    n|N)
+                        # Continue without uninstalling
+                        ;;
+                    *)
+                        printError ""
+                        printError "That isn't a valid option, try again."
+                        printError ""
+                        cleanUp
+                        exit 1
+                        ;;
+                esac
+            elif [ ! -z "$NO_DELETE" ]; then
+                # Don't delete the extra packages
+                :
+            elif [ ! -z "$SKIP_PROMPT" ]; then
+                echo ""
+                printBanner "Uninstalling packages..."
+                pip uninstall --yes $DIFF_PKG
+            fi
+        fi
+
+        # Reinstall packages from desired backup
+        printBanner "Installing packages..."
+        pip install -r "$rollback_req"
+        OUT=$?
+        cleanUp
+        if [ $OUT -eq 0 ]; then
+            printOk ""
+            printOk "Packages have been installed successfully!"
+            printOk ""
+            exit 0
+        fi
+    else
+        printError ""
+        printError "No instance name was provided."
+        printError "For more information on mpip, type mpip help"
+        printError ""
+        exit 1
+    fi
+fi
+
+
+### RENAME COMMAND
+##############################
+
+# Rename a backup entry
+if [ ! -z "$RENAME" ]; then
+    INSTANCE_INFO=$(awk -v ORS='\n\n' -v RS= -v FS='\n' \
+                  -v ON="$OLD_NAME" '$1 == ON' $PKG_DESTINATION 2> /dev/null)
+    EXISTING_NAME=$(grep -Fx "$NEW_NAME" $PKG_DESTINATION)
+
+    if [ -z "$NEW_NAME" ]; then
+        printError ""
+        printError "No new instance name was provided for the backup."
+        printError "The format is rename <oldname> <newname>."
+        printError ""
+        exit 1
+    elif [ -z "$INSTANCE_INFO" ]; then
+        printWarning ""
+        printWarning "Could not find any backup instance"
+        printWarning "with the name: $OLD_NAME"
+        printWarning "Is the name entered correctly?"
+        printWarning ""
+        exit 1
+    elif [ ! -z "$EXISTING_NAME" ]; then
+        printError ""
+        printError "There is already a backup instance that"
+        printError "exists with the name: $NEW_NAME"
+        printError ""
+        exit 1
+    elif [ "$NEW_NAME" == "--previous" ] || [ "$NEW_NAME" == "previous" ]; then
+        printWarning ""
+        printWarning "The name $NEW_NAME is reserved for other options."
+        printWarning "Please use a different name."
+        printWarning ""
+        exit 1
+    fi
+    sed -i "s/^$OLD_NAME$/$NEW_NAME/g" $PKG_DESTINATION
+    printOk ""
+    printOk "Name change successful!"
+    printOk ""
+    exit 0
+fi
+
+
+### INSTALL COMMAND
+##############################
+
+# Basic pip commands including automated backup
+if [ ! -z "$INSTALL" ]; then
+    TIME="$(date +'%d.%m.%y_%H.%M.%S')"
+    PKG_FREEZE=$(pip freeze)
+
+    # Installing new packages
+    printBanner "Installing packages..."
+    pip install $CMD_INFO
+    NEW_PKG_FREEZE=$(pip freeze)
+    if [ "$PKG_FREEZE" == "$NEW_PKG_FREEZE" ]; then
+        exit 1
+    fi
+
+    printOk ""
+    printOk "Packages have been installed successfully!"
+    printOk ""
+
+    # Backup previous packages
+    printBanner "Creating backup of previous packages..."
+    echo -e "\n$TIME\n$PKG_FREEZE\n$(cat $PKG_DESTINATION)" > $PKG_DESTINATION
+    #sed -i '1i'"\n$TIME\n$PKG_FREEZE\n" $PKG_DESTINATION
+    #sed -i '1s/^/'"\n$TIME\n$PKG_FREEZE\n"'/' $PKG_DESTINATION
+    #echo -e "\n$TIME\n$PKG_FREEZE" | cat - $PKG_DESTINATION > temp \
+    #       && mv temp $PKG_DESTINATION
+    printOk "Backup finished!"
+    printOk "The name of the backup instance is: $TIME"
+    printOk ""
+    exit 0
+fi
+
+
+### OTHER/PIP COMMAND
+##############################
+
+# Any other command is sent to pip
+if [ ! -z "$PIP_COMMAND" ]; then
+    pip $PIP_ARGS
+    OUT=$?
+    if [ $OUT -ne 0 ]; then
+        exit 1
+    fi
+fi
+
+exit 0
