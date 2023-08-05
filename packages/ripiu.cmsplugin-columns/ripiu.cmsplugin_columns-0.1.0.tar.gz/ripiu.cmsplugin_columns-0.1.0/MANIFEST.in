@@ -1,0 +1,8 @@
+include AUTHORS
+include LICENSE
+include README.rst
+include HISTORY
+recursive-include ripiu/cmsplugin_columns/migrations *
+recursive-include ripiu/cmsplugin_columns/templates *
+recursive-include ripiu/cmsplugin_columns/static *
+recursive-include ripiu/cmsplugin_columns/locale *

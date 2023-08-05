@@ -1,0 +1,17 @@
+{% load cms_tags staticfiles sekizai_tags %}
+{% with sid=instance.pk %}
+  {% addtoblock "css" %}
+    <style>
+      #liquid-columns-{{ sid }} {
+        column-count: {{ instance.num_columns }};
+        -webkit-column-count: {{ instance.num_columns }};
+      }
+    </style>
+  {% endaddtoblock %}
+  <section id="liquid-columns-{{ sid }}"
+           class="liquid columns columns-{{ instance.num_columns }}">
+    {% for plugin in instance.child_plugin_instances %}
+    	{% render_plugin plugin %}
+    {% endfor %}
+  </section>  
+{% endwith %}
