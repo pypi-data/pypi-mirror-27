@@ -1,0 +1,16 @@
+[VARIABLES]
+#dummy-variables-rgx=([^_]+_)|dummy
+dummy-variables-rgx=_|dummy
+ignored-argument-names=_|dummy
+#good-names=i,j,x,y,z
+#additional-builtins=_
+
+[MESSAGES CONTROL]
+disable=
+    no-else-return,
+    arguments-differ,
+    logging-format-interpolation,
+    I
+
+[SIMILARITIES]
+ignore-imports = yes

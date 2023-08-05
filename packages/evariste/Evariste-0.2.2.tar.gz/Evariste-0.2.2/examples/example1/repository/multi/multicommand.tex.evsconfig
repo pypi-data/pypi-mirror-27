@@ -1,0 +1,10 @@
+[action]
+
+plugin = command
+
+[action.command]
+
+target = {basename}.pdf
+command0 = convert command.png command.eps
+command1 = latex {basename}
+command2 = dvipdf {basename}.dvi

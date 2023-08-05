@@ -1,0 +1,9 @@
+[setup]
+source = source
+vcs = vcs.git
+enable_plugins = vcs.git renderer.html
+
+[renderer.html]
+destfile = dest/index.html
+destdir = dest/html
+href_prefix = html/

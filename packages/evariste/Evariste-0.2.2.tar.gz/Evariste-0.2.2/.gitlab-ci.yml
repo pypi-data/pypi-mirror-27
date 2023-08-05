@@ -1,0 +1,13 @@
+image: paternal/pythons:stretch34
+
+before_script:
+  - |
+    apt-get update
+    # Will be useless when stretch is out.
+    apt-get install --yes --force-yes --no-install-recommends -t stretch libdpkg-perl
+    apt-get install --yes --force-yes --no-install-recommends git
+
+tox:
+  script:
+    - tox
+  coverage: '/^TOTAL.*\s(\d+)\%$/'
