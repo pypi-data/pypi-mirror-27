@@ -1,0 +1,36 @@
+Metadata-Version: 2.0
+Name: comodo-api
+Version: 0.2.1
+Summary: Easier and more consistent access to the comodo API.
+Home-page: https://github.com/erinn/comodo_api
+Author: Erinn Looney-Triggs
+Author-email: erinn.looneytriggs@gmail.com
+License: AGPL-3.0
+Description-Content-Type: UNKNOWN
+Keywords: comodo-api
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.4, <4
+Requires-Dist: requests
+Requires-Dist: zeep
+Provides-Extra: test
+Requires-Dist: betamax; extra == 'test'
+Requires-Dist: pytest; extra == 'test'
+
+
+comodo_api provides a wrapper around the Comodo SOAP API to allow for simple(r) interaction
+with their API.
+
+
+
+
