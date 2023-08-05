@@ -1,0 +1,91 @@
+---
+API: 2
+OpenSesame: 3.0.7
+Platform: posix
+---
+set background "@@0@@"
+set foreground "@@1@@"
+set canvas_backend "@@2@@"
+set bidi "no"
+set compensation "0"
+set coordinates "relative"
+set description "Default description"
+set font_bold "no"
+set font_family "mono"
+set font_italic "no"
+set font_size "18"
+set keyboard_backend "@@11@@"
+set mouse_backend "@@2@@"
+set sampler_backend "legacy"
+set start "experiment"
+set subject_nr "0"
+set subject_parity "even"
+set synth_backend "legacy"
+set title "@@3@@"
+set width "@@4@@"
+set height "@@5@@"
+
+define sequence experiment
+	set flush_keyboard "yes"
+	set description "Runs a number of items in sequence"
+	run instruction "always"
+	run loop "always"
+
+define form_text_input form_text_input
+	set timeout "infinite"
+	set spacing "10"
+	set rows "1;1;6"
+	set only_render "no"
+	set margins "50;50;50;50"
+	set form_var "response"
+	set form_title "@@10@@"
+	set form_question "[question_text]"
+	set description "A simple text input form"
+	set cols "1"
+	set _theme "gray"
+	widget 0 0 1 1 label text="[form_title]"
+	widget 0 1 1 1 label center=no text="[form_question]"
+	widget 0 2 1 1 text_input focus=yes return_accepts=yes stub="" var="[form_var]"
+
+define form_text_display instruction
+	set timeout "infinite"
+	set spacing "10"
+	set rows "1;4;1"
+	set only_render "no"
+	set ok_text "Ok"
+	set margins "50;50;50;50"
+	set form_title "@@8@@"
+	__form_text__
+@@9@@
+	__end__
+	set description "A simple text display form"
+	set cols "1;1;1"
+	set _theme gray
+	widget 0 0 3 1 label text="[form_title]"
+	widget 0 1 3 1 label center=no text="[form_text]"
+	widget 1 2 1 1 button text="[ok_text]"
+
+define logger logger
+	set use_quotes "yes"
+	set ignore_missing "yes"
+	set description "Logs experimental data"
+	set auto_log "yes"
+
+define loop loop
+	set skip "0"
+	set repeat "1"
+	set order "@@7@@"
+	set offset "no"
+	set item "sequence"
+	set description "Repeatedly runs another item"
+	set cycles "@@6@@"
+	set column_order "id;question_text"
+	set break_if "never"
+@@12@@
+	run sequence
+
+define sequence sequence
+	set flush_keyboard "yes"
+	set description "Runs a number of items in sequence"
+	run form_text_input "always"
+	run logger "always"
