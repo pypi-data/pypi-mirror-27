@@ -1,0 +1,40 @@
+{% extends 'shuup/admin/base.jinja' %}
+{% from 'shuup/admin/macros/general.jinja' import content_block, content_with_sidebar %}
+{% from 'shuup/admin/macros/multilanguage.jinja' import language_dependent_content_tabs %}
+
+{% block extra_css %}
+    <link href="{{ static('attrim/admin/node_modules/semantic-ui-css/semantic.min.css') }}"
+          rel="stylesheet"
+          type="text/css"
+    >
+    <link href="{{ static('attrim/admin/app/app.comp.css') }}"
+          rel="stylesheet"
+          type="text/css"
+    >
+{% endblock %}
+
+{% block content %}
+    {% call content_block(_('General information'), 'fa-info-circle') %}
+        <app><h2>Loading...</h2></app>
+
+        <!--suppress JSUnusedLocalSymbols, JSDuplicatedDeclaration -->
+        <script>
+            window.DJANGO = {
+                langCodes: {{ lang_codes|safe }},
+                defaultLang: '{{ default_lang }}',
+                isEditForm: {{ is_edit_form|safe }},
+                clsPrimaryKey: {{ cls_pk or 'null' }},
+            };
+        </script>
+
+        <script src="{{ static('attrim/admin/node_modules/zone.js/dist/zone.js') }}"></script>
+        <script src="{{ static('attrim/admin/node_modules/systemjs/dist/system.src.js') }}"></script>
+        <script src="{{ static('attrim/admin/systemjs.conf.js') }}"></script>
+        <!--suppress JSUnresolvedFunction -->
+        <script>
+            System.import('{{ static('attrim/admin/app/main.js') }}')
+                .catch(err => console.error(err));
+        </script>
+
+    {% endcall %}
+{% endblock %}
