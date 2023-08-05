@@ -1,0 +1,67 @@
+{% load barbeque_tags %}
+{% load i18n %}
+
+
+{% if field.name %}
+	{% set errors=field.errors %}
+{% endif %}
+
+{% block day %}
+	<label for="{{ day_id }}" class="form-field-select form-field-day{% if errors %} has-errors{% endif %}">
+		{% block day_inner %}
+			<span class="label">{% block day_label %}{% trans 'Day' %}{% endblock %}</span>
+			<span class="field">
+				{% block day_field %}
+					<select name="{{ day_field }}" id="{{ day_id }}"{% include 'floppyforms/attrs.html' %}>
+						<option value="">{% block day_option_label %}{% trans 'Day' %}{% endblock %}</option>
+						{% for option in day_choices %}
+							<option value="{{ option.0 }}"{% if option.0 == day_val %} selected="selected"{% endif %}>
+								{{ option.1 }}
+							</option>
+						{% endfor %}
+					</select>
+				{% endblock %}
+			</span>
+		{% endblock %}
+	</label>
+{% endblock %}
+
+{% block month %}
+	<label for="{{ month_id }}" class="form-field-select form-field-month{% if errors %} has-errors{% endif %}">
+		{% block month_inner %}
+			<span class="label">{% block month_label %}{% trans 'Month' %}{% endblock %}</span>
+			<span class="field">
+				{% block month_field %}
+					<select name="{{ month_field }}" id="{{ month_id }}"{% include 'floppyforms/attrs.html' %}>
+						<option value="">{% block month_option_label %}{% trans 'Month' %}{% endblock %}</option>
+						{% for option in month_choices %}
+							<option value="{{ option.0 }}"{% if option.0 == month_val %} selected="selected"{% endif %}>
+								{{ option.1 }}
+							</option>
+						{% endfor %}
+					</select>
+				{% endblock %}
+			</span>
+		{% endblock %}
+	</label>
+{% endblock %}
+
+{% block year %}
+	<label for="{{ year_id }}" class="form-field-select form-field-year{% if errors %} has-errors{% endif %}">
+		{% block year_inner %}
+			<span class="label">{% block year_label %}{% trans 'Year' %}{% endblock %}</span>
+			<span class="field">
+				{% block year_field %}
+					<select name="{{ year_field }}" id="{{ year_id }}"{% include 'floppyforms/attrs.html' %}>
+						<option value="">{% block year_option_label %}{% trans 'Year' %}{% endblock %}</option>
+						{% for option in year_choices %}
+							<option value="{{ option.0 }}"{% if option.0 == year_val %} selected="selected"{% endif %}>
+								{{ option.1 }}
+							</option>
+						{% endfor %}
+					</select>
+				{% endblock %}
+			</span>
+		{% endblock %}
+	</label>
+{% endblock %}

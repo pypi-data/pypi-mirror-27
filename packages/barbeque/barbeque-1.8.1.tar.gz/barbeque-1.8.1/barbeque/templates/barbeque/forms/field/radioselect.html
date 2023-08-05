@@ -1,0 +1,35 @@
+{% load barbeque_tags %}
+
+
+{% block choices %}
+	<ul>
+		{% for group_name, choices in optgroups %}
+			{% for choice in choices %}
+				{% block choice %}
+					{% if field.name %}
+						{% set errors=field.errors %}
+					{% endif %}
+
+					<li>
+						<label class="form-field-radioselect{% if errors %} has-errors{% endif %}" for="{{ attrs.id }}_{{ forloop.counter }}">
+							{% block field %}
+								<input
+									{% if choice.0 in value %}checked="checked"{% endif %}
+									type="radio"
+									id="{{ attrs.id }}_{{ forloop.counter }}"
+									name="{{ name }}"
+									value="{{ choice.0 }}"
+									class="field"
+									{% if required %} required{% endif %}
+								/>
+							{% endblock %}
+							<span class="label">
+								{% block label %}{{ choice.1 }}{% endblock %}
+							</span>
+						</label>
+					</li>
+				{% endblock %}
+			{% endfor %}
+		{% endfor %}
+	</ul>
+{% endblock %}
