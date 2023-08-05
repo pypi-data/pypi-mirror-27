@@ -1,0 +1,5 @@
+include *.rst
+include LICENSE
+include requirements.txt
+recursive-include sivicncdriver/configs example.json
+recursive-include sivicncdriver/ui/translate *.qm
