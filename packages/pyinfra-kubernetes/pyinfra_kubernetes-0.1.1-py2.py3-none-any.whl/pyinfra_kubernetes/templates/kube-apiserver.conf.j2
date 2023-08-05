@@ -1,0 +1,6 @@
+KUBE_APISERVER_ARGS=" \
+    --etcd-servers={{ ','.join(etcd_nodes) }} \
+    --service-cluster-ip-range={{ host.data.kubernetes_service_cidr }} \
+{% if service_kwargs %}{{ make_service_kwargs(service_kwargs) }}
+{% endif -%}
+"
