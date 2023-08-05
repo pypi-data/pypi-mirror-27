@@ -1,0 +1,10 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:profilehook="http://namespaces.zope.org/profilehook"
+    i18n_domain="ftw.gopip">
+
+    <adapter factory=".ordering.DefaultOrderingProxy" />
+    <adapter factory=".ordering.UnorderedOrderingProxy" name="unordered" />
+    <adapter factory=".ordering.PartialOrderingProxy" name="partial" />
+
+</configure>
