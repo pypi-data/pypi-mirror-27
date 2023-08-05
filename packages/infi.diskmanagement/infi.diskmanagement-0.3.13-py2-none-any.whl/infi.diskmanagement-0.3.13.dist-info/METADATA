@@ -1,0 +1,28 @@
+Metadata-Version: 2.0
+Name: infi.diskmanagement
+Version: 0.3.13
+Summary: Windows Disk Management wrapping in Python
+Home-page: https://github.com/Infinidat/infi.diskmanagement
+Author: Arnon Yaari
+Author-email: arnony@infinidat.com
+License: BSD
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: capacity
+Requires-Dist: infi.cwrap
+Requires-Dist: infi.devicemanager
+Requires-Dist: infi.instruct
+Requires-Dist: infi.pyutils
+Requires-Dist: infi.wioctl (>=0.1.3)
+Requires-Dist: infi.wmi
+Requires-Dist: setuptools
+Requires-Dist: waiting
+
+This module gives the same functionality as diskpart. But unlike diskpart, it does not use VDS, it uses SetupAPI and direct IOCTLs to the disks, volumes, and the mount and partitions managers
+
+
