@@ -1,0 +1,1288 @@
+{
+ "wall.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.code"
+ },
+ "wall.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.code.name"
+ },
+ "wall.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.code.output_flag"
+ },
+ "wall.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.code.parameters"
+ },
+ "wall.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.code.version"
+ },
+ "wall.description_2d[:]": {
+  "description": "Set of 2D wall descriptions, for each type of possible physics or engineering configurations necessary (gas tight vs wall with ports and holes, coarse vs fine representation, single contour limiter, disjoint gapped plasma facing components, ...).",
+  "data_type": "",
+  "coordinates": [
+   "1...3"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:]"
+ },
+ "wall.description_2d[:].limiter": {
+  "description": "Description of the immobile limiting surface(s) or plasma facing components for defining the Last Closed Flux Surface.",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter"
+ },
+ "wall.description_2d[:].limiter.type": {
+  "description": "Type of the limiter description. index = 0 for the official single contour limiter and 1 for the official disjoint PFC structure like first wall. Additional representations needed on a code-by-code basis follow same incremental pair tagging starting on flag=2",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.type"
+ },
+ "wall.description_2d[:].limiter.type.description": {
+  "description": "Verbose description {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.type.description"
+ },
+ "wall.description_2d[:].limiter.type.index": {
+  "description": "Integer identifier (enumeration index within a list) {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.type.index"
+ },
+ "wall.description_2d[:].limiter.type.name": {
+  "description": "Short string identifier {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.type.name"
+ },
+ "wall.description_2d[:].limiter.unit[:]": {
+  "description": "Set of limiter units",
+  "data_type": "",
+  "coordinates": [
+   "1...33"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:].limiter.unit[:]"
+ },
+ "wall.description_2d[:].limiter.unit[:].closed": {
+  "description": "Flag identifying whether the contour is closed (1) or open (0) {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.unit[:].closed"
+ },
+ "wall.description_2d[:].limiter.unit[:].name": {
+  "description": "Name of the limiter unit {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.unit[:].name"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline": {
+  "description": "Irregular outline of the limiting surface. Do NOT repeat the first point for closed contours",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline.r"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline.r_error_index"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline.r_error_lower"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline.r_error_upper"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].limiter.unit[:].outline.r"
+  ],
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline.z"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.description_2d[:].limiter.unit[:].outline.r"
+  ],
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline.z_error_index"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].limiter.unit[:].outline.r"
+  ],
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline.z_error_lower"
+ },
+ "wall.description_2d[:].limiter.unit[:].outline.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].limiter.unit[:].outline.r"
+  ],
+  "full_path": "wall.description_2d[:].limiter.unit[:].outline.z_error_upper"
+ },
+ "wall.description_2d[:].limiter.unit[:].resistivity": {
+  "description": "Resistivity of the limiter unit {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.unit[:].resistivity"
+ },
+ "wall.description_2d[:].limiter.unit[:].resistivity_error_index": {
+  "description": "Index in the error_description list for \"resistivity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.unit[:].resistivity_error_index"
+ },
+ "wall.description_2d[:].limiter.unit[:].resistivity_error_lower": {
+  "description": "Lower error for \"resistivity\" {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.unit[:].resistivity_error_lower"
+ },
+ "wall.description_2d[:].limiter.unit[:].resistivity_error_upper": {
+  "description": "Upper error for \"resistivity\" {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].limiter.unit[:].resistivity_error_upper"
+ },
+ "wall.description_2d[:].type": {
+  "description": "Type of the description. index = 0 for equilibrium codes (single closed limiter and vessel); 1 for gas-tight walls (disjoint PFCs with inner vessel as last limiter_unit; no vessel structure); 2 for free boundary codes (disjoint PFCs and vessel)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].type"
+ },
+ "wall.description_2d[:].type.description": {
+  "description": "Verbose description {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].type.description"
+ },
+ "wall.description_2d[:].type.index": {
+  "description": "Integer identifier (enumeration index within a list) {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].type.index"
+ },
+ "wall.description_2d[:].type.name": {
+  "description": "Short string identifier {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].type.name"
+ },
+ "wall.description_2d[:].vessel": {
+  "description": "Mechanical structure of the vacuum vessel. The vessel is described as a set of nested layers with given physics properties; Two representations are admitted for each vessel unit : annular (two contours) or block elements.",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel"
+ },
+ "wall.description_2d[:].vessel.type": {
+  "description": "Type of the vessel description. index = 0 for the official single/multiple annular vessel and 1 for the official block element representation for each vessel unit. Additional representations needed on a code-by-code basis follow same incremental pair tagging starting on flag=2",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.type"
+ },
+ "wall.description_2d[:].vessel.type.description": {
+  "description": "Verbose description {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.type.description"
+ },
+ "wall.description_2d[:].vessel.type.index": {
+  "description": "Integer identifier (enumeration index within a list) {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.type.index"
+ },
+ "wall.description_2d[:].vessel.type.name": {
+  "description": "Short string identifier {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.type.name"
+ },
+ "wall.description_2d[:].vessel.unit[:]": {
+  "description": "Set of vessel units",
+  "data_type": "",
+  "coordinates": [
+   "1...5"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:].vessel.unit[:]"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular": {
+  "description": "Annular representation of a vessel layer by two contours, inner and outer",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner": {
+  "description": "Inner vessel outline. Do NOT repeat the first point for closed contours",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner.z"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner.z_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner.z_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_inner.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].annular.outline_inner.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_inner.z_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer": {
+  "description": "Outer vessel outline. Do NOT repeat the first point for closed contours",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer.z"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer.z_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer.z_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.outline_outer.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].annular.outline_outer.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.outline_outer.z_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.resistivity": {
+  "description": "Resistivity of the vessel unit {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.resistivity"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.resistivity_error_index": {
+  "description": "Index in the error_description list for \"resistivity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.resistivity_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.resistivity_error_lower": {
+  "description": "Lower error for \"resistivity\" {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.resistivity_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].annular.resistivity_error_upper": {
+  "description": "Upper error for \"resistivity\" {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].annular.resistivity_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:]": {
+  "description": "Set of block elements",
+  "data_type": "",
+  "coordinates": [
+   "1...38"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:]"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].j_tor": {
+  "description": "Toroidal current induced in this block element",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].j_tor"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].j_tor.data": {
+  "description": "Toroidal current induced in this block element {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].element[:].j_tor.time"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].j_tor.data"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].j_tor.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].element[:].j_tor.time"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].j_tor.data_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].j_tor.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].element[:].j_tor.time"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].j_tor.data_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].j_tor.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].element[:].j_tor.time"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].j_tor.data_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].j_tor.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].j_tor.time"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].name": {
+  "description": "Name of the block element {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].name"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline": {
+  "description": "Outline of the block element. Do NOT repeat the first point for closed contours",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline.r"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline.r_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline.r_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline.r_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].element[:].outline.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline.z"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].element[:].outline.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline.z_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].element[:].outline.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline.z_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].outline.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.description_2d[:].vessel.unit[:].element[:].outline.r"
+  ],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].outline.z_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].resistance": {
+  "description": "Resistivity of the block element {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].resistance"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].resistance_error_index": {
+  "description": "Index in the error_description list for \"resistance\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].resistance_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].resistance_error_lower": {
+  "description": "Lower error for \"resistance\" {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].resistance_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].resistance_error_upper": {
+  "description": "Upper error for \"resistance\" {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].resistance_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].resistivity": {
+  "description": "Resistivity of the block element {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].resistivity"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].resistivity_error_index": {
+  "description": "Index in the error_description list for \"resistivity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].resistivity_error_index"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].resistivity_error_lower": {
+  "description": "Lower error for \"resistivity\" {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].resistivity_error_lower"
+ },
+ "wall.description_2d[:].vessel.unit[:].element[:].resistivity_error_upper": {
+  "description": "Upper error for \"resistivity\" {static} [ohm.m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].element[:].resistivity_error_upper"
+ },
+ "wall.description_2d[:].vessel.unit[:].name": {
+  "description": "Name of the vessel unit {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.description_2d[:].vessel.unit[:].name"
+ },
+ "wall.global_quantities": {
+  "description": "Simple 0D description of plasma-wall interaction",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.global_quantities"
+ },
+ "wall.global_quantities.electrons": {
+  "description": "Quantities related to electrons",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.electrons"
+ },
+ "wall.global_quantities.electrons.gas_puff": {
+  "description": "Gas puff rate (in equivalent electrons) {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.gas_puff"
+ },
+ "wall.global_quantities.electrons.gas_puff_error_index": {
+  "description": "Index in the error_description list for \"gas_puff\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.gas_puff_error_index"
+ },
+ "wall.global_quantities.electrons.gas_puff_error_lower": {
+  "description": "Lower error for \"gas_puff\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.gas_puff_error_lower"
+ },
+ "wall.global_quantities.electrons.gas_puff_error_upper": {
+  "description": "Upper error for \"gas_puff\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.gas_puff_error_upper"
+ },
+ "wall.global_quantities.electrons.particle_flux_from_plasma": {
+  "description": "Particle flux from the plasma (in equivalent electrons) {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.particle_flux_from_plasma"
+ },
+ "wall.global_quantities.electrons.particle_flux_from_plasma_error_index": {
+  "description": "Index in the error_description list for \"particle_flux_from_plasma\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.particle_flux_from_plasma_error_index"
+ },
+ "wall.global_quantities.electrons.particle_flux_from_plasma_error_lower": {
+  "description": "Lower error for \"particle_flux_from_plasma\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.particle_flux_from_plasma_error_lower"
+ },
+ "wall.global_quantities.electrons.particle_flux_from_plasma_error_upper": {
+  "description": "Upper error for \"particle_flux_from_plasma\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.particle_flux_from_plasma_error_upper"
+ },
+ "wall.global_quantities.electrons.particle_flux_from_wall": {
+  "description": "Particle flux from the wall corresponding to the conversion into various neutral types (first dimension: 1: cold; 2: thermal; 3: fast), in equivalent electrons {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "base_coord": true,
+  "full_path": "wall.global_quantities.electrons.particle_flux_from_wall"
+ },
+ "wall.global_quantities.electrons.particle_flux_from_wall_error_index": {
+  "description": "Index in the error_description list for \"particle_flux_from_wall\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.particle_flux_from_wall_error_index"
+ },
+ "wall.global_quantities.electrons.particle_flux_from_wall_error_lower": {
+  "description": "Lower error for \"particle_flux_from_wall\" {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.particle_flux_from_wall_error_lower"
+ },
+ "wall.global_quantities.electrons.particle_flux_from_wall_error_upper": {
+  "description": "Upper error for \"particle_flux_from_wall\" {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.particle_flux_from_wall_error_upper"
+ },
+ "wall.global_quantities.electrons.pumping_speed": {
+  "description": "Pumped particle flux (in equivalent electrons) {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.pumping_speed"
+ },
+ "wall.global_quantities.electrons.pumping_speed_error_index": {
+  "description": "Index in the error_description list for \"pumping_speed\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.pumping_speed_error_index"
+ },
+ "wall.global_quantities.electrons.pumping_speed_error_lower": {
+  "description": "Lower error for \"pumping_speed\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.pumping_speed_error_lower"
+ },
+ "wall.global_quantities.electrons.pumping_speed_error_upper": {
+  "description": "Upper error for \"pumping_speed\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.electrons.pumping_speed_error_upper"
+ },
+ "wall.global_quantities.neutral[:]": {
+  "description": "Quantities related to the various neutral species",
+  "data_type": "",
+  "coordinates": [
+   "1...5"
+  ],
+  "base_coord": true,
+  "full_path": "wall.global_quantities.neutral[:]"
+ },
+ "wall.global_quantities.neutral[:].element[:]": {
+  "description": "List of elements forming the atom or molecule",
+  "data_type": "",
+  "coordinates": [
+   "1...5"
+  ],
+  "base_coord": true,
+  "full_path": "wall.global_quantities.neutral[:].element[:]"
+ },
+ "wall.global_quantities.neutral[:].element[:].a": {
+  "description": "Mass of atom {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].a"
+ },
+ "wall.global_quantities.neutral[:].element[:].a_error_index": {
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].a_error_index"
+ },
+ "wall.global_quantities.neutral[:].element[:].a_error_lower": {
+  "description": "Lower error for \"a\" {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].a_error_lower"
+ },
+ "wall.global_quantities.neutral[:].element[:].a_error_upper": {
+  "description": "Upper error for \"a\" {constant} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].a_error_upper"
+ },
+ "wall.global_quantities.neutral[:].element[:].multiplicity": {
+  "description": "Multiplicity of the atom {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].multiplicity"
+ },
+ "wall.global_quantities.neutral[:].element[:].multiplicity_error_index": {
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].multiplicity_error_index"
+ },
+ "wall.global_quantities.neutral[:].element[:].multiplicity_error_lower": {
+  "description": "Lower error for \"multiplicity\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].multiplicity_error_lower"
+ },
+ "wall.global_quantities.neutral[:].element[:].multiplicity_error_upper": {
+  "description": "Upper error for \"multiplicity\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].multiplicity_error_upper"
+ },
+ "wall.global_quantities.neutral[:].element[:].z_n": {
+  "description": "Nuclear charge {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].z_n"
+ },
+ "wall.global_quantities.neutral[:].element[:].z_n_error_index": {
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].z_n_error_index"
+ },
+ "wall.global_quantities.neutral[:].element[:].z_n_error_lower": {
+  "description": "Lower error for \"z_n\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].z_n_error_lower"
+ },
+ "wall.global_quantities.neutral[:].element[:].z_n_error_upper": {
+  "description": "Upper error for \"z_n\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].element[:].z_n_error_upper"
+ },
+ "wall.global_quantities.neutral[:].gas_puff": {
+  "description": "Gas puff rate for that species {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].gas_puff"
+ },
+ "wall.global_quantities.neutral[:].gas_puff_error_index": {
+  "description": "Index in the error_description list for \"gas_puff\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].gas_puff_error_index"
+ },
+ "wall.global_quantities.neutral[:].gas_puff_error_lower": {
+  "description": "Lower error for \"gas_puff\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].gas_puff_error_lower"
+ },
+ "wall.global_quantities.neutral[:].gas_puff_error_upper": {
+  "description": "Upper error for \"gas_puff\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].gas_puff_error_upper"
+ },
+ "wall.global_quantities.neutral[:].label": {
+  "description": "String identifying the species (e.g. H, D, CD4, ...) {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.global_quantities.neutral[:].label"
+ },
+ "wall.global_quantities.neutral[:].particle_flux_from_plasma": {
+  "description": "Particle flux from the plasma for that species {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].particle_flux_from_plasma"
+ },
+ "wall.global_quantities.neutral[:].particle_flux_from_plasma_error_index": {
+  "description": "Index in the error_description list for \"particle_flux_from_plasma\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].particle_flux_from_plasma_error_index"
+ },
+ "wall.global_quantities.neutral[:].particle_flux_from_plasma_error_lower": {
+  "description": "Lower error for \"particle_flux_from_plasma\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].particle_flux_from_plasma_error_lower"
+ },
+ "wall.global_quantities.neutral[:].particle_flux_from_plasma_error_upper": {
+  "description": "Upper error for \"particle_flux_from_plasma\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].particle_flux_from_plasma_error_upper"
+ },
+ "wall.global_quantities.neutral[:].particle_flux_from_wall": {
+  "description": "Particle flux from the wall corresponding to the conversion into various neutral types (first dimension: 1: cold; 2: thermal; 3: fast) {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "base_coord": true,
+  "full_path": "wall.global_quantities.neutral[:].particle_flux_from_wall"
+ },
+ "wall.global_quantities.neutral[:].particle_flux_from_wall_error_index": {
+  "description": "Index in the error_description list for \"particle_flux_from_wall\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].particle_flux_from_wall_error_index"
+ },
+ "wall.global_quantities.neutral[:].particle_flux_from_wall_error_lower": {
+  "description": "Lower error for \"particle_flux_from_wall\" {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].particle_flux_from_wall_error_lower"
+ },
+ "wall.global_quantities.neutral[:].particle_flux_from_wall_error_upper": {
+  "description": "Upper error for \"particle_flux_from_wall\" {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].particle_flux_from_wall_error_upper"
+ },
+ "wall.global_quantities.neutral[:].pumping_speed": {
+  "description": "Pumped particle flux for that species {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].pumping_speed"
+ },
+ "wall.global_quantities.neutral[:].pumping_speed_error_index": {
+  "description": "Index in the error_description list for \"pumping_speed\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].pumping_speed_error_index"
+ },
+ "wall.global_quantities.neutral[:].pumping_speed_error_lower": {
+  "description": "Lower error for \"pumping_speed\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].pumping_speed_error_lower"
+ },
+ "wall.global_quantities.neutral[:].pumping_speed_error_upper": {
+  "description": "Upper error for \"pumping_speed\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].pumping_speed_error_upper"
+ },
+ "wall.global_quantities.neutral[:].recycling_energy_coefficient": {
+  "description": "Energy recycling coefficient corresponding to the conversion into various neutral types (first dimension: 1: cold; 2: thermal; 3: fast) {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "base_coord": true,
+  "full_path": "wall.global_quantities.neutral[:].recycling_energy_coefficient"
+ },
+ "wall.global_quantities.neutral[:].recycling_energy_coefficient_error_index": {
+  "description": "Index in the error_description list for \"recycling_energy_coefficient\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].recycling_energy_coefficient_error_index"
+ },
+ "wall.global_quantities.neutral[:].recycling_energy_coefficient_error_lower": {
+  "description": "Lower error for \"recycling_energy_coefficient\" {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].recycling_energy_coefficient_error_lower"
+ },
+ "wall.global_quantities.neutral[:].recycling_energy_coefficient_error_upper": {
+  "description": "Upper error for \"recycling_energy_coefficient\" {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].recycling_energy_coefficient_error_upper"
+ },
+ "wall.global_quantities.neutral[:].recycling_particles_coefficient": {
+  "description": "Particle recycling coefficient corresponding to the conversion into various neutral types (first dimension: 1: cold; 2: thermal; 3: fast) {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "base_coord": true,
+  "full_path": "wall.global_quantities.neutral[:].recycling_particles_coefficient"
+ },
+ "wall.global_quantities.neutral[:].recycling_particles_coefficient_error_index": {
+  "description": "Index in the error_description list for \"recycling_particles_coefficient\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].recycling_particles_coefficient_error_index"
+ },
+ "wall.global_quantities.neutral[:].recycling_particles_coefficient_error_lower": {
+  "description": "Lower error for \"recycling_particles_coefficient\" {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].recycling_particles_coefficient_error_lower"
+ },
+ "wall.global_quantities.neutral[:].recycling_particles_coefficient_error_upper": {
+  "description": "Upper error for \"recycling_particles_coefficient\" {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].recycling_particles_coefficient_error_upper"
+ },
+ "wall.global_quantities.neutral[:].sputtering_chemical_coefficient": {
+  "description": "Effective coefficient of chemical sputtering for various neutral types (first dimension: 1: cold; 2: thermal; 3: fast) {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "base_coord": true,
+  "full_path": "wall.global_quantities.neutral[:].sputtering_chemical_coefficient"
+ },
+ "wall.global_quantities.neutral[:].sputtering_chemical_coefficient_error_index": {
+  "description": "Index in the error_description list for \"sputtering_chemical_coefficient\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].sputtering_chemical_coefficient_error_index"
+ },
+ "wall.global_quantities.neutral[:].sputtering_chemical_coefficient_error_lower": {
+  "description": "Lower error for \"sputtering_chemical_coefficient\" {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].sputtering_chemical_coefficient_error_lower"
+ },
+ "wall.global_quantities.neutral[:].sputtering_chemical_coefficient_error_upper": {
+  "description": "Upper error for \"sputtering_chemical_coefficient\" {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].sputtering_chemical_coefficient_error_upper"
+ },
+ "wall.global_quantities.neutral[:].sputtering_physical_coefficient": {
+  "description": "Effective coefficient of physical sputtering for various neutral types (first dimension: 1: cold; 2: thermal; 3: fast) {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "base_coord": true,
+  "full_path": "wall.global_quantities.neutral[:].sputtering_physical_coefficient"
+ },
+ "wall.global_quantities.neutral[:].sputtering_physical_coefficient_error_index": {
+  "description": "Index in the error_description list for \"sputtering_physical_coefficient\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].sputtering_physical_coefficient_error_index"
+ },
+ "wall.global_quantities.neutral[:].sputtering_physical_coefficient_error_lower": {
+  "description": "Lower error for \"sputtering_physical_coefficient\" {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].sputtering_physical_coefficient_error_lower"
+ },
+ "wall.global_quantities.neutral[:].sputtering_physical_coefficient_error_upper": {
+  "description": "Upper error for \"sputtering_physical_coefficient\" {dynamic} [-]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...3",
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].sputtering_physical_coefficient_error_upper"
+ },
+ "wall.global_quantities.neutral[:].wall_inventory": {
+  "description": "Wall inventory, i.e. cumulated exchange of neutral species between plasma and wall from t = 0, positive if a species has gone to the wall, for that species {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].wall_inventory"
+ },
+ "wall.global_quantities.neutral[:].wall_inventory_error_index": {
+  "description": "Index in the error_description list for \"wall_inventory\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].wall_inventory_error_index"
+ },
+ "wall.global_quantities.neutral[:].wall_inventory_error_lower": {
+  "description": "Lower error for \"wall_inventory\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].wall_inventory_error_lower"
+ },
+ "wall.global_quantities.neutral[:].wall_inventory_error_upper": {
+  "description": "Upper error for \"wall_inventory\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.neutral[:].wall_inventory_error_upper"
+ },
+ "wall.global_quantities.power_from_plasma": {
+  "description": "Power flowing from the plasma to the wall {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.power_from_plasma"
+ },
+ "wall.global_quantities.power_from_plasma_error_index": {
+  "description": "Index in the error_description list for \"power_from_plasma\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.power_from_plasma_error_index"
+ },
+ "wall.global_quantities.power_from_plasma_error_lower": {
+  "description": "Lower error for \"power_from_plasma\" {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.power_from_plasma_error_lower"
+ },
+ "wall.global_quantities.power_from_plasma_error_upper": {
+  "description": "Upper error for \"power_from_plasma\" {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.power_from_plasma_error_upper"
+ },
+ "wall.global_quantities.power_to_cooling": {
+  "description": "Power to cooling systems {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.power_to_cooling"
+ },
+ "wall.global_quantities.power_to_cooling_error_index": {
+  "description": "Index in the error_description list for \"power_to_cooling\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.power_to_cooling_error_index"
+ },
+ "wall.global_quantities.power_to_cooling_error_lower": {
+  "description": "Lower error for \"power_to_cooling\" {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.power_to_cooling_error_lower"
+ },
+ "wall.global_quantities.power_to_cooling_error_upper": {
+  "description": "Upper error for \"power_to_cooling\" {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.power_to_cooling_error_upper"
+ },
+ "wall.global_quantities.temperature": {
+  "description": "Wall temperature {dynamic} [K]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.temperature"
+ },
+ "wall.global_quantities.temperature_error_index": {
+  "description": "Index in the error_description list for \"temperature\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.temperature_error_index"
+ },
+ "wall.global_quantities.temperature_error_lower": {
+  "description": "Lower error for \"temperature\" {dynamic} [K]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.temperature_error_lower"
+ },
+ "wall.global_quantities.temperature_error_upper": {
+  "description": "Upper error for \"temperature\" {dynamic} [K]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "wall.time"
+  ],
+  "full_path": "wall.global_quantities.temperature_error_upper"
+ },
+ "wall.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "wall.ids_properties"
+ },
+ "wall.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "wall.ids_properties.comment"
+ },
+ "wall.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "wall.ids_properties.homogeneous_time"
+ },
+ "wall.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "wall.time"
+ }
+}

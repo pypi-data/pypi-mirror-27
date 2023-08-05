@@ -1,0 +1,1405 @@
+{
+ "antennas.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.code"
+ },
+ "antennas.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "antennas.code.name"
+ },
+ "antennas.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "antennas.time"
+  ],
+  "full_path": "antennas.code.output_flag"
+ },
+ "antennas.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "antennas.code.parameters"
+ },
+ "antennas.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "antennas.code.version"
+ },
+ "antennas.ec[:]": {
+  "description": "Electron Cyclotron antennas",
+  "data_type": "",
+  "coordinates": [
+   "1...10"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:]"
+ },
+ "antennas.ec[:].beam": {
+  "description": "Beam characteristics",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].beam"
+ },
+ "antennas.ec[:].beam.phase": {
+  "description": "Phase ellipse characteristics",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].beam.phase"
+ },
+ "antennas.ec[:].beam.phase.angle": {
+  "description": "Rotation angle for the phase ellipse",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].beam.phase.angle"
+ },
+ "antennas.ec[:].beam.phase.angle.data": {
+  "description": "Rotation angle for the phase ellipse {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].beam.phase.angle.time"
+  ],
+  "full_path": "antennas.ec[:].beam.phase.angle.data"
+ },
+ "antennas.ec[:].beam.phase.angle.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ec[:].beam.phase.angle.time"
+  ],
+  "full_path": "antennas.ec[:].beam.phase.angle.data_error_index"
+ },
+ "antennas.ec[:].beam.phase.angle.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].beam.phase.angle.time"
+  ],
+  "full_path": "antennas.ec[:].beam.phase.angle.data_error_lower"
+ },
+ "antennas.ec[:].beam.phase.angle.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].beam.phase.angle.time"
+  ],
+  "full_path": "antennas.ec[:].beam.phase.angle.data_error_upper"
+ },
+ "antennas.ec[:].beam.phase.angle.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].beam.phase.angle.time"
+ },
+ "antennas.ec[:].beam.phase.curvature": {
+  "description": "Inverse curvature radii for the phase ellipse, positive/negative for divergent/convergent beams",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].beam.phase.curvature"
+ },
+ "antennas.ec[:].beam.phase.curvature.data": {
+  "description": "Inverse curvature radii for the phase ellipse, positive/negative for divergent/convergent beams {dynamic} [m^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...2",
+   "antennas.ec[:].beam.phase.curvature.time"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].beam.phase.curvature.data"
+ },
+ "antennas.ec[:].beam.phase.curvature.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...2",
+   "antennas.ec[:].beam.phase.curvature.time"
+  ],
+  "full_path": "antennas.ec[:].beam.phase.curvature.data_error_index"
+ },
+ "antennas.ec[:].beam.phase.curvature.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...2",
+   "antennas.ec[:].beam.phase.curvature.time"
+  ],
+  "full_path": "antennas.ec[:].beam.phase.curvature.data_error_lower"
+ },
+ "antennas.ec[:].beam.phase.curvature.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...2",
+   "antennas.ec[:].beam.phase.curvature.time"
+  ],
+  "full_path": "antennas.ec[:].beam.phase.curvature.data_error_upper"
+ },
+ "antennas.ec[:].beam.phase.curvature.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].beam.phase.curvature.time"
+ },
+ "antennas.ec[:].beam.spot": {
+  "description": "Spot ellipse characteristics",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].beam.spot"
+ },
+ "antennas.ec[:].beam.spot.angle": {
+  "description": "Rotation angle for the spot ellipse",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].beam.spot.angle"
+ },
+ "antennas.ec[:].beam.spot.angle.data": {
+  "description": "Rotation angle for the spot ellipse {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].beam.spot.angle.time"
+  ],
+  "full_path": "antennas.ec[:].beam.spot.angle.data"
+ },
+ "antennas.ec[:].beam.spot.angle.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ec[:].beam.spot.angle.time"
+  ],
+  "full_path": "antennas.ec[:].beam.spot.angle.data_error_index"
+ },
+ "antennas.ec[:].beam.spot.angle.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].beam.spot.angle.time"
+  ],
+  "full_path": "antennas.ec[:].beam.spot.angle.data_error_lower"
+ },
+ "antennas.ec[:].beam.spot.angle.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].beam.spot.angle.time"
+  ],
+  "full_path": "antennas.ec[:].beam.spot.angle.data_error_upper"
+ },
+ "antennas.ec[:].beam.spot.angle.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].beam.spot.angle.time"
+ },
+ "antennas.ec[:].beam.spot.size": {
+  "description": "Size of the spot ellipse",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].beam.spot.size"
+ },
+ "antennas.ec[:].beam.spot.size.data": {
+  "description": "Size of the spot ellipse {dynamic} [m]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...2",
+   "antennas.ec[:].beam.spot.size.time"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].beam.spot.size.data"
+ },
+ "antennas.ec[:].beam.spot.size.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...2",
+   "antennas.ec[:].beam.spot.size.time"
+  ],
+  "full_path": "antennas.ec[:].beam.spot.size.data_error_index"
+ },
+ "antennas.ec[:].beam.spot.size.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...2",
+   "antennas.ec[:].beam.spot.size.time"
+  ],
+  "full_path": "antennas.ec[:].beam.spot.size.data_error_lower"
+ },
+ "antennas.ec[:].beam.spot.size.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "1...2",
+   "antennas.ec[:].beam.spot.size.time"
+  ],
+  "full_path": "antennas.ec[:].beam.spot.size.data_error_upper"
+ },
+ "antennas.ec[:].beam.spot.size.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].beam.spot.size.time"
+ },
+ "antennas.ec[:].frequency": {
+  "description": "Frequency {static} [Hz]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].frequency"
+ },
+ "antennas.ec[:].frequency_error_index": {
+  "description": "Index in the error_description list for \"frequency\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].frequency_error_index"
+ },
+ "antennas.ec[:].frequency_error_lower": {
+  "description": "Lower error for \"frequency\" {static} [Hz]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].frequency_error_lower"
+ },
+ "antennas.ec[:].frequency_error_upper": {
+  "description": "Upper error for \"frequency\" {static} [Hz]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].frequency_error_upper"
+ },
+ "antennas.ec[:].launching_angle_pol": {
+  "description": "Poloidal launching angle between the horizontal plane and the poloidal component of the nominal beam centerline. tan(angle_pol)=-k_z/k_R;",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].launching_angle_pol"
+ },
+ "antennas.ec[:].launching_angle_pol.data": {
+  "description": "Poloidal launching angle between the horizontal plane and the poloidal component of the nominal beam centerline. tan(angle_pol)=-k_z/k_R; {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_angle_pol.time"
+  ],
+  "full_path": "antennas.ec[:].launching_angle_pol.data"
+ },
+ "antennas.ec[:].launching_angle_pol.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ec[:].launching_angle_pol.time"
+  ],
+  "full_path": "antennas.ec[:].launching_angle_pol.data_error_index"
+ },
+ "antennas.ec[:].launching_angle_pol.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_angle_pol.time"
+  ],
+  "full_path": "antennas.ec[:].launching_angle_pol.data_error_lower"
+ },
+ "antennas.ec[:].launching_angle_pol.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_angle_pol.time"
+  ],
+  "full_path": "antennas.ec[:].launching_angle_pol.data_error_upper"
+ },
+ "antennas.ec[:].launching_angle_pol.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].launching_angle_pol.time"
+ },
+ "antennas.ec[:].launching_angle_tor": {
+  "description": "Toroidal launching angle between the poloidal plane and the nominal beam centerline. sin(angle_tor)=k_phi",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].launching_angle_tor"
+ },
+ "antennas.ec[:].launching_angle_tor.data": {
+  "description": "Toroidal launching angle between the poloidal plane and the nominal beam centerline. sin(angle_tor)=k_phi {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_angle_tor.time"
+  ],
+  "full_path": "antennas.ec[:].launching_angle_tor.data"
+ },
+ "antennas.ec[:].launching_angle_tor.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ec[:].launching_angle_tor.time"
+  ],
+  "full_path": "antennas.ec[:].launching_angle_tor.data_error_index"
+ },
+ "antennas.ec[:].launching_angle_tor.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_angle_tor.time"
+  ],
+  "full_path": "antennas.ec[:].launching_angle_tor.data_error_lower"
+ },
+ "antennas.ec[:].launching_angle_tor.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_angle_tor.time"
+  ],
+  "full_path": "antennas.ec[:].launching_angle_tor.data_error_upper"
+ },
+ "antennas.ec[:].launching_angle_tor.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].launching_angle_tor.time"
+ },
+ "antennas.ec[:].launching_position": {
+  "description": "Launching position of the beam",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].launching_position"
+ },
+ "antennas.ec[:].launching_position.phi": {
+  "description": "Toroidal angle",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].launching_position.phi"
+ },
+ "antennas.ec[:].launching_position.phi.data": {
+  "description": "Toroidal angle {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.phi.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.phi.data"
+ },
+ "antennas.ec[:].launching_position.phi.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.phi.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.phi.data_error_index"
+ },
+ "antennas.ec[:].launching_position.phi.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.phi.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.phi.data_error_lower"
+ },
+ "antennas.ec[:].launching_position.phi.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.phi.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.phi.data_error_upper"
+ },
+ "antennas.ec[:].launching_position.phi.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].launching_position.phi.time"
+ },
+ "antennas.ec[:].launching_position.r": {
+  "description": "Major radius",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].launching_position.r"
+ },
+ "antennas.ec[:].launching_position.r.data": {
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.r.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.r.data"
+ },
+ "antennas.ec[:].launching_position.r.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.r.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.r.data_error_index"
+ },
+ "antennas.ec[:].launching_position.r.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.r.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.r.data_error_lower"
+ },
+ "antennas.ec[:].launching_position.r.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.r.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.r.data_error_upper"
+ },
+ "antennas.ec[:].launching_position.r.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].launching_position.r.time"
+ },
+ "antennas.ec[:].launching_position.z": {
+  "description": "Height",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].launching_position.z"
+ },
+ "antennas.ec[:].launching_position.z.data": {
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.z.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.z.data"
+ },
+ "antennas.ec[:].launching_position.z.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.z.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.z.data_error_index"
+ },
+ "antennas.ec[:].launching_position.z.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.z.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.z.data_error_lower"
+ },
+ "antennas.ec[:].launching_position.z.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].launching_position.z.time"
+  ],
+  "full_path": "antennas.ec[:].launching_position.z.data_error_upper"
+ },
+ "antennas.ec[:].launching_position.z.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].launching_position.z.time"
+ },
+ "antennas.ec[:].mode": {
+  "description": "Incoming wave mode (+ or -1 for O/X mode)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].mode"
+ },
+ "antennas.ec[:].mode.data": {
+  "description": "Incoming wave mode (+ or -1 for O/X mode) {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "antennas.ec[:].mode.time"
+  ],
+  "full_path": "antennas.ec[:].mode.data"
+ },
+ "antennas.ec[:].mode.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].mode.time"
+ },
+ "antennas.ec[:].name": {
+  "description": "Name of the antenna {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].name"
+ },
+ "antennas.ec[:].power": {
+  "description": "Power",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ec[:].power"
+ },
+ "antennas.ec[:].power.data": {
+  "description": "Power {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].power.time"
+  ],
+  "full_path": "antennas.ec[:].power.data"
+ },
+ "antennas.ec[:].power.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ec[:].power.time"
+  ],
+  "full_path": "antennas.ec[:].power.data_error_index"
+ },
+ "antennas.ec[:].power.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].power.time"
+  ],
+  "full_path": "antennas.ec[:].power.data_error_lower"
+ },
+ "antennas.ec[:].power.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ec[:].power.time"
+  ],
+  "full_path": "antennas.ec[:].power.data_error_upper"
+ },
+ "antennas.ec[:].power.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ec[:].power.time"
+ },
+ "antennas.ic[:]": {
+  "description": "Ion Cyclotron antennas",
+  "data_type": "",
+  "coordinates": [
+   "1...5"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:]"
+ },
+ "antennas.ic[:].frequency": {
+  "description": "Frequency",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].frequency"
+ },
+ "antennas.ic[:].frequency.data": {
+  "description": "Frequency {dynamic} [Hz]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].frequency.time"
+  ],
+  "full_path": "antennas.ic[:].frequency.data"
+ },
+ "antennas.ic[:].frequency.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ic[:].frequency.time"
+  ],
+  "full_path": "antennas.ic[:].frequency.data_error_index"
+ },
+ "antennas.ic[:].frequency.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [Hz]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].frequency.time"
+  ],
+  "full_path": "antennas.ic[:].frequency.data_error_lower"
+ },
+ "antennas.ic[:].frequency.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [Hz]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].frequency.time"
+  ],
+  "full_path": "antennas.ic[:].frequency.data_error_upper"
+ },
+ "antennas.ic[:].frequency.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].frequency.time"
+ },
+ "antennas.ic[:].name": {
+  "description": "Name of the antenna {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].name"
+ },
+ "antennas.ic[:].power": {
+  "description": "Power",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].power"
+ },
+ "antennas.ic[:].power.data": {
+  "description": "Power {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].power.time"
+  ],
+  "full_path": "antennas.ic[:].power.data"
+ },
+ "antennas.ic[:].power.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ic[:].power.time"
+  ],
+  "full_path": "antennas.ic[:].power.data_error_index"
+ },
+ "antennas.ic[:].power.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].power.time"
+  ],
+  "full_path": "antennas.ic[:].power.data_error_lower"
+ },
+ "antennas.ic[:].power.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [W]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].power.time"
+  ],
+  "full_path": "antennas.ic[:].power.data_error_upper"
+ },
+ "antennas.ic[:].power.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].power.time"
+ },
+ "antennas.ic[:].strap[:]": {
+  "description": "Properties of IC antenna straps",
+  "data_type": "",
+  "coordinates": [
+   "1...10"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].strap[:]"
+ },
+ "antennas.ic[:].strap[:].current": {
+  "description": "Root mean square current flowing along the strap",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].current"
+ },
+ "antennas.ic[:].strap[:].current.data": {
+  "description": "Root mean square current flowing along the strap {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].current.time"
+  ],
+  "full_path": "antennas.ic[:].strap[:].current.data"
+ },
+ "antennas.ic[:].strap[:].current.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].current.time"
+  ],
+  "full_path": "antennas.ic[:].strap[:].current.data_error_index"
+ },
+ "antennas.ic[:].strap[:].current.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].current.time"
+  ],
+  "full_path": "antennas.ic[:].strap[:].current.data_error_lower"
+ },
+ "antennas.ic[:].strap[:].current.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].current.time"
+  ],
+  "full_path": "antennas.ic[:].strap[:].current.data_error_upper"
+ },
+ "antennas.ic[:].strap[:].current.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].strap[:].current.time"
+ },
+ "antennas.ic[:].strap[:].distance_to_conductor": {
+  "description": "Distance to conducting wall or other conductor behind the antenna strap {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].distance_to_conductor"
+ },
+ "antennas.ic[:].strap[:].distance_to_conductor_error_index": {
+  "description": "Index in the error_description list for \"distance_to_conductor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].distance_to_conductor_error_index"
+ },
+ "antennas.ic[:].strap[:].distance_to_conductor_error_lower": {
+  "description": "Lower error for \"distance_to_conductor\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].distance_to_conductor_error_lower"
+ },
+ "antennas.ic[:].strap[:].distance_to_conductor_error_upper": {
+  "description": "Upper error for \"distance_to_conductor\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].distance_to_conductor_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry": {
+  "description": "Cross-sectional shape of the strap",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry"
+ },
+ "antennas.ic[:].strap[:].geometry.geometry_type": {
+  "description": "Type used to describe the element shape (1:'outline', 2:'rectangle', 3:'oblique') {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.geometry_type"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique": {
+  "description": "Trapezoidal description of the element",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.alpha": {
+  "description": "Inclination of first angle TBD {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.alpha"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.alpha_error_index": {
+  "description": "Index in the error_description list for \"alpha\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.alpha_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.alpha_error_lower": {
+  "description": "Lower error for \"alpha\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.alpha_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.alpha_error_upper": {
+  "description": "Upper error for \"alpha\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.alpha_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.beta": {
+  "description": "Inclination of second angle TBD {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.beta"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.beta_error_index": {
+  "description": "Index in the error_description list for \"beta\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.beta_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.beta_error_lower": {
+  "description": "Lower error for \"beta\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.beta_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.beta_error_upper": {
+  "description": "Upper error for \"beta\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.beta_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.length": {
+  "description": "Length {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.length"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.length_error_index": {
+  "description": "Index in the error_description list for \"length\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.length_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.length_error_lower": {
+  "description": "Lower error for \"length\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.length_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.length_error_upper": {
+  "description": "Upper error for \"length\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.length_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.r": {
+  "description": "Geometric centre R {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.r"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.r_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.r_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.r_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.thickness": {
+  "description": "Thickness {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.thickness"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.thickness_error_index": {
+  "description": "Index in the error_description list for \"thickness\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.thickness_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.thickness_error_lower": {
+  "description": "Lower error for \"thickness\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.thickness_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.thickness_error_upper": {
+  "description": "Upper error for \"thickness\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.thickness_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.z": {
+  "description": "Geometric centre Z {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.z"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.z_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.z_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.oblique.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.oblique.z_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.outline": {
+  "description": "Irregular outline of the element",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.outline"
+ },
+ "antennas.ic[:].strap[:].geometry.outline.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].strap[:].geometry.outline.r"
+ },
+ "antennas.ic[:].strap[:].geometry.outline.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "antennas.ic[:].strap[:].geometry.outline.r_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.outline.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "antennas.ic[:].strap[:].geometry.outline.r_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.outline.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "antennas.ic[:].strap[:].geometry.outline.r_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.outline.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].geometry.outline.r"
+  ],
+  "full_path": "antennas.ic[:].strap[:].geometry.outline.z"
+ },
+ "antennas.ic[:].strap[:].geometry.outline.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].geometry.outline.r"
+  ],
+  "full_path": "antennas.ic[:].strap[:].geometry.outline.z_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.outline.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].geometry.outline.r"
+  ],
+  "full_path": "antennas.ic[:].strap[:].geometry.outline.z_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.outline.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].geometry.outline.r"
+  ],
+  "full_path": "antennas.ic[:].strap[:].geometry.outline.z_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle": {
+  "description": "Rectangular description of the element",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.height": {
+  "description": "Vertical full height {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.height"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.height_error_index": {
+  "description": "Index in the error_description list for \"height\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.height_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.height_error_lower": {
+  "description": "Lower error for \"height\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.height_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.height_error_upper": {
+  "description": "Upper error for \"height\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.height_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.r": {
+  "description": "Geometric centre R {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.r"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.r_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.r_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.r_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.width": {
+  "description": "Horizontal full width {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.width"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.width_error_index": {
+  "description": "Index in the error_description list for \"width\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.width_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.width_error_lower": {
+  "description": "Lower error for \"width\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.width_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.width_error_upper": {
+  "description": "Upper error for \"width\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.width_error_upper"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.z": {
+  "description": "Geometric centre Z {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.z"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.z_error_index"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.z_error_lower"
+ },
+ "antennas.ic[:].strap[:].geometry.rectangle.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].geometry.rectangle.z_error_upper"
+ },
+ "antennas.ic[:].strap[:].phase": {
+  "description": "Phase of the strap current",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].phase"
+ },
+ "antennas.ic[:].strap[:].phase.data": {
+  "description": "Phase of the strap current {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].phase.time"
+  ],
+  "full_path": "antennas.ic[:].strap[:].phase.data"
+ },
+ "antennas.ic[:].strap[:].phase.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].phase.time"
+  ],
+  "full_path": "antennas.ic[:].strap[:].phase.data_error_index"
+ },
+ "antennas.ic[:].strap[:].phase.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].phase.time"
+  ],
+  "full_path": "antennas.ic[:].strap[:].phase.data_error_lower"
+ },
+ "antennas.ic[:].strap[:].phase.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "antennas.ic[:].strap[:].phase.time"
+  ],
+  "full_path": "antennas.ic[:].strap[:].phase.data_error_upper"
+ },
+ "antennas.ic[:].strap[:].phase.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].strap[:].phase.time"
+ },
+ "antennas.ic[:].strap[:].position": {
+  "description": "R, Z, Phi position of the strap centre",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position"
+ },
+ "antennas.ic[:].strap[:].position.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.phi"
+ },
+ "antennas.ic[:].strap[:].position.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.phi_error_index"
+ },
+ "antennas.ic[:].strap[:].position.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.phi_error_lower"
+ },
+ "antennas.ic[:].strap[:].position.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.phi_error_upper"
+ },
+ "antennas.ic[:].strap[:].position.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.r"
+ },
+ "antennas.ic[:].strap[:].position.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.r_error_index"
+ },
+ "antennas.ic[:].strap[:].position.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.r_error_lower"
+ },
+ "antennas.ic[:].strap[:].position.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.r_error_upper"
+ },
+ "antennas.ic[:].strap[:].position.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.z"
+ },
+ "antennas.ic[:].strap[:].position.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.z_error_index"
+ },
+ "antennas.ic[:].strap[:].position.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.z_error_lower"
+ },
+ "antennas.ic[:].strap[:].position.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].position.z_error_upper"
+ },
+ "antennas.ic[:].strap[:].width_tor": {
+  "description": "Width of strap in the toroidal direction {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].width_tor"
+ },
+ "antennas.ic[:].strap[:].width_tor_error_index": {
+  "description": "Index in the error_description list for \"width_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].width_tor_error_index"
+ },
+ "antennas.ic[:].strap[:].width_tor_error_lower": {
+  "description": "Lower error for \"width_tor\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].width_tor_error_lower"
+ },
+ "antennas.ic[:].strap[:].width_tor_error_upper": {
+  "description": "Upper error for \"width_tor\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].strap[:].width_tor_error_upper"
+ },
+ "antennas.ic[:].surface_current[:]": {
+  "description": "Description of the IC surface current on the antenna straps and on passive components, for every time slice {dynamic}",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].surface_current[:]"
+ },
+ "antennas.ic[:].surface_current[:].m_pol": {
+  "description": "Poloidal mode numbers, used to describe the spectrum of the antenna current. The poloidal angle is defined from the reference point; the angle at a point (R,Z) is given by atan((Z-Zref)/(R-Rref)), where Rref=reference_point/r and Zref=reference_point/z {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].surface_current[:].m_pol"
+ },
+ "antennas.ic[:].surface_current[:].n_pol": {
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ],
+  "data_type": "INT_1D",
+  "base_coord": true,
+  "full_path": "antennas.ic[:].surface_current[:].n_pol"
+ },
+ "antennas.ic[:].surface_current[:].n_tor": {
+  "description": "Toroidal mode numbers, used to describe the spectrum of the antenna current {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.ic[:].surface_current[:].n_tor"
+ },
+ "antennas.ic[:].surface_current[:].spectrum": {
+  "description": "Spectrum of the total surface current on the antenna strap and passive components expressed in poloidal and toroidal modes {dynamic} [A]",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "antennas.ic[:].surface_current[:].m_pol",
+   "antennas.ic[:].surface_current[:].n_pol"
+  ],
+  "full_path": "antennas.ic[:].surface_current[:].spectrum"
+ },
+ "antennas.ic[:].surface_current[:].time": {
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ic[:].surface_current[:].time"
+ },
+ "antennas.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.ids_properties"
+ },
+ "antennas.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "antennas.ids_properties.comment"
+ },
+ "antennas.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.ids_properties.homogeneous_time"
+ },
+ "antennas.reference_point": {
+  "description": "Reference point used to define the poloidal angle, e.g. the geometrical centre of the vacuum vessel. Used to define the poloidal mode numbers under ic/surface_current",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "antennas.reference_point"
+ },
+ "antennas.reference_point.r": {
+  "description": "Major radius {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.reference_point.r"
+ },
+ "antennas.reference_point.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.reference_point.r_error_index"
+ },
+ "antennas.reference_point.r_error_lower": {
+  "description": "Lower error for \"r\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.reference_point.r_error_lower"
+ },
+ "antennas.reference_point.r_error_upper": {
+  "description": "Upper error for \"r\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.reference_point.r_error_upper"
+ },
+ "antennas.reference_point.z": {
+  "description": "Height {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.reference_point.z"
+ },
+ "antennas.reference_point.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "antennas.reference_point.z_error_index"
+ },
+ "antennas.reference_point.z_error_lower": {
+  "description": "Lower error for \"z\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.reference_point.z_error_lower"
+ },
+ "antennas.reference_point.z_error_upper": {
+  "description": "Upper error for \"z\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "antennas.reference_point.z_error_upper"
+ },
+ "antennas.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "antennas.time"
+ }
+}

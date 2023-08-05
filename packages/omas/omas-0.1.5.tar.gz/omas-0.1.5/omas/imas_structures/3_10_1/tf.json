@@ -1,0 +1,1963 @@
+{
+ "tf.b_field_tor_vacuum_r": {
+  "description": "Vacuum field times major radius in the toroidal field magnet. Positive sign means anti-clockwise when viewed from above",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.b_field_tor_vacuum_r"
+ },
+ "tf.b_field_tor_vacuum_r.data": {
+  "description": "Vacuum field times major radius in the toroidal field magnet. Positive sign means anti-clockwise when viewed from above {dynamic} [T.m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.b_field_tor_vacuum_r.time"
+  ],
+  "full_path": "tf.b_field_tor_vacuum_r.data"
+ },
+ "tf.b_field_tor_vacuum_r.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.b_field_tor_vacuum_r.time"
+  ],
+  "full_path": "tf.b_field_tor_vacuum_r.data_error_index"
+ },
+ "tf.b_field_tor_vacuum_r.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [T.m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.b_field_tor_vacuum_r.time"
+  ],
+  "full_path": "tf.b_field_tor_vacuum_r.data_error_lower"
+ },
+ "tf.b_field_tor_vacuum_r.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [T.m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.b_field_tor_vacuum_r.time"
+  ],
+  "full_path": "tf.b_field_tor_vacuum_r.data_error_upper"
+ },
+ "tf.b_field_tor_vacuum_r.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.b_field_tor_vacuum_r.time"
+ },
+ "tf.coil[:]": {
+  "description": "Set of coils around the tokamak {static}",
+  "data_type": "",
+  "coordinates": [
+   "1...32"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:]"
+ },
+ "tf.coil[:].conductor[:]": {
+  "description": "Set of conductors inside the coil. The structure can be used with size 1 for a simplified description as a single conductor. A conductor is composed of several elements, serially connected, i.e. transporting the same current. {static}",
+  "data_type": "",
+  "coordinates": [
+   "1...20"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:]"
+ },
+ "tf.coil[:].conductor[:].cross_section": {
+  "description": "The cross-section perpendicular to the TF conductor contour is described by a series of contour points, given by their relative position with respect to the start point of the first element. This cross-section is assumed constant for all elements.",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].cross_section"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_phi": {
+  "description": "Toroidal angles (relative to a reference point) {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].cross_section.delta_r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_phi"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_phi_error_index": {
+  "description": "Index in the error_description list for \"delta_phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].cross_section.delta_r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_phi_error_index"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_phi_error_lower": {
+  "description": "Lower error for \"delta_phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].cross_section.delta_r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_phi_error_lower"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_phi_error_upper": {
+  "description": "Upper error for \"delta_phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].cross_section.delta_r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_phi_error_upper"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_r": {
+  "description": "Major radii (relative to a reference point) {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_r"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_r_error_index": {
+  "description": "Index in the error_description list for \"delta_r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_r_error_index"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_r_error_lower": {
+  "description": "Lower error for \"delta_r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_r_error_lower"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_r_error_upper": {
+  "description": "Upper error for \"delta_r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_r_error_upper"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_z": {
+  "description": "Heights (relative to a reference point) {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].cross_section.delta_r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_z"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_z_error_index": {
+  "description": "Index in the error_description list for \"delta_z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].cross_section.delta_r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_z_error_index"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_z_error_lower": {
+  "description": "Lower error for \"delta_z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].cross_section.delta_r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_z_error_lower"
+ },
+ "tf.coil[:].conductor[:].cross_section.delta_z_error_upper": {
+  "description": "Upper error for \"delta_z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].cross_section.delta_r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].cross_section.delta_z_error_upper"
+ },
+ "tf.coil[:].conductor[:].current": {
+  "description": "Current in the conductor",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].current"
+ },
+ "tf.coil[:].conductor[:].current.data": {
+  "description": "Current in the conductor {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].current.time"
+  ],
+  "full_path": "tf.coil[:].conductor[:].current.data"
+ },
+ "tf.coil[:].conductor[:].current.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].current.time"
+  ],
+  "full_path": "tf.coil[:].conductor[:].current.data_error_index"
+ },
+ "tf.coil[:].conductor[:].current.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].current.time"
+  ],
+  "full_path": "tf.coil[:].conductor[:].current.data_error_lower"
+ },
+ "tf.coil[:].conductor[:].current.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].current.time"
+  ],
+  "full_path": "tf.coil[:].conductor[:].current.data_error_upper"
+ },
+ "tf.coil[:].conductor[:].current.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:].current.time"
+ },
+ "tf.coil[:].conductor[:].elements": {
+  "description": "Set of geometrical elements (line segments and/or arcs of a circle) describing the contour of the TF conductor centre",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].elements"
+ },
+ "tf.coil[:].conductor[:].elements.centres": {
+  "description": "Position of the centre of the arc of a circle of every element (meaningful only if type/index = 2 or 3, fill with default/empty value otherwise)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].elements.centres"
+ },
+ "tf.coil[:].conductor[:].elements.centres.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.centres.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.phi"
+ },
+ "tf.coil[:].conductor[:].elements.centres.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.centres.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.phi_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.centres.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.centres.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.phi_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.centres.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.centres.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.phi_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.centres.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:].elements.centres.r"
+ },
+ "tf.coil[:].conductor[:].elements.centres.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.r_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.centres.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.r_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.centres.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.r_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.centres.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.centres.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.z"
+ },
+ "tf.coil[:].conductor[:].elements.centres.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.centres.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.z_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.centres.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.centres.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.z_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.centres.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.centres.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.centres.z_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.end_points": {
+  "description": "Position of the end point of every element. Meaningful only if type/index = 1 or 2, fill with default/empty value otherwise",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.end_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.phi"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.end_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.phi_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.end_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.phi_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.end_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.phi_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.r"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.r_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.r_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.r_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.end_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.z"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.end_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.z_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.end_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.z_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.end_points.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.end_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.end_points.z_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points": {
+  "description": "Position of an intermediate point along the arc of circle, for every element, providing the orientation of the element (must define with the corresponding start point an aperture angle strictly inferior to PI). Meaningful only if type/index = 2, fill with default/empty value otherwise",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.intermediate_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.phi"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.intermediate_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.phi_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.intermediate_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.phi_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.intermediate_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.phi_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.r"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.r_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.r_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.r_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.intermediate_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.z"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.intermediate_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.z_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.intermediate_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.z_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.intermediate_points.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.intermediate_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.intermediate_points.z_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.names": {
+  "description": "Name or description of every element {static}",
+  "data_type": "STR_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:].elements.names"
+ },
+ "tf.coil[:].conductor[:].elements.start_points": {
+  "description": "Position of the start point of every element",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.start_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.phi"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.start_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.phi_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.start_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.phi_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.start_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.phi_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.r"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.r_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.r_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.r_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.start_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.z"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.start_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.z_error_index"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.start_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.z_error_lower"
+ },
+ "tf.coil[:].conductor[:].elements.start_points.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.start_points.r"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.start_points.z_error_upper"
+ },
+ "tf.coil[:].conductor[:].elements.types": {
+  "description": "Type of every element: 1: line segment, its ends are given by the start and end points; index = 2: arc of a circle; index = 3: full circle {static}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].elements.names"
+  ],
+  "full_path": "tf.coil[:].conductor[:].elements.types"
+ },
+ "tf.coil[:].conductor[:].resistance": {
+  "description": "conductor resistance {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].resistance"
+ },
+ "tf.coil[:].conductor[:].resistance_error_index": {
+  "description": "Index in the error_description list for \"resistance\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].resistance_error_index"
+ },
+ "tf.coil[:].conductor[:].resistance_error_lower": {
+  "description": "Lower error for \"resistance\" {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].resistance_error_lower"
+ },
+ "tf.coil[:].conductor[:].resistance_error_upper": {
+  "description": "Upper error for \"resistance\" {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].resistance_error_upper"
+ },
+ "tf.coil[:].conductor[:].voltage": {
+  "description": "Voltage on the conductor terminals",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].conductor[:].voltage"
+ },
+ "tf.coil[:].conductor[:].voltage.data": {
+  "description": "Voltage on the conductor terminals {dynamic} [V]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].voltage.time"
+  ],
+  "full_path": "tf.coil[:].conductor[:].voltage.data"
+ },
+ "tf.coil[:].conductor[:].voltage.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].voltage.time"
+  ],
+  "full_path": "tf.coil[:].conductor[:].voltage.data_error_index"
+ },
+ "tf.coil[:].conductor[:].voltage.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [V]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].voltage.time"
+  ],
+  "full_path": "tf.coil[:].conductor[:].voltage.data_error_lower"
+ },
+ "tf.coil[:].conductor[:].voltage.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [V]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].conductor[:].voltage.time"
+  ],
+  "full_path": "tf.coil[:].conductor[:].voltage.data_error_upper"
+ },
+ "tf.coil[:].conductor[:].voltage.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].conductor[:].voltage.time"
+ },
+ "tf.coil[:].current": {
+  "description": "Current in the coil",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].current"
+ },
+ "tf.coil[:].current.data": {
+  "description": "Current in the coil {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].current.time"
+  ],
+  "full_path": "tf.coil[:].current.data"
+ },
+ "tf.coil[:].current.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].current.time"
+  ],
+  "full_path": "tf.coil[:].current.data_error_index"
+ },
+ "tf.coil[:].current.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].current.time"
+  ],
+  "full_path": "tf.coil[:].current.data_error_lower"
+ },
+ "tf.coil[:].current.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [A]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].current.time"
+  ],
+  "full_path": "tf.coil[:].current.data_error_upper"
+ },
+ "tf.coil[:].current.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].current.time"
+ },
+ "tf.coil[:].resistance": {
+  "description": "Coil resistance {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].resistance"
+ },
+ "tf.coil[:].resistance_error_index": {
+  "description": "Index in the error_description list for \"resistance\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].resistance_error_index"
+ },
+ "tf.coil[:].resistance_error_lower": {
+  "description": "Lower error for \"resistance\" {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].resistance_error_lower"
+ },
+ "tf.coil[:].resistance_error_upper": {
+  "description": "Upper error for \"resistance\" {static} [Ohm]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].resistance_error_upper"
+ },
+ "tf.coil[:].turns": {
+  "description": "Number of total turns in a toroidal field coil. May be a fraction when describing the coil connections. {static} [-]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].turns"
+ },
+ "tf.coil[:].turns_error_index": {
+  "description": "Index in the error_description list for \"turns\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].turns_error_index"
+ },
+ "tf.coil[:].turns_error_lower": {
+  "description": "Lower error for \"turns\" {static} [-]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].turns_error_lower"
+ },
+ "tf.coil[:].turns_error_upper": {
+  "description": "Upper error for \"turns\" {static} [-]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.coil[:].turns_error_upper"
+ },
+ "tf.coil[:].voltage": {
+  "description": "Voltage on the coil terminals",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.coil[:].voltage"
+ },
+ "tf.coil[:].voltage.data": {
+  "description": "Voltage on the coil terminals {dynamic} [V]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].voltage.time"
+  ],
+  "full_path": "tf.coil[:].voltage.data"
+ },
+ "tf.coil[:].voltage.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.coil[:].voltage.time"
+  ],
+  "full_path": "tf.coil[:].voltage.data_error_index"
+ },
+ "tf.coil[:].voltage.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [V]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].voltage.time"
+  ],
+  "full_path": "tf.coil[:].voltage.data_error_lower"
+ },
+ "tf.coil[:].voltage.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [V]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.coil[:].voltage.time"
+  ],
+  "full_path": "tf.coil[:].voltage.data_error_upper"
+ },
+ "tf.coil[:].voltage.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.coil[:].voltage.time"
+ },
+ "tf.coils_n": {
+  "description": "Number of coils around the torus, in case is_periodic = 1 {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.coils_n"
+ },
+ "tf.field_map[:]": {
+  "description": "Map of the vacuum field at various time slices, represented using the generic grid description {dynamic}",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:]"
+ },
+ "tf.field_map[:].a_field_r[:]": {
+  "description": "R component of the vacuum vector potential, given on various grid subsets [T.m]",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_r[:]"
+ },
+ "tf.field_map[:].a_field_r[:].coefficients": {
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_r[:].values",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_r[:].coefficients"
+ },
+ "tf.field_map[:].a_field_r[:].coefficients_error_index": {
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].a_field_r[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_r[:].coefficients_error_index"
+ },
+ "tf.field_map[:].a_field_r[:].coefficients_error_lower": {
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_r[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_r[:].coefficients_error_lower"
+ },
+ "tf.field_map[:].a_field_r[:].coefficients_error_upper": {
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_r[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_r[:].coefficients_error_upper"
+ },
+ "tf.field_map[:].a_field_r[:].grid_index": {
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].a_field_r[:].grid_index"
+ },
+ "tf.field_map[:].a_field_r[:].grid_subset_index": {
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].a_field_r[:].grid_subset_index"
+ },
+ "tf.field_map[:].a_field_r[:].values": {
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_r[:].values"
+ },
+ "tf.field_map[:].a_field_r[:].values_error_index": {
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_r[:].values_error_index"
+ },
+ "tf.field_map[:].a_field_r[:].values_error_lower": {
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_r[:].values_error_lower"
+ },
+ "tf.field_map[:].a_field_r[:].values_error_upper": {
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_r[:].values_error_upper"
+ },
+ "tf.field_map[:].a_field_tor[:]": {
+  "description": "Toroidal component of the vacuum vector potential, given on various grid subsets [T.m]",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_tor[:]"
+ },
+ "tf.field_map[:].a_field_tor[:].coefficients": {
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_tor[:].values",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_tor[:].coefficients"
+ },
+ "tf.field_map[:].a_field_tor[:].coefficients_error_index": {
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].a_field_tor[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_tor[:].coefficients_error_index"
+ },
+ "tf.field_map[:].a_field_tor[:].coefficients_error_lower": {
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_tor[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_tor[:].coefficients_error_lower"
+ },
+ "tf.field_map[:].a_field_tor[:].coefficients_error_upper": {
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_tor[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_tor[:].coefficients_error_upper"
+ },
+ "tf.field_map[:].a_field_tor[:].grid_index": {
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].a_field_tor[:].grid_index"
+ },
+ "tf.field_map[:].a_field_tor[:].grid_subset_index": {
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].a_field_tor[:].grid_subset_index"
+ },
+ "tf.field_map[:].a_field_tor[:].values": {
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_tor[:].values"
+ },
+ "tf.field_map[:].a_field_tor[:].values_error_index": {
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_tor[:].values_error_index"
+ },
+ "tf.field_map[:].a_field_tor[:].values_error_lower": {
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_tor[:].values_error_lower"
+ },
+ "tf.field_map[:].a_field_tor[:].values_error_upper": {
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_tor[:].values_error_upper"
+ },
+ "tf.field_map[:].a_field_z[:]": {
+  "description": "Z component of the vacuum vector potential, given on various grid subsets [T.m]",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_z[:]"
+ },
+ "tf.field_map[:].a_field_z[:].coefficients": {
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_z[:].values",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_z[:].coefficients"
+ },
+ "tf.field_map[:].a_field_z[:].coefficients_error_index": {
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].a_field_z[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_z[:].coefficients_error_index"
+ },
+ "tf.field_map[:].a_field_z[:].coefficients_error_lower": {
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_z[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_z[:].coefficients_error_lower"
+ },
+ "tf.field_map[:].a_field_z[:].coefficients_error_upper": {
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].a_field_z[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_z[:].coefficients_error_upper"
+ },
+ "tf.field_map[:].a_field_z[:].grid_index": {
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].a_field_z[:].grid_index"
+ },
+ "tf.field_map[:].a_field_z[:].grid_subset_index": {
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].a_field_z[:].grid_subset_index"
+ },
+ "tf.field_map[:].a_field_z[:].values": {
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].a_field_z[:].values"
+ },
+ "tf.field_map[:].a_field_z[:].values_error_index": {
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_z[:].values_error_index"
+ },
+ "tf.field_map[:].a_field_z[:].values_error_lower": {
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_z[:].values_error_lower"
+ },
+ "tf.field_map[:].a_field_z[:].values_error_upper": {
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].a_field_z[:].values_error_upper"
+ },
+ "tf.field_map[:].b_field_r[:]": {
+  "description": "R component of the vacuum magnetic field, given on various grid subsets [T]",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_r[:]"
+ },
+ "tf.field_map[:].b_field_r[:].coefficients": {
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_r[:].values",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_r[:].coefficients"
+ },
+ "tf.field_map[:].b_field_r[:].coefficients_error_index": {
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].b_field_r[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_r[:].coefficients_error_index"
+ },
+ "tf.field_map[:].b_field_r[:].coefficients_error_lower": {
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_r[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_r[:].coefficients_error_lower"
+ },
+ "tf.field_map[:].b_field_r[:].coefficients_error_upper": {
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_r[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_r[:].coefficients_error_upper"
+ },
+ "tf.field_map[:].b_field_r[:].grid_index": {
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].b_field_r[:].grid_index"
+ },
+ "tf.field_map[:].b_field_r[:].grid_subset_index": {
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].b_field_r[:].grid_subset_index"
+ },
+ "tf.field_map[:].b_field_r[:].values": {
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_r[:].values"
+ },
+ "tf.field_map[:].b_field_r[:].values_error_index": {
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_r[:].values_error_index"
+ },
+ "tf.field_map[:].b_field_r[:].values_error_lower": {
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_r[:].values_error_lower"
+ },
+ "tf.field_map[:].b_field_r[:].values_error_upper": {
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_r[:].values_error_upper"
+ },
+ "tf.field_map[:].b_field_tor[:]": {
+  "description": "Toroidal component of the vacuum magnetic field, given on various grid subsets [T]",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_tor[:]"
+ },
+ "tf.field_map[:].b_field_tor[:].coefficients": {
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_tor[:].values",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_tor[:].coefficients"
+ },
+ "tf.field_map[:].b_field_tor[:].coefficients_error_index": {
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].b_field_tor[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_tor[:].coefficients_error_index"
+ },
+ "tf.field_map[:].b_field_tor[:].coefficients_error_lower": {
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_tor[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_tor[:].coefficients_error_lower"
+ },
+ "tf.field_map[:].b_field_tor[:].coefficients_error_upper": {
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_tor[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_tor[:].coefficients_error_upper"
+ },
+ "tf.field_map[:].b_field_tor[:].grid_index": {
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].b_field_tor[:].grid_index"
+ },
+ "tf.field_map[:].b_field_tor[:].grid_subset_index": {
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].b_field_tor[:].grid_subset_index"
+ },
+ "tf.field_map[:].b_field_tor[:].values": {
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_tor[:].values"
+ },
+ "tf.field_map[:].b_field_tor[:].values_error_index": {
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_tor[:].values_error_index"
+ },
+ "tf.field_map[:].b_field_tor[:].values_error_lower": {
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_tor[:].values_error_lower"
+ },
+ "tf.field_map[:].b_field_tor[:].values_error_upper": {
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_tor[:].values_error_upper"
+ },
+ "tf.field_map[:].b_field_z[:]": {
+  "description": "Z component of the vacuum magnetic field, given on various grid subsets [T]",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_z[:]"
+ },
+ "tf.field_map[:].b_field_z[:].coefficients": {
+  "description": "Interpolation coefficients, to be used for a high precision evaluation of the physical quantity with finite elements, provided per element in the grid subset (first dimension). {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_z[:].values",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_z[:].coefficients"
+ },
+ "tf.field_map[:].b_field_z[:].coefficients_error_index": {
+  "description": "Index in the error_description list for \"coefficients\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].b_field_z[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_z[:].coefficients_error_index"
+ },
+ "tf.field_map[:].b_field_z[:].coefficients_error_lower": {
+  "description": "Lower error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_z[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_z[:].coefficients_error_lower"
+ },
+ "tf.field_map[:].b_field_z[:].coefficients_error_upper": {
+  "description": "Upper error for \"coefficients\" {dynamic} [as_parent]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "tf.field_map[:].b_field_z[:].values",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_z[:].coefficients_error_upper"
+ },
+ "tf.field_map[:].b_field_z[:].grid_index": {
+  "description": "Index of the grid used to represent this quantity {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].b_field_z[:].grid_index"
+ },
+ "tf.field_map[:].b_field_z[:].grid_subset_index": {
+  "description": "Index of the grid subset the data is provided on {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].b_field_z[:].grid_subset_index"
+ },
+ "tf.field_map[:].b_field_z[:].values": {
+  "description": "One scalar value is provided per element in the grid subset. {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].b_field_z[:].values"
+ },
+ "tf.field_map[:].b_field_z[:].values_error_index": {
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_z[:].values_error_index"
+ },
+ "tf.field_map[:].b_field_z[:].values_error_lower": {
+  "description": "Lower error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_z[:].values_error_lower"
+ },
+ "tf.field_map[:].b_field_z[:].values_error_upper": {
+  "description": "Upper error for \"values\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].b_field_z[:].values_error_upper"
+ },
+ "tf.field_map[:].grid": {
+  "description": "Grid description",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid"
+ },
+ "tf.field_map[:].grid.grid_subset[:]": {
+  "description": "Grid subsets",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.grid_subset[:]"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:]": {
+  "description": "Set of bases for the grid subset. For each base, the structure describes the projection of the base vectors on the canonical frame of the grid.",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:]"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].jacobian": {
+  "description": "Metric Jacobian {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].jacobian"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].jacobian_error_index": {
+  "description": "Index in the error_description list for \"jacobian\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].jacobian_error_index"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].jacobian_error_lower": {
+  "description": "Lower error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].jacobian_error_lower"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].jacobian_error_upper": {
+  "description": "Upper error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].jacobian_error_upper"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].tensor_contravariant": {
+  "description": "Contravariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].tensor_contravariant"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].tensor_contravariant_error_index": {
+  "description": "Index in the error_description list for \"tensor_contravariant\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].tensor_contravariant_error_index"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].tensor_contravariant_error_lower": {
+  "description": "Lower error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].tensor_contravariant_error_lower"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].tensor_contravariant_error_upper": {
+  "description": "Upper error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].tensor_contravariant_error_upper"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].tensor_covariant": {
+  "description": "Covariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].tensor_covariant"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].tensor_covariant_error_index": {
+  "description": "Index in the error_description list for \"tensor_covariant\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].tensor_covariant_error_index"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].tensor_covariant_error_lower": {
+  "description": "Lower error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].tensor_covariant_error_lower"
+ },
+ "tf.field_map[:].grid.grid_subset[:].base[:].tensor_covariant_error_upper": {
+  "description": "Upper error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].base[:].tensor_covariant_error_upper"
+ },
+ "tf.field_map[:].grid.grid_subset[:].dimension": {
+  "description": "Space dimension of the grid subset elements. This must be equal to the sum of the dimensions of the individual objects forming the element. {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].dimension"
+ },
+ "tf.field_map[:].grid.grid_subset[:].element[:]": {
+  "description": "Set of elements defining the grid subset. An element is defined by a combination of objects from potentially all spaces",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.grid_subset[:].element[:]"
+ },
+ "tf.field_map[:].grid.grid_subset[:].element[:].object[:]": {
+  "description": "Set of objects defining the element",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.grid_subset[:].element[:].object[:]"
+ },
+ "tf.field_map[:].grid.grid_subset[:].element[:].object[:].dimension": {
+  "description": "Dimension of the object {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].element[:].object[:].dimension"
+ },
+ "tf.field_map[:].grid.grid_subset[:].element[:].object[:].index": {
+  "description": "Object index {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].element[:].object[:].index"
+ },
+ "tf.field_map[:].grid.grid_subset[:].element[:].object[:].space": {
+  "description": "Index of the space from which that object is taken {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].element[:].object[:].space"
+ },
+ "tf.field_map[:].grid.grid_subset[:].identifier": {
+  "description": "Grid subset identifier",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].identifier"
+ },
+ "tf.field_map[:].grid.grid_subset[:].identifier.description": {
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].identifier.description"
+ },
+ "tf.field_map[:].grid.grid_subset[:].identifier.index": {
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].identifier.index"
+ },
+ "tf.field_map[:].grid.grid_subset[:].identifier.name": {
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].identifier.name"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric": {
+  "description": "Metric of the canonical frame onto Cartesian coordinates",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.jacobian": {
+  "description": "Metric Jacobian {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.jacobian"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.jacobian_error_index": {
+  "description": "Index in the error_description list for \"jacobian\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.jacobian_error_index"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.jacobian_error_lower": {
+  "description": "Lower error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.jacobian_error_lower"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.jacobian_error_upper": {
+  "description": "Upper error for \"jacobian\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.jacobian_error_upper"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.tensor_contravariant": {
+  "description": "Contravariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.tensor_contravariant"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.tensor_contravariant_error_index": {
+  "description": "Index in the error_description list for \"tensor_contravariant\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.tensor_contravariant_error_index"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.tensor_contravariant_error_lower": {
+  "description": "Lower error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.tensor_contravariant_error_lower"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.tensor_contravariant_error_upper": {
+  "description": "Upper error for \"tensor_contravariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.tensor_contravariant_error_upper"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.tensor_covariant": {
+  "description": "Covariant metric tensor, given on each element of the subgrid (first dimension) {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.tensor_covariant"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.tensor_covariant_error_index": {
+  "description": "Index in the error_description list for \"tensor_covariant\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.tensor_covariant_error_index"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.tensor_covariant_error_lower": {
+  "description": "Lower error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.tensor_covariant_error_lower"
+ },
+ "tf.field_map[:].grid.grid_subset[:].metric.tensor_covariant_error_upper": {
+  "description": "Upper error for \"tensor_covariant\" {dynamic} [mixed]",
+  "data_type": "FLT_3D",
+  "coordinates": [
+   "tf.field_map[:].grid.grid_subset[:].element",
+   "1...N",
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.grid_subset[:].metric.tensor_covariant_error_upper"
+ },
+ "tf.field_map[:].grid.identifier": {
+  "description": "Grid identifier",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.identifier"
+ },
+ "tf.field_map[:].grid.identifier.description": {
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.identifier.description"
+ },
+ "tf.field_map[:].grid.identifier.index": {
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.identifier.index"
+ },
+ "tf.field_map[:].grid.identifier.name": {
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.identifier.name"
+ },
+ "tf.field_map[:].grid.space[:]": {
+  "description": "Set of grid spaces",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.space[:]"
+ },
+ "tf.field_map[:].grid.space[:].coordinates_type": {
+  "description": "Type of coordinates describing the physical space, for every coordinate of the space. The size of this node therfore defines the dimension of the space. The meaning of these predefined integer constants can be found in the documentation of the grid service library {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.space[:].coordinates_type"
+ },
+ "tf.field_map[:].grid.space[:].geometry_type": {
+  "description": "Type of space geometry (0: standard, 1:Fourier)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].geometry_type"
+ },
+ "tf.field_map[:].grid.space[:].geometry_type.description": {
+  "description": "Verbose description {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].geometry_type.description"
+ },
+ "tf.field_map[:].grid.space[:].geometry_type.index": {
+  "description": "Integer identifier (enumeration index within a list) {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].geometry_type.index"
+ },
+ "tf.field_map[:].grid.space[:].geometry_type.name": {
+  "description": "Short string identifier {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].geometry_type.name"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:]": {
+  "description": "Definition of the space objects for every dimension (from one to the dimension of the highest-dimensional objects). The index correspond to 1=nodes, 2=edges, 3=faces, 4=cells/volumes, .... For every index, a collection of objects of that dimension is described.",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:]"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:]": {
+  "description": "Set of objects for a given dimension",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:]"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:]": {
+  "description": "Set of (n-1)-dimensional objects defining the boundary of this n-dimensional object",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:]"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].index": {
+  "description": "Index of this (n-1)-dimensional boundary object {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].index"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].neighbours": {
+  "description": "List of indices of the n-dimensional objects adjacent to the given n-dimensional object. An object can possibly have multiple neighbours on a boundary {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].boundary[:].neighbours"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].geometry": {
+  "description": "Geometry data associated with the object. Its dimension depends on the type of object, geometry and coordinate considered. {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].geometry"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_index": {
+  "description": "Index in the error_description list for \"geometry\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_index"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_lower": {
+  "description": "Lower error for \"geometry\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_lower"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_upper": {
+  "description": "Upper error for \"geometry\" {dynamic} [mixed]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].geometry_error_upper"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].measure": {
+  "description": "Measure of the space object, i.e. physical size (length for 1d, area for 2d, volume for 3d objects,...) {dynamic} [m^dimension]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].measure"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_index": {
+  "description": "Index in the error_description list for \"measure\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_index"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_lower": {
+  "description": "Lower error for \"measure\" {dynamic} [m^dimension]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_lower"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_upper": {
+  "description": "Upper error for \"measure\" {dynamic} [m^dimension]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].measure_error_upper"
+ },
+ "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].nodes": {
+  "description": "List of nodes forming this object (indices to objects_per_dimension(1)%object(:) in Fortran notation) {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.field_map[:].grid.space[:].objects_per_dimension[:].object[:].nodes"
+ },
+ "tf.field_map[:].time": {
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.field_map[:].time"
+ },
+ "tf.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "tf.ids_properties"
+ },
+ "tf.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "tf.ids_properties.comment"
+ },
+ "tf.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.ids_properties.homogeneous_time"
+ },
+ "tf.is_periodic": {
+  "description": "Flag indicating whether coils are described one by one in the coil() structure (flag=0) or whether the coil structure represents only coils having different characteristics (flag = 1, n_coils must be filled in that case). In the latter case, the coil() sequence is repeated periodically around the torus. {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "tf.is_periodic"
+ },
+ "tf.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "tf.time"
+ }
+}

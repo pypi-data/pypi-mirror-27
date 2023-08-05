@@ -1,0 +1,920 @@
+{
+ "spectrometer_visible.channel[:]": {
+  "description": "Set of channels (lines-of-sight)",
+  "data_type": "",
+  "coordinates": [
+   "1...240"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:]"
+ },
+ "spectrometer_visible.channel[:].filter": {
+  "description": "Quantities measured by the channel if connected to a filter spectrometer",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_line_integrals": {
+  "description": "Calibrated line gross areas integrals",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_line_integrals"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_line_integrals.data": {
+  "description": "Calibrated line gross areas integrals {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.calibrated_lines",
+   "spectrometer_visible.channel[:].filter.calibrated_line_integrals.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_line_integrals.data"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_line_integrals.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.calibrated_lines",
+   "spectrometer_visible.channel[:].filter.calibrated_line_integrals.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_line_integrals.data_error_index"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_line_integrals.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.calibrated_lines",
+   "spectrometer_visible.channel[:].filter.calibrated_line_integrals.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_line_integrals.data_error_lower"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_line_integrals.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.calibrated_lines",
+   "spectrometer_visible.channel[:].filter.calibrated_line_integrals.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_line_integrals.data_error_upper"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_line_integrals.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_line_integrals.time"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_lines": {
+  "description": "Central wavelength of the calibrated lines {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_lines"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_lines_error_index": {
+  "description": "Index in the error_description list for \"calibrated_lines\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_lines_error_index"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_lines_error_lower": {
+  "description": "Lower error for \"calibrated_lines\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_lines_error_lower"
+ },
+ "spectrometer_visible.channel[:].filter.calibrated_lines_error_upper": {
+  "description": "Upper error for \"calibrated_lines\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.calibrated_lines_error_upper"
+ },
+ "spectrometer_visible.channel[:].filter.exposure_time": {
+  "description": "Exposure time {constant} [s]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.exposure_time"
+ },
+ "spectrometer_visible.channel[:].filter.exposure_time_error_index": {
+  "description": "Index in the error_description list for \"exposure_time\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.exposure_time_error_index"
+ },
+ "spectrometer_visible.channel[:].filter.exposure_time_error_lower": {
+  "description": "Lower error for \"exposure_time\" {constant} [s]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.exposure_time_error_lower"
+ },
+ "spectrometer_visible.channel[:].filter.exposure_time_error_upper": {
+  "description": "Upper error for \"exposure_time\" {constant} [s]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.exposure_time_error_upper"
+ },
+ "spectrometer_visible.channel[:].filter.line_intensities": {
+  "description": "Line gross integral intensities",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.line_intensities"
+ },
+ "spectrometer_visible.channel[:].filter.line_intensities.data": {
+  "description": "Line gross integral intensities {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.raw_lines",
+   "spectrometer_visible.channel[:].filter.line_intensities.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.line_intensities.data"
+ },
+ "spectrometer_visible.channel[:].filter.line_intensities.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.raw_lines",
+   "spectrometer_visible.channel[:].filter.line_intensities.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.line_intensities.data_error_index"
+ },
+ "spectrometer_visible.channel[:].filter.line_intensities.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.raw_lines",
+   "spectrometer_visible.channel[:].filter.line_intensities.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.line_intensities.data_error_lower"
+ },
+ "spectrometer_visible.channel[:].filter.line_intensities.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.raw_lines",
+   "spectrometer_visible.channel[:].filter.line_intensities.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.line_intensities.data_error_upper"
+ },
+ "spectrometer_visible.channel[:].filter.line_intensities.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].filter.line_intensities.time"
+ },
+ "spectrometer_visible.channel[:].filter.line_radiances": {
+  "description": "Calibrated, background subtracted line integrals",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.line_radiances"
+ },
+ "spectrometer_visible.channel[:].filter.line_radiances.data": {
+  "description": "Calibrated, background subtracted line integrals {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.processed_lines",
+   "spectrometer_visible.channel[:].filter.line_radiances.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.line_radiances.data"
+ },
+ "spectrometer_visible.channel[:].filter.line_radiances.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.processed_lines",
+   "spectrometer_visible.channel[:].filter.line_radiances.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.line_radiances.data_error_index"
+ },
+ "spectrometer_visible.channel[:].filter.line_radiances.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.processed_lines",
+   "spectrometer_visible.channel[:].filter.line_radiances.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.line_radiances.data_error_lower"
+ },
+ "spectrometer_visible.channel[:].filter.line_radiances.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].filter.processed_lines",
+   "spectrometer_visible.channel[:].filter.line_radiances.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.line_radiances.data_error_upper"
+ },
+ "spectrometer_visible.channel[:].filter.line_radiances.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].filter.line_radiances.time"
+ },
+ "spectrometer_visible.channel[:].filter.processed_lines": {
+  "description": "Central wavelength of the processed lines {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].filter.processed_lines"
+ },
+ "spectrometer_visible.channel[:].filter.processed_lines_error_index": {
+  "description": "Index in the error_description list for \"processed_lines\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.processed_lines_error_index"
+ },
+ "spectrometer_visible.channel[:].filter.processed_lines_error_lower": {
+  "description": "Lower error for \"processed_lines\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.processed_lines_error_lower"
+ },
+ "spectrometer_visible.channel[:].filter.processed_lines_error_upper": {
+  "description": "Upper error for \"processed_lines\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.processed_lines_error_upper"
+ },
+ "spectrometer_visible.channel[:].filter.radiance_calibration": {
+  "description": "Radiance calibration {static} [m^-2.sr^-1]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.radiance_calibration"
+ },
+ "spectrometer_visible.channel[:].filter.radiance_calibration_date": {
+  "description": "Date of the radiance calibration (yyyy_mm_dd) {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.radiance_calibration_date"
+ },
+ "spectrometer_visible.channel[:].filter.radiance_calibration_error_index": {
+  "description": "Index in the error_description list for \"radiance_calibration\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.radiance_calibration_error_index"
+ },
+ "spectrometer_visible.channel[:].filter.radiance_calibration_error_lower": {
+  "description": "Lower error for \"radiance_calibration\" {static} [m^-2.sr^-1]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.radiance_calibration_error_lower"
+ },
+ "spectrometer_visible.channel[:].filter.radiance_calibration_error_upper": {
+  "description": "Upper error for \"radiance_calibration\" {static} [m^-2.sr^-1]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].filter.radiance_calibration_error_upper"
+ },
+ "spectrometer_visible.channel[:].filter.raw_lines": {
+  "description": "Central wavelength of the raw lines {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].filter.raw_lines"
+ },
+ "spectrometer_visible.channel[:].filter.raw_lines_error_index": {
+  "description": "Index in the error_description list for \"raw_lines\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.raw_lines_error_index"
+ },
+ "spectrometer_visible.channel[:].filter.raw_lines_error_lower": {
+  "description": "Lower error for \"raw_lines\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.raw_lines_error_lower"
+ },
+ "spectrometer_visible.channel[:].filter.raw_lines_error_upper": {
+  "description": "Upper error for \"raw_lines\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].filter.raw_lines_error_upper"
+ },
+ "spectrometer_visible.channel[:].grating": {
+  "description": "Quantities measured by the channel if connected to a grating spectrometer",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating"
+ },
+ "spectrometer_visible.channel[:].grating.exposure_time": {
+  "description": "Exposure time {constant} [s]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.exposure_time"
+ },
+ "spectrometer_visible.channel[:].grating.exposure_time_error_index": {
+  "description": "Index in the error_description list for \"exposure_time\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.exposure_time_error_index"
+ },
+ "spectrometer_visible.channel[:].grating.exposure_time_error_lower": {
+  "description": "Lower error for \"exposure_time\" {constant} [s]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.exposure_time_error_lower"
+ },
+ "spectrometer_visible.channel[:].grating.exposure_time_error_upper": {
+  "description": "Upper error for \"exposure_time\" {constant} [s]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.exposure_time_error_upper"
+ },
+ "spectrometer_visible.channel[:].grating.intensity_spectra": {
+  "description": "Intensity spectra (not calibrated)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.intensity_spectra"
+ },
+ "spectrometer_visible.channel[:].grating.intensity_spectra.data": {
+  "description": "Intensity spectra (not calibrated) {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths",
+   "spectrometer_visible.channel[:].grating.intensity_spectra.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.intensity_spectra.data"
+ },
+ "spectrometer_visible.channel[:].grating.intensity_spectra.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths",
+   "spectrometer_visible.channel[:].grating.intensity_spectra.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.intensity_spectra.data_error_index"
+ },
+ "spectrometer_visible.channel[:].grating.intensity_spectra.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths",
+   "spectrometer_visible.channel[:].grating.intensity_spectra.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.intensity_spectra.data_error_lower"
+ },
+ "spectrometer_visible.channel[:].grating.intensity_spectra.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [s^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths",
+   "spectrometer_visible.channel[:].grating.intensity_spectra.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.intensity_spectra.data_error_upper"
+ },
+ "spectrometer_visible.channel[:].grating.intensity_spectra.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].grating.intensity_spectra.time"
+ },
+ "spectrometer_visible.channel[:].grating.line_radiances": {
+  "description": "Calibrated, background subtracted line integrals",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.line_radiances"
+ },
+ "spectrometer_visible.channel[:].grating.line_radiances.data": {
+  "description": "Calibrated, background subtracted line integrals {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.processed_lines",
+   "spectrometer_visible.channel[:].grating.line_radiances.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.line_radiances.data"
+ },
+ "spectrometer_visible.channel[:].grating.line_radiances.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.processed_lines",
+   "spectrometer_visible.channel[:].grating.line_radiances.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.line_radiances.data_error_index"
+ },
+ "spectrometer_visible.channel[:].grating.line_radiances.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.processed_lines",
+   "spectrometer_visible.channel[:].grating.line_radiances.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.line_radiances.data_error_lower"
+ },
+ "spectrometer_visible.channel[:].grating.line_radiances.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.processed_lines",
+   "spectrometer_visible.channel[:].grating.line_radiances.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.line_radiances.data_error_upper"
+ },
+ "spectrometer_visible.channel[:].grating.line_radiances.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].grating.line_radiances.time"
+ },
+ "spectrometer_visible.channel[:].grating.processed_lines": {
+  "description": "Central wavelength of the processed lines {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].grating.processed_lines"
+ },
+ "spectrometer_visible.channel[:].grating.processed_lines_error_index": {
+  "description": "Index in the error_description list for \"processed_lines\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.processed_lines_error_index"
+ },
+ "spectrometer_visible.channel[:].grating.processed_lines_error_lower": {
+  "description": "Lower error for \"processed_lines\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.processed_lines_error_lower"
+ },
+ "spectrometer_visible.channel[:].grating.processed_lines_error_upper": {
+  "description": "Upper error for \"processed_lines\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.processed_lines_error_upper"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_calibration": {
+  "description": "Radiance calibration {static} [m^-2.sr^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_calibration"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_calibration_date": {
+  "description": "Date of the radiance calibration (yyyy_mm_dd) {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_calibration_date"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_calibration_error_index": {
+  "description": "Index in the error_description list for \"radiance_calibration\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_calibration_error_index"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_calibration_error_lower": {
+  "description": "Lower error for \"radiance_calibration\" {static} [m^-2.sr^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_calibration_error_lower"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_calibration_error_upper": {
+  "description": "Upper error for \"radiance_calibration\" {static} [m^-2.sr^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_calibration_error_upper"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_spectra": {
+  "description": "Calibrated spectra",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_spectra"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_spectra.data": {
+  "description": "Calibrated spectra {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths",
+   "spectrometer_visible.channel[:].grating.radiance_spectra.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_spectra.data"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_spectra.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths",
+   "spectrometer_visible.channel[:].grating.radiance_spectra.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_spectra.data_error_index"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_spectra.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths",
+   "spectrometer_visible.channel[:].grating.radiance_spectra.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_spectra.data_error_lower"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_spectra.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m^-2.s^-1.sr^-1]",
+  "data_type": "FLT_2D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].grating.wavelengths",
+   "spectrometer_visible.channel[:].grating.radiance_spectra.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_spectra.data_error_upper"
+ },
+ "spectrometer_visible.channel[:].grating.radiance_spectra.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].grating.radiance_spectra.time"
+ },
+ "spectrometer_visible.channel[:].grating.wavelength_calibration_date": {
+  "description": "Date of the wavelength calibration (yyyy_mm_dd) {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].grating.wavelength_calibration_date"
+ },
+ "spectrometer_visible.channel[:].grating.wavelengths": {
+  "description": "Measured wavelengths {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].grating.wavelengths"
+ },
+ "spectrometer_visible.channel[:].grating.wavelengths_error_index": {
+  "description": "Index in the error_description list for \"wavelengths\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.wavelengths_error_index"
+ },
+ "spectrometer_visible.channel[:].grating.wavelengths_error_lower": {
+  "description": "Lower error for \"wavelengths\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.wavelengths_error_lower"
+ },
+ "spectrometer_visible.channel[:].grating.wavelengths_error_upper": {
+  "description": "Upper error for \"wavelengths\" {constant} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "spectrometer_visible.channel[:].grating.wavelengths_error_upper"
+ },
+ "spectrometer_visible.channel[:].line_of_sight": {
+  "description": "Description of the line of sight of the channel, given by 2 points",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point": {
+  "description": "Position of the first point",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.phi"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.phi_error_index"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.phi_error_lower"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.phi_error_upper"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.r"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.r_error_index"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.r_error_lower"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.r_error_upper"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.z"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.z_error_index"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.z_error_lower"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.first_point.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.first_point.z_error_upper"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point": {
+  "description": "Position of the second point",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.phi"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.phi_error_index"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.phi_error_lower"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.phi_error_upper"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.r"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.r_error_index"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.r_error_lower"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.r_error_upper"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.z"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.z_error_index"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.z_error_lower"
+ },
+ "spectrometer_visible.channel[:].line_of_sight.second_point.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].line_of_sight.second_point.z_error_upper"
+ },
+ "spectrometer_visible.channel[:].name": {
+  "description": "Name of the channel {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].name"
+ },
+ "spectrometer_visible.channel[:].spot_diameter": {
+  "description": "Spot diameter {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].spot_diameter"
+ },
+ "spectrometer_visible.channel[:].spot_diameter_error_index": {
+  "description": "Index in the error_description list for \"spot_diameter\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].spot_diameter_error_index"
+ },
+ "spectrometer_visible.channel[:].spot_diameter_error_lower": {
+  "description": "Lower error for \"spot_diameter\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].spot_diameter_error_lower"
+ },
+ "spectrometer_visible.channel[:].spot_diameter_error_upper": {
+  "description": "Upper error for \"spot_diameter\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].spot_diameter_error_upper"
+ },
+ "spectrometer_visible.channel[:].type": {
+  "description": "Type of spectrometer the channel is connected to (index=1: grating, 2: filter) {static}",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].type"
+ },
+ "spectrometer_visible.channel[:].type.description": {
+  "description": "Verbose description {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].type.description"
+ },
+ "spectrometer_visible.channel[:].type.index": {
+  "description": "Integer identifier (enumeration index within a list) {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].type.index"
+ },
+ "spectrometer_visible.channel[:].type.name": {
+  "description": "Short string identifier {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].type.name"
+ },
+ "spectrometer_visible.channel[:].validity": {
+  "description": "Indicator of the validity of the channel for the whole acquisition period (0 means valid, negative values mean non-valid) {static}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].validity"
+ },
+ "spectrometer_visible.channel[:].validity_timed": {
+  "description": "Indicator of the validity of the channel as a function of time (0 means valid, negative values mean non-valid)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.channel[:].validity_timed"
+ },
+ "spectrometer_visible.channel[:].validity_timed.data": {
+  "description": "Indicator of the validity of the channel as a function of time (0 means valid, negative values mean non-valid) {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "spectrometer_visible.channel[:].validity_timed.time"
+  ],
+  "full_path": "spectrometer_visible.channel[:].validity_timed.data"
+ },
+ "spectrometer_visible.channel[:].validity_timed.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.channel[:].validity_timed.time"
+ },
+ "spectrometer_visible.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.code"
+ },
+ "spectrometer_visible.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.code.name"
+ },
+ "spectrometer_visible.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "spectrometer_visible.time"
+  ],
+  "full_path": "spectrometer_visible.code.output_flag"
+ },
+ "spectrometer_visible.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.code.parameters"
+ },
+ "spectrometer_visible.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.code.version"
+ },
+ "spectrometer_visible.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.ids_properties"
+ },
+ "spectrometer_visible.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.ids_properties.comment"
+ },
+ "spectrometer_visible.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "spectrometer_visible.ids_properties.homogeneous_time"
+ },
+ "spectrometer_visible.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "spectrometer_visible.time"
+ }
+}

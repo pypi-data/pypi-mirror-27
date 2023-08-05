@@ -1,0 +1,254 @@
+{
+ "thomson_scattering.channel[:]": {
+  "description": "Set of channels (lines-of-sight)",
+  "data_type": "",
+  "coordinates": [
+   "1...100"
+  ],
+  "base_coord": true,
+  "full_path": "thomson_scattering.channel[:]"
+ },
+ "thomson_scattering.channel[:].identifier": {
+  "description": "ID of the channel {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].identifier"
+ },
+ "thomson_scattering.channel[:].n_e": {
+  "description": "Electron density",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].n_e"
+ },
+ "thomson_scattering.channel[:].n_e.data": {
+  "description": "Electron density {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "thomson_scattering.channel[:].n_e.time"
+  ],
+  "full_path": "thomson_scattering.channel[:].n_e.data"
+ },
+ "thomson_scattering.channel[:].n_e.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "thomson_scattering.channel[:].n_e.time"
+  ],
+  "full_path": "thomson_scattering.channel[:].n_e.data_error_index"
+ },
+ "thomson_scattering.channel[:].n_e.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "thomson_scattering.channel[:].n_e.time"
+  ],
+  "full_path": "thomson_scattering.channel[:].n_e.data_error_lower"
+ },
+ "thomson_scattering.channel[:].n_e.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "thomson_scattering.channel[:].n_e.time"
+  ],
+  "full_path": "thomson_scattering.channel[:].n_e.data_error_upper"
+ },
+ "thomson_scattering.channel[:].n_e.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "thomson_scattering.channel[:].n_e.time"
+ },
+ "thomson_scattering.channel[:].name": {
+  "description": "Name of the channel {static}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].name"
+ },
+ "thomson_scattering.channel[:].position": {
+  "description": "Position of the measurements (intersection between laser beam and line of sight)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position"
+ },
+ "thomson_scattering.channel[:].position.phi": {
+  "description": "Toroidal angle {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.phi"
+ },
+ "thomson_scattering.channel[:].position.phi_error_index": {
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.phi_error_index"
+ },
+ "thomson_scattering.channel[:].position.phi_error_lower": {
+  "description": "Lower error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.phi_error_lower"
+ },
+ "thomson_scattering.channel[:].position.phi_error_upper": {
+  "description": "Upper error for \"phi\" {static} [rad]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.phi_error_upper"
+ },
+ "thomson_scattering.channel[:].position.r": {
+  "description": "Major radius {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.r"
+ },
+ "thomson_scattering.channel[:].position.r_error_index": {
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.r_error_index"
+ },
+ "thomson_scattering.channel[:].position.r_error_lower": {
+  "description": "Lower error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.r_error_lower"
+ },
+ "thomson_scattering.channel[:].position.r_error_upper": {
+  "description": "Upper error for \"r\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.r_error_upper"
+ },
+ "thomson_scattering.channel[:].position.z": {
+  "description": "Height {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.z"
+ },
+ "thomson_scattering.channel[:].position.z_error_index": {
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.z_error_index"
+ },
+ "thomson_scattering.channel[:].position.z_error_lower": {
+  "description": "Lower error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.z_error_lower"
+ },
+ "thomson_scattering.channel[:].position.z_error_upper": {
+  "description": "Upper error for \"z\" {static} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].position.z_error_upper"
+ },
+ "thomson_scattering.channel[:].t_e": {
+  "description": "Electron temperature",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "thomson_scattering.channel[:].t_e"
+ },
+ "thomson_scattering.channel[:].t_e.data": {
+  "description": "Electron temperature {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "thomson_scattering.channel[:].t_e.time"
+  ],
+  "full_path": "thomson_scattering.channel[:].t_e.data"
+ },
+ "thomson_scattering.channel[:].t_e.data_error_index": {
+  "description": "Index in the error_description list for \"data\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "thomson_scattering.channel[:].t_e.time"
+  ],
+  "full_path": "thomson_scattering.channel[:].t_e.data_error_index"
+ },
+ "thomson_scattering.channel[:].t_e.data_error_lower": {
+  "description": "Lower error for \"data\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "thomson_scattering.channel[:].t_e.time"
+  ],
+  "full_path": "thomson_scattering.channel[:].t_e.data_error_lower"
+ },
+ "thomson_scattering.channel[:].t_e.data_error_upper": {
+  "description": "Upper error for \"data\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "thomson_scattering.channel[:].t_e.time"
+  ],
+  "full_path": "thomson_scattering.channel[:].t_e.data_error_upper"
+ },
+ "thomson_scattering.channel[:].t_e.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "thomson_scattering.channel[:].t_e.time"
+ },
+ "thomson_scattering.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "thomson_scattering.code"
+ },
+ "thomson_scattering.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.code.name"
+ },
+ "thomson_scattering.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "thomson_scattering.time"
+  ],
+  "full_path": "thomson_scattering.code.output_flag"
+ },
+ "thomson_scattering.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.code.parameters"
+ },
+ "thomson_scattering.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.code.version"
+ },
+ "thomson_scattering.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "thomson_scattering.ids_properties"
+ },
+ "thomson_scattering.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.ids_properties.comment"
+ },
+ "thomson_scattering.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "thomson_scattering.ids_properties.homogeneous_time"
+ },
+ "thomson_scattering.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "thomson_scattering.time"
+ }
+}

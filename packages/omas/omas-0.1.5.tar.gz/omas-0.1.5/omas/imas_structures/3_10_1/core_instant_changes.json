@@ -1,0 +1,2684 @@
+{
+ "core_instant_changes.change[:]": {
+  "description": "Set of instant change terms",
+  "data_type": "",
+  "coordinates": [
+   "1...10"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:]"
+ },
+ "core_instant_changes.change[:].identifier": {
+  "description": "Instant change term identifier",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].identifier"
+ },
+ "core_instant_changes.change[:].identifier.description": {
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].identifier.description"
+ },
+ "core_instant_changes.change[:].identifier.index": {
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].identifier.index"
+ },
+ "core_instant_changes.change[:].identifier.name": {
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].identifier.name"
+ },
+ "core_instant_changes.change[:].profiles_1d[:]": {
+  "description": "instant_change profiles for various time slices {dynamic}",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:].profiles_1d[:]"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons": {
+  "description": "Change of electrons-related quantities",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.density": {
+  "description": "Density (thermal+non-thermal) {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.density"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.density_error_index": {
+  "description": "Index in the error_description list for \"density\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.density_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.density_error_lower": {
+  "description": "Lower error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.density_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.density_error_upper": {
+  "description": "Upper error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.density_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.density_fast": {
+  "description": "Density of fast (non-thermal) particles {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.density_fast"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.density_fast_error_index": {
+  "description": "Index in the error_description list for \"density_fast\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.density_fast_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.density_fast_error_lower": {
+  "description": "Lower error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.density_fast_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.density_fast_error_upper": {
+  "description": "Upper error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.density_fast_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure": {
+  "description": "Pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_error_index": {
+  "description": "Index in the error_description list for \"pressure\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_error_lower": {
+  "description": "Lower error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_error_upper": {
+  "description": "Upper error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_parallel": {
+  "description": "Fast (non-thermal) parallel pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_parallel_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_parallel_error_lower": {
+  "description": "Lower error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_parallel_error_upper": {
+  "description": "Upper error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_perpendicular": {
+  "description": "Fast (non-thermal) perpendicular pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_perpendicular"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_perpendicular_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_perpendicular\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_perpendicular_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_perpendicular_error_lower": {
+  "description": "Lower error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_perpendicular_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_perpendicular_error_upper": {
+  "description": "Upper error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.pressure_fast_perpendicular_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.temperature": {
+  "description": "Temperature {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.temperature"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.temperature_error_index": {
+  "description": "Index in the error_description list for \"temperature\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.temperature_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.temperature_error_lower": {
+  "description": "Lower error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.temperature_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.temperature_error_upper": {
+  "description": "Upper error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.temperature_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity": {
+  "description": "Velocity [m.s^-1]",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.diamagnetic": {
+  "description": "Diamagnetic component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.diamagnetic"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.diamagnetic_error_index": {
+  "description": "Index in the error_description list for \"diamagnetic\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.diamagnetic_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.diamagnetic_error_lower": {
+  "description": "Lower error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.diamagnetic_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.diamagnetic_error_upper": {
+  "description": "Upper error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.diamagnetic_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.parallel": {
+  "description": "Parallel component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.parallel_error_index": {
+  "description": "Index in the error_description list for \"parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.parallel_error_lower": {
+  "description": "Lower error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.parallel_error_upper": {
+  "description": "Upper error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.poloidal": {
+  "description": "Poloidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.poloidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.poloidal_error_index": {
+  "description": "Index in the error_description list for \"poloidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.poloidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.poloidal_error_lower": {
+  "description": "Lower error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.poloidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.poloidal_error_upper": {
+  "description": "Upper error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.poloidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.radial": {
+  "description": "Radial component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.radial"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.radial_error_index": {
+  "description": "Index in the error_description list for \"radial\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.radial_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.radial_error_lower": {
+  "description": "Lower error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.radial_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.radial_error_upper": {
+  "description": "Upper error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.radial_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.toroidal": {
+  "description": "Toroidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.toroidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.toroidal_error_index": {
+  "description": "Index in the error_description list for \"toroidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.toroidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.toroidal_error_lower": {
+  "description": "Lower error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.toroidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.toroidal_error_upper": {
+  "description": "Upper error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].electrons.velocity.toroidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid": {
+  "description": "Radial grid",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.area": {
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.area"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.area_error_index": {
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.area_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.area_error_lower": {
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.area_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.area_error_upper": {
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.area_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.psi": {
+  "description": "Poloidal magnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.psi"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.psi_error_index": {
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.psi_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.psi_error_lower": {
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.psi_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.psi_error_upper": {
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.psi_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor": {
+  "description": "Toroidal flux coordinate. rho_tor = sqrt(b_flux_tor/(pi*b0)) ~ sqrt(pi*r^2*b0/(pi*b0)) ~ r [m]. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_error_index": {
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_error_lower": {
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_error_upper": {
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm": {
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation, see time_slice/boundary/b_flux_pol_norm in the equilibrium IDS) {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm_error_index": {
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm_error_lower": {
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm_error_upper": {
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "1...N"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.volume": {
+  "description": "Volume enclosed inside the magnetic surface {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.volume"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.volume_error_index": {
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.volume_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.volume_error_lower": {
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.volume_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].grid.volume_error_upper": {
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].grid.volume_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:]": {
+  "description": "changes related to the different ions species",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:]"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].density": {
+  "description": "Density (thermal+non-thermal) (sum over charge states when multiple charge states are considered) {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].density"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].density_error_index": {
+  "description": "Index in the error_description list for \"density\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].density_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].density_error_lower": {
+  "description": "Lower error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].density_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].density_error_upper": {
+  "description": "Upper error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].density_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].density_fast": {
+  "description": "Density of fast (non-thermal) particles (sum over charge states when multiple charge states are considered) {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].density_fast"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].density_fast_error_index": {
+  "description": "Index in the error_description list for \"density_fast\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].density_fast_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].density_fast_error_lower": {
+  "description": "Lower error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].density_fast_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].density_fast_error_upper": {
+  "description": "Upper error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].density_fast_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:]": {
+  "description": "List of elements forming the atom or molecule",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:]"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].a": {
+  "description": "Mass of atom {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].a"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].a_error_index": {
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].a_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].a_error_lower": {
+  "description": "Lower error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].a_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].a_error_upper": {
+  "description": "Upper error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].a_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].multiplicity": {
+  "description": "Multiplicity of the atom {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].multiplicity"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].multiplicity_error_index": {
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].multiplicity_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].multiplicity_error_lower": {
+  "description": "Lower error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].multiplicity_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].multiplicity_error_upper": {
+  "description": "Upper error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].multiplicity_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].z_n": {
+  "description": "Nuclear charge {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].z_n"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].z_n_error_index": {
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].z_n_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].z_n_error_lower": {
+  "description": "Lower error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].z_n_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].z_n_error_upper": {
+  "description": "Upper error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].element[:].z_n_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].label": {
+  "description": "String identifying ion (e.g. H+, D+, T+, He+2, C+, ...) {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].label"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].multiple_states_flag": {
+  "description": "Multiple states calculation flag : 0-Only one state is considered; 1-Multiple states are considered and are described in the state structure {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].multiple_states_flag"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].neutral_index": {
+  "description": "Index of the corresponding neutral species in the ../../neutral array {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].neutral_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure": {
+  "description": "Pressure (sum over charge states when multiple charge states are considered) {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_error_index": {
+  "description": "Index in the error_description list for \"pressure\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_error_lower": {
+  "description": "Lower error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_error_upper": {
+  "description": "Upper error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_parallel": {
+  "description": "Fast (non-thermal) parallel pressure (sum over charge states when multiple charge states are considered) {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_parallel_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_parallel_error_lower": {
+  "description": "Lower error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_parallel_error_upper": {
+  "description": "Upper error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_perpendicular": {
+  "description": "Fast (non-thermal) perpendicular pressure (sum over charge states when multiple charge states are considered) {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_perpendicular"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_perpendicular_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_perpendicular\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_perpendicular_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_perpendicular_error_lower": {
+  "description": "Lower error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_perpendicular_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_perpendicular_error_upper": {
+  "description": "Upper error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].pressure_fast_perpendicular_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:]": {
+  "description": "Quantities related to the different states of the species (ionisation, energy, excitation, ...)",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:]"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density": {
+  "description": "Density (thermal+non-thermal) {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_error_index": {
+  "description": "Index in the error_description list for \"density\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_error_lower": {
+  "description": "Lower error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_error_upper": {
+  "description": "Upper error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_fast": {
+  "description": "Density of fast (non-thermal) particles {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_fast"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_fast_error_index": {
+  "description": "Index in the error_description list for \"density_fast\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_fast_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_fast_error_lower": {
+  "description": "Lower error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_fast_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_fast_error_upper": {
+  "description": "Upper error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].density_fast_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].electron_configuration": {
+  "description": "Configuration of atomic orbitals of this state, e.g. 1s2-2s1 {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].electron_configuration"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].ionisation_potential": {
+  "description": "Cumulative and average ionisation potential to reach a given bundle. Defined as sum (x_z* (sum of Epot from z'=0 to z-1)), where Epot is the ionisation potential of ion Xz+, and x_z is the relative concentration of a given charge state in the bundle, i.e. sum(x_z) = 1 over the bundle. {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].ionisation_potential"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].ionisation_potential_error_index": {
+  "description": "Index in the error_description list for \"ionisation_potential\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].ionisation_potential_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].ionisation_potential_error_lower": {
+  "description": "Lower error for \"ionisation_potential\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].ionisation_potential_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].ionisation_potential_error_upper": {
+  "description": "Upper error for \"ionisation_potential\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].ionisation_potential_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].label": {
+  "description": "String identifying charge state (e.g. C+, C+2 , C+3, C+4, C+5, C+6, ...) {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].label"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure": {
+  "description": "Pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_error_index": {
+  "description": "Index in the error_description list for \"pressure\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_error_lower": {
+  "description": "Lower error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_error_upper": {
+  "description": "Upper error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_parallel": {
+  "description": "Fast (non-thermal) parallel pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_parallel_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_parallel_error_lower": {
+  "description": "Lower error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_parallel_error_upper": {
+  "description": "Upper error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_perpendicular": {
+  "description": "Fast (non-thermal) perpendicular pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_perpendicular"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_perpendicular_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_perpendicular\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_perpendicular_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_perpendicular_error_lower": {
+  "description": "Lower error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_perpendicular_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_perpendicular_error_upper": {
+  "description": "Upper error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].pressure_fast_perpendicular_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].temperature": {
+  "description": "Temperature {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].temperature"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].temperature_error_index": {
+  "description": "Index in the error_description list for \"temperature\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].temperature_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].temperature_error_lower": {
+  "description": "Lower error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].temperature_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].temperature_error_upper": {
+  "description": "Upper error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].temperature_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity": {
+  "description": "Velocity [m.s^-1]",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.diamagnetic": {
+  "description": "Diamagnetic component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.diamagnetic"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.diamagnetic_error_index": {
+  "description": "Index in the error_description list for \"diamagnetic\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.diamagnetic_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.diamagnetic_error_lower": {
+  "description": "Lower error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.diamagnetic_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.diamagnetic_error_upper": {
+  "description": "Upper error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.diamagnetic_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.parallel": {
+  "description": "Parallel component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.parallel_error_index": {
+  "description": "Index in the error_description list for \"parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.parallel_error_lower": {
+  "description": "Lower error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.parallel_error_upper": {
+  "description": "Upper error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.poloidal": {
+  "description": "Poloidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.poloidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.poloidal_error_index": {
+  "description": "Index in the error_description list for \"poloidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.poloidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.poloidal_error_lower": {
+  "description": "Lower error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.poloidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.poloidal_error_upper": {
+  "description": "Upper error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.poloidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.radial": {
+  "description": "Radial component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.radial"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.radial_error_index": {
+  "description": "Index in the error_description list for \"radial\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.radial_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.radial_error_lower": {
+  "description": "Lower error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.radial_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.radial_error_upper": {
+  "description": "Upper error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.radial_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.toroidal": {
+  "description": "Toroidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.toroidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.toroidal_error_index": {
+  "description": "Index in the error_description list for \"toroidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.toroidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.toroidal_error_lower": {
+  "description": "Lower error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.toroidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.toroidal_error_upper": {
+  "description": "Upper error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].velocity.toroidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_level": {
+  "description": "Vibrational level (can be bundled) {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_level"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_index": {
+  "description": "Index in the error_description list for \"vibrational_level\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_lower": {
+  "description": "Lower error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_upper": {
+  "description": "Upper error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_mode": {
+  "description": "Vibrational mode of this state, e.g. \"A_g\". Need to define, or adopt a standard nomenclature. {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].vibrational_mode"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_average": {
+  "description": "Average Z of the charge state bundle (equal to z_min if no bundle), = sum (Z*x_z) where x_z is the relative concentration of a given charge state in the bundle, i.e. sum(x_z) = 1 over the bundle. {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_average"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_average_error_index": {
+  "description": "Index in the error_description list for \"z_average\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_average_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_average_error_lower": {
+  "description": "Lower error for \"z_average\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_average_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_average_error_upper": {
+  "description": "Upper error for \"z_average\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_average_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_max": {
+  "description": "Maximum Z of the charge state bundle (equal to z_min if no bundle) {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_max"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_max_error_index": {
+  "description": "Index in the error_description list for \"z_max\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_max_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_max_error_lower": {
+  "description": "Lower error for \"z_max\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_max_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_max_error_upper": {
+  "description": "Upper error for \"z_max\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_max_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_min": {
+  "description": "Minimum Z of the charge state bundle {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_min"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_min_error_index": {
+  "description": "Index in the error_description list for \"z_min\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_min_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_min_error_lower": {
+  "description": "Lower error for \"z_min\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_min_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_min_error_upper": {
+  "description": "Upper error for \"z_min\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_min_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_square_average": {
+  "description": "Average Z square of the charge state bundle (equal to z_min if no bundle), = sum (Z^2*x_z) where x_z is the relative concentration of a given charge state in the bundle, i.e. sum(x_z) = 1 over the bundle. {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_square_average"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_square_average_error_index": {
+  "description": "Index in the error_description list for \"z_square_average\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_square_average_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_square_average_error_lower": {
+  "description": "Lower error for \"z_square_average\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_square_average_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_square_average_error_upper": {
+  "description": "Upper error for \"z_square_average\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].state[:].z_square_average_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].temperature": {
+  "description": "Temperature (average over charge states when multiple charge states are considered) {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].temperature"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].temperature_error_index": {
+  "description": "Index in the error_description list for \"temperature\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].temperature_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].temperature_error_lower": {
+  "description": "Lower error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].temperature_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].temperature_error_upper": {
+  "description": "Upper error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].temperature_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity": {
+  "description": "Velocity (average over charge states when multiple charge states are considered) [m.s^-1]",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.diamagnetic": {
+  "description": "Diamagnetic component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.diamagnetic"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.diamagnetic_error_index": {
+  "description": "Index in the error_description list for \"diamagnetic\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.diamagnetic_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.diamagnetic_error_lower": {
+  "description": "Lower error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.diamagnetic_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.diamagnetic_error_upper": {
+  "description": "Upper error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.diamagnetic_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.parallel": {
+  "description": "Parallel component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.parallel_error_index": {
+  "description": "Index in the error_description list for \"parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.parallel_error_lower": {
+  "description": "Lower error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.parallel_error_upper": {
+  "description": "Upper error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.poloidal": {
+  "description": "Poloidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.poloidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.poloidal_error_index": {
+  "description": "Index in the error_description list for \"poloidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.poloidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.poloidal_error_lower": {
+  "description": "Lower error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.poloidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.poloidal_error_upper": {
+  "description": "Upper error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.poloidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.radial": {
+  "description": "Radial component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.radial"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.radial_error_index": {
+  "description": "Index in the error_description list for \"radial\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.radial_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.radial_error_lower": {
+  "description": "Lower error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.radial_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.radial_error_upper": {
+  "description": "Upper error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.radial_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.toroidal": {
+  "description": "Toroidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.toroidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.toroidal_error_index": {
+  "description": "Index in the error_description list for \"toroidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.toroidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.toroidal_error_lower": {
+  "description": "Lower error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.toroidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.toroidal_error_upper": {
+  "description": "Upper error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].velocity.toroidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].z_ion": {
+  "description": "Ion charge (of the dominant ionisation state; lumped ions are allowed) {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].z_ion"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].z_ion_error_index": {
+  "description": "Index in the error_description list for \"z_ion\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].z_ion_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].z_ion_error_lower": {
+  "description": "Lower error for \"z_ion\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].z_ion_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].ion[:].z_ion_error_upper": {
+  "description": "Upper error for \"z_ion\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].ion[:].z_ion_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].momentum_tor": {
+  "description": "change of total toroidal momentum {dynamic} [kg.m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].momentum_tor"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].momentum_tor_error_index": {
+  "description": "Index in the error_description list for \"momentum_tor\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].momentum_tor_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].momentum_tor_error_lower": {
+  "description": "Lower error for \"momentum_tor\" {dynamic} [kg.m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].momentum_tor_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].momentum_tor_error_upper": {
+  "description": "Upper error for \"momentum_tor\" {dynamic} [kg.m^2.s^-1]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].momentum_tor_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:]": {
+  "description": "changes related to the different neutral species",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:]"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].density": {
+  "description": "Density (thermal+non-thermal) (sum over charge states when multiple charge states are considered) {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].density"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_error_index": {
+  "description": "Index in the error_description list for \"density\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_error_lower": {
+  "description": "Lower error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_error_upper": {
+  "description": "Upper error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_fast": {
+  "description": "Density of fast (non-thermal) particles (sum over charge states when multiple charge states are considered) {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_fast"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_fast_error_index": {
+  "description": "Index in the error_description list for \"density_fast\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_fast_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_fast_error_lower": {
+  "description": "Lower error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_fast_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_fast_error_upper": {
+  "description": "Upper error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].density_fast_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:]": {
+  "description": "List of elements forming the atom or molecule",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:]"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].a": {
+  "description": "Mass of atom {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].a"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].a_error_index": {
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].a_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].a_error_lower": {
+  "description": "Lower error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].a_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].a_error_upper": {
+  "description": "Upper error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].a_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].multiplicity": {
+  "description": "Multiplicity of the atom {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].multiplicity"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_index": {
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_lower": {
+  "description": "Lower error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_upper": {
+  "description": "Upper error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].z_n": {
+  "description": "Nuclear charge {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].z_n"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].z_n_error_index": {
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].z_n_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].z_n_error_lower": {
+  "description": "Lower error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].z_n_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].z_n_error_upper": {
+  "description": "Upper error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].element[:].z_n_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].ion_index": {
+  "description": "Index of the corresponding ion species in the ../../ion array {dynamic}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].ion_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].label": {
+  "description": "String identifying ion (e.g. H+, D+, T+, He+2, C+, ...) {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].label"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].multiple_states_flag": {
+  "description": "Multiple states calculation flag : 0-Only one state is considered; 1-Multiple states are considered and are described in the state structure {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].multiple_states_flag"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure": {
+  "description": "Pressure (sum over charge states when multiple charge states are considered) {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_error_index": {
+  "description": "Index in the error_description list for \"pressure\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_error_lower": {
+  "description": "Lower error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_error_upper": {
+  "description": "Upper error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_parallel": {
+  "description": "Fast (non-thermal) parallel pressure (sum over charge states when multiple charge states are considered) {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_parallel_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_parallel_error_lower": {
+  "description": "Lower error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_parallel_error_upper": {
+  "description": "Upper error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_perpendicular": {
+  "description": "Fast (non-thermal) perpendicular pressure (sum over charge states when multiple charge states are considered) {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_perpendicular"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_perpendicular_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_perpendicular\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_perpendicular_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_perpendicular_error_lower": {
+  "description": "Lower error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_perpendicular_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_perpendicular_error_upper": {
+  "description": "Upper error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].pressure_fast_perpendicular_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:]": {
+  "description": "Quantities related to the different states of the species (energy, excitation, ...)",
+  "data_type": "",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:]"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density": {
+  "description": "Density (thermal+non-thermal) {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_error_index": {
+  "description": "Index in the error_description list for \"density\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_error_lower": {
+  "description": "Lower error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_error_upper": {
+  "description": "Upper error for \"density\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_fast": {
+  "description": "Density of fast (non-thermal) particles {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_fast"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_fast_error_index": {
+  "description": "Index in the error_description list for \"density_fast\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_fast_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_fast_error_lower": {
+  "description": "Lower error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_fast_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_fast_error_upper": {
+  "description": "Upper error for \"density_fast\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].density_fast_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].electron_configuration": {
+  "description": "Configuration of atomic orbitals of this state, e.g. 1s2-2s1 {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].electron_configuration"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].label": {
+  "description": "String identifying charge state (e.g. C+, C+2 , C+3, C+4, C+5, C+6, ...) {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].label"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].neutral_type": {
+  "description": "Neutral type (if the considered state is a neutral), in terms of energy. ID =1: cold; 2: thermal; 3: fast; 4: NBI",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].neutral_type"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].neutral_type.description": {
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].neutral_type.description"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].neutral_type.index": {
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].neutral_type.index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].neutral_type.name": {
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].neutral_type.name"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure": {
+  "description": "Pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_error_index": {
+  "description": "Index in the error_description list for \"pressure\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_error_lower": {
+  "description": "Lower error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_error_upper": {
+  "description": "Upper error for \"pressure\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_parallel": {
+  "description": "Fast (non-thermal) parallel pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_parallel_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_parallel_error_lower": {
+  "description": "Lower error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_parallel_error_upper": {
+  "description": "Upper error for \"pressure_fast_parallel\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_perpendicular": {
+  "description": "Fast (non-thermal) perpendicular pressure {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_perpendicular"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_perpendicular_error_index": {
+  "description": "Index in the error_description list for \"pressure_fast_perpendicular\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_perpendicular_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_perpendicular_error_lower": {
+  "description": "Lower error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_perpendicular_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_perpendicular_error_upper": {
+  "description": "Upper error for \"pressure_fast_perpendicular\" {dynamic} [Pa]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].pressure_fast_perpendicular_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].temperature": {
+  "description": "Temperature {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].temperature"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].temperature_error_index": {
+  "description": "Index in the error_description list for \"temperature\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].temperature_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].temperature_error_lower": {
+  "description": "Lower error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].temperature_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].temperature_error_upper": {
+  "description": "Upper error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].temperature_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity": {
+  "description": "Velocity [m.s^-1]",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.diamagnetic": {
+  "description": "Diamagnetic component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.diamagnetic"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.diamagnetic_error_index": {
+  "description": "Index in the error_description list for \"diamagnetic\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.diamagnetic_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.diamagnetic_error_lower": {
+  "description": "Lower error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.diamagnetic_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.diamagnetic_error_upper": {
+  "description": "Upper error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.diamagnetic_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.parallel": {
+  "description": "Parallel component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.parallel_error_index": {
+  "description": "Index in the error_description list for \"parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.parallel_error_lower": {
+  "description": "Lower error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.parallel_error_upper": {
+  "description": "Upper error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.poloidal": {
+  "description": "Poloidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.poloidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.poloidal_error_index": {
+  "description": "Index in the error_description list for \"poloidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.poloidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.poloidal_error_lower": {
+  "description": "Lower error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.poloidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.poloidal_error_upper": {
+  "description": "Upper error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.poloidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.radial": {
+  "description": "Radial component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.radial"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.radial_error_index": {
+  "description": "Index in the error_description list for \"radial\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.radial_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.radial_error_lower": {
+  "description": "Lower error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.radial_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.radial_error_upper": {
+  "description": "Upper error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.radial_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.toroidal": {
+  "description": "Toroidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.toroidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.toroidal_error_index": {
+  "description": "Index in the error_description list for \"toroidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.toroidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.toroidal_error_lower": {
+  "description": "Lower error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.toroidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.toroidal_error_upper": {
+  "description": "Upper error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].velocity.toroidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_level": {
+  "description": "Vibrational level (can be bundled) {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_level"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_index": {
+  "description": "Index in the error_description list for \"vibrational_level\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_lower": {
+  "description": "Lower error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_upper": {
+  "description": "Upper error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_mode": {
+  "description": "Vibrational mode of this state, e.g. \"A_g\". Need to define, or adopt a standard nomenclature. {dynamic}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].state[:].vibrational_mode"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].temperature": {
+  "description": "Temperature (average over charge states when multiple charge states are considered) {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].temperature"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].temperature_error_index": {
+  "description": "Index in the error_description list for \"temperature\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].temperature_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].temperature_error_lower": {
+  "description": "Lower error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].temperature_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].temperature_error_upper": {
+  "description": "Upper error for \"temperature\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].temperature_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity": {
+  "description": "Velocity (average over charge states when multiple charge states are considered) [m.s^-1]",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.diamagnetic": {
+  "description": "Diamagnetic component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.diamagnetic"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.diamagnetic_error_index": {
+  "description": "Index in the error_description list for \"diamagnetic\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.diamagnetic_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.diamagnetic_error_lower": {
+  "description": "Lower error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.diamagnetic_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.diamagnetic_error_upper": {
+  "description": "Upper error for \"diamagnetic\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.diamagnetic_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.parallel": {
+  "description": "Parallel component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.parallel"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.parallel_error_index": {
+  "description": "Index in the error_description list for \"parallel\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.parallel_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.parallel_error_lower": {
+  "description": "Lower error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.parallel_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.parallel_error_upper": {
+  "description": "Upper error for \"parallel\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.parallel_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.poloidal": {
+  "description": "Poloidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.poloidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.poloidal_error_index": {
+  "description": "Index in the error_description list for \"poloidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.poloidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.poloidal_error_lower": {
+  "description": "Lower error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.poloidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.poloidal_error_upper": {
+  "description": "Upper error for \"poloidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.poloidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.radial": {
+  "description": "Radial component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.radial"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.radial_error_index": {
+  "description": "Index in the error_description list for \"radial\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.radial_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.radial_error_lower": {
+  "description": "Lower error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.radial_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.radial_error_upper": {
+  "description": "Upper error for \"radial\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.radial_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.toroidal": {
+  "description": "Toroidal component {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.toroidal"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.toroidal_error_index": {
+  "description": "Index in the error_description list for \"toroidal\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.toroidal_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.toroidal_error_lower": {
+  "description": "Lower error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.toroidal_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.toroidal_error_upper": {
+  "description": "Upper error for \"toroidal\" {dynamic} [as_parent]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].neutral[:].velocity.toroidal_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].t_i_average": {
+  "description": "change of average ion temperature {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].t_i_average"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].t_i_average_error_index": {
+  "description": "Index in the error_description list for \"t_i_average\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].t_i_average_error_index"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].t_i_average_error_lower": {
+  "description": "Lower error for \"t_i_average\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].t_i_average_error_lower"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].t_i_average_error_upper": {
+  "description": "Upper error for \"t_i_average\" {dynamic} [eV]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.change[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].t_i_average_error_upper"
+ },
+ "core_instant_changes.change[:].profiles_1d[:].time": {
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.change[:].profiles_1d[:].time"
+ },
+ "core_instant_changes.code": {
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.code"
+ },
+ "core_instant_changes.code.name": {
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.code.name"
+ },
+ "core_instant_changes.code.output_flag": {
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D",
+  "coordinates": [
+   "core_instant_changes.time"
+  ],
+  "full_path": "core_instant_changes.code.output_flag"
+ },
+ "core_instant_changes.code.parameters": {
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.code.parameters"
+ },
+ "core_instant_changes.code.version": {
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.code.version"
+ },
+ "core_instant_changes.ids_properties": {
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.ids_properties"
+ },
+ "core_instant_changes.ids_properties.comment": {
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.ids_properties.comment"
+ },
+ "core_instant_changes.ids_properties.homogeneous_time": {
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.ids_properties.homogeneous_time"
+ },
+ "core_instant_changes.time": {
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type",
+  "coordinates": [
+   "1...N"
+  ],
+  "base_coord": true,
+  "full_path": "core_instant_changes.time"
+ },
+ "core_instant_changes.vacuum_toroidal_field": {
+  "description": "Characteristics of the vacuum toroidal field (used in Rho_Tor definition and in the normalization of current densities)",
+  "data_type": "",
+  "coordinates": [],
+  "full_path": "core_instant_changes.vacuum_toroidal_field"
+ },
+ "core_instant_changes.vacuum_toroidal_field.b0": {
+  "description": "Vacuum toroidal field at R0 [T]; Positive sign means anti-clockwise when viewed from above. The product R0B0 must be consistent with the b_tor_vacuum_r field of the tf IDS. {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.time"
+  ],
+  "full_path": "core_instant_changes.vacuum_toroidal_field.b0"
+ },
+ "core_instant_changes.vacuum_toroidal_field.b0_error_index": {
+  "description": "Index in the error_description list for \"b0\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [
+   "core_instant_changes.time"
+  ],
+  "full_path": "core_instant_changes.vacuum_toroidal_field.b0_error_index"
+ },
+ "core_instant_changes.vacuum_toroidal_field.b0_error_lower": {
+  "description": "Lower error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.time"
+  ],
+  "full_path": "core_instant_changes.vacuum_toroidal_field.b0_error_lower"
+ },
+ "core_instant_changes.vacuum_toroidal_field.b0_error_upper": {
+  "description": "Upper error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D",
+  "coordinates": [
+   "core_instant_changes.time"
+  ],
+  "full_path": "core_instant_changes.vacuum_toroidal_field.b0_error_upper"
+ },
+ "core_instant_changes.vacuum_toroidal_field.r0": {
+  "description": "Reference major radius where the vacuum toroidal magnetic field is given (usually a fixed position such as the middle of the vessel at the equatorial midplane) {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.vacuum_toroidal_field.r0"
+ },
+ "core_instant_changes.vacuum_toroidal_field.r0_error_index": {
+  "description": "Index in the error_description list for \"r0\" {constant}",
+  "data_type": "INT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.vacuum_toroidal_field.r0_error_index"
+ },
+ "core_instant_changes.vacuum_toroidal_field.r0_error_lower": {
+  "description": "Lower error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.vacuum_toroidal_field.r0_error_lower"
+ },
+ "core_instant_changes.vacuum_toroidal_field.r0_error_upper": {
+  "description": "Upper error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D",
+  "coordinates": [],
+  "full_path": "core_instant_changes.vacuum_toroidal_field.r0_error_upper"
+ }
+}
