@@ -1,0 +1,25 @@
+---
+
+language: python
+python:
+  - 3.4
+  - 3.5
+  - 3.6
+install:
+  - pip install -r requirements.txt
+  - pip install flake8 flit nose mypy
+  # - pip install pylint
+build:
+  pre_ci:
+    - docker build -t hostlist:latest .
+    - docker rm -f hostlist || true
+  ci:
+    - flake8 hostlist
+    - mypy --ignore-missing-imports --strict-optional hostlist
+    # - pylint hostlist
+    - flit wheel
+    - flit install
+    - cd tests && nosetests .
+    # TODO: run container and check output
+env:
+  - FLIT_ROOT_INSTALL=1
