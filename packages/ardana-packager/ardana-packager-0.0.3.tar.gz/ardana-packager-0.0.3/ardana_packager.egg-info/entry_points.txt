@@ -1,0 +1,7 @@
+[console_scripts]
+config_symlinks = ardana_packager.symlinks:main
+create_index = ardana_packager.indexer:main
+install_package = ardana_packager.cmd:main
+setup_systemd = ardana_packager.setup_systemd:main
+venv_edit = ardana_packager.venv_edit:main
+
