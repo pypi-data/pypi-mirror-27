@@ -1,0 +1,26 @@
+yiiframework:
+    paths:
+      - yii
+      - yii.bat
+      - vendor/yiisoft
+    regex:
+      - file: LICENSE.md
+        search_term: Yii framework
+
+Rails:
+    paths:
+      - bin/rails
+      - bin/rake
+      - Rakefile
+    regex:
+      - file: config/routes.rb
+        search_term: Rails.
+
+Play:
+    paths:
+        - bin/activator
+        - app/services
+        - build.sbt
+    regex:
+      - file: conf/application.conf
+        search_term: Play
