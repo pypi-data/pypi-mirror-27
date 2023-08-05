@@ -1,0 +1,23 @@
+{% extends "product_catalog/base.html" %}
+{% load i18n mptt_tags %}
+
+{% block catalog_content %}
+    <h2>{% trans "Category List" %}</h2>
+
+    <ul class="root">
+        <li><a href="{% url "product_catalog:category_list" %}">{% trans "All categories" %}</a></li>
+        {% recursetree category_list %}
+        <li>
+            <a href='{{ node.get_absolute_url }}'>{{ node }}</a>
+            ({{ node.product_published.count }})
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+        {% endrecursetree %}
+    </ul>
+
+
+{% endblock %}
