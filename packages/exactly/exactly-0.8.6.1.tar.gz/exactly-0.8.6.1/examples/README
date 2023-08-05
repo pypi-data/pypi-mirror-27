@@ -1,0 +1,23 @@
+NOTE!
+Some test cases may fail because some
+external programs used by the examples may not be found on the current OS.
+E.g. /usr/bin/python.
+
+The examples need some executable test programs to be generated first.
+Generate them using:
+
+> python3 make-executables.py all
+
+
+Remove them using:
+
+> python3 make-executables.py clean
+
+
+All examples can be run using:
+
+> exactly suite examples.suite
+
+or, if an executable has not been installed:
+
+> python3 ../src/default-main-program-runner.py suite examples.suite

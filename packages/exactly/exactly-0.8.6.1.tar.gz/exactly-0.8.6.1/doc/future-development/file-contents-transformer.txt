@@ -1,0 +1,21 @@
+-*- org -*-
+
+<2017-08-17 tor>
+
+* atoms to build transformers from
+** selection of line numbers à la Py N :N N: N:M :-N
+** limitation of lines to operate on: --on/in LINE-MATCHER
+* Builtin transformers
+** split lines (producing more lines than original)
+** join lines (join all lines, and remove final nl, if there)
+
+** ADDRESS
+
+ADDRESS ::= --range FROM : TO
+
+          = --range FROM :
+
+          = --range : TO
+
+          = --reg-ex REG_EX
+
