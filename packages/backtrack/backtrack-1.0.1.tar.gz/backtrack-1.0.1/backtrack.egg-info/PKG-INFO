@@ -1,0 +1,42 @@
+Metadata-Version: 1.1
+Name: backtrack
+Version: 1.0.1
+Summary: Simple logging in Python 3.
+Home-page: https://github.com/Coal0/backtrack
+Author: coal0
+Author-email: charcoalzx@protonmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: backtrack
+        ---------
+        
+        backtrack is a simple logging tool for Python 3.
+        Features:
+        
+        * Simple
+        * MIT licensed
+        * Supports all file descriptor 'writable' objects.
+        * Supports colored output
+        * Supports three useful formatting keys (datetime, unixtime, file)
+        
+        To install backtrack, run
+        
+        .. code-block:: shell
+            
+            pip install backtrack
+        
+        or
+        
+        .. code-block:: shell
+        
+            pip3 install backtrack
+        
+Keywords: log,logging,logger
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: System :: Logging
