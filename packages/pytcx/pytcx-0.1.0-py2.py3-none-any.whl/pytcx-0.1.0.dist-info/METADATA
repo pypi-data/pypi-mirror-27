@@ -1,0 +1,84 @@
+Metadata-Version: 2.0
+Name: pytcx
+Version: 0.1.0
+Summary: GPX parsing for Python
+Home-page: https://github.com/heoga/pytcx
+Author: Karl Odie
+Author-email: karlodie@gmail.com
+License: MIT
+Keywords: pytcx
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: xmltodict
+
+=============================
+pytcx
+=============================
+
+.. image:: https://badge.fury.io/py/pytcx.png
+    :target: http://badge.fury.io/py/pytcx
+
+.. image:: https://travis-ci.org/heoga/pytcx.png?branch=master
+    :target: https://travis-ci.org/heoga/pytcx
+
+TCX parsing for Python
+
+Usage
+-----
+
+.. code-block:: python
+
+    with open('some.tcx') as h:
+        text = h.read()
+    activities = pytcx.parse_to_activities(text)
+    for activity in activities:
+        print(activity.start(), activity.name)
+
+
+Features
+--------
+
+* Reads TCX files for runs synced via tapiriik
+* Reads the following point data:
+** latitude
+** longitude
+** altitude
+** time
+** heart_rate
+** cadence
+
+Future Work
+-----------
+
+* Support cycling (need sample tcx)
+* Support swimming (need sample tcx)
+
+
+
+
+
+Documentation
+-------------
+
+The full documentation is at http://pytcx.rtfd.org.
+
+
+
+History
+-------
+
+0.1.0 (2018-01-01)
+++++++++++++++++++
+
+* First release on PyPI.
+
+
