@@ -1,0 +1,21 @@
+[device]
+sample_time = 3000
+conversion_time = 4
+
+[adc]
+type = PicoLog24Sim
+
+[picolog]
+# channel config
+channel_13 = true
+channel_13_range = 0
+channel_13_type = 1
+channel_14 = true
+channel_14_range = 0
+channel_14_type = 1
+channel_15 = true
+channel_15_range = 0
+channel_15_type = 1
+channel_16 = true
+channel_16_range = 0
+channel_16_type = 1
