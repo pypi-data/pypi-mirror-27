@@ -1,0 +1,25 @@
+include README.md
+include LICENSE.md
+
+recursive-include attrim *.py *.jinja *.ts *.js *.json *.sass *.css *.map *.lock *.html
+
+prune attrim/static/attrim/admin/.browsers
+
+prune attrim/static/attrim/admin/node_modules/@types
+prune attrim/static/attrim/admin/node_modules/canonical-path
+prune attrim/static/attrim/admin/node_modules/concurrently
+prune attrim/static/attrim/admin/node_modules/jasmine-core
+prune attrim/static/attrim/admin/node_modules/karma
+prune attrim/static/attrim/admin/node_modules/karma-chrome-launcher
+prune attrim/static/attrim/admin/node_modules/karma-cli
+prune attrim/static/attrim/admin/node_modules/karma-firefox-launcher
+prune attrim/static/attrim/admin/node_modules/karma-jasmine
+prune attrim/static/attrim/admin/node_modules/karma-jasmine-html-reporter
+prune attrim/static/attrim/admin/node_modules/lite-server
+prune attrim/static/attrim/admin/node_modules/protractor
+prune attrim/static/attrim/admin/node_modules/faker
+prune attrim/static/attrim/admin/node_modules/rimraf
+prune attrim/static/attrim/admin/node_modules/selenium-server-standalone-jar
+prune attrim/static/attrim/admin/node_modules/tslint
+prune attrim/static/attrim/admin/node_modules/pug-cli
+prune attrim/static/attrim/admin/node_modules/typescript
