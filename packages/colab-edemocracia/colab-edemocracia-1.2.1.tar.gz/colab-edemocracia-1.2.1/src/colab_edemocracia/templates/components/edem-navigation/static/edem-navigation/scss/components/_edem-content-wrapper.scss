@@ -1,0 +1,38 @@
+.edem-content-wrapper {
+  // Inherit common body styles
+  -moz-osx-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-font-smoothing: inherit;
+  -webkit-font-smoothing: inherit;
+  background-attachment: inherit;
+  background-size: inherit;
+  background: inherit;
+  box-sizing: inherit;
+  color: inherit;
+  display: inherit;
+  flex-basis: inherit;
+  flex-direction: inherit;
+  flex-grow: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  height: inherit;
+  line-height: inherit;
+  margin: inherit;
+  min-height: inherit;
+  overflow: inherit;
+  padding: inherit;
+  width: inherit;
+
+  // Specific styles
+  position: relative;
+  transition: margin-left 0.3s $swift-out;
+
+  @at-root body.-sidebaropen {
+    overflow: hidden;
+  }
+
+  @at-root body.-sidebaropen #{&} {
+    margin-left: $edem-sidebar-offset;
+  }
+}

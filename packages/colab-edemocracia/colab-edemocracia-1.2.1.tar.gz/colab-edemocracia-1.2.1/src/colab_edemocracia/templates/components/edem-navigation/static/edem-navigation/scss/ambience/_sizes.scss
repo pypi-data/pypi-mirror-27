@@ -1,0 +1,6 @@
+$base-unit: 16px;
+
+$edem-topbar-height: 2 * $base-unit;
+$edem-sidebar-width: calc( (13 * #{$base-unit}) + 20vw);
+$edem-sidebar-offset: calc( (-13 * #{$base-unit}) - 20vw);
+$edem-sidebar-padding: calc( (0.5 * #{$base-unit}) + 7.5vw);

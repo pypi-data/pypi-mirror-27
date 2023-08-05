@@ -1,0 +1,52 @@
+.hamburger-button {
+  width: 2*$base-unit;
+  height: 2*$base-unit;
+  position: relative;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+
+  @include bp-smallup {
+    display: none;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    width: 1*$base-unit;
+    height: 0.125*$base-unit;
+    background-color: currentColor;
+    display: block;
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  &:before {
+    top: 0.625*$base-unit;
+    left: 0.5*$base-unit;
+    box-shadow: 0 0.3125*$base-unit 0 0 currentColor;
+  }
+  &:after {
+    top: 1.25*$base-unit;
+    left: 0.5*$base-unit;
+  }
+
+  &.-active {
+    transform: rotate(90deg);
+
+    &:before,
+    &:after {
+      top: 0.9375*$base-unit;
+      left: 0.5*$base-unit;
+    }
+    &:before {
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 0 transparent;
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
