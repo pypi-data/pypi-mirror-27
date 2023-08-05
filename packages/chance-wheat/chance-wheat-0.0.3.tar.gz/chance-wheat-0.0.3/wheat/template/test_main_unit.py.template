@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# File: {FILE_NAME}
+# Author: {AUTHOR_NAME}
+import arrow
+
+from nose.tools import assert_equals
+
+from {PROJECT_NAME} import main
+
+
+def test_create_statistics():
+    """Check if ``main.create_statistics`` works
+    """
+    expect_statistics = {
+        'start_time': arrow.now().format('YYYY-MM-DD HH:mm:ss'),
+        'finish_status': 0
+    }
+    assert_equals(main.create_statistics(), expect_statistics)
