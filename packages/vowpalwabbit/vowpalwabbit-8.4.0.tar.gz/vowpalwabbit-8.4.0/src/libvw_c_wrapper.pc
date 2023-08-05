@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Vowpal Wabbit (C wrapper)
+Description: Vowpal Wabbit Machine Learning System (C wrapper)
+URL: https://github.com/JohnLangford/vowpal_wabbit
+Version: 8.4.0
+Requires: libvw
+Libs: -L${libdir} -lvw_c_wrapper
+Cflags: -I${includedir}

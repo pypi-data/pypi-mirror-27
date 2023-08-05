@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Vowpal Wabbit
+Description: Vowpal Wabbit Machine Learning System
+URL: https://github.com/JohnLangford/vowpal_wabbit
+Version: 8.4.0
+Requires: zlib
+Libs: -L${libdir} -lvw -lallreduce -lpthread -lboost_program_options-mt
+Cflags: -I${includedir} -D_THREAD_SAFE 
