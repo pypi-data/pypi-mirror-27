@@ -1,0 +1,210 @@
+<html>
+    <style>
+    html,body
+    {
+        height:100%;
+        width:100%;
+        overflow: hidden;
+    }
+    #main-wrapper{
+        height: 30vw;
+        width: 65vw;
+        margin: auto;
+    }
+    #place-holder{
+        height: calc(45% - 15vw);
+    }
+    #image-container
+    {
+        /*background: yellow;*/
+        height:25%;
+    }
+    #title-container{
+        /*background:orange;*/
+        height:15%;
+        overflow: hidden;
+    }
+    #message-container
+    {
+        background: white;
+        height:60%;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+
+    {% if style == 'bubble_gum' %}
+        #message-container
+        {
+            background: pink;
+        }
+        .background-image{
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-image: url('/static/images/blue-bubbles.jpg');
+        }
+        .main-wrapper{
+          background: rgba(0, 0, 255, 0.65); /*azure, slategray, burlywood, lightsalmon*/
+          border-radius: 8px;
+          padding: 1.5%;
+        }
+        #app-icon{
+            height:100%;
+            border-radius: 4px;
+        }
+
+        .vertical-align {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #beautiful-title{
+            font-size: 3vw;
+            text-align:center;
+        }
+        #beautiful-message{
+            font-size: 2vw;
+            text-align:center;
+        }
+
+
+        #link-container{
+            margin: 3% 15%;
+            height: 30%;
+        }
+        .btn {
+            background: #3498db;
+            background-image: linear-gradient(to bottom, #3498db, #2980b9);
+            -webkit-border-radius: 28;
+            -moz-border-radius: 28;
+            border-radius: 28px;
+            font-family: Arial;
+            color: #ffffff;
+            border: solid #1f628d 3px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #3cb0fd;
+            background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+            text-decoration: none;
+            cursor:pointer;
+        }
+        #message{
+            margin: 2%;
+        }
+        .link{
+            display: block;
+            height: 100%
+        }
+    {% endif %}
+
+
+    {% if style == 'serious' %}
+        #message-container
+        {
+            background: pink;
+        }
+        .background-image{
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .main-wrapper{
+          background: rgba(55, 55, 66, 0.65); /*azure, slategray, burlywood, lightsalmon*/
+          border-radius: 8px;
+          padding: 1.5%;
+        }
+        #app-icon{
+            height:100%;
+            border-radius: 4px;
+        }
+
+        .vertical-align {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #beautiful-title{
+            font-size: 3vw;
+            text-align:center;
+        }
+        #beautiful-message{
+            font-size: 2vw;
+            text-align:center;
+        }
+
+
+        #link-container{
+            margin: 3% 15%;
+            height: 30%;
+        }
+        .btn {
+            background: #3498db;
+            background-image: linear-gradient(to bottom, #3498db, #2980b9);
+            border-radius: 28px;
+            font-family: Arial;
+            color: #ffffff;
+            border: solid #1f628d 3px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #3cb0fd;
+            background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+            text-decoration: none;
+            cursor:pointer;
+        }
+        #message{
+            margin: 2%;
+        }
+        .link{
+            display: block;
+            height: 100%
+        }
+    {% endif %}
+
+
+
+    .background-image{
+      {% if background_image %}
+      background-image: url({{background_image}});
+      {% endif %}
+    }
+    </style>
+    <body class="background-image">
+        <div id="place-holder"></div>
+        <div id="main-wrapper" class="main-wrapper">
+            <div id="image-container">
+                {% if app_image %}
+                <img id="app-icon" src="{{app_image | safe}}" />
+                {% else %}
+                <img id="app-icon" src="/static/images/example-logo.jpg" />
+                {% endif %}
+            </div>
+            <div id="title-container">
+                <div id="beautiful-title" class="vertical-align">
+                    {{title}}
+                </div>
+            </div>
+            <div id="message-container">
+                <div id="beautiful-message" class="vertical-align">
+
+                    <div id='message'>
+                        {{message}}
+                    </div>
+                    <div id="link-container">
+                        <a class="link btn" href="{{link_address}}">
+                            <div class="vertical-align">
+                                {{link_text}}
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
