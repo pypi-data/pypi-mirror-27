@@ -1,0 +1,39 @@
+Metadata-Version: 2.0
+Name: nameko-salesforce
+Version: 1.0.1
+Summary: Nameko extension for easy communication with Salesforce (Including Streaming API)
+Home-page: http://github.com/iky/nameko-salesforce
+Author: Student.com
+Author-email: UNKNOWN
+License: Apache License, Version 2.0
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Intended Audience :: Developers
+Requires-Dist: cachetools (==2.0.0)
+Requires-Dist: nameko (>=2.5.1)
+Requires-Dist: nameko-bayeux-client (==0.0.1)
+Requires-Dist: redis (==2.10.5)
+Requires-Dist: simple-salesforce (==0.72.2)
+Provides-Extra: dev
+Requires-Dist: coverage (==4.3.4); extra == 'dev'
+Requires-Dist: flake8 (==3.3.0); extra == 'dev'
+Requires-Dist: pylint (==1.7.1); extra == 'dev'
+Requires-Dist: pytest (==3.0.6); extra == 'dev'
+Requires-Dist: requests-mock (==1.3.0); extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: Sphinx (==1.6.2); extra == 'docs'
+Requires-Dist: sphinx-rtd-theme (==0.2.4); extra == 'docs'
+
+UNKNOWN
+
+
