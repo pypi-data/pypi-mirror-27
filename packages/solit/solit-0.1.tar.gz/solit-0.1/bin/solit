@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+import os
+import argparse
+
+import pytest
+import solit
+
+
+if __name__ == "__main__":
+    testfile = os.path.join(os.path.dirname(solit.__file__), "test_logstash.py")
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-p', '--testpath',
+        action='store',
+        default=None,
+        help='Path where the logstash_tests.yml is'
+    )
+    parser.add_argument(
+        '-n', '--testname',
+        action='store',
+        default=None,
+        help='Name of the test to run (Default to None will run all tests)'
+    )
+    parser.add_argument(
+        '-d', '--debug',
+        action='store',
+        default=False,
+        help='Run with debug mode on (-s in pytest speak)'
+    )
+    args = parser.parse_args()
+    pytest_args = [testfile]
+    if args.debug:
+        pytest_args.append('-s')
+    if args.testpath:
+        pytest_args.append('--testpath={}'.format(args.testpath))
+    if args.testname:
+        pytest_args.append('--testname={}'.format(args.testname))
+
+    pytest.main(pytest_args)
