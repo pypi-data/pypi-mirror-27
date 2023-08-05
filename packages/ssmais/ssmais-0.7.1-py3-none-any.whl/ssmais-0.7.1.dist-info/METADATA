@@ -1,0 +1,39 @@
+Metadata-Version: 2.0
+Name: ssmais
+Version: 0.7.1
+Summary: SSMais is a Django application that aims to perform reservation management of a service over the Web.
+Home-page: https://github.com/Software-Design-2017/SSMais
+Author: Mais Software Inc.
+Author-email: maissoftwareinc@gmail.com
+License: GPLv3
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 1.11
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires-Dist: certifi (==2017.11.5)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: coverage (==4.4.2)
+Requires-Dist: Django (==1.11.7)
+Requires-Dist: idna (==2.6)
+Requires-Dist: pkginfo (==1.4.1)
+Requires-Dist: pytz (==2017.3)
+Requires-Dist: requests (==2.18.4)
+Requires-Dist: requests-toolbelt (==0.8.0)
+Requires-Dist: tqdm (==4.19.4)
+Requires-Dist: twine (==1.9.1)
+Requires-Dist: urllib3 (==1.22)
+
+SSMais is a Django application that aims to perform reservation management of a service over the Web.
+The main purpose of this application is to allow the reuse of features that are generally used in scheduling
+software such as scheduling, searching and registering services.
+
+
