@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="cs.video">
+
+    <!-- Register the installation GenericSetup extension profile -->
+    <genericsetup:registerProfile
+      name="default"
+      title="cs.video"
+      directory="profiles/default"
+      description="Video object for referring external FLV files"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+
+</configure>

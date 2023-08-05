@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file holds the setup configuration for the portal_skins tool -->
+
+<object name="portal_skins">
+  <object name="video_templates"
+          meta_type="Filesystem Directory View"
+          directory="cs.video:skins/video_templates"/>
+  <skin-path name="*">
+    <layer name="video_templates" insert-after="custom"/>
+  </skin-path>
+</object>

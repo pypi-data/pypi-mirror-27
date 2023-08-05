@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+	xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+	>
+  <object name="object_buttons" meta_type="CMF Action Category">
+    <object name="activatevideofolder" meta_type="CMF Action"
+            i18n:domain="cs.video">
+      <property name="title" i18n:translate="">Activate VideoFolderness</property>
+      <property name="description" i18n:translate=""></property>
+      <property
+          name="url_expr">string:${object_url}/@@videofolderize</property>
+      <property name="link_target"></property>
+      <property name="icon_expr"></property>
+      <property name="available_expr">object/@@videofolderness/notisVideoFolder|nothing</property>
+      <property name="permissions">
+        <element value="Modify Portal Content"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object name="deactivatevideofolder" meta_type="CMF Action"
+            i18n:domain="cs.video">
+      <property name="title" i18n:translate="">Deactivate VideoFolderness</property>
+      <property name="description" i18n:translate=""></property>
+      <property
+          name="url_expr">string:${object_url}/@@videofolderize?deactivate=1</property>
+      <property name="link_target"></property>
+      <property name="icon_expr"></property>
+      <property name="available_expr">object/@@videofolderness/isVideoFolder|nothing</property>
+      <property name="permissions">
+        <element value="Modify Portal Content"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
+  <object name="document_actions" meta_type="CMF Action Category">
+    <object name="video-rss" meta_type="CMF Action"
+            i18n:domain="cs.video">
+      <property name="title" i18n:translate="">Video ATOM Feed</property>
+      <property name="description" i18n:translate=""></property>
+      <property
+          name="url_expr">string:${object_url}/atom.xml</property>
+      <property name="link_target"></property>
+      <property name="icon_expr"></property>
+      <property name="available_expr">object/@@videofolderness/isVideoFolder|nothing</property>
+      <property name="permissions">
+        <element value="View"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
+</object>
