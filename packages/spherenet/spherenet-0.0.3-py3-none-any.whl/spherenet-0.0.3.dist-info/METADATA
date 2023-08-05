@@ -1,0 +1,25 @@
+Metadata-Version: 2.0
+Name: spherenet
+Version: 0.0.3
+Summary: Deep Hyperspherical Learning.
+Home-page: https://github.com/unixpickle/spherenet
+Author: Alex Nichol
+Author-email: unixpickle@gmail.com
+License: BSD
+Description-Content-Type: UNKNOWN
+Keywords: ai neural networks machine learning ml
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: numpy
+Provides-Extra: tf
+Requires-Dist: tensorflow (>=1.0.0); extra == 'tf'
+Provides-Extra: tf_gpu
+Requires-Dist: tensorflow-gpu (>=1.0.0); extra == 'tf_gpu'
+
+Implementation of https://arxiv.org/abs/1711.03189v1.
+
+
