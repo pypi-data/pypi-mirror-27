@@ -1,0 +1,38 @@
+Metadata-Version: 1.2
+Name: configfetch
+Version: 0.0.5
+Summary: Wrapper to get values from configparser and argparse
+Home-page: https://github.com/openandclose/configfetch
+Author: Open Close
+Author-email: openandclose23@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        ConfigFetch
+        ===========
+        
+        This is a python3 (3.5+) library
+        to provide a simpler commandline and configuration access,
+        wrapping `argparse <https://docs.python.org/3/library/argparse.html>`__
+        and `configparser <https://docs.python.org/3/library/configparser.html>`__.
+        
+        Mainly developed for `My other script <https://github.com/openandclose/tosixinch>`__.
+        
+        .. For details, see `documentation <http://configfetch.readthedocs.io/>`__.
+        
+        
+        License
+        -------
+        
+        The software is licensed under The MIT License. See `LICENSE <LICENSE>`__.
+        
+Keywords: commandline configparser argparse
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Utilities
+Requires-Python: ~=3.5
