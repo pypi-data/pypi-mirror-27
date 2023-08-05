@@ -1,0 +1,9 @@
+from enamlnative.widgets.api import *
+
+enamldef ContentView(Flexbox):
+    #: Normal size
+    AnalogClock:
+        pass
+
+    TextClock:
+        pass
