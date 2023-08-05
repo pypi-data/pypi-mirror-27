@@ -1,0 +1,25 @@
+{% load i18n tz highlight %}
+{% block content %}
+<a class="info-card__link" href="{% url 'user_profile' username=result.username %}">
+  <li class="info-card info-card--search">
+    <div class="info-card__header">
+      <h2 class="info-card__type"><i class="icon icon-user"></i>Usuário no e-Democracia</h2>
+    </div>
+    <div class="info-card__header">
+      <h2 class="info-card__title">{% highlight result.username with query css_class "info-card__highlighted" %}</h2>
+    </div>
+
+    <p class="info-card__text">
+      {% highlight result.name with query css_class "info-card__highlighted" %}
+    </p>
+
+    <div class="info-card__footer">
+      <div class="card-stats">
+        <div class="card-stats__name">Desde</div>
+        <div class="card-stats__value">{{ result.date_joined|date:"d/m/Y" }}</div>
+      </div>
+    </div>
+  </li>
+</a>
+
+{% endblock content %}

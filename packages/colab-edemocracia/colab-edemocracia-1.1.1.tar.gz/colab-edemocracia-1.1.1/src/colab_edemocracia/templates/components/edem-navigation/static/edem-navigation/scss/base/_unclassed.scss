@@ -1,0 +1,10 @@
+body {
+  // Necessary styles so that edem-sidebar may work
+  position: relative;
+  width: 100%;
+}
+
+// TODO Remove this after getting rid of Foundation!!
+[hidden] {
+  display: none !important;
+}

@@ -1,0 +1,35 @@
+.edem-close-button, a.edem-close-button {
+  color: $edem-color-link;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2 * $base-unit;
+  height: 2 * $base-unit;
+  font: inherit;
+  appearance: none;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.8;
+
+  &::before { transform: rotate(45deg) }
+  &::after { transform: rotate(-45deg) }
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 1 * $base-unit;
+    height: 2px;
+    background-color: currentColor;
+  }
+
+  &:hover { opacity: 1; }
+
+  &.-white {
+    color: #fff;
+  }
+}

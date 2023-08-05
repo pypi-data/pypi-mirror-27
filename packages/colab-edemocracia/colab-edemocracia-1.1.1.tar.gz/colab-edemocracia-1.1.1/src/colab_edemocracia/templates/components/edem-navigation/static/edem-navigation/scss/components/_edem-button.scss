@@ -1,0 +1,45 @@
+.edem-button {
+  @extend %button;
+  background-color: $edem-color-accent;
+  color: #fff;
+  margin: 0 auto;
+  margin-bottom: 1 * $base-unit;
+
+  &.-negative {
+    background-color: $edem-color-negative;
+  }
+
+  &.-social {
+    padding-left: 3.5 * $base-unit;
+    padding-right: 1 * $base-unit;
+
+    @include bp-smallonly {
+      padding-left: 3 * $base-unit;
+      padding-right: 0.5 * $base-unit;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2.5 * $base-unit;
+      height: 100%;
+      background-size: 1.25 * $base-unit;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &.-facebook {
+      background-color: $edem-color-facebook;
+      color: #fff;
+      &::before { background-image: url('../img/social-icon-facebook.svg') }
+    }
+
+    &.-google {
+      background-color: $edem-color-google;
+      color: hsl(0, 0, 50%);
+      &::before { background-image: url('../img/social-icon-google.svg') }
+    }
+  }
+}

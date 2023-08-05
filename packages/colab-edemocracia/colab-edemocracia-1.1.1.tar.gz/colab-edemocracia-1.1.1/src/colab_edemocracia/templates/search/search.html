@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n tz highlight search_get search_preview_templates %}
+{% load static from staticfiles %}
+
+{% block main %}
+
+  <section class="section section--search">
+    <div class="e-row">
+      <div class="section__block e-columns">
+        <div class="section__content">
+          <h1 class="section__title">Resultados da Busca</h1>
+          <p class="section__text">
+          Foram encontrados {{ page.paginator.count }} documentos para "{{ request.GET.q }}"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--search-results">
+    <div class="e-row e-expanded">
+      <div class="section__block e-columns">
+        <ul class="card-list card-list--wrapped">
+          {% for result in page.object_list  %}
+            {% get_search_preview_templates result  as template_target %}
+            {% include template_target %}
+          {% empty %}
+            <p>Não foram encontrados resultados para a sua busca.</p>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    {% if page.has_other_pages %}
+      <ul class="pagination text-center" role="navigation" aria-label="Paginação">
+        {% if page.number == 1 %}
+          <li class="pagination__item pagination-previous disabled">Anterior</li>
+        {% elif page %}
+          <li class="pagination__item pagination-previous"><a href="{% append_to_get page=page.previous_page_number %}">Anterior</a></li>
+        {% endif %}
+        {% if page.has_previous %}
+          <li class="pagination__item"><a href="{% append_to_get page=page.previous_page_number %}" aria-label="Page {{ page.number|add:-1 }}">{{ page.number|add:-1 }}</a></li>
+        {% endif %}
+        <li class="pagination__item current">{{ page.number }}</li>
+        {% if page.has_next %}
+          <li class="pagination__item "><a href="{% append_to_get page=page.next_page_number %}" aria-label="Page {{ page.number|add:1 }}">{{ page.number|add:1 }}</a></li>
+        {% endif %}
+
+        {% if page.has_next %}
+          <li class="pagination__item pagination-next"><a href="{% append_to_get page=page.next_page_number %}" aria-label="Next page">Próximo</a></li>
+        {% else %}
+          <li class="pagination__item pagination-next disabled">Próximo</li>
+        {% endif %}
+
+      </ul>
+    {% endif %}
+  </section>
+
+{% endblock %}
