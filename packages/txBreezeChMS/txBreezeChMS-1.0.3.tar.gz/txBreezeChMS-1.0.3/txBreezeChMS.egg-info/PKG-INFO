@@ -1,0 +1,62 @@
+Metadata-Version: 1.1
+Name: txBreezeChMS
+Version: 1.0.3
+Summary: Twisted Python interface to BreezeChMS REST API.
+Home-page: http://www.github.com/aortiz32/pyBreezeChMS/
+Author: Trenton Broughton
+Author-email: engineering@kindrid.com
+License: Apache 2.0
+Description-Content-Type: UNKNOWN
+Description: txBreezeChMS
+        ============
+        
+        Twisted Python interface to BreezeChMS REST API
+        http://www.breezechms.com
+        
+        Based on
+        `pyBreezeChMS <https://github.com/alexortizrosado/pyBreezeChMS>`__ by
+        Alex Ortiz-Rosado
+        
+        Installation
+        ------------
+        
+        ::
+        
+            $ pip install txbreezechms
+        
+        Getting Started
+        ---------------
+        
+        .. code:: python
+        
+            from txbreeze import breeze
+        
+            breeze_api = breeze.BreezeApi(
+                breeze_url='https://your_subdomain.breezechms.com',
+                api_key='YourApiKey')
+        
+        To get a JSON of all people:
+        
+        .. code:: python
+        
+        
+            people = breeze_api.get_people()
+            # people is a Deferred instance
+        
+        License
+        -------
+        
+        Code released under the `Apache
+        2.0 <https://github.com/aortiz32/pyBreezeChMS/blob/master/LICENSE>`__
+        license.
+        
+Keywords: breezechms breezeapi twisted python breeze
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Natural Language :: English
