@@ -1,0 +1,13 @@
+include README.md
+include CITATION.md
+include LICENSE.rst
+include setup.cfg
+
+recursive-include sncosmo *.c
+recursive-include docs *
+
+exclude __pycache__
+exclude *.pyc *.o 
+prune docs/_build
+prune docs/api
+prune build
