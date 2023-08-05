@@ -1,0 +1,33 @@
+Metadata-Version: 1.0
+Name: asterisk_mbox
+Version: 0.5.0
+Summary: The client side of a client/server to interact with Asterisk voicemail mailboxes
+Home-page: https://github.com/PhracturedBlue/asterisk_mbox
+Author: PhracturedBlue
+Author-email: rc2012@pblue.org
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: ==========
+        asterisk_mbox
+        ==========
+        asterisk_mbox is a client/server which provides an API to work with Asterisk voicemail mailboxes
+        This is the client library.  Install asterisk_mbox_server on the Asterisk server as well.
+        
+        Capabilities
+        ============
+        
+        * Display all metadata for all messages stored in a single mailbox
+        * Convert messages to text using Google's speech-to-text service
+        * Retrieve the audio of a message in MP3 format
+        * Support both synchronous and asynchronous API
+        
+        Future work
+        ============
+        
+        * Support deleting messages
+        * Support moving messages
+        * Support multiple mailboxes
+        * Support alternate text-to-speech providers
+        
+Keywords: testing,asterisk,mailbox,voicemail
+Platform: UNKNOWN
