@@ -1,0 +1,13 @@
+include DESCRIPTION.md
+include README.md
+include AUTHORS
+include CHANGELOG.md
+include requirements.txt
+recursive-include . *py
+recursive-include Mikado *pyx
+recursive-include Mikado *pxd
+recursive-include util *py
+exclude util/analyse_metrics.py util/create_model.py util/self_training.py
+recursive-include Mikado *snakefile *json *yaml
+recursive-include Mikado/tests *
+recursive-exclude docs/ *
