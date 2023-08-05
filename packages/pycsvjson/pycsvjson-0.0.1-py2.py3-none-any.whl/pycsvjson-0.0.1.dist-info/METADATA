@@ -1,0 +1,40 @@
+Metadata-Version: 2.0
+Name: pycsvjson
+Version: 0.0.1
+Summary: A utility to transform CSV files into structured JSON
+Home-page: https://github.com/nicholastulach/pycsvjson
+Author: Nicholas K Tulach
+Author-email: nkt@ftml.net
+License: MIT License
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: boltons
+Requires-Dist: jsonmapping (>=0.7.4)
+Requires-Dist: pip (>=9.0.0)
+Requires-Dist: tqdm
+Requires-Dist: ujson
+
+pycsvjson
+=========
+A command-line utility to convert CSV files to JSON.
+
+Installation
+------------
+`pip install pycsvjson`
+
+Quickstart
+----------
+`pycsvjson <csvfile> <mappingfile> --output <outfile>`
+
+Status
+------
+This software should be considered Alpha.
+
+License
+-------
+This project is released under the MIT License.
+
+
