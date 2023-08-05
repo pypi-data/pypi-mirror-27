@@ -1,0 +1,64 @@
+
+.jp-CollapsiblePanel {
+    border: var(--jp-nbdime-output-color1) solid 1pt;
+}
+
+.jp-CollapsiblePanel-header-icon {
+    background-size: 1em;
+    height: 1em;
+    width: 1em;
+    display:block;
+    background-repeat: no-repeat;
+    float: right;
+    margin-top: .1em;
+}
+
+.jp-CollapsiblePanel-header-icon-opened {
+    background-image: url("collapse_up.svg");
+}
+
+.jp-CollapsiblePanel-header-icon-closed {
+    background-image: url("collapse_down.svg");
+}
+
+.jp-CollapsiblePanel-header {
+    padding-top: .2em;
+    padding-bottom: .2em;
+    background-color: var(--jp-nbdime-output-color3);
+    padding-left: 2em;
+    padding-right: 2em;
+    border-top: var(--jp-nbdime-output-color1) solid 1pt;
+}
+
+.jp-CollapsiblePanel-container {
+    overflow: hidden;
+}
+
+.jp-CollapsiblePanel-slider {
+	/* complete liquid height based on the parent's height!! */
+    height:100%;
+
+    /* only transition on transform properties which are hardware accelerated = way better performances */
+	-webkit-transition: -webkit-transform .3s ease, height 0.3s;
+       -moz-transition:    -moz-transform .3s ease, height 0.3s;
+        -ms-transition:     -ms-transform .3s ease, height 0.3s;
+            transition:         transform .3s ease, height 0.3s;
+}
+
+.jp-CollapsiblePanel-opened {
+    /* visible */
+    -webkit-transform: translate(0, 0%);
+       -moz-transform: translate(0, 0%);
+        -ms-transform: translate(0, 0%);
+            transform: translate(0, 0%);
+    height: 100%;
+}
+
+.jp-CollapsiblePanel-closed {
+    /* completely offscreen */
+    -webkit-transform: translate(0, -100%);
+       -moz-transform: translate(0, -100%);
+        -ms-transform: translate(0, -100%);
+            transform: translate(0, -100%);
+    height: 0;
+}

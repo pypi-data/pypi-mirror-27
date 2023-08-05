@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["dom", "es5", "es2015.promise"],
+    "outDir": "../build",
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "**/*.ts",
+    "../../src/typings.d.ts"
+  ]
+}
