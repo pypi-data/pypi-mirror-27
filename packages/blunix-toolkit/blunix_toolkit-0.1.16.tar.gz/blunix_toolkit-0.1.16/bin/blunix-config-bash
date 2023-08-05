@@ -1,0 +1,112 @@
+#!/usr/bin/env python2.7
+# -*- encoding: utf-8 -*-
+
+from blunix_toolkit import config
+
+c = config.get()
+print config.marshal_dict_to_bash_env('blunix', c)
+
+# Define EMAIL as many tools use it to obtain the user's mail addy
+print "EMAIL='{}'".format(c['devop']['mail'])
+
+# Define GIT_AUTHOR_NAME.
+print "GIT_AUTHOR_NAME='{} {}'".format(c['devop']['name'], c['devop']['last'])
+
+# Define GIT_AUTHOR_EMAIL
+print 'GIT_AUTHOR_EMAIL="$EMAIL"'
+
+# Define a helper function for gitignore.io
+print 'gi() { curl "https://www.gitignore.io/api/$@" ;}'
+
+# Define some handy iteration wrappers
+print """blunixForEach() {
+    [[ -z $1 ]] && echo "ForEach iteration operation missing!" >&2 && return 1
+    while read item; do
+        eval $@
+    done
+}
+"""
+print """blunixForEachWhere() {
+    [[ -z $2 ]] && echo "ForEachWhere missing argument!" >&2 && return 1
+    while read item; do
+        if eval $1; then
+            eval $2
+        fi
+    done
+}
+"""
+
+# Blunix workon project bootstrap helper
+print """blunixWorkon() {
+    if ! type workon &>/dev/null; then
+        echo "VirtualEnvWrapper not found!" >&2
+        return 1
+    fi
+
+    if [[ "$1" == role-* ]]; then
+        PREFIX_DIR="$BLUNIX_ROOT_DIR_ROLES"
+    elif [[ "$1" == playbook-* ]]; then
+        PREFIX_DIR="$BLUNIX_ROOT_DIR_PLAYBOOKS"
+    else
+        echo "Unknown project type: $1" >&2
+        return 1
+    fi
+
+    cd $PREFIX_DIR
+
+    if [[ ! -d "$1" ]]; then
+        if [[ $clone == 'y' ]]; then
+            git clone "git@github.com:blunix/$1"
+            if [[ $? -ne 0 ]]; then
+                echo "Unable to clone project, aborting!" >&2
+                return 1
+            fi
+        elif [[ $create == 'y' ]]; then
+            if ( mkdir "$1" && cd "$1" && git init ); then
+                (
+                    cd "$1"
+                    git remote add origin "git@github.com:blunix/$1"
+                    gi linux,python,ansible,pycharm,vim,nano > .gitignore
+                    echo ".idea/" >> .gitignore
+                )
+            else
+                echo "Unable to create project, aborting!" >&2
+                return 1
+            fi
+        fi
+    fi
+
+    if [[ ! -d "$1" ]]; then
+        echo "That project doesn't exist!"
+        cd - &>/dev/null
+        return 1
+    fi
+
+    cd "$1"
+    workon "$1" 2>/dev/null
+    if [[ $? -ne 0 ]]; then
+        echo "No corresponding virtualenv found, creating..." >&2
+        mkvirtualenv "$1"
+        setvirtualenvproject
+    fi
+
+    [[ -r requirements.txt ]] && pip install -r requirements.txt | grep -v "Requirement already satisfied"
+}
+"""
+
+print """blunixBootstrapRoles() {
+    echo "Fetching list of all role repositories from Github..."
+    repos="$(blunix-gh-roles | awk -F/ '{print $2}')"
+    echo "Found $(echo "$repos" | wc -l) repositories."
+    if [[ ! $repos == '' ]]; then
+        echo "$repos" | while read repo; do
+            if [[ -d "$BLUNIX_ROOT_DIR_ROLES/$repo" ]]; then
+                echo "Found $repo, skipping"
+            else
+                echo "Bootstrapping: $repo"
+                clone=y create=y blunixWorkon $repo
+            fi
+        done
+    fi
+}
+"""

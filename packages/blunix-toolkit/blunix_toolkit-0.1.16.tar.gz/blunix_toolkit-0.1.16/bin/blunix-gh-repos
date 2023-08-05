@@ -1,0 +1,13 @@
+#!/usr/bin/env python2.7
+# -*- encoding: utf-8 -*-
+
+from blunix_toolkit import github_api, config
+
+C = config.get()
+
+
+repos = github_api.get_repos()
+for repo in repos:
+    full_name = github_api.get_repo_full_name(repo)
+    if full_name.startswith(C['github']['org']):
+        print full_name

@@ -1,0 +1,108 @@
+#!/usr/bin/env python2.7
+# -*- encoding: utf-8 -*-
+
+import os
+import sys
+import yaml
+from git import Repo
+
+from blunix_toolkit import config
+
+ROLE_PREFIX = 'role-'
+
+C = config.get()
+
+PRETTY = False
+if len(sys.argv) == 2 and sys.argv[1]:
+    if sys.argv[1] == '-p' or sys.argv[1] == '--pretty':
+        PRETTY = True
+
+    else:
+        print "Unknown option: {}".format(sys.argv[1])
+        sys.exit(1)
+
+
+def get_meta_deps(repo_path):
+    path = os.path.join(str(repo_path), 'meta', 'main.yml')
+    if not os.path.exists(path):
+        return 'META_MISSING'
+    else:
+        with open(path) as fd:
+            meta_yaml = yaml.load(fd)
+            if 'dependencies' not in meta_yaml:
+                return 'DEPENDENCIES_MISSING'
+
+            if meta_yaml['dependencies']:
+                return ','.join([d['name'] for d in meta_yaml['dependencies']])
+            else:
+                return '-'
+
+
+def get_molecule_test_scenario_count(repo_path):
+    path = os.path.join(str(repo_path), 'molecule')
+    if not os.path.exists(path):
+        return 'UNTESTED/BETA'
+    return len([f for f in os.listdir(path) if os.path.isdir(path)])
+
+
+def main():
+    role_dir = os.path.join(os.path.expanduser(C['root_dir']['workspace']), 'roles')
+    os.chdir(role_dir)
+    for fn in sorted(os.listdir(role_dir)):
+        if not os.path.isdir(fn):
+            continue
+        if not fn.startswith(ROLE_PREFIX):
+            continue
+
+        repo = Repo(fn)
+        branch = repo.active_branch.name
+        deps = get_meta_deps(fn)
+        test_scenarios = get_molecule_test_scenario_count(fn)
+
+        try:
+            describe = repo.git.describe()
+        except (Exception, ):
+            describe = '-.-.-'
+
+        try:
+            describe_remote = repo.git.describe('remotes/origin/master')
+        except (Exception, ):
+            describe_remote = '-.-.-'
+
+        if (
+                branch.strip() == 'master'
+                and '-' not in describe
+                and '-' not in describe_remote
+                and describe == describe_remote
+                and ('.' in deps or '-' in deps)
+                and test_scenarios != 'UNTESTED/BETA'
+                and test_scenarios > 0):
+            PASSES = True
+        else:
+            PASSES = False
+
+        if PRETTY:
+            print "%-32s %-32s %-48s %16s %-16s %16s %s" % (
+                fn,
+                branch,
+                deps,
+                describe,
+                describe_remote,
+                test_scenarios,
+                'PASSED' if PASSES else '',
+            )
+
+        else:
+            print "%s %s %s %s %s %s %s" % (
+                fn,
+                branch,
+                deps,
+                describe,
+                describe_remote,
+                test_scenarios,
+                'PASSED' if PASSES else '',
+            )
+
+
+if __name__ == '__main__':
+    main()
