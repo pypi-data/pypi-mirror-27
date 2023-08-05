@@ -1,0 +1,5 @@
+[console_scripts]
+bsconvert = chemtools.cli:bsconvert
+bsprint = chemtools.cli:bsprint
+writeorbinp = chemtools.calculators.gamessus:writeorbinp
+
