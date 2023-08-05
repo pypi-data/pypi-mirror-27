@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title -%}
+	eBook Generator
+{% endblock title %}
+
+{% block content %}
+<div class="tab-content">
+	<div class="tab-pane active" id="ebook">
+		<p>To specify eBook:
+		<li>List search terms for article titles inside ()</li>
+		<li>List search terms for article tags inside []</li>
+		<li> List search terms for article body inside {}</li>
+		<li>Separate list items inside any bracket type with &</li>
+		<li>Separate brackets with ~</li>
+		<li>Nesting brackets is permissible, terms will be ordered in title -> tag -> body order</li>
+		<li>Reqular expressions are permissible</li></p>
+
+		  <p>Example: ({sushi&steak})~{whiskey}~([chili&beans])
+		    <p>Will assemble an eBook with all articles with 'sushi' or 'steak' in the title, followed by all articles with
+		    'sushi' or 'steak' in the body, followed by all articles with 'whisky' in the title, followed by all articles
+		with 'chili' or 'beans' as a tag, followed by all articles with 'chili' or 'beans' in the body.</p></p>
+
+		  <p>Example: (.*)
+		<p>Will use the .* wildcard to match all article titles and assemble and eBook from the entire wiki. </p></p>
+
+        eBook Specifier:
+		<form action="{{url_for('wiki.ebookGen', url=ebookUrl) }}" method="post" class="form">
+			{{ form.hidden_tag() }}
+			{{ input(form.value, placeholder="{*}", class="span7", autocomplete="off") }}
+			<div class="form-actions">
+        <div class="pull-left">
+          <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+			</div>
+		</form>
+	</div>
+	<div class="tab-pane" id="preview"></div>
+</div>
+{% endblock  content%}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title -%}
+	New User Creation
+{% endblock title %}
+
+{% block content %}
+<div class="tab-content">
+	<div class="tab-pane active" id="settings">
+        {%if current_user.is_admin() %}
+		Enter in form: "username, password"
+		<form action="{{url_for('wiki.newUser', url=adminUrl) }}" method="post" class="form">
+			{{ form.hidden_tag() }}
+			{{ input(form.value, placeholder=default, class="span7", autocomplete="off") }}
+			<div class="form-actions">
+        <div class="pull-left">
+          <button class="btn btn-success" type="submit">Save</button>
+        </div>
+			</div>
+		</form>
+        {% else %}
+        You do not have permission to access this functionality.
+        {% endif %}
+	</div>
+	<div class="tab-pane" id="preview"></div>
+</div>
+{% endblock  content%}
