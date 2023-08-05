@@ -1,0 +1,40 @@
+Metadata-Version: 2.0
+Name: webSpider-Douban
+Version: 2.2.0
+Summary: Crawl Douban movie site and extract top ten latest films information
+Home-page: https://github.com/v1siuol/webSpider_Douban
+Author: v1siuol
+Author-email: lvzh.louis2013@gmail.com
+License: MIT
+Keywords: web crawler
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: bs4
+Requires-Dist: pandoc
+
+## webSpider_Douban
+
+## V1:
+返回排行榜电影名字
+
+Output the title-lists of top ten latest movie charts to a csv file
+
+## V2:
+返回豆瓣排行榜上前十部电影的数据细节(不再只是电影名!); 表头新增更新时间
+
+Output the information of each movie in the top ten latest movie charts to a csv file
+
+### V2.1:
+添加适当注释并优化了有利于分析的数据细节
+
+## V3:
+Coming soon...
+
+
