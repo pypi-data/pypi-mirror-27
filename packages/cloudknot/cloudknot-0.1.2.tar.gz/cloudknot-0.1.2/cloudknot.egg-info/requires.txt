@@ -1,0 +1,11 @@
+awscli
+boto3
+cloudpickle
+docker
+pipreqs
+six
+tenacity
+configparser;python_version<"3.0"
+
+[:python_version < "3.0"]
+configparser
