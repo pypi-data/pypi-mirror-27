@@ -1,0 +1,231 @@
+/* mcmandelbrot
+#
+# An example package for AsynQueue:
+# Asynchronous task queueing based on the Twisted framework, with task
+# prioritization and a powerful worker interface.
+#
+# Copyright (C) 2015 by Edwin A. Suominen,
+# http://edsuom.com/AsynQueue
+#
+# See edsuom.com for API documentation as well as information about
+# Ed's background and other projects, software and otherwise.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the
+# License. You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an "AS
+# IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+# express or implied. See the License for the specific language
+# governing permissions and limitations under the License.
+# */
+
+body {
+    margin: 0;
+}
+div.container {
+    background: white;
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    box-sizing: border-box;
+}
+.bigger {
+    font-size: 120%;
+    font-weight: bold;
+}
+.smaller {
+    font-size: 90%;
+}
+.bold {
+    font-weight: bold;
+}
+.coords {
+    font-size: 70%;
+    font-family: monospace;
+    margin-left: 2em;
+    text-align: left;
+}
+p {
+    margin: 0;
+}
+a {
+    color: #0f47dc;
+    text-decoration: none;
+}
+div.first_part {
+    margin-top: 0.5em;
+}
+div.second_part {
+    padding: 4px;
+}
+div.heading {
+    float: left;
+    text-align: left;
+}
+div.subheading {
+    float: right;
+    text-align: right;
+    vertical-align: bottom;
+}
+div.clear {
+    clear: both;
+    margin-top: 1.0;
+}
+div.form {
+    clear: both;
+    float: none;
+    margin-left: 0.2em;
+    margin-top: 0.5em;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    -webkit-box-orient: inline-axis;
+    -webkit-box-direction: normal;
+    -moz-box-orient: inline-axis;
+    -moz-box-direction: normal;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+div.form_item {
+    display: inline;
+    margin: 0;
+    padding-top: 4px;
+    padding-left: 10px;
+    padding-right: 4px;
+    white-space: nowrap;
+}
+span.form_item {
+    padding-right: 1em;
+}
+div.image {
+    margin: 4px;
+}
+img.mandelbrot {
+    border: 2px solid grey;
+}
+img[src*="blank.jpg"] {
+    width: 100%;
+}
+div.about, div.footer {
+    line-height: 1.2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80%;
+}
+div.about {
+    clear: both;
+    margin-left: 1em;
+    text-align: justify;
+}
+.byline {
+    display: inline;
+    font-style: italic;
+}
+div.footer {
+    clear: both;
+    margin: 0.5em;
+    padding-top: 0;
+    text-align: justify;
+}
+div.left {
+    float: left;
+    text-align: left;
+}
+div.right {
+    float: right;
+    text-align: right;
+}
+.small_only {
+    display: block;
+}
+.large_only {
+    display: none;
+}
+#hover {
+    font-size: 80%;
+}
+#more_info {
+    padding-top: 0.7em;
+}
+
+/* Landscape screen */
+@media screen and (min-device-width: 1020px) {
+    div.container {
+	max-width: 1040px;
+    }
+    div.first_part {
+	float: left;
+	max-width: 250px;
+    }
+    div.heading, div.subheading { 
+	float: none;
+	text-align: right;
+	padding-bottom: 1em;
+    }
+    div.form {
+	-webkit-box-orient: block-axis;
+	-webkit-box-direction: normal;
+	-moz-box-orient: block-axis;
+	-moz-box-direction: normal;
+	-ms-flex-direction: column;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+    }
+    div.form_item {
+	margin-left: auto;
+	padding-top: 4px;
+	text-align: right;
+
+	-webkit-box-align: end;
+	-moz-box-align: end;
+	-ms-flex-align: end;
+	-webkit-align-items: flex-end;
+	align-items: flex-end;
+    }
+    div.about {
+	margin-left: 0;
+	margin-top: 1em;
+    }
+    .byline {
+	display: block;
+	text-align: right;
+    }
+    div.second_part {
+	float: right;
+	border-left: 3px black;
+	width: 770px;
+	padding-top: 0;
+    }
+    div.footer {
+	margin: 0.5em 1em;
+    }
+    .small_only {
+	display: none;
+    }
+    .large_only {
+	display: block;
+    }
+    #hover {
+	font-size: 100%;
+    }
+}

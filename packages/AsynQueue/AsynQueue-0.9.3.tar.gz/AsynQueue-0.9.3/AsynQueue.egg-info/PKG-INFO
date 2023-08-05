@@ -1,0 +1,41 @@
+Metadata-Version: 1.1
+Name: AsynQueue
+Version: 0.9.3
+Summary:  Asynchronous task queueing based on the Twisted framework. 
+Home-page: http://edsuom.com/AsynQueue.html
+Author: Edwin A. Suominen
+Author-email: valueprivacy-foss@yahoo.com
+License: Apache License (2.0)
+Description: 
+        Asynchronous task queueing based on the Twisted framework, with task
+        prioritization and a powerful worker interface. Worker implementations
+        are included for running tasks asynchronously in the main thread, in
+        separate threads, and in separate Python interpreters (multiprocessing).
+        
+        Includes an example package mcMandelbrot_ that generates Mandelbrot
+        set images, row by row, demonstrating the power of asynchronous
+        multi-core processing. An instance of ProcessQueue_ dispatches the
+        computations for each row of pixels to workers running on separate
+        Python processes. The color-mapped RGB results are collected as they
+        come back and intelligently buffered for iterating in a proper
+        sequence to a third-party PNG library that wouldn't ordinarily play
+        nice with Twisted.
+        
+        Python 3 compatiblity is in the works, but not yet supported.
+        
+        .. _mcMandelbrot: http://edsuom.com/mcMandelbrot.html
+        
+        .. _ProcessQueue: http://edsuom.com/AsynQueue/asynqueue.process.ProcessQueue.html
+        
+Keywords: Twisted,asynchronous,threads,taskqueue,queue,priority,tasks,jobs,nodes,cluster
+Platform: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Framework :: Twisted
+Classifier: Topic :: System :: Distributed Computing
+Classifier: Topic :: Software Development :: Object Brokering
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

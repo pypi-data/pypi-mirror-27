@@ -1,0 +1,9 @@
+include NOTICE
+include LICENSE.txt
+
+recursive-include asynqueue/test *.py
+include mcmandelbrot/mcm.css
+include mcmandelbrot/mcm.js
+include mcmandelbrot/blank.jpg
+recursive-include mcmandelbrot/test *.py
+
