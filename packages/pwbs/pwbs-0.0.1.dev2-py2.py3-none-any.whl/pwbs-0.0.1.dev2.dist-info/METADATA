@@ -1,0 +1,37 @@
+Metadata-Version: 2.0
+Name: pwbs
+Version: 0.0.1.dev2
+Summary: PWBS is Build System for easy automation process.
+Home-page: https://gitlab.com/paip-web/pwbs
+Author: Patryk Adamczyk
+Author-email: patrykadamczyk@paipweb.com
+License: MIT
+Keywords: development build tools task runner
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: Microsoft :: Windows :: Windows 7
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Environment :: Console
+Requires-Python: ~=3.6
+Provides-Extra: test
+Requires-Dist: green; extra == 'test'
+Requires-Dist: pytest; extra == 'test'
+Requires-Dist: coverage; extra == 'test'
+
+UNKNOWN
+
+
