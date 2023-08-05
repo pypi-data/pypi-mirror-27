@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<ctml>
+
+    <phase>
+        <speciesArray> NH NH2 NO N2 O2 HO2 OH </speciesArray>
+    </phase>
+
+    <reactionData id="test_mechanism">
+
+        <!-- reaction 01  -->
+        <reaction reversible="no" type="Elementary" id="reaction01">
+            <equation>NH + HO2 =] NH2 + O2</equation>
+            <rateCoeff>
+                <modifiedArrhenius>
+                    <A>1.0e+08</A>
+					<b>0.5</b>
+                    <E>5.0e+04</E>
+                </modifiedArrhenius>
+            </rateCoeff>
+            <reactants>NH:1 HO2:1</reactants>
+            <products>NH2:1 O2:1</products>
+        </reaction>
+
+        <!-- reaction 02 -->
+        <reaction reversible="no" type="Elementary" id="reaction02">
+            <equation>NH + NO =] N2 + OH</equation>
+            <rateCoeff>
+                <Constant>
+                    <k>1.0e+04</k>
+                </Constant>
+            </rateCoeff>
+            <reactants>NH:1 NO:1</reactants>
+            <products>N2:1 OH:1</products>
+        </reaction>
+
+    </reactionData>
+
+</ctml>

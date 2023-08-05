@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<ctml>
+
+    <phase>
+        <speciesArray> HO2 H2O2 O2 </speciesArray>
+    </phase>
+
+    <reactionData id="test_mechanism">
+        <reaction reversible="yes" type="Duplicate" id="reaction14">
+        <!-- reaction 14  -->
+          <equation>HO2 + HO2 [=] H2O2 + O2</equation>
+          <rateCoeff>
+            <Arrhenius>
+              <A units="cm3/mol/s">4.2e+14</A>
+              <E units="cal/mol">1.1982e+04</E>
+            </Arrhenius>
+            <Arrhenius>
+              <A units="cm3/mol/s">1.3e+11</A>
+              <E units="cal/mol">-1.6293e+03</E>
+            </Arrhenius>
+          </rateCoeff>
+          <reactants>HO2:2</reactants>
+          <products>H2O2:1 O2:1</products>
+        </reaction>
+
+    </reactionData>
+
+</ctml>

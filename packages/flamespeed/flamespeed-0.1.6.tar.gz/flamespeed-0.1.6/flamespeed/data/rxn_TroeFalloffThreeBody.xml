@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<ctml>
+
+    <phase>
+        <speciesArray> H O2 HO2</speciesArray>
+    </phase>
+
+    <reactionData id="test_mechanism">
+
+        <reaction reversible="yes" type="TroeFalloffThreeBody" id="reaction09">
+          <equation>H + O2 + M [=] HO2 + M</equation>
+          <rateCoeff>
+            <Kooij name="k0">
+               <A units="cm6/mol2/s">6.366e+20</A>
+               <b>-1.72</b>
+               <E units="cal/mol">5.248e+02</E>
+            </Kooij>
+            <Kooij>
+               <A units="cm3/mol/s">1.475e+12</A>
+               <b>0.60</b>
+               <E units="cal/mol">0.0</E>
+            </Kooij>
+            <Troe>
+              <alpha> 0.8 </alpha>
+              <T1>1.0e+30</T1>
+              <T2>1.0e+30</T2>
+              <T3>1.0e-30</T3>
+            </Troe>
+            <efficiencies default="1.0">H2:2.0 H2O:11.0 O2:0.78</efficiencies>
+          </rateCoeff>
+          <reactants>H:1 O2:1</reactants>
+          <products>HO2:1</products>
+        </reaction>
+
+    </reactionData>
+
+</ctml>
