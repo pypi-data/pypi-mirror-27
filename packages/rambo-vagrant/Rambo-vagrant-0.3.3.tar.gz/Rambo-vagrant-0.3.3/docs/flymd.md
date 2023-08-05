@@ -1,0 +1,32 @@
+# CLI and Python APIfLyMd-mAkEr
+
+**Both the CLI and Python API are young and subject to breaking changes without notice.**
+
+
+Rambo has a CLI and Python API that are compatible. In other words, what you can do in the CLI, you can do in the Python API. To accomplish this the CLI is largely dependant on the Python API. You can access the Python API by importing the various functions in app.py, such as with `from rambo.app import vagrant_up`
+
+Through the Python API you can call `vagrant_up` and `vagrant_destroy` to create and destroy VMs. `vagrant_ssh` is also available and presents an interactive shell to the VM, as if you ran `rambo ssh` with the CLI.
+
+CLI options are available to be set as either functions in app.py, or as parameters to those functions, depending on whether the CLI option was on `rambo` command itself or a subcommand (e.g. `up`). For instance, the following are equivalent:
+
+```
+$ rambo --vagrant-cwd /path up -p virtualbox
+```
+```
+from rambo.app import set_vagrant_vars, vagrant_up
+set_vagrant_vars(vagrant-cwd,"/path")
+vagrant_up(provider="virtualbox")
+```
+
+Currently, all of the CLI options can also be set as environment variables. Environment variables are respected by both the CLI and Python API, but are overridden when set with a CLI option / Python API param.
+
+## Environment Variables
+
+The following environment variables are used by Rambo:
+
+- `VAGRANT_DOTFILE_PATH` - [This is used by Vagrant directly](https://www.vagrantup.com/docs/other/environmental-variables.html#vagrant_dotfile_path), and is able to be set via the CLI / API.
+- `VAGRANT_CWD` - [This is used by Vagrant directly](https://www.vagrantup.com/docs/other/environmental-variables.html#vagrant_cwd), and is able to be set via the CLI / API.
+- `RAMBO_ENV` - This is the location of the project environment Rambo's code lives in. It is generated internally and not able to be set with the CLI / API.
+- `RAMBO_TMP` - This is the location of Rambo's metadata folder specific to each VM. It is automatically placed in the CWD when the CLI / API is used.
+- `RAMBO_PROVIDER` - This is the provider that is being used. It is able to be set via the CLI / API.
+
