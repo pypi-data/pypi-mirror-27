@@ -1,0 +1,26 @@
+Metadata-Version: 1.1
+Name: bisos.common
+Version: 0.3
+Summary: bx-pip: ByStar pip is a front end to pip that configures both repositories and destinations according to ByStar policy.
+
+bx-pip and bx-bases are meant to go to /usr/local/bin. Then, bx-bases creates
+/bystar and allows for bx-pip to thereafter to load into bystar instead of /usr/local/bin
+
+Home-page: http://www.by-star.net/PLPC/180047
+Author: Mohsen Banan
+Author-email: http://mohsen.1.banan.byname.net
+License: AGPL
+Download-URL: http://www.by-star.net/PLPC/180047
+Description: bx-pip: ByStar pip is a front end to pip that configures both repositories and destinations according to ByStar policy.
+        
+        bx-pip and bx-bases are meant to go to /usr/local/bin. Then, bx-bases creates
+        /bystar and allows for bx-pip to thereafter to load into bystar instead of /usr/local/bin
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: AGPL
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
