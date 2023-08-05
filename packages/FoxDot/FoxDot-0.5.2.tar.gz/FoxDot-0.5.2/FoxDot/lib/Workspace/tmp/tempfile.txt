@@ -1,0 +1,6 @@
+d1 >> play("<x-><fork>", rate=(1,4), formant=(0,[1,2,P*(3,4)]))
+d2 >> play("  f f", sample=2)
+d3 >> play("y ( y)", rate=2)
+d4 >> play("pluck", rate=10)
+
+k1 >> play("(x )( x)*(sx)", sample=2).solo
