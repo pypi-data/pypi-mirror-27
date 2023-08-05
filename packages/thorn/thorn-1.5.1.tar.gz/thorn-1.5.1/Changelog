@@ -1,0 +1,425 @@
+===========
+ Changelog
+===========
+
+.. _version-1.5.0:
+
+1.5.0
+=====
+:release-date: 2016-10-20 11:08 A.M PDT
+:release-by: Ask Solem
+
+- New API for :class:`~thorn.ModelEvent`.
+
+    After having used Thorn for a while, there was a realization
+    that passing lots of arguments to a decorator looks very messy
+    when there are many events for a model.
+
+    We have come up with a new way to add webhooks to models,
+    that we believe is more tidy.
+
+    The new API moves declaration of webhooks related things into a
+    nested class:
+
+    .. code-block:: python
+
+        @webhook_model
+        class Article(models.Model):
+            uuid = models.UUIDField()
+            title = models.CharField(max_length=128)
+            state = models.CharField(max_length=128, default='PENDING')
+            body = models.TextField()
+            user = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+            class webhooks:
+                on_create = ModelEvent('article.created')
+                on_change = ModelEvent('article.changed')
+                on_delete = ModelEvent('article.removed')
+                on_publish = ModelEvent(
+                    'article.published', state__now_eq='PUBLISHED',
+                ).dispatches_on_change()
+
+                def payload(self, article):
+                    return {
+                        'title': article.title,
+                    }
+
+                def headers(self, article):
+                    return {
+                        'Authorization':
+                            'Bearer {}'.format(article.user.access_token),
+                    }
+
+    .. note::
+
+        The old API is still supported, and there's no current plans
+        of deprecating the arguments to the decorator itself.
+
+- Adds support for buffering events - moving dispatch out of signal handlers.
+
+    See :ref:`event-buffering` for more information.
+
+- Models can now define additional headers to be passed on to webhooks.
+
+    See :ref:`events-model-header`.
+
+    Contributed by **Flavio Curella**.
+
+- Django: :class:`~thorn.ModelEvent` now takes advantage of
+  ``Model.get_absolute_url()``.
+
+    Instead of defining a reverser you can now simply have your model
+    define a ``get_absolute_url`` method (which is a convention already):
+
+    .. code-block:: python
+
+        class Article(models.Model):
+
+            @models.permalink
+            def get_absolute_url(self):
+                return 'article:detail', (), {'slug': self.slug}
+
+    For more information on defining this method, refer to the
+    Django documentation:
+    https://docs.djangoproject.com/en/stable/ref/models/instances/#get-absolute-url
+
+- New :setting:`THORN_SIGNAL_HONORS_TRANSACTION` setting.
+
+    If enabled the Django model events will dispatch only after
+    the transaction is committed, and should the transaction be rolled back
+    the events are discarded.
+
+    You can also enable this setting on individual events:
+
+    .. code-block:: python
+
+        ModelEvent(..., signal_honors_transaction=True)
+
+    Disabled by default.
+
+    To be enabled by default in Thorn 2.0.
+
+- :class:`~thorn.ModelEvent` now logs errors instead of propagating them.
+
+    ``ModelEvent(propagate_errors=True)`` may be set to revert to the old
+    behavior.
+
+- URLs now ordered by scheme,host,port (was host,port,scheme).
+
+- Documentation improvements by:
+
+    - Flavio Curella
+
+.. _version-1.4.2:
+
+1.4.2
+=====
+:release-date: 2016-07-28 11:45 A.M PDT
+
+- Serialize uuid as string when calling Celery tasks.
+
+.. _version-1.4.1:
+
+1.4.1
+=====
+:release-date: 2016-07-26 01:06 P.M PDT
+:release-by: Ask Solem
+
+- Fixed webhook dispatch crash where validator was deserialized twice.
+
+- Celery dispatcher did not properly forward the `Hook-Subscription`
+  HTTP header.
+
+- Source code now using Google-style docstrings.
+
+.. _version-1.4.0:
+
+1.4.0
+=====
+:release-date: 2016-07-11 04:27 P.M PDT
+:release-by: Ask Solem
+
+- New HTTP header now sent with events: ``Hook-Subscription``
+
+    This contains the UUID of the subscription, which means
+    a webhook consumer may now react by cancelling or modifying the subscription.
+
+- Fixed missing default value for the :setting:`THORN_SUBSCRIBER_MODEL`
+  setting.
+
+- Fixed HMAC signing wrong message value.
+
+.. _version-1.3.0:
+
+1.3.0
+=====
+:release-date: 2016-07-07 07:40 P.M PDT
+:release-by: Ask Solem
+
+- New and improved method for HMAC signing.
+
+    The new method must be enabled manually by setting:
+
+    .. code-block:: python
+
+        THORN_HMAC_SIGNER = 'thorn.utils.hmac:sign'
+
+    It turns out itsdangerous did not do what we expected it to,
+    instead it does this:
+
+    - The secret key is transformed into:
+
+        .. code-block:: python
+
+            key = hashlib.sha256(salt + 'signer' + HMAC_SECRET)
+           # strip = from beginning and end of the base64 string
+           key = key.strip('=')
+
+    - If you don’t specify a salt, which we don’t, there is a
+      default salt(!) which is:
+
+      .. code-block:: text
+
+        “itsdangerous.Signer”
+
+    - The extra "signer" in the key transformation is there as the default
+      key_derivation method is called “django-concat”.
+
+    - The final signature is encoded using “urlsafe_b64encode"
+
+        So in Python to recreate the signature using the built-in hmac
+        library you would have to do:
+
+        .. code-block:: python
+
+            import hashlib
+            import hmac
+            from base64 import urlsafe_b64encode
+
+            # everything hardcoded to SHA256 here
+
+            def create_signature(secret_key, message):
+                key = hashlib.sha256(
+                    'itsdangerous.Signer' + 'signer' + secret_key).digest()
+                digest = hmac.new(key, message, digestmod=hashlib.sha256).digest()
+                return urlsafe_b64encode(digest).replace('=')
+
+        which is much more complicated than what we can expect of users.
+
+    You're highly encouraged to enable the new HMAC method, but sadly
+    it's not backwards compatible.
+
+    We have also included new examples for verifying HMAC signatures
+    in Django, Ruby, and PHP in the documentation.
+
+- New :setting:`THORN_SUBSCRIBER_MODEL` setting.
+
+- New :setting:`THORN_HMAC_SIGNER` setting.
+
+- Requirements: Tests now depends on :pypi:`case` 1.2.2
+
+- JSON: Make sure simplejson does not convert :class:`~decimal.Decimal`
+  to :class:`float`.
+
+- class:`~thorn.events.ModelEvent`: name can now be a string format.
+
+    Contributed by Flavio Curella.
+
+    The format expands using the model instance affected, e.g:
+
+    .. code-block:: python
+
+        on_created=ModelEvent('created.{.occasion}')
+
+    means the format will expand into ``instance.occasion``.
+
+    Subclasses of :class:`~thorn.events.ModelEvent` can override how the name is
+    expanded by defining the ``_get_name`` method.
+
+.. _version-1.2.1:
+
+1.2.1
+=====
+:release-date: 2016-06-06 06:30 P.M PDT
+:release-by: Ask Solem
+
+- Celery: Forward event signal context to the tasks.
+
+.. _version-1.2.0:
+
+1.2.0
+=====
+:release-date: 2016-06-02 01:00 P.M PDT
+:release-by: Ask Solem
+
+- Event: Adds ``request_data`` option.
+
+    This enables you to inject additional data into the webhook payload,
+    used for integration with quirky HTTP endpoints.
+
+- Event: Adds ``allow_keepalive`` option.
+
+    HTTP connections will not be reused for an event if this flag is set to
+    False.  Keepalive is enabled by default.
+
+- Event: Adds ``subscribers`` argument that can be used to add
+  default subscribers for the event.
+
+    This argument can hold the same values as the :setting:`THORN_SUBSCRIBERS`
+    setting.
+
+- Decorator: ``model.webhook_events`` is now a UserDict proxy
+    to ``model.webhook_events.events``.
+
+- Subscriber: :class:`thorn.generic.models.AbstractSubscribers` is a
+  new abstract interface for subscriber models.
+
+    This should be used if you want to check if an object is a subscriber
+    in :func:`isinstance` checks.
+
+- Q: ``now__*`` operators now properly handles the case when there's
+     no previous version of the object.
+
+- Django: :data:`django.db.models.signals.pre_save` signal handler
+  now ignores :exc:`~Adjango.core.exceptions.ObjectDoesNotExist` errors.
+
+- Events: Adds new ``prepare_recipient_validators`` method, enabling
+  subclasses to e.g. set default validators.
+
+- Windows: Unit test suite now passing on win32/win64.
+
+- Module ``thorn.models`` renamed to :mod:`thorn.generic.models`.
+
+.. _version-1.1.0:
+
+1.1.0
+=====
+:release-date: 2016-05-23 12:00 P.M PDT
+:release-by: Ask Solem
+
+- Fixed installation on Python 3
+
+    Fix contributed by Josh Drake.
+
+- Now depends on
+
+    - :pypi:`itsdangerous`
+
+    - :pypi:`ipaddress` (Python 2.7)
+
+- Security: Now provides HMAC signing by default.
+
+    The Subscriber model has a new ``hmac_secret`` field
+    which subscribers can provide to set the secret key for
+    communication.  A default secret will be created if none is provided,
+    and can be found in the response of the subscribe endpoint.
+
+    The signed HMAC message found in the ``Hook-HMAC`` HTTP header
+    can then be used to verify the sender of the webhook.
+
+    An example Django webhook consumer verifying the signature
+    can be found in the :ref:`Django guide <django-example-consumer>`.
+
+    Thanks to Timothy Fitz for suggestions.
+
+- Security: No longer dispatches webhooks to internal networks.
+
+    This means Thorn will refuse to deliver webhooks to
+    networks considered internal, like ``fd00::/8``, ``10.0.0.0/8``,
+    ``172.16.0.0/12``, ``192.168.0.0/16`` and ``127.0.0.1``
+
+    This behavior can be changed globally using the
+    :setting:`THORN_RECIPIENT_VALIDATORS` setting, or on an per-event basis
+    using the ``recipient_validators`` argument to :class:`~Thorn.event`.
+
+- Security: Now only dispatches to HTTP and HTTPS URLs by default.
+
+    This behavior can be changed globally using the
+    :setting:`THORN_RECIPIENT_VALIDATORS` setting, or on an per-event basis
+    using the ``recipient_validators`` argument to :class:`~Thorn.event`.
+
+- Security: Now only dispatches to ports 80 and 443 by default.
+
+    This behavior can be changed globally using the
+    :setting:`THORN_RECIPIENT_VALIDATORS` setting, or on an per-event basis
+    using the ``recipient_validators`` argument to :class:`~Thorn.event`.
+
+- Security: Adds recipient validators
+
+    You can now validate the recipient URL by providing a list
+    of validators in the ``recipient_validators`` argument to
+    :class:`~thorn.Event`.
+
+    The default list of validators is provided by the
+    new :setting:`THORN_RECIPIENT_VALIDATORS` setting.
+
+    Thanks to Edmond Wong for reviewing, and Timothy Fitz for suggestions.
+
+- Django: Now properly supports custom user models by using
+  ``UserModel.get_username()``.
+
+    Fix contributed by Josh Drake.
+
+- ModelEvent: Adds new many-to-many signal dispatcher types
+
+    - ``dispatches_on_m2m_add(related_field)``
+
+        Sent when a new object is added to a many-to-many relation.
+
+    - ``dispatches_on_m2m_remove(related_field)``
+
+        Sent when an object is removed from a many-to-many relation.
+
+    - ``dispatches_on_m2m_clear(related_field)``
+
+        Sent when a many-to-many relation is cleared.
+
+    **Example**
+
+    In this blog article model, events are sent whenever a new
+    tag is added or removed:
+
+    .. code-block:: python
+
+        @webhook_model(
+            on_add_tag=ModelEvent(
+                'article.tagged').dispatches_on_m2m_add('tags'),
+            on_remove_tag=ModelEvent(
+                'article.untagged').dispatches_on_m2m_remove('tags'),
+            on_clear_tags=ModelEvent(
+                'article.tags_cleared').dispatches_on_m2m_clear('tags'),
+        )
+        class Article(models.Model):
+            title = models.CharField(max_length=128)
+            tags = models.ManyToManyField(Tag)
+
+
+        class Tag(models.Model):
+            name = models.CharField(max_length=64, unique=True)
+
+    The ``article.tagged`` webhook is sent when::
+
+        >>> python_tag, _ = Tag.objects.get_or_create(name='python')
+        >>> article.tags.add(python_tag)  # <-- dispatches with this line
+
+    and the ``article.untagged`` webhook is sent when::
+
+        >>> article.tags.remove(python_tag)
+
+    finally, the ``article.tags_cleared`` event is sent when::
+
+        >>> article.tags.clear()
+
+- Documentation fixes contributed by:
+
+    - Matthew Brener
+
+
+.. _version-1.0.0:
+
+1.0.0
+=====
+:release-date: 2016-05-13 10:10 A.M PDT
+:release-by: Ask Solem
+
+- Initial release :o)
