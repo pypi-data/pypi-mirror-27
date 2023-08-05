@@ -1,0 +1,130 @@
+{% extends 'app/base.html' %}
+
+{% block toast %}
+    {% if errors.non_field_errors %}
+        {% for message in errors.non_field_errors %}
+            {% include "../widget/toast.html" with message=message %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<form id="action-edit-form" 
+    {% if action %}
+        action="{% url 'edit_action' resource.id action.id %}" 
+    {% else %}
+        action="{% url 'create_action' resource.id %}" 
+    {% endif %}
+    method="post">
+<div class="columns" ng-controller="EditActionForm.ctrl">
+    {% csrf_token %}
+    <input type="hidden" name="resource" value="{{ resource.id }}">
+    <input type="hidden" name="body" 
+        {% if form.body %} value="{{ form.body }}" 
+        {% elif action.body %} value="{{ action.body }}"
+        {% else %} value="" {% endif %}
+        >
+    {% if action %}
+    <input type="hidden" name="id" value="{{ action.id }}">
+    {% endif %}
+    <div class="column col-6 col-sm-12 col-mx-auto">
+        <div class="columns">
+            <div class="column col-12 col-mx-auto">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        Create new action on the <span class="text-primary">{{ resource.name }}</span> resource.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column col-8 col-sm-12">
+                <div class="form-group {% if errors.name %} has-error {% endif %}">
+                    <input type="text" name="name" class="form-input title-input" placeholder="Title!" 
+                        {% if form.name %} value="{{ form.name }}" 
+                        {% elif action.name %} value="{{ action.name }}"
+                        {% endif %}>
+                    {% if errors.name %}
+                        {% for error in errors.name %}
+                            <p class="form-input-hint">{{ error|escape }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group {% if errors.url %} has-error {% endif %}">
+                    <label class="form-label">URL</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">{{ resource.url }}</span>
+                        <input type="text" name="url" class="form-input url-input" 
+                            {% if form.url %} value="{{ form.url }}" 
+                            {% elif action.url %} value="{{ action.url}}"
+                            {% endif %}>
+                    </div>
+                    {% if errors.url %}
+                        {% for error in errors.url %}
+                            <p class="form-input-hint">{{ error|escape }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="columns">
+                    <div class="column col-4 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Method</label>
+                            <select class="form-select" name="method">
+                                <option value="GET">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="DELETE">DELETE</option>
+                                <option value="PATCH">PATCH</option>
+                                <option value="COPY">COPY</option>
+                                <option value="HEAD">HEAD</option>
+                                <option value="OPTIONS">OPTIONS</option>
+                                <option value="LINK">LINK</option>
+                                <option value="UNLINK">UNLINK</option>
+                                <option value="PURGE">PURGE</option>
+                                <option value="LOCK">LOCK</option>
+                                <option value="UNLOCK">UNLOCK</option>
+                                <option value="PROFIND">PROFIND</option>
+                                <option value="VIEW">VIEW</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column col-8 col-sm-12">
+                        <div class="form-group form-group-gap">
+                            <label class="form-label">Content-Type</label>
+                            <select class="form-select" name="contentType" 
+                                ng-model="contentType" 
+                                ng-change="changeContentType()" 
+                                {% if form.contentType %} ng-init="contentType = '{{ form.contentType }}';changeContentType()" 
+                                {% elif action.contentType %} ng-init="contentType = '{{ action.contentType }}';changeContentType()"
+                                {% else %} ng-init="contentType = 'plain/text';changeContentType()" {% endif %}>
+                                <option ng-repeat="c in contentTypes" value="[[ c.value ]]">[[ c.name ]]</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="type-response-area {% if errors.body %}has-error{% endif %}">
+                    <span class="response-label">Response</span>
+                    <div id="response" class="codeview" style="width: 100%; height: 400px;"></div>
+                    {% if errors.body %}
+                        {% for error in errors.body %}
+                            <p class="form-input-hint">{{ error|escape }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="column tools col-4 col-sm-12 col-ml-auto">
+                <button type="submit" class="btn btn-block btn-primary icon-and-text"><i class="ion ion-compose"></i>Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<script type="text/javascript">
+// do select value
+{% if form.method %}
+    select_value("select[name=method]", "{{ form.method }}");
+{% elif action.method %}
+    select_value("select[name=method]", "{{ action.method }}");
+{% endif %}
+</script>
+{% endblock %}
