@@ -1,0 +1,178 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright (c) 2015 Red Hat
+# Licensed under The MIT License (MIT)
+# http://opensource.org/licenses/MIT
+#
+# It's better to copy this script to $PATH.
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
+import argparse
+import logging
+import sys
+
+import requests
+from beanbag import BeanBagException
+import pdc_client
+from pdc_client import PDCClient
+
+__version__ = pdc_client.get_version()
+
+
+def debug_request(func):
+    def wrap(*args, **kwargs):
+        self = args[0]
+        if self.logger.isEnabledFor(logging.DEBUG):
+            self.logger.debug("> %s %s" % (func.__name__.upper(), self.client[self.resource]._))
+            for key, value in list(self.client.session.headers.items()):
+                self.logger.debug("> %s: %s" % (key, value))
+        return func(*args, **kwargs)
+
+    return wrap
+
+
+class RequestMethod(object):
+    def __init__(self, client, resource, logger):
+        self.client = client
+        self.resource = resource
+        self.logger = logger
+
+    def dispatch(self, method, request_data):
+        func = getattr(self, method.lower(), None)
+
+        if func is None:
+            raise ValueError(
+                "Request method %s not support in pdc client." % options.request)
+
+        return func(request_data)
+
+    @debug_request
+    def get(self, data):
+        if not isinstance(data, dict):
+            self.logger.error('For GET request, the data must be a JSON object, not a list.')
+            sys.exit(1)
+        return self.client[self.resource]._(**data)
+
+    @debug_request
+    def post(self, data):
+        return self.client[self.resource]._(data)
+
+    @debug_request
+    def put(self, data):
+        return self.client[self.resource]._("PUT", data)
+
+    @debug_request
+    def patch(self, data):
+        return self.client[self.resource]._("PATCH", data)
+
+    @debug_request
+    def delete(self, data):
+        response = self.client[self.resource]._("DELETE", data)
+        if response:
+            return response
+        return {"Response": "No content"}
+
+
+def load_data(options, logger):
+    """
+    If --file was specified, load data from file or stdin, otherwise return
+    what was given to --data option.
+
+    This function returns Python data structure. If parsing JSON fails, the
+    client will abort and print an error message.
+    """
+    if options.file:
+        if options.file == '-':
+            data = sys.stdin.read()
+        else:
+            with open(options.file, "r") as f:
+                data = f.read()
+    elif options.data:
+        data = options.data
+    else:
+        return {}
+    try:
+        return json.loads(data)
+    except ValueError as err:
+        logger.error("Request data is not a valid JSON input.")
+        logger.error(err)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--server", help="PDC instance url or shortcut.")
+
+    ssl_group = parser.add_mutually_exclusive_group()
+    ssl_group.add_argument("-k", "--insecure", action="store_true",
+                           help="Disable SSL certificate verification")
+    # ca-cert corresponds to requests session verify attribute:
+    # http://docs.python-requests.org/en/master/user/advanced/#ssl-cert-verification
+    ssl_group.add_argument("--ca-cert", help="Path to CA certificate file or directory")
+
+    parser.add_argument("-x", "--request", default="GET", help="Request method.")
+    parser.add_argument("-r", "--resource",
+                        help=("Resource name.\n" +
+                              "NOTE: All available resources can be got by a request " +
+                              "to the API Root. Since API Root does not belong to any " +
+                              "resources, while requesting, please omit the `-r` option.\n" +
+                              "The response of API Root request is a dict with resource names " +
+                              "as keys and resource URIs as values."),
+                        default="")
+
+    data_group = parser.add_mutually_exclusive_group()
+    data_group.add_argument("-d", "--data", help="Request data to server.")
+    data_group.add_argument("-f", "--file",
+                            help="File to load request data from (or - for stdin).")
+
+    parser.add_argument("-t", "--traceback",
+                        help="Show the traceback when an error occurs",
+                        action="store_true", default=False)
+    parser.add_argument("--debug", help="Show request headers and path for "
+                                        "debugging.",
+                        action="store_true", default=False)
+    parser.add_argument("-c", "--comment", help="Reasons for the PDC change.")
+    parser.add_argument('--version', action='version', version='%(prog)s ' + __version__)
+    options = parser.parse_args()
+
+    logging.basicConfig(level=logging.DEBUG if options.debug else logging.WARNING)
+    logger = logging.getLogger('pdc_client')
+
+    data = load_data(options, logger)
+
+    if isinstance(data, dict):
+        for key, value in data.items():
+            if options.request.upper() == 'GET' and not value and value is not False:
+                # empty string won't be lost
+                data[key] = ''
+
+    try:
+        if options.insecure:
+            requests.packages.urllib3.disable_warnings(
+                requests.packages.urllib3.exceptions.InsecureRequestWarning)
+            ssl_verify = False
+        elif options.ca_cert:
+            ssl_verify = options.ca_cert
+        else:
+            ssl_verify = None
+        client = PDCClient(options.server, ssl_verify=ssl_verify)
+        if options.comment:
+            client.set_comment(options.comment)
+
+        request = RequestMethod(client, options.resource, logger)
+        result = request.dispatch(options.request, data)
+        print(json.dumps(result, indent=4, sort_keys=True))
+    except BeanBagException as e:
+        logger.error("%d %s" % (e.response.status_code, e.response.content))
+        sys.exit(1)
+    except Exception as e:
+        logger.error(str(e))
+        sys.exit(1)
+    finally:
+        if options.traceback:
+            import traceback
+            traceback.print_exc()
