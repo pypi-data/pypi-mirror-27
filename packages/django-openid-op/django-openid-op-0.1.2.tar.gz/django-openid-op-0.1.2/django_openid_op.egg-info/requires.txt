@@ -1,0 +1,16 @@
+Django>=1.11
+pycryptodomex
+django-jsonfield
+django-ratelimit
+python-jwt
+
+[dev]
+sphinx
+tox
+pytest
+pytest-django
+pytest_matrix
+pytest-runner
+pytest-env
+social-auth-app-django
+pyjwkest
