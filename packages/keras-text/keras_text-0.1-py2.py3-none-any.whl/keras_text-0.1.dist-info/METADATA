@@ -1,0 +1,24 @@
+Metadata-Version: 2.0
+Name: keras-text
+Version: 0.1
+Summary: Text classification library for Keras
+Home-page: https://github.com/raghakot/keras-text
+Author: Raghavendra Kotikalapudi
+Author-email: ragha@outlook.com
+License: MIT
+Download-URL: https://github.com/raghakot/keras-text/tarball/0.1
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: keras (>=2.1.2)
+Requires-Dist: scikit-learn
+Requires-Dist: six
+Requires-Dist: spacy (>=2.0.3)
+Provides-Extra: tests
+Requires-Dist: pytest; extra == 'tests'
+Requires-Dist: pytest-cov; extra == 'tests'
+Requires-Dist: pytest-pep8; extra == 'tests'
+Requires-Dist: pytest-xdist; extra == 'tests'
+
+UNKNOWN
+
+
