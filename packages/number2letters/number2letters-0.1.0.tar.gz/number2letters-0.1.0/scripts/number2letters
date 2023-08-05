@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+import argparse
+
+from number2letters import number2letters
+
+__program__ = 'number2letters'
+
+if __name__ == '__main__':
+    try:
+        parser = argparse.ArgumentParser(prog=__program__, add_help=False)
+        parser.add_argument('integer', metavar='N', type=int, help='number to convert')
+        args = parser.parse_args()
+        print(number2letters(args.integer))
+
+    except (KeyboardInterrupt, SystemExit):
+        pass
