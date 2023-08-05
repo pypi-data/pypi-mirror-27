@@ -1,0 +1,39 @@
+Metadata-Version: 2.0
+Name: rwa-python
+Version: 0.2
+Summary: HDF5-based serialization library for Python datatypes
+Home-page: https://github.com/DecBayComp/RWA-python
+Author: François Laurent
+Author-email: francois.laurent@pasteur.fr
+License: Apache 2.0
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: six
+Requires-Dist: tables
+
+RWA-python
+==========
+
+**RWA-python** serializes Python datatypes and stores them in HDF5 files.
+
+
+Installation
+------------
+
+You will need Python >= 2.7 or >= 3.5.
+::
+
+	pip install --user RWA-python
+
+``pip install`` will install some Python dependencies if missing, but you may still need to install the `HDF5 reference library <https://support.hdfgroup.org/downloads/index.html>`_.
+
+
+
