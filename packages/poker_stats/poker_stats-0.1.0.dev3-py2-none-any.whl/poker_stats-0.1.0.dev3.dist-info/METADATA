@@ -1,0 +1,23 @@
+Metadata-Version: 2.0
+Name: poker-stats
+Version: 0.1.0.dev3
+Summary: Statistics generator for poker hands played online
+Home-page: https://github.com/yarpenzigrin/pokerstats
+Author: Polish Poker Community in Manila
+Author-email: dev@null.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Requires-Python: >=2.7, <3
+Requires-Dist: enum34 (==1.1.6)
+Requires-Dist: pyparsing (==2.1.10)
+Requires-Dist: Flask (==0.12.2)
+Requires-Dist: gunicorn (==19.7.1)
+
+Statistics generator for poker hands played online
+Under construction
+
