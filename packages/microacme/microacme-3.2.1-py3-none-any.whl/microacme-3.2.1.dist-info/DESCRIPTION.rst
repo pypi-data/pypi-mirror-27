@@ -1,0 +1,151 @@
+[![pipeline status](https://gitlab.mirus.io/domains/roadrunner/microacme/badges/master/pipeline.svg)](https://mirus.githost.io/domains/roadrunner/microacme/commits/master)
+[![coverage report](https://gitlab.mirus.io/domains/roadrunner/microacme/badges/master/coverage.svg?job=test)](https://mirus.githost.io/domains/roadrunner/microacme/commits/master)
+
+# microacme
+`microacme` is a library intended to be used with an ACME-speaking API server, such as the one run by the LetsEncrypt service.
+
+# Why another ACME client?
+`microacme`'s main advantage is that it is designed to be easily subclassed and extended
+to allow for custom implementations of solving the ACME challenges,
+without having to worry about implementing the ACME RFC from scratch.
+
+
+# History
+It began life in 2016 as a fork of diafygi's excellent [tiny-acme project](https://github.com/diafygi/acme-tiny).
+The goals of that original library were to be small, dependency free, and easily audited.  This fork 
+intends to keep the smallness, but not at the expense of readability or usability as an extendable library.
+Also, instead of avoiding dependencies it relies on well-regarded third-party libraries for HTTP requests,
+JSON web token signatures, and cryptographic primitives (using `requests`, `jwcrypto`, and `cryptography`, respectively).
+
+At this point, almost the entire codebase has been rewritten from scratch and bears almost no resemblance to its initial inspiration, `tiny-acme`.
+
+# Installation
+`pip install microacme`
+
+# Usage
+To use `microacme`, you need to implement a few methods on a subclass of `microacme.ACMEClient`.
+
+```python
+    from microacme import ACMEClient
+
+    class MyCustomACMEClient(ACMEClient):
+        """
+        Use this class as an example to build your
+        ACME client.  Override the methods below
+        to customize the challenge/response behavior
+        of the ACME client.
+        """
+        def select_challenge(self, domain, challenges):
+            """
+            Each domain has multiple options for solving challenges.
+
+            Override this function to pick which challenge you want to
+            solve for this domain.
+            """
+            pass
+
+        def set_challenge(self, domain, challenge):
+            """
+            After a challenge has been selected, it needs to actually exist somewhere.
+
+            This is where you fulfill the challenge requirements.
+            """
+            raise NotImplementedError("Need to implement a function to set the challenge.")
+
+        def validate_challenge(self, domain, challenge):
+            """
+            Used to give the ACMEClient instance a chance to make sure
+            that the outside world will see the changes made by set_challenge.
+
+            By default, does nothing.  Could be used, for example, to sleep(1) while waiting
+            for an asynchronous upload to take place to a remote webserver.  Or to wait while
+            DNS propagation occurs.
+            """
+            pass
+
+        def cleanup_completed_challenge(self, domain, challenge):
+            """
+            This method is called after the challenge has succeeded.  It is used
+            to cleanup any artifacts of solving the challenge.
+            """
+            pass
+```
+
+Once you've implemented these methods, you can instantiate your client with an account_key and a CA url.
+
+```python
+import microacme
+
+my_client = MyCustomACMEClient(
+    account_key=BYTES_OF_KEY_IN_PEM_FORMAT,
+    CA=microacme.STAGING_CA
+)
+
+# If you've never used this particular account_key before:
+my_client.register_account()
+
+# Now you're ready to get a certificate.  First, create a key:
+key = microacme.generate_crypto_key(key_size=3072)
+
+# Next, generate a Certificate Signing Request (CSR):
+csr = microacme.generate_csr(
+    key=key,
+    country='US',
+    state='Indiana',
+    locality='Indianapolis',
+    org_name='Widget Maker, Inc.',
+    common_name='widgetmaker.com',
+    alt_names=[
+        'mail.widgetmaker.com',
+        'dev.widgetmaker.com',
+    ],
+    auto_www=True
+)
+
+# Finally, ask the ACME server to authorize, validate, and issue the certificate:
+cert, issuer_cert = microacme.get_certificate(csr)
+
+# Congratulations, you're encrypted!
+```
+
+# Helper Methods
+`microacme` has a handful of utility methods which may come in handy as you are shuffling
+keys and certs around between different systems.  Most of them are self explanatory, but
+some example usage is included below.
+
+```python
+    import microacme
+
+    # Working with keys
+    crypto_key = microacme.generate_crypto_key(key_size=2048):
+    pem_bytes = microacme.crypto_key_to_pem(crypto_key, passphrase=None)  # Tack on a passphrase to protect the key at rest.
+    loaded_crypto_key = microacme.pem_to_crypto_key(pem_bytes, passphrase=None)  # Use a passphrase if the key is encrypted
+
+
+    # Working with CSRs
+    csr_object = microacme.generate_csr(
+        private_key,
+        country,
+        state,
+        locality,
+        org_name,
+        common_name,
+        alt_names=None,
+        auto_www=True
+    )
+    csr_pem_bytes = microacme.csr_to_pem(csr_object)
+    csr_object = microacme.pem_to_csr(csr_pem_bytes)
+
+
+    # Working with Certificates
+    cert_pem_bytes = microacme.cert_to_pem(cert_obj)
+    cert_object = microacme.pem_to_cert(cert_pem_bytes)
+    cert_object = microacme.der_to_cert(cert_der_bytes)
+```
+
+# Contributing
+Please feel free to open issues on our [Gitlab issue tracker](https://gitlab.mirus.io/domains/roadrunner/microacme/issues).
+
+# License
+The original inspiration for `microacme` was licensed as MIT.  We retain that license as well for this library.
+
