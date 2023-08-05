@@ -1,0 +1,95 @@
+{
+  "tests": [
+    {
+      "name": "01",
+      "stdout": " 42 84"
+    },
+    {
+      "name": "02",
+      "stdout": " 38 0 38 12 0 12"
+    },
+    {
+      "name": "03",
+      "stdout": " 38 25"
+    },
+    {
+      "name": "04",
+      "stdout": " 38 76"
+    },
+    {
+      "name": "05",
+      "compiler_exit_code": 3
+    },
+    {
+      "name": "06",
+      "stdout": " 1 1 1"
+    },
+    {
+      "name": "07",
+      "stdout": " 25",
+      "extensions": [
+        "FUNEXP"
+      ]
+    },
+    {
+      "name": "08",
+      "compiler_exit_code": 3
+    },
+    {
+      "name": "09",
+      "stdout": " 26 27"
+    },
+    {
+      "name": "10",
+      "stdout": " 26 27 4 8 28 29 16"
+    },
+    {
+      "name": "14",
+      "stdout": " 0 1 0 0 2 0 0 3 0 0 4 0 0 5 0 0 6 0 0 7 0 0 8 0 0 9 0 0 10 0",
+      "extensions": [
+        "FUNEXP"
+      ]
+    },
+    {
+      "name": "18",
+      "extensions": [
+        "FUNEXP"
+      ]
+    },
+    {
+      "name": "19",
+      "compiler_exit_code": 6
+    },
+    {
+      "name": "20",
+      "compiler_exit_code": 6
+    },
+    {
+      "name": "21",
+      "stdout": " 42"
+    },
+    {
+      "name": "22",
+      "stdout": " 22 34"
+    },
+    {
+      "name": "23",
+      "stdout": " 55 54 53 55 56 57"
+    },
+    {
+      "name": "24",
+      "stdout": " 55 54 53 55 56 57 52 51 50 58 59 60"
+    },
+    {
+      "name": "25",
+      "stdout": " 56 56 57 57"
+    },
+    {
+      "name": "26",
+      "stdout": " 56 56 56 56 57 57 57 56"
+    }
+  ],
+  "extensions": [
+    "GLOBAL"
+  ]
+}
