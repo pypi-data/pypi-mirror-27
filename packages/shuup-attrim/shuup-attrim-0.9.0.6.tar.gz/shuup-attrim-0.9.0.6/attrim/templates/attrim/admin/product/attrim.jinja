@@ -1,0 +1,15 @@
+{% from "shuup/admin/macros/general.jinja" import content_block with context %}
+{% from "shuup/admin/macros/multilanguage.jinja" import language_dependent_content_tabs, render_monolingual_fields %}
+
+{% set attribute_formset = form[form_def.name] %}
+
+{% call content_block(_("Attrim"), "fa-tags") %}
+    {{ attribute_formset.management_form }}
+    <ul>
+        {% for attribute_form in attribute_formset %}
+            <br>
+            <h4>{{ attribute_form.name }}</h4>
+            {{ attribute_form.as_ul() }}
+        {% endfor %}
+    </ul>
+{% endcall %}
