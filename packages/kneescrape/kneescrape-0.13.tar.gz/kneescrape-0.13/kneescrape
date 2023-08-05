@@ -1,0 +1,191 @@
+#!/usr/bin/env python
+"""
+Usage:
+  kneescrape <URL> <savename> [options]
+  kneescrape -h 
+
+Example:
+  kneescrape www.microsoft.com microsoft -l1 -d
+
+Options:
+  -d, --domainonly 		  Limit the crawl to sub pages of given URL
+  -l NUM, --linkdepth=NUM	  How deep you wanna crawl?
+"""
+
+try:
+	from docopt import docopt
+	import sys
+	import re
+	import string
+	import requests
+	from bs4 import BeautifulSoup as bs
+except ImportError as ie:
+	print("[-] Missing dependency.")
+	print("[-] %s" % ie)
+	exit(1)
+	
+
+__version__ = 0.11
+
+links = []
+pages = []
+base_domain = None
+
+def get_soup_content(url):
+	page = requests.get(url)
+	try:
+		soup = bs(page.content, "lxml")
+	except:
+		print("[!] You might be missing the lxml library. Try running 'pip install lxml'.")
+		exit(1)
+	return soup
+
+def crawl(url, depth=2, domain=True):
+	global links
+	global pages
+	global base_domain
+
+	if domain and base_domain is None:
+		base_domain = url
+		print("Setting base domain to %s" % url)
+
+	print("[+] Processing: %s" % url)
+	try:
+		soup = get_soup_content(url)
+	except:
+		print("[!] Coult not retrieve data from URL.")
+		return
+
+	pages.append(soup)
+
+	if depth < 1:
+		return
+
+	try:
+		for link in soup.find_all('a'):
+			href = link.get('href')
+
+			if not isinstance(href, str):
+				continue
+
+			if "#" in href:
+				continue
+
+			if "mailto" in href:
+				continue
+
+			if "javascript" in href:
+				continue
+
+			if len(href) < 2:
+				continue
+
+			# Complete relative URLs with base URL.
+			if href[0] == "/":
+				full_url = url + href
+			else:
+				full_url = href
+
+			if domain and base_domain not in full_url:
+				print("[-] Skipping: %s" % full_url)
+				continue
+
+			# Add the new URL to links list and recurse further.
+			if full_url not in links:
+				links.append(full_url)
+				crawl(full_url, depth-1, domain)
+	except:	
+		return
+
+# Grab email addresses.
+def grab_emails(_pages):
+	emails = []
+	for page in _pages:
+		for email in re.findall(r'[\w\.-]+@[\w\.-]+\.[\w]+', page.prettify()):
+			if email not in emails:
+				emails.append(email)
+	return emails
+
+# Grab words.
+def grab_words(_pages):
+	wordlist = []
+	stripchars = ["\\", "\n", "\r", "<", ">", "/"]
+	for page in _pages:
+		words = re.sub('['+string.punctuation+']', '', page.get_text()).split() # Split string by punctuations and new lines.
+		for word in words:
+			word = ''.join(filter(lambda x: ord(x)<256,word)) # Remove non ascii chars.
+			for sc in stripchars:
+				word = word.replace(sc, "")
+			if len(word) < 20 and len(word) > 1: # Last sanity check, string length.
+				wordlist.append(word.lower())
+	wordlist = sorted(set(wordlist)) # Sort and uniq
+	return wordlist
+
+def http_url(url):
+	if "http://" in url or "https://" in url:
+		return url
+	else:
+		return ("http://" + url)
+
+def main():
+	# Set up vars from docopt args.
+	argument = docopt(__doc__, version=__version__)
+
+	# Commands
+	_url = argument['<URL>']
+	_url = http_url(_url)
+	_savename = argument['<savename>']
+
+	# Options
+	try:
+		_linkdepth = int(argument['--linkdepth'])
+	except:
+		_linkdepth = 1
+
+	_domainonly = argument['--domainonly']
+
+	crawl(_url, _linkdepth, _domainonly)
+
+	print("[*] Processed %d URLs" % len(links))
+	
+	words = []
+	emails = []
+
+	try:
+		words = grab_words(pages)
+		_filename = _savename + "_words.txt"
+		wordfile = open(_filename, 'w')
+		_counter = 0
+		for word in words:
+			try:
+				if sys.version_info < (3,0):
+					wordfile.write("%s\n" % word.encode('utf8')) 
+				else:
+					wordfile.write("%s\n" % word) 
+				_counter += 1
+			except Exception as e:
+				print(e)
+				pass
+		wordfile.close()
+		print ("[*] Saved %d words to %s" % (_counter, _filename))
+	except:
+		print ("[-] Could not process words.")
+
+	try:
+		emails = grab_emails(pages)
+		_filename = _savename + "_emails.txt"
+		emailfile = open(_filename, 'w')
+		_counter = 0
+		for email in emails:
+			try:
+				emailfile.write("%s\n" % email) 
+				_counter += 1
+			except:
+				pass
+		emailfile.close()
+		print ("[*] Saved %d email addresses to %s" % (_counter, _filename))
+	except:
+		print ("[-] Could not process emails.")
+	
+if __name__=="__main__":
+	main()
