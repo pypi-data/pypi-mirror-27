@@ -1,0 +1,23 @@
+' input into shared
+
+dim shared variable as integer
+
+function foo() as integer
+	static first_time as integer = 0
+	static variable as integer
+	if first_time = 0 then
+	    variable = 42
+		first_time = 1
+	else
+		return variable
+	end if
+end function
+
+scope
+	input variable
+	dim a as integer
+	a = foo()
+	print a;
+	a = foo()
+	print a;
+end scope
