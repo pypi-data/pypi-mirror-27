@@ -1,0 +1,59 @@
+#!/usr/bin/env python
+# coding=utf-8
+
+"""
+LICENSE:
+Copyright 2015,2016 Hermann Krumrey
+
+This file is part of toktokkie.
+
+    toktokkie is a program that allows convenient managing of various
+    local media collections, mostly focused on video.
+
+    toktokkie is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    toktokkie is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with toktokkie.  If not, see <http://www.gnu.org/licenses/>.
+LICENSE
+"""
+
+# imports
+import os
+import sys
+import argparse
+from raven import Client
+from toktokkie.metadata import sentry_dsn, version
+from toktokkie.utils.xdcc.updating.JsonHandler import JsonHandler
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("json_file", default="series.json", nargs="?", help="The JSON file to use when updating")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Prints output when running the program")
+    args = parser.parse_args()
+
+    try:
+
+        if not os.path.isfile(args.json_file):
+            print(args.json_file + " does not exist.")
+            sys.exit(1)
+
+        handler = JsonHandler(args.json_file)
+
+        for series in handler.get_series():
+            series.update(args.verbose)
+
+    except KeyboardInterrupt:
+        print("Thanks for using toktokkie's xdcc updater!")
+    except Exception as e:
+        Client(dsn=sentry_dsn, release=version).captureException()
+        raise e

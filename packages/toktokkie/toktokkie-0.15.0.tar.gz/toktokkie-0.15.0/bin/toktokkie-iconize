@@ -1,0 +1,59 @@
+#!/usr/bin/env python
+# coding=utf-8
+
+"""
+LICENSE:
+Copyright 2015,2016 Hermann Krumrey
+
+This file is part of toktokkie.
+
+    toktokkie is a program that allows convenient managing of various
+    local media collections, mostly focused on video.
+
+    toktokkie is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    toktokkie is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with toktokkie.  If not, see <http://www.gnu.org/licenses/>.
+LICENSE
+"""
+
+import os
+import sys
+import argparse
+from toktokkie.utils.iconizing.Iconizer import Iconizer
+
+
+def parse_args():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("directory", help="The directory to iconize")
+    parser.add_argument("-r", "--recursive", action="store_true", help="Recursively iconizes the directory")
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+
+    args = parse_args()
+    iconizer = Iconizer()
+    directory = os.path.abspath(args.directory)
+
+    if not os.path.isdir(directory):
+        print("Not a valid directory")
+        sys.exit(1)
+
+    print("Starting Iconizing...")
+
+    if args.recursive:
+        iconizer.recursive_iconize(directory)
+    else:
+        iconizer.iconize_directory(directory)
+
+    print("Done")
