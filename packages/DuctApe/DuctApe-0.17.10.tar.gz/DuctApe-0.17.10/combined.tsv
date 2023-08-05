@@ -1,0 +1,762 @@
+# Metabolic reconstruction Vs. Phenomic activity
+# reactions = number of distinct reaction IDs
+# meanAV = mean AV
+# (-1, no activity available)
+			IFB0099		IFB0400	
+pathway	name	category	reactions	meanAV	reactions	meanAV
+path:map01130	Biosynthesis of antibiotics	phosphate_and_sulphur	52	8.5	52	8.38461538462
+path:map01130	Biosynthesis of antibiotics	osmolytes_and_ph	52	2.01851851852	52	1.90277777778
+path:map01130	Biosynthesis of antibiotics	nutrient_stimulation	52	5.97916666667	52	4.66666666667
+path:map01130	Biosynthesis of antibiotics	nitrogen_peptides	52	-1	52	-1
+path:map01130	Biosynthesis of antibiotics	nitrogen	52	3.65	52	3.075
+path:map01130	Biosynthesis of antibiotics	carbon	52	3.38709677419	52	3.61290322581
+path:map01230	Biosynthesis of amino acids	phosphate_and_sulphur	50	8.28571428571	50	8.0
+path:map01230	Biosynthesis of amino acids	osmolytes_and_ph	50	1.90579710145	50	1.92391304348
+path:map01230	Biosynthesis of amino acids	nutrient_stimulation	50	5.98148148148	50	4.59259259259
+path:map01230	Biosynthesis of amino acids	nitrogen_peptides	50	9.0	50	9.0
+path:map01230	Biosynthesis of amino acids	nitrogen	50	4.42	50	3.78
+path:map01230	Biosynthesis of amino acids	carbon	50	1.89583333333	50	2.0
+path:map00230	Purine metabolism	phosphate_and_sulphur	29	8.125	28	8.375
+path:map00230	Purine metabolism	osmolytes_and_ph	29	2.22916666667	28	2.91666666667
+path:map00230	Purine metabolism	nutrient_stimulation	29	5.96428571429	28	5.07142857143
+path:map00230	Purine metabolism	nitrogen_peptides	29	9.0	28	9.0
+path:map00230	Purine metabolism	nitrogen	29	4.95833333333	28	4.5
+path:map00230	Purine metabolism	carbon	29	0.25	28	0.5
+path:map01200	Carbon metabolism	phosphate_and_sulphur	28	8.21428571429	28	8.0
+path:map01200	Carbon metabolism	osmolytes_and_ph	28	2.95833333333	28	2.625
+path:map01200	Carbon metabolism	nutrient_stimulation	28	5.78571428571	28	4.85714285714
+path:map01200	Carbon metabolism	nitrogen_peptides	28	-1	28	-1
+path:map01200	Carbon metabolism	nitrogen	28	5.16666666667	28	4.88888888889
+path:map01200	Carbon metabolism	carbon	28	4.36842105263	28	4.97368421053
+path:map00260	Glycine, serine and threonine metabolism	phosphate_and_sulphur	20	8.25	20	8.0
+path:map00260	Glycine, serine and threonine metabolism	osmolytes_and_ph	20	1.875	20	1.89583333333
+path:map00260	Glycine, serine and threonine metabolism	nutrient_stimulation	20	5.8125	20	4.625
+path:map00260	Glycine, serine and threonine metabolism	nitrogen_peptides	20	-1	20	-1
+path:map00260	Glycine, serine and threonine metabolism	nitrogen	20	5.22222222222	20	4.5
+path:map00260	Glycine, serine and threonine metabolism	carbon	20	3.0	20	2.83333333333
+path:map00980	Metabolism of xenobiotics by cytochrome P450	phosphate_and_sulphur	18	-1	18	-1
+path:map00980	Metabolism of xenobiotics by cytochrome P450	osmolytes_and_ph	18	-1	18	-1
+path:map00980	Metabolism of xenobiotics by cytochrome P450	nutrient_stimulation	18	-1	18	-1
+path:map00980	Metabolism of xenobiotics by cytochrome P450	nitrogen_peptides	18	-1	18	-1
+path:map00980	Metabolism of xenobiotics by cytochrome P450	nitrogen	18	-1	18	-1
+path:map00980	Metabolism of xenobiotics by cytochrome P450	carbon	18	-1	18	-1
+path:map01212	Fatty acid metabolism	phosphate_and_sulphur	17	-1	17	-1
+path:map01212	Fatty acid metabolism	osmolytes_and_ph	17	-1	17	-1
+path:map01212	Fatty acid metabolism	nutrient_stimulation	17	-1	17	-1
+path:map01212	Fatty acid metabolism	nitrogen_peptides	17	-1	17	-1
+path:map01212	Fatty acid metabolism	nitrogen	17	-1	17	-1
+path:map01212	Fatty acid metabolism	carbon	17	-1	17	-1
+path:map00620	Pyruvate metabolism	phosphate_and_sulphur	15	8.0	15	8.0
+path:map00620	Pyruvate metabolism	osmolytes_and_ph	15	-1	15	-1
+path:map00620	Pyruvate metabolism	nutrient_stimulation	15	6.0	15	5.0
+path:map00620	Pyruvate metabolism	nitrogen_peptides	15	-1	15	-1
+path:map00620	Pyruvate metabolism	nitrogen	15	-1	15	-1
+path:map00620	Pyruvate metabolism	carbon	15	6.83333333333	15	7.75
+path:map00270	Cysteine and methionine metabolism	phosphate_and_sulphur	15	8.15	15	7.95
+path:map00270	Cysteine and methionine metabolism	osmolytes_and_ph	15	3.17857142857	15	3.17857142857
+path:map00270	Cysteine and methionine metabolism	nutrient_stimulation	15	5.5	15	4.42857142857
+path:map00270	Cysteine and methionine metabolism	nitrogen_peptides	15	-1	15	-1
+path:map00270	Cysteine and methionine metabolism	nitrogen	15	5.25	15	5.08333333333
+path:map00270	Cysteine and methionine metabolism	carbon	15	3.64285714286	15	3.64285714286
+path:map00052	Galactose metabolism	phosphate_and_sulphur	15	9.0	15	9.0
+path:map00052	Galactose metabolism	osmolytes_and_ph	15	1.0	15	1.0
+path:map00052	Galactose metabolism	nutrient_stimulation	15	6.0	15	5.5
+path:map00052	Galactose metabolism	nitrogen_peptides	15	-1	15	-1
+path:map00052	Galactose metabolism	nitrogen	15	0.0	15	0.0
+path:map00052	Galactose metabolism	carbon	15	5.88235294118	15	6.44117647059
+path:map00061	Fatty acid biosynthesis	phosphate_and_sulphur	14	-1	14	-1
+path:map00061	Fatty acid biosynthesis	osmolytes_and_ph	14	-1	14	-1
+path:map00061	Fatty acid biosynthesis	nutrient_stimulation	14	6.0	14	5.0
+path:map00061	Fatty acid biosynthesis	nitrogen_peptides	14	-1	14	-1
+path:map00061	Fatty acid biosynthesis	nitrogen	14	-1	14	-1
+path:map00061	Fatty acid biosynthesis	carbon	14	0.0	14	0.0
+path:map00790	Folate biosynthesis	phosphate_and_sulphur	13	8.0	13	8.0
+path:map00790	Folate biosynthesis	osmolytes_and_ph	13	-1	13	-1
+path:map00790	Folate biosynthesis	nutrient_stimulation	13	6.0	13	4.0
+path:map00790	Folate biosynthesis	nitrogen_peptides	13	-1	13	-1
+path:map00790	Folate biosynthesis	nitrogen	13	-1	13	-1
+path:map00790	Folate biosynthesis	carbon	13	-1	13	-1
+path:map00030	Pentose phosphate pathway	phosphate_and_sulphur	13	8.0	13	8.25
+path:map00030	Pentose phosphate pathway	osmolytes_and_ph	13	-1	13	-1
+path:map00030	Pentose phosphate pathway	nutrient_stimulation	13	6.0	13	6.0
+path:map00030	Pentose phosphate pathway	nitrogen_peptides	13	-1	13	-1
+path:map00030	Pentose phosphate pathway	nitrogen	13	-1	13	-1
+path:map00030	Pentose phosphate pathway	carbon	13	4.91666666667	13	5.83333333333
+path:map00340	Histidine metabolism	phosphate_and_sulphur	12	-1	16	-1
+path:map00340	Histidine metabolism	osmolytes_and_ph	12	2.4375	16	2.25
+path:map00340	Histidine metabolism	nutrient_stimulation	12	6.0	16	5.0
+path:map00340	Histidine metabolism	nitrogen_peptides	12	-1	16	-1
+path:map00340	Histidine metabolism	nitrogen	12	5.875	16	5.875
+path:map00340	Histidine metabolism	carbon	12	3.0	16	2.75
+path:map01210	2-Oxocarboxylic acid metabolism	phosphate_and_sulphur	12	8.5	12	8.0
+path:map01210	2-Oxocarboxylic acid metabolism	osmolytes_and_ph	12	1.75	12	1.54545454545
+path:map01210	2-Oxocarboxylic acid metabolism	nutrient_stimulation	12	6.07692307692	12	4.76923076923
+path:map01210	2-Oxocarboxylic acid metabolism	nitrogen_peptides	12	-1	12	-1
+path:map01210	2-Oxocarboxylic acid metabolism	nitrogen	12	3.66666666667	12	3.04166666667
+path:map01210	2-Oxocarboxylic acid metabolism	carbon	12	1.73333333333	12	1.8
+path:map00680	Methane metabolism	phosphate_and_sulphur	12	8.25	12	8.0
+path:map00680	Methane metabolism	osmolytes_and_ph	12	2.33333333333	12	2.59722222222
+path:map00680	Methane metabolism	nutrient_stimulation	12	6.0	12	4.5
+path:map00680	Methane metabolism	nitrogen_peptides	12	-1	12	-1
+path:map00680	Methane metabolism	nitrogen	12	4.7	12	3.5
+path:map00680	Methane metabolism	carbon	12	4.1	12	5.1
+path:map00670	One carbon pool by folate	phosphate_and_sulphur	12	-1	12	-1
+path:map00670	One carbon pool by folate	osmolytes_and_ph	12	-1	12	-1
+path:map00670	One carbon pool by folate	nutrient_stimulation	12	6.0	12	4.0
+path:map00670	One carbon pool by folate	nitrogen_peptides	12	-1	12	-1
+path:map00670	One carbon pool by folate	nitrogen	12	-1	12	-1
+path:map00670	One carbon pool by folate	carbon	12	-1	12	-1
+path:map00400	Phenylalanine, tyrosine and tryptophan biosynthesis	phosphate_and_sulphur	12	8.0	12	8.0
+path:map00400	Phenylalanine, tyrosine and tryptophan biosynthesis	osmolytes_and_ph	12	2.25	12	2.25
+path:map00400	Phenylalanine, tyrosine and tryptophan biosynthesis	nutrient_stimulation	12	6.0	12	4.6
+path:map00400	Phenylalanine, tyrosine and tryptophan biosynthesis	nitrogen_peptides	12	-1	12	-1
+path:map00400	Phenylalanine, tyrosine and tryptophan biosynthesis	nitrogen	12	4.83333333333	12	4.33333333333
+path:map00400	Phenylalanine, tyrosine and tryptophan biosynthesis	carbon	12	0.0	12	0.0
+path:map00010	Glycolysis / Gluconeogenesis	phosphate_and_sulphur	11	8.25	11	8.375
+path:map00010	Glycolysis / Gluconeogenesis	osmolytes_and_ph	11	-1	11	-1
+path:map00010	Glycolysis / Gluconeogenesis	nutrient_stimulation	11	6.0	11	5.33333333333
+path:map00010	Glycolysis / Gluconeogenesis	nitrogen_peptides	11	-1	11	-1
+path:map00010	Glycolysis / Gluconeogenesis	nitrogen	11	-1	11	-1
+path:map00010	Glycolysis / Gluconeogenesis	carbon	11	7.83333333333	11	8.08333333333
+path:map00640	Propanoate metabolism	phosphate_and_sulphur	10	-1	10	-1
+path:map00640	Propanoate metabolism	osmolytes_and_ph	10	-1	10	-1
+path:map00640	Propanoate metabolism	nutrient_stimulation	10	6.0	10	4.5
+path:map00640	Propanoate metabolism	nitrogen_peptides	10	-1	10	-1
+path:map00640	Propanoate metabolism	nitrogen	10	-1	10	-1
+path:map00640	Propanoate metabolism	carbon	10	2.42857142857	10	2.21428571429
+path:map00460	Cyanoamino acid metabolism	phosphate_and_sulphur	10	8.0	10	8.0
+path:map00460	Cyanoamino acid metabolism	osmolytes_and_ph	10	2.25	10	2.375
+path:map00460	Cyanoamino acid metabolism	nutrient_stimulation	10	5.94444444444	10	4.44444444444
+path:map00460	Cyanoamino acid metabolism	nitrogen_peptides	10	-1	10	-1
+path:map00460	Cyanoamino acid metabolism	nitrogen	10	5.09090909091	10	4.5
+path:map00460	Cyanoamino acid metabolism	carbon	10	3.375	10	3.3125
+path:map00130	Ubiquinone and other terpenoid-quinone biosynthesis	phosphate_and_sulphur	10	-1	10	-1
+path:map00130	Ubiquinone and other terpenoid-quinone biosynthesis	osmolytes_and_ph	10	2.5	10	2.75
+path:map00130	Ubiquinone and other terpenoid-quinone biosynthesis	nutrient_stimulation	10	6.0	10	4.0
+path:map00130	Ubiquinone and other terpenoid-quinone biosynthesis	nitrogen_peptides	10	-1	10	-1
+path:map00130	Ubiquinone and other terpenoid-quinone biosynthesis	nitrogen	10	5.0	10	3.0
+path:map00130	Ubiquinone and other terpenoid-quinone biosynthesis	carbon	10	1.0	10	0.5
+path:map00630	Glyoxylate and dicarboxylate metabolism	phosphate_and_sulphur	9	8.0	9	8.16666666667
+path:map00630	Glyoxylate and dicarboxylate metabolism	osmolytes_and_ph	9	3.25	9	3.525
+path:map00630	Glyoxylate and dicarboxylate metabolism	nutrient_stimulation	9	6.0	9	5.0
+path:map00630	Glyoxylate and dicarboxylate metabolism	nitrogen_peptides	9	9.0	9	9.0
+path:map00630	Glyoxylate and dicarboxylate metabolism	nitrogen	9	7.2	9	6.4
+path:map00630	Glyoxylate and dicarboxylate metabolism	carbon	9	3.15625	9	3.625
+path:map00240	Pyrimidine metabolism	phosphate_and_sulphur	9	8.75	9	8.58333333333
+path:map00240	Pyrimidine metabolism	osmolytes_and_ph	9	2.71875	9	3.875
+path:map00240	Pyrimidine metabolism	nutrient_stimulation	9	5.45454545455	9	4.63636363636
+path:map00240	Pyrimidine metabolism	nitrogen_peptides	9	9.0	9	9.0
+path:map00240	Pyrimidine metabolism	nitrogen	9	3.0625	9	2.875
+path:map00240	Pyrimidine metabolism	carbon	9	2.875	9	3.75
+path:map00410	beta-Alanine metabolism	phosphate_and_sulphur	8	-1	12	-1
+path:map00410	beta-Alanine metabolism	osmolytes_and_ph	8	2.375	12	2.25
+path:map00410	beta-Alanine metabolism	nutrient_stimulation	8	6.0	12	4.25
+path:map00410	beta-Alanine metabolism	nitrogen_peptides	8	-1	12	-1
+path:map00410	beta-Alanine metabolism	nitrogen	8	5.625	12	5.625
+path:map00410	beta-Alanine metabolism	carbon	8	3.25	12	3.625
+path:map00970	Aminoacyl-tRNA biosynthesis	phosphate_and_sulphur	8	8.5	8	7.83333333333
+path:map00970	Aminoacyl-tRNA biosynthesis	osmolytes_and_ph	8	1.85964912281	8	1.89473684211
+path:map00970	Aminoacyl-tRNA biosynthesis	nutrient_stimulation	8	5.975	8	4.55
+path:map00970	Aminoacyl-tRNA biosynthesis	nitrogen_peptides	8	9.0	8	9.0
+path:map00970	Aminoacyl-tRNA biosynthesis	nitrogen	8	5.15	8	4.375
+path:map00970	Aminoacyl-tRNA biosynthesis	carbon	8	1.94117647059	8	1.88235294118
+path:map00910	Nitrogen metabolism	phosphate_and_sulphur	8	8.5	8	8.0
+path:map00910	Nitrogen metabolism	osmolytes_and_ph	8	3.4375	8	3.54166666667
+path:map00910	Nitrogen metabolism	nutrient_stimulation	8	6.0	8	5.5
+path:map00910	Nitrogen metabolism	nitrogen_peptides	8	9.0	8	9.0
+path:map00910	Nitrogen metabolism	nitrogen	8	4.64285714286	8	4.5
+path:map00910	Nitrogen metabolism	carbon	8	2.16666666667	8	4.16666666667
+path:map00720	Carbon fixation pathways in prokaryotes	phosphate_and_sulphur	8	8.0	8	8.0
+path:map00720	Carbon fixation pathways in prokaryotes	osmolytes_and_ph	8	-1	8	-1
+path:map00720	Carbon fixation pathways in prokaryotes	nutrient_stimulation	8	6.0	8	6.0
+path:map00720	Carbon fixation pathways in prokaryotes	nitrogen_peptides	8	-1	8	-1
+path:map00720	Carbon fixation pathways in prokaryotes	nitrogen	8	-1	8	-1
+path:map00720	Carbon fixation pathways in prokaryotes	carbon	8	4.55	8	5.3
+path:map00520	Amino sugar and nucleotide sugar metabolism	phosphate_and_sulphur	8	8.875	8	8.75
+path:map00520	Amino sugar and nucleotide sugar metabolism	osmolytes_and_ph	8	-1	8	-1
+path:map00520	Amino sugar and nucleotide sugar metabolism	nutrient_stimulation	8	6.0	8	6.0
+path:map00520	Amino sugar and nucleotide sugar metabolism	nitrogen_peptides	8	-1	8	-1
+path:map00520	Amino sugar and nucleotide sugar metabolism	nitrogen	8	6.0	8	5.66666666667
+path:map00520	Amino sugar and nucleotide sugar metabolism	carbon	8	6.34615384615	8	6.73076923077
+path:map00300	Lysine biosynthesis	phosphate_and_sulphur	8	-1	8	-1
+path:map00300	Lysine biosynthesis	osmolytes_and_ph	8	2.25	8	2.25
+path:map00300	Lysine biosynthesis	nutrient_stimulation	8	6.0	8	4.66666666667
+path:map00300	Lysine biosynthesis	nitrogen_peptides	8	-1	8	-1
+path:map00300	Lysine biosynthesis	nitrogen	8	3.0	8	2.83333333333
+path:map00300	Lysine biosynthesis	carbon	8	2.25	8	2.125
+path:map00250	Alanine, aspartate and glutamate metabolism	phosphate_and_sulphur	8	8.75	8	8.25
+path:map00250	Alanine, aspartate and glutamate metabolism	osmolytes_and_ph	8	3.1	8	3.05
+path:map00250	Alanine, aspartate and glutamate metabolism	nutrient_stimulation	8	6.0	8	5.14285714286
+path:map00250	Alanine, aspartate and glutamate metabolism	nitrogen_peptides	8	9.0	8	9.0
+path:map00250	Alanine, aspartate and glutamate metabolism	nitrogen	8	7.6875	8	7.5
+path:map00250	Alanine, aspartate and glutamate metabolism	carbon	8	4.91666666667	8	5.29166666667
+path:map00051	Fructose and mannose metabolism	phosphate_and_sulphur	7	8.75	9	8.75
+path:map00051	Fructose and mannose metabolism	osmolytes_and_ph	7	-1	9	-1
+path:map00051	Fructose and mannose metabolism	nutrient_stimulation	7	-1	9	-1
+path:map00051	Fructose and mannose metabolism	nitrogen_peptides	7	-1	9	-1
+path:map00051	Fructose and mannose metabolism	nitrogen	7	-1	9	-1
+path:map00051	Fructose and mannose metabolism	carbon	7	2.94444444444	9	2.94444444444
+path:map00770	Pantothenate and CoA biosynthesis	phosphate_and_sulphur	7	8.0	7	8.0
+path:map00770	Pantothenate and CoA biosynthesis	osmolytes_and_ph	7	3.375	7	3.25
+path:map00770	Pantothenate and CoA biosynthesis	nutrient_stimulation	7	5.91666666667	7	4.33333333333
+path:map00770	Pantothenate and CoA biosynthesis	nitrogen_peptides	7	-1	7	-1
+path:map00770	Pantothenate and CoA biosynthesis	nitrogen	7	4.75	7	4.125
+path:map00770	Pantothenate and CoA biosynthesis	carbon	7	5.5	7	5.5
+path:map00710	Carbon fixation in photosynthetic organisms	phosphate_and_sulphur	7	8.0	7	8.25
+path:map00710	Carbon fixation in photosynthetic organisms	osmolytes_and_ph	7	4.625	7	4.125
+path:map00710	Carbon fixation in photosynthetic organisms	nutrient_stimulation	7	6.0	7	5.66666666667
+path:map00710	Carbon fixation in photosynthetic organisms	nitrogen_peptides	7	-1	7	-1
+path:map00710	Carbon fixation in photosynthetic organisms	nitrogen	7	7.0	7	6.75
+path:map00710	Carbon fixation in photosynthetic organisms	carbon	7	5.5	7	6.5
+path:map00330	Arginine and proline metabolism	phosphate_and_sulphur	7	8.0	7	8.0
+path:map00330	Arginine and proline metabolism	osmolytes_and_ph	7	2.00189393939	7	1.77272727273
+path:map00330	Arginine and proline metabolism	nutrient_stimulation	7	6.0	7	4.625
+path:map00330	Arginine and proline metabolism	nitrogen_peptides	7	-1	7	-1
+path:map00330	Arginine and proline metabolism	nitrogen	7	3.88888888889	7	3.11111111111
+path:map00330	Arginine and proline metabolism	carbon	7	1.16666666667	7	1.33333333333
+path:map00220	Arginine biosynthesis	phosphate_and_sulphur	7	8.5	7	8.0
+path:map00220	Arginine biosynthesis	osmolytes_and_ph	7	2.36458333333	7	2.375
+path:map00220	Arginine biosynthesis	nutrient_stimulation	7	6.0	7	5.33333333333
+path:map00220	Arginine biosynthesis	nitrogen_peptides	7	9.0	7	9.0
+path:map00220	Arginine biosynthesis	nitrogen	7	4.61111111111	7	4.27777777778
+path:map00220	Arginine biosynthesis	carbon	7	2.75	7	3.0625
+path:map00040	Pentose and glucuronate interconversions	phosphate_and_sulphur	7	9.0	7	9.0
+path:map00040	Pentose and glucuronate interconversions	osmolytes_and_ph	7	1.0	7	1.0
+path:map00040	Pentose and glucuronate interconversions	nutrient_stimulation	7	-1	7	-1
+path:map00040	Pentose and glucuronate interconversions	nitrogen_peptides	7	-1	7	-1
+path:map00040	Pentose and glucuronate interconversions	nitrogen	7	-1	7	-1
+path:map00040	Pentose and glucuronate interconversions	carbon	7	4.57142857143	7	5.10714285714
+path:map00020	Citrate cycle (TCA cycle)	phosphate_and_sulphur	7	8.0	7	8.0
+path:map00020	Citrate cycle (TCA cycle)	osmolytes_and_ph	7	-1	7	-1
+path:map00020	Citrate cycle (TCA cycle)	nutrient_stimulation	7	6.0	7	5.0
+path:map00020	Citrate cycle (TCA cycle)	nitrogen_peptides	7	-1	7	-1
+path:map00020	Citrate cycle (TCA cycle)	nitrogen	7	-1	7	-1
+path:map00020	Citrate cycle (TCA cycle)	carbon	7	5.83333333333	7	6.41666666667
+path:map00860	Porphyrin and chlorophyll metabolism	phosphate_and_sulphur	6	-1	6	-1
+path:map00860	Porphyrin and chlorophyll metabolism	osmolytes_and_ph	6	1.25	6	0.583333333333
+path:map00860	Porphyrin and chlorophyll metabolism	nutrient_stimulation	6	6.0	6	4.25
+path:map00860	Porphyrin and chlorophyll metabolism	nitrogen_peptides	6	-1	6	-1
+path:map00860	Porphyrin and chlorophyll metabolism	nitrogen	6	5.5	6	4.66666666667
+path:map00860	Porphyrin and chlorophyll metabolism	carbon	6	1.0	6	0.833333333333
+path:map00760	Nicotinate and nicotinamide metabolism	phosphate_and_sulphur	6	-1	6	-1
+path:map00760	Nicotinate and nicotinamide metabolism	osmolytes_and_ph	6	2.875	6	3.0
+path:map00760	Nicotinate and nicotinamide metabolism	nutrient_stimulation	6	5.8	6	4.6
+path:map00760	Nicotinate and nicotinamide metabolism	nitrogen_peptides	6	-1	6	-1
+path:map00760	Nicotinate and nicotinamide metabolism	nitrogen	6	7.75	6	7.75
+path:map00760	Nicotinate and nicotinamide metabolism	carbon	6	5.5	6	5.58333333333
+path:map00592	alpha-Linolenic acid metabolism	phosphate_and_sulphur	6	-1	6	-1
+path:map00592	alpha-Linolenic acid metabolism	osmolytes_and_ph	6	-1	6	-1
+path:map00592	alpha-Linolenic acid metabolism	nutrient_stimulation	6	-1	6	-1
+path:map00592	alpha-Linolenic acid metabolism	nitrogen_peptides	6	-1	6	-1
+path:map00592	alpha-Linolenic acid metabolism	nitrogen	6	-1	6	-1
+path:map00592	alpha-Linolenic acid metabolism	carbon	6	-1	6	-1
+path:map00450	Selenocompound metabolism	phosphate_and_sulphur	6	-1	6	-1
+path:map00450	Selenocompound metabolism	osmolytes_and_ph	6	4.5	6	3.75
+path:map00450	Selenocompound metabolism	nutrient_stimulation	6	6.0	6	5.0
+path:map00450	Selenocompound metabolism	nitrogen_peptides	6	-1	6	-1
+path:map00450	Selenocompound metabolism	nitrogen	6	5.0	6	5.0
+path:map00450	Selenocompound metabolism	carbon	6	0.0	6	0.0
+path:map00750	Vitamin B6 metabolism	phosphate_and_sulphur	5	-1	5	-1
+path:map00750	Vitamin B6 metabolism	osmolytes_and_ph	5	-1	5	-1
+path:map00750	Vitamin B6 metabolism	nutrient_stimulation	5	6.0	5	4.33333333333
+path:map00750	Vitamin B6 metabolism	nitrogen_peptides	5	-1	5	-1
+path:map00750	Vitamin B6 metabolism	nitrogen	5	-1	5	-1
+path:map00750	Vitamin B6 metabolism	carbon	5	-1	5	-1
+path:map00590	Arachidonic acid metabolism	phosphate_and_sulphur	5	-1	5	-1
+path:map00590	Arachidonic acid metabolism	osmolytes_and_ph	5	-1	5	-1
+path:map00590	Arachidonic acid metabolism	nutrient_stimulation	5	-1	5	-1
+path:map00590	Arachidonic acid metabolism	nitrogen_peptides	5	-1	5	-1
+path:map00590	Arachidonic acid metabolism	nitrogen	5	-1	5	-1
+path:map00590	Arachidonic acid metabolism	carbon	5	-1	5	-1
+path:map00564	Glycerophospholipid metabolism	phosphate_and_sulphur	5	8.16666666667	5	8.0
+path:map00564	Glycerophospholipid metabolism	osmolytes_and_ph	5	0.75	5	1.0
+path:map00564	Glycerophospholipid metabolism	nutrient_stimulation	5	6.0	5	6.0
+path:map00564	Glycerophospholipid metabolism	nitrogen_peptides	5	-1	5	-1
+path:map00564	Glycerophospholipid metabolism	nitrogen	5	6.0	5	7.0
+path:map00564	Glycerophospholipid metabolism	carbon	5	4.0	5	4.25
+path:map00540	Lipopolysaccharide biosynthesis	phosphate_and_sulphur	5	-1	5	-1
+path:map00540	Lipopolysaccharide biosynthesis	osmolytes_and_ph	5	-1	5	-1
+path:map00540	Lipopolysaccharide biosynthesis	nutrient_stimulation	5	-1	5	-1
+path:map00540	Lipopolysaccharide biosynthesis	nitrogen_peptides	5	-1	5	-1
+path:map00540	Lipopolysaccharide biosynthesis	nitrogen	5	-1	5	-1
+path:map00540	Lipopolysaccharide biosynthesis	carbon	5	-1	5	-1
+path:map00261	Monobactam biosynthesis	phosphate_and_sulphur	5	8.0	5	8.0
+path:map00261	Monobactam biosynthesis	osmolytes_and_ph	5	2.4	5	2.6
+path:map00261	Monobactam biosynthesis	nutrient_stimulation	5	6.0	5	4.6
+path:map00261	Monobactam biosynthesis	nitrogen_peptides	5	-1	5	-1
+path:map00261	Monobactam biosynthesis	nitrogen	5	6.0	5	4.9
+path:map00261	Monobactam biosynthesis	carbon	5	5.1	5	5.1
+path:map00053	Ascorbate and aldarate metabolism	phosphate_and_sulphur	5	-1	5	-1
+path:map00053	Ascorbate and aldarate metabolism	osmolytes_and_ph	5	-1	5	-1
+path:map00053	Ascorbate and aldarate metabolism	nutrient_stimulation	5	6.0	5	5.0
+path:map00053	Ascorbate and aldarate metabolism	nitrogen_peptides	5	-1	5	-1
+path:map00053	Ascorbate and aldarate metabolism	nitrogen	5	-1	5	-1
+path:map00053	Ascorbate and aldarate metabolism	carbon	5	6.75	5	7.4375
+path:map00280	Valine, leucine and isoleucine degradation	phosphate_and_sulphur	4	-1	6	-1
+path:map00280	Valine, leucine and isoleucine degradation	osmolytes_and_ph	4	0.666666666667	6	0.75
+path:map00280	Valine, leucine and isoleucine degradation	nutrient_stimulation	4	6.25	6	4.25
+path:map00280	Valine, leucine and isoleucine degradation	nitrogen_peptides	4	-1	6	-1
+path:map00280	Valine, leucine and isoleucine degradation	nitrogen	4	3.16666666667	6	1.33333333333
+path:map00280	Valine, leucine and isoleucine degradation	carbon	4	0.375	6	0.0
+path:map00920	Sulfur metabolism	phosphate_and_sulphur	4	8.0	4	8.0
+path:map00920	Sulfur metabolism	osmolytes_and_ph	4	3.625	4	4.25
+path:map00920	Sulfur metabolism	nutrient_stimulation	4	5.25	4	4.0
+path:map00920	Sulfur metabolism	nitrogen_peptides	4	-1	4	-1
+path:map00920	Sulfur metabolism	nitrogen	4	4.66666666667	4	4.66666666667
+path:map00920	Sulfur metabolism	carbon	4	6.5	4	6.125
+path:map00740	Riboflavin metabolism	phosphate_and_sulphur	4	-1	4	-1
+path:map00740	Riboflavin metabolism	osmolytes_and_ph	4	-1	4	-1
+path:map00740	Riboflavin metabolism	nutrient_stimulation	4	6.0	4	4.0
+path:map00740	Riboflavin metabolism	nitrogen_peptides	4	-1	4	-1
+path:map00740	Riboflavin metabolism	nitrogen	4	-1	4	-1
+path:map00740	Riboflavin metabolism	carbon	4	0.0	4	0.0
+path:map00650	Butanoate metabolism	phosphate_and_sulphur	4	-1	4	-1
+path:map00650	Butanoate metabolism	osmolytes_and_ph	4	2.0	4	0.5
+path:map00650	Butanoate metabolism	nutrient_stimulation	4	6.0	4	4.5
+path:map00650	Butanoate metabolism	nitrogen_peptides	4	-1	4	-1
+path:map00650	Butanoate metabolism	nitrogen	4	7.0	4	7.5
+path:map00650	Butanoate metabolism	carbon	4	2.76923076923	4	2.69230769231
+path:map00561	Glycerolipid metabolism	phosphate_and_sulphur	4	8.16666666667	4	8.16666666667
+path:map00561	Glycerolipid metabolism	osmolytes_and_ph	4	1.0	4	1.0
+path:map00561	Glycerolipid metabolism	nutrient_stimulation	4	-1	4	-1
+path:map00561	Glycerolipid metabolism	nitrogen_peptides	4	-1	4	-1
+path:map00561	Glycerolipid metabolism	nitrogen	4	-1	4	-1
+path:map00561	Glycerolipid metabolism	carbon	4	6.16666666667	4	6.5
+path:map00550	Peptidoglycan biosynthesis	phosphate_and_sulphur	4	-1	4	-1
+path:map00550	Peptidoglycan biosynthesis	osmolytes_and_ph	4	-1	4	-1
+path:map00550	Peptidoglycan biosynthesis	nutrient_stimulation	4	6.0	4	4.0
+path:map00550	Peptidoglycan biosynthesis	nitrogen_peptides	4	-1	4	-1
+path:map00550	Peptidoglycan biosynthesis	nitrogen	4	7.0	4	5.0
+path:map00550	Peptidoglycan biosynthesis	carbon	4	0.0	4	0.0
+path:map00473	D-Alanine metabolism	phosphate_and_sulphur	4	-1	4	-1
+path:map00473	D-Alanine metabolism	osmolytes_and_ph	4	4.5	4	3.75
+path:map00473	D-Alanine metabolism	nutrient_stimulation	4	6.0	4	4.5
+path:map00473	D-Alanine metabolism	nitrogen_peptides	4	-1	4	-1
+path:map00473	D-Alanine metabolism	nitrogen	4	6.0	4	5.0
+path:map00473	D-Alanine metabolism	carbon	4	2.5	4	2.66666666667
+path:map00362	Benzoate degradation	phosphate_and_sulphur	4	-1	4	-1
+path:map00362	Benzoate degradation	osmolytes_and_ph	4	-1	4	-1
+path:map00362	Benzoate degradation	nutrient_stimulation	4	6.0	4	6.0
+path:map00362	Benzoate degradation	nitrogen_peptides	4	-1	4	-1
+path:map00362	Benzoate degradation	nitrogen	4	-1	4	-1
+path:map00362	Benzoate degradation	carbon	4	4.25	4	4.25
+path:map00360	Phenylalanine metabolism	phosphate_and_sulphur	4	-1	4	-1
+path:map00360	Phenylalanine metabolism	osmolytes_and_ph	4	3.58333333333	4	3.25
+path:map00360	Phenylalanine metabolism	nutrient_stimulation	4	6.0	4	4.5
+path:map00360	Phenylalanine metabolism	nitrogen_peptides	4	-1	4	-1
+path:map00360	Phenylalanine metabolism	nitrogen	4	4.16666666667	4	4.66666666667
+path:map00360	Phenylalanine metabolism	carbon	4	2.77777777778	4	2.83333333333
+path:map00062	Fatty acid elongation	phosphate_and_sulphur	4	-1	4	-1
+path:map00062	Fatty acid elongation	osmolytes_and_ph	4	-1	4	-1
+path:map00062	Fatty acid elongation	nutrient_stimulation	4	-1	4	-1
+path:map00062	Fatty acid elongation	nitrogen_peptides	4	-1	4	-1
+path:map00062	Fatty acid elongation	nitrogen	4	-1	4	-1
+path:map00062	Fatty acid elongation	carbon	4	-1	4	-1
+path:map00966	Glucosinolate biosynthesis	phosphate_and_sulphur	3	8.5	3	8.0
+path:map00966	Glucosinolate biosynthesis	osmolytes_and_ph	3	1.32142857143	3	1.28571428571
+path:map00966	Glucosinolate biosynthesis	nutrient_stimulation	3	6.14285714286	3	4.42857142857
+path:map00966	Glucosinolate biosynthesis	nitrogen_peptides	3	-1	3	-1
+path:map00966	Glucosinolate biosynthesis	nitrogen	3	3.92857142857	3	2.85714285714
+path:map00966	Glucosinolate biosynthesis	carbon	3	0.3	3	0.0
+path:map00900	Terpenoid backbone biosynthesis	phosphate_and_sulphur	3	-1	3	-1
+path:map00900	Terpenoid backbone biosynthesis	osmolytes_and_ph	3	-1	3	-1
+path:map00900	Terpenoid backbone biosynthesis	nutrient_stimulation	3	-1	3	-1
+path:map00900	Terpenoid backbone biosynthesis	nitrogen_peptides	3	-1	3	-1
+path:map00900	Terpenoid backbone biosynthesis	nitrogen	3	-1	3	-1
+path:map00900	Terpenoid backbone biosynthesis	carbon	3	7.5	3	8.0
+path:map00627	Aminobenzoate degradation	phosphate_and_sulphur	3	8.0	3	8.0
+path:map00627	Aminobenzoate degradation	osmolytes_and_ph	3	3.5	3	3.75
+path:map00627	Aminobenzoate degradation	nutrient_stimulation	3	6.0	3	4.0
+path:map00627	Aminobenzoate degradation	nitrogen_peptides	3	-1	3	-1
+path:map00627	Aminobenzoate degradation	nitrogen	3	-1	3	-1
+path:map00627	Aminobenzoate degradation	carbon	3	1.0	3	0.5
+path:map00562	Inositol phosphate metabolism	phosphate_and_sulphur	3	8.5	3	8.5
+path:map00562	Inositol phosphate metabolism	osmolytes_and_ph	3	-1	3	-1
+path:map00562	Inositol phosphate metabolism	nutrient_stimulation	3	6.0	3	5.0
+path:map00562	Inositol phosphate metabolism	nitrogen_peptides	3	-1	3	-1
+path:map00562	Inositol phosphate metabolism	nitrogen	3	-1	3	-1
+path:map00562	Inositol phosphate metabolism	carbon	3	8.33333333333	3	8.83333333333
+path:map00480	Glutathione metabolism	phosphate_and_sulphur	3	8.0	3	8.0
+path:map00480	Glutathione metabolism	osmolytes_and_ph	3	2.625	3	1.83333333333
+path:map00480	Glutathione metabolism	nutrient_stimulation	3	5.5625	3	4.375
+path:map00480	Glutathione metabolism	nitrogen_peptides	3	-1	3	-1
+path:map00480	Glutathione metabolism	nitrogen	3	3.4	3	3.2
+path:map00480	Glutathione metabolism	carbon	3	0.75	3	1.0
+path:map00281	Geraniol degradation	phosphate_and_sulphur	3	-1	3	-1
+path:map00281	Geraniol degradation	osmolytes_and_ph	3	-1	3	-1
+path:map00281	Geraniol degradation	nutrient_stimulation	3	-1	3	-1
+path:map00281	Geraniol degradation	nitrogen_peptides	3	-1	3	-1
+path:map00281	Geraniol degradation	nitrogen	3	-1	3	-1
+path:map00281	Geraniol degradation	carbon	3	-1	3	-1
+path:map01220	Degradation of aromatic compounds	phosphate_and_sulphur	2	-1	2	-1
+path:map01220	Degradation of aromatic compounds	osmolytes_and_ph	2	3.5	2	3.75
+path:map01220	Degradation of aromatic compounds	nutrient_stimulation	2	-1	2	-1
+path:map01220	Degradation of aromatic compounds	nitrogen_peptides	2	-1	2	-1
+path:map01220	Degradation of aromatic compounds	nitrogen	2	-1	2	-1
+path:map01220	Degradation of aromatic compounds	carbon	2	3.94444444444	2	4.44444444444
+path:map00983	Drug metabolism - other enzymes	phosphate_and_sulphur	2	-1	2	-1
+path:map00983	Drug metabolism - other enzymes	osmolytes_and_ph	2	-1	2	-1
+path:map00983	Drug metabolism - other enzymes	nutrient_stimulation	2	-1	2	-1
+path:map00983	Drug metabolism - other enzymes	nitrogen_peptides	2	-1	2	-1
+path:map00983	Drug metabolism - other enzymes	nitrogen	2	-1	2	-1
+path:map00983	Drug metabolism - other enzymes	carbon	2	-1	2	-1
+path:map00780	Biotin metabolism	phosphate_and_sulphur	2	-1	2	-1
+path:map00780	Biotin metabolism	osmolytes_and_ph	2	2.21875	2	2.5
+path:map00780	Biotin metabolism	nutrient_stimulation	2	6.0	2	4.5
+path:map00780	Biotin metabolism	nitrogen_peptides	2	-1	2	-1
+path:map00780	Biotin metabolism	nitrogen	2	3.0	2	3.0
+path:map00780	Biotin metabolism	carbon	2	0.0	2	0.0
+path:map00625	Chloroalkane and chloroalkene degradation	phosphate_and_sulphur	2	-1	2	-1
+path:map00625	Chloroalkane and chloroalkene degradation	osmolytes_and_ph	2	6.5	2	6.375
+path:map00625	Chloroalkane and chloroalkene degradation	nutrient_stimulation	2	-1	2	-1
+path:map00625	Chloroalkane and chloroalkene degradation	nitrogen_peptides	2	-1	2	-1
+path:map00625	Chloroalkane and chloroalkene degradation	nitrogen	2	-1	2	-1
+path:map00625	Chloroalkane and chloroalkene degradation	carbon	2	0.5	2	1.75
+path:map00430	Taurine and hypotaurine metabolism	phosphate_and_sulphur	2	8.0	2	8.0
+path:map00430	Taurine and hypotaurine metabolism	osmolytes_and_ph	2	3.16666666667	2	2.41666666667
+path:map00430	Taurine and hypotaurine metabolism	nutrient_stimulation	2	5.5	2	4.66666666667
+path:map00430	Taurine and hypotaurine metabolism	nitrogen_peptides	2	-1	2	-1
+path:map00430	Taurine and hypotaurine metabolism	nitrogen	2	6.0	2	6.33333333333
+path:map00430	Taurine and hypotaurine metabolism	carbon	2	3.8	2	3.6
+path:map00401	Novobiocin biosynthesis	phosphate_and_sulphur	2	-1	2	-1
+path:map00401	Novobiocin biosynthesis	osmolytes_and_ph	2	2.91666666667	2	3.125
+path:map00401	Novobiocin biosynthesis	nutrient_stimulation	2	6.0	2	4.5
+path:map00401	Novobiocin biosynthesis	nitrogen_peptides	2	-1	2	-1
+path:map00401	Novobiocin biosynthesis	nitrogen	2	4.25	2	2.0
+path:map00401	Novobiocin biosynthesis	carbon	2	0.0	2	0.0
+path:map00120	Primary bile acid biosynthesis	phosphate_and_sulphur	2	8.0	2	8.0
+path:map00120	Primary bile acid biosynthesis	osmolytes_and_ph	2	1.25	2	1.0
+path:map00120	Primary bile acid biosynthesis	nutrient_stimulation	2	6.0	2	4.0
+path:map00120	Primary bile acid biosynthesis	nitrogen_peptides	2	-1	2	-1
+path:map00120	Primary bile acid biosynthesis	nitrogen	2	4.0	2	2.0
+path:map00120	Primary bile acid biosynthesis	carbon	2	0.0	2	0.0
+path:map00071	Fatty acid degradation	phosphate_and_sulphur	2	-1	2	-1
+path:map00071	Fatty acid degradation	osmolytes_and_ph	2	-1	2	-1
+path:map00071	Fatty acid degradation	nutrient_stimulation	2	-1	2	-1
+path:map00071	Fatty acid degradation	nitrogen_peptides	2	-1	2	-1
+path:map00071	Fatty acid degradation	nitrogen	2	-1	2	-1
+path:map00071	Fatty acid degradation	carbon	2	-1	2	-1
+path:map00500	Starch and sucrose metabolism	phosphate_and_sulphur	1	9.0	2	9.0
+path:map00500	Starch and sucrose metabolism	osmolytes_and_ph	1	1.0	2	1.0
+path:map00500	Starch and sucrose metabolism	nutrient_stimulation	1	6.0	2	6.0
+path:map00500	Starch and sucrose metabolism	nitrogen_peptides	1	-1	2	-1
+path:map00500	Starch and sucrose metabolism	nitrogen	1	-1	2	-1
+path:map00500	Starch and sucrose metabolism	carbon	1	4.6	2	5.4
+path:map04070	Phosphatidylinositol signaling system	phosphate_and_sulphur	1	8.0	1	8.0
+path:map04070	Phosphatidylinositol signaling system	osmolytes_and_ph	1	-1	1	-1
+path:map04070	Phosphatidylinositol signaling system	nutrient_stimulation	1	6.0	1	5.0
+path:map04070	Phosphatidylinositol signaling system	nitrogen_peptides	1	-1	1	-1
+path:map04070	Phosphatidylinositol signaling system	nitrogen	1	-1	1	-1
+path:map04070	Phosphatidylinositol signaling system	carbon	1	9.0	1	9.0
+path:map00960	Tropane, piperidine and pyridine alkaloid biosynthesis	phosphate_and_sulphur	1	-1	1	-1
+path:map00960	Tropane, piperidine and pyridine alkaloid biosynthesis	osmolytes_and_ph	1	2.4	1	1.9
+path:map00960	Tropane, piperidine and pyridine alkaloid biosynthesis	nutrient_stimulation	1	5.8	1	4.4
+path:map00960	Tropane, piperidine and pyridine alkaloid biosynthesis	nitrogen_peptides	1	-1	1	-1
+path:map00960	Tropane, piperidine and pyridine alkaloid biosynthesis	nitrogen	1	0.875	1	1.25
+path:map00960	Tropane, piperidine and pyridine alkaloid biosynthesis	carbon	1	0.0	1	0.0
+path:map00940	Phenylpropanoid biosynthesis	phosphate_and_sulphur	1	-1	1	-1
+path:map00940	Phenylpropanoid biosynthesis	osmolytes_and_ph	1	1.875	1	1.875
+path:map00940	Phenylpropanoid biosynthesis	nutrient_stimulation	1	6.0	1	4.33333333333
+path:map00940	Phenylpropanoid biosynthesis	nitrogen_peptides	1	-1	1	-1
+path:map00940	Phenylpropanoid biosynthesis	nitrogen	1	3.75	1	3.5
+path:map00940	Phenylpropanoid biosynthesis	carbon	1	0.0	1	0.0
+path:map00930	Caprolactam degradation	phosphate_and_sulphur	1	-1	1	-1
+path:map00930	Caprolactam degradation	osmolytes_and_ph	1	-1	1	-1
+path:map00930	Caprolactam degradation	nutrient_stimulation	1	-1	1	-1
+path:map00930	Caprolactam degradation	nitrogen_peptides	1	-1	1	-1
+path:map00930	Caprolactam degradation	nitrogen	1	0.0	1	0.0
+path:map00930	Caprolactam degradation	carbon	1	-1	1	-1
+path:map00730	Thiamine metabolism	phosphate_and_sulphur	1	8.0	1	8.0
+path:map00730	Thiamine metabolism	osmolytes_and_ph	1	1.875	1	1.875
+path:map00730	Thiamine metabolism	nutrient_stimulation	1	5.75	1	4.16666666667
+path:map00730	Thiamine metabolism	nitrogen_peptides	1	-1	1	-1
+path:map00730	Thiamine metabolism	nitrogen	1	4.83333333333	1	3.66666666667
+path:map00730	Thiamine metabolism	carbon	1	3.75	1	4.0
+path:map00622	Xylene degradation	phosphate_and_sulphur	1	-1	1	-1
+path:map00622	Xylene degradation	osmolytes_and_ph	1	-1	1	-1
+path:map00622	Xylene degradation	nutrient_stimulation	1	-1	1	-1
+path:map00622	Xylene degradation	nitrogen_peptides	1	-1	1	-1
+path:map00622	Xylene degradation	nitrogen	1	-1	1	-1
+path:map00622	Xylene degradation	carbon	1	7.5	1	8.0
+path:map00621	Dioxin degradation	phosphate_and_sulphur	1	-1	1	-1
+path:map00621	Dioxin degradation	osmolytes_and_ph	1	3.5	1	3.75
+path:map00621	Dioxin degradation	nutrient_stimulation	1	-1	1	-1
+path:map00621	Dioxin degradation	nitrogen_peptides	1	-1	1	-1
+path:map00621	Dioxin degradation	nitrogen	1	-1	1	-1
+path:map00621	Dioxin degradation	carbon	1	3.75	1	4.0
+path:map00364	Fluorobenzoate degradation	phosphate_and_sulphur	1	-1	1	-1
+path:map00364	Fluorobenzoate degradation	osmolytes_and_ph	1	-1	1	-1
+path:map00364	Fluorobenzoate degradation	nutrient_stimulation	1	-1	1	-1
+path:map00364	Fluorobenzoate degradation	nitrogen_peptides	1	-1	1	-1
+path:map00364	Fluorobenzoate degradation	nitrogen	1	-1	1	-1
+path:map00364	Fluorobenzoate degradation	carbon	1	-1	1	-1
+path:map00361	Chlorocyclohexane and chlorobenzene degradation	phosphate_and_sulphur	1	-1	1	-1
+path:map00361	Chlorocyclohexane and chlorobenzene degradation	osmolytes_and_ph	1	-1	1	-1
+path:map00361	Chlorocyclohexane and chlorobenzene degradation	nutrient_stimulation	1	-1	1	-1
+path:map00361	Chlorocyclohexane and chlorobenzene degradation	nitrogen_peptides	1	-1	1	-1
+path:map00361	Chlorocyclohexane and chlorobenzene degradation	nitrogen	1	-1	1	-1
+path:map00361	Chlorocyclohexane and chlorobenzene degradation	carbon	1	4.25	1	4.0
+path:map00791	Atrazine degradation	phosphate_and_sulphur	1	-1	0	-1
+path:map00791	Atrazine degradation	osmolytes_and_ph	1	3.1875	0	3.5
+path:map00791	Atrazine degradation	nutrient_stimulation	1	-1	0	-1
+path:map00791	Atrazine degradation	nitrogen_peptides	1	-1	0	-1
+path:map00791	Atrazine degradation	nitrogen	1	3.0	0	3.0
+path:map00791	Atrazine degradation	carbon	1	-1	0	-1
+path:map00380	Tryptophan metabolism	phosphate_and_sulphur	1	-1	0	-1
+path:map00380	Tryptophan metabolism	osmolytes_and_ph	1	2.625	0	2.625
+path:map00380	Tryptophan metabolism	nutrient_stimulation	1	6.0	0	4.5
+path:map00380	Tryptophan metabolism	nitrogen_peptides	1	-1	0	-1
+path:map00380	Tryptophan metabolism	nitrogen	1	7.0	0	6.0
+path:map00380	Tryptophan metabolism	carbon	1	-1	0	-1
+path:map00982	Drug metabolism - cytochrome P450	phosphate_and_sulphur	0	-1	2	-1
+path:map00982	Drug metabolism - cytochrome P450	osmolytes_and_ph	0	-1	2	-1
+path:map00982	Drug metabolism - cytochrome P450	nutrient_stimulation	0	-1	2	-1
+path:map00982	Drug metabolism - cytochrome P450	nitrogen_peptides	0	-1	2	-1
+path:map00982	Drug metabolism - cytochrome P450	nitrogen	0	-1	2	-1
+path:map00982	Drug metabolism - cytochrome P450	carbon	0	-1	2	-1
+path:map00565	Ether lipid metabolism	phosphate_and_sulphur	0	-1	2	-1
+path:map00565	Ether lipid metabolism	osmolytes_and_ph	0	-1	2	-1
+path:map00565	Ether lipid metabolism	nutrient_stimulation	0	-1	2	-1
+path:map00565	Ether lipid metabolism	nitrogen_peptides	0	-1	2	-1
+path:map00565	Ether lipid metabolism	nitrogen	0	-1	2	-1
+path:map00565	Ether lipid metabolism	carbon	0	-1	2	-1
+path:map00140	Steroid hormone biosynthesis	phosphate_and_sulphur	0	-1	2	-1
+path:map00140	Steroid hormone biosynthesis	osmolytes_and_ph	0	-1	2	-1
+path:map00140	Steroid hormone biosynthesis	nutrient_stimulation	0	-1	2	-1
+path:map00140	Steroid hormone biosynthesis	nitrogen_peptides	0	-1	2	-1
+path:map00140	Steroid hormone biosynthesis	nitrogen	0	-1	2	-1
+path:map00140	Steroid hormone biosynthesis	carbon	0	-1	2	-1
+path:map01057	Biosynthesis of type II polyketide products	phosphate_and_sulphur	0	-1	0	-1
+path:map01057	Biosynthesis of type II polyketide products	osmolytes_and_ph	0	-1	0	-1
+path:map01057	Biosynthesis of type II polyketide products	nutrient_stimulation	0	-1	0	-1
+path:map01057	Biosynthesis of type II polyketide products	nitrogen_peptides	0	-1	0	-1
+path:map01057	Biosynthesis of type II polyketide products	nitrogen	0	-1	0	-1
+path:map01057	Biosynthesis of type II polyketide products	carbon	0	-1	0	-1
+path:map01055	Biosynthesis of vancomycin group antibiotics	phosphate_and_sulphur	0	-1	0	-1
+path:map01055	Biosynthesis of vancomycin group antibiotics	osmolytes_and_ph	0	2.5	0	2.75
+path:map01055	Biosynthesis of vancomycin group antibiotics	nutrient_stimulation	0	6.0	0	4.0
+path:map01055	Biosynthesis of vancomycin group antibiotics	nitrogen_peptides	0	-1	0	-1
+path:map01055	Biosynthesis of vancomycin group antibiotics	nitrogen	0	5.0	0	3.0
+path:map01055	Biosynthesis of vancomycin group antibiotics	carbon	0	-1	0	-1
+path:map01053	Biosynthesis of siderophore group nonribosomal peptides	phosphate_and_sulphur	0	-1	0	-1
+path:map01053	Biosynthesis of siderophore group nonribosomal peptides	osmolytes_and_ph	0	-1	0	-1
+path:map01053	Biosynthesis of siderophore group nonribosomal peptides	nutrient_stimulation	0	6.0	0	4.0
+path:map01053	Biosynthesis of siderophore group nonribosomal peptides	nitrogen_peptides	0	-1	0	-1
+path:map01053	Biosynthesis of siderophore group nonribosomal peptides	nitrogen	0	-1	0	-1
+path:map01053	Biosynthesis of siderophore group nonribosomal peptides	carbon	0	0.0	0	0.0
+path:map01051	Biosynthesis of ansamycins	phosphate_and_sulphur	0	-1	0	-1
+path:map01051	Biosynthesis of ansamycins	osmolytes_and_ph	0	-1	0	-1
+path:map01051	Biosynthesis of ansamycins	nutrient_stimulation	0	-1	0	-1
+path:map01051	Biosynthesis of ansamycins	nitrogen_peptides	0	-1	0	-1
+path:map01051	Biosynthesis of ansamycins	nitrogen	0	-1	0	-1
+path:map01051	Biosynthesis of ansamycins	carbon	0	-1	0	-1
+path:map01040	Biosynthesis of unsaturated fatty acids	phosphate_and_sulphur	0	-1	0	-1
+path:map01040	Biosynthesis of unsaturated fatty acids	osmolytes_and_ph	0	-1	0	-1
+path:map01040	Biosynthesis of unsaturated fatty acids	nutrient_stimulation	0	-1	0	-1
+path:map01040	Biosynthesis of unsaturated fatty acids	nitrogen_peptides	0	-1	0	-1
+path:map01040	Biosynthesis of unsaturated fatty acids	nitrogen	0	-1	0	-1
+path:map01040	Biosynthesis of unsaturated fatty acids	carbon	0	-1	0	-1
+path:map00965	Betalain biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00965	Betalain biosynthesis	osmolytes_and_ph	0	2.5	0	2.75
+path:map00965	Betalain biosynthesis	nutrient_stimulation	0	6.0	0	4.0
+path:map00965	Betalain biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00965	Betalain biosynthesis	nitrogen	0	5.0	0	3.0
+path:map00965	Betalain biosynthesis	carbon	0	-1	0	-1
+path:map00950	Isoquinoline alkaloid biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00950	Isoquinoline alkaloid biosynthesis	osmolytes_and_ph	0	2.75	0	3.375
+path:map00950	Isoquinoline alkaloid biosynthesis	nutrient_stimulation	0	6.0	0	4.0
+path:map00950	Isoquinoline alkaloid biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00950	Isoquinoline alkaloid biosynthesis	nitrogen	0	5.5	0	3.5
+path:map00950	Isoquinoline alkaloid biosynthesis	carbon	0	0.0	0	0.0
+path:map00908	Zeatin biosynthesis	phosphate_and_sulphur	0	9.0	0	9.0
+path:map00908	Zeatin biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00908	Zeatin biosynthesis	nutrient_stimulation	0	6.5	0	6.0
+path:map00908	Zeatin biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00908	Zeatin biosynthesis	nitrogen	0	0.5	0	2.0
+path:map00908	Zeatin biosynthesis	carbon	0	8.5	0	7.5
+path:map00906	Carotenoid biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00906	Carotenoid biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00906	Carotenoid biosynthesis	nutrient_stimulation	0	-1	0	-1
+path:map00906	Carotenoid biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00906	Carotenoid biosynthesis	nitrogen	0	-1	0	-1
+path:map00906	Carotenoid biosynthesis	carbon	0	-1	0	-1
+path:map00903	Limonene and pinene degradation	phosphate_and_sulphur	0	-1	0	-1
+path:map00903	Limonene and pinene degradation	osmolytes_and_ph	0	-1	0	-1
+path:map00903	Limonene and pinene degradation	nutrient_stimulation	0	-1	0	-1
+path:map00903	Limonene and pinene degradation	nitrogen_peptides	0	-1	0	-1
+path:map00903	Limonene and pinene degradation	nitrogen	0	-1	0	-1
+path:map00903	Limonene and pinene degradation	carbon	0	-1	0	-1
+path:map00830	Retinol metabolism	phosphate_and_sulphur	0	-1	0	-1
+path:map00830	Retinol metabolism	osmolytes_and_ph	0	-1	0	-1
+path:map00830	Retinol metabolism	nutrient_stimulation	0	-1	0	-1
+path:map00830	Retinol metabolism	nitrogen_peptides	0	-1	0	-1
+path:map00830	Retinol metabolism	nitrogen	0	-1	0	-1
+path:map00830	Retinol metabolism	carbon	0	-1	0	-1
+path:map00785	Lipoic acid metabolism	phosphate_and_sulphur	0	-1	0	-1
+path:map00785	Lipoic acid metabolism	osmolytes_and_ph	0	-1	0	-1
+path:map00785	Lipoic acid metabolism	nutrient_stimulation	0	-1	0	-1
+path:map00785	Lipoic acid metabolism	nitrogen_peptides	0	-1	0	-1
+path:map00785	Lipoic acid metabolism	nitrogen	0	-1	0	-1
+path:map00785	Lipoic acid metabolism	carbon	0	-1	0	-1
+path:map00660	C5-Branched dibasic acid metabolism	phosphate_and_sulphur	0	-1	0	-1
+path:map00660	C5-Branched dibasic acid metabolism	osmolytes_and_ph	0	2.0	0	0.5
+path:map00660	C5-Branched dibasic acid metabolism	nutrient_stimulation	0	6.0	0	4.5
+path:map00660	C5-Branched dibasic acid metabolism	nitrogen_peptides	0	-1	0	-1
+path:map00660	C5-Branched dibasic acid metabolism	nitrogen	0	7.5	0	8.0
+path:map00660	C5-Branched dibasic acid metabolism	carbon	0	2.375	0	2.25
+path:map00643	Styrene degradation	phosphate_and_sulphur	0	-1	0	-1
+path:map00643	Styrene degradation	osmolytes_and_ph	0	-1	0	-1
+path:map00643	Styrene degradation	nutrient_stimulation	0	-1	0	-1
+path:map00643	Styrene degradation	nitrogen_peptides	0	-1	0	-1
+path:map00643	Styrene degradation	nitrogen	0	-1	0	-1
+path:map00643	Styrene degradation	carbon	0	2.66666666667	0	3.0
+path:map00642	Ethylbenzene degradation	phosphate_and_sulphur	0	-1	0	-1
+path:map00642	Ethylbenzene degradation	osmolytes_and_ph	0	-1	0	-1
+path:map00642	Ethylbenzene degradation	nutrient_stimulation	0	-1	0	-1
+path:map00642	Ethylbenzene degradation	nitrogen_peptides	0	-1	0	-1
+path:map00642	Ethylbenzene degradation	nitrogen	0	-1	0	-1
+path:map00642	Ethylbenzene degradation	carbon	0	0.0	0	0.0
+path:map00633	Nitrotoluene degradation	phosphate_and_sulphur	0	-1	0	-1
+path:map00633	Nitrotoluene degradation	osmolytes_and_ph	0	-1	0	-1
+path:map00633	Nitrotoluene degradation	nutrient_stimulation	0	-1	0	-1
+path:map00633	Nitrotoluene degradation	nitrogen_peptides	0	-1	0	-1
+path:map00633	Nitrotoluene degradation	nitrogen	0	-1	0	-1
+path:map00633	Nitrotoluene degradation	carbon	0	-1	0	-1
+path:map00626	Naphthalene degradation	phosphate_and_sulphur	0	-1	0	-1
+path:map00626	Naphthalene degradation	osmolytes_and_ph	0	-1	0	-1
+path:map00626	Naphthalene degradation	nutrient_stimulation	0	-1	0	-1
+path:map00626	Naphthalene degradation	nitrogen_peptides	0	-1	0	-1
+path:map00626	Naphthalene degradation	nitrogen	0	-1	0	-1
+path:map00626	Naphthalene degradation	carbon	0	0.0	0	0.0
+path:map00623	Toluene degradation	phosphate_and_sulphur	0	-1	0	-1
+path:map00623	Toluene degradation	osmolytes_and_ph	0	-1	0	-1
+path:map00623	Toluene degradation	nutrient_stimulation	0	-1	0	-1
+path:map00623	Toluene degradation	nitrogen_peptides	0	-1	0	-1
+path:map00623	Toluene degradation	nitrogen	0	-1	0	-1
+path:map00623	Toluene degradation	carbon	0	1.0	0	0.5
+path:map00603	Glycosphingolipid biosynthesis - globo and isoglobo series	phosphate_and_sulphur	0	-1	0	-1
+path:map00603	Glycosphingolipid biosynthesis - globo and isoglobo series	osmolytes_and_ph	0	-1	0	-1
+path:map00603	Glycosphingolipid biosynthesis - globo and isoglobo series	nutrient_stimulation	0	-1	0	-1
+path:map00603	Glycosphingolipid biosynthesis - globo and isoglobo series	nitrogen_peptides	0	-1	0	-1
+path:map00603	Glycosphingolipid biosynthesis - globo and isoglobo series	nitrogen	0	-1	0	-1
+path:map00603	Glycosphingolipid biosynthesis - globo and isoglobo series	carbon	0	-1	0	-1
+path:map00600	Sphingolipid metabolism	phosphate_and_sulphur	0	8.0	0	8.0
+path:map00600	Sphingolipid metabolism	osmolytes_and_ph	0	4.25	0	5.5
+path:map00600	Sphingolipid metabolism	nutrient_stimulation	0	6.0	0	4.0
+path:map00600	Sphingolipid metabolism	nitrogen_peptides	0	-1	0	-1
+path:map00600	Sphingolipid metabolism	nitrogen	0	8.5	0	8.0
+path:map00600	Sphingolipid metabolism	carbon	0	9.0	0	9.0
+path:map00591	Linoleic acid metabolism	phosphate_and_sulphur	0	-1	0	-1
+path:map00591	Linoleic acid metabolism	osmolytes_and_ph	0	-1	0	-1
+path:map00591	Linoleic acid metabolism	nutrient_stimulation	0	-1	0	-1
+path:map00591	Linoleic acid metabolism	nitrogen_peptides	0	-1	0	-1
+path:map00591	Linoleic acid metabolism	nitrogen	0	-1	0	-1
+path:map00591	Linoleic acid metabolism	carbon	0	-1	0	-1
+path:map00531	Glycosaminoglycan degradation	phosphate_and_sulphur	0	-1	0	-1
+path:map00531	Glycosaminoglycan degradation	osmolytes_and_ph	0	-1	0	-1
+path:map00531	Glycosaminoglycan degradation	nutrient_stimulation	0	-1	0	-1
+path:map00531	Glycosaminoglycan degradation	nitrogen_peptides	0	-1	0	-1
+path:map00531	Glycosaminoglycan degradation	nitrogen	0	-1	0	-1
+path:map00531	Glycosaminoglycan degradation	carbon	0	-1	0	-1
+path:map00525	Acarbose and validamycin biosynthesis	phosphate_and_sulphur	0	9.0	0	9.0
+path:map00525	Acarbose and validamycin biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00525	Acarbose and validamycin biosynthesis	nutrient_stimulation	0	-1	0	-1
+path:map00525	Acarbose and validamycin biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00525	Acarbose and validamycin biosynthesis	nitrogen	0	-1	0	-1
+path:map00525	Acarbose and validamycin biosynthesis	carbon	0	4.0	0	8.5
+path:map00524	Neomycin, kanamycin and gentamicin biosynthesis	phosphate_and_sulphur	0	9.0	0	9.0
+path:map00524	Neomycin, kanamycin and gentamicin biosynthesis	osmolytes_and_ph	0	2.0	0	0.5
+path:map00524	Neomycin, kanamycin and gentamicin biosynthesis	nutrient_stimulation	0	6.0	0	5.5
+path:map00524	Neomycin, kanamycin and gentamicin biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00524	Neomycin, kanamycin and gentamicin biosynthesis	nitrogen	0	7.5	0	8.0
+path:map00524	Neomycin, kanamycin and gentamicin biosynthesis	carbon	0	7.0	0	6.83333333333
+path:map00523	Polyketide sugar unit biosynthesis	phosphate_and_sulphur	0	9.0	0	9.0
+path:map00523	Polyketide sugar unit biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00523	Polyketide sugar unit biosynthesis	nutrient_stimulation	0	-1	0	-1
+path:map00523	Polyketide sugar unit biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00523	Polyketide sugar unit biosynthesis	nitrogen	0	-1	0	-1
+path:map00523	Polyketide sugar unit biosynthesis	carbon	0	4.0	0	8.5
+path:map00521	Streptomycin biosynthesis	phosphate_and_sulphur	0	9.0	0	9.0
+path:map00521	Streptomycin biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00521	Streptomycin biosynthesis	nutrient_stimulation	0	6.0	0	5.5
+path:map00521	Streptomycin biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00521	Streptomycin biosynthesis	nitrogen	0	-1	0	-1
+path:map00521	Streptomycin biosynthesis	carbon	0	7.75	0	8.875
+path:map00510	N-Glycan biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00510	N-Glycan biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00510	N-Glycan biosynthesis	nutrient_stimulation	0	-1	0	-1
+path:map00510	N-Glycan biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00510	N-Glycan biosynthesis	nitrogen	0	-1	0	-1
+path:map00510	N-Glycan biosynthesis	carbon	0	-1	0	-1
+path:map00472	D-Arginine and D-ornithine metabolism	phosphate_and_sulphur	0	-1	0	-1
+path:map00472	D-Arginine and D-ornithine metabolism	osmolytes_and_ph	0	1.0	0	0.75
+path:map00472	D-Arginine and D-ornithine metabolism	nutrient_stimulation	0	6.0	0	5.5
+path:map00472	D-Arginine and D-ornithine metabolism	nitrogen_peptides	0	-1	0	-1
+path:map00472	D-Arginine and D-ornithine metabolism	nitrogen	0	1.25	0	0.5
+path:map00472	D-Arginine and D-ornithine metabolism	carbon	0	0.0	0	0.75
+path:map00471	D-Glutamine and D-glutamate metabolism	phosphate_and_sulphur	0	-1	0	-1
+path:map00471	D-Glutamine and D-glutamate metabolism	osmolytes_and_ph	0	2.125	0	2.375
+path:map00471	D-Glutamine and D-glutamate metabolism	nutrient_stimulation	0	6.0	0	5.0
+path:map00471	D-Glutamine and D-glutamate metabolism	nitrogen_peptides	0	9.0	0	9.0
+path:map00471	D-Glutamine and D-glutamate metabolism	nitrogen	0	6.5	0	6.33333333333
+path:map00471	D-Glutamine and D-glutamate metabolism	carbon	0	1.5	0	1.83333333333
+path:map00440	Phosphonate and phosphinate metabolism	phosphate_and_sulphur	0	6.0	0	6.16666666667
+path:map00440	Phosphonate and phosphinate metabolism	osmolytes_and_ph	0	1.25	0	1.0
+path:map00440	Phosphonate and phosphinate metabolism	nutrient_stimulation	0	6.0	0	4.0
+path:map00440	Phosphonate and phosphinate metabolism	nitrogen_peptides	0	-1	0	-1
+path:map00440	Phosphonate and phosphinate metabolism	nitrogen	0	4.0	0	2.0
+path:map00440	Phosphonate and phosphinate metabolism	carbon	0	5.33333333333	0	5.16666666667
+path:map00405	Phenazine biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00405	Phenazine biosynthesis	osmolytes_and_ph	0	3.5	0	3.75
+path:map00405	Phenazine biosynthesis	nutrient_stimulation	0	6.0	0	4.0
+path:map00405	Phenazine biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00405	Phenazine biosynthesis	nitrogen	0	-1	0	-1
+path:map00405	Phenazine biosynthesis	carbon	0	-1	0	-1
+path:map00402	Benzoxazinoid biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00402	Benzoxazinoid biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00402	Benzoxazinoid biosynthesis	nutrient_stimulation	0	-1	0	-1
+path:map00402	Benzoxazinoid biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00402	Benzoxazinoid biosynthesis	nitrogen	0	-1	0	-1
+path:map00402	Benzoxazinoid biosynthesis	carbon	0	-1	0	-1
+path:map00350	Tyrosine metabolism	phosphate_and_sulphur	0	-1	0	-1
+path:map00350	Tyrosine metabolism	osmolytes_and_ph	0	2.75	0	3.375
+path:map00350	Tyrosine metabolism	nutrient_stimulation	0	6.0	0	4.0
+path:map00350	Tyrosine metabolism	nitrogen_peptides	0	-1	0	-1
+path:map00350	Tyrosine metabolism	nitrogen	0	5.5	0	3.5
+path:map00350	Tyrosine metabolism	carbon	0	3.42857142857	0	3.57142857143
+path:map00332	Carbapenem biosynthesis	phosphate_and_sulphur	0	8.0	0	8.0
+path:map00332	Carbapenem biosynthesis	osmolytes_and_ph	0	2.66666666667	0	2.0
+path:map00332	Carbapenem biosynthesis	nutrient_stimulation	0	5.5	0	4.66666666667
+path:map00332	Carbapenem biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00332	Carbapenem biosynthesis	nitrogen	0	5.5	0	5.0
+path:map00332	Carbapenem biosynthesis	carbon	0	1.5	0	1.25
+path:map00311	Penicillin and cephalosporin biosynthesis	phosphate_and_sulphur	0	8.0	0	8.0
+path:map00311	Penicillin and cephalosporin biosynthesis	osmolytes_and_ph	0	2.0	0	2.0
+path:map00311	Penicillin and cephalosporin biosynthesis	nutrient_stimulation	0	5.75	0	4.0
+path:map00311	Penicillin and cephalosporin biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00311	Penicillin and cephalosporin biosynthesis	nitrogen	0	5.0	0	4.0
+path:map00311	Penicillin and cephalosporin biosynthesis	carbon	0	0.0	0	0.0
+path:map00310	Lysine degradation	phosphate_and_sulphur	0	-1	0	-1
+path:map00310	Lysine degradation	osmolytes_and_ph	0	1.9	0	1.5
+path:map00310	Lysine degradation	nutrient_stimulation	0	6.0	0	4.0
+path:map00310	Lysine degradation	nitrogen_peptides	0	-1	0	-1
+path:map00310	Lysine degradation	nitrogen	0	2.25	0	1.5
+path:map00310	Lysine degradation	carbon	0	0.0	0	0.0
+path:map00290	Valine, leucine and isoleucine biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00290	Valine, leucine and isoleucine biosynthesis	osmolytes_and_ph	0	0.625	0	0.625
+path:map00290	Valine, leucine and isoleucine biosynthesis	nutrient_stimulation	0	6.2	0	4.2
+path:map00290	Valine, leucine and isoleucine biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00290	Valine, leucine and isoleucine biosynthesis	nitrogen	0	3.625	0	2.0
+path:map00290	Valine, leucine and isoleucine biosynthesis	carbon	0	1.28571428571	0	1.14285714286
+path:map00254	Aflatoxin biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00254	Aflatoxin biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00254	Aflatoxin biosynthesis	nutrient_stimulation	0	-1	0	-1
+path:map00254	Aflatoxin biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00254	Aflatoxin biosynthesis	nitrogen	0	-1	0	-1
+path:map00254	Aflatoxin biosynthesis	carbon	0	-1	0	-1
+path:map00073	Cutin, suberine and wax biosynthesis	phosphate_and_sulphur	0	-1	0	-1
+path:map00073	Cutin, suberine and wax biosynthesis	osmolytes_and_ph	0	-1	0	-1
+path:map00073	Cutin, suberine and wax biosynthesis	nutrient_stimulation	0	-1	0	-1
+path:map00073	Cutin, suberine and wax biosynthesis	nitrogen_peptides	0	-1	0	-1
+path:map00073	Cutin, suberine and wax biosynthesis	nitrogen	0	-1	0	-1
+path:map00073	Cutin, suberine and wax biosynthesis	carbon	0	-1	0	-1
