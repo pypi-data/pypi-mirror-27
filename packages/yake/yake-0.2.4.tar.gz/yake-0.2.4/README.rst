@@ -1,0 +1,100 @@
+========================================
+Yet Another Keyword Extractor (Yake)
+========================================
+
+
+.. image:: https://img.shields.io/pypi/v/yake.svg
+        :target: https://pypi.python.org/pypi/yake
+
+.. image:: https://readthedocs.org/projects/yake/badge/?version=latest
+        :target: https://yake.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://pyup.io/repos/github/arrp/yake/shield.svg
+     :target: https://pyup.io/repos/github/arrp/yake/
+     :alt: Updates
+
+
+Unsupervised Approach for Automatic Keyword Extraction using Text Features
+
+* Free software: MIT license
+* Documentation: https://pypi.python.org/pypi/yake.
+
+Main Features
+-------------
+
+* Unsupervised approach
+* Multi-Language Support 
+* Single document
+
+Rationale
+-------------
+
+Extracting keywords from texts has become a challenge for individuals and organizations as the information grows in complexity and size. The need to automate this task so that texts can be processed in a timely and adequate manner has led to the emergence of automatic keyword extraction tools. Despite the advances, there is a clear lack of multilingual online tools to automatically extract keywords from single documents. Yake! is a novel feature-based system for multi-lingual keyword extraction, which supports texts of different sizes, domain or languages. Unlike other approaches, Yake! does not rely on dictionaries nor thesauri, neither is trained against any corpora. Instead, it follows an unsupervised approach which builds upon features extracted from the text, making it thus applicable to documents written in different languages without the need for further knowledge. This can be beneficial for a large number of tasks and a plethora of situations where the access to training corpora is either limited or restricted.
+
+Requirements
+-------------
+Python3
+
+
+Installation
+-------------
+
+To install Yake on your terminal ::
+
+	pip install yake
+
+
+Usage
+---------
+
+How to use it on your favorite command line::
+
+	yake --input_file [text file] --language en --ngram_size 3
+
+
+How to use it on Python::
+
+	from yake.yake import YakeKeywordExtractor
+
+	text_content = """
+		Sources tell us that Google is acquiring Kaggle, a platform that hosts data science and machine learning
+		competitions. Details about the transaction remain somewhat vague , but given that Google is hosting
+		its Cloud Next conference in San Francisco this week, the official announcement could come as early
+		as tomorrow.  Reached by phone, Kaggle co-founder CEO Anthony Goldbloom declined to deny that the
+		acquisition is happening. Google itself declined 'to comment on rumors'.
+	"""
+
+	# assuming default parameters
+	simple_kwextractor = YakeKeywordExtractor()
+	keywords = simple_kwextractor.extract_keywords(text_content)
+
+	for kw in keywords:
+		print(kw)
+
+	# specifying parameters
+	custom_kwextractor = YakeKeywordExtractor(lan="en", n=3, dedupLim=0.8, windowsSize=2, top=20)
+	keywords = custom_kwextractor.extract_keywords(text_content)
+
+	for kw in keywords:
+		print(kw)
+
+
+Upload new version to pip 
+-----
+
+Run::
+
+	> make dist
+	> python setup.py sdist upload -r https://upload.pypi.org/legacy/
+
+Specify credentials at ~/.pypirc::
+
+	[distutils]
+	index-servers =
+	  pypi
+
+	[pypi]
+	repository=https://upload.pypi.org/legacy/
+	username=<user>
+	password=<pass>
