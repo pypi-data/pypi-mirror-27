@@ -1,0 +1,121 @@
+{
+ "sdn.signal[:].definition": {
+  "full_path": "sdn.signal[:].definition",
+  "coordinates": [],
+  "description": "Definition of the allocatable signal {static}",
+  "data_type": "STR_0D"
+ },
+ "sdn.signal[:].value_error_index": {
+  "full_path": "sdn.signal[:].value_error_index",
+  "coordinates": [
+   "sdn.time"
+  ],
+  "description": "Index in the error_description list for \"value\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "sdn.signal[:]": {
+  "full_path": "sdn.signal[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...150"
+  ],
+  "description": "Dictionary of the signal names and definitions which can be allocated to the SDN",
+  "data_type": ""
+ },
+ "sdn.signal[:].value_error_upper": {
+  "full_path": "sdn.signal[:].value_error_upper",
+  "coordinates": [
+   "sdn.time"
+  ],
+  "description": "Upper error for \"value\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "sdn.topic_list[:].names": {
+  "full_path": "sdn.topic_list[:].names",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Names of the group of SDN signals {static}",
+  "data_type": "STR_1D"
+ },
+ "sdn.signal[:].allocated_position": {
+  "full_path": "sdn.signal[:].allocated_position",
+  "coordinates": [],
+  "description": "Allocation of signal to a position in the SDN (1..N); this will be implementation specific {constant}",
+  "data_type": "INT_0D"
+ },
+ "sdn.signal[:].value": {
+  "full_path": "sdn.signal[:].value",
+  "coordinates": [
+   "sdn.time"
+  ],
+  "description": "Signal value {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "sdn.time": {
+  "full_path": "sdn.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "sdn.topic_list[:]": {
+  "full_path": "sdn.topic_list[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...30"
+  ],
+  "description": "List of the groups of signals used at different reading and writing points; this is an implementation detail which might change",
+  "data_type": ""
+ },
+ "sdn.ids_properties": {
+  "full_path": "sdn.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "sdn.signal[:].name": {
+  "full_path": "sdn.signal[:].name",
+  "coordinates": [],
+  "description": "Name of the allocatable signal {static}",
+  "data_type": "STR_0D"
+ },
+ "sdn.ids_properties.comment": {
+  "full_path": "sdn.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "sdn.signal[:].ip_normalise": {
+  "full_path": "sdn.signal[:].ip_normalise",
+  "coordinates": [],
+  "description": "0 or 1 if this signal is multiplied by Ip to generate a control variable; this usage is specific to magnetic control, but could be extended to other control loops {static}",
+  "data_type": "INT_0D"
+ },
+ "sdn.signal[:].value_error_lower": {
+  "full_path": "sdn.signal[:].value_error_lower",
+  "coordinates": [
+   "sdn.time"
+  ],
+  "description": "Lower error for \"value\" {dynamic} [mixed]",
+  "data_type": "FLT_1D"
+ },
+ "sdn.topic_list[:].indices": {
+  "full_path": "sdn.topic_list[:].indices",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Indices into the current SDN allocated list; it must be updated when the allocated list is changed {static}",
+  "data_type": "INT_1D"
+ },
+ "sdn.ids_properties.homogeneous_time": {
+  "full_path": "sdn.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ }
+}

@@ -1,0 +1,780 @@
+{
+ "atomic_data.process[:].charge_state[:].table_6d": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[5]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[6]"
+  ],
+  "description": "6D table describing the process data {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_6D"
+ },
+ "atomic_data.process[:].charge_state[:].z_min_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].z_min_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_min\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_1d_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_1d_error_upper",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_1d.coordinate_system[process[:].coordinate_index].coordinate[1]"
+  ],
+  "description": "Upper error for \"table_1d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_1D"
+ },
+ "atomic_data.ids_properties": {
+  "full_path": "atomic_data.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "atomic_data.process[:].charge_state[:].table_1d.coordinate_system[process[:].coordinate_index].coordinate[1]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_1d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[2]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[3]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_4d_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_4d_error_upper",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[4]"
+  ],
+  "description": "Upper error for \"table_4d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_4D"
+ },
+ "atomic_data.process[:].charge_state[:].z_min_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].z_min_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_min\" {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[1]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.code.version": {
+  "full_path": "atomic_data.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.z_n_error_lower": {
+  "full_path": "atomic_data.z_n_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_n\" {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.code.parameters": {
+  "full_path": "atomic_data.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.time": {
+  "full_path": "atomic_data.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "atomic_data.process[:].charge_state[:].table_4d_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_4d_error_index",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[4]"
+  ],
+  "description": "Index in the error_description list for \"table_4d\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].label": {
+  "full_path": "atomic_data.process[:].label",
+  "coordinates": [],
+  "description": "String identifying the process (e.g. EI, RC, ...) {static}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.a_error_index": {
+  "full_path": "atomic_data.a_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_1d": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_1d",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_1d.coordinate_system[process[:].coordinate_index].coordinate[1]"
+  ],
+  "description": "1D table describing the process data {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_1D"
+ },
+ "atomic_data.z_n_error_upper": {
+  "full_path": "atomic_data.z_n_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_n\" {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[3]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_3d_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_3d_error_upper",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[3]"
+  ],
+  "description": "Upper error for \"table_3d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_3D"
+ },
+ "atomic_data.process[:].result_units": {
+  "full_path": "atomic_data.process[:].result_units",
+  "coordinates": [],
+  "description": "Units of the process result {static}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.z_n": {
+  "full_path": "atomic_data.z_n",
+  "coordinates": [],
+  "description": "Nuclear charge {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].values_error_upper": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].values_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"values\" {static} [units given by coordinate_system(:)/coordinate(:)/units]",
+  "data_type": "FLT_1D"
+ },
+ "atomic_data.process[:].charge_state[:].table_0d_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_0d_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"table_0d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].spacing": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].spacing",
+  "coordinates": [],
+  "description": "Flag for specific coordinate spacing (for optimization purposes). Integer flag: 0=undefined; 1=uniform; ... {static}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].interpolation_type": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].interpolation_type",
+  "coordinates": [],
+  "description": "Interpolation strategy in this coordinate direction. Integer flag: 0=discrete (no interpolation); 1=linear; ... {static}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[4]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[1]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_6d_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d_error_upper",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[5]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[6]"
+  ],
+  "description": "Upper error for \"table_6d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_6D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:]": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...6"
+  ],
+  "description": "Set of coordinates for that coordinate system. A coordinate an be either a range of real values or a set of discrete values (if interpolation_type=0)",
+  "data_type": ""
+ },
+ "atomic_data.process[:].charge_state[:].table_3d_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_3d_error_lower",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[3]"
+  ],
+  "description": "Lower error for \"table_3d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_3D"
+ },
+ "atomic_data.process[:].charge_state[:].table_1d_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_1d_error_index",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_1d.coordinate_system[process[:].coordinate_index].coordinate[1]"
+  ],
+  "description": "Index in the error_description list for \"table_1d\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[2]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[3]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.a": {
+  "full_path": "atomic_data.a",
+  "coordinates": [],
+  "description": "Mass of atom {static} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_6d_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d_error_lower",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[5]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[6]"
+  ],
+  "description": "Lower error for \"table_6d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_6D"
+ },
+ "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[5]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[5]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].z_min": {
+  "full_path": "atomic_data.process[:].charge_state[:].z_min",
+  "coordinates": [],
+  "description": "Minimum Z of the charge state bundle {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].z_min_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].z_min_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_min\" {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.a_error_lower": {
+  "full_path": "atomic_data.a_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"a\" {static} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[2]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[1]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].z_max_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].z_max_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_max\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[1]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[2]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:]": {
+  "full_path": "atomic_data.process[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...20"
+  ],
+  "description": "Description and data for a set of physical processes.",
+  "data_type": ""
+ },
+ "atomic_data.code.output_flag": {
+  "full_path": "atomic_data.code.output_flag",
+  "coordinates": [
+   "atomic_data.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "atomic_data.process[:].table_dimension": {
+  "full_path": "atomic_data.process[:].table_dimension",
+  "coordinates": [],
+  "description": "Table dimensionality of the process (1 to 6), valid for all charge states. Indicates which of the tables is filled (below the charge_state node) {static}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].extrapolation_type": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].extrapolation_type",
+  "base_coord": true,
+  "coordinates": [
+   "1...2"
+  ],
+  "description": "Extrapolation strategy when leaving the domain. The first value of the vector describes the behaviour at lower bound, the second describes the at upper bound. Possible values: 0=none, report error; 1=boundary value; 2=linear extrapolation {static}",
+  "data_type": "INT_1D"
+ },
+ "atomic_data.process[:].result_label": {
+  "full_path": "atomic_data.process[:].result_label",
+  "coordinates": [],
+  "description": "Description of the process result (rate, cross section, sputtering yield, ...) {static}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_6d_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d_error_index",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[5]",
+   "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[6]"
+  ],
+  "description": "Index in the error_description list for \"table_6d\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_2d": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_2d",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[2]"
+  ],
+  "description": "2D table describing the process data {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_2D"
+ },
+ "atomic_data.process[:].charge_state[:].table_5d_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d_error_lower",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[5]"
+  ],
+  "description": "Lower error for \"table_5d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_5D"
+ },
+ "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[1]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].z_max": {
+  "full_path": "atomic_data.process[:].charge_state[:].z_max",
+  "coordinates": [],
+  "description": "Maximum Z of the charge state bundle (equal to z_min if no bundle) {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.a_error_upper": {
+  "full_path": "atomic_data.a_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"a\" {static} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[4]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_2d_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_2d_error_index",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[2]"
+  ],
+  "description": "Index in the error_description list for \"table_2d\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_2d_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_2d_error_lower",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[2]"
+  ],
+  "description": "Lower error for \"table_2d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_2D"
+ },
+ "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[5]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[5]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.code.name": {
+  "full_path": "atomic_data.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[6]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[6]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_5d": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[5]"
+  ],
+  "description": "5D table describing the process data {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_5D"
+ },
+ "atomic_data.ids_properties.homogeneous_time": {
+  "full_path": "atomic_data.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_4d": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_4d",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[4]"
+  ],
+  "description": "4D table describing the process data {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_4D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].label": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].label",
+  "coordinates": [],
+  "description": "Description of coordinate (e.g. \"Electron temperature\") {static}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[2]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_2d_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_2d_error_upper",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_2d.coordinate_system[process[:].coordinate_index].coordinate[2]"
+  ],
+  "description": "Upper error for \"table_2d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_2D"
+ },
+ "atomic_data.process[:].result_transformation": {
+  "full_path": "atomic_data.process[:].result_transformation",
+  "coordinates": [],
+  "description": "Transformation of the process result. Integer flag: 0=no transformation; 1=10^; 2=exp() {static}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:]": {
+  "full_path": "atomic_data.process[:].charge_state[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...20"
+  ],
+  "description": "Process tables for a set of charge states. Only one table is used for that process, defined by process(:)/table_dimension",
+  "data_type": ""
+ },
+ "atomic_data.process[:].charge_state[:].table_0d_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_0d_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"table_0d\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.code": {
+  "full_path": "atomic_data.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "atomic_data.process[:].charge_state[:].table_1d_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_1d_error_lower",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_1d.coordinate_system[process[:].coordinate_index].coordinate[1]"
+  ],
+  "description": "Lower error for \"table_1d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_1D"
+ },
+ "atomic_data.process[:].charge_state[:].z_max_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].z_max_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_max\" {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[4]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_6d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].value_labels": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].value_labels",
+  "coordinates": [
+   "atomic_data.coordinate_system[:].coordinate[:].values"
+  ],
+  "description": "String description of discrete coordinate values (if interpolation_type=0). E.g., for spectroscopic lines, the spectroscopic description of the transition. {static}",
+  "data_type": "STR_1D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].values_error_lower": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].values_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"values\" {static} [units given by coordinate_system(:)/coordinate(:)/units]",
+  "data_type": "FLT_1D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].units": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].units",
+  "coordinates": [],
+  "description": "Units of coordinate (e.g. eV) {static}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.process[:].coordinate_index": {
+  "full_path": "atomic_data.process[:].coordinate_index",
+  "coordinates": [],
+  "description": "Index in tables_coord, specifying what coordinate systems to use for this process (valid for all tables) {static}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.ids_properties.comment": {
+  "full_path": "atomic_data.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[3]": {
+  "data_type": "INT_1D",
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "atomic_data.process[:].charge_state[:].table_0d": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_0d",
+  "coordinates": [],
+  "description": "0D table describing the process data {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_3d": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_3d",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[3]"
+  ],
+  "description": "3D table describing the process data {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_3D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].values": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].values",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Coordinate values {static} [units given by coordinate_system(:)/coordinate(:)/units]",
+  "data_type": "FLT_1D"
+ },
+ "atomic_data.z_n_error_index": {
+  "full_path": "atomic_data.z_n_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].transformation": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].transformation",
+  "coordinates": [],
+  "description": "Coordinate transformation applied to coordinate values stored in coord. Integer flag: 0=none; 1=log10; 2=ln {static}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_5d_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d_error_index",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[5]"
+  ],
+  "description": "Index in the error_description list for \"table_5d\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].z_max_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].z_max_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_max\" {static} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.coordinate_system[:].coordinate[:].values_error_index": {
+  "full_path": "atomic_data.coordinate_system[:].coordinate[:].values_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"values\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].label": {
+  "full_path": "atomic_data.process[:].charge_state[:].label",
+  "coordinates": [],
+  "description": "String identifying charge state (e.g. C+, C+2 , C+3, C+4, C+5, C+6, ...) {static}",
+  "data_type": "STR_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_5d_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_5d_error_upper",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[4]",
+   "atomic_data.process[:].charge_state[:].table_5d.coordinate_system[process[:].coordinate_index].coordinate[5]"
+  ],
+  "description": "Upper error for \"table_5d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_5D"
+ },
+ "atomic_data.coordinate_system[:]": {
+  "full_path": "atomic_data.coordinate_system[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...20"
+  ],
+  "description": "Array of possible coordinate systems for process tables",
+  "data_type": ""
+ },
+ "atomic_data.process[:].charge_state[:].table_4d_error_lower": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_4d_error_lower",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[3]",
+   "atomic_data.process[:].charge_state[:].table_4d.coordinate_system[process[:].coordinate_index].coordinate[4]"
+  ],
+  "description": "Lower error for \"table_4d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_4D"
+ },
+ "atomic_data.process[:].charge_state[:].table_0d_error_upper": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_0d_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"table_0d\" {static} [units given by process(:)/results_units]",
+  "data_type": "FLT_0D"
+ },
+ "atomic_data.process[:].charge_state[:].table_3d_error_index": {
+  "full_path": "atomic_data.process[:].charge_state[:].table_3d_error_index",
+  "coordinates": [
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[1]",
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[2]",
+   "atomic_data.process[:].charge_state[:].table_3d.coordinate_system[process[:].coordinate_index].coordinate[3]"
+  ],
+  "description": "Index in the error_description list for \"table_3d\" {constant}",
+  "data_type": "INT_0D"
+ }
+}
