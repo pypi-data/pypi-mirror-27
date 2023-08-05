@@ -1,0 +1,29 @@
+language: c
+
+linux: &linux
+   os: linux
+   sudo: false
+   dist: trusty
+osx: &osx
+   os: osx
+
+matrix:
+   include:
+      - <<: *linux
+        compiler: gcc
+
+      - <<: *osx
+        compiler: clang
+        osx_image: xcode8.3
+
+install:
+  - bash scripts/install.sh
+
+before_script:
+  - mkdir build
+  - cd build
+  - cmake ..
+
+script:
+  - cmake --build . --config Release
+  - ctest
