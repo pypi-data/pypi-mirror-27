@@ -1,0 +1,21 @@
+Metadata-Version: 2.0
+Name: aurblobs
+Version: 0.2.0
+Summary: Automatically build AUR packages and serve them from a repository
+Home-page: https://www.github.com/mweinelt/aurblobs
+Author: Martin Weinelt
+Author-email: martin+aurblobs@linuxlounge.net
+License: AGPL
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: click
+Requires-Dist: docker
+Requires-Dist: GitPython
+Requires-Dist: gnupg
+Requires-Dist: requests
+Requires-Dist: xdg
+
+# aurblobs
+
+Automatically build AUR packages and serve them from a repository 
+
