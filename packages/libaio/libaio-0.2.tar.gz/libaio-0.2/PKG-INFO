@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: libaio
+Version: 0.2
+Summary: Linux AIO API wrapper.
+Home-page: http://github.com/vpelletier/python-libaio
+Author: Vincent Pelletier
+Author-email: plr.vincent@gmail.com
+License: LGPLv3+
+Description-Content-Type: UNKNOWN
+Description: .. contents::
+        
+        Linux AIO API wrapper.
+        
+        This is about in-kernel, file-descriptor-based asynchronous I/O.
+        
+Keywords: linux aio libaio
+Platform: linux
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries
