@@ -1,0 +1,28 @@
+# Commande line
+humanize
+ipython<6
+parsedatetime
+progressbar2
+scandir
+tabulate
+
+# Memory driver
+sortedcontainers
+
+# Cassandra driver
+# 3.12.0 suffers from https://datastax-oss.atlassian.net/projects/PYTHON/issues/PYTHON-862
+cassandra-driver==3.11.0
+scales
+
+# Core
+enum34
+cachetools
+prometheus_client
+
+# Metadata cache
+lmdb
+
+# Graphite
+whisper
+carbon
+graphite-web
