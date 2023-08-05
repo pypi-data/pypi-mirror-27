@@ -1,0 +1,80 @@
+Metadata-Version: 2.0
+Name: trailscraper
+Version: 0.1
+Summary: A command-line tool to get valuable information out of AWS CloudTrail
+Home-page: http://github.com/flosell/trailscraper
+Author: Florian Sellmayr
+Author-email: florian.sellmayr@gmail.com
+License: Apache License 2.0
+Keywords: aws,cloud,iam,cloudtrail,trailscraper
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: Software Development :: Code Generators
+Classifier: Topic :: Utilities
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Security
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: boto3 (==1.4.7)
+Requires-Dist: click (==6.7)
+Requires-Dist: awacs (==0.7.2)
+
+TrailScraper
+============
+
+A command-line tool to get valuable information out of AWS CloudTrail
+
+Usage
+-----
+
+none yet…
+
+Development
+-----------
+
+.. code:: bash
+
+    $ ./go setup   # set up venv and dependencies
+    $ source ./go enable  # enable venv
+    $ ./go         # let's see what we can do here
+
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+``Click will abort further execution because Python 3 was configured to use ASCII as encoding for the environment.``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set these environment variables:
+
+::
+
+    LC_ALL=C.UTF-8
+    LANG=C.UTF-8
+
+
+Changelog
+=========
+
+This changelog contains a loose collection of changes in every release
+including breaking changes to the API.
+
+The format is based on `Keep a Changelog <http://keepachangelog.com/>`__
+
+0.1.0
+-----
+
+*Initial Release*
+
+Added
+~~~~~
+
+-  Basic feature to download CloudTrail Logs from S3 for certain
+   accounts and timeframe
+-  Basic feature to generate IAM Policies from a set of downloaded
+   CloudTrail logs
+
+
