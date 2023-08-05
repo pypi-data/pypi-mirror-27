@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- deny field access for non-group-member -->
+        <record model="ir.model.field.access" id="field_access_sa_invoicedate-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invoicedate')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_priceunitnet-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_priceunitnet')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_priceunitgross-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_priceunitgross')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_pricenet-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_pricenet')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_pricegross-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_pricegross')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_taxes-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_taxes')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_taxnames-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_taxnames')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_currency-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_currency')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_currency2-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_currency2')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_invnr-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invnr')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_invoice-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invoice')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_account-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_account')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_accdate-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_accdate')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_invstate-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invstate')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_partyname-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_partyname')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_party-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_party')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_invtype-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invtype')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_prodname-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_prodname')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_quantity-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_quantity')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_currweek-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_currweek')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_agedays-anon">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_agedays')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+
+
+    </data>
+</tryton>

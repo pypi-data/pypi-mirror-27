@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- view -->
+        <record model="ir.ui.view" id="soldproducts_view_form">
+            <field name="model">account.invoice.line</field>
+            <field name="type">form</field>
+            <field name="name">soldproducts_form</field>
+        </record>
+        <record model="ir.ui.view" id="soldproducts_view_tree">
+            <field name="model">account.invoice.line</field>
+            <field name="type">tree</field>
+            <field name="name">soldproducts_tree</field>
+        </record>
+
+        <!-- action-view -->
+        <record model="ir.action.act_window" id="act_sold_products_form">
+            <field name="name">Sold Products</field>
+            <field name="res_model">account.invoice.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sold_products_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="soldproducts_view_tree"/>
+            <field name="act_window" ref="act_sold_products_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sold_products_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="soldproducts_view_form"/>
+            <field name="act_window" ref="act_sold_products_form"/>
+        </record>
+    
+        <!-- menu -->
+        <menuitem parent="account.menu_reporting" icon="sold-article-icon"
+                    action="act_sold_products_form" id="menu_sold_products_form" />
+
+        <!-- preselected views -->
+        <record model="ir.action.act_window.domain" id="act_sold_products_domain_week">
+            <field name="name">Current week</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" 
+                    eval="[('sa_currweek', '=', True)]" 
+                    pyson="1"/>
+            <field name="act_window" ref="act_sold_products_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sold_products_domain_14days-1">
+            <field name="name">Last 14 days</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" 
+                    eval="[('sa_agedays', '&lt;=', 14)]" 
+                    pyson="1"/>
+            <field name="act_window" ref="act_sold_products_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sold_products_domain_30days-1">
+            <field name="name">Last 30 days</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" 
+                    eval="[('sa_agedays', '&lt;=', 30)]" 
+                    pyson="1"/>
+            <field name="act_window" ref="act_sold_products_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sold_products_domain_all">
+            <field name="name">all</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_sold_products_form"/>
+        </record>
+
+    </data>
+</tryton>

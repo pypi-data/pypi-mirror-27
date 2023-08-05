@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- define group -->
+        <record model="res.group" id="group_soldproducts_viewer">
+            <field name="name">Sold Products - View</field>
+        </record>
+        <!-- admin is member -->
+        <record model="res.user-res.group" id="user_admin-group_soldproducts_viewer">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+        </record>
+        
+        <!-- menu item -->
+        <record model="ir.ui.menu-res.group" 
+                id="menu_sold_products_form-group_soldproducts_viewer">
+            <field name="menu" ref="menu_sold_products_form"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+        </record>
+
+        <!-- allow read access -->
+        <record model="ir.model.field.access" id="field_access_sa_invoicedate-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invoicedate')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_priceunitnet-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_priceunitnet')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_priceunitgross-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_priceunitgross')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_pricenet-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_pricenet')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_pricegross-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_pricegross')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_taxes-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_taxes')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_taxnames-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_taxnames')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_currency-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_currency')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_currency2-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_currency2')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_invnr-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invnr')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_invoice-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invoice')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_account-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_account')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_accdate-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_accdate')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_invstate-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invstate')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_partyname-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_partyname')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_party-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_party')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_invtype-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_invtype')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_prodname-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_prodname')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_quantity-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_quantity')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_currweek-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_currweek')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="field_access_sa_agedays-group_soldproducts_viewer">
+            <field name="field"
+                search="[('model.model', '=', 'account.invoice.line'), ('name', '=', 'sa_agedays')]"/>
+            <field name="group" ref="group_soldproducts_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+
+
+    </data>
+</tryton>
