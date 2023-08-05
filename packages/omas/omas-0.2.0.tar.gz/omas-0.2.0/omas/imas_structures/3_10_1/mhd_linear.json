@@ -1,0 +1,1289 @@
+{
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate3_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate3_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate2_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate2_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_parallel_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_parallel_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"displacement_parallel\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.rho_tor_error_index": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.rho_tor_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate1": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate1",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "First coordinate (radial) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate3": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate3",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Third coordinate (toroidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate2": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate2",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Second coordinate (poloidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.psi_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.psi_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate1_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate1_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate3_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate3_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate1_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate1_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.mass_density_perturbed": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.mass_density_perturbed",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Perturbed mass density for given toroidal mode number {dynamic} [kg.m^-3]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.code.version": {
+  "full_path": "mhd_linear.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm_error_index": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate3_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate3_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate3": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate3",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Third coordinate (toroidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate2": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate2",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Second coordinate (poloidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate1": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate1",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "First coordinate (radial) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate3_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate3_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate3\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate2_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate2_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate2\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed",
+  "coordinates": [],
+  "description": "Pertubed velocity for given toroidal mode number [m/s]",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].frequency_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].frequency_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"frequency\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed",
+  "coordinates": [],
+  "description": "Pertubed magnetic field for given toroidal mode number [T]",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate1_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate1_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate3_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate3_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].time": {
+  "full_path": "mhd_linear.time_slice[:].time",
+  "coordinates": [],
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.ids_properties.homogeneous_time": {
+  "full_path": "mhd_linear.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].growthrate_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].growthrate_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"growthrate\" {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate3_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate3_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.ids_properties.comment": {
+  "full_path": "mhd_linear.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid_type.index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid_type.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.psi_error_index": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.psi_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].n_tor": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].n_tor",
+  "coordinates": [],
+  "description": "Toroidal mode number of the MHD mode {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate3_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate3_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.mass_density_perturbed_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.mass_density_perturbed_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"mass_density_perturbed\" {dynamic} [kg.m^-3]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate3_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate3_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate3\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_alfven": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_alfven",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm"
+  ],
+  "description": "Alven time=R/vA=R0 sqrt(mi ni(rho))/B0 {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_parallel_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_parallel_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"displacement_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate2": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate2",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Second coordinate (poloidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate3": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate3",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Third coordinate (toroidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate1": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate1",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "First coordinate (radial) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_perpendicular_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_perpendicular_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"displacement_perpendicular\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_alfven_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_alfven_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"tau_alfven\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate1_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate1_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.code.name": {
+  "full_path": "mhd_linear.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid_type": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid_type",
+  "coordinates": [],
+  "description": "Selection of one of a set of grid types. 1: poloidal mode number; 2: poloidal angle",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.code": {
+  "full_path": "mhd_linear.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate3": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate3",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Third coordinate (toroidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate2": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate2",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Second coordinate (poloidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate1": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate1",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "First coordinate (radial) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_resistive": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_resistive",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm"
+  ],
+  "description": "Resistive time = mu_0 rho*rho/1.22/eta_neo {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate1_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate1_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.area_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.area_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.temperature_perturbed_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.temperature_perturbed_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"temperature_perturbed\" {dynamic} [eV]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate1_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate1_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].frequency_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].frequency_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"frequency\" {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate3_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate3_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].frequency_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].frequency_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"frequency\" {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate2_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate2_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate2\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.pressure_perturbed_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.pressure_perturbed_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"pressure_perturbed\" {dynamic} [P]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate2_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate2_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid",
+  "base_coord": true,
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "1...N"
+  ],
+  "description": "Array of poloidal grid values for the various radial positions {dynamic} [mixed]",
+  "data_type": "INT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate3_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate3_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate3\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate1_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate1_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].growthrate_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].growthrate_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"growthrate\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid_type.name": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid_type.name",
+  "coordinates": [],
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.rho_tor_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.rho_tor_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.volume_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.volume_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:]": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Vector of toroidal modes",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate1_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate1_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate2_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate2_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_parallel": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_parallel",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Parallel displacement of the modes {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_perpendicular": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_perpendicular",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Perpendicular displacement of the modes {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid_type.name": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid_type.name",
+  "coordinates": [],
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation, see time_slice/boundary/b_flux_pol_norm in the equilibrium IDS) {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid_type.description": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid_type.description",
+  "coordinates": [],
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate1_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate1_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate1_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate1_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.code.output_flag": {
+  "full_path": "mhd_linear.code.output_flag",
+  "coordinates": [
+   "mhd_linear.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_alfven_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_alfven_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"tau_alfven\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed",
+  "coordinates": [],
+  "description": "Pertubed magnetic field for given toroidal mode number [T]",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.temperature_perturbed_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.temperature_perturbed_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"temperature_perturbed\" {dynamic} [eV]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed",
+  "coordinates": [],
+  "description": "Pertubed vector potential for given toroidal mode number [T.m]",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.pressure_perturbed_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.pressure_perturbed_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"pressure_perturbed\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate1_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate1_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm": {
+  "data_type": "INT_1D",
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate3_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate3_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate3_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate3_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate3\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.ids_properties": {
+  "full_path": "mhd_linear.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid",
+  "base_coord": true,
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "1...N"
+  ],
+  "description": "Array of poloidal grid values for the various radial positions {dynamic} [mixed]",
+  "data_type": "INT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed",
+  "coordinates": [],
+  "description": "Pertubed vector potential for given toroidal mode number [T.m]",
+  "data_type": ""
+ },
+ "mhd_linear.vacuum_toroidal_field.b0_error_lower": {
+  "full_path": "mhd_linear.vacuum_toroidal_field.b0_error_lower",
+  "coordinates": [
+   "mhd_linear.time"
+  ],
+  "description": "Lower error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate1_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate1_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_resistive_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_resistive_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"tau_resistive\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate2_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate2_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.area_error_index": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.area_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate3_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate3_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.vacuum_toroidal_field.b0": {
+  "full_path": "mhd_linear.vacuum_toroidal_field.b0",
+  "coordinates": [
+   "mhd_linear.time"
+  ],
+  "description": "Vacuum toroidal field at R0 [T]; Positive sign means anti-clockwise when viewed from above. The product R0B0 must be consistent with the b_tor_vacuum_r field of the tf IDS. {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate2_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate2_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate2\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.volume_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.volume_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.temperature_perturbed": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.temperature_perturbed",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Perturbed temperature for given toroidal mode number {dynamic} [eV]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.vacuum_toroidal_field.r0": {
+  "full_path": "mhd_linear.vacuum_toroidal_field.r0",
+  "coordinates": [],
+  "description": "Reference major radius where the vacuum toroidal magnetic field is given (usually a fixed position such as the middle of the vessel at the equatorial midplane) {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].frequency": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].frequency",
+  "coordinates": [],
+  "description": "Frequency of the mode {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_parallel_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_parallel_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"displacement_parallel\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate3_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate3_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate3\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate2_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.a_field_perturbed.coordinate2_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum",
+  "coordinates": [],
+  "description": "MHD modes in the vaccum",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].grid_plasma.area_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.area_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.vacuum_toroidal_field": {
+  "full_path": "mhd_linear.vacuum_toroidal_field",
+  "coordinates": [],
+  "description": "Characteristics of the vacuum toroidal field (used in rho_tor definition and in the normalization of current densities)",
+  "data_type": ""
+ },
+ "mhd_linear.time": {
+  "full_path": "mhd_linear.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_resistive_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_resistive_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"tau_resistive\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate2_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate2_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate2_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate2_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid_type.description": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid_type.description",
+  "coordinates": [],
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.pressure_perturbed_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.pressure_perturbed_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"pressure_perturbed\" {dynamic} [P]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.area": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.area",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate2_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate2_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.mass_density_perturbed_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.mass_density_perturbed_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"mass_density_perturbed\" {dynamic} [kg.m^-3]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.pressure_perturbed": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.pressure_perturbed",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Perturbed pressure for given toroidal mode number {dynamic} [P]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.vacuum_toroidal_field.r0_error_index": {
+  "full_path": "mhd_linear.vacuum_toroidal_field.r0_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate2_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.velocity_perturbed.coordinate2_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid_type": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid_type",
+  "coordinates": [],
+  "description": "Selection of one of a set of grid types. 1: poloidal mode number; 2: poloidal angle",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_perpendicular_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_perpendicular_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"displacement_perpendicular\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_perpendicular_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.displacement_perpendicular_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"displacement_perpendicular\" {dynamic} [m]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.volume_error_index": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.volume_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].grid.rho_tor_norm": {
+  "data_type": "INT_1D",
+  "full_path": "mhd_linear.time_slice[:].grid.rho_tor_norm",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "mhd_linear.vacuum_toroidal_field.b0_error_index": {
+  "full_path": "mhd_linear.vacuum_toroidal_field.b0_error_index",
+  "coordinates": [
+   "mhd_linear.time"
+  ],
+  "description": "Index in the error_description list for \"b0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.code.parameters": {
+  "full_path": "mhd_linear.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_alfven_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_alfven_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"tau_alfven\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.rho_tor": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.rho_tor",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Toroidal flux coordinate. rho_tor = sqrt(b_flux_tor/(pi*b0)) ~ sqrt(pi*r^2*b0/(pi*b0)) ~ r [m]. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].growthrate": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].growthrate",
+  "coordinates": [],
+  "description": "Linear growthrate of the mode {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].growthrate_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].growthrate_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"growthrate\" {dynamic} [Hz]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate2_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate2_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Lower error for \"coordinate2\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate1_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate1_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.volume": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.volume",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Volume enclosed inside the magnetic surface {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.mass_density_perturbed_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.mass_density_perturbed_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"mass_density_perturbed\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma",
+  "coordinates": [],
+  "description": "MHD modes in the confined plasma",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.temperature_perturbed_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.temperature_perturbed_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"temperature_perturbed\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.psi_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.psi_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate1": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate1",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "First coordinate (radial) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate2": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate2",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Second coordinate (poloidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate3": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate3",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Third coordinate (toroidal) {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate2_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.a_field_perturbed.coordinate2_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate2\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm": {
+  "data_type": "INT_1D",
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+  "base_coord": true,
+  "description": "imas missing dimension",
+  "coordinates": [
+   "1...N"
+  ]
+ },
+ "mhd_linear.vacuum_toroidal_field.r0_error_lower": {
+  "full_path": "mhd_linear.vacuum_toroidal_field.r0_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.vacuum_toroidal_field.r0_error_upper": {
+  "full_path": "mhd_linear.vacuum_toroidal_field.r0_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "mhd_linear.vacuum_toroidal_field.b0_error_upper": {
+  "full_path": "mhd_linear.vacuum_toroidal_field.b0_error_upper",
+  "coordinates": [
+   "mhd_linear.time"
+  ],
+  "description": "Upper error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma",
+  "coordinates": [],
+  "description": "Radial grid within plasma (for quantities below toroidal_mode/plasma)",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate3_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate3_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate3\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:]": {
+  "full_path": "mhd_linear.time_slice[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Core plasma radial profiles for various time slices {dynamic}",
+  "data_type": ""
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate1_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.b_field_perturbed.coordinate1_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid"
+  ],
+  "description": "Upper error for \"coordinate1\" {dynamic} [as parent]",
+  "data_type": "FLT_2D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.psi": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.psi",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Poloidal magnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid_type.index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.poloidal_grid_type.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate1_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate1_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate1\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate2_error_index": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.b_field_perturbed.coordinate2_error_index",
+  "coordinates": [
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.grid.rho_tor_norm",
+   "mhd_linear.time_slice[:].toroidal_mode[:].vaccuum.poloidal_grid"
+  ],
+  "description": "Index in the error_description list for \"coordinate2\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_resistive_error_upper": {
+  "full_path": "mhd_linear.time_slice[:].toroidal_mode[:].plasma.tau_resistive_error_upper",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"tau_resistive\" {dynamic} [s]",
+  "data_type": "FLT_1D"
+ },
+ "mhd_linear.time_slice[:].grid_plasma.rho_tor_error_lower": {
+  "full_path": "mhd_linear.time_slice[:].grid_plasma.rho_tor_error_lower",
+  "coordinates": [
+   "mhd_linear.time_slice[:].grid_plasma.rho_tor_norm"
+  ],
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ }
+}
