@@ -1,0 +1,5 @@
+---
+- name: "[installing conda]"
+  include_role:
+    name: makkus.install-conda
+  when: "not conda_binary_path"
