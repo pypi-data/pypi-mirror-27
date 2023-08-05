@@ -1,0 +1,43 @@
+Metadata-Version: 2.0
+Name: imapautofiler
+Version: 1.7.0
+Summary: Automatically file IMAP messages
+Home-page: https://github.com/dhellmann/imapautofiler
+Author: Doug Hellmann
+Author-email: doug@doughellmann.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Communications :: Email
+Requires-Dist: PyYAML (>=3.11)
+Requires-Dist: imapclient (<2.0.0,>=1.0.1)
+Requires-Dist: keyring (>=10.0.0)
+Provides-Extra: docs
+Requires-Dist: Sphinx; extra == 'docs'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+Requires-Dist: pytest; extra == 'test'
+Requires-Dist: pytest-cov; extra == 'test'
+Requires-Dist: testtools; extra == 'test'
+Requires-Dist: fixtures; extra == 'test'
+Requires-Dist: flake8; extra == 'test'
+
+===============
+ imapautofiler
+===============
+
+imapautofiler is a tool for managing messages on an IMAP server based
+on rules for matching properties such as the recipient or header
+content.
+
+* Github: https://github.com/dhellmann/imapautofiler
+* Documentation: http://imapautofiler.readthedocs.io/
+
+
+
