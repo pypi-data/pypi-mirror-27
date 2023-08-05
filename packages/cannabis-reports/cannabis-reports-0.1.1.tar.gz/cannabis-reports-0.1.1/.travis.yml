@@ -1,0 +1,38 @@
+addons:
+  apt:
+    packages:
+    - expect-dev
+language: python
+python:
+- '2.7'
+- '3.4'
+- '3.5'
+- '3.6'
+- '3.7-dev'
+env:
+  global:
+  - PROJECT="Cannabis Reports"
+  - INTERSPHINX="requests=http://docs.python-requests.org/en/latest, properties=https://propertiespy.readthedocs.io/en/latest"
+  matrix:
+  - TESTS="1"
+  - DOCS="1"
+  - LINT="1"
+install:
+- git clone --depth=1 https://github.com/LasLabs/python-quality-tools.git ${HOME}/python-quality-tools
+- export PATH=${HOME}/python-quality-tools/travis:${PATH}
+- travis_install
+script:
+- travis_run
+after_success:
+- travis_after_success
+deploy:
+  provider: pypi
+  user: laslabs
+  password:
+    secure: u45JOJrCYLXhUEacnNVSC+wdhYV/+nFUN1UdcCjBfupoL4FXCaHvpdkLqZeKk8Q6QO0fRfI6gJXHAABGDPhKkGgOqgWbWKZivfkHtGBkvzVFlWkXSjc9sQe7o6/mkE2rc14eXkr5ViTi9DAlaSbnN6qAydmLTcRZrH+az75pBObU1UXiONHA3LAViEnXcaKNRnsPcGnaSxLCi0WMmVFuAMvKfR46VhfZbJk1DcpDyO4JyKw6pr0P69aUtms5NT0phbg852hELFOXTL8r/Ufw5wF36SrE9/W43B0PNW+WXS7gxDC5z2rG2HkEUF3J3SJYQ9foFZ7d90KTD3kG2/oGltBIFYhXgch/Jo3cLbpTCAcqgH9VtuOvM6M6vWiYTtTiUhJ3xoh5xG+NU7h7liKzBUFV+WvcEQ2uT4AfdZR0Bba2ExkOYcA2dgLv33ofZllXrpDGl9gspcRXbsqkxCcCWYfVRnOh7o5L0Heyi0fFg/i7N7CHDCKr0P1OVTUP4DnsqJC9Jb7K851i32xTiTBYs2uGrFvuExdN2WD1Ah2WDeoUER5tvHDe7oIEiHEHkmXh3QjBprVYY1pyztbQMOL6lXMR6BB7oBSKq7KmKPCBVNuajeK2yTfXnJv3WkQLazznCU5pLyRREaiJnB7sV1zS8sp89yzri3TE8zqIf6k2TDg=
+  skip_cleanup: false
+  skip_upload_docs: true
+  on:
+    repo: LasLabs/python-cannabis-reports
+    branch: master
+    tags: true
