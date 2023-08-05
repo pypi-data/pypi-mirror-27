@@ -1,0 +1,38 @@
+Metadata-Version: 2.0
+Name: geosoft
+Version: 9.3.0
+Summary: Geosoft GX API module for Python
+Home-page: https://github.com/GeosoftInc/gxpy
+Author: Geosoft Inc.
+Author-email: support@geosoft.com
+License: BSD
+Platform: win_amd64
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Topic :: Scientific/Engineering
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: xmltodict
+
+# Geosoft GX for Python Repository
+
+This is the repository for Geosoft GX Developer support for Python development. Refer to the documentation for more information.
+
+[GX Developer documentation](https://geosoftgxdev.atlassian.net/wiki/display/GD/Python+in+GX+Developer)
+
+[Python Tutorial for Geosoft GX Developer](https://geosoftgxdev.atlassian.net/wiki/spaces/GXD93/pages/103153671/Python+Tutorial+for+Geosoft+GX+Developer)
+
+[Python Packages](https://github.com/GeosoftInc/gxpy/wiki)
+
+Also see the [Geosoft Inc. organization on Github](https://github.com/GeosoftInc) for the other programming language specific repos.
+
+License
+-------
+
+Any source code found here are released under the [BSD 2-clause license](https://github.com/GeosoftInc/gxpy/blob/master/LICENSE). Core functionality exposed by the GX API may have additional license implications. For more information consult the [License page in the GX Developer Wiki](https://geosoftgxdev.atlassian.net/wiki/spaces/GD/pages/2359406/License)
+
+
