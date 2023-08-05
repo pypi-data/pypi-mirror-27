@@ -1,0 +1,33 @@
+ip_ver
+------
+{{ ip_ver|to_yaml }}
+
+cfg
+---
+{{ cfg.cfg|to_yaml }}
+
+bogons
+------
+{{ bogons.cfg|to_yaml }}
+
+clients
+-------
+{{ clients.cfg|to_yaml }}
+
+asns
+----
+{{ asns.cfg|to_yaml }}
+
+irrdb_info
+----------
+{{ irrdb_info|parse_irrdb_info|sort(attribute="id")|to_yaml }}
+
+rpki_roas_as_route_objects
+--------------------------
+{{ rpki_roas_as_route_objects|parse_rpki_roas_as_route_objects|to_yaml }}
+
+roas
+----
+{% if roas %}
+{{ roas.cfg|to_yaml }}
+{% endif %}
