@@ -1,0 +1,134 @@
+QWidget
+{
+background-color: white;
+font-family: Arial;
+font-size: 14px;
+}
+
+QPushButton,QComboBox::drop-down, QSpinBox::up-button, QSpinBox::down-button
+{
+background-color: #0080FF;
+border-width: 1px;
+border-color: #0080FF;
+border-style: solid;
+border-radius: 16px;
+padding: 8px;
+font: 16px;
+color: white;
+}
+
+QGroupBox
+{
+background-color: white;
+border-width: 1px;
+border-color: #E0E0E0;
+border-style: solid;
+border-radius: 8px;
+margin-top: 24px;
+font: 16px;
+}
+
+QGroupBox::title
+{
+subcontrol-origin: margin;
+subcontrol-position: top left;
+color: #4080C0;
+left: 0px;
+font-style: oblique;
+}
+
+QLabel
+{
+background-color: white;
+font: 16px;
+color: #404080;
+margin-bottom: 8px;
+padding: 4px;
+}
+
+QCheckBox
+{
+font: 14px;
+color: #0080FF;
+font-style: oblique;
+}
+
+QLineEdit,QRadioButton,QCheckBox,QSpinBox,QComboBox
+{
+font: 14px;
+color: #0080FF;
+border-style: solid;
+border-width: 0px;
+border-color: #F0FFFF;
+border-radius: 4px;
+background: #F0FFFF;
+padding: 4px;
+font-style: oblique;
+}
+
+QLineEdit:disabled,QRadioButton:disabled,QCheckBox:disabled,QSpinBox:disabled,QComboBox:disabled
+{
+background: #D0D0D0;
+color: #808080
+}
+
+QLineEdit,QSpinBox,QComboBox
+{
+border-color: #0000FF;
+}
+
+QComboBox::drop-down, QSpinBox::up-button, QSpinBox::down-button
+{
+border-radius: 4px;
+subcontrol-origin: margin;
+subcontrol-position: top right;
+top: 2px;
+right: 2px;
+width: 6px;
+height: 6px;
+}
+
+QSpinBox
+{
+padding-right: 32px;
+}
+
+QComboBox::drop-down
+{
+image: url(:/images/resource_files/dropdown_white.svg);
+}
+
+QSpinBox::up-button 
+{
+image: url(:/images/resource_files/add_white.svg)
+}
+
+QCheckBox::unchecked, QRadioButton::unchecked
+{
+background-color: white;
+border-color: white;
+}
+
+QCheckBox::indicator:checked,QRadioButton::indicator:checked {
+width: 16px;
+height: 16px;
+image: url(:/images/resource_files/check_yes.svg)
+}
+
+QCheckBox::indicator:unchecked, QRadioButton::indicator:unchecked {
+width: 16px;
+height: 16px;
+image: url(:/images/resource_files/check_no.svg)
+}
+
+QCheckBox::indicator:indeterminate, QRadioButton::indicator:indeterminate {
+width: 16px;
+height: 16px;
+image: url(:/images/resource_files/check_indeterminate.svg)
+}
+
+QSpinBox::down-button
+{
+right: 27px;
+image: url(:/images/resource_files/remove_white.svg);
+}
