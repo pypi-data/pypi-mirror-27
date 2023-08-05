@@ -1,0 +1,8 @@
+<source>
+  @type syslog
+  port {{ fluentd_syslog_port }}
+  bind {{ api_interface_address }}
+  tag syslog
+  priority_key log_level
+  format /^(?<Payload>.*)$/
+</source>
