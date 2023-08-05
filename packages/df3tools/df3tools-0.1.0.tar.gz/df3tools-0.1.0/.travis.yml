@@ -1,0 +1,28 @@
+# Use containers instead of full VMs for faster startup.
+sudo: false
+
+env:
+  global:
+    - CODECLIMATE_REPO_TOKEN=d68291eeca6e05e737c08e8f1bac6ebf708a169b204ca34d26e2267fdc7f5164
+
+language: python
+python:
+    - "2.7"
+    - "3.3"
+    - "3.4"
+    - "3.5"
+    - "3.6"
+    - "pypy"
+    - "pypy3"
+
+install:
+    - pip install --quiet tox
+    - pip install --quiet coverage==4.3
+    - pip install --quiet codeclimate-test-reporter
+    - pip install --quiet Pillow
+
+script:
+    - if [[ $TRAVIS_PYTHON_VERSION == 2* || $TRAVIS_PYTHON_VERSION == 3* ]]; then tox -e $(echo $TRAVIS_PYTHON_VERSION | sed 's/\.//g;s/^/py/'); fi
+    - if [[ $TRAVIS_PYTHON_VERSION == 'pypy'* ]]; then tox -e $TRAVIS_PYTHON_VERSION; fi
+    - coverage run --source df3tools -m unittest discover -s tests
+    - codeclimate-test-reporter --file .coverage

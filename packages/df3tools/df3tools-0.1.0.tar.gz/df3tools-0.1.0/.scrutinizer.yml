@@ -1,0 +1,6 @@
+build:
+    dependencies:
+        before:
+            - pip install --quiet tox
+            - pip install --quiet coverage==4.3
+            - pip install --quiet Pillow
