@@ -1,0 +1,40 @@
+{% load i18n macro pagination %}
+
+{% macro "header" %}
+    <div class="pagination{% if preload %} pagination_preload{% endif %}">
+        {% if total > 1 %}
+            <strong>{% trans "Pages:" %}</strong>
+            {% if prev_page %}
+                <a class="prev" href="{{ request.path }}{% paginated_querystring page_variable prev_page %}">&laquo; {% trans "previous" %}</a>
+            {% endif %}
+
+            {% for page_index in page_range %}
+                {% if not page_index %}
+                    ...
+                {% else %}
+                    {% if page_index == current %}
+                        <span class="current">{{ page_index }}</span>
+                    {% else %}
+                        <a {% if page_index == prev_page %}class="prev"{% elif page_index == next_page %}class="next"{% endif %} href="{{ request.path }}{% paginated_querystring page_variable page_index %}">{{ page_index }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {% if next_page %}
+                <a class="next" href="{{ request.path }}{% paginated_querystring page_variable next_page %}">{% trans "next" %} &raquo;</a>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+<div class="paginate-container paginate-digg-style">
+    {% callmacro "header" %}
+        {{ body|safe }}
+    {% callmacro "header" %}
+</div>
+
+<div class="paginate-loading" style="display: none; ">
+    <div style="margin: 50px;">
+        {% include "django-ajax/_loader.html" %}
+    </div>
+</div>
