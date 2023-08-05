@@ -1,0 +1,68 @@
+Metadata-Version: 2.0
+Name: gunicorn-color
+Version: 0.1.0
+Summary: Dead simple access logger for Gunicorn with termcolor support.
+Home-page: https://github.com/swistakm/gunicorn-color-logger
+Author: Michał Jaworski
+Author-email: swistakm@gmail.com
+License: BSD
+Keywords: gunicorn,color,logger,logging
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI
+Requires-Dist: termcolor
+
+|Build Status| |Coverage Status|
+
+Gunicorn color logger
+=====================
+
+Dead simple access logger for Gunicorn with termcolor support.
+
+.. figure:: https://raw.githubusercontent.com/swistakm/gunicorn-color-logger/master/docs/screenshot.png
+   :alt: screenshot
+
+   screenshot
+
+Usage
+-----
+
+Simply add ``gunicorn_color`` to your requirements file or install it
+manually:
+
+::
+
+    pip install gunicorn_color
+
+Now you can use ``gunicorn_color.Logger`` as your gunicorn’s logger
+class e.g.:
+
+::
+
+    gunicorn --access-logfile=- --logger-class=gunicorn_color.Logger wsgi::app [::]:8000
+
+In order to disable colors **set** ``ANSI_COLORS_DISABLED`` environment
+variable:
+
+::
+
+    ANSI_COLORS_DISABLED= gunicorn --access-logfile=- --logger-class=gunicorn_color.Logger wsgi::app [::]:8000
+
+.. |Build Status| image:: https://travis-ci.org/swistakm/gunicorn-color-logger.svg?branch=master
+   :target: https://travis-ci.org/swistakm/gunicorn-color-logger
+.. |Coverage Status| image:: https://coveralls.io/repos/github/swistakm/gunicorn-color-logger/badge.svg?branch=master
+   :target: https://coveralls.io/github/swistakm/gunicorn-color-logger?branch=master
+
+
