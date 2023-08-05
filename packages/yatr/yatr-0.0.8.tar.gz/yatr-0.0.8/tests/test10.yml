@@ -1,0 +1,26 @@
+macros:
+  x: 5
+
+tasks:
+  x: "echo {{x}} {{_1|default(3)}} {{ARGS[0]|default(10)}}"
+
+  y:
+    command: x
+    args:
+      - 1
+      - 2
+    kwargs:
+      x: 7
+
+  z:
+    command: x
+    args:
+      - 6
+    for:
+      var: x
+      in: [1, 2, 3]
+
+  w:
+    - x
+    - "y"
+    - x
