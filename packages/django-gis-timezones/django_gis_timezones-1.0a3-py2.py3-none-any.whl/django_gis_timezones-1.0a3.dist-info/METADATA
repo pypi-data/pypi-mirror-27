@@ -1,0 +1,68 @@
+Metadata-Version: 2.0
+Name: django-gis-timezones
+Version: 1.0a3
+Summary: Simple model to save timezones using geo-spatial data
+Home-page: https://github.com/marcosgabarda/django-gis-timezones
+Author: Marcos Gabarda
+Author-email: hey@marcosgabarda.com
+License: MIT License
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Utilities
+Requires-Dist: django-belt (>=1.0a1)
+Requires-Dist: pyshp (>=1.2.3)
+Requires-Dist: requests (>=2.0)
+
+====================
+Django Gis Timezones
+====================
+
+Simple model to save timezones using geo-spatial data.
+
+Quick start
+-----------
+
+**1** Install using pip::
+
+    $ pip install django-gis-timezones
+
+**2** Add "gum" to your INSTALLED_APPS settings like this::
+
+    INSTALLED_APPS += ('gis_timezones',)
+
+**3** Download and create models::
+
+    $ ./manage.py import_timezones
+
+
+
+
+
+History
+-------
+
+1.0a3 (2017-12-04)
++++++++++++++++++
+
+* Support for Django 2.0
+
+1.0a2 (2017-3-09)
++++++++++++++++++
+
+* Fixed order in Point.
+
+1.0a1 (2017-2-20)
++++++++++++++++++
+
+* First release on PyPI.
+
+
