@@ -1,0 +1,13 @@
+numpy
+scipy >= 0.18
+numba
+
+[dev]
+check-manifest
+
+[doc]
+sphinx
+nbsphinx
+
+[test]
+pytest
