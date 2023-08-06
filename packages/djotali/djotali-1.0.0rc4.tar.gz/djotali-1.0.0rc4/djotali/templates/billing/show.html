@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+{% load contacts_extras campaigns_extras %}
+
+{% block title %}
+    Facturation - {{ request.organization }}
+{% endblock %}
+
+{% block content %}
+    <div class="row bg-title">
+        <!-- .page title -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <h4 class="page-title">
+                Facturation : {{ request.organization }}
+            </h4>
+        </div>
+        <!-- /.page title -->
+        <!-- .breadcrumb -->
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <ol class="breadcrumb">
+                <li class="active">Facturation</li>
+            </ol>
+        </div>
+        <!-- /.breadcrumb -->
+    </div>
+    <!-- .row -->
+    <div class="row">
+        <div class="col-md-12">
+
+            {% include 'core/partials/flash_messages.html' %}
+            <div class="white-box">
+                <div class="row row-in">
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6"><i class="ti-wallet"></i>
+                                <h5 class="text-muted vb">Cr&eacute;dit</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-success">{{ credit.credit }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6  b-0">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6"><i class="ti-receipt"></i>
+                                <h5 class="text-muted vb">Cr&eacute;dit en cours d'utilisation</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-warning">{{ allocated_credit }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="white-box">
+                <div class="row pricing-plan">
+                    {% for product in products %}
+                        <div class="col-md-{% widthratio 12 products|length 1 %} col-xs-12 col-sm-6 no-padding">
+                            <div class="pricing-box">
+                                <div class="pricing-body">
+                                    <div class="pricing-header">
+                                        <h4 class="text-center">{{ product.name }}</h4>
+                                        <h2 class="text-center">
+                                            {{ product.formatted_net_price }}
+                                            <span style="margin-left: 5px">{{ product.price.currency }}</span>
+                                        </h2>
+                                    </div>
+                                    <div class="price-table-content">
+                                        {% for description_line in product.description_lines %}
+                                            <div class="price-row" style="padding-left: 1.5em; padding-right: 1.5em">{{ description_line }}</div>
+                                        {% endfor %}
+                                        <div class="price-row">
+                                            <button class="btn btn-success waves-effect waves-light m-t-20">Sign up</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {#                    <div class="col-md-3 col-xs-12 col-sm-6 no-padding">#}
+                    {#                        <div class="pricing-box featured-plan">#}
+                    {#                            <div class="pricing-body">#}
+                    {#                                <div class="pricing-header">#}
+                    {#                                    <h4 class="price-lable text-white bg-warning"> Popular</h4>#}
+                    {#                                    <h4 class="text-center">Platinum</h4>#}
+                    {#                                    <h2 class="text-center"><span class="price-sign">$</span>45</h2>#}
+                    {#                                    <p class="uppercase">per month</p>#}
+                    {#                                </div>#}
+                    {#                                <div class="price-table-content">#}
+                    {#                                    <div class="price-row"><i class="icon-user"></i> 10 Members</div>#}
+                    {#                                    <div class="price-row"><i class="icon-screen-smartphone"></i> Single Device</div>#}
+                    {#                                    <div class="price-row"><i class="icon-drawar"></i> 120GB Storage</div>#}
+                    {#                                    <div class="price-row"><i class="icon-refresh"></i> Monthly Backups</div>#}
+                    {#                                    <div class="price-row">#}
+                    {#                                        <button class="btn btn-lg btn-info waves-effect waves-light m-t-20">Sign up</button>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
