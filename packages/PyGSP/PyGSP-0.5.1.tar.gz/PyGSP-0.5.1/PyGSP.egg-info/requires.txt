@@ -1,0 +1,36 @@
+numpy
+scipy
+
+[alldeps]
+scikit-image
+pyunlocbox
+matplotlib
+pyqtgraph
+PyOpenGL
+
+[alldeps:python_version < "3.5"]
+PySide
+
+[alldeps:python_version == "2.*"]
+pyflann
+
+[alldeps:python_version == "3.*"]
+pyflann3
+
+[alldeps:python_version >= "3.5"]
+PyQt5
+
+[doc]
+sphinx
+numpydoc
+sphinxcontrib-bibtex
+sphinx-rtd-theme
+
+[pkg]
+wheel
+twine
+
+[test]
+flake8
+coverage
+coveralls
