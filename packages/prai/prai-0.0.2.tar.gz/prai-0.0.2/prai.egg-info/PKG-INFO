@@ -1,0 +1,56 @@
+Metadata-Version: 1.1
+Name: prai
+Version: 0.0.2
+Summary: Raiblocks Python RPC client
+Home-page: https://github.com/jxub/prai
+Author: Jakub Janarek
+Author-email: jjanarek@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        prai 🙏
+        ===========
+        Raiblocks Python RPC client
+        
+        Install
+        -------
+        A somewhat stable version from pypi:
+        
+        .. code-block:: bash
+        
+            $ pip install prai
+        
+        Or the most recent master version from Github:
+        
+        .. code-block:: bash
+        
+            $ git clone https://github.com/jxub/prai
+        
+        Some notes
+        ----------
+        Prai is a work in progress, so expect some rough edges and stay tuned for updates 🙈.
+        
+        Roadmap
+        -------
+        - Finish basic API.
+        - Add some higher-level features, for example a simple e-commerce payment API.
+        - Add more validation and tests (ughhh).
+        - A simple tutorial in this very README.
+        🍻 
+        
+        
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Development Status :: 3 - Alpha
