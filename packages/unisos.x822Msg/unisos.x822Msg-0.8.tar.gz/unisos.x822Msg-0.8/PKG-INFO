@@ -1,0 +1,51 @@
+Metadata-Version: 1.1
+Name: unisos.x822Msg
+Version: 0.8
+Summary: x822Msg library implements X822-MSP (Mail Submission Pipeline) through which Mail User Agents (MUA) communicate submission methods and DSNs to mail sending agents (MSA) through header lines.
+Home-page: http://www.by-star.net/PLPC/180047
+Author: Mohsen Banan
+Author-email: libre@mohsen.1.banan.byname.net
+License: AGPL
+Download-URL: http://www.by-star.net/PLPC/180047
+Description: ===============
+        x822Msg Library
+        ===============
+        
+        .. contents::
+           :depth: 3
+        ..
+        
+        x822Msg library implements X822-MSP (Mail Submission Pipeline) through
+        which Mail User Agents (MUA) communicate submission methods and DSNs to
+        mail sending agents (MSA) through header lines.
+        
+        BxMsg is part of MARME (Multi-Account Resident Mail Exchanger)
+        http://www.by-star.net/PLPC/180051
+        
+        Support
+        =======
+        
+        For support, criticism, comments and questions; please contact the
+        author/maintainer `Mohsen Banan <http://mohsen.1.banan.byname.net>`__
+        at: http://mohsen.1.banan.byname.net/contact
+        
+        Documentation
+        =============
+        
+        See MARME documentation at: http://www.by-star.net/PLPC/180051
+        
+        Example Usage
+        =============
+        
+        ::
+        
+            from  unisos.x822Msg import outMsg
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
