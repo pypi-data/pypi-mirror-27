@@ -1,0 +1,55 @@
+Metadata-Version: 2.0
+Name: lulebocli
+Version: 0.1.3
+Summary: CLI tool to interact with the Lulebo API
+Home-page: https://github.com/ashlaban/lulebo-api
+Author: Kim Albertsson
+Author-email: kim@ash.nu
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Keywords: lulebo api cli
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Topic :: Home Automation
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: keyring
+Requires-Dist: requests
+
+Simple tool to interact with the Lulebo API.
+
+Usage
+-----
+
+To create a user with the service use:
+
+::
+
+    lulebo signup
+
+After a user has been created, verify that you can log in with:
+
+::
+
+    lulebo url heater-start --username your_name
+
+Finally, you can start the car heater with the following command.
+
+::
+
+    lulebo heater start --username your_name
+
+Alternately, you can generate a link, for e.g. bookmarking, that allows
+you to start the car heater without loggin in.
+
+::
+
+    lulebo url heater-start --username your_name
+
+
