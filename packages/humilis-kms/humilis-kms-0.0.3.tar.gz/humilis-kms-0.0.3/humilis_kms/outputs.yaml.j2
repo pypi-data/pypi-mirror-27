@@ -1,0 +1,17 @@
+---
+outputs:
+    KeyId:
+        Description: The physical ID of the KMS key
+        Value: {Ref: KmsKey}
+
+    KeyArn:
+        Description: The ARN of the KMS Key
+        Value:
+            "Fn::GetAtt":
+                - KmsKey
+                - Arn
+
+    KmsKeyAlias:
+        Description: The key alias
+        Value: 
+            "{{__context.environment.name}}-{{__context.layer.name}}-{{__context.stage}}"
