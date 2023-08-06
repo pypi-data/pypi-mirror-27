@@ -1,0 +1,36 @@
+Metadata-Version: 1.1
+Name: number2words
+Version: 0.1.3
+Summary: Number2Words converts numbers to words according to Indian Numbering System.
+Home-page: UNKNOWN
+Author: hchockarprasad
+Author-email: hchockarprasad@gmail.com
+License: MIT License
+Description: ===========
+        Number2Words
+        ===========
+        
+        Number2Words converts numbers to words according to Indian Numbering System
+        
+        Quick start
+        -----------
+        
+        1. Add Number2Words to your python 3 virtual environment::
+        
+            pip install number2words
+        
+        2. Import Number2Words in your module::
+        
+            from number2words import Number2Words
+        
+        3. Usage::
+        
+            number2words = Number2Words(<your-number>)
+        
+            print(number2words.convert())
+        
+        
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
