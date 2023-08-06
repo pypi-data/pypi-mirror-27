@@ -1,0 +1,9 @@
+django-localflavor
+markdown
+django>=1.11
+
+[:python_version < "3.4"]
+enum34
+
+[factories]
+factory-boy
