@@ -1,0 +1,5 @@
+[sqlalchemy.dialects]
+druid = druiddb.druid_sqlalchemy:DruidHTTPDialect
+druid.http = druiddb.druid_sqlalchemy:DruidHTTPDialect
+druid.https = druiddb.druid_sqlalchemy:DruidHTTPSDialect
+
