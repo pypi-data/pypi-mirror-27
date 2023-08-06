@@ -1,0 +1,46 @@
+Metadata-Version: 2.0
+Name: tune-reporting
+Version: 2.5.6
+Summary: TUNE Reporting API client library.
+Home-page: https://github.com/TuneLab/tune-reporting-python
+Author: TUNE Inc., TuneLab
+Author-email: jefft@tune.com
+License: MIT License
+Download-URL: https://github.com/TuneLab/tune-reporting-python/archive/v2.5.6.tar.gz
+Description-Content-Type: UNKNOWN
+Keywords: tune,reporting,tmc,api
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: logging-mv-integrations (>=0.4.4)
+Requires-Dist: pprintpp (>=0.3.0)
+Requires-Dist: pyhttpstatus-utils (>=0.1.3)
+Requires-Dist: pytest-cov (>=2.5.1)
+Requires-Dist: pytest-mock (>=1.6.3)
+Requires-Dist: pytest (>=3.3.0)
+Requires-Dist: python-dateutil (>=2.6.0)
+Requires-Dist: pytz-convert (>=0.0.4)
+Requires-Dist: requests-mv-integrations (>=0.6.1)
+Requires-Dist: requests (>=2.18.4)
+Requires-Dist: safe-cast (>=0.1.6)
+Requires-Dist: ujson (==1.35)
+Requires-Dist: wheel (>=0.30.0)
+
+.. -*- mode: rst -*-
+
+tune-reporting-python
+---------------------
+
+TUNE Reporting API client library.
+
+
