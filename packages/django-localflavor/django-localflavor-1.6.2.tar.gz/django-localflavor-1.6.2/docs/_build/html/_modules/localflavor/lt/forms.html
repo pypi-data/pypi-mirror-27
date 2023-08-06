@@ -1,0 +1,330 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>localflavor.lt.forms &#8212; django-localflavor 1.6.1 documentation</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.6.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">django-localflavor 1.6.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for localflavor.lt.forms</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span>
+
+<span class="kn">from</span> <span class="nn">django.core.validators</span> <span class="k">import</span> <span class="n">EMPTY_VALUES</span>
+<span class="kn">from</span> <span class="nn">django.forms</span> <span class="k">import</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">django.forms.fields</span> <span class="k">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">RegexField</span><span class="p">,</span> <span class="n">Select</span>
+<span class="kn">from</span> <span class="nn">django.utils.six</span> <span class="k">import</span> <span class="n">text_type</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="k">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+
+<span class="kn">from</span> <span class="nn">localflavor.compat</span> <span class="k">import</span> <span class="n">EmptyValueCompatMixin</span>
+<span class="kn">from</span> <span class="nn">localflavor.deprecation</span> <span class="k">import</span> <span class="n">DeprecatedPhoneNumberFormFieldMixin</span>
+
+<span class="kn">from</span> <span class="nn">.lt_choices</span> <span class="k">import</span> <span class="n">COUNTY_CHOICES</span><span class="p">,</span> <span class="n">MUNICIPALITY_CHOICES</span>
+
+<span class="n">postalcode</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(LT\s?-\s?)?(?P&lt;code&gt;\d</span><span class="si">{5}</span><span class="s1">)$&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="LTCountySelect"><a class="viewcode-back" href="../../../localflavor/lt.html#localflavor.lt.forms.LTCountySelect">[docs]</a><span class="k">class</span> <span class="nc">LTCountySelect</span><span class="p">(</span><span class="n">Select</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A select field with the Lithuanian counties as choices&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LTCountySelect</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">COUNTY_CHOICES</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LTMunicipalitySelect"><a class="viewcode-back" href="../../../localflavor/lt.html#localflavor.lt.forms.LTMunicipalitySelect">[docs]</a><span class="k">class</span> <span class="nc">LTMunicipalitySelect</span><span class="p">(</span><span class="n">Select</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A select field with the Lithuanian municipalities as choices&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LTMunicipalitySelect</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span>
+                                                   <span class="n">choices</span><span class="o">=</span><span class="n">MUNICIPALITY_CHOICES</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LTIDCodeField"><a class="viewcode-back" href="../../../localflavor/lt.html#localflavor.lt.forms.LTIDCodeField">[docs]</a><span class="k">class</span> <span class="nc">LTIDCodeField</span><span class="p">(</span><span class="n">EmptyValueCompatMixin</span><span class="p">,</span> <span class="n">RegexField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A form field that validates as Lithuanian ID Code.</span>
+
+<span class="sd">    Checks:</span>
+<span class="sd">        * Made of exactly 11 decimal numbers.</span>
+<span class="sd">        * Checksum is correct.</span>
+<span class="sd">        * ID contains valid date.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">default_error_messages</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;invalid&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;ID Code consists of exactly 11 decimal digits.&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;checksum&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Wrong ID Code checksum.&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;ID Code contains invalid date.&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LTIDCodeField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\d</span><span class="si">{11}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LTIDCodeField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty_values</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty_value</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_date</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_messages</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_checksum</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_messages</span><span class="p">[</span><span class="s1">&#39;checksum&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">valid_checksum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">first_sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">second_sum</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">first_sum</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">second_sum</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">%</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">k</span> <span class="o">=</span> <span class="n">first_sum</span> <span class="o">%</span> <span class="mi">11</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">second_sum</span> <span class="o">%</span> <span class="mi">11</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">10</span> <span class="k">else</span> <span class="n">k</span>
+
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">else</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="LTIDCodeField.valid_date"><a class="viewcode-back" href="../../../localflavor/lt.html#localflavor.lt.forms.LTIDCodeField.valid_date">[docs]</a>    <span class="k">def</span> <span class="nf">valid_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if date in ID code is valid.</span>
+
+<span class="sd">        We won&#39;t check for dates in future as it would become too restrictive.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="mi">1900</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span> <span class="mi">1900</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+                    <span class="s1">&#39;6&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">}[</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+            <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">]))</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span></div></div>
+
+
+<div class="viewcode-block" id="LTPostalCodeField"><a class="viewcode-back" href="../../../localflavor/lt.html#localflavor.lt.forms.LTPostalCodeField">[docs]</a><span class="k">class</span> <span class="nc">LTPostalCodeField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A form field that validates and normalizes Lithanuan postal codes.</span>
+
+<span class="sd">    Lithuanian postal codes in following forms accepted:</span>
+<span class="sd">        * XXXXX</span>
+<span class="sd">        * LT-XXXXX</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">default_error_messages</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;invalid&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Enter a postal code in the format XXXXX or LT-XXXXX.&#39;</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">LTPostalCodeField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">EMPTY_VALUES</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">postalcode</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_messages</span><span class="p">[</span><span class="s1">&#39;invalid&#39;</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="s1">&#39;LT-&#39;</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LTPhoneField"><a class="viewcode-back" href="../../../localflavor/lt.html#localflavor.lt.forms.LTPhoneField">[docs]</a><span class="k">class</span> <span class="nc">LTPhoneField</span><span class="p">(</span><span class="n">Field</span><span class="p">,</span> <span class="n">DeprecatedPhoneNumberFormFieldMixin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Form field that validates as Lithuanian phone number.</span>
+
+<span class="sd">    You can accept any permutation of following phone numbers:</span>
+
+<span class="sd">        * Emergency (01, 02, 03, 04, 112)</span>
+<span class="sd">        * Mobile (370 600 00 000)</span>
+<span class="sd">        * Landline</span>
+<span class="sd">        * Service numbers</span>
+
+<span class="sd">    If you accept landline numbers, you can opt in to accepting local landline</span>
+<span class="sd">    numbers too. Local landline numbers are numbers without area code.</span>
+
+<span class="sd">    This field does not accept multiple numbers (as separated by /).</span>
+
+<span class="sd">    The field tries its best to convert the number into one you can call to</span>
+<span class="sd">    internationally. Currently emergency and most of landline_local numbers are</span>
+<span class="sd">    not converted.</span>
+
+<span class="sd">    .. versionadded:: 1.1</span>
+
+<span class="sd">    .. deprecated:: 1.6</span>
+<span class="sd">        Use the django-phonenumber-field_ library instead.</span>
+
+<span class="sd">    .. _django-phonenumber-field: https://github.com/stefanfoulis/django-phonenumber-field</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Order dependent (shorter codes cannot go before longer ones)</span>
+    <span class="n">_area_codes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">text_type</span><span class="p">,</span>
+                            <span class="p">[</span><span class="mi">425</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="mi">381</span><span class="p">,</span> <span class="mi">319</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">313</span><span class="p">,</span> <span class="mi">528</span><span class="p">,</span> <span class="mi">386</span><span class="p">,</span> <span class="mi">349</span><span class="p">,</span> <span class="mi">426</span><span class="p">,</span> <span class="mi">447</span><span class="p">,</span> <span class="mi">346</span><span class="p">,</span> <span class="mi">427</span><span class="p">,</span> <span class="mi">347</span><span class="p">,</span>
+                             <span class="mi">445</span><span class="p">,</span> <span class="mi">459</span><span class="p">,</span> <span class="mi">318</span><span class="p">,</span> <span class="mi">343</span><span class="p">,</span> <span class="mi">443</span><span class="p">,</span> <span class="mi">383</span><span class="p">,</span> <span class="mi">469</span><span class="p">,</span> <span class="mi">421</span><span class="p">,</span> <span class="mi">460</span><span class="p">,</span> <span class="mi">451</span><span class="p">,</span> <span class="mi">448</span><span class="p">,</span> <span class="mi">319</span><span class="p">,</span> <span class="mi">422</span><span class="p">,</span> <span class="mi">428</span><span class="p">,</span>
+                             <span class="mi">458</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">380</span><span class="p">,</span> <span class="mi">449</span><span class="p">,</span> <span class="mi">441</span><span class="p">,</span> <span class="mi">382</span><span class="p">,</span> <span class="mi">387</span><span class="p">,</span> <span class="mi">446</span><span class="p">,</span> <span class="mi">444</span><span class="p">,</span> <span class="mi">528</span><span class="p">,</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">389</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span>
+                             <span class="mi">342</span><span class="p">,</span> <span class="mi">386</span><span class="p">,</span> <span class="mi">385</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+    <span class="n">_stripable</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\+()~ ]&#39;</span><span class="p">)</span>
+    <span class="n">default_error_messages</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;non-digit&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Phone number can only contain digits&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;no-parse&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Could not validate the phone number&#39;</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mobile</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">landline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">emergency</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">landline_local</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">service</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_checks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">mobile</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_checks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean_mobile</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">landline</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_checks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean_landline</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">service</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_checks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean_service</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">emergency</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_checks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean_emergency</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">landline_local</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">landline</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot accept local landline numbers if &quot;</span> <span class="o">+</span>
+                             <span class="s2">&quot;regular landline numbers are not accepted&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">landline_local</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_checks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean_landline_local</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">LTPhoneField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">LTPhoneField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">EMPTY_VALUES</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stripable</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_messages</span><span class="p">[</span><span class="s1">&#39;non-digit&#39;</span><span class="p">],</span>
+                                  <span class="n">code</span><span class="o">=</span><span class="s1">&#39;invalid&#39;</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">fn</span><span class="p">:</span> <span class="n">fn</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_checks</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">:</span>
+            <span class="c1"># TODO: More than one result means code error, check for it.</span>
+            <span class="k">return</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_messages</span><span class="p">[</span><span class="s1">&#39;no-parse&#39;</span><span class="p">],</span> <span class="n">code</span><span class="o">=</span><span class="s1">&#39;invalid&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_clean_emergency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;112&quot;</span><span class="p">,</span> <span class="s2">&quot;01&quot;</span><span class="p">,</span> <span class="s2">&quot;02&quot;</span><span class="p">,</span> <span class="s2">&quot;03&quot;</span><span class="p">,</span> <span class="s2">&quot;04&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">_clean_mobile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">and</span> <span class="n">value</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;86&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;+370&quot;</span> <span class="o">+</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">11</span> <span class="ow">and</span> <span class="n">value</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;3706&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;+&quot;</span> <span class="o">+</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">_clean_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">and</span> <span class="n">value</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;8800&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;+370&quot;</span> <span class="o">+</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">11</span> <span class="ow">and</span> <span class="n">value</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;370800&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;+&quot;</span> <span class="o">+</span> <span class="n">value</span>
+
+    <span class="c1"># Now these two are most complex ones.</span>
+    <span class="k">def</span> <span class="nf">_clean_landline_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="c1"># The landline phone number must always be 8 digits in length when the</span>
+        <span class="c1"># number contains an area code. Now area codes can range from 1 to 3</span>
+        <span class="c1"># digits (ex. 5 for Vilnius district or 389 for Utena). For local</span>
+        <span class="c1"># (in district) calling you don&#39;t have to include the area code,</span>
+        <span class="c1"># therefore local numbers can range from 5 to 7 digits in length.</span>
+        <span class="c1">#</span>
+        <span class="c1"># We cannot prepend area code or country code to those numbers because</span>
+        <span class="c1"># there&#39;s more than one possibility in almost all cases with a</span>
+        <span class="c1"># single exception being Vilnius district. As Vilnius is the only</span>
+        <span class="c1"># district that has a single digit code, we can safely assume the</span>
+        <span class="c1"># number is for Vilnius.</span>
+
+        <span class="k">if</span> <span class="mi">5</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;+3705&quot;</span> <span class="o">+</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">_clean_landline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">and</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;8&quot;</span><span class="p">:</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">11</span> <span class="ow">and</span> <span class="n">value</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;370&quot;</span><span class="p">:</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">number</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_area_codes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;+370&quot;</span> <span class="o">+</span> <span class="n">number</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">django-localflavor 1.6.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>
