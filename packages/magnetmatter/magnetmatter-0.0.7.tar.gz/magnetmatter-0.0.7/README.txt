@@ -1,0 +1,33 @@
+# magnetmatter
+Material Science Research Data Visualization.
+FullProf .prf, .out and .pcr files are read and informations on 
+	refined parameters, 
+	phases, 
+	appearent crystalline sizes
+	phase fractions 
+are hardcoded next to the graph of "Yobs", "Ycal" and "Yobs-Ycal".
+
+
+#### HOW TO INSTALL:
+This installation assumes that you have a plain python (version > 3.0) installed that can be accessed through the command prompt.
+
+	pip install magnetmatter
+
+#### HOW TO USE:
+once it has been installed along with dependencies ("numpy", "pandas", "matplotlib", it may take a while, be patient), type python/python3 in command prompt. then type
+    
+    import magnetmatter as mogens
+
+this may also take a while to load everything. Type now
+
+    path = r"C:\give\a\valid\path\to\folder\with\datasubfolders\"
+    mogens.plot_prf(path)
+
+The default printed size is 8 cm (two plots fit into a docx document). other options include:
+
+	mogens.plot_prf(path, printsize = "two_in_docx") # 8  cm wide
+	mogens.plot_prf(path, printsize = "one_in_docx") # 15 cm wide
+	mogens.plot_prf(path, printsize = "two_in_ppt")  # 17 cm wide
+	mogens.plot_prf(path, printsize = "one_in_ppt")  # 32 cm wide
+	
+The files are saved as .png in the "path" folder.
