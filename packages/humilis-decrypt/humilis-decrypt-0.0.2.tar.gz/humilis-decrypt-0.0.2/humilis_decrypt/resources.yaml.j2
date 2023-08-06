@@ -1,0 +1,124 @@
+---
+resources:
+    KmsKeyAlias:
+      Type: "AWS::KMS::Alias"
+      Properties:
+        AliasName: "alias/{{__context.environment.name}}-{{__context.layer.name}}-{{__context.stage}}"
+        TargetKeyId:
+            Ref: KmsKey
+    KmsKey:
+      Type: "AWS::KMS::Key"
+      Properties:
+        Description: "{{description or __context.environment.description}}"
+        KeyPolicy:
+          Version: "2012-10-17"
+          Id: "key-default-1"
+          Statement:
+            -
+              Sid: "Allow administration of the key"
+              Effect: "Allow"
+              Principal: 
+                AWS:
+                    {% for admin in key_admins %}
+                    {% if admin.arn %}
+                    - {{admin.arn}}
+                    {% else %}
+                    - "Fn::Join":
+                        ["", ["arn:aws:iam::", {Ref: "AWS::AccountId"}, ":", "{{admin.name or admin}}"]]
+                    {% endif %}
+                    {% endfor %}
+              Action: 
+                - "kms:Create*"
+                - "kms:Describe*"
+                - "kms:Enable*"
+                - "kms:List*"
+                - "kms:Put*"
+                - "kms:Update*"
+                - "kms:Revoke*"
+                - "kms:Disable*"
+                - "kms:Get*"
+                - "kms:Delete*"
+                - "kms:ScheduleKeyDeletion"
+                - "kms:CancelKeyDeletion"
+              Resource: "*"
+            - 
+              Sid: "Allow use of the key"
+              Effect: "Allow"
+              Principal:
+                AWS:
+                    - Fn::Sub: ${LambdaExecutionRole.Arn}
+                    {% for user in key_users %}
+                    {% if user.arn %}
+                    - {{user.arn}}
+                    {% else %}
+                    - "Fn::Join":
+                        ["", ["arn:aws:iam::", {Ref: "AWS::AccountId"}, ":", "{{user.name or user}}"]]
+                    {% endif %}
+                    {% endfor %}
+              Action: 
+                - "kms:Encrypt"
+                - "kms:Decrypt"
+                - "kms:ReEncrypt*"
+                - "kms:GenerateDataKey*"
+                - "kms:DescribeKey"
+              Resource: "*"
+    # The lambda function
+    LambdaFunction:
+      Type: "AWS::Lambda::Function"
+      Properties:
+        FunctionName: "{{__context.environment.name}}-{{__context.layer.name}}-{{__context.stage}}"
+        Code:
+          S3Bucket: "{{lambda_function.s3bucket}}"
+          S3Key: "{{lambda_function.s3key}}"
+        Runtime: "python2.7"
+        MemorySize: "{{memory_size}}"
+        Description: "{{description or __context.environment.name}}"
+        Timeout: "{{timeout}}"
+        Handler: "handler.handler"
+        Role:
+          "Fn::GetAtt":
+              - LambdaExecutionRole
+              - Arn
+        Environment:
+          Variables:
+              "HUMILIS_ENVIRONMENT": "{{__context.environment.name}}"
+              "HUMILIS_STAGE": "{{__context.stage}}"
+              "HUMILIS_LAYER": "{{__context.layer.name}}"
+              {% for varname, varvalue in variables.items() %}
+              "{{varname}}": "{{varvalue}}"
+              {% endfor %}
+    LambdaExecutionRole:
+        Type: "AWS::IAM::Role"
+        Properties:
+          Path: {{ "/{}/".format(__context.environment.name) }}
+          AssumeRolePolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: "Allow"
+              Principal: {"Service": "lambda.amazonaws.com"}
+              Action: [ "sts:AssumeRole" ]
+          Policies:
+          - PolicyName: "KMSDecrypterPolicy"
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+              - Sid: "Decrypt"
+                Effect: "Allow"
+                Action:
+                - "kms:Decrypt"
+                - "kms:DescribeKey"
+                Resource: "*"
+              - Sid: "ManageLambdaLogs"
+                Effect: "Allow"
+                Action:
+                - "logs:CreateLogGroup"
+                - "logs:CreateLogStream"
+                - "logs:PutLogEvents"
+                - "logs:PutRetentionPolicy"
+                - "logs:PutSubscriptionFilter"
+                - "logs:DescribeLogStreams"
+                - "logs:DeleteLogGroup"
+                - "logs:DeleteRetentionPolicy"
+                - "logs:DeleteSubscriptionFilter"
+                Resource: 
+                  Fn::Sub: "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/{{__context.environment.name}}-{{__context.layer.name}}-{{__context.stage}}:*:*"

@@ -1,0 +1,55 @@
+---
+meta:
+    description:
+        Custom CF resource to decrypt secrets in CF template with KMS
+
+    parameters:
+        description:
+            description: A description for the layer
+            value:
+
+        key_id:
+            description: The ID of the KMS key
+            value:
+
+        key_admins:
+            description: List of key administrators, e.g. user/german
+            value: []
+
+        key_users:
+            description: List of key users, e.g. user/arnaud
+            value: []
+
+        variables:
+            description:
+                Environment variables to pass to the Lambda
+            value: {}
+
+        lambda_dependencies:
+            description:
+                A list of Python dependencies for the Lambda function
+            value: []
+
+        memory_size:
+            description:
+                The amount of memory in MB allocated to the Lambda function
+            value:
+                128
+
+        timeout:
+            description:
+                The timeout execution time, in seconds
+            value:
+                300
+
+        lambda_function:
+            # We use a low priority so that the references above that retrieve
+            # the names of the relevant streams are resolved before this
+            # reference.
+            priority: 100
+            value:
+                ref:
+                    parser: lambda
+                    parameters:
+                        path: lambda_function
+                        dependencies: {{lambda_dependencies or []}}

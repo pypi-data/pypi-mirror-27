@@ -1,0 +1,26 @@
+---
+outputs:
+    LambdaFunctionArn:
+        Description: The ARN of the Lambda processor for the raw events pipeline
+        Value:
+            "Fn::GetAtt":
+                - LambdaFunction
+                - Arn
+
+    LambdaExecutionRoleArn:
+        Description: The ARN of the Lambda execution role
+        Value:
+            "Fn::GetAtt":
+                - LambdaExecutionRole
+                - Arn
+
+    KeyId:
+        Description: The physical ID of the KMS key
+        Value: {Ref: KmsKey}
+
+    KeyArn:
+        Description: The ARN of the KMS Key
+        Value:
+            "Fn::GetAtt":
+                - KmsKey
+                - Arn
