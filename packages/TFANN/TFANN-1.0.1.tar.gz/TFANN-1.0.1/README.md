@@ -1,0 +1,1 @@
+A neural network module containing implementations of MLP, and CNN networks in TensorFlow. The classes in the module adhere to the scikit-learn fit, predict, score interface.
