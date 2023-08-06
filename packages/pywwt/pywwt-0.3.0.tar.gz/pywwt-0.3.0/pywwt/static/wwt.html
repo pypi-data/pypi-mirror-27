@@ -1,0 +1,79 @@
+
+<!DOCTYPE html >
+<html style="height: 100%; padding: 0px; margin: 0px; background-color: #000000;">
+  <head>
+
+    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="chrome=1, IE=edge"/>
+
+    <title>Simple WWT Web Client</title>
+    <script src="https://WorldWideTelescope.github.io/pywwt/wwtsdk.aspx"></script>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="wwt_json_api.js"></script>
+
+    <!-- The following is to avoid scrollbars -->
+    <style type="text/css">
+      body {overflow:hidden;}
+    </style>
+
+    <script>
+        $(document).ready(sizeContent);
+        $(window).resize(sizeContent);
+        function sizeContent() {
+        var newHeight = ($("html").height()) + "px";
+        var newWidth = ($("html").width()) + "px";
+        $("#WWTCanvas").css("height", newHeight);
+        $("#WWTCanvas").css("width", newWidth);
+        }
+    </script>
+
+    <script>
+
+      var wwt;
+      var wwt_ready = 0;
+
+      function initialize() {
+        // The true enables WebGL
+        wwt = wwtlib.WWTControl.initControlParam("WWTCanvas", true);
+        wwt.add_ready(wwtReady);
+      }
+
+      function wwtReady() {
+
+        // We set the initial values of the settings here, because there is no
+        // easy way to find out when the Jupyter widget has finished loading
+        // and WWT is ready from there.
+
+        wwt.loadImageCollection('http://www.worldwidetelescope.org/wwtweb/catalog.aspx?W=surveys')
+        wwt.setForegroundImageByName('Digitized Sky Survey (Color)')
+        wwt.setBackgroundImageByName('Hydrogen Alpha Full Sky Map')
+        wwt.setForegroundOpacity(80.0)
+
+        wwt.settings.set_showConstellationBoundries(false)
+        wwt.settings.set_constellationBoundryColor('#0000ff')
+        wwt.settings.set_constellationFigureColor('#ff0000')
+        wwt.settings.set_showConstellationFigures(false)
+        wwt.settings.set_showConstellationSelection(false)
+        wwt.settings.set_constellationSelectionColor('#ffff00')
+        wwt.settings.set_showCrosshairs(true)
+        wwt.settings.set_showEcliptic(false)
+        wwt.settings.set_showGrid(false)
+        wwt.settings.set_galacticMode(false)
+        wwt.settings.set_localHorizonMode(false)
+        wwt.settings.set_locationAltitude(0.0)
+        wwt.settings.set_locationLat(47.633)
+        wwt.settings.set_locationLng(122.133333)
+
+        wwt_ready = 1;
+
+      }
+
+    </script>
+
+  </head>
+
+  <body onload="initialize()" style="margin: 0; padding: 0">
+      <div id="WWTCanvas" style="width: 100; height: 100; border-style: none; border-width: 0px;"></div>
+    </div>
+
+  </body>
+</html>
