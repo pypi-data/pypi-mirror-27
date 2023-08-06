@@ -1,0 +1,43 @@
+#!python
+import requests, json, argparse
+from datetime import date, datetime
+from TVcrawler import Endpoints, open_magnet
+
+parser = argparse.ArgumentParser(description="TV Show Crawler - Download Latest Episode")
+parser.add_argument("show_title", type=str, help="Title of the show")
+args = parser.parse_args()
+
+endpoints = Endpoints()
+headers = {"Accept": "application/json"}
+
+r = requests.get(endpoints.search(args.show_title), headers=headers)
+show_id = str(r.json()["serials"][0]["id"])
+r = requests.get(endpoints.show(show_id), headers=headers)
+episodes = r.json()["serial"]["ep"]
+
+today = date.today()
+last_season = max([episode["season"] for episode in episodes])
+last_episode = max([episode["ep"] for episode in episodes if episode["season"] == last_season and episode["airdate"] and datetime.strptime(episode["airdate"], "%Y-%m-%d").date() < date.fromordinal(today.toordinal() - 1)])
+
+for episode in episodes:
+    if episode["season"] == last_season and episode["ep"] == last_episode:
+        print("{} : S{}E{} {} #{}".format(episode["serial"]["title"], episode["season"], episode["ep"], episode["title"], episode["id"]))
+        break
+
+r = requests.get(endpoints.episode(episode["id"]), headers=headers)
+torrents = r.json()["ep"]["torrent"]
+for torrent in torrents:
+    magnet = torrent["value"]
+    print(torrent["title"])
+    answer = input("Do you want to download the torrent, cancel or find another? (y/n/a): ")
+    if answer == "y":
+        open_magnet(magnet)
+        break
+    elif answer == "n":
+        print("You canceled the download.")
+        break
+    elif answer == "a":
+        print("Finding another torrent...")
+        continue
+    else:
+        break
