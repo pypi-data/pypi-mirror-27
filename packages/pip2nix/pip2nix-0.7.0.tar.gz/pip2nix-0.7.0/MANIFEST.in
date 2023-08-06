@@ -1,0 +1,6 @@
+recursive-include docs *.rst *.py
+include *.rst
+
+# Nix files for building
+include *.nix
+include *.ini
