@@ -1,0 +1,35 @@
+Metadata-Version: 1.1
+Name: django-better-migrations
+Version: 0.0.1
+Summary: Improves Django migration system.
+Home-page: http://github.com/botify-labs/django-better-migrations
+Author: Jean-Baptiste Barth
+Author-email: jeanbaptiste.barth@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Django Better Migrations
+        ========================
+        
+        [![Build Status](https://travis-ci.org/jbbarth/django-better-migrations.svg?branch=master)](https://travis-ci.org/jbbarth/django-better-migrations)
+        
+        This project aims at providing improvements to Django's default migration system.
+        The default migration system is over-engineered, sometimes dangerous, and not
+        team work friendly.
+        
+        
+        More informations in the documentation, see "docs/" folder.
+        
+        
+        License
+        -------
+        
+        MIT, see `LICENSE` file.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Topic :: Database
