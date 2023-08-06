@@ -1,0 +1,13 @@
+[console_scripts]
+mw-qserve = qs.qserve:main
+mw-render = mwlib.apps.render:main
+mw-serve-ctl = mwlib.apps.serve:serve_ctl
+mw-version = mwlib._version:main
+mw-zip = mwlib.apps.buildzip:main
+nserve = mwlib.main_trampoline:nserve_main
+nslave = mwlib.main_trampoline:nslave_main
+postman = mwlib.main_trampoline:postman_main
+
+[mwlib.writers]
+odf = mwlib.odfwriter:writer
+
