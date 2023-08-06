@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fabulist.lorem_ipsum &mdash; fabulist 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="fabulist 1.2.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> fabulist
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_guide.html">Reference Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fabulist</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>fabulist.lorem_ipsum</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for fabulist.lorem_ipsum</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">(c) 2017 Martin Wendt; see https://github.com/mar10/fabulist</span>
+
+<span class="sd">Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="k">def</span> <span class="nf">_get_count</span><span class="p">(</span><span class="n">int_or_range</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return random int for given range (or int if a simple value was passed).&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">int_or_range</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">int_or_range</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">*</span><span class="n">int_or_range</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># LoremDialect</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">LoremDialect</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate lorem ipsum text.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dialect (str): &quot;lorem&quot;, &quot;pulp&quot;, ...</span>
+<span class="sd">        path (str):</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        $(TYPE:MODS:#foo|bar:=NUM)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialect</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialect</span> <span class="o">=</span> <span class="n">dialect</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">paragraphs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">words</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># self.load()</span>
+
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">sentence_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">paragraphs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">para</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">):</span>
+            <span class="c1"># Skip empty lines and comments (i.e. starting with &#39;#&#39;)</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="c1"># Paragraphs are delimited by a &#39;---&#39; line</span>
+            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">paragraphs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">para</span><span class="p">)</span>
+                <span class="n">para</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">para</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="c1"># Also collect a flat list of all sentences</span>
+                <span class="k">if</span> <span class="n">line</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sentence_set</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="n">sentence_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="c1"># Also collect a set of words</span>
+                    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+                        <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\t\n</span><span class="s2">,.!?;:-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">word</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">para</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">paragraphs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">para</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">_generate_sentences</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate a sequence of sentences.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            entropy (int, optional):</span>
+<span class="sd">                0: generate sentences in original order</span>
+<span class="sd">                1: pick random paragraph, then use sentences in order</span>
+<span class="sd">                2: pick random sentence</span>
+<span class="sd">                Default: 0.</span>
+<span class="sd">            keep_first (bool, optional):</span>
+<span class="sd">                Always return the words of the first sentence as first result.</span>
+<span class="sd">                Default: False.</span>
+<span class="sd">            count (int):</span>
+<span class="sd">                Number of words.</span>
+<span class="sd">        Yields:</span>
+<span class="sd">            str: Random word.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">paragraphs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+        <span class="n">pool_idx</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pool_remain</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">sentence_pool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span>
+
+        <span class="n">n_sentences</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">count</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">n_sentences</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">entropy</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pool_remain</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Pick random paragraph, then use sentences in order</span>
+                <span class="n">sentence_pool</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">)</span>
+                <span class="n">pool_remain</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence_pool</span><span class="p">)</span>
+                <span class="n">pool_idx</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="n">entropy</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="c1"># Pick random sentence</span>
+                <span class="n">sentence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">sentence_pool</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Generate sentences in original order</span>
+                <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence_pool</span><span class="p">[</span><span class="n">pool_idx</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence_pool</span><span class="p">)]</span>
+
+            <span class="k">if</span> <span class="n">keep_first</span><span class="p">:</span>
+                <span class="n">keep_first</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">if</span> <span class="n">sentence</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="c1"># Start with first sentence</span>
+                    <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">n_sentences</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="n">pool_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">pool_remain</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">n_sentences</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">yield</span> <span class="n">sentence</span>
+        <span class="k">return</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># LoremGenerator</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="LoremGenerator"><a class="viewcode-back" href="../../lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator">[docs]</a><span class="k">class</span> <span class="nc">LoremGenerator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate lorem ipsum text in a given dialect.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        dialect_map (dict(dialect, LoremDialect)):</span>
+<span class="sd">            Holds all available lorem-ipsum dialects</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_folder</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialect_map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_path</span> <span class="o">=</span> <span class="n">data_folder</span>
+        <span class="c1"># Find all available dialects and add to map(dialect =&gt; path)</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_path</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;lorem_&quot;</span><span class="p">):</span>
+                <span class="n">dialect</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">6</span><span class="p">:]</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dialect_map</span><span class="p">[</span><span class="n">dialect</span><span class="p">]</span> <span class="o">=</span> <span class="n">LoremDialect</span><span class="p">(</span><span class="n">dialect</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">_get_lorem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialect</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a LoremDialect instance and load data or raise ValueError.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dialect</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dialect</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dialect_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="n">lorem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialect_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dialect</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">lorem</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Unknown dialect </span><span class="si">{!r}</span><span class="s2"> (expected </span><span class="si">{}</span><span class="s2">)&quot;</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dialect</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dialect_map</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+        <span class="k">if</span> <span class="n">lorem</span><span class="o">.</span><span class="n">paragraphs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lorem</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">lorem</span>
+
+<div class="viewcode-block" id="LoremGenerator.generate_words"><a class="viewcode-back" href="../../lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator.generate_words">[docs]</a>    <span class="k">def</span> <span class="nf">generate_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;ipsum&quot;</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Yield &lt;count&gt; random words.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            count (int, optional):</span>
+<span class="sd">                Number of words. Pass None for infinite.</span>
+<span class="sd">                Default: None.</span>
+<span class="sd">            dialect (str, optional):</span>
+<span class="sd">                For example &quot;ipsum&quot;, &quot;pulp&quot;, &quot;trappatoni&quot;. Pass `None` to pick a random dialect.</span>
+<span class="sd">                Default: &quot;ipsum&quot; (i.e. lorem-ipsum).</span>
+<span class="sd">            entropy (int, optional):</span>
+<span class="sd">                0: iterate words from original text</span>
+<span class="sd">                1: pick a random paragraph, then use it literally</span>
+<span class="sd">                2: pick a random sentence, then use it literally</span>
+<span class="sd">                3: pick random words</span>
+<span class="sd">                Default: 3.</span>
+<span class="sd">            keep_first (bool, optional):</span>
+<span class="sd">                Always return the words of the first sentence as first result.</span>
+<span class="sd">                Default: False.</span>
+<span class="sd">        Yields:</span>
+<span class="sd">            str: Random word.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lorem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lorem</span><span class="p">(</span><span class="n">dialect</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">entropy</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="c1"># Pick random words</span>
+            <span class="k">if</span> <span class="n">keep_first</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+            <span class="k">while</span> <span class="n">count</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">lorem</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Otherwise pop words from sentence sequence</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">lorem</span><span class="o">.</span><span class="n">_generate_sentences</span><span class="p">(</span><span class="n">keep_first</span><span class="o">=</span><span class="n">keep_first</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="n">entropy</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">count</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">count</span><span class="p">:</span>
+                    <span class="k">return</span>
+                <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;.!?:&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">word</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="LoremGenerator.generate_sentences"><a class="viewcode-back" href="../../lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator.generate_sentences">[docs]</a>    <span class="k">def</span> <span class="nf">generate_sentences</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;ipsum&quot;</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">words_per_sentence</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Yield &lt;count&gt; random sentences.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            count (int, optional):</span>
+<span class="sd">                Number of sentences. Pass None for infinite.</span>
+<span class="sd">                Default: None.</span>
+<span class="sd">            dialect (str, optional):</span>
+<span class="sd">                For example &quot;ipsum&quot;, &quot;pulp&quot;, &quot;trappatoni&quot;. Pass `None` to pick a random dialect.</span>
+<span class="sd">                Default: &quot;ipsum&quot; (i.e. lorem-ipsum).</span>
+<span class="sd">            entropy (int, optional):</span>
+<span class="sd">                0: iterate sentences from original text</span>
+<span class="sd">                1: pick a random paragraph, then iterate sentences</span>
+<span class="sd">                2: pick a random sentence</span>
+<span class="sd">                3: mix random words</span>
+<span class="sd">                Default: 2.</span>
+<span class="sd">            keep_first (bool, optional):</span>
+<span class="sd">                Always return the first sentence as first result.</span>
+<span class="sd">                Default: False.</span>
+<span class="sd">            words_per_sentence (int or tuple(min, max), optional):</span>
+<span class="sd">                Number of words per sentence.</span>
+<span class="sd">                This argument is only used for entropy=3.</span>
+<span class="sd">                Default: (3, 15).</span>
+<span class="sd">        Yields:</span>
+<span class="sd">            str: Random sentence.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lorem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lorem</span><span class="p">(</span><span class="n">dialect</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">entropy</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="c1"># Generate from random words</span>
+            <span class="k">if</span> <span class="n">keep_first</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">lorem</span><span class="o">.</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">words_per_sentence</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;entropy=3 requires words_per_sentence arg: int or a tuple(min, max)&quot;</span><span class="p">)</span>
+
+            <span class="k">while</span> <span class="n">count</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+                <span class="n">n_words</span> <span class="o">=</span> <span class="n">_get_count</span><span class="p">(</span><span class="n">words_per_sentence</span><span class="p">)</span>
+                <span class="n">sentence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">lorem</span><span class="o">.</span><span class="n">words</span><span class="p">,</span> <span class="n">n_words</span><span class="p">)</span>
+                <span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span>
+                <span class="k">yield</span> <span class="n">sentence</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+        <span class="c1"># entropy = 0..2: use sentences from original text</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lorem</span><span class="o">.</span><span class="n">_generate_sentences</span><span class="p">(</span><span class="n">keep_first</span><span class="o">=</span><span class="n">keep_first</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="n">entropy</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">count</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">yield</span> <span class="n">s</span>
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="LoremGenerator.generate_paragraphs"><a class="viewcode-back" href="../../lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator.generate_paragraphs">[docs]</a>    <span class="k">def</span> <span class="nf">generate_paragraphs</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;ipsum&quot;</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">words_per_sentence</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">sentences_per_para</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Generate a number of paragraphs, made up from random sentences.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            count (int, optional):</span>
+<span class="sd">                Number of paragraphs. Pass None for infinite.</span>
+<span class="sd">                Default: None.</span>
+<span class="sd">            dialect (str, optional):</span>
+<span class="sd">                For example &quot;ipsum&quot;, &quot;pulp&quot;, &quot;trappatoni&quot;. Pass `None` to pick a random dialect.</span>
+<span class="sd">                Default: &quot;ipsum&quot;.</span>
+<span class="sd">            keep_first (bool, optional):</span>
+<span class="sd">                Always return the first sentence as first result. Default: False.</span>
+<span class="sd">            entropy (int):</span>
+<span class="sd">                0: iterate original text</span>
+<span class="sd">                1: pick a random paragraph, then use it literally</span>
+<span class="sd">                2: mix a random sentences</span>
+<span class="sd">                3: mix random words</span>
+<span class="sd">                Default: 2.</span>
+<span class="sd">            words_per_sentence (int or tuple(min, max), optional):</span>
+<span class="sd">                Number of words per sentence.</span>
+<span class="sd">                This argument is only used for entropy=3.</span>
+<span class="sd">                Default: (3, 15).</span>
+<span class="sd">            sentences_per_para (int or tuple(min, max), optional):</span>
+<span class="sd">                Number of sentences per paragraph.</span>
+<span class="sd">                Default: (2, 6).</span>
+<span class="sd">        Yields:</span>
+<span class="sd">            str: Random paragraph.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">count</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+            <span class="n">n_sents</span> <span class="o">=</span> <span class="n">_get_count</span><span class="p">(</span><span class="n">sentences_per_para</span><span class="p">)</span>
+            <span class="n">para</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_sentences</span><span class="p">(</span>
+                <span class="n">n_sents</span><span class="p">,</span> <span class="n">dialect</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">keep_first</span><span class="p">,</span> <span class="n">words_per_sentence</span><span class="p">)</span>
+            <span class="n">para</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">para</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">para</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">keep_first</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">data_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+    <span class="n">lorem</span> <span class="o">=</span> <span class="n">LoremGenerator</span><span class="p">(</span><span class="n">data_folder</span><span class="p">)</span>
+    <span class="c1"># print(list(lorem.generate_words(10)))</span>
+    <span class="c1"># print(list(lorem.generate_words(10, entropy=0)))</span>
+    <span class="c1"># print(list(lorem.generate_words(10, entropy=1)))</span>
+    <span class="c1"># print(list(lorem.generate_words(10, entropy=2)))</span>
+    <span class="c1"># print(list(lorem.generate_words(10, entropy=3)))</span>
+    <span class="c1">#</span>
+    <span class="c1"># print(list(lorem.generate_sentences(3, entropy=3, words_per_sentence=(5,8))))</span>
+    <span class="c1"># print(list(lorem.generate_sentences(3, entropy=3, words_per_sentence=5)))</span>
+    <span class="c1"># print(list(lorem.generate_sentences(3, entropy=3, words_per_sentence=5, keep_first=True)))</span>
+    <span class="c1">#</span>
+    <span class="c1"># print(list(lorem.generate_sentences(3, dialect=&quot;pulp&quot;, entropy=2, keep_first=True)))</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1"># print()</span>
+    <span class="c1"># print(&quot;\n&quot;.join(lorem.generate_paragraphs(3)))</span>
+    <span class="c1"># print()</span>
+    <span class="c1"># print(&quot;\n&quot;.join(lorem.generate_paragraphs(3, dialect=&quot;pulp&quot;, entropy=2, keep_first=True)))</span>
+    <span class="c1"># print()</span>
+    <span class="c1"># print(&quot;\n&quot;.join(lorem.generate_paragraphs(3, dialect=&quot;pulp&quot;, entropy=3, keep_first=True)))</span>
+
+    <span class="n">exit</span><span class="p">()</span>
+    <span class="c1"># s = lorem.generate(None, 20)</span>
+    <span class="c1"># gen = lorem.dialect_map[&quot;pulp&quot;].generate_sentences(3)</span>
+    <span class="n">gen</span> <span class="o">=</span> <span class="n">lorem</span><span class="o">.</span><span class="n">generate_sentences</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="c1"># s = lorem.generate(&quot;pulp&quot;, 20)</span>
+    <span class="c1"># print(s)</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Martin Wendt.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

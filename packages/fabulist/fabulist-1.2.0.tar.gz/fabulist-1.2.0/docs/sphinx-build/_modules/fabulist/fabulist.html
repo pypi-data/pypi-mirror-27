@@ -1,0 +1,1216 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fabulist.fabulist &mdash; fabulist 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="fabulist 1.2.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> fabulist
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_guide.html">Reference Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fabulist</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>fabulist.fabulist</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for fabulist.fabulist</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">(c) 2017 Martin Wendt; see https://github.com/mar10/fabulist</span>
+<span class="sd">Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">.lorem_ipsum</span> <span class="k">import</span> <span class="n">LoremGenerator</span>
+
+
+<span class="c1"># Find `$(TYPE)` or `$(TYPE:MODIFIERS)`</span>
+<span class="n">rex_macro</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\$\(\s*(@?\w+)\s*(\:[^\)]*)?\s*\)&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># Helper Functions</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">def</span> <span class="nf">get_default_word_form</span><span class="p">(</span><span class="n">word_form</span><span class="p">,</span> <span class="n">lemma</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use standard rules to compute a word form for a given lemma.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        word_form (str): Requested wor form, e.g. &#39;plural&#39;, &#39;ing&#39;, ...</span>
+<span class="sd">        lemma (str): The word&#39;s base form.</span>
+<span class="sd">        entry (dict): Word&#39;s data as stored in `_WordList.data`.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The computed word form.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">lemma</span>
+    <span class="k">if</span> <span class="n">word_form</span> <span class="o">==</span> <span class="s2">&quot;comp&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="p">):</span>
+            <span class="n">word</span> <span class="o">+=</span> <span class="s2">&quot;r&quot;</span>
+        <span class="k">elif</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">):</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;ier&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">+=</span> <span class="s2">&quot;er&quot;</span>
+
+    <span class="k">elif</span> <span class="n">word_form</span> <span class="o">==</span> <span class="s2">&quot;plural&quot;</span><span class="p">:</span>
+        <span class="c1"># https://www.grammarly.com/blog/plural-nouns/</span>
+        <span class="c1"># TODO: this is not complete and misses lots of cases.</span>
+        <span class="c1"># Should be part of the word-list instead</span>
+        <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">):</span>
+            <span class="n">word</span> <span class="o">+=</span> <span class="s2">&quot;es&quot;</span>
+        <span class="k">elif</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">):</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;ies&quot;</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;ss&quot;</span><span class="p">,</span> <span class="s2">&quot;sh&quot;</span><span class="p">,</span> <span class="s2">&quot;ch&quot;</span><span class="p">):</span>
+            <span class="n">word</span> <span class="o">+=</span> <span class="s2">&quot;es&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">+=</span> <span class="s2">&quot;s&quot;</span>
+
+    <span class="k">elif</span> <span class="n">word_form</span> <span class="o">==</span> <span class="s2">&quot;super&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="p">):</span>
+            <span class="n">word</span> <span class="o">+=</span> <span class="s2">&quot;st&quot;</span>
+        <span class="k">elif</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">):</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;iest&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">+=</span> <span class="s2">&quot;est&quot;</span>
+
+    <span class="k">elif</span> <span class="n">word_form</span> <span class="o">==</span> <span class="s2">&quot;pp&quot;</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">&quot;past&quot;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">word_form</span> <span class="o">==</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">lemma</span> <span class="o">+</span> <span class="s2">&quot;s&quot;</span>
+    <span class="k">elif</span> <span class="n">word_form</span> <span class="o">==</span> <span class="s2">&quot;ing&quot;</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">lemma</span> <span class="o">+</span> <span class="s2">&quot;ing&quot;</span>
+
+    <span class="k">return</span> <span class="n">word</span>
+
+
+<span class="k">class</span> <span class="nc">ApplyTemplateError</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when a template could not be resolved.&quot;&quot;&quot;</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># Macro</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">Macro</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parses and represents a macro with type, modifiers, tags, and references.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        Internal use only.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        word_type (str): The word type, e.g. &quot;adj&quot;, &quot;noun&quot;, ...</span>
+<span class="sd">        modifiers (str): E.g. &quot;plural:an&quot;</span>
+<span class="sd">        word_list (_WordList): The associated :class:`_WordList` instance,</span>
+<span class="sd">            e.g. `AdvList` for word_type `adj`.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        $(TYPE:MODS:#foo|bar:=NUM)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_type</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">,</span> <span class="n">word_list</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">word_type</span> <span class="o">=</span> <span class="n">word_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1">#: lowercase word type (&#39;adv&#39;, &#39;adj&#39;, ...)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">word_form</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modifiers</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var_name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref_lemma</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_caps</span> <span class="o">=</span> <span class="n">word_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+
+        <span class="n">has_tags</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">modifiers</span><span class="p">:</span>
+            <span class="n">modifiers</span> <span class="o">=</span> <span class="n">modifiers</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+                    <span class="c1"># Tag filter</span>
+                    <span class="k">if</span> <span class="n">has_tags</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="s2">&quot;Only one `:#TAGLIST` entry is allowed in macro modifiers.&quot;</span><span class="p">)</span>
+                    <span class="n">has_tags</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">):</span>
+                        <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate tag &#39;</span><span class="si">{}</span><span class="s2">&#39;.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag</span><span class="p">))</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">m</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">):</span>
+                    <span class="c1"># Variable assignment</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">var_name</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="s2">&quot;Only one `:=NUM` assignment entry is allowed in macro modifiers.&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">var_name</span> <span class="o">=</span> <span class="s2">&quot;@</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+                <span class="k">elif</span> <span class="n">m</span><span class="p">:</span>
+                    <span class="c1"># Modifier</span>
+                    <span class="k">if</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modifiers</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate modifier &#39;</span><span class="si">{}</span><span class="s2">&#39;.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">word_list</span><span class="o">.</span><span class="n">form_modifiers</span><span class="p">:</span>
+                        <span class="c1"># Word-form modifier (&#39;plural&#39;, &#39;pp&#39;, &#39;s&#39;, &#39;ing&#39;, ...)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">word_form</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                                <span class="s2">&quot;Only one word-form modifier is allowed &#39;</span><span class="si">{}</span><span class="s2">&#39;.&quot;</span>
+                                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;&#39;, &#39;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word_list</span><span class="o">.</span><span class="n">form_modifiers</span><span class="p">)))</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">word_form</span> <span class="o">=</span> <span class="n">m</span>
+                    <span class="k">elif</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">word_list</span><span class="o">.</span><span class="n">extra_modifiers</span><span class="p">:</span>
+                        <span class="c1"># Additional modifier (&#39;an&#39;, &#39;mr&#39;, ...)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">modifiers</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported modifier: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># empty modifier (`::`)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty modifier: </span><span class="si">{!r}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">modifiers</span><span class="p">))</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">word_type</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">word_form</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">word_form</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">modifiers</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modifiers</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">var_name</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var_name</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">&quot;$(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># _WordList</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="_WordList"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist._WordList">[docs]</a><span class="k">class</span> <span class="nc">_WordList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Common base class for all word lists.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This class is not instantiated directly, but provides common implementations for reading,</span>
+<span class="sd">        writing and processing of word list data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Location of dictionary csv file.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        path (str): Location of dictionary csv file.</span>
+<span class="sd">        data (dict): Maps word lemmas to dicts of word data (i.e. word-forms).</span>
+<span class="sd">        key_list (list): List of all known word lemmas.</span>
+<span class="sd">        tag_map (dict): Maps tag names to sets of word lemmas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">word_type</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;str: Type of word list (e.g. &#39;adj&#39;, &#39;adv&#39;, ...). Set by derived classes.&quot;&quot;&quot;</span>
+    <span class="n">csv_format</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;tuple: Ordered list of CSV file columns (e.g. (&#39;lemma&#39;, &#39;plural&#39;, &#39;tags&#39;)).</span>
+<span class="sd">    Set by derived classes.&quot;&quot;&quot;</span>
+    <span class="n">computable_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">()</span>
+    <span class="sd">&quot;&quot;&quot;frozenset: Set of word forms that can potentially be computed from a lemma</span>
+<span class="sd">    (e.g. {&#39;ing&#39;, &#39;s&#39;, ...}). Set by derived classes.&quot;&quot;&quot;</span>
+    <span class="n">form_modifiers</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;frozenset: Set of supported word form modifiers (e.g. {&#39;plural&#39;}).</span>
+<span class="sd">    Set by derived classes.&quot;&quot;&quot;</span>
+    <span class="n">extra_modifiers</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;frozenset: Set of supported additional modifiers (e.g. {&#39;an&#39;}). Set by derived classes.&quot;&quot;&quot;</span>
+    <span class="n">all_modifiers</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;frozenset: Set of all supported modifiers (word-form and additional).</span>
+<span class="sd">    Set by derived classes.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># { tagname: set(lemma_1, lemma_2, ...) }</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag_map</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+        <span class="c1"># Used to restore comments in save_as():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_comments</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">(len=</span><span class="si">{}</span><span class="s2">, tags:</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key_list</span><span class="p">),</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="nf">_process_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lemma</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Expand empty values (&quot;&quot;) if they are computable. &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">modifier</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">computable_modifiers</span><span class="p">:</span>
+            <span class="c1"># e.g. &quot;super&quot;, &quot;plural&quot;, ...</span>
+            <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">modifier</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">entry</span><span class="p">[</span><span class="n">modifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_default_word_form</span><span class="p">(</span><span class="n">modifier</span><span class="p">,</span> <span class="n">lemma</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_un_process_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lemma</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Squash values to `None` if they are re-computable.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">modifier</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">computable_modifiers</span><span class="p">:</span>
+            <span class="c1"># e.g. &quot;super&quot;, &quot;plural&quot;, ...</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">modifier</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="n">entry</span><span class="p">[</span><span class="n">modifier</span><span class="p">]</span> <span class="o">==</span> <span class="n">get_default_word_form</span><span class="p">(</span><span class="n">modifier</span><span class="p">,</span> <span class="n">lemma</span><span class="p">,</span> <span class="n">entry</span><span class="p">)):</span>
+                <span class="n">entry</span><span class="p">[</span><span class="n">modifier</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_iter_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse a text file and yield entry-dicts.&quot;&quot;&quot;</span>
+        <span class="n">csv_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_format</span>
+
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">):</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">file_comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">entry</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">csv_format</span><span class="p">),</span> <span class="s2">&quot;token count mismatch in </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">csv_format</span><span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span>
+                    <span class="c1"># Convert tags-string into a set</span>
+                    <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+                        <span class="n">tag_set</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+                        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">):</span>
+                            <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                            <span class="n">tag_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">entry</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+                        <span class="n">entry</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                        <span class="n">entry</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">entry</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">yield</span> <span class="n">entry</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">_filter_key_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tags</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return key_list filtered by tags (if any).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tags</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">key_list</span>
+        <span class="n">matching</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag_map</span><span class="p">:</span>
+                <span class="n">matching</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag_map</span><span class="p">[</span><span class="n">tag</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> has no entries for tag &#39;</span><span class="si">{}</span><span class="s2">&#39; (expected </span><span class="si">{}</span><span class="s2">)&quot;</span>
+                    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">matching</span><span class="p">)</span>
+
+<div class="viewcode-block" id="_WordList.get_random_entry"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist._WordList.get_random_entry">[docs]</a>    <span class="k">def</span> <span class="nf">get_random_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">macro</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a random entry dict, according to modifiers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            macro (:class:`Macro`): A parsed template macro.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A random entry from :attr:`key_list`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">macro</span><span class="o">.</span><span class="n">word_type</span> <span class="o">!=</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">macro</span><span class="o">.</span><span class="n">word_type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">word_type</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="n">key_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_key_list</span><span class="p">(</span><span class="n">macro</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">key_list</span><span class="p">)</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">entry</span></div>
+
+<div class="viewcode-block" id="_WordList.apply_macro"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist._WordList.apply_macro">[docs]</a>    <span class="k">def</span> <span class="nf">apply_macro</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">macro</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a word-form for an entry dict, according to macro modifiers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            macro (:class:`Macro`): The parsed macro instance.</span>
+<span class="sd">            entry (dict): Dict of word forms as stored in :attr:`data`.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The requested word form.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># print(&quot;apply_macro&quot;, macro, entry)</span>
+        <span class="k">if</span> <span class="n">macro</span><span class="o">.</span><span class="n">word_type</span> <span class="o">!=</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">macro</span><span class="o">.</span><span class="n">word_type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">word_type</span>
+        <span class="n">word_form</span> <span class="o">=</span> <span class="n">macro</span><span class="o">.</span><span class="n">word_form</span> <span class="ow">or</span> <span class="s2">&quot;lemma&quot;</span>
+        <span class="n">modifiers</span> <span class="o">=</span> <span class="n">macro</span><span class="o">.</span><span class="n">modifiers</span>
+
+        <span class="n">word</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="n">word_form</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="c1"># For example trying to apply the `:plural` modifier on an uncountable noun</span>
+            <span class="k">raise</span> <span class="n">ApplyTemplateError</span><span class="p">(</span><span class="s2">&quot;Could not apply </span><span class="si">{}</span><span class="s2"> on entry </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">macro</span><span class="p">,</span> <span class="n">entry</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="s2">&quot;an&quot;</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">):</span>
+                <span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;an &quot;</span> <span class="o">+</span> <span class="n">word</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;a &quot;</span> <span class="o">+</span> <span class="n">word</span>
+        <span class="k">return</span> <span class="n">word</span></div>
+
+<div class="viewcode-block" id="_WordList.update_data"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist._WordList.update_data">[docs]</a>    <span class="k">def</span> <span class="nf">update_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update internal structures after entries have been added or modified.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="_WordList.add_entry"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist._WordList.add_entry">[docs]</a>    <span class="k">def</span> <span class="nf">add_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add a single entry to the word list.</span>
+
+<span class="sd">        The `entry` argument should have the same keys as the current CSV file format</span>
+<span class="sd">        (see :attr:`csv_format`).</span>
+<span class="sd">        If `entry` values are omitted or `None`, they are passed to :meth:`_process_entry`</span>
+<span class="sd">        in order to compute a default.</span>
+<span class="sd">        If `entry` values are set to `False`, they are considered &#39;not available&#39;. For example</span>
+<span class="sd">        There is no `plural` form of &#39;information&#39;.</span>
+
+<span class="sd">        Callers should also call :meth:`update_data` later, to make sure that :attr:`key_list`</span>
+<span class="sd">        is up-to-date.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            entry (dict): Word data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lemma</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">&quot;lemma&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">lemma</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process_entry</span><span class="p">(</span><span class="n">lemma</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tags</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tag_map</span><span class="p">[</span><span class="n">tag</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lemma</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="_WordList.load"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist._WordList.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load and add list of entries from text file.</span>
+
+<span class="sd">        Normally, we don&#39;t have to call this method explicitly, because entries are loaded</span>
+<span class="sd">        lazily on demand.</span>
+<span class="sd">        It may be useful however to add supplemental word  lists however.</span>
+
+<span class="sd">        This method also calls :meth:`update_data`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str, optional): path to CSV file. Defaults to :attr:`path`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
+
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_data</span><span class="p">()</span></div>
+        <span class="c1"># print(&quot;Loaded {}&quot;.format(self))</span>
+
+<div class="viewcode-block" id="_WordList.save_as"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist._WordList.save_as">[docs]</a>    <span class="k">def</span> <span class="nf">save_as</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write current data to a text file.</span>
+
+<span class="sd">        The resulting CSV file has the format as defined in :attr:`csv_format`.</span>
+<span class="sd">        For better compression, word forms that are computable are stored as empty strings (&#39;&#39;).</span>
+<span class="sd">        Comments from the original file are retained at the top.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): path to CSV file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_data</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fs</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_comments</span><span class="p">:</span>
+                <span class="n">fs</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">lemma</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">):</span>
+                <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">lemma</span><span class="p">]</span>
+                <span class="c1"># Squash values to &quot;&quot; if they are reproducible</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_un_process_entry</span><span class="p">(</span><span class="n">lemma</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_format</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                        <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span>
+
+                    <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="n">fs</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span></div></div>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># AdjList</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">AdjList</span><span class="p">(</span><span class="n">_WordList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implement a collection of adjectives.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Path to CSV source file (loaded on demand or when :meth:`_WordList.load`)</span>
+<span class="sd">            is called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">word_type</span> <span class="o">=</span> <span class="s2">&quot;adj&quot;</span>
+    <span class="n">csv_format</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;lemma&quot;</span><span class="p">,</span> <span class="s2">&quot;comp&quot;</span><span class="p">,</span> <span class="s2">&quot;super&quot;</span><span class="p">,</span> <span class="s2">&quot;antonym&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+    <span class="n">computable_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;comp&quot;</span><span class="p">,</span> <span class="s2">&quot;super&quot;</span><span class="p">))</span>
+    <span class="n">form_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">csv_format</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">((</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">extra_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;an&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">all_modifiers</span> <span class="o">=</span> <span class="n">form_modifiers</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_modifiers</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AdjList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># AdvList</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">AdvList</span><span class="p">(</span><span class="n">_WordList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implement a collection of adverbs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Path to CSV source file (loaded on demand or when :meth:`_WordList.load`)</span>
+<span class="sd">            is called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">word_type</span> <span class="o">=</span> <span class="s2">&quot;adv&quot;</span>
+    <span class="n">csv_format</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;lemma&quot;</span><span class="p">,</span> <span class="s2">&quot;comp&quot;</span><span class="p">,</span> <span class="s2">&quot;super&quot;</span><span class="p">,</span> <span class="s2">&quot;antonym&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+    <span class="n">computable_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;comp&quot;</span><span class="p">,</span> <span class="s2">&quot;super&quot;</span><span class="p">))</span>
+    <span class="n">form_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">csv_format</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">((</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">extra_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;an&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">all_modifiers</span> <span class="o">=</span> <span class="n">form_modifiers</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_modifiers</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AdvList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># FirstnameList</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">FirstnameList</span><span class="p">(</span><span class="n">_WordList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;List of first names, tagged by gender.</span>
+
+<span class="sd">    Internally used by :py:class:`NameList`, not intended to be instantiated directly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">csv_format</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;lemma&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FirstnameList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update internal structures after entries have been added or modified.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FirstnameList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">update_data</span><span class="p">()</span>
+        <span class="c1"># Convert to lists for efficient access</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_list_male</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag_map</span><span class="p">[</span><span class="s2">&quot;m&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_list_female</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag_map</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">])</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># LastnameList</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">LastnameList</span><span class="p">(</span><span class="n">_WordList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;List of last names.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        Internally used by :py:class:`NameList`, not intended to be instantiated directly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">csv_format</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;lemma&quot;</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LastnameList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># NameList</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">NameList</span><span class="p">(</span><span class="n">_WordList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implement a virtual collection of person names.</span>
+
+<span class="sd">    Internally uses :class:`FirstnameList` and :class:`LastnameList` to generate different</span>
+<span class="sd">    variants.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Path to CSV source file (loaded on demand or when :meth:`_WordList.load`)</span>
+<span class="sd">            is called.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        firstname_list (list[FirstnameList]):</span>
+<span class="sd">        lastname_list (list[LastnameList]):</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">word_type</span> <span class="o">=</span> <span class="s2">&quot;name&quot;</span>
+    <span class="n">csv_format</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">computable_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">()</span>
+    <span class="n">form_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">()</span>
+    <span class="n">extra_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span><span class="p">,</span> <span class="s2">&quot;middle&quot;</span><span class="p">,</span> <span class="s2">&quot;mr&quot;</span><span class="p">))</span>
+    <span class="n">all_modifiers</span> <span class="o">=</span> <span class="n">form_modifiers</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_modifiers</span><span class="p">)</span>
+
+    <span class="n">middle_initials</span> <span class="o">=</span> <span class="s2">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>
+    <span class="n">middle_name_probability</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NameList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">firstname_list</span> <span class="o">=</span> <span class="n">FirstnameList</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;data/firstname_list.txt&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lastname_list</span> <span class="o">=</span> <span class="n">LastnameList</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;data/lastname_list.txt&quot;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load and add list of entries from text file.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">firstname_list</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lastname_list</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_random_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">macro</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">firstname_list</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+        <span class="n">tags</span> <span class="o">=</span> <span class="n">macro</span><span class="o">.</span><span class="n">tags</span>
+
+        <span class="c1"># If neither m nor f are given, assume both</span>
+        <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;m&quot;</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;f&quot;</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">):</span>
+            <span class="c1"># If both genders are allowed, we have to randomize here, because the resulting</span>
+            <span class="c1"># firstname may be ambigous</span>
+            <span class="n">is_male</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># The modifier contains either &#39;m&#39; or &#39;f&#39; (not both)</span>
+            <span class="n">is_male</span> <span class="o">=</span> <span class="s2">&quot;m&quot;</span> <span class="ow">in</span> <span class="n">tags</span>
+
+        <span class="k">if</span> <span class="n">is_male</span><span class="p">:</span>
+            <span class="n">first_name_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">firstname_list</span><span class="o">.</span><span class="n">key_list_male</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">first_name_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">firstname_list</span><span class="o">.</span><span class="n">key_list_female</span>
+
+        <span class="c1"># We generate a complete entry from our first- and last-name lists.</span>
+        <span class="c1"># The entry contains all values (even if they are not required by current macro)</span>
+        <span class="c1"># in case we back-reference with other filters later:</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;mr&quot;</span><span class="p">:</span> <span class="s2">&quot;Mr.&quot;</span> <span class="k">if</span> <span class="n">is_male</span> <span class="k">else</span> <span class="s2">&quot;Mrs.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;first&quot;</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">first_name_list</span><span class="p">),</span>
+            <span class="s2">&quot;middle&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last&quot;</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname_list</span><span class="o">.</span><span class="n">key_list</span><span class="p">),</span>
+            <span class="p">}</span>
+        <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">middle_name_probability</span><span class="p">:</span>
+            <span class="n">entry</span><span class="p">[</span><span class="s2">&quot;middle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">middle_initials</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span>
+
+        <span class="k">return</span> <span class="n">entry</span>
+
+    <span class="k">def</span> <span class="nf">apply_macro</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">macro</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+        <span class="c1"># Build a name from the requested modifiers</span>
+        <span class="n">modifiers</span> <span class="o">=</span> <span class="n">macro</span><span class="o">.</span><span class="n">modifiers</span>
+        <span class="c1"># If neither first nor last are given, assume both</span>
+        <span class="n">full_name</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;first&quot;</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;last&quot;</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">)</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="s2">&quot;mr&quot;</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s2">&quot;mr&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">full_name</span> <span class="ow">or</span> <span class="s2">&quot;first&quot;</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s2">&quot;middle&quot;</span> <span class="ow">in</span> <span class="n">modifiers</span> <span class="ow">and</span> <span class="n">entry</span><span class="p">[</span><span class="s2">&quot;middle&quot;</span><span class="p">]:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s2">&quot;middle&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">full_name</span> <span class="ow">or</span> <span class="s2">&quot;last&quot;</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s2">&quot;last&quot;</span><span class="p">])</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># NounList</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">NounList</span><span class="p">(</span><span class="n">_WordList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implement a collection of nouns.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Path to CSV source file (loaded on demand or when :meth:`_WordList.load`)</span>
+<span class="sd">            is called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">word_type</span> <span class="o">=</span> <span class="s2">&quot;noun&quot;</span>
+    <span class="n">csv_format</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;lemma&quot;</span><span class="p">,</span> <span class="s2">&quot;plural&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+    <span class="n">computable_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;plural&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">form_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">csv_format</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">((</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">extra_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;an&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">all_modifiers</span> <span class="o">=</span> <span class="n">form_modifiers</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_modifiers</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NounList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># VerbList</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">VerbList</span><span class="p">(</span><span class="n">_WordList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implement a collection of verbs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Path to CSV source file (loaded on demand or when :meth:`_WordList.load`)</span>
+<span class="sd">            is called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">word_type</span> <span class="o">=</span> <span class="s2">&quot;verb&quot;</span>
+    <span class="n">csv_format</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;lemma&quot;</span><span class="p">,</span> <span class="s2">&quot;past&quot;</span><span class="p">,</span> <span class="s2">&quot;pp&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;ing&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+    <span class="n">computable_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;pp&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;ing&quot;</span><span class="p">))</span>
+    <span class="n">form_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">csv_format</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">((</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">extra_modifiers</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;an&quot;</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">all_modifiers</span> <span class="o">=</span> <span class="n">form_modifiers</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_modifiers</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VerbList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<span class="c1"># Fabulist</span>
+<span class="c1"># -------------------------------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="Fabulist"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist">[docs]</a><span class="k">class</span> <span class="nc">Fabulist</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random string factory.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        list_map (list): Dictionary with one :class:`_WordList` entry per word-type.</span>
+<span class="sd">        lorem (:class:`fabulist.lorem_ipsum.LoremGenerator`):</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+        <span class="n">data_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lorem</span> <span class="o">=</span> <span class="n">LoremGenerator</span><span class="p">(</span><span class="n">data_folder</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list_map</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adj&quot;</span><span class="p">:</span> <span class="n">AdjList</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder</span><span class="p">,</span> <span class="s2">&quot;adj_list.txt&quot;</span><span class="p">)),</span>
+            <span class="s2">&quot;adv&quot;</span><span class="p">:</span> <span class="n">AdvList</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder</span><span class="p">,</span> <span class="s2">&quot;adv_list.txt&quot;</span><span class="p">)),</span>
+            <span class="s2">&quot;noun&quot;</span><span class="p">:</span> <span class="n">NounList</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder</span><span class="p">,</span> <span class="s2">&quot;noun_list.txt&quot;</span><span class="p">)),</span>
+            <span class="s2">&quot;verb&quot;</span><span class="p">:</span> <span class="n">VerbList</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder</span><span class="p">,</span> <span class="s2">&quot;verb_list.txt&quot;</span><span class="p">)),</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">NameList</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
+            <span class="p">}</span>
+
+<div class="viewcode-block" id="Fabulist.load"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load all word lists into memory (lazy loading otherwise).&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">word_list</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">word_list</span><span class="o">.</span><span class="n">load</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_number"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_number">[docs]</a>    <span class="k">def</span> <span class="nf">get_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a string-formatted random number.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            modifiers (str):</span>
+<span class="sd">                Additional modifiers, separated by &#39;:&#39;.</span>
+<span class="sd">                Only one modifier is accepted with a comma separated list of min, max, and</span>
+<span class="sd">                width.</span>
+<span class="sd">                Example: &quot;0,99,2&quot;.</span>
+
+<span class="sd">            context (dict, optional):</span>
+<span class="sd">                Used internally to cache template results for back-references.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A random number matching in the requested range.</span>
+<span class="sd">        Examples:</span>
+<span class="sd">            fab.get_number(&quot;0,999,3&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">modifiers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">modifiers</span> <span class="o">=</span> <span class="s2">&quot;0,99,2&quot;</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">modifiers</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">parts</span>
+            <span class="c1"># print(&quot;parts&quot;, min, max, width)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;`num` modifier must be formatted like &#39;[min,]max[,width]&#39;: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">modifiers</span><span class="p">))</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">width</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_choice"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_choice">[docs]</a>    <span class="k">def</span> <span class="nf">get_choice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a random entry from a list of values.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            modifiers (str):</span>
+<span class="sd">                Additional modifiers, separated by &#39;:&#39;.</span>
+<span class="sd">                Only one modifier is accepted with a comma separated list of choices.</span>
+<span class="sd">                If a single string is passed (i.e. no comma), one random character is returned.</span>
+<span class="sd">                Use a backslash to escape comma or colons.</span>
+
+<span class="sd">            context (dict, optional):</span>
+<span class="sd">                Used internally to cache template results for back-references.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A randomly selected value.</span>
+<span class="sd">        Examples:</span>
+<span class="sd">            fab.get_choice(&quot;foo,bar,baz&quot;)</span>
+<span class="sd">            fab.get_choice(&quot;$%?!&quot;)</span>
+<span class="sd">            fab.get_choice(&quot;$%?!\\:\\,&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">modifiers</span> <span class="o">=</span> <span class="n">modifiers</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+            <span class="c1"># Split by &#39;:&#39; but not &#39;\:&#39;</span>
+            <span class="n">modifier_list</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?&lt;!</span><span class="se">\\</span><span class="s2">):&quot;</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">)</span>
+            <span class="n">modifier_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;\:&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">modifier_list</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">modifier_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="n">modifier_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># print(&quot;ch2&quot;, modifiers, modifier_list, choices)</span>
+            <span class="c1"># Split by &#39;,&#39; but not &#39;\,&#39;</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?&lt;!</span><span class="se">\\</span><span class="s2">),&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># Only one string was passed: use single characters</span>
+                <span class="n">choices</span> <span class="o">=</span> <span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;\,&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                <span class="n">choices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">choices</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;\,&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;`pick` modifier must be formatted like &#39;value[,value]*&#39;: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">modifiers</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_word"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_word">[docs]</a>    <span class="k">def</span> <span class="nf">get_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_type</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a random word.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            word_type (str): For example &#39;adj&#39;, &#39;adv&#39;, &#39;name&#39;, &#39;noun&#39;, &#39;verb&#39;.</span>
+<span class="sd">            modifiers (str, optional):</span>
+<span class="sd">                Additional modifiers, separated by &#39;:&#39;. Default: &quot;&quot;.</span>
+<span class="sd">            context (dict, optional):</span>
+<span class="sd">                Used internally to cache template results for back-references.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A random word of the requested type and form.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">ref_map</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;ref_map&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="c1"># Handle references to another macro, e.g. `@1:...`</span>
+        <span class="c1"># print(&quot;get_word&quot;, word_type, modifiers, context)</span>
+        <span class="k">if</span> <span class="n">word_type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">):</span>
+            <span class="c1"># print(&quot;Back-ref&quot;, word_type, ref_map)</span>
+            <span class="n">ref_entry</span> <span class="o">=</span> <span class="n">ref_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word_type</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">ref_entry</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Reference to undefined variable: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">word_type</span><span class="p">))</span>
+            <span class="n">word_type</span> <span class="o">=</span> <span class="n">ref_entry</span><span class="p">[</span><span class="s2">&quot;word_type&quot;</span><span class="p">]</span>
+            <span class="n">entry</span> <span class="o">=</span> <span class="n">ref_entry</span><span class="p">[</span><span class="s2">&quot;entry&quot;</span><span class="p">]</span>
+            <span class="n">word_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word_type</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+            <span class="n">macro</span> <span class="o">=</span> <span class="n">Macro</span><span class="p">(</span><span class="n">word_type</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">,</span> <span class="n">word_list</span><span class="p">)</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">word_list</span><span class="o">.</span><span class="n">apply_macro</span><span class="p">(</span><span class="n">macro</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">word</span>
+
+        <span class="k">if</span> <span class="n">word_type</span> <span class="o">==</span> <span class="s2">&quot;num&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_number</span><span class="p">(</span><span class="n">modifiers</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">word_type</span> <span class="o">==</span> <span class="s2">&quot;pick&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_choice</span><span class="p">(</span><span class="n">modifiers</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+        <span class="n">word_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word_type</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">word_list</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid word type: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">word_type</span><span class="p">))</span>
+
+        <span class="n">macro</span> <span class="o">=</span> <span class="n">Macro</span><span class="p">(</span><span class="n">word_type</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">,</span> <span class="n">word_list</span><span class="p">)</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">word_list</span><span class="o">.</span><span class="n">get_random_entry</span><span class="p">(</span><span class="n">macro</span><span class="p">)</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">word_list</span><span class="o">.</span><span class="n">apply_macro</span><span class="p">(</span><span class="n">macro</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">macro</span><span class="o">.</span><span class="n">var_name</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">macro</span><span class="o">.</span><span class="n">var_name</span> <span class="ow">in</span> <span class="n">ref_map</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate variable assignment: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">macro</span><span class="o">.</span><span class="n">var_name</span><span class="p">))</span>
+            <span class="n">ref_map</span><span class="p">[</span><span class="n">macro</span><span class="o">.</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;entry&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;word_type&quot;</span><span class="p">:</span> <span class="n">word_type</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">macro</span><span class="o">.</span><span class="n">is_caps</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">word</span></div>
+
+    <span class="k">def</span> <span class="nf">_format_quote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="c1"># assert type(template) is str</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">template</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># TODO: pre-compile &amp; cache the template somehow:</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">rex_macro</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">template</span><span class="p">):</span>
+            <span class="n">term</span><span class="p">,</span> <span class="n">word_type</span><span class="p">,</span> <span class="n">modifiers</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_word</span><span class="p">(</span><span class="n">word_type</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+            <span class="c1"># Only replace one (this) match</span>
+            <span class="c1"># print(term, word, modifiers)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">res</span>
+
+<div class="viewcode-block" id="Fabulist.generate_quotes"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.generate_quotes">[docs]</a>    <span class="k">def</span> <span class="nf">generate_quotes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dedupe</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a generator for random strings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            template (str | str[]):</span>
+<span class="sd">                A string template with embedded macros, e.g. &quot;Hello $(name:mr)!&quot;.</span>
+<span class="sd">                If a list of strings are passed, a random template is chosen.</span>
+<span class="sd">            count (int, optional):</span>
+<span class="sd">                Number of results to generate. Pass None for infinite.</span>
+<span class="sd">                Default: None.</span>
+<span class="sd">            dedupe (bool | set, optional):</span>
+<span class="sd">                Pass `True` to prevent duplicate results. If a `set` instance is passed, it</span>
+<span class="sd">                will be used to add and check for generated entries.</span>
+<span class="sd">                Default: False.</span>
+<span class="sd">        Yields:</span>
+<span class="sd">            str: Random variants of `template`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dedupe</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">dedupe</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">fail</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Prevent infinite loops</span>
+        <span class="n">max_fail</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="n">count</span><span class="p">)</span> <span class="k">if</span> <span class="n">count</span> <span class="k">else</span> <span class="mi">1000</span>
+        <span class="k">while</span> <span class="n">count</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+            <span class="n">fail</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">fail</span> <span class="o">&gt;</span> <span class="n">max_fail</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Max fail count (</span><span class="si">{}</span><span class="s2">) exceeded: produced </span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2"> strings.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">max_fail</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">template</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_quote</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">ApplyTemplateError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="n">dedupe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">dedupe</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">dedupe</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">q</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">fail</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Reset skip counter</span>
+
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_quote"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_quote">[docs]</a>    <span class="k">def</span> <span class="nf">get_quote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a single random string.</span>
+
+<span class="sd">        This is a convenience variant of :meth:`generate_quotes`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            template (str | str[]):</span>
+<span class="sd">                A string template with embedded macros, e.g. &quot;Hello $(name:mr)!&quot;.</span>
+<span class="sd">                If a list of strings are passed, a random template is chosen.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A random variant of `template`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generate_quotes</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dedupe</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_name"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a single name string.</span>
+
+<span class="sd">        This is a convenience variant of :meth:`get_word` with word_type=&quot;name&quot;.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            modifiers (str, optional):</span>
+<span class="sd">                Additional modifiers, separated by &#39;:&#39;. Default: &quot;&quot;.</span>
+<span class="sd">            context (dict, optional):</span>
+<span class="sd">                Used internally to cache template results for back-references.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A random name of the requested form.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_word</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_lorem_words"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_lorem_words">[docs]</a>    <span class="k">def</span> <span class="nf">get_lorem_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;ipsum&quot;</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of random words.</span>
+
+<span class="sd">        See also :class:`fabulist.lorem_ipsum.LoremGenerator` for more flexible and efficient</span>
+<span class="sd">        generators (accessible as :attr:`Fabulist.lorem`).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            count (int, optional):</span>
+<span class="sd">                Number of words. Pass None for infinite.</span>
+<span class="sd">                Default: None.</span>
+<span class="sd">            dialect (str, optional):</span>
+<span class="sd">                For example &quot;ipsum&quot;, &quot;pulp&quot;, &quot;trappatoni&quot;. Pass `None` to pick a random dialect.</span>
+<span class="sd">                Default: &quot;ipsum&quot; (i.e. lorem-ipsum).</span>
+<span class="sd">            entropy (int, optional):</span>
+<span class="sd">                0: iterate words from original text</span>
+<span class="sd">                1: pick a random paragraph, then use it literally</span>
+<span class="sd">                2: pick a random sentence, then use it literally</span>
+<span class="sd">                3: pick random words</span>
+<span class="sd">                Default: 3.</span>
+<span class="sd">            keep_first (bool, optional):</span>
+<span class="sd">                Always return the words of the first sentence as first result.</span>
+<span class="sd">                Default: False.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            list[str]:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lorem</span><span class="o">.</span><span class="n">generate_words</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">dialect</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">keep_first</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_lorem_sentence"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_lorem_sentence">[docs]</a>    <span class="k">def</span> <span class="nf">get_lorem_sentence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_count</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;ipsum&quot;</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return one random sentence.</span>
+
+<span class="sd">        See also :class:`fabulist.lorem_ipsum.LoremGenerator` for more flexible and efficient</span>
+<span class="sd">        generators (accessible as :attr:`Fabulist.lorem`).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            word_count (int or tuple(min, max), optional):</span>
+<span class="sd">                Tuple with (min, max) number of words per sentence.</span>
+<span class="sd">                This argument is only used for entropy=3.</span>
+<span class="sd">                Default: (3, 15).</span>
+<span class="sd">            dialect (str, optional):</span>
+<span class="sd">                For example &quot;ipsum&quot;, &quot;pulp&quot;, &quot;trappatoni&quot;. Pass `None` to pick a random dialect.</span>
+<span class="sd">                Default: &quot;ipsum&quot; (i.e. lorem-ipsum).</span>
+<span class="sd">            entropy (int):</span>
+<span class="sd">                0: use first sentence from original text</span>
+<span class="sd">                1: pick a random paragraph, then use the first sentence</span>
+<span class="sd">                2: pick a random sentence</span>
+<span class="sd">                3: mix random words</span>
+<span class="sd">                Default: 3.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: One random sentence.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lorem</span><span class="o">.</span><span class="n">generate_sentences</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="n">dialect</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">words_per_sentence</span><span class="o">=</span><span class="n">word_count</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_lorem_paragraph"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_lorem_paragraph">[docs]</a>    <span class="k">def</span> <span class="nf">get_lorem_paragraph</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">sentence_count</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;ipsum&quot;</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">words_per_sentence</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Return one random paragraph.</span>
+
+<span class="sd">        See also :class:`fabulist.lorem_ipsum.LoremGenerator` for more flexible and efficient</span>
+<span class="sd">        generators (accessible as :attr:`Fabulist.lorem`).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sentence_count (int or tuple(min, max)):</span>
+<span class="sd">                Number of sentences. Default: (2, 6).</span>
+<span class="sd">            dialect (str, optional):</span>
+<span class="sd">                For example &quot;ipsum&quot;, &quot;pulp&quot;, &quot;trappatoni&quot;. Pass `None` to pick a random dialect.</span>
+<span class="sd">                Default: &quot;ipsum&quot; (i.e. lorem-ipsum).</span>
+<span class="sd">            entropy (int):</span>
+<span class="sd">                0: iterate sentences from original text</span>
+<span class="sd">                1: pick a random paragraph, then use it literally</span>
+<span class="sd">                2: pick a random sentence, then use it literally</span>
+<span class="sd">                3: pick random words</span>
+<span class="sd">                Default: 2.</span>
+<span class="sd">            keep_first (bool, optional):</span>
+<span class="sd">                Always return the first sentence as first result.</span>
+<span class="sd">                Default: False.</span>
+<span class="sd">            words_per_sentence (int or tuple(min, max), optional):</span>
+<span class="sd">                Number of words per sentence.</span>
+<span class="sd">                This argument is only used for entropy=3.</span>
+<span class="sd">                Default: (3, 15).</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: One paragraph made of random sentences.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lorem</span><span class="o">.</span><span class="n">generate_paragraphs</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="n">dialect</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">keep_first</span><span class="p">,</span> <span class="n">words_per_sentence</span><span class="p">,</span> <span class="n">sentence_count</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Fabulist.get_lorem_text"><a class="viewcode-back" href="../../fabulist_module.html#fabulist.fabulist.Fabulist.get_lorem_text">[docs]</a>    <span class="k">def</span> <span class="nf">get_lorem_text</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">para_count</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;ipsum&quot;</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">words_per_sentence</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">sentences_per_para</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Generate a number of paragraphs, made up from random sentences.</span>
+
+<span class="sd">        Paragraphs are seperated by newline.</span>
+
+<span class="sd">        See also :class:`fabulist.lorem_ipsum.LoremGenerator` for more flexible and efficient</span>
+<span class="sd">        generators (accessible as :attr:`Fabulist.lorem`).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            para_count (int or tuple(min, max)):</span>
+<span class="sd">                Number of paragraphs.</span>
+<span class="sd">            dialect (str, optional):</span>
+<span class="sd">                For example &quot;ipsum&quot;, &quot;pulp&quot;, &quot;trappatoni&quot;. Pass `None` to pick a random dialect.</span>
+<span class="sd">                Default: &quot;ipsum&quot;.</span>
+<span class="sd">            keep_first (bool, optional):</span>
+<span class="sd">                Always return the first sentence as first result. Default: False.</span>
+<span class="sd">            entropy (int):</span>
+<span class="sd">                0: iterate sentences from original text</span>
+<span class="sd">                1: pick a random paragraph, then use it literally</span>
+<span class="sd">                2: pick a random sentence, then use it literally</span>
+<span class="sd">                3: pick random words</span>
+<span class="sd">                Default: 2.</span>
+<span class="sd">            words_per_sentence (tuple(int, int), optional):</span>
+<span class="sd">                Tuple with (min, max) number of words per sentence.</span>
+<span class="sd">                This argument is only used for entropy=3.</span>
+<span class="sd">                Default: (3, 15).</span>
+<span class="sd">            sentences_per_para (tuple(int, int), optional):</span>
+<span class="sd">                Tuple with (min, max) number of sentences per paragraph.</span>
+<span class="sd">                Default: (2, 6).</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Text made of one or more paragraphs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lorem</span><span class="o">.</span><span class="n">generate_paragraphs</span><span class="p">(</span>
+            <span class="n">para_count</span><span class="p">,</span> <span class="n">dialect</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">keep_first</span><span class="p">,</span> <span class="n">words_per_sentence</span><span class="p">,</span> <span class="n">sentences_per_para</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Martin Wendt.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

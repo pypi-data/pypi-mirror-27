@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Development &mdash; fabulist 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="fabulist 1.2.0 documentation" href="index.html"/>
+        <link rel="next" title="Changes" href="changes.html"/>
+        <link rel="prev" title="lorem_ipsum module" href="lorem_ipsum_module.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> fabulist
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference_guide.html">Reference Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#status-and-contribution">Status and Contribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-tests">Run Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model-and-file-format">Data Model and File Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#word-list-entries">Word List Entries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#word-list-files">Word List Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lorem-ipsum-files">Lorem Ipsum Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#name-lists">Name Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fabulist</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Development</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/development.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="development">
+<span id="development"></span><h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="status-and-contribution">
+<span id="status-and-contribution"></span><h2>Status and Contribution<a class="headerlink" href="#status-and-contribution" title="Permalink to this headline">¶</a></h2>
+<p>This is hobby project in its early phase. I am not planning to invest vast efforts here, but
+I am curious to get your feedback.<br>
+If you like to contribute, here's what you can do:</p>
+<ul class="simple">
+<li>You use this software and like it?<br>
+Please let me know (and send your cool templates).</li>
+<li>Missing some words, irregular word forms, or tags?<br>
+<a class="reference external" href="https://github.com/mar10/fabulist/tree/master/fabulist/data">Edit the word lists</a>
+and send a pull request.<br>
+NOTE: this is not about collecting as much words as possible, so do not simply dump the
+<a class="reference external" href="http://wordnet.princeton.edu">wordnet database</a> here!
+Instead we should try to have frequently used words, with high quality tagging. Get in touch if
+you are in doubt.<br>
+<a class="reference external" href="https://github.com/mar10/fabulist/blob/master/tests/list_importer.py">This little script</a>
+may help to merge word-lists or tags into the existing data base.</li>
+<li>Have an idea for improvement?<br>
+Let me know, but be prepared to invest some of your own time as well.</li>
+<li>Found a bug?<br>
+Keep it, or send a pull request ;-)</li>
+</ul>
+</div>
+<div class="section" id="run-tests">
+<span id="run-tests"></span><h2>Run Tests<a class="headerlink" href="#run-tests" title="Permalink to this headline">¶</a></h2>
+<p>If you plan to debug or contribute, install to run directly from the source:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python setup.py develop
+$ python setup.py test
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-contribute">
+<span id="how-to-contribute"></span><h2>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h2>
+<p>Work in a virtual environment. I recommend to use <a class="reference external" href="https://github.com/kennethreitz/pipenv">pipenv</a>
+to make this easy.
+Create and activate the virtual environment:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd /path/fabulist
+$ pipenv shell
+$ pip install -r requirements-dev.txt
+$ python setup.py test
+$ python setup.py develop
+$ python setup.py sphinx
+</pre></div>
+</div>
+<p>Make a release:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python setup.py test
+$ python setup.py bdist_wheel
+$ twine upload
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-model-and-file-format">
+<span id="data-model-and-file-format"></span><h2>Data Model and File Format<a class="headerlink" href="#data-model-and-file-format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="word-list-entries">
+<span id="word-list-entries"></span><h3>Word List Entries<a class="headerlink" href="#word-list-entries" title="Permalink to this headline">¶</a></h3>
+<p>Word lists are represented per word type as objects (derived from the common <code class="docutils literal"><span class="pre">_WordList</span></code> base class).<br>
+A word list knows its CSV format and provides methods to load, save, and access data.<br>
+The main attributes are</p>
+<dl>
+  <dt>key_list</dt>
+  <dd>A list of all known words in their base form (aka 'lemma').</dd>
+  <dt>data</dt>
+  <dd>A dictionary of additional data per lemma, stored as *word entry* dictionary.</dd>
+  <dt>tag_map</dt>
+  <dd>A dictionary of lemma-sets per tag.</dd>
+</dl><p>Word entries contain information about one single word. For example a word entry for a <em>noun</em> may look like this:</p>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;alpaca&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;plural&quot;</span><span class="p">:</span> <span class="s2">&quot;alpacas&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;animal&quot;</span><span class="p">},</span>  <span class="c1"># A set of tag names or None</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Nouns without plural form store <code class="docutils literal"><span class="pre">&quot;plural&quot;:</span> <span class="pre">False</span></code>.</p>
+<p>A word entry for a <em>verb</em> may look like this:</p>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;strive&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;past&quot;</span><span class="p">:</span> <span class="s2">&quot;strove&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;pp&quot;</span><span class="p">:</span> <span class="s2">&quot;striven&quot;</span><span class="p">,</span>    <span class="c1"># past perfect form</span>
+ <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="s2">&quot;strives&quot;</span><span class="p">,</span>     <span class="c1"># -s form</span>
+ <span class="s2">&quot;ing&quot;</span><span class="p">:</span> <span class="s2">&quot;striving&quot;</span><span class="p">,</span>  <span class="c1"># -ing form</span>
+ <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>       <span class="c1"># A set of tag names or None</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>A word entry for an <em>adjective</em> may look like this:</p>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;comp&quot;</span><span class="p">:</span> <span class="s2">&quot;worse&quot;</span><span class="p">,</span>       <span class="c1"># comparative</span>
+ <span class="s2">&quot;super&quot;</span><span class="p">:</span> <span class="s2">&quot;worst&quot;</span><span class="p">,</span>      <span class="c1"># superlative</span>
+ <span class="s2">&quot;antonym&quot;</span><span class="p">:</span> <span class="s2">&quot;good&quot;</span><span class="p">,</span>     <span class="c1"># antonym or None</span>
+ <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;negative&quot;</span><span class="p">},</span>  <span class="c1"># A set of tag names or None</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Incomparable adjectives / adverbs (e.g. 'pregnant') store <code class="docutils literal"><span class="pre">&quot;comp&quot;:</span> <span class="pre">False</span></code>.</p>
+</div>
+<div class="section" id="word-list-files">
+<span id="word-list-files"></span><h3>Word List Files<a class="headerlink" href="#word-list-files" title="Permalink to this headline">¶</a></h3>
+<p>Word lists are provided as plain text files in CSV format:</p>
+<ul class="simple">
+<li>File name is <code class="docutils literal"><span class="pre">&lt;word-type&gt;_list.txt</span></code>.</li>
+<li>Use UTF-8 encoding.</li>
+<li>Empty lines and lines starting with '#' are ignored.</li>
+<li>Attributes are comma separated.</li>
+<li>Multi-value attributes are separated by '|'.</li>
+<li>Attributes should be omitted if they can be generated using standard rules (e.g. plural of 'cat' is 'cats').</li>
+<li>An attribute value of '-' is used to prevent this value (e.g. 'blood' has no plural form).</li>
+</ul>
+<p>Example from <code class="docutils literal"><span class="pre">noun_list.txt</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Noun list</span>
+<span class="c1"># lemma | plural | tags</span>
+<span class="n">blood</span><span class="p">,</span><span class="o">-</span><span class="p">,</span>
+<span class="n">cat</span><span class="p">,,</span><span class="n">animal</span><span class="o">|</span><span class="n">pet</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lorem-ipsum-files">
+<span id="lorem-ipsum-files"></span><h3>Lorem Ipsum Files<a class="headerlink" href="#lorem-ipsum-files" title="Permalink to this headline">¶</a></h3>
+<p>Blind text sources are stored as plain text files.</p>
+<ul class="simple">
+<li>File name is <code class="docutils literal"><span class="pre">lorem_&lt;dialect&gt;.txt</span></code>.</li>
+<li>Use UTF-8 encoding.</li>
+<li>One sentence per line.</li>
+<li>Paragraphs are separated by a line containing of three hyphens (<code class="docutils literal"><span class="pre">---</span></code>).</li>
+</ul>
+<p><strong>Note:</strong> Sentences and paragraphs are considered by API methods depending on the <code class="docutils literal"><span class="pre">entropy</span></code> argument.</p>
+<p>Example from <code class="docutils literal"><span class="pre">lorem_ipsum.txt</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Lorem ipsum</span>
+<span class="c1"># Opera sine nomine scripta</span>
+
+<span class="n">Lorem</span> <span class="n">ipsum</span> <span class="n">dolor</span> <span class="n">sit</span> <span class="n">amet</span><span class="p">,</span> <span class="n">consectetur</span> <span class="n">adipisici</span> <span class="n">elit</span><span class="p">,</span> <span class="n">sed</span> <span class="n">eiusmod</span> <span class="n">tempor</span> <span class="n">incidunt</span> <span class="n">ut</span> <span class="n">labore</span> <span class="n">et</span> <span class="n">dolore</span> <span class="n">magna</span> <span class="n">aliqua</span><span class="o">.</span>
+<span class="n">Ut</span> <span class="n">enim</span> <span class="n">ad</span> <span class="n">minim</span> <span class="n">veniam</span><span class="p">,</span> <span class="n">quis</span> <span class="n">nostrud</span> <span class="n">exercitation</span> <span class="n">ullamco</span> <span class="n">laboris</span> <span class="n">nisi</span> <span class="n">ut</span> <span class="n">aliquid</span> <span class="n">ex</span> <span class="n">ea</span> <span class="n">commodi</span> <span class="n">consequat</span><span class="o">.</span>
+<span class="n">Quis</span> <span class="n">aute</span> <span class="n">iure</span> <span class="n">reprehenderit</span> <span class="ow">in</span> <span class="n">voluptate</span> <span class="n">velit</span> <span class="n">esse</span> <span class="n">cillum</span> <span class="n">dolore</span> <span class="n">eu</span> <span class="n">fugiat</span> <span class="n">nulla</span> <span class="n">pariatur</span><span class="o">.</span>
+<span class="o">---</span>
+<span class="n">Duis</span> <span class="n">autem</span> <span class="n">vel</span> <span class="n">eum</span> <span class="n">iriure</span> <span class="n">dolor</span> <span class="ow">in</span> <span class="n">hendrerit</span> <span class="ow">in</span> <span class="n">vulputate</span> <span class="n">velit</span> <span class="n">esse</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="name-lists">
+<span id="name-lists"></span><h2>Name Lists<a class="headerlink" href="#name-lists" title="Permalink to this headline">¶</a></h2>
+<p>The name generator is implemented by the <code class="docutils literal"><span class="pre">NameList</span></code> class, which is virtual implementation that internally uses a <code class="docutils literal"><span class="pre">FirstnameList</span></code> and a <code class="docutils literal"><span class="pre">LastnameList</span></code> class.
+The name pools are stored in <code class="docutils literal"><span class="pre">firstname_list.txt</span></code> and <code class="docutils literal"><span class="pre">lastname_list.txt</span></code> respectively. First names also use the tags <code class="docutils literal"><span class="pre">f</span></code>and <code class="docutils literal"><span class="pre">m</span></code> to denote female and/or male gender.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="changes.html" class="btn btn-neutral float-right" title="Changes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lorem_ipsum_module.html" class="btn btn-neutral" title="lorem_ipsum module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Martin Wendt.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

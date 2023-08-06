@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fabulist module &mdash; fabulist 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="fabulist 1.2.0 documentation" href="index.html"/>
+        <link rel="up" title="fabulist package" href="fabulist_package.html"/>
+        <link rel="next" title="lorem_ipsum module" href="lorem_ipsum_module.html"/>
+        <link rel="prev" title="fabulist package" href="fabulist_package.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> fabulist
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference_guide.html">Reference Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="fabulist_package.html">fabulist package</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fabulist module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lorem_ipsum_module.html">lorem_ipsum module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fabulist</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="reference_guide.html">Reference Guide</a> &raquo;</li>
+        
+          <li><a href="fabulist_package.html">fabulist package</a> &raquo;</li>
+        
+      <li>fabulist module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/fabulist_module.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-fabulist.fabulist">
+<span id="fabulist-module"></span><h1>fabulist module<a class="headerlink" href="#module-fabulist.fabulist" title="Permalink to this headline">¶</a></h1>
+<p>(c) 2017 Martin Wendt; see <a class="reference external" href="https://github.com/mar10/fabulist">https://github.com/mar10/fabulist</a>
+Licensed under the MIT license: <a class="reference external" href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></p>
+<dl class="class">
+<dt id="fabulist.fabulist.Fabulist">
+<em class="property">class </em><code class="descclassname">fabulist.fabulist.</code><code class="descname">Fabulist</code><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Random string factory.</p>
+<dl class="attribute">
+<dt id="fabulist.fabulist.Fabulist.list_map">
+<code class="descname">list_map</code><a class="headerlink" href="#fabulist.fabulist.Fabulist.list_map" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – Dictionary with one <a class="reference internal" href="#fabulist.fabulist._WordList" title="fabulist.fabulist._WordList"><code class="xref py py-class docutils literal"><span class="pre">_WordList</span></code></a> entry per word-type.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist.Fabulist.lorem">
+<code class="descname">lorem</code><a class="headerlink" href="#fabulist.fabulist.Fabulist.lorem" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator" title="fabulist.lorem_ipsum.LoremGenerator"><code class="xref py py-class docutils literal"><span class="pre">fabulist.lorem_ipsum.LoremGenerator</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.generate_quotes">
+<code class="descname">generate_quotes</code><span class="sig-paren">(</span><em>template</em>, <em>count=None</em>, <em>dedupe=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.generate_quotes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.generate_quotes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator for random strings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>template</strong> (<em>str | str[]</em>) – A string template with embedded macros, e.g. “Hello $(name:mr)!”.
+If a list of strings are passed, a random template is chosen.</li>
+<li><strong>count</strong> (<em>int, optional</em>) – Number of results to generate. Pass None for infinite.
+Default: None.</li>
+<li><strong>dedupe</strong> (<em>bool | set, optional</em>) – Pass <cite>True</cite> to prevent duplicate results. If a <cite>set</cite> instance is passed, it
+will be used to add and check for generated entries.
+Default: False.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first last"><em>str</em> – Random variants of <cite>template</cite>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_choice">
+<code class="descname">get_choice</code><span class="sig-paren">(</span><em>modifiers</em>, <em>context=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_choice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a random entry from a list of values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>modifiers</strong> (<em>str</em>) – Additional modifiers, separated by ‘:’.
+Only one modifier is accepted with a comma separated list of choices.
+If a single string is passed (i.e. no comma), one random character is returned.
+Use a backslash to escape comma or colons.</li>
+<li><strong>context</strong> (<em>dict, optional</em>) – Used internally to cache template results for back-references.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>str</em> – A randomly selected value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>fab.get_choice(“foo,bar,baz”)
+fab.get_choice(“$%?!”)
+fab.get_choice(“$%?!:,”)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_lorem_paragraph">
+<code class="descname">get_lorem_paragraph</code><span class="sig-paren">(</span><em>sentence_count=(2</em>, <em>6)</em>, <em>dialect='ipsum'</em>, <em>entropy=2</em>, <em>keep_first=False</em>, <em>words_per_sentence=(3</em>, <em>15)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_lorem_paragraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_lorem_paragraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return one random paragraph.</p>
+<p>See also <a class="reference internal" href="lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator" title="fabulist.lorem_ipsum.LoremGenerator"><code class="xref py py-class docutils literal"><span class="pre">fabulist.lorem_ipsum.LoremGenerator</span></code></a> for more flexible and efficient
+generators (accessible as <a class="reference internal" href="#fabulist.fabulist.Fabulist.lorem" title="fabulist.fabulist.Fabulist.lorem"><code class="xref py py-attr docutils literal"><span class="pre">Fabulist.lorem</span></code></a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sentence_count</strong> (<em>int or tuple(min, max)</em>) – Number of sentences. Default: (2, 6).</li>
+<li><strong>dialect</strong> (<em>str, optional</em>) – For example “ipsum”, “pulp”, “trappatoni”. Pass <cite>None</cite> to pick a random dialect.
+Default: “ipsum” (i.e. lorem-ipsum).</li>
+<li><strong>entropy</strong> (<em>int</em>) – 0: iterate sentences from original text
+1: pick a random paragraph, then use it literally
+2: pick a random sentence, then use it literally
+3: pick random words
+Default: 2.</li>
+<li><strong>keep_first</strong> (<em>bool, optional</em>) – Always return the first sentence as first result.
+Default: False.</li>
+<li><strong>words_per_sentence</strong> (<em>int or tuple(min, max), optional</em>) – Number of words per sentence.
+This argument is only used for entropy=3.
+Default: (3, 15).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>str</em> – One paragraph made of random sentences.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_lorem_sentence">
+<code class="descname">get_lorem_sentence</code><span class="sig-paren">(</span><em>word_count=(3</em>, <em>15)</em>, <em>dialect='ipsum'</em>, <em>entropy=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_lorem_sentence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_lorem_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return one random sentence.</p>
+<p>See also <a class="reference internal" href="lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator" title="fabulist.lorem_ipsum.LoremGenerator"><code class="xref py py-class docutils literal"><span class="pre">fabulist.lorem_ipsum.LoremGenerator</span></code></a> for more flexible and efficient
+generators (accessible as <a class="reference internal" href="#fabulist.fabulist.Fabulist.lorem" title="fabulist.fabulist.Fabulist.lorem"><code class="xref py py-attr docutils literal"><span class="pre">Fabulist.lorem</span></code></a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>word_count</strong> (<em>int or tuple(min, max), optional</em>) – Tuple with (min, max) number of words per sentence.
+This argument is only used for entropy=3.
+Default: (3, 15).</li>
+<li><strong>dialect</strong> (<em>str, optional</em>) – For example “ipsum”, “pulp”, “trappatoni”. Pass <cite>None</cite> to pick a random dialect.
+Default: “ipsum” (i.e. lorem-ipsum).</li>
+<li><strong>entropy</strong> (<em>int</em>) – 0: use first sentence from original text
+1: pick a random paragraph, then use the first sentence
+2: pick a random sentence
+3: mix random words
+Default: 3.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>str</em> – One random sentence.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_lorem_text">
+<code class="descname">get_lorem_text</code><span class="sig-paren">(</span><em>para_count</em>, <em>dialect='ipsum'</em>, <em>entropy=2</em>, <em>keep_first=False</em>, <em>words_per_sentence=(3</em>, <em>15)</em>, <em>sentences_per_para=(2</em>, <em>6)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_lorem_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_lorem_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a number of paragraphs, made up from random sentences.</p>
+<p>Paragraphs are seperated by newline.</p>
+<p>See also <a class="reference internal" href="lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator" title="fabulist.lorem_ipsum.LoremGenerator"><code class="xref py py-class docutils literal"><span class="pre">fabulist.lorem_ipsum.LoremGenerator</span></code></a> for more flexible and efficient
+generators (accessible as <a class="reference internal" href="#fabulist.fabulist.Fabulist.lorem" title="fabulist.fabulist.Fabulist.lorem"><code class="xref py py-attr docutils literal"><span class="pre">Fabulist.lorem</span></code></a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>para_count</strong> (<em>int or tuple(min, max)</em>) – Number of paragraphs.</li>
+<li><strong>dialect</strong> (<em>str, optional</em>) – For example “ipsum”, “pulp”, “trappatoni”. Pass <cite>None</cite> to pick a random dialect.
+Default: “ipsum”.</li>
+<li><strong>keep_first</strong> (<em>bool, optional</em>) – Always return the first sentence as first result. Default: False.</li>
+<li><strong>entropy</strong> (<em>int</em>) – 0: iterate sentences from original text
+1: pick a random paragraph, then use it literally
+2: pick a random sentence, then use it literally
+3: pick random words
+Default: 2.</li>
+<li><strong>words_per_sentence</strong> (<em>tuple(int, int), optional</em>) – Tuple with (min, max) number of words per sentence.
+This argument is only used for entropy=3.
+Default: (3, 15).</li>
+<li><strong>sentences_per_para</strong> (<em>tuple(int, int), optional</em>) – Tuple with (min, max) number of sentences per paragraph.
+Default: (2, 6).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>str</em> – Text made of one or more paragraphs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_lorem_words">
+<code class="descname">get_lorem_words</code><span class="sig-paren">(</span><em>count=None</em>, <em>dialect='ipsum'</em>, <em>entropy=3</em>, <em>keep_first=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_lorem_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_lorem_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of random words.</p>
+<p>See also <a class="reference internal" href="lorem_ipsum_module.html#fabulist.lorem_ipsum.LoremGenerator" title="fabulist.lorem_ipsum.LoremGenerator"><code class="xref py py-class docutils literal"><span class="pre">fabulist.lorem_ipsum.LoremGenerator</span></code></a> for more flexible and efficient
+generators (accessible as <a class="reference internal" href="#fabulist.fabulist.Fabulist.lorem" title="fabulist.fabulist.Fabulist.lorem"><code class="xref py py-attr docutils literal"><span class="pre">Fabulist.lorem</span></code></a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>count</strong> (<em>int, optional</em>) – Number of words. Pass None for infinite.
+Default: None.</li>
+<li><strong>dialect</strong> (<em>str, optional</em>) – For example “ipsum”, “pulp”, “trappatoni”. Pass <cite>None</cite> to pick a random dialect.
+Default: “ipsum” (i.e. lorem-ipsum).</li>
+<li><strong>entropy</strong> (<em>int, optional</em>) – 0: iterate words from original text
+1: pick a random paragraph, then use it literally
+2: pick a random sentence, then use it literally
+3: pick random words
+Default: 3.</li>
+<li><strong>keep_first</strong> (<em>bool, optional</em>) – Always return the words of the first sentence as first result.
+Default: False.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>list[str]</em></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><em>modifiers=None</em>, <em>context=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a single name string.</p>
+<p>This is a convenience variant of <a class="reference internal" href="#fabulist.fabulist.Fabulist.get_word" title="fabulist.fabulist.Fabulist.get_word"><code class="xref py py-meth docutils literal"><span class="pre">get_word()</span></code></a> with word_type=”name”.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>modifiers</strong> (<em>str, optional</em>) – Additional modifiers, separated by ‘:’. Default: “”.</li>
+<li><strong>context</strong> (<em>dict, optional</em>) – Used internally to cache template results for back-references.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>str</em> – A random name of the requested form.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_number">
+<code class="descname">get_number</code><span class="sig-paren">(</span><em>modifiers=None</em>, <em>context=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string-formatted random number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>modifiers</strong> (<em>str</em>) – Additional modifiers, separated by ‘:’.
+Only one modifier is accepted with a comma separated list of min, max, and
+width.
+Example: “0,99,2”.</li>
+<li><strong>context</strong> (<em>dict, optional</em>) – Used internally to cache template results for back-references.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>str</em> – A random number matching in the requested range.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>fab.get_number(“0,999,3”)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_quote">
+<code class="descname">get_quote</code><span class="sig-paren">(</span><em>template</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_quote"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a single random string.</p>
+<p>This is a convenience variant of <a class="reference internal" href="#fabulist.fabulist.Fabulist.generate_quotes" title="fabulist.fabulist.Fabulist.generate_quotes"><code class="xref py py-meth docutils literal"><span class="pre">generate_quotes()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template</strong> (<em>str | str[]</em>) – A string template with embedded macros, e.g. “Hello $(name:mr)!”.
+If a list of strings are passed, a random template is chosen.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><em>str</em> – A random variant of <cite>template</cite>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.get_word">
+<code class="descname">get_word</code><span class="sig-paren">(</span><em>word_type</em>, <em>modifiers=None</em>, <em>context=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.get_word"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.get_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a random word.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>word_type</strong> (<em>str</em>) – For example ‘adj’, ‘adv’, ‘name’, ‘noun’, ‘verb’.</li>
+<li><strong>modifiers</strong> (<em>str, optional</em>) – Additional modifiers, separated by ‘:’. Default: “”.</li>
+<li><strong>context</strong> (<em>dict, optional</em>) – Used internally to cache template results for back-references.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>str</em> – A random word of the requested type and form.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist.Fabulist.load">
+<code class="descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#Fabulist.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist.Fabulist.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load all word lists into memory (lazy loading otherwise).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="fabulist.fabulist._WordList">
+<em class="property">class </em><code class="descclassname">fabulist.fabulist.</code><code class="descname">_WordList</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#_WordList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist._WordList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Common base class for all word lists.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is not instantiated directly, but provides common implementations for reading,
+writing and processing of word list data.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – Location of dictionary csv file.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.path">
+<code class="descname">path</code><a class="headerlink" href="#fabulist.fabulist._WordList.path" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Location of dictionary csv file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.data">
+<code class="descname">data</code><a class="headerlink" href="#fabulist.fabulist._WordList.data" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – Maps word lemmas to dicts of word data (i.e. word-forms).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.key_list">
+<code class="descname">key_list</code><a class="headerlink" href="#fabulist.fabulist._WordList.key_list" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – List of all known word lemmas.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.tag_map">
+<code class="descname">tag_map</code><a class="headerlink" href="#fabulist.fabulist._WordList.tag_map" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – Maps tag names to sets of word lemmas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist._WordList.add_entry">
+<code class="descname">add_entry</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#_WordList.add_entry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist._WordList.add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a single entry to the word list.</p>
+<p>The <cite>entry</cite> argument should have the same keys as the current CSV file format
+(see <a class="reference internal" href="#fabulist.fabulist._WordList.csv_format" title="fabulist.fabulist._WordList.csv_format"><code class="xref py py-attr docutils literal"><span class="pre">csv_format</span></code></a>).
+If <cite>entry</cite> values are omitted or <cite>None</cite>, they are passed to <code class="xref py py-meth docutils literal"><span class="pre">_process_entry()</span></code>
+in order to compute a default.
+If <cite>entry</cite> values are set to <cite>False</cite>, they are considered ‘not available’. For example
+There is no <cite>plural</cite> form of ‘information’.</p>
+<p>Callers should also call <a class="reference internal" href="#fabulist.fabulist._WordList.update_data" title="fabulist.fabulist._WordList.update_data"><code class="xref py py-meth docutils literal"><span class="pre">update_data()</span></code></a> later, to make sure that <a class="reference internal" href="#fabulist.fabulist._WordList.key_list" title="fabulist.fabulist._WordList.key_list"><code class="xref py py-attr docutils literal"><span class="pre">key_list</span></code></a>
+is up-to-date.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entry</strong> (<em>dict</em>) – Word data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.all_modifiers">
+<code class="descname">all_modifiers</code><em class="property"> = None</em><a class="headerlink" href="#fabulist.fabulist._WordList.all_modifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>frozenset</em> – Set of all supported modifiers (word-form and additional).
+Set by derived classes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist._WordList.apply_macro">
+<code class="descname">apply_macro</code><span class="sig-paren">(</span><em>macro</em>, <em>entry</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#_WordList.apply_macro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist._WordList.apply_macro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a word-form for an entry dict, according to macro modifiers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>macro</strong> (<code class="xref py py-class docutils literal"><span class="pre">Macro</span></code>) – The parsed macro instance.</li>
+<li><strong>entry</strong> (<em>dict</em>) – Dict of word forms as stored in <a class="reference internal" href="#fabulist.fabulist._WordList.data" title="fabulist.fabulist._WordList.data"><code class="xref py py-attr docutils literal"><span class="pre">data</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>str</em> – The requested word form.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.computable_modifiers">
+<code class="descname">computable_modifiers</code><em class="property"> = frozenset()</em><a class="headerlink" href="#fabulist.fabulist._WordList.computable_modifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>frozenset</em> – Set of word forms that can potentially be computed from a lemma
+(e.g. {‘ing’, ‘s’, …}). Set by derived classes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.csv_format">
+<code class="descname">csv_format</code><em class="property"> = None</em><a class="headerlink" href="#fabulist.fabulist._WordList.csv_format" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>tuple</em> – Ordered list of CSV file columns (e.g. (‘lemma’, ‘plural’, ‘tags’)).
+Set by derived classes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.extra_modifiers">
+<code class="descname">extra_modifiers</code><em class="property"> = None</em><a class="headerlink" href="#fabulist.fabulist._WordList.extra_modifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>frozenset</em> – Set of supported additional modifiers (e.g. {‘an’}). Set by derived classes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.form_modifiers">
+<code class="descname">form_modifiers</code><em class="property"> = None</em><a class="headerlink" href="#fabulist.fabulist._WordList.form_modifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>frozenset</em> – Set of supported word form modifiers (e.g. {‘plural’}).
+Set by derived classes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist._WordList.get_random_entry">
+<code class="descname">get_random_entry</code><span class="sig-paren">(</span><em>macro</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#_WordList.get_random_entry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist._WordList.get_random_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a random entry dict, according to modifiers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>macro</strong> (<code class="xref py py-class docutils literal"><span class="pre">Macro</span></code>) – A parsed template macro.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><em>dict</em> – A random entry from <a class="reference internal" href="#fabulist.fabulist._WordList.key_list" title="fabulist.fabulist._WordList.key_list"><code class="xref py py-attr docutils literal"><span class="pre">key_list</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist._WordList.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#_WordList.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist._WordList.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load and add list of entries from text file.</p>
+<p>Normally, we don’t have to call this method explicitly, because entries are loaded
+lazily on demand.
+It may be useful however to add supplemental word  lists however.</p>
+<p>This method also calls <a class="reference internal" href="#fabulist.fabulist._WordList.update_data" title="fabulist.fabulist._WordList.update_data"><code class="xref py py-meth docutils literal"><span class="pre">update_data()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str, optional</em>) – path to CSV file. Defaults to <a class="reference internal" href="#fabulist.fabulist._WordList.path" title="fabulist.fabulist._WordList.path"><code class="xref py py-attr docutils literal"><span class="pre">path</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist._WordList.save_as">
+<code class="descname">save_as</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#_WordList.save_as"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist._WordList.save_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write current data to a text file.</p>
+<p>The resulting CSV file has the format as defined in <a class="reference internal" href="#fabulist.fabulist._WordList.csv_format" title="fabulist.fabulist._WordList.csv_format"><code class="xref py py-attr docutils literal"><span class="pre">csv_format</span></code></a>.
+For better compression, word forms that are computable are stored as empty strings (‘’).
+Comments from the original file are retained at the top.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – path to CSV file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fabulist.fabulist._WordList.update_data">
+<code class="descname">update_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/fabulist/fabulist.html#_WordList.update_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#fabulist.fabulist._WordList.update_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update internal structures after entries have been added or modified.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fabulist.fabulist._WordList.word_type">
+<code class="descname">word_type</code><em class="property"> = None</em><a class="headerlink" href="#fabulist.fabulist._WordList.word_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Type of word list (e.g. ‘adj’, ‘adv’, …). Set by derived classes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lorem_ipsum_module.html" class="btn btn-neutral float-right" title="lorem_ipsum module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fabulist_package.html" class="btn btn-neutral" title="fabulist package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Martin Wendt.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

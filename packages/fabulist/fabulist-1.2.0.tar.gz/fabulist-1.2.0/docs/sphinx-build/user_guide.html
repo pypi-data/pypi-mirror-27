@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide &mdash; fabulist 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="fabulist 1.2.0 documentation" href="index.html"/>
+        <link rel="next" title="Reference Guide" href="reference_guide.html"/>
+        <link rel="prev" title="Installation" href="installation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> fabulist
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#some-examples">Some Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-examples">More Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-template-syntax">General Template Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-word-types">Supported Word Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modifiers">Modifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#word-form-modifiers">Word Form Modifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-modifiers">Additional Modifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifiers-for-names">Modifiers for Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifiers-for-numbers">Modifiers for Numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifiers-for-choices">Modifiers for Choices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tips-tricks">Tips &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-blind-text">Generate Blind Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference_guide.html">Reference Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fabulist</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/user_guide.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-guide">
+<span id="user-guide"></span><h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>All random strings are generated by methods of the <code class="docutils literal"><span class="pre">Fabulist</span></code> class.
+Have a look at the <a class="reference external" href="fabulist_module.html#fabulist.fabulist.Fabulist"><code class="docutils literal"><span class="pre">Reference</span> <span class="pre">Guide</span></code></a> for
+details.</p>
+<div class="section" id="some-examples">
+<span id="some-examples"></span><h2>Some Examples<a class="headerlink" href="#some-examples" title="Permalink to this headline">¶</a></h2>
+<p>This code:</p>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fabulist</span> <span class="kn">import</span> <span class="n">Fabulist</span>
+<span class="n">fab</span> <span class="o">=</span> <span class="n">Fabulist</span><span class="p">()</span>
+
+<span class="c1"># Print a random noun:</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fab</span><span class="o">.</span><span class="n">get_word</span><span class="p">(</span><span class="s2">&quot;noun&quot;</span><span class="p">):</span>
+
+<span class="c1"># Print a random adjective, tagged &#39;positive&#39;:</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fab</span><span class="o">.</span><span class="n">get_word</span><span class="p">(</span><span class="s2">&quot;adj&quot;</span><span class="p">,</span> <span class="s2">&quot;#positive&quot;</span><span class="p">):</span>
+
+<span class="c1"># Print a random name, prefix with Mr./Mrs. and allow a middle-initial:</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fab</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="s2">&quot;mr:middle&quot;</span><span class="p">):</span>
+
+<span class="c1"># Print three random fragments, prefix with a/an:</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fab</span><span class="o">.</span><span class="n">generate_quotes</span><span class="p">(</span><span class="s2">&quot;Look, $(noun:an:#animal)!&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will produce something like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>obligation
+kind
+Mrs. Julia P. Hughes
+Look, a tiger
+Look, an eagle!
+Look, a bug!
+</pre></div>
+</div>
+</div>
+<div class="section" id="more-examples">
+<span id="more-examples"></span><h2>More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h2>
+<p>The following output was generated by <a class="reference external" href="https://github.com/mar10/fabulist/blob/master/tests/demo.py">this demo code</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>bash-3.2$ python -m tests.demo
+get_verb():
+-  counsel
+-  oblige
+-  discover
+Friendly warnings:
+-  Don&#39;t sell with my alarm or I&#39;ll nip your boxes.
+-  Don&#39;t stretch with my obligation or I&#39;ll pacify your guarantees.
+-  Don&#39;t sneak with my guide or I&#39;ll thump your deads.
+Software release names:
+-  detailed-bear
+-  unfortunate-rabbit
+-  weak-otter
+Compare:
+-  One gather may be far, but two gathers are farther.
+-  One exchange may be tidy, but two exchanges are tidier.
+-  One smile may be delayed, but two smiles are delayeder.
+Names:
+- My name is Mr. Isaac James
+- My name is Mr. Colin Powell
+- My name is Mr. Jacob K. Wilson
+Introduction:
+- Friends call me Harry, you can call me Mr. Harry A. May.
+  May I introduce you to my wife Mrs. Rose May?
+- Friends call me Keith, you can call me Mr. Keith Taylor.
+  May I introduce you to my wife Mrs. Madeleine Taylor?
+- Friends call me Dominic, you can call me Mr. Dominic W. Ross.
+  May I introduce you to my wife Mrs. Lily Ross?
+Compliments:
+-  You have very reliable performances.
+-  You have very intelligent leagues.
+-  You have very good fingers.
+Blessings:
+-  May your scripts express joyfulliest.
+-  May your motors dip correctliest.
+-  May your wheels punish zestiliest.
+Fortune cookies:
+-  Confucius says: &quot;The one who wants to inflate must greet coaxingly the communication!&quot;
+-  Impressing is better than congratulating.
+-  Licking is better than scrawling.
+-  Existing is better than owing.
+-  Confucius says: &quot;The one who wants to advise must smell smoothly the death!&quot;
+Functions:
+-  Provide wilted digs
+-  Provide miniature minutes
+-  Provide loud visuals
+Potential failures:
+-  Shoulder restrains
+-  Definition does not welcome.
+-  Public develops
+Causes:
+-  Newspaper is too dear
+-  Subject is too powerful
+-  Loss is too firm
+bash-3.2$
+</pre></div>
+</div>
+</div>
+<div class="section" id="general-template-syntax">
+<span id="general-template-syntax"></span><h2>General Template Syntax<a class="headerlink" href="#general-template-syntax" title="Permalink to this headline">¶</a></h2>
+<p>Templates are plain strings with embedded macros.
+Macros are formatted like <code class="docutils literal"><span class="pre">$(...)</span></code> and contain a word-type and optionally one or more
+modifiers, separated by colons (&quot;:&quot;), for example<br>
+<code class="docutils literal"><span class="pre">$(noun)</span></code> or <code class="docutils literal"><span class="pre">$(noun:plural:#animal)</span></code>.</p>
+<p>These macros can be embedded into template strings and will be replaced by random variations:
+<code class="docutils literal"><span class="pre">&quot;Look</span> <span class="pre">at</span> <span class="pre">the</span> <span class="pre">beautiful</span> <span class="pre">$(noun:plural:#animal)!&quot;</span></code></p>
+<div class="section" id="supported-word-types">
+<span id="supported-word-types"></span><h3>Supported Word Types<a class="headerlink" href="#supported-word-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">adj</span></code>: Adjective<br>
+Word-form modifiers: <code class="docutils literal"><span class="pre">comp</span></code>, <code class="docutils literal"><span class="pre">super</span></code>, <code class="docutils literal"><span class="pre">antonym</span></code>.<br>
+Tags: <code class="docutils literal"><span class="pre">#negative</span></code>, <code class="docutils literal"><span class="pre">#positive</span></code></li>
+<li><code class="docutils literal"><span class="pre">adv</span></code>: Adverb<br>
+Word-form modifiers: <code class="docutils literal"><span class="pre">comp</span></code>, <code class="docutils literal"><span class="pre">super</span></code>, <code class="docutils literal"><span class="pre">antonym</span></code>.<br>
+Tags: <code class="docutils literal"><span class="pre">#degree</span></code>, <code class="docutils literal"><span class="pre">#manner</span></code>, <code class="docutils literal"><span class="pre">#negative</span></code>, <code class="docutils literal"><span class="pre">#place</span></code>, <code class="docutils literal"><span class="pre">#positive</span></code>, <code class="docutils literal"><span class="pre">#time</span></code></li>
+<li><code class="docutils literal"><span class="pre">noun</span></code> Noun<br>
+Word-form modifiers: <code class="docutils literal"><span class="pre">plural</span></code><br>
+Tags: <code class="docutils literal"><span class="pre">animal</span></code></li>
+<li><code class="docutils literal"><span class="pre">verb</span></code>: Verb<br>
+Word-form modifiers: <code class="docutils literal"><span class="pre">ing</span></code>, <code class="docutils literal"><span class="pre">past</span></code>, <code class="docutils literal"><span class="pre">pp</span></code>, <code class="docutils literal"><span class="pre">s</span></code><br>
+Tags: -</li>
+<li><code class="docutils literal"><span class="pre">&#64;&lt;num&gt;</span></code>: Reference<br>
+A special type to reference another macro in the template
+(see <code class="docutils literal"><span class="pre">:=&lt;num&gt;</span></code> modifier below)</li>
+</ul>
+<p><strong>NOTE:</strong> Use uppercase word-type name for capitalized results, e.g. <code class="docutils literal"><span class="pre">$(Noun)</span></code>.<br>
+<strong>NOTE:</strong> The <code class="docutils literal"><span class="pre">:antonym</span></code> modifier is not yet implemented.</p>
+<p><strong>Special Word Types:</strong></p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">name</span></code>: Generate person names<br>
+See <em>Modifiers for Names</em> below.</li>
+<li><code class="docutils literal"><span class="pre">num</span></code>: Generate random numbers<br>
+See <em>Modifiers for Numbers</em> below.</li>
+<li><code class="docutils literal"><span class="pre">pick</span></code>: Generate random value from a selection<br>
+See <em>Modifiers for Choices</em> below.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="modifiers">
+<span id="modifiers"></span><h2>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="word-form-modifiers">
+<span id="word-form-modifiers"></span><h3>Word Form Modifiers<a class="headerlink" href="#word-form-modifiers" title="Permalink to this headline">¶</a></h3>
+<p>By default, words are generated in their base form ('lemma').
+At most one word-form modifier may be added to change this:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">:comp</span></code> Comparative (adj, adv)<br>
+$(adv) =&gt; &quot;fast&quot;, $(adj:comp) =&gt; &quot;faster&quot;</li>
+<li><code class="docutils literal"><span class="pre">:ing</span></code> (verbs only)<br>
+$(verb) =&gt; &quot;run&quot;, $(verb:ing) =&gt; &quot;running&quot;</li>
+<li><code class="docutils literal"><span class="pre">:past</span></code> past form (verbs only)<br>
+$(verb) =&gt; &quot;arise&quot;, $(verb:past) =&gt; &quot;arose&quot;</li>
+<li><code class="docutils literal"><span class="pre">:plural</span></code> (nouns only)<br>
+$(noun) =&gt; &quot;injury&quot;, $(noun:plural) =&gt; &quot;injuries&quot;</li>
+<li><code class="docutils literal"><span class="pre">:pp</span></code> past perfect form (verbs only)<br>
+$(verb) =&gt; &quot;arise&quot;, $(verb:pp) =&gt; &quot;arisen&quot;</li>
+<li><code class="docutils literal"><span class="pre">:s</span></code> -s/-es form (verbs only)<br>
+$(verb) =&gt; &quot;bash&quot;, $(verb:s) =&gt; &quot;bashes&quot;</li>
+<li><code class="docutils literal"><span class="pre">:super</span></code> superlative (adj, adv)<br>
+$(adj) =&gt; &quot;big&quot;, $(adj:super) =&gt; &quot;biggest&quot;</li>
+</ul>
+</div>
+<div class="section" id="additional-modifiers">
+<span id="additional-modifiers"></span><h3>Additional Modifiers<a class="headerlink" href="#additional-modifiers" title="Permalink to this headline">¶</a></h3>
+<p>These modifiers can used in addition to one word-form modifier:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">:an</span></code><br>
+Prepend &quot;a &quot; or &quot;an &quot;<br>
+$(noun) =&gt; &quot;essay&quot;, $(noun:an) =&gt; &quot;an essay&quot;</li>
+<li><code class="docutils literal"><span class="pre">:antonym</span></code><br>
+Adverbs and adjectives only: Use the opposite word. This is especially useful in combination
+with back-references:<br>
+<code class="docutils literal"><span class="pre">&quot;Don't</span> <span class="pre">be</span> <span class="pre">$(adj:=1).</span> <span class="pre">Be</span> <span class="pre">$(&#64;1:antonym)</span> <span class="pre">instead!&quot;</span></code><br>
+(<strong>NOTE:</strong> Not yet implemented!)</li>
+<li><code class="docutils literal"><span class="pre">:#&lt;tags&gt;</span></code><br>
+Only allow results tagged with this category.<br>
+Pass multiple tags separated by '|', e.g.:<br>
+<code class="docutils literal"><span class="pre">$(noun:#animal)</span></code>, <code class="docutils literal"><span class="pre">$(adv:#manner|positive)</span></code><br>
+Note that first names are tagged with <code class="docutils literal"><span class="pre">#f</span></code> and/or <code class="docutils literal"><span class="pre">#m</span></code> for female/male:<br>
+$(name:#m) =&gt; &quot;John Doe&quot;</li>
+<li><code class="docutils literal"><span class="pre">:=&lt;num&gt;</span></code><br>
+Store result for back-reference using <code class="docutils literal"><span class="pre">&#64;&lt;num&gt;</span></code>.<br>
+<code class="docutils literal"><span class="pre">&quot;One</span> <span class="pre">$(noun:=1)</span> <span class="pre">is</span> <span class="pre">good,</span> <span class="pre">but</span> <span class="pre">two</span> <span class="pre">$(&#64;1:plural)</span> <span class="pre">are</span> <span class="pre">better.&quot;</span></code></li>
+</ul>
+</div>
+<div class="section" id="modifiers-for-names">
+<span id="modifiers-for-names"></span><h3>Modifiers for Names<a class="headerlink" href="#modifiers-for-names" title="Permalink to this headline">¶</a></h3>
+<p>Names are produced by the <a class="reference external" href="fabulist_module.html#fabulist.fabulist.Fabulist.get_name"><code class="docutils literal"><span class="pre">Fabulist.get_name()</span></code></a>
+method or using a <code class="docutils literal"><span class="pre">$(name)</span></code> macro.</p>
+<p>These modifiers are available for names only:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">:first</span></code> only use first name<br>
+$(name) =&gt; &quot;Diana Chapman&quot;, $(name:first) =&gt; &quot;Diana&quot;</li>
+<li><code class="docutils literal"><span class="pre">:last</span></code> only use last name<br>
+$(name) =&gt; &quot;Diana Chapman&quot;, $(name:last) =&gt; &quot;Chapman&quot;</li>
+<li><code class="docutils literal"><span class="pre">:middle</span></code> generate a middle initial<br>
+$(name) =&gt; &quot;Diana Chapman&quot;, $(name:middle) =&gt; &quot;Diana S. Chapman&quot;</li>
+<li><code class="docutils literal"><span class="pre">:mr</span></code> prepend &quot;Mr.&quot; or &quot;Mrs.&quot;<br>
+$(name) =&gt; &quot;Diana Chapman&quot;, $(name:mr) =&gt; &quot;Mrs. Diana Chapman&quot;</li>
+</ul>
+<!--
+- `:title` prepend "Dr.", "Duke", ... (only with a certain probability)
+  $(name) => "Diana Chapman", $(name:title) => "Dr. Diana Chapman"
+--><p><strong>NOTE:</strong> If neither <code class="docutils literal"><span class="pre">:first</span></code> nor <code class="docutils literal"><span class="pre">:last</span></code> is given, it is assumed that both parts are requested.</p>
+<p><strong>NOTE:</strong>  Use <code class="docutils literal"><span class="pre">#m</span></code> or <code class="docutils literal"><span class="pre">#f</span></code> tags to restrict to male/female names:<br>
+$(name:#m) =&gt; &quot;George Clarkson&quot;, $(name:first:#f) =&gt; Cindy</p>
+</div>
+<div class="section" id="modifiers-for-numbers">
+<span id="modifiers-for-numbers"></span><h3>Modifiers for Numbers<a class="headerlink" href="#modifiers-for-numbers" title="Permalink to this headline">¶</a></h3>
+<p>Random numbers within a given range are produced by the
+<a class="reference external" href="fabulist_module.html#fabulist.fabulist.Fabulist.get_number"><code class="docutils literal"><span class="pre">Fabulist.get_number()</span></code></a>
+method or using a <code class="docutils literal"><span class="pre">$(num)</span></code> macro.</p>
+<p>The <code class="docutils literal"><span class="pre">num</span></code> word type only accepts on modifier with a special syntax:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">$(num:min,max,width)</span></code>, e.g.<br>
+$(num:1,999,3) =&gt; &quot;042&quot;</li>
+<li><code class="docutils literal"><span class="pre">$(num:min,max)</span></code><br>
+$(num:1,999) =&gt; &quot;42&quot;</li>
+<li><code class="docutils literal"><span class="pre">$(num:max)</span></code><br>
+$(num:999) =&gt; &quot;42&quot;</li>
+</ul>
+</div>
+<div class="section" id="modifiers-for-choices">
+<span id="modifiers-for-choices"></span><h3>Modifiers for Choices<a class="headerlink" href="#modifiers-for-choices" title="Permalink to this headline">¶</a></h3>
+<p>Random numbers within a given range are produced by the
+<a class="reference external" href="fabulist_module.html#fabulist.fabulist.Fabulist.get_choice"><code class="docutils literal"><span class="pre">Fabulist.get_choice()</span></code></a>
+method or using a <code class="docutils literal"><span class="pre">$(pick)</span></code> macro.</p>
+<p><code class="docutils literal"><span class="pre">$(pick:CHOICES)</span></code> where <em>CHOICES</em> may be a</p>
+<ul class="simple">
+<li>A comma separated list of strings:<br>
+$(pick:foo,bar,baz) =&gt; &quot;bar&quot;</li>
+<li>A single string of characters<br>
+$(pick:abc) =&gt; &quot;c&quot;</li>
+</ul>
+<p>Special characters can be escaped by a backslash:<br>
+<code class="docutils literal"><span class="pre">$(pick:!#\,\:)</span> <span class="pre">=&gt;</span> <span class="pre">&quot;,&quot;</span></code></p>
+<p><strong>NOTE:</strong> It is recommended to use the raw string syntax (<code class="docutils literal"><span class="pre">r&quot;...&quot;</span></code>) to ensure that the backslash is always passed correctly:<br>
+<code class="docutils literal"><span class="pre">get_quote(r&quot;$(pick:!#\:)&quot;)</span></code></p>
+</div>
+</div>
+<div class="section" id="tips-tricks">
+<span id="tips-tricks"></span><h2>Tips &amp; Tricks<a class="headerlink" href="#tips-tricks" title="Permalink to this headline">¶</a></h2>
+<p>Mix fabulist macros with standard python formatting to insert random numbers for example:</p>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">fabulist</span> <span class="kn">import</span> <span class="n">Fabulist</span>
+
+<span class="n">fab</span> <span class="o">=</span> <span class="n">Fabulist</span><span class="p">()</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">])</span>
+<span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;I need {count} {color} $(noun:plural).&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">fab</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Load additional custom word list from a file or static list.
+Note that the data formats must match the word list type.</p>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="n">fab</span> <span class="o">=</span> <span class="n">Fabulist</span><span class="p">()</span>
+<span class="c1"># Load stock lists</span>
+<span class="n">fab</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="c1"># Add entries from custom file</span>
+<span class="n">fab</span><span class="o">.</span><span class="n">verb_list</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;my/verbs.txt&quot;</span><span class="p">)</span>
+<span class="c1"># Add entries dynamically</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span><span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;The Beatles&quot;</span><span class="p">,</span> <span class="s2">&quot;plural&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;band&quot;</span><span class="p">]},</span>
+  <span class="p">{</span><span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;Rolling Stones&quot;</span><span class="p">,</span> <span class="s2">&quot;plural&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;band&quot;</span><span class="p">]},</span>
+  <span class="p">{</span><span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;foobar&quot;</span><span class="p">},</span>
+  <span class="p">]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+  <span class="n">fab</span><span class="o">.</span><span class="n">noun_list</span><span class="o">.</span><span class="n">add_entry</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">fab</span><span class="o">.</span><span class="n">update_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generate-blind-text">
+<span id="generate-blind-text"></span><h2>Generate Blind Text<a class="headerlink" href="#generate-blind-text" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the above functionalities, Fabulist also features some methods to produce
+blind text, also known as <a class="reference external" href="https://en.wikipedia.org/wiki/Lorem_ipsum">Lorem Ipsum</a>.</p>
+<p>See the <a class="reference external" href="fabulist_module.html#fabulist.fabulist.Fabulist"><code class="docutils literal"><span class="pre">Fabulist.get_lorem_*()</span></code></a>
+methods for details.</p>
+<p>Some examples here:</p>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fab</span><span class="o">.</span><span class="n">get_lorem_words</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">[&#39;tation&#39;, &#39;placerat&#39;, &#39;officia&#39;, &#39;blandit&#39;, &#39;nisi&#39;, &#39;elit&#39;, &#39;eu&#39;, &#39;mazim&#39;, &#39;sadipscing&#39;, &#39;suscipit&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fab</span><span class="o">.</span><span class="n">get_lorem_sentence</span><span class="p">()</span>
+<span class="go">Dolores takimata lorem nihil dignissim officia dolore voluptate nostrud commodo deserunt.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fab</span><span class="o">.</span><span class="n">get_lorem_paragraph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;pulp&quot;</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it?</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fab</span><span class="o">.</span><span class="n">get_lorem_paragraph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;trappatoni&quot;</span><span class="p">)</span>
+<span class="go">Es gibt keine deutsche Mannschaft spielt offensiv und die Name offensiv wie Bayern. Ist klar diese Wörter, ist möglich verstehen, was ich hab gesagt? Danke. Offensiv, offensiv ist wie machen wir in Platz.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fab</span><span class="o">.</span><span class="n">get_lorem_paragraph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;faust&quot;</span><span class="p">)</span>
+<span class="go">Zerstoben ist das freundliche Gedränge, Er scheint mir, mit Verlaub von Ew. Gnaden, Mir geht es wie der Katze mit der Maus.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fab</span><span class="o">.</span><span class="n">get_lorem_paragraph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s2">&quot;romeo&quot;</span><span class="p">)</span>
+<span class="go">Would I were sleep and peace, so sweet to rest! That monthly changes in her circled orb, I shall forget, to have thee still stand there,</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fab</span><span class="o">.</span><span class="n">get_lorem_text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">keep_first</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
+<span class="go">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</span>
+<span class="go">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reference_guide.html" class="btn btn-neutral float-right" title="Reference Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Martin Wendt.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
