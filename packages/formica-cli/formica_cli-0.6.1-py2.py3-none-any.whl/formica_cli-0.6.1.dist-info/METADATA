@@ -1,0 +1,32 @@
+Metadata-Version: 2.0
+Name: formica-cli
+Version: 0.6.1
+Summary: Simple AWS CloudFormation stack management tooling.
+Home-page: https://github.com/flomotlik/formica
+Author: Florian Motlik
+Author-email: flo@flomotlik.me
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: cloudformation,aws,cloud
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Utilities
+Classifier: License :: Public Domain
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: boto3 (==1.4.4)
+Requires-Dist: texttable (==0.8.7)
+Requires-Dist: jinja2 (==2.9.5)
+Requires-Dist: pyyaml (==3.12)
+Requires-Dist: deepdiff (==3.1.2)
+
+UNKNOWN
+
+
