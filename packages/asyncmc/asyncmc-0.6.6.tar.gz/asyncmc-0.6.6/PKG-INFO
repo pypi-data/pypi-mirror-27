@@ -1,0 +1,120 @@
+Metadata-Version: 1.1
+Name: asyncmc
+Version: 0.6.6
+Summary: Minimal pure python tornado memcached client
+Home-page: https://github.com/ErDmKo/asyncmc/
+Author: Eroshenko Dmitriy
+Author-email: erdmko@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: # Asyncmc  
+        
+        ![Build state](https://travis-ci.org/ErDmKo/asyncmc.svg?branch=master)
+        
+        [Asyncmc](https://github.com/ErDmKo/asyncmc) is a memcached client for [Tornado](https://github.com/tornadoweb/tornado) web framework.
+        Asyncmc work with python 2.7 and python 3
+        
+        ## Quick links
+          
+        * [Source (github)](https://github.com/ErDmKo/asyncmc)
+          
+        * [License](https://raw.githubusercontent.com/ErDmKo/asyncmc/master/LICENSE.txt)
+          
+        * [Examples](https://github.com/ErDmKo/asyncmc/blob/master/examples)
+        
+        ## Hello, Memcached
+        
+        Here is a simple "Hello, Memcached" example for Tornado with Memcached
+        
+        ```python
+        
+        import tornado.ioloop
+        from tornado import gen
+        import asyncmc
+        
+        loop = tornado.ioloop.IOLoop.instance()
+        
+        @gen.coroutine
+        def out():
+            mc = asyncmc.Client(servers=['localhost:11211'], loop=loop)
+            yield mc.set(b"some_key", b"Some value")
+            value = yield mc.get(b"some_key")
+            print(value)
+            values = yield mc.multi_get(b"some_key", b"other_key")
+            print(values)
+            yield mc.delete(b"another_key")
+        
+        loop.run_sync(out)
+        ```
+        
+        ## Requires
+        
+        + [Tornado](https://github.com/tornadoweb/tornado)
+        + [Memcached](http://memcached.org/)
+         
+        ## Installation
+        
+        To install asyncmc, simply:
+        
+        ```bash
+        
+        $ pip install asyncmc
+        
+        ```
+        
+        # LICENSE
+        
+        Asyncmc is licensed under MIT.
+        
+        # CHANGES
+        
+        ## 0.6.2 (17-12-2015)
+        
+        - Add os at stat method
+        
+        ## 0.6.1 (1-10-2015)
+        
+        - Bug fix and preparing to reconnect dead connections by errors
+        
+        ## 0.6 (2-07-2015)
+        
+        - New feature Multiply server connection
+        
+        ## 0.5.1 (27-06-2015)
+        
+        - Documentation improve
+        
+        ## 0.5 (25-06-2015)
+        
+        - add support for noreply
+        
+        the memcache protocol defines a 'noreply' optional parameter, which
+        instructs the server to not send a reply. In heavy usage environments
+        this can lead to significant performance improvements.
+        
+        ## 0.4 (19-06-2015)
+        
+        - New features keys may be "str" typed and extension method "prepend" is "+" on python
+        
+        ## 0.3 (16-06-2015)
+        
+        - New features new type of values "str" and extension method "append" is "+" on python
+        
+        ## 0.2 (15-06-2015)
+        
+        - New features "add", "replace", "append", "prepend"
+        
+        ## 0.1 (10-06-2015)
+        
+        - Initial release
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Environment :: Web Environment
