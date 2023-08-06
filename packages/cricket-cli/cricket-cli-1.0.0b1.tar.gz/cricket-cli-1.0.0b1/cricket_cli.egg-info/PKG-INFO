@@ -1,0 +1,46 @@
+Metadata-Version: 1.1
+Name: cricket-cli
+Version: 1.0.0b1
+Summary: Command-line interface for cricket enthusiasts
+Home-page: http://github.com/cbirajdar/cricket-cli
+Author: Chetan Birajdar
+Author-email: birajdar.chetan@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: cricket-cli
+        ===========
+        
+        .. image:: https://travis-ci.org/cbirajdar/cricket-cli.svg
+            :target: https://travis-ci.org/cbirajdar/cricket-cli
+        
+        Command line interface for cricket enthusiasts
+        
+        
+        Installation
+        ------------
+        
+        pip install cricket-cli
+        
+        Usage
+        -----
+        
+        * cricket -h
+            usage: cricket [-h] {scores,rankings,standings}
+        
+        * cricket scores
+            Live ICC international scores
+        
+        * cricket rankings
+            ICC player rankings
+        
+        * cricket standings
+            ICC team standings
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
