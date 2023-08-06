@@ -1,0 +1,60 @@
+pyPerformanceTimer
+==================
+Functionality Performance Timer
+
+Introduction
+------------
+The pyPerformanceTimer is used to find the function execution time. So it will use which function takes more time when execute and helps to find out the performance issue. So this is beginning and the more updated coming soon.
+
+Installation
+------------
+It's very simple install and use, I will show two types of installation manual and PIP installation.
+
+Manual Installation
+===================
+First you need to clone the package or download the latest release.
+
+
+    https://github.com/PraveenJP/pyPerformanceTimer.git
+    cd 'path to the package'
+    python setup.py install
+
+
+PIP Installation
+================
+
+    pip install pref_timer
+
+Usage
+-----
+It's very easy to use, Please follow the setps.
+
+  from pref_timer.timer import timer
+
+  @timer
+  def main():
+      for i in range(50000):
+          print ("Execution:", i)
+
+  if __name__ == '__main__':
+      main()
+
+Finally run the python file.
+
+Result
+------
+The Result of the above simple loop method
+
+    Execution: 19998
+    Execution: 19999
+    main Taken: 0.3 Seconds
+
+
+It shows the functionality name and time which is taken.
+
+If any suggestion or doubts please let me know via below email.
+---------------------------------------------------------------
+
+Email: praveen.josephmasilamani@outlook.com
+
+Happy Coding. :)
