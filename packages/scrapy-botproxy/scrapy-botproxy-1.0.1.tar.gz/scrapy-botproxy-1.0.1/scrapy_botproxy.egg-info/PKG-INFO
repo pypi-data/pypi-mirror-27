@@ -1,0 +1,82 @@
+Metadata-Version: 1.1
+Name: scrapy-botproxy
+Version: 1.0.1
+Summary: BotProxy (IP Rotating HTTP proxy) downloader middlewarefor Scrapy
+Home-page: https://github.com/botproxy/scrapy-botproxy
+Author: botproxy
+Author-email: support@botproxy.net
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: scrapy-botproxy
+        ===============
+        
+        BotProxy downloader middleware for Scrapy.
+        
+        Overview
+        --------
+        
+        BotProxy is an IP Rotating HTTP Proxy. Plug BotProxy into your web
+        scraping application and it will automatically route your requests
+        through one of our outgoing proxy servers. Multiple locations, fresh IP
+        addresses every day. Typical integrations take less than 5 minutes into
+        any script or application.
+        
+        Please note, in order to use this service you need to have active
+        subscription. You can get one at `BotProxy
+        website <https://botproxy.net>`__.
+        
+        Installation
+        ------------
+        
+        From PyPI
+        '''''''''
+        
+        ::
+        
+            pip install scrapy-botproxy
+        
+        From GitHub
+        '''''''''''
+        
+        ::
+        
+            pip install -e git+https://github.com/botproxy/scrapy-botproxy@master#egg=scrapy_botproxy
+        
+        Usage
+        -----
+        
+        settings.py:
+        
+        ::
+        
+            DOWNLOADER_MIDDLEWARES = {
+                'scrapy_botproxy.BotProxyMiddleware': 100,
+            }
+        
+            BOTPROXY_USER = 'proxy_username'
+            BOTPROXY_PASSWORD = 'proxy_password'
+            BOTPROXY_LOCATION = 'us-ny'  # optional
+            BOTPROXY_COUNTRY = 'US'  # optional
+        
+        You can also control botproxy behavior using scrapy ``request.meta``
+        property. Set ``botproxy_disable`` to ``True`` to temorary bypass proxy
+        for current request. Set ``location`` or ``country`` to route request
+        through selected location or any location in the specific country.
+        
+Platform: UNKNOWN
+Classifier: Framework :: Scrapy
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
