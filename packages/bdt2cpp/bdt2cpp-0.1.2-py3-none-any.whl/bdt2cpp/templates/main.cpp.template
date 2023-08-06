@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+/* @brief a logistic function
+ * using std::tanh instead of plain std::exp to hopefully increase
+ * the performance
+ */
+double sigmoid(double value)
+{
+  return 0.5 + 0.5 * std::tanh(value / 2);
+}
+
+{% if trees | length > 1 %}
+{% for tree in trees %}
+double tree_{{ loop.index0 }}(const std::vector<double>& features);
+{% endfor %}
+{% else %}
+{% set tree_number = 0 %}
+{% set tree = trees[0] %}
+{%+ include('tree.function.template') %}
+{%+ endif %}
+
+double ensemble(const std::vector<double>& features)
+{
+  return
+{% for _ in trees %}
+    tree_{{ loop.index0 }}(features){%- if loop.index < trees | length -%}+{%- endif -%}
+{% endfor %};
+}
+
+double normed(double value)
+{
+  return value / {{ norm | decimal(max_decimals) }};
+}
+
+int main(int argc, char const *argv[]) {
+  std::vector<double> input;
+  for(int i=1; i<argc; ++i){
+    input.push_back(std::strtod(argv[i], nullptr));
+  }
+
+  auto val = ensemble(input);
+  std::cout << "raw: " << val << "\n"
+    << "sigmoid: " << sigmoid(val) << "\n"
+    << "normed: " << normed(val) << "\n"
+    << std::endl;
+
+  return 0;
+}

@@ -1,0 +1,41 @@
+#!python
+
+import bdt2cpp
+import argparse
+import sys
+
+p = argparse.ArgumentParser()
+p.add_argument('--print-tree', action='store_true', help='''print the parsed
+               tree''')
+p.add_argument('model', type=str, help='''filename of the BDT model you
+                want to transpile. Supported are XGBoost and TMVA BDTs are
+                supported. If the file ending is `.xgb` or `.xml`, bdt2cpp will
+                use XGBoost or TMVA, respectively. Otherwise, specify the type
+                via the --type argument.''')
+p.add_argument('-o', '--output-directory', type=str, default='build', help='''
+               output directory to which the transpiled template will be
+               written. The files inside will be overwritten without warning!
+               Defaults to `build`.''')
+p.add_argument('-m', '--max-trees', type=int, default=None, help='''maximum
+               number of trees per file''')
+p.add_argument('-n', '--feature-names', nargs='*', help='''The list of all
+               feature names, if the model uses named features instead of
+               indexed features. This list must be of the exact same length as
+               the length of the feauture vector.''')
+p.add_argument('-t', '--type', type=str, default=None, help='''The BDT input
+               type. Can be one of ['TMVA', 'XGBoost'].''')
+p.add_argument('-d', '--rendered-decimals', type=int, default=None, help='''
+               Number of decimal digits used in generated source code (default
+               is python print default). Especially TMVA ".class.C" files seems
+               to use only 6 significant digits internally which might lead to
+               some numeric differences when using a large number of BDTs.''')
+
+args = p.parse_args()
+
+if args.print_tree:
+    print(*bdt2cpp.parse_model(args.model), sep='\n\n')
+    sys.exit()
+
+bdt2cpp.main(args.model, output_dir=args.output_directory,
+             trees_per_file=args.max_trees, feature_names=args.feature_names,
+             bdt_type=args.type, decimals=args.rendered_decimals)
