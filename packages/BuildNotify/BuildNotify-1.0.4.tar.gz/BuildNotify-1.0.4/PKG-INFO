@@ -1,0 +1,39 @@
+Metadata-Version: 1.1
+Name: BuildNotify
+Version: 1.0.4
+Summary: Cruise Control build monitor for Windows/Linux/Mac
+Home-page: https://anaynayak.github.io/buildnotify/
+Author: Anay Nayak
+Author-email: anayak007@gmail.com
+License: GPL v3
+Description: BuildNotify
+        ===========
+        
+        BuildNotify is a CCMenu/CCTray equivalent for Ubuntu. It resides in your system tray and notifies you of the build status for different projects on your continuous integration servers. BuildNotify is largely inspired from the awesome CCMenu available for Mac.
+        
+        Features
+        ========
+        
+        * Monitor projects on multiple CruiseControl continuous integration servers.
+        * Access to overall continuous integration status from the system tray.
+        * Access individual project pages through the tray menu.
+        * Receive notifications for fixed/broken/still failing builds.
+        * Easy access to the last build time for each project
+        * Customize build notifications.
+        
+        .. image:: https://anaynayak.github.io/buildnotify/images/projectlist.png
+        
+Keywords: cctray ccmenu buildnotify ubuntu linux cruisecontrol continuous integration ci
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Topic :: Software Development
+Classifier: Programming Language :: Python
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Environment :: X11 Applications :: Qt
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Software Development :: User Interfaces
+Classifier: Topic :: Software Development :: Widget Sets
+Requires: pytz
