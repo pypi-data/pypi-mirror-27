@@ -1,0 +1,73 @@
+Metadata-Version: 1.1
+Name: django_assertmaxnumqueries
+Version: 0.1.1
+Summary: Provides a Django TransactionTestCase.assertMaxNumQueries(),  analogous to the existing TransactionTestCase.assertNumQueries()
+Home-page: https://github.com/prismaticd/django_assertmaxnumqueries
+Author: Prismatic Digital
+Author-email: contact@prismaticdigital.com
+License: MIT license
+Description-Content-Type: UNKNOWN
+Description: ==========================
+        Django AssertMaxNumQueries
+        ==========================
+        
+        
+        .. image:: https://img.shields.io/pypi/v/django_assertmaxnumqueries.svg
+                :target: https://pypi.python.org/pypi/django_assertmaxnumqueries
+        
+        .. image:: https://img.shields.io/travis/prismaticd/django_assertmaxnumqueries.svg
+                :target: https://travis-ci.org/prismaticd/django_assertmaxnumqueries
+        
+        .. image:: https://readthedocs.org/projects/django-assertmaxnumqueries/badge/?version=latest
+                :target: https://django-assertmaxnumqueries.readthedocs.io/en/latest/?badge=latest
+                :alt: Documentation Status
+        
+        .. image:: https://pyup.io/repos/github/prismaticd/django_assertmaxnumqueries/shield.svg
+             :target: https://pyup.io/repos/github/prismaticd/django_assertmaxnumqueries/
+             :alt: Updates
+        
+        
+        Provides a Django TransactionTestCase.assertMaxNumQueries(), analogous to the existing TransactionTestCase.assertNumQueries()
+        
+        
+        * Free software: MIT license
+        * Documentation: https://django-assertmaxnumqueries.readthedocs.io.
+        
+        
+        Features
+        --------
+        
+        * TODO
+        
+        Credits
+        ---------
+        
+        This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+        
+        .. _Cookiecutter: https://github.com/audreyr/cookiecutter
+        .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+        
+        
+        
+        =======
+        History
+        =======
+        
+        0.1.0 (2017-12-11)
+        ------------------
+        
+        * First release on PyPI.
+        
+Keywords: django_assertmaxnumqueries
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
