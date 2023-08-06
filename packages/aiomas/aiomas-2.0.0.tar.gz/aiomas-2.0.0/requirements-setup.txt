@@ -1,0 +1,5 @@
+-e .[mpb]
+-r requirements-tests.txt
+-r requirements-docs.txt
+tox
+twine
