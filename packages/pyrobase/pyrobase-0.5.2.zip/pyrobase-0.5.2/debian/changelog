@@ -1,0 +1,54 @@
+pyrobase (0.5.2) precise; urgency=low
+
+  * Fix: Keep unicode/str type in shell_escape()
+
+ -- pyroscope <pyroscope.project@gmail.com>  Mon, 01 Jan 2018 14:03:46 +0100
+
+pyrobase (0.5.1) precise; urgency=low
+
+  * Removed support for Python 2.6
+  * New module 'osutil'
+
+ -- pyroscope <pyroscope.project@gmail.com>  Mon, 01 Jan 2018 12:25:53 +0100
+
+pyrobase (0.4.2) precise; urgency=low
+
+  * fix: imgur upload code
+
+ -- pyroscope <pyroscope.project@gmail.com>  Sun, 23 Jul 2017 15:33:23 +0200
+
+pyrobase (0.3.1) precise; urgency=low
+
+  * logutil: added shorten() and get_logfile()
+  * webservice: added "imgur" module
+  * templating: basic helpers, moved from pyrocore
+  * io.xmlrpc2scgi: fix for URL parsing in Python 2.7
+  * bootstrap.sh: easy workdir setup
+
+ -- pyroscope <pyroscope.project@gmail.com>  Fri, 03 Feb 2017 21:20:17 +0100
+
+pyrobase (0.2) hardy; urgency=low
+
+  * SCGIException added to io.xmlrpc2scgi
+  * paver: "-i" option added to "docs" task
+  * paver: new "clean" and "dist_clean" tasks
+
+ -- pyroscope <pyroscope.project@gmail.com>  Sun, 05 Jun 2011 11:36:09 +0200
+
+pyrobase (0.1) hardy; urgency=medium
+
+  * first official release
+  * Paver tasks for epydoc, pylint, and on-demand installing of only
+    optionally needed build tools, which makes it easier and faster
+    to just build from source
+  * io.xmlrpc2scgi: a revamped xmlrpc2scgi with a transport model
+    for UNIX domain and TCP sockets, and scgi+ssh scheme allowing
+    secure remote access to UNIX domain sockets via SSH.
+  * bencode: (de-)serialization of the bencode format.
+  * fmt: formatting helpers, mostly for presentation to humans.
+  * iterutil: collection helpers.
+  * parts: some basic types.
+  * testing: unit test helpers.
+  * unit tests with >80% average coverage
+
+ -- pyroscope <pyroscope.project@gmail.com>  Sun, 17 Apr 2011 17:03:00 +0200
