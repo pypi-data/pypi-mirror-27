@@ -1,0 +1,12 @@
+aiohttp
+prometheus_client>=0.0.21
+prometheus-async>=17.4.0
+
+[amqp]
+aioamqp>=0.9.0
+
+[postgres]
+aiopg
+
+[redis]
+aioredis
