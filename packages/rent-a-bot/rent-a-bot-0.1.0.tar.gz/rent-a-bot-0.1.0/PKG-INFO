@@ -1,0 +1,42 @@
+Metadata-Version: 1.1
+Name: rent-a-bot
+Version: 0.1.0
+Summary: Rent-A-Bot, your automation resource provider.
+Home-page: https://github.com/cpoisson/rent-a-bot
+Author: Charles Poisson
+Author-email: charles.poisson@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        Rent-A-Bot
+        ----------
+        
+        Rent-A-Bot, your automation resource provider!
+        
+        Rent-A-Bot is designed to help you lock your resources in your automation infrastructure.
+        
+        Setup
+        `````
+        .. code:: bash
+            $ pip install rent-a-bot
+            $ export FLASK_APP=rentabot
+            $ export RENTABOT_RESOURCE_DESCRIPTOR=path/to/your/descriptor
+            $ flask run
+        
+        Links
+        `````
+        * `website <https://github.com/cpoisson/rent-a-bot>`_
+        
+        
+Keywords: Resource allocation application for automation
+Platform: UNKNOWN
+Classifier: Framework :: Flask
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: Utilities
+Classifier: Operating System :: POSIX :: Linux
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
