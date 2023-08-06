@@ -1,0 +1,12 @@
+{% if not empty_block %}
+<section class="block">
+    {% if block_title %}
+    <header class="block-title">
+        <h2>{{ block_title }}</h2>
+    </header>
+    {% endif %}
+    <div class="block-content">
+    {% block block_content %}{% endblock block_content %}
+    </div>
+</section>
+{% endif %}
