@@ -1,0 +1,22 @@
+Metadata-Version: 1.0
+Name: isotoint
+Version: 1.0.0
+Summary: Convert ISO 8601 string to integer in a microsecond.
+Home-page: https://github.com/kysely/isotoint
+Author: Radek Kysely
+Author-email: kyselyradek@gmail.com
+License: MIT
+Description: # ISO 8601 to Integer
+        ### Convert ISO 8601 string to integer in a microsecond.
+        
+        ```sh
+        pip install isotoint
+        ```
+        
+        ```python
+        from isotoint import isotoint
+        
+        isotoint('2017-12-19T05:03:18.109Z') #20171219050318109
+        ```
+Keywords: iso,iso8601,integer,cython
+Platform: UNKNOWN
