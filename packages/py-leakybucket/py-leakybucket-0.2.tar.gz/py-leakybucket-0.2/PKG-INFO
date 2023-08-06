@@ -1,0 +1,39 @@
+Metadata-Version: 1.1
+Name: py-leakybucket
+Version: 0.2
+Summary: Python Leaky Bucket Rate Limiter with hourly limiting i.e. required for Amazon Marketplace Webservices
+Home-page: https://github.com/Sprungwunder/py-leakybucket
+Author: Christian Scholz
+Author-email: c.scholz@c-s-media.net
+License: GNU GENERAL PUBLIC LICENSE
+Download-URL: https://github.com/Sprungwunder/py-leakybucket/archive/0.2.tar.gz
+Description: # py-leakybucket
+        Python Leaky Bucket Rate Limiter with hourly limiting i.e. required for Amazon Marketplace Webservices
+        
+        
+        Requirements
+        ------------
+        
+        -  Python (3.3, 3.4, 3.5, 3.6)
+        -  Redis
+        
+        Installation
+        ------------
+        
+        Install using ``pip``\ ...
+        
+        .. code:: bash
+        
+            $ pip install py-leakybucket
+        
+Keywords: leakybucket,ratelimiter
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: Utilities
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
