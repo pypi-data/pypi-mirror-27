@@ -1,0 +1,65 @@
+Metadata-Version: 1.1
+Name: gene_map
+Version: 0.1.0
+Summary: Map gene ids using uniprot's website.
+Home-page: https://github.com/kpj/gene_map
+Author: kpj
+Author-email: kpjkpjkpjkpjkpjkpj@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: gene\_map
+        =========
+        
+        Tool for converting between various gene ids.
+        
+        Installation
+        ------------
+        
+        .. code:: bash
+        
+            $ pip install gene_map
+        
+        Usage
+        -----
+        
+        .. code:: bash
+        
+            $ gene_map --help
+            Usage: gene_map [OPTIONS]
+        
+              Map gene ids between various formats.
+        
+            Options:
+              -i, --input TEXT   If it exists, treated as file with newline-separated gene
+                                 ids. Otherwise treated as a gene id itself.  [required]
+              --from TEXT        Source ID type.  [required]
+              --to TEXT          Target ID type.  [required]
+              -o, --output TEXT  CSV-file to save result to.
+              --help             Show this message and exit.
+        
+        Getting started
+        ---------------
+        
+        Inputs can be either gene ids or files containing whitespace-separated
+        gene ids:
+        
+        .. code:: bash
+        
+            $ cat mygenes.txt
+            Q9UM73 P97793
+            Q17192
+            $ gene_map -i P13368 -i P20806 -i mygenes.txt --from ACC --to GENENAME
+            From,To
+            P13368,sev
+            P20806,sev
+            Q9UM73,ALK
+            P97793,Alk
+            Q17192,BBXA1
+        
+Keywords: vydia video playback
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3 :: Only
