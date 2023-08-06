@@ -1,0 +1,86 @@
+from selenium import webdriver 
+from selenium.webdriver.firefox.webdriver import FirefoxProfile
+import random
+import facebook
+from datetime import datetime
+import dateutil.parser
+import time
+import os
+import json
+import urllib.request
+from classes import genPostPics, joinGroups, groupsGen, addFriends, commentScanner, Trigger
+
+#--------------------------------------------------------
+# Read important data and config variables
+
+
+with open("config.json","r") as config:
+    config = json.load(config)
+    
+dir = config["directory_of_videos_to_upload_as_posts_on_timeline"]
+interval = config["interval_in_secs"]
+likesCount = config["how_many_wall_likes"]
+commentsCount = config["how_many_wall_comments"]
+reactsCount = config["how_many_wall_reacts"]
+postsCount = config["how_many_posts"]
+videosCount = config["how_many_videos"]
+postsInGroupCount = config["how_many_posts_in_groups"]
+findGroups = config["find_groups"]
+addFriendsHowMany = config["add_how_many_friends"]
+token = config["fb_access_token"]
+graph = facebook.GraphAPI(access_token=token, version="2.11") #changed from 2.10
+picsdir = config["picsdir"]
+firefox_profile = config["firefox_profile"]  
+profile = FirefoxProfile(firefox_profile)
+
+
+with open("textfile_used_to_find_groups_for_example_from_wikipedia_of_the_city.txt","r") as textwiki:
+    textwiki = textwiki.read()
+
+text = textwiki.split(' ')
+
+with open("selectedPosts.json","r") as selectedPosts:
+    selectedPosts = json.load(selectedPosts)
+with open("selectedComments.json","r") as selectedComments:
+    selectedComments = json.load(selectedComments)
+with open("selectedPages.json","r") as selectedPages:
+    selectedPages = json.load(selectedPages)
+        
+with open("selectedPostsPics.json","r") as selectedPostsPics:
+    selectedPostsPics = json.load(selectedPostsPics)
+     
+with open("groupsIdsUnique.json","r") as inputfile:
+    groupsIdsUnique = json.load(inputfile)
+
+#begin the firefox and now listening
+print("Opening firefox please wait ...")
+t = Trigger(graph, profile,picsdir)        
+what_to_do = [[1] * likesCount,[2] * commentsCount, [3] * reactsCount, [4] * postsCount, [5] * videosCount , [6] * postsInGroupCount , [7] * findGroups , [8] * addFriendsHowMany]
+what_to_do = [val for sublist in what_to_do for val in sublist]
+x = len(what_to_do)
+while x > 0:
+    x = x - 1
+    time.sleep(abs(int(random.gauss(interval,interval/ 10))))
+    m = random.choice(what_to_do)
+    try:
+        if (m == 1):
+            t.likeHome()
+        elif (m == 2):
+            t.commentHome()
+        elif (m == 3):
+            t.reactHome()
+        elif (m == 4):
+            t.postPic(selectedPostsPics)
+        elif (m == 5):
+            t.postVideo(dir)
+        elif (m == 6):
+            t.postGroupFromGroup()
+            
+        if (7 in what_to_do):
+            groupsGen(graph,text)
+        if (8 in what_to_do):
+            addFriends(t,graph,1,groupsIdsUnique)
+            
+    except:
+        print("exception happen in modulus work")
+        pass
