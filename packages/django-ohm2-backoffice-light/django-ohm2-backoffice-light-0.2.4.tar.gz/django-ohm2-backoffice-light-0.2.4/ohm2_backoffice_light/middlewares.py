@@ -1,0 +1,35 @@
+from django.urls import reverse
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+try:
+	from django.utils.deprecation import MiddlewareMixin
+except ImportError:
+	MiddlewareMixin = object
+
+from . import utils as ohm2_backoffice_light_utils
+from . import settings
+
+
+
+class Middleware(MiddlewareMixin):
+	
+	def process_request(self, request):
+		
+		if request.user.is_authenticated:
+
+			is_staff = request.user.is_staff
+			is_superuser = request.user.is_superuser
+			
+			if is_superuser or is_staff:
+				return None
+			
+			
+			
+				
+		return None
+	
+	
+	def process_response(self, request, response):
+		
+		return response
+	
