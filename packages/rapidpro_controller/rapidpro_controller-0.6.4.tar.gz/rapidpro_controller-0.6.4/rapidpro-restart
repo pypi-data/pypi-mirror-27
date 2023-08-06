@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import sys
+import os
+
+from rapidpro_controller import (get_logger, log_success, log_failure,
+                                 COMPONENTS)
+from rapidpro_controller.services import restart_service
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def stop_all():
+    logger.info("restarting all rapidpro components")
+
+    failed_to_restart = []
+    for component in COMPONENTS:
+        logger.info(". restarting `{}`".format(component))
+        if restart_service(component):
+            log_success(logger)
+        else:
+            failed_to_restart.append(component)
+            log_failure(logger)
+
+    if not failed_to_restart:
+        logger.info("All components now restarted.")
+    else:
+        logger.error("Could not restart all components: {}"
+                     .format(",".join(failed_to_restart)))
+        return 1
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(stop_all())
