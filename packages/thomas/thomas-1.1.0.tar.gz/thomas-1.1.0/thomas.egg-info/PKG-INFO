@@ -1,0 +1,82 @@
+Metadata-Version: 1.1
+Name: thomas
+Version: 1.1.0
+Summary: Thomas allows parallel http downloads and is an alternative to Axel
+Home-page: https://github.com/JohnDoee/thomas
+Author: John Doee
+Author-email: johndoee+thomas@tidalstream.org
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Thomas
+        ======
+        
+        Thomas amplifies download speed by using parallel downloads similar to Axel or another
+        download manager that uses segmented downloads.
+        Thomas splits up the file like bittorrent instead of equal parts, this optimizes for reading while
+        downloading instead of easy development.
+        
+        Requirements
+        ------------
+        
+        - Python
+        
+        Install
+        -------
+        
+        From pypi (stable):
+        ::
+        
+            pip install thomas
+        
+        
+        From GitHub (develop):
+        ::
+        
+            virtualenv thomas-env
+            thomas-env/bin/pip install git+https://github.com/JohnDoee/thomas.git#develop
+        
+        
+        Upgrade from previous version
+        -----------------------------
+        
+        Upgrading from Github (develop)
+        ::
+        
+            thomas-env/bin/pip install git+https://github.com/JohnDoee/thomas.git#develop --upgrade --force-reinstall
+        
+        Instructions
+        ------------
+        
+        Start by installing.
+        
+        Then get downloading
+        ::
+            thomas http://rbx.proof.ovh.net/files/100Mio.dat
+        
+        Or use it as an http "proxy"
+        ::
+            thomas --serve http
+            wget http://127.0.0.1:8080/?url=http://rbx.proof.ovh.net/files/100Mio.dat
+        
+        See more commands by looking at ``thomas -h``
+        
+        License
+        -------
+        
+        MIT, see LICENSE
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: BSD
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: POSIX :: Other
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
