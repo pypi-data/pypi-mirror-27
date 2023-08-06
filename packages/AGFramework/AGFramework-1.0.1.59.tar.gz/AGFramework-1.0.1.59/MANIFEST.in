@@ -1,0 +1,11 @@
+include *.txt
+include AGFramework/*.*
+include AGFramework/data_models/*.*
+include AGFramework/data_models/migrations/*.*
+include AGFramework/extend/*.*
+include AGFramework/core/*.*
+include AGFramework/django_middleware/*.*
+recursive-include examples *.txt *.py
+prune examples/sample?/build
+prune AGFramework/DevelopMain.py
+
