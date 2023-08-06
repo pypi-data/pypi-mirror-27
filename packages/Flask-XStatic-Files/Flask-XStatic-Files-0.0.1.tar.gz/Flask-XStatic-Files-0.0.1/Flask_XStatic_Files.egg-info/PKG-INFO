@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: Flask-XStatic-Files
+Version: 0.0.1
+Summary: Easily use XStatic files in flask
+Home-page: http://github.com/agx/flask-xstatic-files
+Author: Guio Günther
+Author-email: agx@sigxcpu.org
+License: LGPLv3+
+Description-Content-Type: UNKNOWN
+Description: Flask-XStatic
+        =============
+        
+        .. image:: https://travis-ci.org/agx/flask-xstatic-files.svg?branch=master
+            :target: https://travis-ci.org/agx/flask-xstatic-files
+        
+        A flask extionsion to serve xstatic files. Can be useful if you don't use an
+        asset pipeline and server e.g. xstatic packaged javascript files directly.
+        
+        Setup
+        -----
+        Upon initialization tell flask about the xstatic modules you want to
+        use::
+        
+            app = Flask(__name__)
+            app.config.from_object(__name__)
+            app.config.update(dict(
+                XSTATIC_MODULES="jquery,d3",
+            ))
+            xsf = XStaticFiles(app)
+        
+        Serving files
+        -------------
+        Install a minimal route handler::
+        
+            @app.route('/xstatic/<module>/<path:filename>')
+            def xstatic(module, filename):
+                return xsf.serve_or_404(module, filename)
+        
+        In your templates you can then use xstatic_url_for::
+        
+            <script type=text/javascript src="{{ xstatic_url_for(module='jquery', path='jquery.min.js') }}"></script>
+        
+        This has the advantage that you can later serve files from a static
+        web server by adjusting 'XSTATIC_ROOT' and 'XSTATIC_PROTO' without
+        having to modify any code.
+        
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
