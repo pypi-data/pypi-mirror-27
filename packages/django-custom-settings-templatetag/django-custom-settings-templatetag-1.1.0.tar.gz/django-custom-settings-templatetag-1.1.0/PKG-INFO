@@ -1,0 +1,51 @@
+Metadata-Version: 1.1
+Name: django-custom-settings-templatetag
+Version: 1.1.0
+Summary: Provides a very simple tag to load settings variables from Django templates
+Home-page: https://github.com/MickaelBergem/django-custom-settings
+Author: Mickaël Bergem
+Author-email: suixo@securem.eu
+License: MIT
+Description: django-custom-settings
+        ======================
+        
+        Provides a very simple tag to load settings variables from Django templates.
+        If the variable doesn't exists, an empty string is returned.
+        
+        .. image:: https://travis-ci.org/MickaelBergem/django-custom-settings.svg?branch=master
+           :target: https://travis-ci.org/MickaelBergem/django-custom-settings
+        
+        .. image:: https://coveralls.io/repos/github/MickaelBergem/django-custom-settings/badge.svg?branch=master
+           :target: https://coveralls.io/github/MickaelBergem/django-custom-settings?branch=master
+        
+        Install
+        -------
+        
+        To install / update the module:
+        
+        .. code:: bash
+        
+            pip install django-custom-settings-templatetag -U
+        
+        Usage
+        -------
+        
+        In your Django template, do the following :
+        
+        .. code:: jinja2
+        
+            {% load custom_settings %}
+            {% settings_value "CUSTOM_VAR_IN_SETTINGS" as CUSTOM_VAR %}
+            {% if CUSTOM_VAR %}
+              var={{ CUSTOM_VAR }}
+            {% endif %}
+        
+Keywords: django settings configuration template tag
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Django
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
