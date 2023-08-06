@@ -1,0 +1,35 @@
+Metadata-Version: 2.0
+Name: lograptor
+Version: 1.2
+Summary: Command-line utility for processing log files. Produces matching outputs, data and reports.
+Home-page: https://github.com/brunato/lograptor
+Author: Davide Brunato
+Author-email: brunato@sissa.it
+License: LGPLv2.1+
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: Log Analysis
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Text Processing :: Filters
+Classifier: Topic :: Utilities
+Requires: python (>=2.7)
+
+lograptor is a tool which provides a command-line interface for system logs processing.
+
+Pattern matching searches can be performed together with filtering
+rules and scope delimitation options. Each run can produce data and
+a report that can be easily sent by e-mail or saved into a file system
+directory.
+The program can parse logs written in RFC 3164 and RFC 5424 formats.
+Lograptor requires Python >= 2.7, and is provided with a base configuration for a set
+of well known applications. You can easily extend this set adding new applications
+with specific pattern search rules.
+
+
