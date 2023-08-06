@@ -1,0 +1,55 @@
+language: python
+sudo: false
+cache: pip
+addons:
+  apt_packages:
+    - pandoc
+
+env:
+  global:
+    - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
+    - SEGFAULT_SIGNALS=all
+  matrix:
+    - TOXENV=check
+    - TOXENV=docs
+
+matrix:
+  include:
+    - python: '3.5'
+      env:
+        - TOXENV=3.5-cover,report,codecov
+    - python: '3.6'
+      env:
+        - TOXENV=3.6-cover,report,codecov
+
+before_install:
+  - python --version
+  - uname -a
+  - lsb_release -a
+
+install:
+  # install tox
+  - pip install tox
+  # display versions of installed components
+  - virtualenv --version
+  - easy_install --version
+  - pip --version
+  - tox --version
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3 # give xvfb some time to start
+
+script:
+  # start tox to do the testing
+  - tox -v
+
+after_failure:
+  - more .tox/log/* | cat
+  - more .tox/*/log/* | cat
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
