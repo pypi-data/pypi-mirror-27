@@ -1,0 +1,503 @@
+2017-11-11 19:53:59,142 INFO __main__ mainloop: Function called
+2017-11-11 19:53:59,142 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:53:59,142 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:57:28,420 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 63, in mainloop
+    s_client.send(response.encode('ascii'))
+BrokenPipeError: [Errno 32] Broken pipe
+2017-11-11 19:58:22,426 INFO __main__ mainloop: Function called
+2017-11-11 19:58:22,426 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:22,426 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:22,430 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:22,431 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:36,396 INFO __main__ mainloop: Function called
+2017-11-11 19:58:36,397 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:36,397 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:36,399 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:36,400 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:37,454 INFO __main__ mainloop: Function called
+2017-11-11 19:58:37,454 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:37,454 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:37,457 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:37,458 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:38,372 INFO __main__ mainloop: Function called
+2017-11-11 19:58:38,373 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:38,373 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:38,380 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:38,383 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:39,154 INFO __main__ mainloop: Function called
+2017-11-11 19:58:39,154 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:39,154 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:39,156 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:39,157 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:39,948 INFO __main__ mainloop: Function called
+2017-11-11 19:58:39,948 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:39,948 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:39,951 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:39,952 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:41,133 INFO __main__ mainloop: Function called
+2017-11-11 19:58:41,133 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:41,133 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:41,136 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:41,137 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:41,975 INFO __main__ mainloop: Function called
+2017-11-11 19:58:41,975 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:41,975 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:41,978 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:41,979 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:42,852 INFO __main__ mainloop: Function called
+2017-11-11 19:58:42,852 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:42,852 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:42,855 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:42,856 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:43,643 INFO __main__ mainloop: Function called
+2017-11-11 19:58:43,643 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:43,643 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:43,646 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:43,647 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:44,389 INFO __main__ mainloop: Function called
+2017-11-11 19:58:44,390 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:44,390 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:44,398 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:44,399 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:45,171 INFO __main__ mainloop: Function called
+2017-11-11 19:58:45,171 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:45,172 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:45,178 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:45,179 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:45,936 INFO __main__ mainloop: Function called
+2017-11-11 19:58:45,936 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:45,937 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:45,941 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:45,942 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:46,752 INFO __main__ mainloop: Function called
+2017-11-11 19:58:46,752 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:46,752 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:46,755 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:46,757 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:47,521 INFO __main__ mainloop: Function called
+2017-11-11 19:58:47,521 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:47,521 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:47,524 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:47,525 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:48,223 INFO __main__ mainloop: Function called
+2017-11-11 19:58:48,223 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:48,223 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:48,225 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:48,226 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:49,007 INFO __main__ mainloop: Function called
+2017-11-11 19:58:49,008 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:49,008 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:49,012 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:49,013 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:49,683 INFO __main__ mainloop: Function called
+2017-11-11 19:58:49,683 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:49,683 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:49,686 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:49,687 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:50,323 INFO __main__ mainloop: Function called
+2017-11-11 19:58:50,324 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:50,324 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:50,326 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:50,327 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:51,105 INFO __main__ mainloop: Function called
+2017-11-11 19:58:51,106 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:51,106 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:51,109 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:51,110 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:51,933 INFO __main__ mainloop: Function called
+2017-11-11 19:58:51,933 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:58:51,933 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:58:51,937 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:58:51,940 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:59:01,316 INFO __main__ mainloop: Function called
+2017-11-11 19:59:01,316 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:59:01,316 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:59:01,320 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:59:01,321 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:59:02,203 INFO __main__ mainloop: Function called
+2017-11-11 19:59:02,203 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:59:02,203 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:59:02,866 INFO __main__ mainloop: Function called
+2017-11-11 19:59:02,866 INFO __main__ checkcmdargs: Function called
+2017-11-11 19:59:02,866 INFO __main__ new_listen_socket: Function called
+2017-11-11 19:59:02,869 ERROR __main__ new_listen_socket: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 19:59:02,870 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 34, in mainloop
+    sock = new_listen_socket(address, port)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 24, in new_listen_socket
+    sock.bind((addr, port))
+OSError: [Errno 48] Address already in use
+2017-11-11 20:00:08,760 ERROR __main__ mainloop: Exception: 
+Traceback (most recent call last):
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/log_config.py", line 35, in call
+    return func(*args, **kwargs)
+  File "/Users/ae/Dropbox/Docs/Python/PythonMessenger/server.py", line 63, in mainloop
+    s_client.send(response.encode('ascii'))
+BrokenPipeError: [Errno 32] Broken pipe
