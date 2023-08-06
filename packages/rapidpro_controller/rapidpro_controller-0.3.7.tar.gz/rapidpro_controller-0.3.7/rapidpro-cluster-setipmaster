@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import sys
+import os
+import time
+
+from rapidpro_controller import (get_logger, log_success, log_failure,
+                                 OTHER_SERVER, THIS_SERVER, SERVERS)
+from rapidpro_controller.cluster import (cache_ip_master,
+                                         make_available, make_unavailable,
+                                         is_available, get_ip_master)
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main(args):
+    if not len(args):
+        logger.error("unable to set cluster IP, no node specified.")
+        return 1
+
+    peer = args[0]
+
+    if peer not in SERVERS:
+        logger.error("unable to set cluster IP to `{}`. not a known peer."
+                     .format(peer))
+        return 1
+
+    logger.info("requesting Cluster IP for node `{}`.".format(peer))
+
+    other_peer = THIS_SERVER if peer == OTHER_SERVER else OTHER_SERVER
+
+    is_ip_master = get_ip_master() == peer
+
+    if is_ip_master:
+        logger.warning("node `{p}` is already the IP master".format(p=peer))
+        return 0
+
+    peer_avail = is_available(peer)
+    other_avail = is_available(other_peer)
+    if not peer_avail:
+        logger.info("target `{p}` is not available. let's fix that first."
+                    .format(p=peer))
+        if make_available(peer):
+            log_success(logger)
+        else:
+            log_failure(logger, msg="couldn't make `{p}` available. "
+                        "cancelling master IP change request.".format(p=peer))
+            return 1
+
+    logger.debug("breathing...")
+    time.sleep(4)
+
+    if not is_available(peer):
+        logger.error("for some reason, `{p}` is not available. "
+                     "exiting as we don't want to make cluster offline."
+                     .format(p=peer))
+        return 1
+
+    logger.info("putting node `{o}` in standby so `{p}` can be master"
+                .format(o=other_peer, p=peer))
+    if make_unavailable(other_peer):
+        log_success(logger)
+    else:
+        log_failure(logger, msg="couldn't make it unavailable. leaving.")
+        return 1
+
+    logger.debug("breathing...")
+    time.sleep(4)
+
+    if get_ip_master() == peer:
+        log_success(logger, msg="`{}` is now the IP master.".format(peer))
+        cache_ip_master(peer)
+    else:
+        log_failure(logger, msg="`{}` is NOT the IP master.".format(peer))
+
+    if other_avail:
+        logger.info("waking-up `{}` as it was previously working."
+                    .format(other_peer))
+        if make_available(other_peer):
+            log_success(logger)
+        else:
+            log_failure(logger)
+
+    return 0 if get_ip_master() == peer else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))
