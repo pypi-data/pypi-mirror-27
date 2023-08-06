@@ -1,0 +1,15 @@
+h5py
+numpy
+scipy
+cython
+setuptools>=18.0
+
+[alt_est]
+scikit-learn
+
+[full]
+rpy2<=2.8.6
+scikit-learn
+
+[plot]
+rpy2<=2.8.6
