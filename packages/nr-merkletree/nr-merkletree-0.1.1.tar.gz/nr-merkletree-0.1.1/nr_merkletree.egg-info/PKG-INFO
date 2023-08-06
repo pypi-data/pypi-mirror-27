@@ -1,0 +1,65 @@
+Metadata-Version: 1.1
+Name: nr-merkletree
+Version: 0.1.1
+Summary: Merkle Tree implementation for Python3.
+Home-page: UNKNOWN
+Author: Nitish Reddy Koripalli <nitish.k.reddy@gmail.com>
+Author-email: UNKNOWN
+License: UNKNOWN
+Download-URL: https://github.com/nitred/nr-merkletree/archive/0.1.1.tar.gz
+Description-Content-Type: UNKNOWN
+Description: ## nr-merkletree
+        Python-3 compatible Merkle tree implementation.
+        
+        
+        ## Install
+        
+        #### Pip
+        ```
+        pip install nr-merkletree
+        ```
+        
+        #### Development Installation
+        * Clone the project.
+        * Install in Anaconda3 environment
+        	```
+        	$ conda env create --force -f dev_environment.yml
+        	$ source activate nr-merkletree
+        	$ pip install -e .
+        	```
+        
+        
+        ## Test
+        To run the tests:
+        ```
+        make test
+        ```
+        
+        
+        ## Usage
+        ```python
+        from nr_merkletree import MerkleTree
+        from pprint import pprint
+        
+        # A list of bytes data
+        data_chunks = [b'0', b'1', b'2', b'3', b'4']
+        
+        # Create merkle_tree
+        merkle_tree = MerkleTree(data_chunks)
+        
+        # Print out Merkle Tree
+        pprint(merkle_tree.tree.to_dict())
+        ```
+        
+        
+        ## Examples
+        ```
+        $ python examples/simple_merkle_tree.py
+        ```
+        
+        
+        ## License
+        MIT
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
