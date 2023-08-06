@@ -1,0 +1,162 @@
+- job:
+    name: kuryr-kubernetes-install-base
+    parent: legacy-dsvm-base
+    run: playbooks/kuryr-kubernetes-install-base/run.yaml
+    post-run: playbooks/kuryr-kubernetes-install-base/post.yaml
+    timeout: 4200
+    vars:
+      variant: default
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/devstack-plugin-container
+      - openstack/dragonflow
+      - openstack/kuryr
+      - openstack/kuryr-kubernetes
+    irrelevant-files:
+      - ^.*\.rst$
+      - ^doc/.*$
+      - ^releasenotes/.*$
+
+- job:
+    name: tempest-kuryr-kubernetes-base
+    parent: legacy-dsvm-base
+    run: playbooks/tempest-kuryr-kubernetes-base/run.yaml
+    post-run: playbooks/tempest-kuryr-kubernetes-base/post.yaml
+    timeout: 4200
+    vars:
+      loadbalancer: lbaasv2
+      kuryr_daemon: False
+      container_engine: kubernetes
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/devstack-plugin-container
+      - openstack/kuryr
+      - openstack/kuryr-kubernetes
+      - openstack/kuryr-tempest-plugin
+      - openstack/tempest
+    irrelevant-files:
+      - ^.*\.rst$
+      - ^doc/.*$
+      - ^releasenotes/.*$
+
+- job:
+    name: kuryr-kubernetes-install-default
+    parent: kuryr-kubernetes-install-base
+
+- job:
+    name: kuryr-kubernetes-install-dragonflow
+    parent: kuryr-kubernetes-install-base
+    vars:
+      variant: dragonflow
+    voting: false
+
+- job:
+    name: tempest-kuryr-kubernetes-multinode
+    parent: legacy-dsvm-base-multinode
+    run: playbooks/tempest-kuryr-kubernetes-multinode/run.yaml
+    post-run: playbooks/tempest-kuryr-kubernetes-multinode/post.yaml
+    timeout: 4200
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/devstack-plugin-container
+      - openstack/kuryr
+      - openstack/kuryr-kubernetes
+      - openstack/kuryr-tempest-plugin
+      - openstack/tempest
+    nodeset: legacy-ubuntu-xenial-2-node
+    voting: false
+    irrelevant-files:
+      - ^.*\.rst$
+      - ^doc/.*$
+      - ^releasenotes/.*$
+
+# Tempest with LBaaSV2
+- job:
+    name: tempest-kuryr-kubernetes-lbaasv2
+    parent: tempest-kuryr-kubernetes-base
+
+# Tempest with LBaaSV2 and CNI daemon enabled
+- job:
+    name: tempest-kuryr-kubernetes-lbaasv2-daemon
+    parent: tempest-kuryr-kubernetes-base
+    vars:
+      kuryr_daemon: True
+
+# Tempest with LBaaSV2 and OpenShift
+- job:
+    name: tempest-kuryr-kubernetes-lbaasv2-openshift
+    parent: tempest-kuryr-kubernetes-lbaasv2
+    vars:
+      container_engine: openshift
+    voting: false
+
+# Tempest with LBaaSV2, OpenShift and CNI daemon enabled
+- job:
+    name: tempest-kuryr-kubernetes-lbaasv2-daemon-openshift
+    parent: tempest-kuryr-kubernetes-lbaasv2-daemon
+    vars:
+      container_engine: openshift
+    voting: false
+
+# Tempest with Octavia
+- job:
+    name: tempest-kuryr-kubernetes-octavia
+    parent: tempest-kuryr-kubernetes-base
+    vars:
+      loadbalancer: octavia
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack/barbican
+      - openstack/devstack-plugin-container
+      - openstack/kuryr
+      - openstack/kuryr-kubernetes
+      - openstack/kuryr-tempest-plugin
+      - openstack/octavia
+      - openstack/python-barbicanclient
+      - openstack/python-octaviaclient
+      - openstack/tempest
+
+# Tempest with Octavia and CNI daemon enabled
+- job:
+    name: tempest-kuryr-kubernetes-octavia-daemon
+    parent: tempest-kuryr-kubernetes-octavia
+    vars:
+      kuryr_daemon: True
+    voting: false
+
+# Tempest with Octavia and OpenShift
+- job:
+    name: tempest-kuryr-kubernetes-octavia-openshift
+    parent: tempest-kuryr-kubernetes-octavia
+    vars:
+      container_engine: openshift
+    voting: false
+
+# Tempest with Octavia, OpenShift and CNI daemon enabled
+- job:
+    name: tempest-kuryr-kubernetes-octavia-daemon-openshift
+    parent: tempest-kuryr-kubernetes-octavia-daemon
+    vars:
+      container_engine: openshift
+    voting: false
+
+- project:
+    name: openstack/kuryr-kubernetes
+    check:
+      jobs:
+        - kuryr-kubernetes-install-default
+        - kuryr-kubernetes-install-dragonflow
+        - tempest-kuryr-kubernetes-lbaasv2
+        - tempest-kuryr-kubernetes-lbaasv2-openshift
+        - tempest-kuryr-kubernetes-lbaasv2-daemon
+        - tempest-kuryr-kubernetes-octavia
+        - tempest-kuryr-kubernetes-octavia-daemon
+        - tempest-kuryr-kubernetes-octavia-openshift
+    gate:
+      jobs:
+        - kuryr-kubernetes-install-default
+    experimental:
+      jobs:
+        - tempest-kuryr-kubernetes-multinode
+        - tempest-kuryr-kubernetes-lbaasv2-daemon-openshift
+        - tempest-kuryr-kubernetes-octavia-daemon-openshift
