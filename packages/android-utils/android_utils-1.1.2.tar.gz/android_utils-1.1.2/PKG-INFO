@@ -1,0 +1,44 @@
+Metadata-Version: 1.1
+Name: android_utils
+Version: 1.1.2
+Summary: xinge Push API for Python(http://xg.qq.com).
+Home-page: https://github.com/xingePush/xinge-api-python
+Author: yang
+Author-email: 1020211152@qq.com
+License: MIT
+Description: ====================
+        Python Android 工具
+        ====================
+        
+        ------------
+        Installation
+        ------------
+        To install android-utils, simply:
+        
+            $ sudo pip install -U android-utils
+        
+        or alternatively install via easy_install:
+        
+            $ sudo easy_install -U android-utils
+        
+        ------------
+        Publish
+        ------------
+        To publish android-utils:
+        
+            $ python setup.py sdist
+        
+            $ twine upload dist/*
+            
+        or see: https://packaging.python.org/tutorials/distributing-packages/#packaging-your-project
+        
+        ------------
+        Usage
+        ------------
+        import android_utils
+Keywords: android,Android,androidutils,android_utils
+Platform: any
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
