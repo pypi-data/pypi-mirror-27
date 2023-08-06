@@ -1,0 +1,29 @@
+Metadata-Version: 2.0
+Name: eo-lookup-revo
+Version: 1.0.1
+Summary: GPL-licensed ReVo content for eo-lookup
+Home-page: https://github.com/open-esperanto/eo-lookup-revo
+Author: Open Esperanto
+Author-email: admin@libraro.net
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Keywords: esperanto revo
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Programming Language :: Python :: 3
+
+ReVo content for eo-lookup
+==========================
+
+This package contains GPL-licensed content for the eo-lookup tool
+taken from `Reta Vortaro <http://www.reta-vortaro.de/revo/>`_.
+
+.. code-block:: python
+
+   >>> import eo_lookup_revo
+   >>> eo_lookup_revo.get_content()
+
+
+
