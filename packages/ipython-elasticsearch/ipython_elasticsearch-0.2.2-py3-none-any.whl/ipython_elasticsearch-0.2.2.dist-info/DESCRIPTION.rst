@@ -1,0 +1,3 @@
+Elasticearch access via IPython
+
+
