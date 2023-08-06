@@ -1,0 +1,74 @@
+Metadata-Version: 1.2
+Name: nanoQC
+Version: 0.6.0
+Summary: Create fastQC-like plots for Oxford Nanopore sequencing data
+Home-page: https://github.com/wdecoster/nanoQC
+Author: Wouter De Coster
+Author-email: decosterwouter@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: nanoQC
+        ======
+        
+        Quality control tools for Oxford Nanopore sequencing data aiming to
+        replicate some of the plots made by fastQC.
+        
+        |Twitter URL| |install with conda| |Code Health|
+        
+        Creates dynamic plots using
+        `bokeh <https://bokeh.pydata.org/en/latest/>`__. For a static example
+        see my blog `Gigabase or
+        gigabyte <https://gigabaseorgigabyte.wordpress.com/2017/06/15/per-base-sequence-content-and-quality-end-of-reads/>`__
+        
+        INSTALLATION
+        ------------
+        
+        .. code:: bash
+        
+            pip install nanoQC
+        
+        | or
+        | |install with conda|
+        
+        ::
+        
+            conda install -c bioconda nanoqc
+        
+        USAGE
+        -----
+        
+        ::
+        
+            nanoQC [-h] [-v] [--outdir OUTDIR] fastq
+        
+            positional arguments:
+              fastq            Reads data in fastq format.
+        
+            optional arguments:
+              -h, --help       show this help message and exit
+              -v, --version    Print version and exit.
+              -o, --outdir     Specify directory in which output has to be created.
+        
+        STATUS
+        ------
+        
+        |Code Health|
+        
+        .. |Twitter URL| image:: https://img.shields.io/twitter/url/https/twitter.com/wouter_decoster.svg?style=social&label=Follow%20%40wouter_decoster
+           :target: https://twitter.com/wouter_decoster
+        .. |install with conda| image:: https://anaconda.org/bioconda/nanoqc/badges/installer/conda.svg
+           :target: https://anaconda.org/bioconda/nanoqc
+        .. |Code Health| image:: https://landscape.io/github/wdecoster/nanoQC/master/landscape.svg?style=flat
+           :target: https://landscape.io/github/wdecoster/nanoQC/master
+        
+Keywords: nanopore sequencing statistics
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Python: >=3
