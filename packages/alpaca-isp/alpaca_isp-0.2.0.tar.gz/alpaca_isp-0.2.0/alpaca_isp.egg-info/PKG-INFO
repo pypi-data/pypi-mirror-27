@@ -1,0 +1,41 @@
+Metadata-Version: 1.1
+Name: alpaca-isp
+Version: 0.2.0
+Summary: In-system programming tool for LPC microcontrollers
+Home-page: https://git.clayhobbs.com/clay/alpaca_isp
+Author: Clayton G. Hobbs
+Author-email: clay@lakeserv.net
+License: Apache
+Description-Content-Type: UNKNOWN
+Description: Alpaca ISP
+        ==========
+        
+        In-system programming tool for LPC microcontrollers
+        
+        Features
+        --------
+        
+        -  Provides a Pythonic interface to the LPC ISP command handler
+        -  Can put microcontrollers into ISP mode by manipulating the serial port's DTR
+           (/RST) and RTS (/ISP) lines
+        -  Convenient command-line interface for flashing from build systems
+        
+        Requirements
+        ------------
+        
+        -  Python 3.6 (probably works with older versions of Python 3, but untested)
+        -  PySerial >= 3.4
+        -  IntelHex >= 2.1
+        
+Keywords: lpc microcontroller mcu flash isp
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Embedded Systems
