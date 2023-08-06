@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>manager - starting, stopping, signalling &mdash; jupyter_client 5.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="jupyter_client 5.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="jupyter_client API" href="index.html"/>
+        <link rel="next" title="client - communicating with kernels" href="client.html"/>
+        <link rel="prev" title="kernelspec - discovering kernels" href="kernelspec.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> jupyter_client
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../messaging.html">Messaging in Jupyter</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../kernels.html">Making kernels for Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrapperkernels.html">Making simple Python wrapper kernels</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">jupyter_client API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="kernelspec.html">kernelspec - discovering kernels</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">manager - starting, stopping, signalling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multikernelmanager-controlling-multiple-kernels">multikernelmanager - controlling multiple kernels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utility-functions">Utility functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client.html">client - communicating with kernels</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Changes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changes in Jupyter Client</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">jupyter_client</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">jupyter_client API</a> &raquo;</li>
+        
+      <li>manager - starting, stopping, signalling</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/manager.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="manager-starting-stopping-signalling">
+<h1>manager - starting, stopping, signalling<a class="headerlink" href="#manager-starting-stopping-signalling" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="jupyter_client.KernelManager">
+<em class="property">class </em><code class="descclassname">jupyter_client.</code><code class="descname">KernelManager</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages a single kernel in a subprocess on this host.</p>
+<p>This version starts kernels with Popen.</p>
+<dl class="attribute">
+<dt id="jupyter_client.KernelManager.kernel_name">
+<code class="descname">kernel_name</code><a class="headerlink" href="#jupyter_client.KernelManager.kernel_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the kernel to launch (see <a class="reference internal" href="../kernels.html#kernelspecs"><span class="std std-ref">Kernel specs</span></a>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelManager.start_kernel">
+<code class="descname">start_kernel</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager.start_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a kernel on this host in a separate process.</p>
+<p>If random ports (port=0) are being used, this method must be called
+before the channels are created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**kw</strong> (<em>optional</em>) – keyword arguments that are passed down to build the kernel_cmd
+and launching the kernel (e.g. Popen kwargs).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="jupyter_client.KernelManager.kernel">
+<code class="descname">kernel</code><a class="headerlink" href="#jupyter_client.KernelManager.kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Once the kernel has been started, this is the <code class="xref py py-class docutils literal"><span class="pre">subprocess.Popen</span></code>
+class for the kernel process.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelManager.is_alive">
+<code class="descname">is_alive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager.is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the kernel process still running?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelManager.interrupt_kernel">
+<code class="descname">interrupt_kernel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager.interrupt_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interrupts the kernel by sending it a signal.</p>
+<p>Unlike <code class="docutils literal"><span class="pre">signal_kernel</span></code>, this operation is well supported on all
+platforms.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelManager.signal_kernel">
+<code class="descname">signal_kernel</code><span class="sig-paren">(</span><em>signum</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager.signal_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a signal to the process group of the kernel (this
+usually includes the kernel and any subprocesses spawned by
+the kernel).</p>
+<p>Note that since only SIGTERM is supported on Windows, this function is
+only useful on Unix systems.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelManager.client">
+<code class="descname">client</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager.client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a client configured to connect to our kernel</p>
+<p>For the client API, see <code class="xref py py-mod docutils literal"><span class="pre">jupyter_client.client</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelManager.blocking_client">
+<code class="descname">blocking_client</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager.blocking_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a blocking client connected to my kernel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelManager.shutdown_kernel">
+<code class="descname">shutdown_kernel</code><span class="sig-paren">(</span><em>now=False</em>, <em>restart=False</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager.shutdown_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to stop the kernel process cleanly.</p>
+<p>This attempts to shutdown the kernels cleanly by:</p>
+<ol class="arabic simple">
+<li>Sending it a shutdown message over the shell channel.</li>
+<li>If that fails, the kernel is shutdown forcibly by sending it
+a signal.</li>
+</ol>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>now</strong> (<em>bool</em>) – Should the kernel be forcible killed <em>now</em>. This skips the
+first, nice shutdown attempt.</li>
+<li><strong>restart</strong> (<em>bool</em>) – Will this kernel be restarted after it is shutdown. When this
+is True, connection files will not be cleaned up.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelManager.restart_kernel">
+<code class="descname">restart_kernel</code><span class="sig-paren">(</span><em>now=False</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelManager.restart_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restarts a kernel with the arguments that were used to launch it.</p>
+<p>If the old kernel was launched with random ports, the same ports will be
+used for the new kernel. The same connection file is used again.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>now</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>If True, the kernel is forcefully restarted <em>immediately</em>, without
+having a chance to do any cleanup action.  Otherwise the kernel is
+given 1s to clean up before a forceful restart is issued.</p>
+<p>In all cases the kernel is restarted, the only difference is whether
+it is given a chance to perform a clean shutdown or not.</p>
+</li>
+<li><strong>**kw</strong> (<em>optional</em>) – Any options specified here will overwrite those used to launch the
+kernel.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="multikernelmanager-controlling-multiple-kernels">
+<h2>multikernelmanager - controlling multiple kernels<a class="headerlink" href="#multikernelmanager-controlling-multiple-kernels" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="jupyter_client.MultiKernelManager">
+<em class="property">class </em><code class="descclassname">jupyter_client.</code><code class="descname">MultiKernelManager</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.MultiKernelManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for managing multiple kernels.</p>
+<p>This exposes the same methods as <code class="xref py py-class docutils literal"><span class="pre">KernelManager</span></code>,
+but their first parameter is a kernel ID, a string identifying the kernel
+instance. Typically these are UUIDs picked by <a class="reference internal" href="#jupyter_client.MultiKernelManager.start_kernel" title="jupyter_client.MultiKernelManager.start_kernel"><code class="xref py py-meth docutils literal"><span class="pre">start_kernel()</span></code></a></p>
+<dl class="method">
+<dt id="jupyter_client.MultiKernelManager.start_kernel">
+<code class="descname">start_kernel</code><span class="sig-paren">(</span><em>kernel_name=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.MultiKernelManager.start_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a new kernel.</p>
+<p>The caller can pick a kernel_id by passing one in as a keyword arg,
+otherwise one will be picked using a uuid.</p>
+<p>The kernel ID for the newly started kernel is returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.MultiKernelManager.list_kernel_ids">
+<code class="descname">list_kernel_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.MultiKernelManager.list_kernel_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the kernel ids of the active kernels.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.MultiKernelManager.get_kernel">
+<code class="descname">get_kernel</code><span class="sig-paren">(</span><em>kernel_id</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.MultiKernelManager.get_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the single KernelManager object for a kernel by its uuid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kernel_id</strong> (<em>uuid</em>) – The id of the kernel.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.MultiKernelManager.remove_kernel">
+<code class="descname">remove_kernel</code><span class="sig-paren">(</span><em>kernel_id</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.MultiKernelManager.remove_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>remove a kernel from our mapping.</p>
+<p>Mainly so that a kernel can be removed if it is already dead,
+without having to call shutdown_kernel.</p>
+<p>The kernel object is returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.MultiKernelManager.shutdown_all">
+<code class="descname">shutdown_all</code><span class="sig-paren">(</span><em>now=False</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.MultiKernelManager.shutdown_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shutdown all kernels.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="utility-functions">
+<h2>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="jupyter_client.run_kernel">
+<code class="descclassname">jupyter_client.</code><code class="descname">run_kernel</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.run_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context manager to create a kernel in a subprocess.</p>
+<p>The kernel is shut down when the context exits.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>kernel_client</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">connected KernelClient instance</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="client.html" class="btn btn-neutral float-right" title="client - communicating with kernels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kernelspec.html" class="btn btn-neutral" title="kernelspec - discovering kernels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'5.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

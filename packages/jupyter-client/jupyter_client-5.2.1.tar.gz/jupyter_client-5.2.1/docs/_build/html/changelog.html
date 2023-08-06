@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Changes in Jupyter Client &mdash; jupyter_client 5.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="jupyter_client 5.1.0 documentation" href="index.html"/>
+        <link rel="prev" title="client - communicating with kernels" href="api/client.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> jupyter_client
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="messaging.html">Messaging in Jupyter</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="kernels.html">Making kernels for Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wrapperkernels.html">Making simple Python wrapper kernels</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">jupyter_client API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Changes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changes in Jupyter Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">5.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">5.0.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">4.4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.4.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">4.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4.3.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">4.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">4.2.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">4.2.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">4.2.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">4.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">4.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">4.0</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">jupyter_client</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Changes in Jupyter Client</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/changelog.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="changes-in-jupyter-client">
+<span id="changelog"></span><h1>Changes in Jupyter Client<a class="headerlink" href="#changes-in-jupyter-client" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>5.1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/5.1">5.1 on GitHub</a></p>
+<ul>
+<li><p class="first">Define Jupyter protocol version 5.2,
+resolving ambiguity of <code class="docutils literal"><span class="pre">cursor_pos</span></code> field in the presence
+of unicode surrogate pairs.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="messaging.html#cursor-pos-unicode-note"><span class="std std-ref">cursor_pos and unicode offsets</span></a></p>
+</div>
+</li>
+<li><p class="first">Add <code class="xref py py-meth docutils literal"><span class="pre">Session.clone()</span></code> for making a copy of a Session object
+without sharing the digest history.
+Reusing a single Session object to connect multiple sockets
+to the same IOPub peer can cause digest collisions.</p>
+</li>
+<li><p class="first">Avoid global references preventing garbage collection of background threads.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>5.0<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>5.0.1<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/5.0.1">5.0.1 on GitHub</a></p>
+<ul class="simple">
+<li>Update internal protocol version number to 5.1,
+which should have been done in 5.0.0.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>5.0.0<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/5.0">5.0.0 on GitHub</a></p>
+<p>New features:</p>
+<ul>
+<li><p class="first">Implement Jupyter protocol version 5.1.</p>
+</li>
+<li><p class="first">Introduce <strong class="command">jupyter run</strong> command for running scripts with a kernel, for instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">run</span> <span class="o">--</span><span class="n">kernel</span> <span class="n">python3</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">New method <a class="reference internal" href="api/client.html#jupyter_client.BlockingKernelClient.execute_interactive" title="jupyter_client.BlockingKernelClient.execute_interactive"><code class="xref py py-meth docutils literal"><span class="pre">BlockingKernelClient.execute_interactive()</span></code></a>
+for running code and capturing or redisplaying its output.</p>
+</li>
+<li><p class="first">New <code class="docutils literal"><span class="pre">KernelManager.shutdown_wait_time</span></code> configurable for adjusting the time
+for a kernel manager to wait after politely requesting shutdown
+before it resorts to forceful termination.</p>
+</li>
+</ul>
+<p>Fixes:</p>
+<ul class="simple">
+<li>Set sticky bit on connection-file directory to avoid getting cleaned up.</li>
+<li><code class="xref py py-func docutils literal"><span class="pre">jupyter_client.launcher.launch_kernel()</span></code> passes through additional options to the underlying Popen,
+matching <code class="xref py py-meth docutils literal"><span class="pre">KernelManager.start_kernel()</span></code>.</li>
+<li>Check types of <code class="docutils literal"><span class="pre">buffers</span></code> argument in <code class="xref py py-meth docutils literal"><span class="pre">Session.send()</span></code>,
+so that TypeErrors are raised immediately,
+rather than in the eventloop.</li>
+</ul>
+<p>Changes:</p>
+<ul class="simple">
+<li>In kernelspecs, if the executable is the string <code class="docutils literal"><span class="pre">python</span></code> (as opposed to an absolute path),
+<code class="docutils literal"><span class="pre">sys.executable</span></code> will be used rather than resolving <code class="docutils literal"><span class="pre">python</span></code> on PATH.
+This should enable Python-based kernels to install kernelspecs as part of wheels.</li>
+<li>kernelspec names are now validated.
+They should only include ascii letters and numbers, plus period, hyphen, and underscore.</li>
+</ul>
+<p>Backward-incompatible changes:</p>
+<ul class="simple">
+<li><code class="xref py py-class docutils literal"><span class="pre">datetime</span></code> objects returned in parsed messages are now always timezone-aware.
+Timestamps in messages without timezone info are interpreted as the local timezone,
+as this was the behavior in earlier versions.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>4.4<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>4.4.0<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/4.4">4.4 on GitHub</a></p>
+<ul class="simple">
+<li>Add <a class="reference internal" href="api/client.html#jupyter_client.KernelClient.load_connection_info" title="jupyter_client.KernelClient.load_connection_info"><code class="xref py py-meth docutils literal"><span class="pre">KernelClient.load_connection_info()</span></code></a> on KernelClient, etc. for loading connection info
+directly from a dict, not just from files.</li>
+<li>Include parent headers when adapting messages from older protocol implementations
+(treats parent headers the same as headers).</li>
+<li>Compatibility fixes in tests for recent changes in ipykernel.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>4.3<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>4.3.0<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/4.3">4.3 on GitHub</a></p>
+<ul class="simple">
+<li>Adds <code class="docutils literal"><span class="pre">--sys-prefix</span></code> argument to <strong class="command">jupyter kernelspec install</strong>,
+for better symmetry with <strong class="command">jupyter nbextension install</strong>, etc.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>4.2<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h3>4.2.2<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/4.2.2">4.2.2 on GitHub</a></p>
+<ul class="simple">
+<li>Another fix for the <code class="xref py py-func docutils literal"><span class="pre">start_new_kernel()</span></code> issue in 4.2.1 affecting slow-starting kernels.</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>4.2.1<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/4.2.1">4.2.1 on GitHub</a></p>
+<ul class="simple">
+<li>Fix regression in 4.2 causing <code class="xref py py-func docutils literal"><span class="pre">start_new_kernel()</span></code>
+to fail while waiting for kernels to become available.</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>4.2.0<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/4.2">4.2.0 on GitHub</a></p>
+<ul class="simple">
+<li>added <strong class="command">jupyter kernelspec remove</strong> for removing kernelspecs</li>
+<li>allow specifying the environment for kernel processes via the <code class="docutils literal"><span class="pre">env</span></code> argument</li>
+<li>added <code class="docutils literal"><span class="pre">name</span></code> field to connection files identifying the kernelspec name,
+so that consumers of connection files (alternate frontends) can identify the kernelspec in use</li>
+<li>added <code class="xref py py-meth docutils literal"><span class="pre">KernelSpecManager.get_all_specs()</span></code> for getting all kernelspecs more efficiently</li>
+<li>various improvements to error messages and documentation</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>4.1<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id14">
+<h3>4.1.0<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/jupyter/jupyter_client/milestones/4.1">4.1.0 on GitHub</a></p>
+<p>Highlights:</p>
+<ul class="simple">
+<li>Setuptools fixes for <code class="docutils literal"><span class="pre">jupyter</span> <span class="pre">kernelspec</span></code></li>
+<li><code class="docutils literal"><span class="pre">jupyter</span> <span class="pre">kernelspec</span> <span class="pre">list</span></code> includes paths</li>
+<li>add <code class="xref py py-meth docutils literal"><span class="pre">KernelManager.blocking_client()</span></code></li>
+<li>provisional implementation of <code class="docutils literal"><span class="pre">comm_info</span></code> requests from upcoming 5.1 release of the protocol</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>4.0<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p>The first release of Jupyter Client as its own package.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="api/client.html" class="btn btn-neutral" title="client - communicating with kernels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

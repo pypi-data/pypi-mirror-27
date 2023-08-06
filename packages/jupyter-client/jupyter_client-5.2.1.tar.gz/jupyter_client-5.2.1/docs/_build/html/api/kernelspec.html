@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kernelspec - discovering kernels &mdash; jupyter_client 5.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="jupyter_client 5.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="jupyter_client API" href="index.html"/>
+        <link rel="next" title="manager - starting, stopping, signalling" href="manager.html"/>
+        <link rel="prev" title="jupyter_client API" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> jupyter_client
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../messaging.html">Messaging in Jupyter</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../kernels.html">Making kernels for Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrapperkernels.html">Making simple Python wrapper kernels</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">jupyter_client API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">kernelspec - discovering kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manager.html">manager - starting, stopping, signalling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client.html">client - communicating with kernels</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Changes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changes in Jupyter Client</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">jupyter_client</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">jupyter_client API</a> &raquo;</li>
+        
+      <li>kernelspec - discovering kernels</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kernelspec.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kernelspec-discovering-kernels">
+<h1>kernelspec - discovering kernels<a class="headerlink" href="#kernelspec-discovering-kernels" title="Permalink to this headline">¶</a></h1>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../kernels.html#kernelspecs"><span class="std std-ref">Kernel specs</span></a></p>
+</div>
+<span class="target" id="module-jupyter_client.kernelspec"></span><dl class="class">
+<dt id="jupyter_client.kernelspec.KernelSpec">
+<em class="property">class </em><code class="descclassname">jupyter_client.kernelspec.</code><code class="descname">KernelSpec</code><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpec" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="jupyter_client.kernelspec.KernelSpec.argv">
+<code class="descname">argv</code><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpec.argv" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of arguments to start this kernel.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="jupyter_client.kernelspec.KernelSpec.env">
+<code class="descname">env</code><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpec.env" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary of extra environment variables to declare, in addition to
+the current environment variables, when launching this kernel.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="jupyter_client.kernelspec.KernelSpec.display_name">
+<code class="descname">display_name</code><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpec.display_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name to display for this kernel in UI.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="jupyter_client.kernelspec.KernelSpec.language">
+<code class="descname">language</code><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpec.language" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the language the kernel implements, to help with picking
+appropriate kernels when loading notebooks.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="jupyter_client.kernelspec.KernelSpec.resource_dir">
+<code class="descname">resource_dir</code><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpec.resource_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the directory with this kernel’s resources, such as icons.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.kernelspec.KernelSpec.to_json">
+<code class="descname">to_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpec.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialise this kernelspec to a JSON object.</p>
+<p>Returns a string.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="jupyter_client.kernelspec.KernelSpecManager">
+<em class="property">class </em><code class="descclassname">jupyter_client.kernelspec.</code><code class="descname">KernelSpecManager</code><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpecManager" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="jupyter_client.kernelspec.KernelSpecManager.find_kernel_specs">
+<code class="descname">find_kernel_specs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpecManager.find_kernel_specs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dict mapping kernel names to resource directories.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.kernelspec.KernelSpecManager.get_all_specs">
+<code class="descname">get_all_specs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpecManager.get_all_specs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dict mapping kernel names to kernelspecs.</p>
+<p>Returns a dict of the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s1">&#39;kernel_name&#39;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;resource_dir&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/kernel_name&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spec&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;the spec itself&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">}</span>
+  <span class="p">},</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.kernelspec.KernelSpecManager.get_kernel_spec">
+<code class="descname">get_kernel_spec</code><span class="sig-paren">(</span><em>kernel_name</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpecManager.get_kernel_spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <a class="reference internal" href="#jupyter_client.kernelspec.KernelSpec" title="jupyter_client.kernelspec.KernelSpec"><code class="xref py py-class docutils literal"><span class="pre">KernelSpec</span></code></a> instance for the given kernel_name.</p>
+<p>Raises <a class="reference internal" href="#jupyter_client.kernelspec.NoSuchKernel" title="jupyter_client.kernelspec.NoSuchKernel"><code class="xref py py-exc docutils literal"><span class="pre">NoSuchKernel</span></code></a> if the given kernel name is not found.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.kernelspec.KernelSpecManager.install_kernel_spec">
+<code class="descname">install_kernel_spec</code><span class="sig-paren">(</span><em>source_dir</em>, <em>kernel_name=None</em>, <em>user=False</em>, <em>replace=None</em>, <em>prefix=None</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.kernelspec.KernelSpecManager.install_kernel_spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Install a kernel spec by copying its directory.</p>
+<p>If <code class="docutils literal"><span class="pre">kernel_name</span></code> is not given, the basename of <code class="docutils literal"><span class="pre">source_dir</span></code> will
+be used.</p>
+<p>If <code class="docutils literal"><span class="pre">user</span></code> is False, it will attempt to install into the systemwide
+kernel registry. If the process does not have appropriate permissions,
+an <code class="xref py py-exc docutils literal"><span class="pre">OSError</span></code> will be raised.</p>
+<p>If <code class="docutils literal"><span class="pre">prefix</span></code> is given, the kernelspec will be installed to
+PREFIX/share/jupyter/kernels/KERNEL_NAME. This can be sys.prefix
+for installation inside virtual or conda envs.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="jupyter_client.kernelspec.NoSuchKernel">
+<em class="property">exception </em><code class="descclassname">jupyter_client.kernelspec.</code><code class="descname">NoSuchKernel</code><a class="headerlink" href="#jupyter_client.kernelspec.NoSuchKernel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="jupyter_client.kernelspec.NoSuchKernel.name">
+<code class="descname">name</code><a class="headerlink" href="#jupyter_client.kernelspec.NoSuchKernel.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the kernel which was requested.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="jupyter_client.kernelspec.find_kernel_specs">
+<code class="descclassname">jupyter_client.kernelspec.</code><code class="descname">find_kernel_specs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.kernelspec.find_kernel_specs" title="Permalink to this definition">¶</a></dt>
+<dt id="jupyter_client.kernelspec.get_kernel_spec">
+<code class="descclassname">jupyter_client.kernelspec.</code><code class="descname">get_kernel_spec</code><span class="sig-paren">(</span><em>kernel_name</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.kernelspec.get_kernel_spec" title="Permalink to this definition">¶</a></dt>
+<dt id="jupyter_client.kernelspec.install_kernel_spec">
+<code class="descclassname">jupyter_client.kernelspec.</code><code class="descname">install_kernel_spec</code><span class="sig-paren">(</span><em>source_dir</em>, <em>kernel_name=None</em>, <em>user=False</em>, <em>replace=False</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.kernelspec.install_kernel_spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>These methods from <a class="reference internal" href="#jupyter_client.kernelspec.KernelSpecManager" title="jupyter_client.kernelspec.KernelSpecManager"><code class="xref py py-class docutils literal"><span class="pre">KernelSpecManager</span></code></a> are exposed as functions on the
+module as well; they will use all the default settings.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="manager.html" class="btn btn-neutral float-right" title="manager - starting, stopping, signalling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="jupyter_client API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'5.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

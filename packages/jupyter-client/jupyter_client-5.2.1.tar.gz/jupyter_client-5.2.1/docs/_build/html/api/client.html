@@ -1,0 +1,575 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>client - communicating with kernels &mdash; jupyter_client 5.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="jupyter_client 5.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="jupyter_client API" href="index.html"/>
+        <link rel="next" title="Changes in Jupyter Client" href="../changelog.html"/>
+        <link rel="prev" title="manager - starting, stopping, signalling" href="manager.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> jupyter_client
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../messaging.html">Messaging in Jupyter</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../kernels.html">Making kernels for Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrapperkernels.html">Making simple Python wrapper kernels</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">jupyter_client API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="kernelspec.html">kernelspec - discovering kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manager.html">manager - starting, stopping, signalling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">client - communicating with kernels</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Changes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changes in Jupyter Client</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">jupyter_client</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">jupyter_client API</a> &raquo;</li>
+        
+      <li>client - communicating with kernels</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/client.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="client-communicating-with-kernels">
+<h1>client - communicating with kernels<a class="headerlink" href="#client-communicating-with-kernels" title="Permalink to this headline">¶</a></h1>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="../messaging.html"><span class="doc">Messaging in Jupyter</span></a></dt>
+<dd>The Jupyter messaging specification</dd>
+</dl>
+</div>
+<dl class="class">
+<dt id="jupyter_client.KernelClient">
+<em class="property">class </em><code class="descclassname">jupyter_client.</code><code class="descname">KernelClient</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Communicates with a single kernel on any host via zmq channels.</p>
+<p>There are four channels associated with each kernel:</p>
+<ul class="simple">
+<li>shell: for request/reply calls to the kernel.</li>
+<li>iopub: for the kernel to publish results to frontends.</li>
+<li>hb: for monitoring the kernel’s heartbeat.</li>
+<li>stdin: for frontends to reply to raw_input calls in the kernel.</li>
+</ul>
+<p>The messages that can be sent on these channels are exposed as methods of the
+client (KernelClient.execute, complete, history, etc.). These methods only
+send the message, they don’t wait for a reply. To get results, use e.g.
+<a class="reference internal" href="#jupyter_client.KernelClient.get_shell_msg" title="jupyter_client.KernelClient.get_shell_msg"><code class="xref py py-meth docutils literal"><span class="pre">get_shell_msg()</span></code></a> to fetch messages from the shell channel.</p>
+<dl class="method">
+<dt id="jupyter_client.KernelClient.load_connection_file">
+<code class="descname">load_connection_file</code><span class="sig-paren">(</span><em>connection_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.load_connection_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load connection info from JSON dict in self.connection_file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>connection_file</strong> (<em>unicode</em><em>, </em><em>optional</em>) – Path to connection file to load.
+If unspecified, use self.connection_file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.load_connection_info">
+<code class="descname">load_connection_info</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.load_connection_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load connection info from a dict containing connection info.</p>
+<p>Typically this data comes from a connection file
+and is called by load_connection_file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>info</strong> (<em>dict</em>) – Dictionary containing connection_info.
+See the connection_file spec for details.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.start_channels">
+<code class="descname">start_channels</code><span class="sig-paren">(</span><em>shell=True</em>, <em>iopub=True</em>, <em>stdin=True</em>, <em>hb=True</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.start_channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the channels for this kernel.</p>
+<p>This will create the channels if they do not exist and then start
+them (their activity runs in a thread). If port numbers of 0 are
+being used (random ports) then you must first call
+<code class="xref py py-meth docutils literal"><span class="pre">start_kernel()</span></code>. If the channels have been stopped and you
+call this, <code class="xref py py-class docutils literal"><span class="pre">RuntimeError</span></code> will be raised.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>code</em>, <em>silent=False</em>, <em>store_history=True</em>, <em>user_expressions=None</em>, <em>allow_stdin=None</em>, <em>stop_on_error=True</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute code in the kernel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>code</strong> (<em>str</em>) – A string of code in the kernel’s language.</li>
+<li><strong>silent</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default False</em><em>)</em>) – If set, the kernel will execute the code as quietly possible, and
+will force store_history to be False.</li>
+<li><strong>store_history</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default True</em><em>)</em>) – If set, the kernel will store command history.  This is forced
+to be False if silent is True.</li>
+<li><strong>user_expressions</strong> (<em>dict</em><em>, </em><em>optional</em>) – A dict mapping names to expressions to be evaluated in the user’s
+dict. The expression values are returned as strings formatted using
+<code class="xref py py-func docutils literal"><span class="pre">repr()</span></code>.</li>
+<li><strong>allow_stdin</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default self.allow_stdin</em><em>)</em>) – <p>Flag for whether the kernel can send stdin requests to frontends.</p>
+<p>Some frontends (e.g. the Notebook) do not support stdin requests.
+If raw_input is called from code executed from such a frontend, a
+StdinNotImplementedError will be raised.</p>
+</li>
+<li><strong>stop_on_error</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default True</em><em>)</em>) – Flag whether to abort the execution queue, if an exception is encountered.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">The msg_id of the message sent.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.complete">
+<code class="descname">complete</code><span class="sig-paren">(</span><em>code</em>, <em>cursor_pos=None</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.complete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tab complete text in the kernel’s namespace.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>code</strong> (<em>str</em>) – The context in which completion is requested.
+Can be anything between a variable name and an entire cell.</li>
+<li><strong>cursor_pos</strong> (<em>int</em><em>, </em><em>optional</em>) – The position of the cursor in the block of code where the completion was requested.
+Default: <code class="docutils literal"><span class="pre">len(code)</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">The msg_id of the message sent.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.inspect">
+<code class="descname">inspect</code><span class="sig-paren">(</span><em>code</em>, <em>cursor_pos=None</em>, <em>detail_level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.inspect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get metadata information about an object in the kernel’s namespace.</p>
+<p>It is up to the kernel to determine the appropriate object to inspect.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>code</strong> (<em>str</em>) – The context in which info is requested.
+Can be anything between a variable name and an entire cell.</li>
+<li><strong>cursor_pos</strong> (<em>int</em><em>, </em><em>optional</em>) – The position of the cursor in the block of code where the info was requested.
+Default: <code class="docutils literal"><span class="pre">len(code)</span></code></li>
+<li><strong>detail_level</strong> (<em>int</em><em>, </em><em>optional</em>) – The level of detail for the introspection (0-2)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">The msg_id of the message sent.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.history">
+<code class="descname">history</code><span class="sig-paren">(</span><em>raw=True</em>, <em>output=False</em>, <em>hist_access_type='range'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get entries from the kernel’s history list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>raw</strong> (<em>bool</em>) – If True, return the raw input.</li>
+<li><strong>output</strong> (<em>bool</em>) – If True, then return the output as well.</li>
+<li><strong>hist_access_type</strong> (<em>str</em>) – <dl class="docutils">
+<dt>‘range’ (fill in session, start and stop params), ‘tail’ (fill in n)</dt>
+<dd>or ‘search’ (fill in pattern param).</dd>
+</dl>
+</li>
+<li><strong>session</strong> (<em>int</em>) – For a range request, the session from which to get lines. Session
+numbers are positive integers; negative ones count back from the
+current session.</li>
+<li><strong>start</strong> (<em>int</em>) – The first line number of a history range.</li>
+<li><strong>stop</strong> (<em>int</em>) – The final (excluded) line number of a history range.</li>
+<li><strong>n</strong> (<em>int</em>) – The number of lines of history to get for a tail request.</li>
+<li><strong>pattern</strong> (<em>str</em>) – The glob-syntax pattern for a search request.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">The ID of the message sent.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.comm_info">
+<code class="descname">comm_info</code><span class="sig-paren">(</span><em>target_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.comm_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request comm info</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">The msg_id of the message sent</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.is_complete">
+<code class="descname">is_complete</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.is_complete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask the kernel whether some code is complete and ready to execute.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.input">
+<code class="descname">input</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a string of raw input to the kernel.</p>
+<p>This should only be called in response to the kernel sending an
+<code class="docutils literal"><span class="pre">input_request</span></code> message on the stdin channel.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.shutdown">
+<code class="descname">shutdown</code><span class="sig-paren">(</span><em>restart=False</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request an immediate kernel shutdown.</p>
+<p>Upon receipt of the (empty) reply, client code can safely assume that
+the kernel has shut down and it’s safe to forcefully terminate it if
+it’s still alive.</p>
+<p>The kernel will send the reply via a function registered with Python’s
+atexit module, ensuring it’s truly done as the kernel is done with all
+normal operation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">The msg_id of the message sent</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.get_shell_msg">
+<code class="descname">get_shell_msg</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.get_shell_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a message from the shell channel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.get_iopub_msg">
+<code class="descname">get_iopub_msg</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.get_iopub_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a message from the iopub channel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.KernelClient.get_stdin_msg">
+<code class="descname">get_stdin_msg</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.KernelClient.get_stdin_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a message from the stdin channel</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="jupyter_client.BlockingKernelClient">
+<em class="property">class </em><code class="descclassname">jupyter_client.</code><code class="descname">BlockingKernelClient</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.BlockingKernelClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>A KernelClient with blocking APIs</p>
+<p><code class="docutils literal"><span class="pre">get_[channel]_msg()</span></code> methods wait for and return messages on channels,
+raising <code class="xref py py-exc docutils literal"><span class="pre">queue.Empty</span></code> if no message arrives within <code class="docutils literal"><span class="pre">timeout</span></code> seconds.</p>
+<dl class="method">
+<dt id="jupyter_client.BlockingKernelClient.execute_interactive">
+<code class="descname">execute_interactive</code><span class="sig-paren">(</span><em>code</em>, <em>silent=False</em>, <em>store_history=True</em>, <em>user_expressions=None</em>, <em>allow_stdin=None</em>, <em>stop_on_error=True</em>, <em>timeout=None</em>, <em>output_hook=None</em>, <em>stdin_hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.BlockingKernelClient.execute_interactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute code in the kernel interactively</p>
+<p>Output will be redisplayed, and stdin prompts will be relayed as well.
+If an IPython kernel is detected, rich output will be displayed.</p>
+<p>You can pass a custom output_hook callable that will be called
+with every IOPub message that is produced instead of the default redisplay.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 5.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>code</strong> (<em>str</em>) – A string of code in the kernel’s language.</li>
+<li><strong>silent</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default False</em><em>)</em>) – If set, the kernel will execute the code as quietly possible, and
+will force store_history to be False.</li>
+<li><strong>store_history</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default True</em><em>)</em>) – If set, the kernel will store command history.  This is forced
+to be False if silent is True.</li>
+<li><strong>user_expressions</strong> (<em>dict</em><em>, </em><em>optional</em>) – A dict mapping names to expressions to be evaluated in the user’s
+dict. The expression values are returned as strings formatted using
+<code class="xref py py-func docutils literal"><span class="pre">repr()</span></code>.</li>
+<li><strong>allow_stdin</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default self.allow_stdin</em><em>)</em>) – <p>Flag for whether the kernel can send stdin requests to frontends.</p>
+<p>Some frontends (e.g. the Notebook) do not support stdin requests.
+If raw_input is called from code executed from such a frontend, a
+StdinNotImplementedError will be raised.</p>
+</li>
+<li><strong>stop_on_error</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default True</em><em>)</em>) – Flag whether to abort the execution queue, if an exception is encountered.</li>
+<li><strong>timeout</strong> (<em>float</em><em> or </em><em>None</em><em> (</em><em>default: None</em><em>)</em>) – Timeout to use when waiting for a reply</li>
+<li><strong>output_hook</strong> (<em>callable</em><em>(</em><em>msg</em><em>)</em>) – Function to be called with output messages.
+If not specified, output will be redisplayed.</li>
+<li><strong>stdin_hook</strong> (<em>callable</em><em>(</em><em>msg</em><em>)</em>) – Function to be called with stdin_request messages.
+If not specified, input/getpass will be called.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>reply</strong> – The reply message for this request</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../changelog.html" class="btn btn-neutral float-right" title="Changes in Jupyter Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="manager.html" class="btn btn-neutral" title="manager - starting, stopping, signalling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'5.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
