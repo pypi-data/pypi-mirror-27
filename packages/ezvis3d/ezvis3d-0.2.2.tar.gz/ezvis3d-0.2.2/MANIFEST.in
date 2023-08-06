@@ -1,0 +1,10 @@
+# necessary to push to PyPI
+# cf. https://tom-christie.github.io/articles/pypi/
+
+# subfolders
+recursive-include ezvis3d/api *
+
+# Misc
+include LICENSE
+include README.rst
+include requirements.txt
