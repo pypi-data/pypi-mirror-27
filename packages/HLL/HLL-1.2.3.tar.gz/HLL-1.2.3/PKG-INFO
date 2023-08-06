@@ -1,0 +1,17 @@
+Metadata-Version: 1.0
+Name: HLL
+Version: 1.2.3
+Summary: HyperLogLog implementation in C.
+Home-page: https://github.com/ascv/HyperLogLog
+Author: Joshua Andersen
+Author-email: anderj0@uw.edu
+License: UNKNOWN
+Description: 
+        The HyperLogLog algorithm [1] is a space efficient method to estimate the
+        cardinality of extraordinarily large data sets. This module is written in C
+        using a Murmur3 hash, for python 2.7.x or python 3.x.
+        
+        [1] http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf
+        
+Keywords: HyperLogLog,Hyper LogLog,LogLog,cardinality,probablistic counting
+Platform: UNKNOWN
