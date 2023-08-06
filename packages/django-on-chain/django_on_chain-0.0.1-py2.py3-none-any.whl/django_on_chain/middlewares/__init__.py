@@ -1,0 +1,3 @@
+from django_on_chain.middlewares.locale_middleware import LocaleMiddleware
+from django_on_chain.middlewares.reformat_exceptions import reformat_error_handler
+from django_on_chain.middlewares.unhandled_error_logger import ErrorMiddleware
