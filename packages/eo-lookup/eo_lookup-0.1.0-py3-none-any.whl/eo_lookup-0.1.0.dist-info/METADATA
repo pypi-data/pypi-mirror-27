@@ -1,0 +1,47 @@
+Metadata-Version: 2.0
+Name: eo-lookup
+Version: 0.1.0
+Summary: Esperanto dictionary lookup tool
+Home-page: https://github.com/open-esperanto/eo-lookup
+Author: Open Esperanto
+Author-email: admin@libraro.net
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Keywords: esperanto
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+
+Installation
+------------
+
+Usage
+-----
+
+.. code-block:: python
+
+   >>> from eo_lookup import Lookup
+   >>> from eo_lookup_revo import get_content
+   >>> LOOKUP = Lookup(get_content())
+   >>> LOOKUP.lookup_html('grandpersonoj')
+   '<strong>granda</strong>: large, <strong>persono</strong>: person, character'
+
+Development
+-----------
+
+Requirements: Nix package manager. See ``default.nix`` for building instruction.
+
+To publish:
+
+    ./publish.sh eoLookupRevoDist
+
+License
+-------
+
+Dictionary content provided by `Reta Vortaro <http://www.reta-vortaro.de/>`_ is not bundled, but
+should be installed separately via the eo_lookup_revo package. This content is licenced under the
+GPL which prohibits us from including it here.
+
+
