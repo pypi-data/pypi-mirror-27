@@ -1,0 +1,35 @@
+Metadata-Version: 2.0
+Name: backports.socketpair
+Version: 3.5.0.3
+Summary: Python 2 support for socket.socketpair() on Windows
+Home-page: https://github.com/mhils/backports.socketpair
+Author: Maximilian Hils
+Author-email: socketpair@maximilianhils.com
+License: Python Software Foundation License
+Keywords: socket socketpair backport
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Python Software Foundation License
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+
+backports.socketpair
+====================
+
+This package provides Windows support for ``socket.socketpair()``
+for Python 2 (and 3) using the pure-python method implemented in Python 3.5+.
+
+Usage:
+
+.. code:: python
+
+	import socket
+	import backports.socketpair
+
+	s1, s2 = socket.socketpair()
+
