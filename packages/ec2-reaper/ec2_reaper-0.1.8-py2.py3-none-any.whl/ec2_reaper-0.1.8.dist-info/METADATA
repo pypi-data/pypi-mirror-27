@@ -1,0 +1,85 @@
+Metadata-Version: 2.0
+Name: ec2-reaper
+Version: 0.1.8
+Summary: CLI & module for terminating instances that match tag and age requirements.
+Home-page: https://github.com/inhumantsar/python-ec2-reaper
+Author: Shaun Martin
+Author-email: shaun@samsite.ca
+License: BSD license
+Description-Content-Type: UNKNOWN
+Keywords: ec2-reaper
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: boto3 (==1.5.6)
+Requires-Dist: pytz (==2017.3)
+Requires-Dist: slacker (==0.9.60)
+Requires-Dist: click (==6.7)
+
+==========
+EC2 Reaper
+==========
+
+
+.. image:: https://img.shields.io/pypi/v/ec2-reaper.svg
+        :target: https://pypi.python.org/pypi/ec2-reaper
+
+.. image:: https://img.shields.io/travis/inhumantsar/python-ec2-reaper.svg
+        :target: https://travis-ci.org/inhumantsar/python-ec2-reaper
+
+.. image:: https://pyup.io/repos/github/inhumantsar/python-ec2-reaper/shield.svg
+     :target: https://pyup.io/repos/github/inhumantsar/python-ec2-reaper/
+     :alt: Updates
+
+
+CLI & module for terminating instances that match tag and age requirements.
+
+Features
+---------
+
+* Searches all (or specified) regions for instances.
+* Matches instances against a tag pattern.
+* Allows instances a grace period before termination.
+* Can be used as a Python module, CLI application, or an AWS Lambda function
+
+Usage
+---------
+
+Tag Matchers
+~~~~~~~~~~~~
+
+`[{"tag": "Name", "includes": [], "excludes": ["*"]}]`
+
+This is the default tag matcher and it will match anything that lacks a `Name` tag.
+
+To terminate any instance named "cirunner", the filter would look like so:
+
+`[{"tag": "Name", "includes": ["cirunner"], "excludes": []}]`
+
+Credits
+---------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+=======
+History
+=======
+
+0.1.0 (2017-11-27)
+------------------
+
+* First release on PyPI.
+
+
