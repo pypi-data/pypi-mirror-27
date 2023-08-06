@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# To install:
+#
+#    pip3 install git-pylint-commit-hook
+#    chmod +x pre-commit
+#    cp pre-commit ../.git/hooks
+
+git-pylint-commit-hook
+
+# From .git/hooks
+BASE=`dirname $0`/../..
+for t in test_valve.py test_config.py ; do
+   PYTHONPATH=$BASE python3 $BASE/tests/test_valve.py || exit 1
+done

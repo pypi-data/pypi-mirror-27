@@ -1,0 +1,320 @@
+CHANGES
+=======
+
+1.6.13
+------
+
+* Release 1.6.13
+* Add link to Poseidon tutorial
+* Clean up pydoc strings
+* Fix error logging
+* Add additional sanity checking over state of event socket\_path
+* Add docker flag for starting with ipv6 enabled
+* Switch to using napoleon for generating code documentation
+* Add descriptions of faucet/gauge
+* Fix Sphinx build warnings
+* Optimized config-fuzzer and related files
+* Make documentation more consistent
+* Fixed markup error
+* Fix formating of ASCII diagram
+* Faucet Testing with OVS on hardware
+* Tidy documentation
+* Exclude README.rst from Sphinx build
+* move configuration documentation from source files to an rst file
+* fix build warnings
+* Add documentation of config to Conf object source files
+* FAUCET\_EVENT\_SOCK can be a bool (default path) or an explicit path
+* Add missing dependencies required for installing python libraries
+* Check event\_sock actually needed
+* hotfix changing FAUCET\_EVENT\_SOCK to a bool
+* fix formatting for md -> rst
+* minimize exposure of /var/run; md -> rst;
+* adds a rabbitmq adapter to get events from the socket
+* Revert "Add another shard."
+* Add another shard
+* incorrect pylint import warning
+* STAT\_RELOAD environment variable not explicitly set, so can be left over from previous test in the environment
+* Refactor tag/var parser for flow table dumps to common function
+* Run unit tests as pre-commit check
+* Event logging tested in int. tests
+* event logging tested in int. tests
+* pylint
+* Fix event log test to wait for all messages
+* Verify event\_ids sent all arrived
+* Need metrics
+* Add event\_id counter
+* Explicitly check event queue if empty
+* Reset test event socket always on test setUp()
+* add FAUCET\_EVENT\_SOCK to compose files
+* Add error message if event socket not created
+* Update faucet\_experimental\_event.py
+* mkstemp() is for amateurs
+* event sock can be too long
+* Experimental event notification
+* Init event notification socket
+* Initial events
+* Add experimental event notifier stub
+* max\_resolve\_backoff\_time duplicated
+* String tests had multiple DP sections
+* pytype
+* Check for duplicate YAML keys
+* Check dp\_conf is a dict
+* Catch missing route config
+* Handle permission denied reading config
+* pylint
+* Fix OF diagnostic tcpdump
+* Preversion 1.6.13
+* Preversion 1.6.13 (fix travis)
+* Make image slightly smaller and trim margins
+* Rename files to be consistent (and fix broken sphinx link)
+* Rename fuzzer dockerfile
+
+1.6.12
+------
+
+* Rename fuzz docker
+* Documentation updates
+* Add py-AFL-fuzz config testing
+* Replace pipeline image
+* Bump version for release
+* Upgrade Ryu to 4.20
+* When an OFError occurs, correlate with the offending XID
+* Templatize config tests
+* Fix crash parsing non UTF-8 config file
+* Ensure ACL rule format correct
+* Test invalid UDP port
+* Catch invalid mask in ACL
+* Catch invalid IP addresses in ACLs
+* Fix crash when invalid ACL action list
+* Need to include our master requirements.txt for readthedocs
+* Run sphinx-apidoc as part of conf.py so it works on readthedocs
+* Convert our documentation to Sphinx
+* Only check for IP ether type for fragmentation check
+* add dockerfile for ARM prometheus 2.0
+* ARM prometheus 2.0 isn't ready yet, roll back to older version
+* Fix up some bad faucet.rules.yml paths for prometheus 2.0 upgrade
+* Preversion 1.6.11
+* Revert "Shard on route/non routing tests."
+* Shard on route/non routing tests
+
+1.6.10
+------
+
+* Use docker test image
+* Update run-travis-test.sh
+* Correct RUNTESTS
+* switch/case
+* Add base image for FAUCET tests
+* too many \`
+* Matrix syntax
+* Can't have a #
+* Enable matrix tests
+* Make test script smarter (can be told to run different tests)
+* Yet more directory confusion
+* Rename travis run script
+* More directory confusion
+* Can't assume path to build script
+* Move travis build run to script so can be matrix-ed
+* Bump version for release
+* Break/fix
+* Restrict VID range
+* max\_loadavg() too low for Travis
+* A port without VLAN (or a stack) is a config error
+* Reduce max parallel tests to approx loadavg
+* make env vars consistent; add stat env var
+* Make checkout quiet
+* Mark FaucetUntaggedMultiConfVlansOutputTest broken for OVS master
+* Add ref. to http://www.hyrumslaw.com/
+* Re-enable tests that needed a current OVS version
+* Clearly mark the experimental API as experimental
+* Fix and re-enable the experimental API, which revealed we should have been using start() in controller classes
+* stat reload test sets enabling variable incorrectly
+* Config reloading incorrectly always on (and unnecessary initial config reload)
+* TODO for Gauge to stat FAUCET configs
+* Implement stat based config change for Gauge
+* Test stat reload
+* stat-based detection of config files
+* Should not overwrite config hashes unless config parse successful
+* Add test failure
+* update test to check unconfigured acl
+* Verbosely log L2 type L3 source when L2 learning
+* Parse IP header even if not running L3
+* Don't need "-b"
+* Build Pi fix
+* Build script for Pi on Pi
+* Remove test for unknown router VLAN (need alternate test for global VLAN undefined)
+* Don't route on a DP, if not all VLANs configured on that DP
+* Revert "Fix attempt to add VLAN that might not have any ports."
+* Fix attempt to add VLAN that might not have any ports
+* Fix referencing an unconfigured ACL #1201
+* add test for checking VLANs resolve on routers
+* fix VLANs resolving on routers
+* Changed faucet.yaml; adding guest vlan to sw2
+* Truncate packet in to maximum always (recent OVS does not honor max\_len)
+* Drop packet ins where cookie ID incorrect
+* Try OVS master
+* Try OVS 2.8.0
+* Increase free ports to 500 and try OVS 2.8.1 again
+* Test OVS 2.8.0
+* pylint
+* Dump decoded pcaps, then txt files
+* Fix pcaps not dumped
+* Explicitly set default miss length to 0
+* Explictly configure which async messages to receive
+* Enable more OVS diagnostics
+* Docker pi x compile not ready for prime time
+* Try to build Pi images under Travis
+* Have to install complete OVS
+* Tune simultaneous makes to load average
+* Incorrect name for MAKEFLAGS
+* Try again to parallel compile OVS
+* Can't parallel make OVS
+* Speed up build with DPDK
+* Upgrade to prometheus 2.0
+* Compile 2.8.1 with DPDK
+* Pre-version 1.6.10
+
+1.6.9
+-----
+
+* 2.8.1 still occasionally disconnects with more tolerant settings
+* Version bump for release
+* Try 2.8.1 with increased socket timeout
+* Set higher socket timeout
+* Revert "Try upgrade to OVS 2.8.1 again now implemented controller ratelimiting/mininet limits."
+* Try upgrade to OVS 2.8.1 again now implemented controller ratelimiting/mininet limits
+* Control channel rate limiting
+* Allow setting of OVS rate limit
+* pylint
+* "separate"
+* Default to CPU limited host and 1ms link delays, to avoid thrashing test host
+* The help text for "n" on learned\_macs less confusing
+* BGP status can be queried on startup before BGP service ready
+* Detect DP level config changes
+* ACL only change optimization not used when ACL changes to or from no ACL
+* pytype fixed
+* add release target to docs
+* fix environment variables for db and admin user
+* add release target; closes #767
+* OVS 2.8.1 connections to controller unstable under heavy load. Will continue to troubleshoot
+* More relaxed OVS connect time to reduce test load
+* When cold starting dataplane, reset the host cache to cause routes etc to be re-resolved
+* fix extra / typo
+* add compose file for rpi
+* Re-attempt OVS upgrade to 2.8.1
+* Sync Aruba TFM to generic
+* VLAN table does not need eth\_src
+* Don't need catchall ICMP entry at all
+* Don't necessarily need to catch all ICMP
+* Specifically match echo request/reply to control plane
+* Sync Aruba TFM to generic
+* icmpv6\_type moves to VIP, eth\_src doesn't need ip\_proto and icmpv6\_type
+* sync Aruba TFM to generic
+* Move ip proto/icmpv6 matches to VIP from eth\_src
+* Move eth\_src matches from VLAN table to eth\_src table, so VLAN table doesn't need eth\_src
+* Allow configuration of BGP server addresses (available in Ryu 4.19)
+* Ryu 4.18
+* exabgp should attempt only one connection
+* Actually, don't look at hw\_src in NAs - might not be present and not worth believing if it is
+* Some IPv6 hosts can use a src IP from a different subnet to the one they're NA'ing for. Handle this situation and also verify NA'd hw\_src is the same as eth\_src
+* Move group flood bucket builder to valve\_of
+* LACP test shouldn't care about aggregator ID
+* Test that traffic over LAG works
+* Avoid loopback flood on LAG members
+* LAG list moved back to VLAN
+* Test connectivity before and after loop mitigation
+* OVS dumps should be .log so dumped first
+* Add dump-ports
+* More OVS diagnostics
+* dump OVS switch flows using nice ofctl utility
+* bgp log helper for IPv6
+* Use log helper for BGP
+* matching lines log helper, and try to capture only relevant OVS log lines
+* Use DP-centric LAGs
+* pylint
+* pylint
+* pylint
+* pylint
+* Concentrate more Ryu lib imports through valve\_of
+* Concentrate Ryu lib imports in valve\_of
+* Add quiet commands helper
+* Prometheus expire still flakey until load
+* Loop check should retry flood if loop is not yet ready
+* Loop test needs bridge tools
+* iproute2 needed for tc
+* Add trivial loop protection (typically for access ports)
+* whitespace
+* iperf can fail to start due to port conflict
+* Completely rewrite prometheus expiry test
+* Fix prom learn mac helper
+* Helper to check MAC present in Prometheus
+* Update example configurations for faucet/gauge to show newer features
+* Revert debug level change
+* put back to single quotes
+* add FAUCET\_PREFIX for specifying paths of volumes
+* partner LACP port number does not matter
+* Dump YAML, then logs, then other files
+* Somewhat less disk space (don't cache mininet/pytype in layers)
+* Always update metrics on receiving a packet
+* Did not dump test files
+* Dump pcaps last
+* Make FaucetHostsTimeoutPrometheusTest less load dependant
+* gNMI, use new replace/update methods
+* Don't hardcode DP ports in LACP test
+* Remove erroneous second copy of check script
+* pylint
+* add update test for nsodbc poller
+* Move flow checks to outside of the class
+* fake couchdb server deletes docs associated with a deleted database
+* Add unit tests for gauge\_nsodbc
+* pylint
+* pylint
+* Change mock datapath attribute from id to dp\_id to match faucet.dp
+* pylint
+* pylint
+* pylint
+* Test 2-port LAG
+* Adding missing import
+* TODOs for LAGs
+* Implement LAG ID
+* Fix for hardware tests
+* Add multiple Update and Replace IETF JSON support to SET
+* Documentation
+* Increase test CPU oversubscription again
+* Move DP config change detection to DP class
+* pylint
+* pylint
+* test\_config has all kinds of bad config which other tests now catch
+* ACL parse check not robust enough
+* More config checks for ACLs (including bad match conditions)
+* More config parsing checks (including resolving VLAN names in routers, empty interface lists, enabling stacking and routing)
+* Test that an unknown router VLAN is rejected
+* Fix test
+* Move more stacking implementation out of valve.py
+* Move stacking implementation for flooding to own class, re-enable stacking tests
+* Indent
+* Update valve\_of.py
+* Update valve\_of.py
+* Move flood action list builders to valve\_of
+* Incremental refactor for host cache
+* Simply host expiry
+* Try to make apt-get quieter
+* Explicitly expire all hosts learned on a port when port goes down. Don't skip deleting from VLAN table when VLAN deconfigured
+* Block/unblockl learning on port depending on LACP status
+* Add prom client to \_\_init\_\_ args so GaugeFlowTableDBLogger can be instantiated
+* pylint
+* Added unit tests for DatabaseCouch in nsodbc
+* Add functionality to couchdb server so that it adds and deletes docs and views
+* Add unit test for ConnectionCouch in nsodbc.py
+* Add a pretend http request handler for couchdb
+* Add links to our build server
+* Add packaging files for our FAUCET VM
+* Add some files necessary for packaging faucet
+* Default to prometheus for port\_stats poller in example gauge config
+* Fix example faucet.yaml
+* Remove math module import
+* Use tempfile.mkstemp() to make a new temp file instead of tempfile.TemporaryFile(), so the file can be opened and closed
+* Refactoring the GaugeWatcherTest class  & pylint
+* ffi-dev only
+* Add FFI
+* Make port up message clearer
