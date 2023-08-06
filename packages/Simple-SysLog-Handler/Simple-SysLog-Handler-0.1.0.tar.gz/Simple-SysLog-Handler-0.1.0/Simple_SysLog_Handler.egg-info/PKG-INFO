@@ -1,0 +1,38 @@
+Metadata-Version: 1.1
+Name: Simple-SysLog-Handler
+Version: 0.1.0
+Summary: A simple wrapper of logging.handlers.SysLogHandler
+Home-page: https://github.com/TheWaWaR/simple-syslog-handler
+Author: Qian Linfeng
+Author-email: thewawar@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        Simple SysLog Handler
+        ----------------
+        
+        Example
+        ```````
+        
+        .. code:: python
+        
+            from simple_syslog_handler import SimpleSysLogHandler
+        
+            SimpleSysLogHandler.config_logging()
+        
+        Links
+        `````
+        
+        * `Github <https://github.com/TheWaWaR/simple-syslog-handler>`
+        
+        
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
