@@ -1,0 +1,12 @@
+django-oscar>=1.3
+django-statsd-mozilla>=0.3.16
+instrumented-soap>=1.1.0
+
+[development]
+psycopg2>=2.6.2
+flake8>=3.2.1
+freezegun>=0.3.8
+lxml>=3.7.2
+sphinx>=1.5.2
+tox>=2.6.0
+versiontag>=1.2.0
