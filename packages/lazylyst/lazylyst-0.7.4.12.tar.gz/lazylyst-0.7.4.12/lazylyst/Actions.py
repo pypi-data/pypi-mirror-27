@@ -1,0 +1,561 @@
+# Author: Andrew.M.G.Reynen
+from __future__ import print_function
+import importlib
+import sys
+from future.utils import iteritems
+
+from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5.QtCore import Qt
+
+from ActionSetup import Ui_actionDialog
+from CustomFunctions import dict2Text, text2Dict
+
+# Default Actions
+def defaultActions():
+    act={
+    'OpenOptions':Action(tag='OpenOptions',name='openConfiguration',
+                         path='$main',
+                         trigger=Qt.Key_O,locked=True),
+                      
+    'ChangeSource':Action(tag='ChangeSource',name='openChangeSource',
+                          path='$main',
+                          trigger=Qt.Key_P,locked=True),
+
+    'CloseLazylyst':Action(tag='CloseLazylyst',name='passAction',
+                           path='$main',trigger='DoubleClick',locked=True),
+                           
+    'OpenLazylyst':Action(tag='OpenLazylyst',name='passAction',
+                           path='$main',trigger='DoubleClick',locked=True),
+
+    'ToggleImage':Action(tag='ToggleImage',name='toggleImageWidget',
+                           path='$main',trigger=QtGui.QKeySequence('F4'),locked=True),
+
+    'ReloadPlugins':Action(tag='ReloadPlugins',name='reloadPlugins',
+                           path='$main',trigger=QtGui.QKeySequence('F5'),locked=True),
+
+    'ReloadArchive':Action(tag='ReloadArchive',name='updateArchive',
+                           path='$main',optionals={'showBar':False,'resetSearch':True},
+                           trigger=QtGui.QKeySequence('F6'),threaded=True),
+                           
+    'SaveSettings':Action(tag='SaveSettings',name='saveSettings',
+                          path='$main',optionals={'closing':False},
+                          trigger=QtGui.QKeySequence('Ctrl+S'),locked=True),
+
+    'Screenshot':Action(tag='Screenshot',name='takeScreenshot',
+                        path='$main',trigger=QtGui.QKeySequence('F8'),locked=True),
+                      
+    'PageNext':Action(tag='PageNext',name='tabCurPage',
+                      path='$main',optionals={'nextPage':True},
+                      trigger=Qt.Key_D,locked=True),
+                      
+    'PagePrev':Action(tag='PagePrev',name='tabCurPage',
+                      path='$main',optionals={'prevPage':True},
+                      trigger=Qt.Key_A,locked=True),  
+                      
+    'FiltNone':Action(tag='FiltNone',name='streamFilter',
+                      path='Plugins.Filters',optionals={'type':'raw'},
+                      trigger=QtGui.QKeySequence('Shift+~'),inputs=['stream'],returns=['pltSt']),
+    'FiltHP1':Action(tag='FiltHP1',name='streamFilter',
+                      path='Plugins.Filters',optionals={'type':'highpass','freq':1,'corners':1,'zerophase':True},
+                      trigger=QtGui.QKeySequence('Shift+Q'),inputs=['stream'],returns=['pltSt']),
+    'FiltHP5':Action(tag='FiltHP5',name='streamFilter',
+                      path='Plugins.Filters',optionals={'type':'highpass','freq':5,'corners':1,'zerophase':True},
+                      trigger=QtGui.QKeySequence('Shift+W'),inputs=['stream'],returns=['pltSt']),
+    'FiltHP10':Action(tag='FiltHP10',name='streamFilter',
+                      path='Plugins.Filters',optionals={'type':'highpass','freq':10,'corners':1,'zerophase':True},
+                      trigger=QtGui.QKeySequence('Shift+E'),inputs=['stream'],returns=['pltSt']),
+    'FiltDeriv':Action(tag='FiltDeriv',name='streamFilter',
+                      path='Plugins.Filters',optionals={'type':'derivative'},
+                      trigger=QtGui.QKeySequence('Shift+R'),inputs=['stream'],returns=['pltSt']),
+
+    'PickModeP':Action(tag='PickModeP',name='setPickMode',
+                      path='Plugins.General',optionals={'wantMode':'P'},
+                      trigger=QtGui.QKeySequence('1'),inputs=['pickTypesMaxCountPerSta'],returns=['pickMode']),
+
+    'PickModeS':Action(tag='PickModeS',name='setPickMode',
+                      path='Plugins.General',optionals={'wantMode':'S'},
+                      trigger=QtGui.QKeySequence('2'),inputs=['pickTypesMaxCountPerSta'],returns=['pickMode']),
+
+    'ToggleTracePen':Action(tag='ToggleTracePen',name='setTracePenAssign',
+                            path='Plugins.General',passive=True,
+                            trigger=['PickModeP','PickModeS','PickFileSetToClick','PickFileNext','PickFilePrev'],
+                            inputs=['pickMode','tracePenAssign'],returns=['tracePenAssign']),
+
+    'PickAdd':Action(tag='PickAdd',name='addClickPick',
+                     path='$main',trigger='DoubleClick',locked=True),
+                     
+    'PickDelete':Action(tag='PickDelete',name='delPick',
+                        path='Plugins.General',trigger=Qt.Key_4,
+                        inputs=['pickSet','pickMode','curTraceSta'],returns=['pickSet']),
+
+    'PickSetDelete':Action(tag='PickSetDelete',name='delPickSet',
+                        path='Plugins.General',trigger=QtGui.QKeySequence('Shift+$'),
+                        inputs=[],returns=['pickSet']),
+
+    'PickFileCurDelete':Action(tag='PickFileCurDelete',name='removeCurPickFile',
+                        path='Plugins.General',trigger=Qt.Key_Delete,
+                        inputs=['curPickFile','pickFiles'],returns=['pickFiles']),
+                     
+    'PickFileSetToClick':Action(tag='PickFileSetToClick',name='setCurPickFileOnClick',
+                                path='$main',trigger='DoubleClick',returns=['curPickFile'],locked=True),
+
+    'PickFileNext':Action(tag='PickFileNext',name='setCurPickFile',path='Plugins.General',
+                          optionals={'nextFile':True},trigger=QtGui.QKeySequence('Shift+D'),locked=True,
+                          inputs=['curPickFile','pickFiles'],returns=['curPickFile']),
+
+    'PickFilePrev':Action(tag='PickFilePrev',name='setCurPickFile',path='Plugins.General',
+                          optionals={'prevFile':True},trigger=QtGui.QKeySequence('Shift+A'),locked=True,
+                          inputs=['curPickFile','pickFiles'],returns=['curPickFile']),
+
+    'SavePickSetOnNewEve':Action(tag='SavePickSetOnNewEve',name='savePickSet',
+                                   path='$main',passive=True,
+                                   trigger=['PickFileSetToClick','PickFileNext','PickFilePrev','CloseLazylyst'],
+                                   beforeTrigger=True),
+                                   
+    'MapDblClicked':Action(tag='MapDblClicked',name='updateMapDblClickedVars',
+                           path='$main',trigger='DoubleClick',locked=True),
+
+    'GoToStaPage':Action(tag='GoToStaPage',name='goToStaPage',path='Plugins.General',
+                         passive=True,trigger=['MapDblClicked'],
+                         inputs=['curMapSta','staSort','staPerPage','curPage'],
+                         returns=['curPage']),
+                           
+    'SimpleLocate':Action(tag='SimpleLocate',name='simpleLocator',path='Plugins.Locate',
+                          passive=True,
+                          trigger=['PickAdd','PickDelete','PickSetDelete','PickFileCurDelete',
+                                   'PickFileNext','PickFilePrev','PickFileSetToClick','ChangeSource'],
+                          inputs=['pickSet','staLoc','mapCurEve','staSort','sourceDict','staProjStyle'],
+                          returns=['mapCurEve','traceBgPenAssign','mapStaPenAssign']),
+
+    'StaSortAlph':Action(tag='StaSortAlph',name='staSortAlph',path='Plugins.Sorting',
+                         trigger=QtGui.QKeySequence('Z'),
+                         inputs=['staSort'],
+                         returns=['staSort']),
+
+    'StaSortPickTime':Action(tag='StaSortPickTime',name='staSortPickTime',path='Plugins.Sorting',
+                         trigger=QtGui.QKeySequence('X'),
+                         inputs=['staSort','pickSet','pickMode'],
+                         returns=['staSort']),
+
+    'StaSortDist':Action(tag='StaSortDist',name='staSortDist',path='Plugins.Sorting',
+                         trigger=QtGui.QKeySequence('C'),
+                         inputs=['staSort','staLoc','mapCurEve','staProjStyle'],
+                         returns=['staSort']),
+
+    'StaSortResidual':Action(tag='StaSortResidual',name='staSortResidual',path='Plugins.Sorting',
+                         trigger=QtGui.QKeySequence('V'),
+                         inputs=['staSort','staLoc','sourceDict','pickSet','mapCurEve','staProjStyle'],
+                         returns=['staSort']),
+                                  
+    'StaSortReverse':Action(tag='StaSortReverse',name='staSortReverse',path='Plugins.Sorting',
+                         trigger=QtGui.QKeySequence('B'),
+                         inputs=['staSort'],
+                         returns=['staSort']),
+                              
+    'ImageSpectVert':Action(tag='ImageSpectVert',name='spectrogramVert',path='Plugins.Image',
+                            trigger=QtGui.QKeySequence('Ctrl+F'),
+                            inputs=['pltSt','curTraceSta'],
+                            returns=['image']),
+                                                                    
+    }
+    return act
+    
+# Give the passive actions above some default ordering (ie. which is called first)
+def defaultPassiveOrder(actions):
+    order=sorted([act.tag for tag,act in iteritems(actions) if act.passive])
+#    order=['SavePickSetOnNewEve','SimpleLocate'] ## Ensure this includes ALL default passive
+    return order
+    
+# Capabilities of an action
+class Action(object):
+    def __init__(self,tag='New action',name='Function name',
+                 path='Add path to function',optionals={},
+                 passive=False,beforeTrigger=False,timer=False,
+                 trigger='Add Trigger',inputs=[],returns=[],
+                 timerInterval=60,func=None,locked=False,
+                 sleeping=False,threaded=False):
+        self.tag=tag # User visible name for the action
+        self.name=name # Function name
+        self.path=path # Function path (uses "." instead of "\", path is relative a directory in the systems PATH variable)
+        self.optionals=optionals # Dictionary of the optional values which can be sent to the function
+        self.passive=passive # If the action is passive, this is true
+        self.beforeTrigger=beforeTrigger # If the passive function should be applied before/after the function
+        self.timer=timer # If active, can use this to use a QTimer to set things off
+        self.timerInterval=timerInterval # Interval time in seconds for the timer
+        self.trigger=trigger # Trigger of the action
+        self.inputs=inputs # Hot variables to be sent as inputs to the function (in the correct order)
+        self.returns=returns # Hot variables to be returned for update
+        self.func=func # Function which is called upon trigger
+        self.locked=locked # If the action is allowed to be altered (other than the trigger)
+        self.sleeping=sleeping # If the action is responding to triggers or not
+        self.threaded=threaded # If the action is to be run on a seperate thread ("in background")
+        # convert the trigger to a key sequence, if the trigger was a key
+        if type(trigger)==type(Qt.Key_1):
+            self.trigger=QtGui.QKeySequence(self.trigger)
+    
+    # When loading the previous settings, must link the action to its functions again
+    def linkToFunction(self,main,reloadMod=False):
+        # If the path does not relate to already defined function locations
+        if self.path not in ['$main']:
+            # Extract the function
+            try:
+                mod=importlib.import_module(self.path)
+                # Force reloading of the module if wanted
+                if reloadMod:
+                    if sys.version_info[0]==2:
+                        reload(mod)
+                    else:
+                        importlib.reload(mod)
+                func=getattr(mod,self.name)
+            except Exception as error:
+                print(error)
+                print('Action '+self.tag+' did not load from '+self.path+'.'+self.name)
+                return
+        # Otherwise, grab function from predefined location
+        else:
+            try:
+                if self.path=='$main':
+                    func=getattr(main,self.name)
+            except:
+                print(self.tag+' did not load from '+self.path+'.'+self.name)
+                return
+        # Assign the function to the action
+        self.func=func
+        return
+    
+    # Assign the default attributes which were are added in newer versions...
+    # ...if not already present
+    def fillMissingAttrib(self):
+        defAct=Action()
+        for attrib in ['sleeping','threaded']:
+            try:
+                getattr(self,attrib)
+            except:
+                setattr(self,attrib,getattr(defAct,attrib))
+        
+# Action setup dialog
+class ActionSetupDialog(QtWidgets.QDialog, Ui_actionDialog):
+    def __init__(self,main,action,actDict,hotVar,pref,tempLock,parent=None):
+        QtWidgets.QDialog.__init__(self,parent)
+        self.setupUi(self)
+        self.trigReminder=False # Used for reminder to user if toggling between active/passive
+        self.main=main # The main window
+        self.action=action # The action to update
+        self.actDict=actDict # All other actions
+        self.hotVar=hotVar # Inputs/returns to go to/from function
+        self.pref=pref # Additional inputs to go to the function
+        # Give the dialog some functionaly
+        self.setFunctionality()
+        # Load in the text to the related action
+        self.fillDialog()
+        # Disable the majority of this gui if the action is locked...
+        if self.action.locked or tempLock:
+            self.lockDialog()
+        # ...also, if this is only click event (double click for adding one pick)
+        if self.action.trigger=='DoubleClick':
+            self.actTriggerLineEdit.setEnabled(False)
+     
+    # Set up some functionality to the action set up dialog
+    def setFunctionality(self):
+        # For radio buttons, passive/active
+        self.actActiveRadio.clicked.connect(lambda: self.togglePassiveActive())
+        self.actPassiveRadio.clicked.connect(lambda: self.togglePassiveActive())
+        # For the tag line edit, to remind if a tag is already being used
+        self.actTagLineEdit.hoverOut.connect(self.unqTagName)
+        # For the trigger line (active) and lists (passive)
+        self.actTriggerLineEdit.keyPressed.connect(self.updateKeyBind)
+        self.actAvailTriggerList.itemDoubleClicked.connect(lambda: self.addAvailVar('trigger'))
+        self.actSelectTriggerList.keyPressedSignal.connect(lambda: self.removeSelectVar('trigger'))
+        self.actSelectTriggerList.itemDoubleClicked.connect(lambda: self.removeSelectVar('trigger'))
+        # For the input/return, avail/select lists
+        self.actAvailInputList.itemDoubleClicked.connect(lambda: self.addAvailVar('input'))
+        self.actAvailReturnList.itemDoubleClicked.connect(lambda: self.addAvailVar('return'))
+        self.actSelectInputList.keyPressedSignal.connect(lambda: self.removeSelectVar('input'))
+        self.actSelectReturnList.keyPressedSignal.connect(lambda: self.removeSelectVar('return'))
+        self.actSelectInputList.itemDoubleClicked.connect(lambda: self.removeSelectVar('input'))
+        self.actSelectReturnList.itemDoubleClicked.connect(lambda: self.removeSelectVar('return'))
+    
+    # Fill the dialog with info relating to action
+    def fillDialog(self):
+        # Fill in the text...
+        # ...line edit entries
+        self.actTagLineEdit.setText(self.action.tag)
+        self.actNameLineEdit.setText(self.action.name)
+        self.actPathLineEdit.setText(self.action.path)
+        # ...optionals line edit
+        self.actOptionalsLineEdit.setText(dict2Text(self.action.optionals))
+        # ...trigger line edit entry
+        if self.action.passive or self.action.trigger=='Set Trigger':
+            self.actTriggerLineEdit.setText('Set Trigger')
+        elif self.action.trigger=='DoubleClick':
+            self.actTriggerLineEdit.setText(self.action.trigger)
+        else:
+            self.actTriggerLineEdit.setText(self.action.trigger.toString())
+        # ...trigger list, use only triggers which are active
+        self.passiveTriggers=[action.tag for key,action in iteritems(self.actDict) if not action.passive]
+        self.actAvailTriggerList.addItems(sorted(self.passiveTriggers))
+        # Set the appropriate radio button on
+        if self.action.passive:
+            self.actPassiveRadio.setChecked(True)
+        else:
+            self.actActiveRadio.setChecked(True)
+        # Set the state of the beforeTrigger check box (used for passive only)
+        if self.action.passive and self.action.beforeTrigger:
+            self.passiveBeforeCheck.setChecked(True)
+        else:
+            self.passiveBeforeCheck.setChecked(False)
+        # Set the state of the activeTimer check box (used for active only)
+        if not self.action.passive and self.action.timer:
+            self.activeTimerCheck.setChecked(True)
+        else:
+            self.activeTimerCheck.setChecked(False)
+        # Set the state of the activeThreaded check box
+        if self.action.threaded:
+            self.activeThreadedCheck.setChecked(True)
+        else:
+            self.activeThreadedCheck.setChecked(False)
+        # Set the timer interval value
+        self.actIntervalLineEdit.setText(str(self.action.timerInterval))
+        # Toggle the appropriate radio button
+        self.togglePassiveActive(init=True)
+        # Fill in the available inputs and returns...
+        # ...hot variables can go into inputs and outputs
+        self.addTipItems(self.actAvailInputList,[hotVar for key,hotVar in iteritems(self.hotVar)])
+        self.addTipItems(self.actAvailReturnList,[hotVar for key,hotVar in iteritems(self.hotVar) if hotVar.returnable])
+        # ...preferences are only allowed as inputs (no need to add colors here, just adds clutter)
+        self.addTipItems(self.actAvailInputList,[pref for key,pref in iteritems(self.pref) if not 
+                                                 (key in ['basePen','customPen','pickPen','cursorStyle'])])
+        # Fill in the selected triggers (passive),inputs and returns
+        if self.action.passive:
+            self.actSelectTriggerList.addItems(self.action.trigger)
+        self.addTipItems(self.actSelectInputList,self.action.inputs,useKey=True)
+        self.addTipItems(self.actSelectReturnList,self.action.returns,useKey=True)
+    
+    # Add hot variable or preference to a designated list widget
+    def addTipItems(self,listWidget,tipObjects,useKey=False):
+        for tipObject in tipObjects:
+            # If the key was passed, instead of the object - get the object
+            if useKey:
+                if tipObject in self.pref.keys():
+                    tipObject=self.pref[tipObject]
+                else:
+                    tipObject=self.hotVar[tipObject]
+            item=QtWidgets.QListWidgetItem()
+            item.setText(tipObject.tag)
+            item.setToolTip(tipObject.tip)
+            listWidget.addItem(item)
+    
+    # Lock the dialog so that values cannot be updated, for some built-in actions
+    def lockDialog(self):
+        for widget in [self.actNameLineEdit,self.actPathLineEdit,
+                       self.actOptionalsLineEdit,self.actAvailTriggerList,
+                       self.actSelectTriggerList,self.actIntervalLineEdit,
+                       self.actAvailInputList,self.actAvailReturnList,
+                       self.actSelectInputList,self.actSelectReturnList,
+                       self.actPassiveRadio,self.actActiveRadio,
+                       self.passiveBeforeCheck,self.activeTimerCheck,
+                       self.activeThreadedCheck,self.actTagLineEdit]:
+            widget.setEnabled(False)
+    
+    # Update the key bind to what the user pressed
+    def updateKeyBind(self,keyBindText):
+        # Key binds are only used for active actions
+        if self.actPassiveRadio.isChecked():
+            return
+        # If the keybind is already in use, do not allow update
+        for tag,action in iteritems(self.actDict):
+            # Only active actions have keybinds (do not need to check passive)
+            if action.passive or action.trigger in ['DoubleClick','Set Trigger']:
+                continue
+            if action.trigger.toString()==keyBindText and action.tag!=self.action.tag:
+                print(action.tag+' already uses Keybind '+keyBindText)
+                return
+        # Otherwise, update the trigger line edit (trigger value is updated upon close)
+        self.actTriggerLineEdit.setText(keyBindText)
+    
+    # Move the user chosen available hot variable or preference to the selected list
+    def addAvailVar(self,listTag):
+        # See which pair of lists was called
+        if listTag=='return':
+            fromList=self.actAvailReturnList
+            toList=self.actSelectReturnList
+        elif listTag=='input':
+            fromList=self.actAvailInputList
+            toList=self.actSelectInputList
+        else:
+            fromList=self.actAvailTriggerList
+            toList=self.actSelectTriggerList
+        # Add to the selected list, if the item is not already there
+        aKey=fromList.currentItem().text()
+        if aKey not in [toList.item(i).text() for i in range(toList.count())]:
+            # If this was from the return/input, add the tag to the item
+            if listTag in ['return','input']:
+                self.addTipItems(toList,[aKey],useKey=True)
+            else:
+                toList.addItem(aKey)
+    
+    # Removes the current item from a selected list of hot variables and/or preferences
+    def removeSelectVar(self,listTag):
+        # See which list was selected
+        potTags=['return','input','trigger']
+        potLists=[self.actSelectReturnList,self.actSelectInputList,self.actSelectTriggerList]
+        aList=potLists[potTags.index(listTag)]
+        # Remove the item if one is selected
+        if aList.currentItem!=None:
+            if aList.currentItem().isSelected():
+                aList.takeItem(aList.currentRow())
+            
+    # Depending on if this is an active or passive action, turn on/off some widgets
+    def togglePassiveActive(self,init=False):
+        active=self.actActiveRadio.isChecked()
+        self.actTriggerLineEdit.setEnabled(active)
+        if active:
+            self.actTriggerLineEdit.setReadOnly(active)
+        self.actIntervalLineEdit.setEnabled(active)
+        self.activeTimerCheck.setEnabled(active)
+        self.activeThreadedCheck.setEnabled(active)
+        self.passiveBeforeCheck.setEnabled(not active)
+        self.actAvailTriggerList.setEnabled(not active)
+        self.actSelectTriggerList.setEnabled(not active)
+        # If the user has change from passive to active, remind that this will not be saved...
+        # ...unless the trigger value is updated
+        if (not self.trigReminder) and (not init):
+            print('If changing between active and passive, update the trigger value')
+            self.trigReminder=True
+
+    # Check the tag name to ensure that it doesn't conflict with other actions
+    def unqTagName(self):
+        curTag=self.actTagLineEdit.text()
+        for tag,action in iteritems(self.actDict):
+            if curTag==tag and action.tag!=self.action.tag:
+                print('This tag is already in use - if left as is changes will not be accepted')
+                return False
+        return True
+        
+    # Check that the trigger is appropriate relative to the action type
+    def appropTrigger(self):
+        # If a passive action, all triggers should be in the trigger list
+        if self.actPassiveRadio.isChecked():
+            sendFalse=False
+            for entry in self.actSelectTriggerList.visualListOrder():
+                if entry not in self.passiveTriggers:
+                    print('The active trigger tag '+entry+' no longer exists')
+                    sendFalse=True
+            if sendFalse:
+                return False
+        # If a active action, the trigger should be able to convert to a keybind
+        else:
+            if self.actTriggerLineEdit.text()=='Set Trigger':
+                return False
+            try:
+                QtGui.QKeySequence(self.actTriggerLineEdit.text())
+            except:
+                return False
+        return True
+    
+    # Upon close, fill in the action with all of the selected information and return
+    def returnAction(self):
+        # First check to see that the new parameters make sense and the action is to be updated,
+        # ... checking that the tag and the trigger are appropriate, also that the timer makes sense
+        if self.action.trigger=='DoubleClick':
+            print('No changes can be made to actions with DoubleClick triggers')
+            return None
+        if self.actTagLineEdit.text()=='New action':
+            print('Action update declined, tag was still default')
+            return None
+        if not self.unqTagName():
+            print('Action update declined, tag is not unique')
+            return None
+        if not self.appropTrigger():
+            print('Action update declined, trigger was not set correctly')
+            return None
+        if self.activeTimerCheck.isChecked():
+            try:
+                float(self.actIntervalLineEdit.text())
+            except:
+                if float(self.actIntervalLineEdit.text())>0:
+                    pass
+                print('Action update declined, timer interval was not a positive number')
+                return None
+        # Set information from line edits...
+        self.action.tag=self.actTagLineEdit.text()
+        self.action.name=self.actNameLineEdit.text()
+        self.action.path=self.actPathLineEdit.text()
+        # ...optionals, set the values to the accepted format type (in order: bool,float,int,str)
+        optText=self.actOptionalsLineEdit.text()
+        try:
+            optionals=text2Dict(optText)
+        except:
+            print('optionals were not formatted correctly, leaving as blank')
+            optionals={}
+        self.action.optionals=optionals
+        # ...set whether this is an active or passive action
+        self.action.passive=self.actPassiveRadio.isChecked()
+        # ...trigger value
+        if self.action.passive:
+            self.action.trigger=self.actSelectTriggerList.visualListOrder()
+        else:
+            self.action.trigger=QtGui.QKeySequence(self.actTriggerLineEdit.text())
+        # Set info from radio buttons (passive/active) 
+        self.action.passive=self.actPassiveRadio.isChecked()
+        # If the action should be applied before the trigger (used for passive only)
+        if self.passiveBeforeCheck.isChecked():
+            self.action.beforeTrigger=True
+        # If the action should set off with a given interval
+        if self.activeTimerCheck.isChecked():
+            self.action.timer=True
+            self.action.timerInterval=float(self.actIntervalLineEdit.text())
+        else:
+            self.action.timer=False
+        # If the action should initiate a seperate thread when triggered
+        if self.activeThreadedCheck.isChecked():
+            self.action.threaded=True
+        else:
+            self.action.threaded=False
+        # Collect the tags of the inputs and returns associated with the action
+        self.action.inputs=self.actSelectInputList.visualListOrder()
+        self.action.returns=self.actSelectReturnList.visualListOrder()
+        # Try to link to the function (given the new path, and name)
+        try:
+            self.action.linkToFunction(self.main)
+        except:
+            print('Failed to link '+self.action.tag+' to '+self.action.name+' at '+self.action.path)
+        return self.action
+        
+# Custom thread class to execute a queue of actions
+class QueueThread(QtCore.QThread):
+    setNextInputs=QtCore.pyqtSignal()    
+    sendReturns=QtCore.pyqtSignal()
+    
+    def __init__(self,tag,actQueue):
+        QtCore.QThread.__init__(self)
+        self.tag=tag # The tag of the active action which created this queue
+        self.actQueue=actQueue # The queue of all actions relating to the active action
+        self.inputs=None # The inputs of the action currently being processed
+        self.returns=None # The returns of the last action processed
+        self.curIdx=None # Which index within the action queue is being processed
+    
+    def setInputs(self,inputs):
+        self.inputs=inputs
+        
+    def resetInputsAndReturns(self):
+        self.returns=None
+        self.inputs=None
+    
+    # This function is called using the start() function
+    def run(self):
+        # Go through each of the queued action and execute it
+        for i in range(len(self.actQueue)):
+            # Ask to collect the required inputs
+            self.curIdx=i
+            self.setNextInputs.emit()
+            # Wait to collect the inputs before processing the action
+            while self.inputs==None:
+                self.msleep(50)
+            # Run the actions function and send back the return values
+            self.returns=self.actQueue[self.curIdx].func(*self.inputs,**self.actQueue[self.curIdx].optionals)
+            self.sendReturns.emit()
+            # Wait for the return values on the GUI to be updated
+            while self.returns is not None:
+                self.msleep(50)
+        self.exit()
