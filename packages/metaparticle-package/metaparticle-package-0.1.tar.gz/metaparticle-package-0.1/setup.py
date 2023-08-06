@@ -1,0 +1,13 @@
+from distutils.core import setup
+
+setup(
+  name = 'metaparticle-package',
+  packages = ['metaparticle-package'],
+  version = '0.1',
+  description = 'Metaparticle library for Python',
+  author = 'Metaparticle Authors',
+  author_email = 'metaparticle@metaparticle.io',
+  url = 'https://github.com/metaparticle-io/package',
+  keywords = ['metaparticle', 'containers', 'docker'],
+  classifiers = [],
+)
