@@ -1,0 +1,66 @@
+Metadata-Version: 1.1
+Name: argparse-color-formatter
+Version: 1.1.0
+Summary: a ``formatter_class`` for ``argparse`` that deals with ANSI colour escapes. Specifically, this formatter does not count escape characters as displayed characters when wrapping ``argparse``'s help text into the terminal.
+Home-page: https://github.com/emergence/argparse-color-formatter/
+Author: Emergence by Design
+Author-email: support@emergence.com
+License: LICENSE
+Description-Content-Type: UNKNOWN
+Description: 
+        .. list-table::
+           :header-rows: 1
+        
+           * - Branch
+             - Build Status
+             - Coverage Status
+           * - master
+             -
+             .. image:: https://semaphoreci.com/api/v1/emergence/argparse-color-formatter/branches/master/shields_badge.svg
+                :target: https://semaphoreci.com/emergence/argparse-color-formatter
+                :alt: Build Status
+        
+             -
+             .. image:: https://docs.emergence.com/argparse-color-formatter/htmlcov_master/coverage.svg
+                :target: https://docs.emergence.com/argparse-color-formatter/htmlcov_master/
+                :alt: Coverage Status
+        
+           * - develop
+             -
+             .. image:: https://semaphoreci.com/api/v1/emergence/argparse-color-formatter/branches/develop/shields_badge.svg
+                :target: https://semaphoreci.com/emergence/argparse-color-formatter
+                :alt: Build Status
+        
+             -
+             .. image:: https://docs.emergence.com/argparse-color-formatter/htmlcov_develop/coverage.svg
+                :target: https://docs.emergence.com/argparse-color-formatter/htmlcov_develop/
+                :alt: Coverage Status
+        
+        Install
+        -------
+        
+        .. code-block:: shell
+        
+           $ pip install argparse-color-formatter
+        
+        Usage
+        -----
+        
+        Pass in ``argparse_color_formatter.ColorHelpFormatter`` to a new argument parser as ``formatter_class``
+        
+        .. code-block:: python
+        
+           import argparse
+           from argparse_color_formatter import ColorHelpFormatter
+        
+           parser = argparse.ArgumentParser(
+               formatter_class=ColorHelpFormatter
+           )
+            
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
