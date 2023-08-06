@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: sample-pypi
+Version: 0.0.1
+Summary: Sample PyPI library
+Home-page: https://gitlab.com/massood/sample-pypi
+Author: Massood
+Author-email: massoodkhaari@gmail.com
+License: Closed-Source Proprietary License
+Description-Content-Type: UNKNOWN
+Description: # Sample PyPI
+        
+        ## Installation
+        
+            pip install -e git+ssh://git@gitlab.com/massood/sample-pypi.git@master#egg=sample-pypi
+        
+Keywords: sample pypi
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
