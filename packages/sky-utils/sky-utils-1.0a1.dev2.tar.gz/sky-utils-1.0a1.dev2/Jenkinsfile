@@ -1,0 +1,84 @@
+#!groovy
+
+pipeline {
+
+  agent any
+
+  options { skipDefaultCheckout() }
+
+  stages {
+
+    stage('Prepare virtualenv with tools') {
+      steps {
+
+        deleteDir()
+
+        checkout scm
+
+        withPythonEnv('/bin/python') {
+          pysh 'python -m pip install -r /var/lib/jenkins/reqs/venv.txt'
+        }
+      }
+    }
+
+    stage('Install project requirements') {
+      steps {
+        withPythonEnv('/bin/python') {
+          pysh 'python -m pip install -r requirements.txt'
+        }
+      }
+    }
+
+    stage('Version Conflict Checks') {
+      steps {
+        withPythonEnv('/bin/python') {
+          pysh 'python -m pipconflictchecker.checker'
+        }
+      }
+    }
+
+    stage('Running Tox') {
+      steps {
+        withPythonEnv('/bin/python') {
+          pysh 'tox'
+        }
+      }
+    }
+
+    // Packaging
+    stage('Packaging') {
+      steps {
+        withPythonEnv('/bin/python') {
+          pysh 'python setup.py sdist'
+          pysh 'python setup.py bdist_wheel'
+        }
+      }
+    }
+
+    // Upload to Repository
+    stage('Repository Upload') {
+      steps {
+        withPythonEnv('/bin/python') {
+          pysh 'python -m twine upload dist/* -r nexus'
+        }
+      }
+    }
+
+    stage('Extracting Dependency Matrix') {
+      steps {
+        withPythonEnv('/bin/python') {
+          pysh 'python /var/lib/jenkins/depm.py'
+        }
+      }
+    }
+
+  }
+  post {
+    success {
+      sh "echo 'SUCCESS'"
+    }
+    failure {
+      sh "echo 'FAILURE'"
+    }
+  }
+}
