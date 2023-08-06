@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: waelstow
+Version: 0.10.1
+Summary: A small collection of tools for unit testing.  Includes methods for test suite discovery for use in your runner and contexts for capturing STDIO or STDERR and temporarily moving directories.
+Home-page: https://github.com/cltrudeau/waelstow
+Author: Christopher Trudeau
+Author-email: ctrudeau+pypi@arsensa.com
+License: MIT
+Description: Waelstow
+        ========
+            [wel stoʊ]  / *noun* 
+            
+            1) literal: "death field" or "slaugher field"; 
+            2) Anglo Saxon term for battlefields
+            3) A collection of python testing utilties
+        
+        Installation
+        ============
+        
+        .. code-block:: bash
+        
+            $ pip install waelstow
+        
+        Supports
+        ========
+        
+        Python wrench has been tested with Python 2.7, 3.5, and 3.6
+        
+        Docs & Source
+        =============
+        
+        Docs: http://waelstow.readthedocs.io/en/latest/
+        
+        Source: https://github.com/cltrudeau/waelstow
+        
+Keywords: test,testing,unit test,unittest,test runner
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
