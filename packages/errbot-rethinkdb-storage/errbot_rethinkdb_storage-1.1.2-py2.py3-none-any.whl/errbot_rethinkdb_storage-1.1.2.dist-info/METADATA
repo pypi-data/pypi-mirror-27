@@ -1,0 +1,49 @@
+Metadata-Version: 2.0
+Name: errbot-rethinkdb-storage
+Version: 1.1.2
+Summary: RethinkDB storage plugin for ErrBot
+Home-page: https://gitlab.com/AnjiProject/errbot-rethinkdb-storage
+Author: Bogdan Gladyshev
+Author-email: siredvin.dark@gmail.com
+License: MIT license
+Description-Content-Type: UNKNOWN
+Keywords: errbot_rethinkdb_storage
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: errbot (>=5.1.0)
+Requires-Dist: repool-forked (>=0.3)
+
+============================
+RethinkDB Storage for ErrBot
+============================
+
+
+.. image:: https://img.shields.io/pypi/v/errbot_rethinkdb_storage.svg
+        :target: https://pypi.python.org/pypi/errbot_rethinkdb_storage
+
+RethinkDB storage plugin for ErrBot
+
+
+* Free software: MIT license
+
+
+Features
+--------
+
+* Base RethinkDB storage plugin for ErrBot
+
+Credits
+---------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+
