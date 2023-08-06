@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+
+''' ddupdate main script, invokes ddupdate.main.main(). '''
+
+import os.path
+import sys
+
+HOME = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
+sys.path.insert(0, os.path.join(HOME, 'lib'))
+
+try:
+    import lib.ddupdate.main as main
+except ModuleNotFoundError:
+    import ddupdate.main as main
+
+main.main()
