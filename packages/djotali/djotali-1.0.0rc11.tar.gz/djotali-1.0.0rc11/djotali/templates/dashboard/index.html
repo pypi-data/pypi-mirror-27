@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <div class="row bg-title">
+        <!-- .page title -->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Dashboard</h4>
+        </div>
+        <!-- /.page title -->
+        <!-- .breadcrumb -->
+        {% include 'core/partials/_breadcrumbs.html' %}
+        <!-- /.breadcrumb -->
+    </div>
+    <!-- .row -->
+    <div class="row">
+        <div class="col-md-12">
+
+            {% include 'core/partials/flash_messages.html' %}
+            <div class="white-box">
+                <div class="row row-in">
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <a href="{% url 'billing:index' %}">
+                            <h3 class="box-title">Credit</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="ti-wallet text-info"></i></li>
+                                <li class="text-right"><span class="counter">{{ total_credit }}</span></li>
+                            </ul>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br b-r-none">
+                        <a href="{% url 'contacts:index' %}">
+                            <h3 class="box-title">Contacts</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="icon-people text-info"></i></li>
+                                <li class="text-right"><span class="counter">{{ total_contacts }}</span></li>
+                            </ul>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h3 class="box-title">Messages envoyés</h3>
+                        <ul class="list-inline two-part">
+                            <li><i class="ion-ios-email-outline text-success"></i></li>
+                            <li class="text-right text-success"><span class="counter">{{ sent_messages }}</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h3 class="box-title">Envois échoués</h3>
+                        <ul class="list-inline two-part">
+                            <li><i class="ion-ios-email-outline text-success"></i></li>
+                            <li class="text-right text-success"><span class="counter">{{ failed_messages }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="white-box">
+                <h3 class="box-title"><a href="{% url 'campaigns:index' %}">Les campagnes les plus proches</a></h3>
+                <div class="table-responsive">
+                    {% if next_campaigns %}
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>DATE</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for campaign in next_campaigns %}
+                                <tr>
+                                    <td class="txt-oflo">{{ campaign.name }}</td>
+                                    <td class="txt-oflo">
+                                        {{ campaign.start_date|date }}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'campaigns:show' campaign.id %}">
+                                            <i class="ion-ios-search-strong"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        Vous n'avez pas encore défini de campagnes
+                    {% endif %}
+                    <div class="d-flex justify-content-end">
+                        <div class="mr-auto p-2">
+                            <a href="{% url 'campaigns:new' %}" class="btn btn-success btn-circle">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

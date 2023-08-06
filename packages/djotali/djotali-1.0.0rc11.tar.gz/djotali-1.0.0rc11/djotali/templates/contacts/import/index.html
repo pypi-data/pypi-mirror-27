@@ -1,0 +1,91 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'plugins/dropify/dist/css/dropify.min.css' %}">
+{% endblock styles %}
+{% block content %}
+
+    <div class="row bg-title">
+        <!-- .page title -->
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">
+                {% block title %}
+                    Importer
+                {% endblock %}
+            </h4>
+        </div>
+        <!-- /.page title -->
+        <!-- .breadcrumb -->
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12 col-sm-12">
+            <ol class="breadcrumb">
+                <li><a href="{% url 'dashboard:index' %}">Contacts</a></li>
+                <li class="active">Importer</li>
+                {% block breadcrumb %}
+                {% endblock %}
+            </ol>
+        </div>
+        <!-- /.breadcrumb -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% include 'core/partials/flash_messages.html' %}
+            <div class="white-box">
+                <div class="row row-in">
+                    <div class="col-sm-8 col-md-8 offset-sm-2 offset-md-2 col-xs-12">
+                        <form action="#" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            <div class="form-group">
+                                {{ form.file }}
+                            </div>
+                            {% if form.file.errors %}
+                                <div class="help-block with-errors">
+                                    <ul class="list-unstyled">
+                                        {% for e in form.file.errors %}
+                                            <li>{{ e }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-4 offset-2">
+                                    <a href="{% url 'contacts:csv_model' %}" class="btn btn-outline btn-info waves-effect waves-light">
+                                        <i class="fa fa-cloud-download"></i>
+                                        Telecharger le modèle
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-outline btn-success waves-effect waves-light">
+                                        <i class="fa fa-upload"></i>
+                                        Importer
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+    <script>
+        $('.dropify').dropify({
+                                  allowedFileExtensions: ["csv", ".csv"],
+                                  maxFileSize: "2M",
+                                  messages: {
+                                      default: 'Glissez-déposez un fichier ici ou cliquez',
+                                      replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                                      remove: 'Supprimer',
+                                      error: 'Désolé, le fichier est trop volumineux'
+                                  }
+                              });
+
+    </script>
+{% endblock scripts %}

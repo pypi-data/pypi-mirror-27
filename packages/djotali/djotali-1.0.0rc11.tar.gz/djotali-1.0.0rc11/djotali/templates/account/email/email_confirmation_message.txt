@@ -1,0 +1,9 @@
+{% load account %}{% user_display user as user_display %}{% autoescape off %}Bonjour,
+
+Vous recevez cet email parce que l'utilisateur {{ user_display }} a donné votre addresse pour se connecter à son compte.
+
+Pour la confirmer, aller à {{ activate_url }}
+{% endautoescape %}
+
+Djotali vous rapproche de vos clients en facilitant le lancement de campagnes par SMS.
+- A bientôt
