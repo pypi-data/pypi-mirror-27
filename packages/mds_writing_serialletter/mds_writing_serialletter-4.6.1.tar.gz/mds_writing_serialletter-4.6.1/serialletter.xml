@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- view for form and tree -->
+        <record model="ir.ui.view" id="serialletter_view_form">
+            <field name="model">writing_serialletter.letter</field>
+            <field name="type">form</field>
+            <field name="name">letter_form</field>
+        </record>
+        <record model="ir.ui.view" id="serialletter_view_tree">
+            <field name="model">writing_serialletter.letter</field>
+            <field name="type">tree</field>
+            <field name="name">letter_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_writing_serialletter_letter_form">
+            <field name="name">Serial letter</field>
+            <field name="res_model">writing_serialletter.letter</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_writing_serialletter_letter_form1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="serialletter_view_tree"/>
+            <field name="act_window" ref="act_writing_serialletter_letter_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_writing_serialletter_letter_form2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="serialletter_view_form"/>
+            <field name="act_window" ref="act_writing_serialletter_letter_form"/>
+        </record>
+
+        <!-- menuitem -->
+        <menuitem parent="writing_serialletter.menu_writing" 
+                    action="act_writing_serialletter_letter_form"
+                    id="menu_serialletter" sequence="10" icon="icon-mailtoall"/>
+        <record model="ir.ui.menu-res.group" 
+                id="menu_serialletter-group_writing_serialletter_view">
+            <field name="menu" ref="menu_serialletter"/>
+            <field name="group" ref="group_writing_serialletter_view"/>
+        </record>
+        <record model="ir.ui.menu-res.group" 
+                id="menu_serialletter-group_writing_serialletter_edit">
+            <field name="menu" ref="menu_serialletter"/>
+            <field name="group" ref="group_writing_serialletter_edit"/>
+        </record>
+
+        <!-- permissions -->
+        <record model="ir.model.access" id="access_letter_anon">
+            <field name="model" search="[('model', '=', 'writing_serialletter.letter')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_letter_view">
+            <field name="model" search="[('model', '=', 'writing_serialletter.letter')]"/>
+            <field name="group" ref="group_writing_serialletter_view"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_letter_edit">
+            <field name="model" search="[('model', '=', 'writing_serialletter.letter')]"/>
+            <field name="group" ref="group_writing_serialletter_edit"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <!-- permission: buttons -->
+        <!-- Activate mailing address -->
+        <record model="ir.model.button" id="letter_enable_mailaddresses_button">
+            <field name="name">enable_mailaddresses</field>
+            <field name="model" search="[('model', '=', 'writing_serialletter.letter')]"/>
+        </record>
+        <record model="ir.model.button-res.group" 
+                id="letter_enable_mailaddresses_button-group_writing_serialletter_edit">
+            <field name="button" ref="letter_enable_mailaddresses_button"/>
+            <field name="group" ref="group_writing_serialletter_edit"/>
+        </record>
+
+    </data>
+</tryton>

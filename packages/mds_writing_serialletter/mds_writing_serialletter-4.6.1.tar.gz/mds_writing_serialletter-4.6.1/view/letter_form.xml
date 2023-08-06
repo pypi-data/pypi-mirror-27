@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<form col="4">
+    <notebook colspan="4">
+        <page id="pglettr" string="Letter" col="6">
+            <label name="name"/>
+            <field name="name" colspan="3"/>
+            <label name="created"/>
+            <field name="created"/>
+            <label name="placeholder"/>
+            <field name="placeholder" colspan="3"/>
+            <label name="edited"/>
+            <field name="edited"/>
+            <label name="contact"/>
+            <field name="contact" colspan="3"/>    
+            <label name="state"/>
+            <field name="state"/>
+            <label name="subject"/>
+            <field name="subject" colspan="3"/>
+            <button name="finishletter" string="Write protection" icon="tryton-go-next" 
+                    help="Changes the status to read-only, this can not be undone"
+                    colspan="2"/>
+            <newline/>
+            <field name="text" colspan="6"/>
+        </page>
+        <page id="pgpty" string="Receiver" col="2">
+            <button name="enable_mailaddresses"
+                    help="At all parties an address is activated as a mailing address."
+                    string="Activate mailing address" icon="tryton-save" />
+            <group id="grplab1" col="1">
+                <label id="labmail1" xalign="0.0" 
+                        string="Each party needs an address, which is marked as a mailing address."/>
+                <label id="labmail2" xalign="0.0" 
+                        string="Press the button to make this mark for all parties in the list."/>
+            </group>
+            <field name="parties" colspan="2"/>
+        </page>
+        <page id="pghelp" string="Help for formatting" col="2">
+            <group id="grphlpr" col="1" yfill="1">
+                <group id="grplist" string="Lists" col="1">
+                    <label id="labhlp1" string="Create an enumeration by starting paragraphs with a * or #." xalign="0.0"/>
+                    <label id="labhlp2" xalign="0.0" string="- A '#' at the beginning of the paragraph creates a line with a leading number."/>
+                    <label id="labhlp3" xalign="0.0" string="- A '*' at the beginning of the paragraph creates a line with a leading bulled point."/>
+                    <label id="labhlp4" xalign="0.0" string=" "/>
+                    <label id="labhlp5" xalign="0.0" string="for example:"/>
+                    <label id="labhlp6" xalign="0.0" string="Numbered list"/>
+                    <label id="labhlp7" xalign="0.0" string="# Line 1"/>
+                    <label id="labhlp8" xalign="0.0" string="# Line 2"/>
+                    <label id="labhlp9" xalign="0.0" string="List with points"/>
+                    <label id="labhlp10" xalign="0.0" string="* Line 1"/>
+                    <label id="labhlp11" xalign="0.0" string="* Line 2"/>
+                </group>
+            </group>
+            <group id="grphlpl" col="1" yfill="1">
+                <group id="grpfmt" string="Formatting words" col="1">
+                    <label id="labhlp12" xalign="0.0" string="Individual words in the text can be formatted with the Wiki syntax."/>
+                    <label id="labhlp13" xalign="0.0" string="The following formatting is supported:"/>
+                    <label id="labhlp14" xalign="0.0" string=" "/>
+                    <label id="labhlp15" xalign="0.0" string="*bold*, _italic_, +underline+, -deleted-"/>
+                    <label id="labhlp16" xalign="0.0" string=" "/>
+                    <label id="labhlp17" xalign="0.0" string="Only single words can be formatted."/>
+                    <label id="labhlp18" xalign="0.0" string="Formatting over word groups is not possible."/>
+                </group>
+                <group id="grppar" string="Paragraph" col="1">
+                    <label id="labhlp19" xalign="0.0" string="Text in a line in the text window of the serial letter becomes a paragraph during export."/>
+                    <label id="labhlp20" xalign="0.0" string="A new line in the text window will export to a new paragraph."/>
+                    <label id="labhlp21" xalign="0.0" string="A blank line in the text window expands to a new paragraph with more spacing."/>
+                </group>
+            </group>
+        </page>
+    </notebook>
+</form>
