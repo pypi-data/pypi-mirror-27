@@ -1,0 +1,39 @@
+# xbeetransmission
+`xbeetransmission` is a python module is designed to reliably and securely send messages over Xbee modules in out-of-the-box configuration. 
+
+
+
+## Getting Started
+
+`xbeetransmission` can be installed as a module, or downloaded directly from Github.
+
+#### Installed as a module
+
+`xbeetransmission` can be installed directly via pip:
+
+```bash
+pip install pshtt
+```
+
+#### Usage and examples
+
+```python
+import xbeetransmission
+
+xbeesend(data, serial_interface_of_xbee, "Symmetric Key Value")
+
+xbeereceive(serial_interface_of_xbee, "Symmetric Key Value", "outputfilename.txt")
+```
+
+## Troubleshooting
+* Ensure that you are running the code as sudo to interact with the Xbee module
+* Ensure that your serial interface is correct (should start with /dev/ttyUSB)
+* See example files for reference
+
+## Hardware I Used
+* XBEE Pro 900 MHz
+* 900 MHz Rubber Duck Antenna
+* XBee USB Dongle
+
+## Recommendations
+* Encrypt the message before sending with Public/Private keys
