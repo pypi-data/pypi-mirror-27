@@ -1,0 +1,32 @@
+Metadata-Version: 2.0
+Name: FMPy
+Version: 0.1.2
+Summary: Simulate Functional Mock-up Units (FMUs) in Python
+Home-page: https://github.com/CATIA-Systems/FMPy
+Author: Torsten Sommer
+Author-email: torsten.sommer@3ds.com
+License: Standard 3-clause BSD
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: dask[bag]
+Requires-Dist: lxml
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: pathlib
+Requires-Dist: requests
+Requires-Dist: pypiwin32; platform_system == "Windows"
+
+
+FMPy
+====
+
+FMPy is a free Python library to simulate `Functional Mock-up Units (FMUs) <http://fmi-standard.org/>`_ that...
+
+- supports FMI 1.0 and 2.0
+- supports Co-Simulation and Model Exchange
+- runs on Windows, Linux and macOS
+- can validate FMUs
+- provides fixed and variable-step solvers
+- is pure Python (with ctypes)
+
+
