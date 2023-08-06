@@ -1,0 +1,61 @@
+Metadata-Version: 2.0
+Name: django-search-admin-autocomplete
+Version: 0.1.2
+Summary: Simple django app that add autocomplete to search inside admin panel.
+Home-page: https://github.com/linevich/django-search-admin-autocomplete
+Author: linevich
+Author-email: mail@linevich.net
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+
+Django-search-admin-autocomplete
+--------------------------------
+
+Simple django app that add autocomplete to search inside admin panel.
+
+Tested only with Python 3 and Django 1.10.
+
+.. image:: doc/demo.gif
+
+Installation
+============
+
+.. code-block:: bash
+
+    pip install django-search-admin-autocomplete
+    # OR
+    pip install git+https://github.com/linevich/django-search-admin-autocomplete.git
+
+.. code-block:: python
+
+    INSTALLED_APPS = [
+    ...
+    'search_admin_autocomplete',
+    ...
+    ]
+
+Usage
+=====
+.. code-block:: python
+
+    from search_admin_autocomplete.admin import SearchAutoCompleteAdmin
+
+    class MyModelAdmin(SearchAutoCompleteAdmin)
+        search_fields = ['search_field', ]
+
+    admin.site.register(MyModel, MyModelAdmin)
+
+
+
