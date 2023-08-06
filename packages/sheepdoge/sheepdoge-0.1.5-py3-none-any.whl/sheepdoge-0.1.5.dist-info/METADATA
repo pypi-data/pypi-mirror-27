@@ -1,0 +1,31 @@
+Metadata-Version: 2.0
+Name: sheepdoge
+Version: 0.1.5
+Summary: Manage your personal Unix machine(s) with Ansible.
+Home-page: https://github.com/sheepdoge/sheepdoge
+Author: Matt McNaughton
+Author-email: mattjmcnaughton@gmail.com
+License: Apache
+Description-Content-Type: UNKNOWN
+Keywords: provisioning,automation
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: ansible (<3.0,>=2.0)
+Requires-Dist: configparser (>=3.0)
+Requires-Dist: click (<7.0,>=6.0)
+Requires-Dist: PyYaml (<4.0,>=3.0)
+Requires-Dist: six (<2.0,>=1.0)
+Requires-Dist: futures (<4.0,>=3.0); python_version == "2.7"
+
+UNKNOWN
+
+
