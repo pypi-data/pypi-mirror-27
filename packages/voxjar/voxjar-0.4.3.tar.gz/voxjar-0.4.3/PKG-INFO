@@ -1,0 +1,44 @@
+Metadata-Version: 1.2
+Name: voxjar
+Version: 0.4.3
+Summary: python implementation of the Voxjar API
+Home-page: https://github.com/voxjar/voxjar
+Author: William Myers
+Author-email: will@voxjar.com
+License: Apache-2
+Description: voxjar
+        =======
+        
+        .. image:: https://readthedocs.org/projects/voxjar/badge/?version=latest
+           :target: http://voxjar.readthedocs.io/en/latest/?badge=latest
+        |
+        
+            Python implementation of the `Voxjar`_ `API`_.
+        
+            *NOTE*: This library is under active development and should not be considered stable.
+        
+        .. inclusion-marker-do-not-remove
+        installation
+        ------------
+        
+        .. code:: bash
+        
+          $ pip install voxjar
+        
+        documentation
+        -------------
+        
+        https://voxjar.readthedocs.io
+        
+        
+        .. _Voxjar: https://voxjar.com/
+        .. _API: https://api.voxjar.com:9000/graphiql
+        
+Keywords: voxjar voxjar ai requests
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=2.7
