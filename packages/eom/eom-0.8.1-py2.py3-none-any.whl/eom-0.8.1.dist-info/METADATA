@@ -1,0 +1,51 @@
+Metadata-Version: 2.0
+Name: eom
+Version: 0.8.1
+Summary: Experimental OpenStack WSGI Middleware
+Home-page: https://github.com/rackerlabs/eom
+Author: Rackspace
+Author-email: ben.meyer@rackspace.com
+License: Apache-2
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: OpenStack
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: d2to1 (>=0.2.10)
+Requires-Dist: hiredis (>=0.1.3)
+Requires-Dist: msgpack-python (>=0.4.6)
+Requires-Dist: oslo.config (==2.2.0)
+Requires-Dist: pbr (>=1.4.0)
+Requires-Dist: python-keystoneclient (<2,>=1.6.0)
+Requires-Dist: redis (>=2.9.1)
+Requires-Dist: simplejson
+Requires-Dist: six
+Requires-Dist: sphinx
+Requires-Dist: sphinx-autobuild
+Requires-Dist: statsd
+
+EOM: Emerging OpenStack WSGI Middleware
+===========================================
+
+:version: 0.9.0
+
+.. image:: https://readthedocs.org/projects/eom/badge/
+	:target: https://readthedocs.org/projects/eom
+    :alt: ReadTheDocs Status
+
+Incubator project for general OpenStack API middleware.
+
+So far, includes verb-based ACL enforcement and simple/efficient rate limiting.
+Ideas and code should be contributed upstream to OpenStack, according to community interest.
+
+
+
