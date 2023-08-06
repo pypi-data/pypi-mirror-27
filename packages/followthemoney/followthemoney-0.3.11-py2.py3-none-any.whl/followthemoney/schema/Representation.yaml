@@ -1,0 +1,14 @@
+Representation:
+  label: "Representation"
+  extends: Interest
+  icon: fa-rocket
+  fuzzy: false
+  properties:
+    agent: # aka representative / incorporation agent
+      label: "Agent"
+      type: entity
+      schema: LegalEntity
+    client:
+      label: "Client"
+      type: entity
+      schema: LegalEntity
