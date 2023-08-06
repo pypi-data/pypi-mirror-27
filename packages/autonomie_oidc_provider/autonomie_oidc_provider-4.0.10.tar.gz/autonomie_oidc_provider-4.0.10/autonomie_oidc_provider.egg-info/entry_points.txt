@@ -1,0 +1,6 @@
+[console_scripts]
+oidc-manage = autonomie_oidc_provider.scripts.manager:manage
+
+[paste.app_factory]
+main = autonomie_oidc_provider:main
+
