@@ -1,0 +1,74 @@
+#!/usr/bin/python
+
+import argparse
+import sys
+import os
+import json
+
+# Get the path to the executable
+executablePath = os.path.dirname(os.path.realpath(__file__))
+
+# Import program modules
+sys.path.append(os.path.join(executablePath, '..'))
+from vsg import rule_list
+from vsg import vhdlFile
+
+
+def parse_command_line_arguments():
+    '''Parses the command line arguments and returns them.'''
+
+    parser = argparse.ArgumentParser(
+      prog='VHDL Style Guide (VSG)',
+      description='''Analyzes VHDL files for style guide violations.
+                   Reference documentation is located at:
+                   http://vhdl-style-guide.readthedocs.io/en/latest/index.html''')
+
+    parser.add_argument('-f', '--filename', required=True, help='File to analyze')
+    parser.add_argument('--local_rules', help='Path to local rules')
+    parser.add_argument('--configuration', help='JSON configuration file')
+    parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
+
+    if len(sys.argv) == 1:
+        parser.print_help()
+        sys.exit(1)
+    else:
+        return parser.parse_args()
+
+
+def read_configuration_file(commandLineArguments):
+    if commandLineArguments.configuration:
+        with open(commandLineArguments.configuration) as json_file:
+            return json.load(json_file)
+
+
+def write_vhdl_file(oVhdlFile):
+    with open(oVhdlFile.filename, 'w') as oFile:
+        for oLine in oVhdlFile.lines[1:]:
+            oFile.write(oLine.line + '\n')
+    oFile.close()
+
+
+def main():
+    '''Main routine of the VHDL Style Guide (VSG) program.'''
+
+    commandLineArguments = parse_command_line_arguments()
+
+    configuration = read_configuration_file(commandLineArguments)
+
+    # Add local rule path to system path so the rules can be loaded
+    if commandLineArguments.local_rules:
+        sys.path.append(os.path.abspath(commandLineArguments.local_rules))
+    oVhdlFile = vhdlFile.vhdlFile(commandLineArguments.filename)
+    oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
+    oRules.configure(configuration)
+
+    if commandLineArguments.fix:
+        oRules.fix()
+        write_vhdl_file(oVhdlFile)
+
+    oRules.check_rules()
+    oRules.report_violations()
+
+
+if __name__ == '__main__':
+    main()
