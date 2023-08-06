@@ -1,0 +1,82 @@
+Metadata-Version: 2.0
+Name: estnltk
+Version: 1.6.0b0
+Summary: Estnltk — open source tools for Estonian natural language processing
+Home-page: https://github.com/estnltk/estnltk
+Author: University of Tartu
+Author-email: siim.orasmaa@gmail.com, alex.tk.fb@gmail.com, tpetmanson@gmail.com, swen@math.ut.ee
+License: GPLv2
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Information Technology
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Text Processing
+Classifier: Topic :: Text Processing :: Linguistic
+Requires-Dist: nltk (>=3.0.4)
+Requires-Dist: regex (>=2015.07.19)
+Requires-Dist: pandas (>=0.16.2)
+Requires-Dist: python-crfsuite (>=0.8.3)
+Requires-Dist: cached-property (>=1.2.0)
+Requires-Dist: lxml
+Requires-Dist: networkx
+
+Estnltk -- Open source tools for Estonian natural language processing
+=====================================================================
+
+Estnltk provides common natural language processing functionality such as paragraph, sentence and word tokenization,
+morphological analysis, named entity recognition, etc. for the Estonian language.
+
+The project is funded by EKT (Eesti Keeletehnoloogia Riiklik Programm, https://www.keeletehnoloogia.ee/).
+
+
+## Installation
+The recommended way of installing estnltk is by using the [anaconda python distribution](https://www.continuum.io/downloads) and python 3.5+.
+
+We have installable packages built for osx, windows-64/windows-32, and linux-64.
+
+The command for installing estnltk is:
+```
+conda install -c estnltk -c conda-forge estnltk
+```
+
+
+The alternative way for installing if you are unable to use the anaconda distribution is:
+
+`python -m pip install estnltk`
+
+This is slower, more error-prone and requires you to have the appropriate compilers for building the scientific computation packages for your platform. 
+
+Additional educational materials on older EstNLTK version 1.4 are available on the web page of the NLP courses taught at the University of Tartu:
+
+*  https://courses.cs.ut.ee/2015/pynlp/fall
+
+* https://github.com/d009/EstNLP
+
+
+## Citation
+
+Once you use Estnltk in your work, plase cite us as follows:
+
+    @InProceedings{ORASMAA16.332,
+    author = {Siim Orasmaa and Timo Petmanson and Alexander Tkachenko and Sven Laur and Heiki-Jaan Kaalep},
+    title = {EstNLTK - NLP Toolkit for Estonian},
+    booktitle = {Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)},
+    year = {2016},
+    month = {may},
+    date = {23-28},
+    location = {PortoroÅ¾, Slovenia},
+    editor = {Nicoletta Calzolari (Conference Chair) and Khalid Choukri and Thierry Declerck and Marko Grobelnik and Bente Maegaard and Joseph Mariani and Asuncion Moreno and Jan Odijk and Stelios Piperidis},
+    publisher = {European Language Resources Association (ELRA)},
+    address = {Paris, France},
+    isbn = {978-2-9517408-9-1},
+    language = {english}
+    }
+
+
