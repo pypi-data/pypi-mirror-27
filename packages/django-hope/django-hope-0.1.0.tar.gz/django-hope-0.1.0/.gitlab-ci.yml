@@ -1,0 +1,121 @@
+stages:
+  - lint
+  - test
+  - build
+  - deploy
+
+py34-django111:
+  image: python:3.4
+  stage: test
+  before_script:
+  - pip install tox
+  script: tox -e py34-django111
+
+py35-django111:
+  image: python:3.5
+  stage: test
+  before_script:
+  - pip install tox
+  script: tox -e py35-django111
+
+py36-django111:
+  image: python:3.6
+  stage: test
+  before_script:
+  - pip install tox
+  script: tox -e py36-django111
+
+py37-django111:
+  image: python:3.7-rc-stretch
+  stage: test
+  before_script:
+  - pip install tox
+  script: tox -e py37-dev-django111
+
+py34-django20:
+  image: python:3.4
+  stage: test
+  before_script:
+  - pip install tox
+  script: tox -e py34-django20
+
+py35-django20:
+  image: python:3.5
+  stage: test
+  before_script:
+  - pip install tox
+  script: tox -e py35-django20
+
+py36-django20:
+  image: python:3.6
+  stage: test
+  before_script:
+  - pip install tox
+  script: tox -e py36-django20
+
+py37-django20:
+  image: python:3.7-rc-stretch
+  stage: test
+  before_script:
+  - pip install tox
+  script: tox -e py37-dev-django20
+
+
+setup:
+  image: python:3.5
+  stage: lint
+  before_script:
+  - pip install tox
+  script: tox -e setup
+
+safety:
+  image: python:3.5
+  stage: lint
+  before_script:
+  - pip install tox
+  script: tox -e safety
+
+style:
+  image: python:3.5
+  stage: lint
+  before_script:
+  - pip install tox
+  script: tox -e style
+  allow_failure: true
+
+docs:
+  image: python:3.5
+  stage: lint
+  before_script:
+  - pip install tox
+  script: tox -e docs
+  allow_failure: true
+
+
+build:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: build
+  script: echo "Build Docker images"
+
+deploy_staging:
+  stage: deploy
+  script:
+    - echo "Deploy to staging server"
+  environment:
+    name: staging
+    url: https://staging.example.com
+  only:
+    - master
+
+deploy_prod:
+  stage: deploy
+  script:
+    - echo "Deploy to production server"
+  environment:
+    name: production
+    url: https://example.com
+  when: manual
+  only:
+    - master

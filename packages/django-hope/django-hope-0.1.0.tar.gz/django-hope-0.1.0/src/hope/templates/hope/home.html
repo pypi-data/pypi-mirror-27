@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Hope{% endblock %}
+{% block navbar_home %}active{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1>Welcome to Hope</h1>
+    <p>(Put Hope description here)</p>
+    {% if not user.is_authenticated %}
+      <a class="btn btn-default" href="{% url "signin" %}">Sign-in</a>
+      <a class="btn btn-success" href="{% url "signup" %}">Sign-up</a>
+    {% else %}
+      <a class="btn btn-primary" href="{% url "signout" %}">Sign-out</a>
+    {% endif %}
+  </div>
+{% endblock %}
