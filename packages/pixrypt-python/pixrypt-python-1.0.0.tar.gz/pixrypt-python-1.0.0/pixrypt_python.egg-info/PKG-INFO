@@ -1,0 +1,42 @@
+Metadata-Version: 1.1
+Name: pixrypt-python
+Version: 1.0.0
+Summary: Pixrypt Text-Pixel Encoding/Decoding Backend
+Home-page: http://www.pixrypt.com
+Author: Shaunak Raha
+Author-email: shaunakraha@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Pixrypt Text-Pixel Encryption and Decryption - Python Backend
+        =============================================================
+        
+        The Python Backend for the `Pixrypt Text to Pixel Encryption and Decryption system
+        <http://pixrypt.com>`_.
+        
+        This projects provides the backend encryption and password generation and decryption with provided password for
+        Pixrypt image generation and reading.
+        
+        `The source for this project is available here
+        <https://github.com/shaunakraha/pixrypt-python>`_.
+        
+        All other Pixrypt base their image encoding and decoding logic on this module.
+        
+        ----
+        
+        The Project is structured as follows:
+        
+        1) Encoder - Contains the logic for converting plain text to a Pixrypt image and providing a passphrase.
+        2) Decoder - Contains the logic for converting a Pixrypt image to plain text with a provided passphrase.
+        
+Keywords: pixrypt encryption development
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: Free for non-commercial use
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
