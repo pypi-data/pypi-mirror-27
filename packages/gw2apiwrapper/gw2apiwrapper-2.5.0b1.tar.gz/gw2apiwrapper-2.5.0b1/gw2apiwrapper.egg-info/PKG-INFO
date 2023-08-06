@@ -1,0 +1,27 @@
+Metadata-Version: 1.2
+Name: gw2apiwrapper
+Version: 2.5.0b1
+Summary: A simple wrapper around the offical Guild Wars 2 JSON API.
+Home-page: https://github.com/PatchesPrime/gw2apiwrapper.git
+Author: R. "Patches" S.
+Author-email: patches@nullcorp.org
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        gw2apiwrapper is a Python library designed to abstract away the overhead/complexity of interacting with the official Guild Wars 2 (GW2) API.
+        
+        The code written with it is meant to be easy to read and develop with minimal understanding of the actual GW2 API itself.
+        This is accomplished by abstracting out the standard JSON->dictionary scheme that is so commonly used and replace it with simple OOP-style notation.
+        
+        See the URL below for more information, or call help() on any method provided by the library.
+        
+Keywords: guild wars gw2 arenanet api wrapper
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Games/Entertainment
+Requires-Python: >=3.5
