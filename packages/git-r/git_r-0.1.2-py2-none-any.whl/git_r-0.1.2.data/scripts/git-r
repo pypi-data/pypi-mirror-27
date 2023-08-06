@@ -1,0 +1,25 @@
+#!python
+# Copyright 2017 Julien Peloton
+# Licensed under the GPL-3.0 License, see LICENSE file for details.
+## Author: j.peloton@sussex.ac.uk
+from __future__ import absolute_import
+
+import sys
+
+from gitrconfig import Repository
+from gitrconfig import add_repo_into_rcfile
+
+
+if __name__ == "__main__":
+    """ Run git-r! """
+    ## Grab args
+    command = sys.argv[1]
+    options = sys.argv[2:-1]
+    reponame = sys.argv[-1]
+
+    ## Update the .git-rrc file or run a git command
+    if command == 'add_repo':
+        add_repo_into_rcfile(reponame)
+    else:
+        r = Repository(reponame)
+        r.run(command, options)
