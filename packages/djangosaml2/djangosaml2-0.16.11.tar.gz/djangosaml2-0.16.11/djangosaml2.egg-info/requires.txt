@@ -1,0 +1,9 @@
+defusedxml>=0.4.1
+Django>=1.8
+pysaml2==4.4.0
+
+[:python_version > "3" and python_version < "3.4"]
+enum34
+
+[test]
+unittest2
