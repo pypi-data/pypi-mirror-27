@@ -1,0 +1,24 @@
+Metadata-Version: 1.2
+Name: crapipy
+Version: 1.7
+Summary: Clash Royale wrapper for cr-api.com
+Home-page: http://github.com/smlbiobot/cr-api-py
+License: UNKNOWN
+Keywords: ClashRoyale cr-api cr api wrapper
+Author: SML BioBot
+Author-email: smlbiobot@gmail.com
+Requires-Python: >=3.5
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Games/Entertainment
+Requires-Dist: aiohttp>=2.2.5
+Requires-Dist: async-timeout>=2.0.0
+Requires-Dist: asyncio>=3.4.3
+Requires-Dist: pytest>=3.2.3
+Requires-Dist: pytest-asyncio>=0.8.0
+Requires-Dist: python-box>=3.1.1
+Requires-Dist: PyYAML>=3.12
+Requires-Dist: requests>=2.18.4
