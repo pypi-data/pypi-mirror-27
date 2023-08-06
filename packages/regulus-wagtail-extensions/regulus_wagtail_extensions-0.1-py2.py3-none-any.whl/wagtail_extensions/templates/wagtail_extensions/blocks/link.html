@@ -1,0 +1,9 @@
+{% if has_url %}
+    <a href="{{ value.url }}">
+        {% if value.page %}
+            {% firstof value.text value.page.title %}
+        {% else %}
+            {% firstof value.text value.url %}
+        {% endif %}
+    </a>
+{% endif %}
