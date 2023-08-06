@@ -1,0 +1,40 @@
+Metadata-Version: 1.1
+Name: btzen
+Version: 0.2.3
+Summary: BTZen - Bluetooth Smart sensor reading library
+Home-page: https://github.com/wrobell/btzen
+Author: Artur Wroblewski
+Author-email: wrobell@riseup.net
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Library to asynchronously access Bluetooth Smart devices.
+        
+        Features
+        
+        1. Devices and sensor readings
+        
+           - SensorTag (CC2541DK, CC2650STK)
+        
+             - temperature
+             - pressure
+             - humidity
+             - light (CC2650STK only)
+             - accelerometer (CC2650STK only)
+             - buttons (CC2650STK only)
+        
+           - Mi Smart Scale
+           - serial devices implementing Stollmann (Telit) protocol
+        
+        2. Device access using `asyncio` coroutines.
+        3. Notifications interface is supported.
+        
+        The scripts in `scripts` directory demonstrate reading data from various
+        Bluetooth Smart devices, i.e. Sensor Tag, Mi Smart Scale or OSTC dive
+        computer.
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Software Development :: Libraries
