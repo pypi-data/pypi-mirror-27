@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Usage &mdash; django-channels-presence 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-channels-presence 0.0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">django-channels-presence 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>In <tt class="docutils literal"><span class="pre">django-channels-presence</span></tt>, two main models track the presence of channels in a room:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Room</span></tt>: represents a collection of channels that are in the same &#8220;room&#8221;.  It
+has a single property, <tt class="docutils literal"><span class="pre">channel_name</span></tt>, which is the name of the channels
+<a class="reference external" href="http://channels.readthedocs.io/en/latest/getting-started.html#groups">Group</a> to which its members are added.</li>
+<li><tt class="docutils literal"><span class="pre">Presence</span></tt>: represents an association of a single reply channel with a
+<tt class="docutils literal"><span class="pre">Room</span></tt>, as well as the associated auth <tt class="docutils literal"><span class="pre">User</span></tt> if any.</li>
+</ul>
+</div></blockquote>
+<p>To keep track of presence, the following steps need to be taken:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Add channels to a <tt class="docutils literal"><span class="pre">Room</span></tt> when users successfully join.</li>
+<li>Remove channels from the <tt class="docutils literal"><span class="pre">Room</span></tt> when users leave or disconnect.</li>
+<li>Periodically update the <tt class="docutils literal"><span class="pre">last_seen</span></tt> timestamp for clients&#8217; <tt class="docutils literal"><span class="pre">Presence</span></tt>.</li>
+<li>Prune stale <tt class="docutils literal"><span class="pre">Presence</span></tt> records that have old timestamps by running periodic
+tasks.</li>
+<li>Listen for changes in presence to update application state or notify other
+users</li>
+</ol>
+</div></blockquote>
+<div class="section" id="adding-channels-to-rooms">
+<h2>1. Adding channels to rooms<a class="headerlink" href="#adding-channels-to-rooms" title="Permalink to this headline">¶</a></h2>
+<p>Add a user to a <tt class="docutils literal"><span class="pre">Room</span></tt> using the manager <tt class="docutils literal"><span class="pre">add</span></tt> method.  For example, this handler
+for <tt class="docutils literal"><span class="pre">websocket.connect</span></tt> adds the connecting user to a room on connection.  This
+will trigger the <tt class="docutils literal"><span class="pre">channels_presence.signals.presence_changed</span></tt> signal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels_presence.models</span> <span class="kn">import</span> <span class="n">Room</span>
+<span class="kn">from</span> <span class="nn">channels.auth</span> <span class="kn">import</span> <span class="n">channel_session_user</span>
+
+<span class="nd">@channel_session_user</span>
+<span class="k">def</span> <span class="nf">handle_ws_connect</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="n">Room</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;some_room&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">reply_channel</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example uses the <a class="reference external" href="http://channels.readthedocs.io/en/latest/getting-started.html?highlight=channel_session_user#authentication">channel_session_user</a> decorator provided by Django
+Channels to associate the socket with a user.  However, this is optional &#8211;
+members of rooms need not be authenticated users.</p>
+<p>Channels could be added to a room at any stage &#8211; during handling of
+<tt class="docutils literal"><span class="pre">websocket.connect</span></tt>, or during handling of a <tt class="docutils literal"><span class="pre">websocket.receive</span></tt> message, or
+wherever else makes sense.  In addition to handling <tt class="docutils literal"><span class="pre">Room</span></tt> and <tt class="docutils literal"><span class="pre">Presence</span></tt>
+models, <tt class="docutils literal"><span class="pre">Room.objects.add</span></tt> takes care of adding the reply channel to the named
+<tt class="docutils literal"><span class="pre">channels.Group</span></tt>.</p>
+</div>
+<div class="section" id="removing-channels-from-rooms">
+<h2>2. Removing channels from rooms<a class="headerlink" href="#removing-channels-from-rooms" title="Permalink to this headline">¶</a></h2>
+<p>Remove a user from a Room using the manager <tt class="docutils literal"><span class="pre">remove</span></tt> method.  For example, this
+handler for <tt class="docutils literal"><span class="pre">websocket.disconnect</span></tt> removes the user from the room on
+disconnect.  This will trigger the <tt class="docutils literal"><span class="pre">presence_changed</span></tt> signal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels_presence.models</span> <span class="kn">import</span> <span class="n">Room</span>
+
+<span class="k">def</span> <span class="nf">handle_ws_disconnect</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="n">Room</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&quot;some_room&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">reply_channel</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">Room.objects.remove</span></tt> takes care of removing the specified reply channel from
+the <tt class="docutils literal"><span class="pre">channels.Group</span></tt>.</p>
+</div>
+<div class="section" id="updating-the-last-seen-timestamp">
+<h2>3. Updating the &#8220;last_seen&#8221; timestamp<a class="headerlink" href="#updating-the-last-seen-timestamp" title="Permalink to this headline">¶</a></h2>
+<p>In order to keep track of which sockets are actually still connected, we must
+regularly update the <tt class="docutils literal"><span class="pre">last_seen</span></tt> timestamp for all present connections, and
+periodically remove connections from rooms if they haven&#8217;t been seen in a
+while.</p>
+<p>To update timestamps for connections, use the
+<tt class="docutils literal"><span class="pre">channels_presence.decorators.touch_presence</span></tt> decorator on some method that
+processes messages:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels_presence.decorators</span> <span class="kn">import</span> <span class="n">touch_presence</span>
+
+<span class="c"># handler for &quot;websocket.receive&quot;</span>
+
+<span class="nd">@touch_presence</span>
+<span class="k">def</span> <span class="nf">ws_receive</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>This will update the <tt class="docutils literal"><span class="pre">last_seen</span></tt> timestamp any time any message is received
+from the client.  To ensure that the timestamp remains current, clients should
+send a periodic &#8220;heartbeat&#8221; message if they aren&#8217;t otherwise sending data but
+should be considered to still be present.</p>
+<p>To allow efficient updates, if a client sends a message which is just the JSON
+encoded string <tt class="docutils literal"><span class="pre">&quot;heartbeat&quot;</span></tt>, the <tt class="docutils literal"><span class="pre">touch_presence</span></tt> decorator will stop
+processing of the message after updating the timestamp.  The decorator can be
+placed first in a decorator chain in order to stop processing of heartbeat
+messages prior to other costly steps like loading session data or user models.</p>
+<p>If updating <tt class="docutils literal"><span class="pre">last_seen</span></tt> on every message is too costly, an alternative to using
+the <tt class="docutils literal"><span class="pre">touch_presence</span></tt> decorator is to manually call <tt class="docutils literal"><span class="pre">Presence.objects.touch</span></tt>
+whenever desired.  For example, this updates <tt class="docutils literal"><span class="pre">last_seen</span></tt> only when the literal message <tt class="docutils literal"><span class="pre">&quot;heartbeat&quot;</span></tt> is received:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels_presence.models</span> <span class="kn">import</span> <span class="n">Presence</span>
+
+<span class="k">def</span> <span class="nf">ws_receive</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">(</span><span class="s">&#39;text&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#39;&quot;heartbeat&quot;&#39;</span><span class="p">:</span>
+        <span class="n">Presence</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">touch</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">reply_channel</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To ensure that an active connection is not marked as stale, clients should
+occasionally send <tt class="docutils literal"><span class="pre">&quot;heartbeat&quot;</span></tt> messages:</p>
+<div class="highlight-python"><div class="highlight"><pre>// client.js
+
+setInterval(function() {
+    socket.send(JSON.stringify(&quot;heartbeat&quot;));
+}, 30000);
+</pre></div>
+</div>
+<p>The frequency should be adjusted to occur before the maximum age for
+last-seen presence, set with <tt class="docutils literal"><span class="pre">settings.CHANNELS_PRESENCE_MAX_AGE</span></tt>.</p>
+</div>
+<div class="section" id="pruning-stale-connections">
+<h2>4. Pruning stale connections<a class="headerlink" href="#pruning-stale-connections" title="Permalink to this headline">¶</a></h2>
+<p>In order to remove connections whose timestamps have expired, we need to
+periodically launch a cleaning task.  This can be accomplished with
+<tt class="docutils literal"><span class="pre">Room.objects.prune_presences()</span></tt>. For convenience, this is implemented as a
+celery task which can be called with celery beat:
+<tt class="docutils literal"><span class="pre">channels_presence.tasks.prune_presence</span></tt>.  The management command
+<tt class="docutils literal"><span class="pre">./manage.py</span> <span class="pre">prune_presence</span></tt> is also available for calling from cron.</p>
+<p>A second maintenance command, <tt class="docutils literal"><span class="pre">Room.objects.prune_rooms()</span></tt>, removes any <tt class="docutils literal"><span class="pre">Room</span></tt>
+models that have no connections.  This is also available as the celery task
+<tt class="docutils literal"><span class="pre">channels_presence.tasks.prune_rooms</span></tt> and management command
+<tt class="docutils literal"><span class="pre">./manage.py</span> <span class="pre">prune_rooms</span></tt>.</p>
+<p>See the documentation for
+<a class="reference external" href="http://celery.readthedocs.io/en/latest/userguide/periodic-tasks.html">periodic tasks in celery</a> details on configuring celery beat with Django.  Here is one example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># settings.py</span>
+
+<span class="n">CELERYBEAT_SCHEDULE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;prune-presence&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;task&#39;</span><span class="p">:</span> <span class="s">&#39;channels_presence.tasks.prune_presence&#39;</span><span class="p">,</span>
+        <span class="s">&#39;schedule&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="s">&#39;prune-rooms&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;task&#39;</span><span class="p">:</span> <span class="s">&#39;channels_presence.tasks.prune_rooms&#39;</span><span class="p">,</span>
+        <span class="s">&#39;schedule&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="listening-for-changes-in-presence">
+<h2>5. Listening for changes in presence<a class="headerlink" href="#listening-for-changes-in-presence" title="Permalink to this headline">¶</a></h2>
+<p>Use the <tt class="docutils literal"><span class="pre">channels_presence.signals.presence_changed</span></tt> signal to be notified when
+a user is added or removed from a Room.  This is a useful place to define logic
+to update other connected clients with the list of present users.  For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># app/signals.py</span>
+
+<span class="kn">from</span> <span class="nn">django.dispatch</span> <span class="kn">import</span> <span class="n">receiver</span>
+
+<span class="kn">from</span> <span class="nn">channels_presence.signals</span> <span class="kn">import</span> <span class="n">presence_changed</span>
+<span class="kn">from</span> <span class="nn">channels</span> <span class="kn">import</span> <span class="n">Group</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">presence_changed</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">broadcast_presence</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c"># Broadcast the new list of present users to the room.</span>
+    <span class="n">Group</span><span class="p">(</span><span class="n">room</span><span class="o">.</span><span class="n">channel_name</span><span class="p">)</span><span class="o">.</span><span class="n">send</span><span class="p">({</span>
+        <span class="s">&#39;text&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+            <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;presence&#39;</span><span class="p">,</span>
+            <span class="s">&#39;payload&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">&#39;channel_name&#39;</span><span class="p">:</span> <span class="n">room</span><span class="o">.</span><span class="n">channel_name</span><span class="p">,</span>
+                <span class="s">&#39;members&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">room</span><span class="o">.</span><span class="n">get_users</span><span class="p">()],</span>
+                <span class="s">&#39;lurkers&#39;</span><span class="p">:</span> <span class="n">room</span><span class="o">.</span><span class="n">get_anonymous_count</span><span class="p">(),</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage</a><ul>
+<li><a class="reference internal" href="#adding-channels-to-rooms">1. Adding channels to rooms</a></li>
+<li><a class="reference internal" href="#removing-channels-from-rooms">2. Removing channels from rooms</a></li>
+<li><a class="reference internal" href="#updating-the-last-seen-timestamp">3. Updating the &#8220;last_seen&#8221; timestamp</a></li>
+<li><a class="reference internal" href="#pruning-stale-connections">4. Pruning stale connections</a></li>
+<li><a class="reference internal" href="#listening-for-changes-in-presence">5. Listening for changes in presence</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/usage.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">django-channels-presence 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Charlie DeTar.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

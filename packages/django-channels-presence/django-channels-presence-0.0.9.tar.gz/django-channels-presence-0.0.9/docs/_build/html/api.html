@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Reference &mdash; django-channels-presence 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-channels-presence 0.0.1 documentation" href="index.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usage.html" title="Usage"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-channels-presence 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">CHANNELS_PRESENCE_MAX_AGE</span></tt></dt>
+<dd>Default <tt class="docutils literal"><span class="pre">60</span></tt>. Maximum age in seconds before a presence is considered
+expired.</dd>
+</dl>
+</div>
+<div class="section" id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="room">
+<h3><tt class="docutils literal"><span class="pre">Room</span></tt><a class="headerlink" href="#room" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels_presence.models</span> <span class="kn">import</span> <span class="n">Room</span>
+</pre></div>
+</div>
+<p><strong>Manager</strong>:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">Room.objects.add(room_chanel_name,</span> <span class="pre">user_channel_name,</span> <span class="pre">user=None)</span></tt></dt>
+<dd>Add the given <tt class="docutils literal"><span class="pre">user_channel_name</span></tt> (e.g. <tt class="docutils literal"><span class="pre">message.reply_channel.name</span></tt>) to
+a Room with the name <tt class="docutils literal"><span class="pre">room_channel_name</span></tt>.  If provided, associate the auth
+<tt class="docutils literal"><span class="pre">User</span></tt> as well.  Creates a new <tt class="docutils literal"><span class="pre">Room</span></tt> instance if it doesn&#8217;t exist;
+creates any needed <tt class="docutils literal"><span class="pre">Presence</span></tt> instance, and updates the channels
+<tt class="docutils literal"><span class="pre">Group</span></tt>.  Returns the <tt class="docutils literal"><span class="pre">room</span></tt> instance.</dd>
+<dt><tt class="docutils literal"><span class="pre">Room.objects.remove(room_channel_name,</span> <span class="pre">user_channel_name)</span></tt></dt>
+<dd>Remove the given <tt class="docutils literal"><span class="pre">user_channel_name</span></tt> from the room with
+<tt class="docutils literal"><span class="pre">room_channel_name</span></tt>. Removes relevant <tt class="docutils literal"><span class="pre">Presence</span></tt> instances, and updates
+the channels <tt class="docutils literal"><span class="pre">Group</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">Room.objects.prune_presences(age_in_seconds=None)</span></tt></dt>
+<dd>Remove any <tt class="docutils literal"><span class="pre">Presence</span></tt> models whose <tt class="docutils literal"><span class="pre">last_seen</span></tt> timestamp is older than
+<tt class="docutils literal"><span class="pre">age_in_seconds</span></tt> (defaults to <tt class="docutils literal"><span class="pre">settings.CHANNELS_PRESENCE_MAX_AGE</span></tt> if
+not specified).</dd>
+<dt><tt class="docutils literal"><span class="pre">Room.objects.prune_rooms()</span></tt></dt>
+<dd>Remove any rooms that have no associated <tt class="docutils literal"><span class="pre">Presence</span></tt> models.</dd>
+</dl>
+<p><strong>Instance properties</strong>:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">room.channel_name</span></tt></dt>
+<dd>The channels Group name associated with this room.</dd>
+</dl>
+<p><strong>Instance methods</strong>:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">room.get_users()</span></tt></dt>
+<dd>Return a queryset with all of the unique authenticated users who are
+present in this room.</dd>
+<dt><tt class="docutils literal"><span class="pre">room.get_anonymous_count()</span></tt></dt>
+<dd>Return the number of non-authenticated sockets which are present in this
+room.</dd>
+</dl>
+</div>
+<div class="section" id="presence">
+<h3><tt class="docutils literal"><span class="pre">Presence</span></tt><a class="headerlink" href="#presence" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels_presence.models</span> <span class="kn">import</span> <span class="n">Presence</span>
+</pre></div>
+</div>
+<p><strong>Manager</strong>:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">Presence.objects.touch(channel_name)</span></tt></dt>
+<dd>Updates the <tt class="docutils literal"><span class="pre">last_seen</span></tt> timestamp to now for all instances with the given
+channel name.</dd>
+<dt><tt class="docutils literal"><span class="pre">Presence.objects.leave_all(channel_name)</span></tt></dt>
+<dd>Removes all <tt class="docutils literal"><span class="pre">Presence</span></tt> instances with the given channel name.  Triggers
+<tt class="docutils literal"><span class="pre">channels_presence.signals.presence_changed</span></tt> for any changed rooms.</dd>
+</dl>
+<p><strong>Instance properties</strong>:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">presence.room</span></tt></dt>
+<dd>The room to which this Presence belongs</dd>
+<dt><tt class="docutils literal"><span class="pre">presence.channel_name</span></tt></dt>
+<dd>The reply channel associated with this Presence</dd>
+<dt><tt class="docutils literal"><span class="pre">presence.user</span></tt></dt>
+<dd>A <tt class="docutils literal"><span class="pre">settings.AUTH_USER_MODEL</span></tt> associated with this Presence, or None</dd>
+<dt><tt class="docutils literal"><span class="pre">presence.last_seen</span></tt></dt>
+<dd>Timestamp for the last time socket traffic was seen for this presence.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="decorators">
+<h2>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="touch-presence">
+<h3><tt class="docutils literal"><span class="pre">touch_presence</span></tt><a class="headerlink" href="#touch-presence" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">chanels_presence.decorators</span> <span class="kn">import</span> <span class="n">touch_presence</span>
+</pre></div>
+</div>
+<p>Decorator for use on <tt class="docutils literal"><span class="pre">websocket.receive</span></tt> handlers which updates the
+<tt class="docutils literal"><span class="pre">last_seen</span></tt> timestamp on any <tt class="docutils literal"><span class="pre">Presence</span></tt> instances associated with the
+client.  If the message being sent is the literal JSON-encoded <tt class="docutils literal"><span class="pre">&quot;heartbeat&quot;</span></tt>,
+message processing stops and the decorator does not call the decorated
+function.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@touch_presence</span>
+<span class="k">def</span> <span class="nf">ws_receive</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c"># ... process any received message except &quot;heartbeat&quot; ...</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="remove-presence">
+<h3><tt class="docutils literal"><span class="pre">remove_presence</span></tt><a class="headerlink" href="#remove-presence" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">chanels_presence.decorators</span> <span class="kn">import</span> <span class="n">remove_presence</span>
+</pre></div>
+</div>
+<p>Decorator for use on <tt class="docutils literal"><span class="pre">websocket.disconnect</span></tt> handlers which removes any
+<tt class="docutils literal"><span class="pre">Presence</span></tt> instances associated with the client.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@remove_presence</span>
+<span class="k">def</span> <span class="nf">ws_disconnect</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="presence-changed">
+<h3><tt class="docutils literal"><span class="pre">presence_changed</span></tt><a class="headerlink" href="#presence-changed" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels_presence.signals</span> <span class="kn">import</span> <span class="n">presence_changed</span>
+</pre></div>
+</div>
+<p>This is sent on any addition or removal of a <tt class="docutils literal"><span class="pre">Presence</span></tt> from a <tt class="docutils literal"><span class="pre">Room</span></tt>.  Use it
+to track when users come and go.</p>
+<p>Arguments sent with this signal:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">room</span></tt></dt>
+<dd>The <tt class="docutils literal"><span class="pre">Room</span></tt> instance from which a <tt class="docutils literal"><span class="pre">Presence</span></tt> was added or removed.</dd>
+<dt><tt class="docutils literal"><span class="pre">added</span></tt></dt>
+<dd>The <tt class="docutils literal"><span class="pre">Presence</span></tt> instance which was added, or <tt class="docutils literal"><span class="pre">None</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">removed</span></tt></dt>
+<dd>The <tt class="docutils literal"><span class="pre">Presence</span></tt> instance which was removed, or <tt class="docutils literal"><span class="pre">None</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">bulk_change</span></tt></dt>
+<dd>If <tt class="docutils literal"><span class="pre">True</span></tt>, indicates that this was a bulk change in presence.  More than
+one presence may have been added or removed, and particular instances will
+not be provided in <tt class="docutils literal"><span class="pre">added</span></tt> or <tt class="docutils literal"><span class="pre">removed</span></tt> arguments.</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">django.dispatch</span> <span class="kn">import</span> <span class="n">receiver</span>
+
+<span class="kn">from</span> <span class="nn">channels</span> <span class="kn">import</span> <span class="n">Group</span>
+<span class="kn">from</span> <span class="nn">channels_presence.signals</span> <span class="kn">import</span> <span class="n">presence_changed</span>
+
+<span class="k">def</span> <span class="nf">broadcast_to_room</span><span class="p">(</span><span class="n">room</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="n">Group</span><span class="p">(</span><span class="n">room</span><span class="o">.</span><span class="n">channel_name</span><span class="p">)</span><span class="o">.</span><span class="n">send</span><span class="p">({</span>
+        <span class="s">&#39;text&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">presence_changed</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handle_presence_changed</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">added</span><span class="p">,</span> <span class="n">removed</span><span class="p">,</span> <span class="n">bulk_change</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">added</span><span class="p">:</span>
+        <span class="n">broadcast_to_room</span><span class="p">({</span><span class="s">&#39;added&#39;</span><span class="p">:</span> <span class="n">added</span><span class="o">.</span><span class="n">channel_name</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">removed</span><span class="p">:</span>
+        <span class="n">broadcast_to_room</span><span class="p">({</span><span class="s">&#39;removed&#39;</span><span class="p">:</span> <span class="n">removed</span><span class="o">.</span><span class="n">channel_name</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">bulk_change</span><span class="p">:</span>
+        <span class="n">broadcast_to_room</span><span class="p">({</span><span class="s">&#39;presence&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">channel_name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">room</span><span class="o">.</span><span class="n">presence_set</span><span class="o">.</span><span class="n">all</span><span class="p">()]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="convenience">
+<h2>Convenience<a class="headerlink" href="#convenience" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ws-disconnect">
+<h3><tt class="docutils literal"><span class="pre">ws_disconnect</span></tt><a class="headerlink" href="#ws-disconnect" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels_presence.channels</span> <span class="kn">import</span> <span class="n">ws_disconnect</span>
+</pre></div>
+</div>
+<p>This is a convenience handler which can be installed to always clean up
+presence on disconnect.  Use it if you don&#8217;t have any other particular logic
+that needs to happen on disconnect.</p>
+<p>Example in channels routing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">channels.routing</span> <span class="kn">import</span> <span class="n">route</span>
+
+<span class="n">channel_routing</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">route</span><span class="p">(</span><span class="s">&quot;websocket.disconnect&quot;</span><span class="p">,</span> <span class="s">&quot;channels_presence.channels.ws_disconnect&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The implementation is simply:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># channels_presence/channels.py</span>
+
+<span class="kn">from</span> <span class="nn">channels_presence.decorators</span> <span class="kn">import</span> <span class="n">remove_presence</span>
+
+<span class="nd">@remove_presence</span>
+<span class="k">def</span> <span class="nf">ws_disconnect</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API Reference</a><ul>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#models">Models</a><ul>
+<li><a class="reference internal" href="#room"><tt class="docutils literal"><span class="pre">Room</span></tt></a></li>
+<li><a class="reference internal" href="#presence"><tt class="docutils literal"><span class="pre">Presence</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#decorators">Decorators</a><ul>
+<li><a class="reference internal" href="#touch-presence"><tt class="docutils literal"><span class="pre">touch_presence</span></tt></a></li>
+<li><a class="reference internal" href="#remove-presence"><tt class="docutils literal"><span class="pre">remove_presence</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signals">Signals</a><ul>
+<li><a class="reference internal" href="#presence-changed"><tt class="docutils literal"><span class="pre">presence_changed</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#convenience">Convenience</a><ul>
+<li><a class="reference internal" href="#ws-disconnect"><tt class="docutils literal"><span class="pre">ws_disconnect</span></tt></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="previous chapter">Usage</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usage.html" title="Usage"
+             >previous</a> |</li>
+        <li><a href="index.html">django-channels-presence 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Charlie DeTar.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
