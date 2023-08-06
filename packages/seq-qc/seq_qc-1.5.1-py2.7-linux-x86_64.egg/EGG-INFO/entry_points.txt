@@ -1,0 +1,6 @@
+[console_scripts]
+demultiplex_headers = seq_qc.demultiplex:main
+error_filter = seq_qc.error_filter:main
+filter_replicates = seq_qc.filter_replicates:main
+qtrim = seq_qc.qtrim:main
+
