@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Template Designer for Automation</title>
+  <base href="/">
+  <meta charset='utf-8' />
+  <meta name='viewport' content='initial-scale=1, maximum-scale=1, user-scalable=no' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="css/angular-material.css">
+  <link rel="stylesheet" type="text/css" href="css/codemirror.css"/>
+  <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+  <link rel="stylesheet" type="text/css" href="css/material.css"/>
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" >
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script type="text/javascript" src="js/main.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</head>
+<body ng-app="mainController" ng-controller='main'>
+  <split direction="horizontal" ng-transclude ng-cloak>
+    <split-area size="33" ng-transclude>
+      <div class="column">
+        <menubar>
+          <menuitem ng-cloak>{{ config.p1.title }}</menuitem>
+          <menuitem ng-cloak>
+            <md-autocomplete
+                ng-show="config.p1.inventory"
+                md-selected-item="selectedItem"
+                md-search-text="searchText"
+                md-selected-item-change="SelectedItemChange(selectedItem)"
+                md-items="host in hosts | filter:searchText"
+                md-item-text="host"
+                md-min-length="0"
+                placeholder="Load device">
+              <md-item-template>
+                  <span md-highlight-text="searchText" md-highlight-flags="^i">{{ host }}</span>
+              </md-item-template>
+            </md-autocomplete>
+          </menuitem>
+          <menuitem ng-cloak>
+            <md-button ng-show="config.p1.b1.show" ng-click="p1_b1_click()" class="md-small md-raised md-primary">
+              <md-icon aria-label="render" class="material-icons">{{ config.p1.b1.icon }}</md-icon>
+              {{ config.p1.b1.text }}
+            </md-button>
+          </menuitem>
+        </menubar>
+        <div class="editor" id="p1_editor" ng-model="panels.p1" ui-codemirror="config.p1.options"></div>
+      </div>
+    </split-area>
+    <split-area size="33" ng-transclude>
+      <div class="column">
+        <menubar>
+          <menuitem ng-cloak>{{ config.p2.title }}</menuitem>
+          <menuitem>
+            <md-button ng-show="config.p2.b1.show" ng-click="p2_b1_click()" class="md-small md-raised md-primary">
+              <md-icon aria-label="config.p2.b1.text" class="material-icons">{{ config.p2.b1.icon }}</md-icon>
+              {{ config.p2.b1.text }}
+            </md-button>
+          </menuitem>
+        </menubar>
+        <div class="editor" id="p2_editor" ng-model="panels.p2" ui-codemirror="config.p2.options"></div>
+      </div>
+    </split-area>
+    <split-area size="33" ng-transclude>
+      <div class="column">
+        <menubar>
+          <menuitem ng-cloak>{{ config.p3.title }}</menuitem>
+          <menuitem ng-cloak>
+            <md-button ng-show="config.p3.b1.show" ng-click="link()" class="md-small md-raised">
+              <md-icon aria-label="config.p3.b1.text" class="material-icons">{{ config.p3.b1.icon }}</md-icon>
+              {{ config.p3.b1.text }}
+            </md-button>
+          </menuitem>
+          <menuitem ng-cloak>
+            <md-button class="md-small md-raised" target="_blank" ng-href="http://github.com/cidrblock/td4a">
+              <md-icon aria-label="code" class="material-icons">code</md-icon>
+              github
+            </md-button>
+          </menuitem>
+        </menubar>
+        <div class="editor" ng-model="panels.p3" ui-codemirror="config.p3.options"></div>
+      </div>
+    </split-area>
+  </split>
+</body>
+</html>

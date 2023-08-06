@@ -1,0 +1,118 @@
+body {
+ background-color: black;
+ color: white;
+}
+.split {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.split p {
+  padding: 20px;
+}
+
+.gutter {
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+  width: 3px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+  cursor: ew-resize;
+}
+
+.gutter.gutter-vertical {
+  height: 3px !important;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFCAMAAABl/6zIAAAABlBMVEUAAADMzMzIT8AyAAAAAXRSTlMAQObYZgAAABRJREFUeAFjYGRkwIMJSeMHlBkOABP7AEGzSuPKAAAAAElFTkSuQmCC');
+  cursor: ns-resize;
+}
+
+.split.split-horizontal, .gutter.gutter-horizontal {
+  height: 100%;
+  float: left;
+}
+
+menubar {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    /* width: 100%; */
+    height: 40px;
+    padding-left: 5px;
+    padding-right: 0px;
+}
+
+menubar menuitem:first-child {
+  margin-right: auto;
+}
+
+.md-button.md-small {
+  min-width: 1%;
+  line-height: 20px;
+  min-height: 1%;
+  vertical-align: top;
+  font-size: 10px;
+  margin: 2px 2px;
+}
+.md-button.md-ok {
+  background-color: darkgreen;
+  color: white;
+}
+.md-button.md-ok:not([disabled]):hover {
+  background-color: darkgreen;
+}
+
+md-autocomplete {
+  min-width: 250px;
+}
+md-autocomplete input:not(.md-input) {
+    background: black;
+    color: white !important;
+}
+
+md-autocomplete md-autocomplete-wrap, .md-autocomplete-suggestions,  .md-autocomplete-suggestions li {
+  background: black !important;
+  color: white !important;
+}
+
+.md-autocomplete-suggestions-container.md-default-theme li.selected,
+.md-autocomplete-suggestions-container li.selected,
+.md-autocomplete-suggestions-container.md-default-theme li:hover,
+.md-autocomplete-suggestions-container li:hover {
+  background: darkgrey !important;
+  color: black !important;
+}
+.md-autocomplete-suggestions-container.md-default-theme li .highlight,
+.md-autocomplete-suggestions-container li .highlight {
+    color: rgb(63,81,181);
+}
+
+.column {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.editor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0em;
+  background: #eee;
+}
+.CodeMirror {
+  width: 100%;
+  font-size: 10pt;
+}
+.editor .CodeMirror {
+  flex: 1;
+}
+.error { background-color: rgba(255, 0, 0, 0.3) !important; }
