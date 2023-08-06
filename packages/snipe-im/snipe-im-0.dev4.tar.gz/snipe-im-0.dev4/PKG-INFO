@@ -1,0 +1,21 @@
+Metadata-Version: 1.2
+Name: snipe-im
+Version: 0.dev4
+Summary: curses client for persistent IM systems
+Home-page: https://github.com/kcr/snipe
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: BSD
+Description: 
+        snipe is a text-oriented (currently curses-based) "instant" messaging
+        client intended for services with persistence, such as Zulip
+        (https://zulip.org/), also IRCCloud (https://www.irccloud.com) and
+        roost (https://github.com/roost-im).
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console :: Curses
+Classifier: Framework :: AsyncIO
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Operating System :: POSIX
+Requires-Python: >=3.3
