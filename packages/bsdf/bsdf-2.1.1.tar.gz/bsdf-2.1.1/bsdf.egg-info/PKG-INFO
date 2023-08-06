@@ -1,0 +1,23 @@
+Metadata-Version: 1.0
+Name: bsdf
+Version: 2.1.1
+Summary: Python implementation of the Binary Structured Data Format (BSDF).
+Home-page: http://bsdf.io
+Author: Almar Klein
+Author-email: almar.klein@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Python implementation of the Binary Structured Data Format (BSDF).
+        
+        BSDF is a binary format for serializing structured (scientific) data.
+        See http://bsdf.io for more information.
+        
+        This is the reference implementation, which is relatively relatively
+        sophisticated, providing e.g. lazy loading of blobs and streamed
+        reading/writing. A simpler Python implementation is available as
+        ``bsdf_lite.py``.
+        
+        This module has no dependencies and works on Python 2.7 and 3.4+.
+        
+        Note: on Legacy Python (Python 2.7), non-Unicode strings are encoded as bytes.
+Platform: UNKNOWN
