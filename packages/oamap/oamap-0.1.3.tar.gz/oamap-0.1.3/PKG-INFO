@@ -1,0 +1,50 @@
+Metadata-Version: 1.1
+Name: oamap
+Version: 0.1.3
+Summary: Toolset for computing directly on hierarchically nested, columnar data, such as Apache Arrow.
+Home-page: https://github.com/diana-hep/oamap
+Author: Jim Pivarski (DIANA-HEP)
+Author-email: pivarski@fnal.gov
+License: BSD 3-clause
+Download-URL: https://github.com/diana-hep/oamap/releases
+Description-Content-Type: UNKNOWN
+Description: Data analysts are often faced with a choice between speed and flexibility. Tabular data, such as an SQL table or CSV file, can be accessed quickly, which improves the question-and-answer nature of exploratory data analysis. Hierarchically nested data, such as JSON, expresses better the relationship between nested quantities. These relationships *can* be represented with separate, linked tables (i.e. `database normalization <https://en.wikipedia.org/wiki/Database_normalization>`_), but at the cost of complexity for the data analyst and the introduction of expensive joins (see `this question <https://stackoverflow.com/q/38831961/1623645>`_, which got me started on this project). Ideally, we want to perform calculations on JSON-like structures at the speed of SQL.
+        
+        Tools that analyze tabular data get their performance primarily by laying out data in an intelligent way: computers can access contiguous data more quickly than separated data, whether loading from a disk to memory or from memory to the processor. Datasets with many attributes, of which only a few will be 
+        
+        
+        
+        
+        
+        OAMap, short for Object-Array Mapping and intended
+        
+        
+        
+        
+              
+        Large datasets can be more compact and faster to access when they are laid out in columns (see `Apache Arrow <https://arrow.apache.org/>`_). Even hierarchically nested data can be presented this way, though converting the data between the columnar form and the object form can degrade performance. Non-hierarchical data (rectangular tables, such as an SQL table) can be accessed faster by not materializing rows (see `Apache Drill <https://drill.apache.org/docs/performance/>`_), but this is more complex for data containing variable-length objects, such as arbitrary-length lists.
+        
+        OAMap is a suite of tools for performing calculations in this way. The name stands for Object-Array-Map, in analogy with Object-Relational-Mapping (ORM) in relational databases. Pure Python calculations are considerably faster and more memory efficient when datasets are expressed in OAMaps, but the real power comes from *compiling* columized code. This toolset includes `extensions to Numba <http://numba.pydata.org/numba-doc/dev/extending/index.html>`_ that will compile your object-oriented code into native array manipulations. Generally, you'd use uncompiled Python for low latency exploration of the data and Numba-compiled functions for high throughput.
+        
+        OAMap only strictly depends on Numpy, but `Numba <http://numba.pydata.org/>`_ will accelerate it and `pyarrow <https://arrow.apache.org/docs/python/index.html>`_, `h5py <http://www.h5py.org/>`_, etc. provide hooks for converting data among various formats.
+Platform: Any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: Software Development
+Classifier: Topic :: Utilities
