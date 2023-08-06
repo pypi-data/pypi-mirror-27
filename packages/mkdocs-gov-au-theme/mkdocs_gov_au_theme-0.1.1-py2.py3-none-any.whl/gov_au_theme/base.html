@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {% block head_meta %}
+  {% endblock %}
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}</title>
+  {% if site_description %}
+  <meta content="{{ site_description }}" name="description">
+  {% endif %}
+
+  <!--
+    Support custom favicon support.
+    http://www.mkdocs.org/user-guide/configuration/#site_favicon
+  -->
+  {% if favicon %}
+    <link rel="shortcut icon" href="{{ favicon }}">
+  {% else %}
+    <link rel="shortcut icon" href="{{ base_url }}/img/favicon.ico">
+  {% endif %}
+
+  <!--
+    You can include external assets of course, but be aware that it means the
+    documentation may not work well offline.
+  -->
+  <link rel="stylesheet" type="text/css" href="{{ base_url }}/assets/stylesheets/ui-kit.css"/>
+  <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
+  <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/prism.css">
+  <!--
+    extra_css contains paths to CSS files in the users
+    documentation directory or a list of CSS files defined in
+    their mkdocs.yml.
+
+    http://www.mkdocs.org/user-guide/configuration/#extra_css
+  -->
+  {% for path in extra_css %}
+    <link href="{{ path }}" rel="stylesheet">
+  {% endfor %}
+
+  <!--
+    To include static assets from our theme, just add
+    {{ base_url }} beforehand which will be the relative path to
+    the root of the documentation.
+  -->
+  <script type="text/javascript" src="{{ base_url }}/assets/js/ui-kit.js"></script>
+  <script src="{{ base_url }}/assets/js/prism.js"></script>
+  <!--
+    extra_javascript contains paths to JavaScript files in the
+    users documentation directory or a list of JavaScript files
+    defined in their mkdocs.yml.
+
+    http://www.mkdocs.org/user-guide/configuration/#extra_javascript
+  -->
+  {% for path in extra_javascript %}
+    <script src="{{ path }}"></script>
+  {% endfor %}
+
+  {% if google_analytics %}
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ google_analytics[0] }}', '{{ google_analytics[1] }}');
+      ga('send', 'pageview');
+  </script>
+  {% endif %}
+
+  {% block extrahead %}
+  {% endblock %}
+
+</head>
+
+<body>
+
+  <div class="skip-to">
+  <a href="#content">Skip to main content</a>
+  <a href="#nav">Skip to section navigation</a>
+  </div>
+
+  {% include "header.html" %}
+
+  <main role="main">
+
+    <div id="nav" class="sidebar">
+      <nav class="local-nav" aria-label="main navigation">
+        <h2 class="visuallyhidden">Main navigation</h2>
+        <ul>
+        {% for nav_item in nav %}
+          {% include "nav.html" %}
+        {% endfor %}
+        </ul>
+      </nav>
+    </div>
+
+    <article id="content" class="content-main">
+
+      <header>
+        {% if current_page and current_page.is_homepage %}
+          <h1>{{ site_name }}</h1>
+        {% else %}
+          {% if current_page and current_page.title.startswith("_") %}
+            <h1>{{ page_title | replace("_", "") }}</h1>
+          {% else %}
+            <h1>{{ page_title }}</h1>
+          {% endif %}
+        {% endif %}
+      </header>
+
+
+
+        {% if current_page and meta.abstract %}
+        <p class="abstract">{{ meta.abstract[0] }}</p>
+      {% endif %}
+
+      {% if toc and toc|list|length > 0 and not meta.hide_toc %}
+        <nav class="index-links">
+          <h2>In this section</h2>
+          <ul>
+          {% for toc_item in toc %}
+              <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+              {% for toc_item in toc_item.children %}
+                <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+              {% endfor %}
+          {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+
+      <footer class="docs-article-footer">
+      {% block article_footer_content %}
+      {% endblock %}
+      {% if repo_url and current_page %}
+        {% if not current_page.is_homepage %}
+          <a rel="external" href="{{ repo_url }}/edit/master/docs{{ current_page.abs_url.rstrip('index.html').rstrip('/') }}.md">Edit this page on GitHub</a>
+        {% else %}
+          <a rel="external" href="{{ repo_url }}/edit/master/docs/index.md">Edit this page on GitHub</a>
+        {% endif %}
+      {% endif %}
+      </footer>
+
+    </article>
+
+  </main>
+
+  {% block page_footer %}
+  <footer role="contentinfo">
+    <div class="wrapper">
+      <div class="footer-logo">
+        <img src="https://raw.githubusercontent.com/AusDTO/mkdocs-gov-au-theme/master/gov_au_theme/assets/images/coat-of-arms.png" alt="Australian Government Coat of Arms">
+      </div>
+      <div class="footer-links">
+        <nav>
+          <h2 class="visuallyhidden">Main footer navigation</h2>
+          {% if config.extra.footer_links %}
+            <ul>
+            {% for footer_link in config.extra.footer_links %}
+              <li><a {% if footer_link.external == 'true' %}rel="external"{% endif %} href="{{ footer_link.url }}">{{ footer_link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        </nav>
+        <p>&copy; Commonwealth of Australia
+      </div>
+    </div>
+  </footer>
+  {% endblock %}
+
+</body>
+</html>

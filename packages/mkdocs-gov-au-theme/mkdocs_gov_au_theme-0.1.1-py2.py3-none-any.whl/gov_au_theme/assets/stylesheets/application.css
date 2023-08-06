@@ -1,0 +1,86 @@
+.local-nav .nav-sub-heading {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.search-section {
+  background-color: #f0f3f5;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+.search-section form .cgasearch--wrapper {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .search-section form .cgasearch--wrapper {
+    width: 33%;
+  }
+}
+
+.search-section form .submit {
+    background-color: #f0f3f5;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 20px auto;
+    border: 2px solid #bbb;
+    padding: 0.4em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3em;
+    height: 2.4em;
+    z-index: 1;
+    margin-right: 0;
+    text-indent: -99em;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background-image: url("https://raw.githubusercontent.com/AusDTO/mkdocs-gov-au-theme/master/gov_au_theme/assets/images/search-icon.png");
+}
+
+.search-section form .submit:focus {
+  outline: 2px solid #5bcbe3;
+  background-color: #f0f3f5;
+}
+
+.search-section form .submit:hover {
+  background-color: #f0f3f5;
+}
+
+.search-section .search-input {
+  padding-right: 3em;
+}
+
+pre {
+  background-color: #f0f3f5;
+  margin: 0 0 1.6em;
+  padding: 0.8em;
+  white-space: pre;
+}
+
+code {
+  background-color: #f0f3f5;
+  padding: 0.15em;
+  border-radius: .15em;
+}
+
+.govau--header h1 {
+  margin: 0;
+  font-size: 1.625rem;
+  display: inline-block;
+  font-weight: 400;
+}
+
+article .docs-article-footer {
+  border-top: 1px solid;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  max-width: 38rem;
+}
+
+article .docs-article-footer h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
