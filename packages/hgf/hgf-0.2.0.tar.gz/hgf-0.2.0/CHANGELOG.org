@@ -1,0 +1,69 @@
+#+TITLE: hgf Roadmap & Changelog
+#+AUTHOR: Ben Frankel
+#+EMAIL: ben.frankel7@gmail.com
+#+STARTUP: showall
+
+
+* Planned
+
+** Restructuring [0/1]
+
+- [ ] Overhaul of the style / options system to use CSS-style (or a subset) selectors
+- [ ] Default values for all built-in configuration
+
+* Version 0.2.1 (Future)
+
+** New Graphical Components [0/3]
+
+- [ ] Scrollbar
+- [ ] Frame
+- [ ] TextFrame
+
+* Version 0.2.0 (In Progress)
+
+** New Graphical Components [6/6]
+
+- [X] TextBox
+- [X] TextEntryBox
+- [X] TextField
+- [X] Widget (old Widget renamed to SimpleWidget)
+- [X] DragWidget
+- [X] SlideWidget
+
+** New Timing Components [7/7]
+
+- [X] TimingComponent
+- [X] Ticker
+- [X] Pulse
+- [X] Delay
+- [X] Gradient
+- [X] Switch
+- [X] Blink
+
+** Refactoring [4/4]
+
+- [X] Hook functions
+- [X] Widget -> SimpleWidget
+- [X] Component -> Component, GraphicalComponent, FlatComponent, LayeredComponent
+- [X] Switch -> StructuralComponent
+
+** Structural Changes [3/3]
+
+- [X] Explicit load step
+- [X] ~appdata/<appname>/dir.json~ changed to ~appdata/<appname>.json~
+- [X] Method to recursively freeze a subtree (pausing timers & other time-tracking tasks)
+
+** Convenience [4/4]
+
+- [X] Activate / deactivate
+- [X] Toggle show / pause / active
+- [X] Simultaneously register and load (~register_load~)
+- [X] Event loop is handled by hgf on application launch
+
+** Miscellaneous [0/1]
+
+- [ ] Style, options and controls can be dynamically reloaded
+
+** Bugs Fixed [1/1]
+
+- [X] Various; was not keeping track
