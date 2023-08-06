@@ -1,0 +1,119 @@
+Metadata-Version: 1.1
+Name: newsapi-cli
+Version: 1.1.0
+Summary: A newsapi.org command line program in Python.
+Home-page: https://github.com/aziezahmed/newsapi-cli
+Author: Aziez Ahmed Chawdhary
+Author-email: UNKNOWN
+License: MIT License
+Description-Content-Type: UNKNOWN
+Description: newsapi-cli
+        ===========
+        
+        |PyPI version|
+        
+        *A command line application for displaying news headlines, written in Python.*
+        
+        Getting Started
+        ---------------
+        
+        Prerequisites
+        ~~~~~~~~~~~~~
+        
+        -  `Python`_
+        
+        Installing
+        ~~~~~~~~~~
+        
+        Newsapi-cli is on PyPI so it can be installed with pip.
+        
+        .. code-block:: bash
+        
+            $ pip install newsapi-cli
+        
+        Using newsapi-cli
+        ~~~~~~~~~~~~~~~~~
+        
+        .. code-block:: bash
+        
+            Usage:
+              news sources
+              news <source>
+        	  news search <keyword>
+              news -h | --help
+              news --version
+        
+        Display a list of all news sources
+        
+        .. code-block:: bash
+        
+          $ news sources
+        
+        Get headlines from a specific source
+        
+        .. code-block:: bash
+        
+          $ news <source>
+          
+        Get headlines related to a keyword
+        
+        .. code-block:: bash
+        
+          $ news search <keyword>
+        
+        Example
+        ~~~~~~~
+        
+        Get news headlines from the bbc-news source.
+        
+        .. code-block:: bash
+        
+          $ news bbc-news
+          
+        Get top headlines about apple.
+        
+        .. code-block:: bash
+        
+          $ news search apple
+        
+        Built With
+        ----------
+        
+        -  `skele-cli`_
+        -  `News API`_
+        
+        Authors
+        -------
+        
+        -  `Aziez Ahmed Chawdhary`_
+        
+        License
+        -------
+        
+        This project is licensed under the MIT License
+        
+        .. _News API: https://newsapi.org
+        .. _Python: https://www.python.org
+        .. _PyPi: https://pypi.python.org/pypi
+        .. _skele-cli: https://github.com/rdegges/skele-cli
+        .. _Aziez Ahmed Chawdhary: https://github.com/aziezahmed
+        .. |PyPI version| image:: https://img.shields.io/pypi/v/newsapi-cli.svg
+           :target: https://pypi.python.org/pypi/newsapi-cli
+        
+Keywords: cli,news
+Platform: UNKNOWN
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Topic :: Utilities
+Classifier: License :: Public Domain
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Environment :: Console
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
