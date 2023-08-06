@@ -1,0 +1,47 @@
+Metadata-Version: 1.2
+Name: flask_template
+Version: 0.4
+Summary: Flask Project Template
+Home-page: https://github.com/
+Author: YIMIAN INC.
+Author-email: zhangjinjie@yimian.com.cn
+License: MIT
+Description: # flask_template
+        
+        templates used to fast create flask project.
+        
+        ## install
+        
+        `pip install flask_template`
+        
+        
+        # usage
+        
+        `flasktemplate create [-t simple] project_name`
+        
+        will create a flask project directory named after project_name on current path.
+        
+        `flasktemplate list` will list current supported templates.
+        
+        
+        # update logs
+        
+        ## 0.4
+        
+        1. 增加migrations目录，修改默认env.py，在alembic.ini增加alembic:include和alembic:exclude字段支持，以限定alembic
+          默认检测的表;
+        
+        2. 修复一些typo；
+        
+Keywords: flask development
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3
