@@ -1,0 +1,31 @@
+Metadata-Version: 1.0
+Name: mondrian
+Version: 0.6.1
+Summary: Logging with pretty coloured squares all over the place.
+Home-page: https://github.com/hartym/mondrian
+Author: Romain Dorgueil
+Author-email: romain@dorgueil.net
+License: Apache License, Version 2.0
+Description-Content-Type: UNKNOWN
+Description: mondrian
+        ========
+        
+        Mondrian helps you paint your standard python logger.
+        
+        .. image:: https://raw.githubusercontent.com/hartym/mondrian/master/demo.png
+          :alt: Mondrian in action
+          :width: 100%
+          :align: center
+        
+        Enabling mondrian is simple and straightforward:
+        
+        .. code-block:: python
+        
+            import logging
+            import mondrian
+        
+            logger = mondrian.getLogger()
+            logger.setLevel(logging.INFO)
+        
+        
+Platform: UNKNOWN
