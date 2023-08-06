@@ -1,0 +1,867 @@
+{
+ "pellets.time_slice[:].pellet[:].path_profiles.ablation_rate_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.ablation_rate_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Lower error for \"ablation_rate\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.velocity_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.velocity_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Lower error for \"velocity\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.z_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.z_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.position.r"
+  ],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.ablation_rate": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.ablation_rate",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Ablation rate (electrons) along the pellet path {dynamic} [s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].density_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].density_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"density\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.r_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.r_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time": {
+  "full_path": "pellets.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.velocity": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.velocity",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Pellet velocity along the pellet path {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.t_e_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.t_e_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Index in the error_description list for \"t_e\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles",
+  "coordinates": [],
+  "description": "1-D profiles of plasma and pellet along the pellet path",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.ablation_rate_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.ablation_rate_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Upper error for \"ablation_rate\" {dynamic} [s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].density": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].density",
+  "coordinates": [],
+  "description": "Material density of the species in the pellet {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.n_e": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.n_e",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Electron density along the pellet path {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.n_e_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.n_e_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Lower error for \"n_e\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.code.output_flag": {
+  "full_path": "pellets.code.output_flag",
+  "coordinates": [
+   "pellets.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.phi_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.phi_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.position.r"
+  ],
+  "description": "Upper error for \"phi\" {dynamic} [rad]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.ablated_particles_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.ablated_particles_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Index in the error_description list for \"ablated_particles\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].shape": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape",
+  "coordinates": [],
+  "description": "Initial shape of a pellet at launch",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].species[:].fraction": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].fraction",
+  "coordinates": [],
+  "description": "Fraction of the species atoms in the pellet {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].a_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].a_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].fraction_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].fraction_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"fraction\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.phi": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.phi",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.position.r"
+  ],
+  "description": "Toroidal angle {dynamic} [rad]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.r_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.r_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_drift_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_drift_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm_drift\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.phi_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.phi_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.position.r"
+  ],
+  "description": "Lower error for \"phi\" {dynamic} [rad]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.z": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.z",
+  "coordinates": [],
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].a_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].a_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.phi_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.phi_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].shape.size_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape.size_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"size\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.psi_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.psi_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].label": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].label",
+  "coordinates": [],
+  "description": "String identifying the species (e.g. H, D, T, ...) {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.r_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.velocity_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.velocity_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Index in the error_description list for \"velocity\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.ablated_particles_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.ablated_particles_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Upper error for \"ablated_particles\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.n_e_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.n_e_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Index in the error_description list for \"n_e\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.distance_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.distance_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"distance\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.phi": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.phi",
+  "coordinates": [],
+  "description": "Toroidal angle {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.r_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].time": {
+  "full_path": "pellets.time_slice[:].time",
+  "coordinates": [],
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.ablation_rate_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.ablation_rate_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Index in the error_description list for \"ablation_rate\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.r_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.r_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.psi_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.psi_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:]": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of species included in the pellet composition",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_drift": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_drift",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Difference to due ExB drifts between the ablation and the final deposition locations, in terms of the normalised toroidal flux coordinate {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.z_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.code": {
+  "full_path": "pellets.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.phi_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.phi_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.z_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.ablated_particles": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.ablated_particles",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Number of ablated particles (electrons) along the pellet path {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.phi_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.phi_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"phi\" {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].fraction_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].fraction_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"fraction\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.code.parameters": {
+  "full_path": "pellets.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.r_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_drift_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_drift_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Lower error for \"rho_tor_norm_drift\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].sublimation_energy_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].sublimation_energy_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"sublimation_energy\" {dynamic} [eV]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.phi_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.phi_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"phi\" {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.r_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.r_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.t_e": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.t_e",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Electron temperature along the pellet path {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.velocity_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.velocity_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Upper error for \"velocity\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.z_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].velocity_initial_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].velocity_initial_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"velocity_initial\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].z_n_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].z_n_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].density_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].density_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"density\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].shape.type": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape.type",
+  "coordinates": [],
+  "description": "Identifier structure for the shape type: 1-spherical; 2-cylindrical; 3-rectangular {constant}",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].velocity_initial": {
+  "full_path": "pellets.time_slice[:].pellet[:].velocity_initial",
+  "coordinates": [],
+  "description": "Initial velocity of the pellet as it enters the vaccum chamber {dynamic} [m.s^-1]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].sublimation_energy": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].sublimation_energy",
+  "coordinates": [],
+  "description": "Sublimation energy per atom {dynamic} [eV]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.code.name": {
+  "full_path": "pellets.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "pellets.time_slice[:].pellet[:]": {
+  "full_path": "pellets.time_slice[:].pellet[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Set of pellets ablated in the plasma at a given time",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.z_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.z_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.z": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.z",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.position.r"
+  ],
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.r": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.r",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point",
+  "coordinates": [],
+  "description": "Position of the second point",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.distance_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.distance_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"distance\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].shape.size_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape.size_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"size\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.phi_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.phi_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"phi\" {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Normalised toroidal coordinate along the pellet path {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.phi": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.phi",
+  "coordinates": [],
+  "description": "Toroidal angle {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].sublimation_energy_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].sublimation_energy_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"sublimation_energy\" {dynamic} [eV]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].a": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].a",
+  "coordinates": [],
+  "description": "Mass of atom {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.phi_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.phi_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"phi\" {dynamic} [rad]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position",
+  "coordinates": [],
+  "description": "Position along the pellet path",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].species[:].z_n_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].z_n_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.z_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.z_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.position.r"
+  ],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.distance_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.distance_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"distance\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.n_e_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.n_e_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Upper error for \"n_e\" {dynamic} [m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.r": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.r",
+  "coordinates": [],
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.z_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.z_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.position.r"
+  ],
+  "description": "Index in the error_description list for \"z\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:]": {
+  "full_path": "pellets.time_slice[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Description of the pellets launched at various time slices. The time of this structure corresponds to the full ablation of the pellet inside the plasma. {dynamic}",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.r_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.r_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.ids_properties": {
+  "full_path": "pellets.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "pellets.ids_properties.comment": {
+  "full_path": "pellets.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "pellets.time_slice[:].pellet[:].shape.type.name": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape.type.name",
+  "coordinates": [],
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D"
+ },
+ "pellets.time_slice[:].pellet[:].shape.type.index": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape.type.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.distance": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.distance",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Distance along the pellet path, with the origin taken at path_geometry/first_point. Used as the main coordinate for the path_profiles structure {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].sublimation_energy_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].sublimation_energy_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"sublimation_energy\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.psi_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.psi_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.t_e_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.t_e_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Upper error for \"t_e\" {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].velocity_initial_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].velocity_initial_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"velocity_initial\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].fraction_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].fraction_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"fraction\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].density_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].density_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"density\" {dynamic} [-]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].z_n_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].z_n_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.z_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.z_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].shape.size_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape.size_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"size\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry",
+  "coordinates": [],
+  "description": "Geometry of the pellet path in the vaccuum chamber",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.ablated_particles_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.ablated_particles_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Lower error for \"ablated_particles\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].velocity_initial_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].velocity_initial_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"velocity_initial\" {dynamic} [m.s^-1]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.code.version": {
+  "full_path": "pellets.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "pellets.ids_properties.homogeneous_time": {
+  "full_path": "pellets.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point",
+  "coordinates": [],
+  "description": "Position of the first point",
+  "data_type": ""
+ },
+ "pellets.time_slice[:].pellet[:].shape.size": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape.size",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Size of the pellet in the various dimensions, depending on the shape type. Spherical pellets: size(1) is the radius of the pellet. Cylindrical pellets: size(1) is the radius and size(2) is the height of the cylinder. Rectangular pellets: size(1) is the height, size(2) is the width and size(3) is the length {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.second_point.r_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.second_point.r_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].shape.type.description": {
+  "full_path": "pellets.time_slice[:].pellet[:].shape.type.description",
+  "coordinates": [],
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.psi": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.psi",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Poloidal flux along the pellet path {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_drift_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_drift_error_upper",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Upper error for \"rho_tor_norm_drift\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.position.phi_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.position.phi_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.position.r"
+  ],
+  "description": "Index in the error_description list for \"phi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.rho_tor_norm_error_index",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.r": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.r",
+  "coordinates": [],
+  "description": "Major radius {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.z_error_upper": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.z_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z\" {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].a_error_index": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].a_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_geometry.first_point.z": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_geometry.first_point.z",
+  "coordinates": [],
+  "description": "Height {dynamic} [m]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].species[:].z_n": {
+  "full_path": "pellets.time_slice[:].pellet[:].species[:].z_n",
+  "coordinates": [],
+  "description": "Nuclear charge {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "pellets.time_slice[:].pellet[:].path_profiles.t_e_error_lower": {
+  "full_path": "pellets.time_slice[:].pellet[:].path_profiles.t_e_error_lower",
+  "coordinates": [
+   "pellets.time_slice[:].pellet[:].path_profiles.distance"
+  ],
+  "description": "Lower error for \"t_e\" {dynamic} [eV]",
+  "data_type": "FLT_1D"
+ }
+}
