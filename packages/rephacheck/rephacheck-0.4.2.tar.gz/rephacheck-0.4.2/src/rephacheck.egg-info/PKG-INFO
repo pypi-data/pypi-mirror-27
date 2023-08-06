@@ -1,0 +1,38 @@
+Metadata-Version: 1.2
+Name: rephacheck
+Version: 0.4.2
+Summary: Health check for PostgreSQL cluster managed by repmgr
+Home-page: https://github.com/UbiCastTeam/rephacheck
+Author: Nicolas KAROLAK @ UbiCast
+Author-email: nicolas@karolak.fr
+License: LGPLv3
+Download-URL: https://github.com/UbiCastTeam/rephacheck/archive/v0.4.2.tar.gz
+Description-Content-Type: UNKNOWN
+Description: Health check for PostgreSQL + repmgr
+        ====================================
+        
+        This package is intended to be used as an health check backend for HAProxy. It
+        provides a small script that will run an HTTP server querying each PostgreSQL
+        servers of the replication cluster to know the role (primary, standby, witness
+        or fenced) of the local instance according to the majority of them (kind of a
+        vote).
+        
+        Usage and configuration example to come…
+        
+Keywords: haproxy healthcheck postgresql repmgr
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Database
+Classifier: Topic :: Internet :: Proxy Servers
+Classifier: Topic :: Internet :: WWW/HTTP :: HTTP Servers
+Requires-Python: >=2.7
