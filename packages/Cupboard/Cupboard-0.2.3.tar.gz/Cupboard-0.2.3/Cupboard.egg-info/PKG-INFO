@@ -1,0 +1,30 @@
+Metadata-Version: 1.1
+Name: Cupboard
+Version: 0.2.3
+Summary: Abstracted interface for a variety of key-value storage systems.
+Home-page: https://github.com/lukedeo/Cupboard
+Author: Luke de Oliveira
+Author-email: lukedeo@ldo.io
+License: Apache 2.0
+Description: 
+        Cupboard is an abstracted interface to a variety of 
+        key-value storage systems. Developers get tired of 
+        having to refactor around different APIs for different 
+        storage systems. Cupboard can serve as a drop-in 
+        replacement for a dictionary under most usages and can 
+        be backed by a variety of KV storage systems. Fine 
+        grained control over marshalling and lower level 
+        features specific to different backends are 
+        configurable in contexts.
+        
+Keywords: NoSQL persistent storage key-value store redis leveldb lmdb database
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
