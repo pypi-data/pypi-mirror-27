@@ -1,0 +1,9 @@
+include *.py tox.ini
+include test/data/bootstrap_cubes
+recursive-include test *.py
+recursive-include cubicweb_compound *.py
+recursive-include cubicweb_compound/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_compound/i18n *.po
+
+prune cubicweb-compound.spec
+prune debian
