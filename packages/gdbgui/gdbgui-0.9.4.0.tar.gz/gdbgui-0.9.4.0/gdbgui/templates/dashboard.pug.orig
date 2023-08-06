@@ -1,0 +1,106 @@
+<<<<<<< HEAD
+//- this page makes an ajax request to tell the server to shutdown, and tells the user that
+//- also display any other info/links/ads the user might find useful
+
+doctype html
+html
+    head
+        title gdbguipro - dashboard
+=======
+doctype html
+html
+    head
+        title gdbgui - dashboard
+>>>>>>> 7dcaa6b5aaa97c920b86f3d7edd97eae0dceb832
+        base(target='_blank')
+
+        //- css
+        link(href='static/vendor/css/bootstrap.min.css', rel='stylesheet')
+
+        //- javascript
+        script(type="text/javascript" src='static/vendor/js/jquery.min.js')
+
+    style.
+        html{
+            background: linear-gradient(165deg,#6e60cc 0%,#484389 100%);
+        }
+
+    body(style='position: fixed; width: 100%; height: 100%;')
+
+
+        div.container-fluid
+<<<<<<< HEAD
+            h3 active gdb processes managed by gdbgui
+            table.table.table-condensed
+                tr
+                    th gdb path
+                    th command
+                    th gdb pid
+                    th number of connected browser tabs
+                    th
+                    th
+
+                - for pid, val  in processes.items()
+                    tr
+                        td= val.abs_gdb_path
+                        td= val.cmd
+                        td= pid
+                        td= val.number_of_connected_browser_tabs
+                        td
+                            a.btn.btn-xs.btn-primary(
+                                onClick='window.view_gdbgui_with_gdb_pid(' + pid + ')'
+                            ) View
+
+                        td
+                            a.btn.btn-xs.btn-danger(
+                                onClick='window.remove_gdb_controller(' + pid + ')'
+                            ) Kill process
+
+            a.btn.btn-xs.btn-success(
+                onClick='window.new_gdbgui_instance()'
+            )
+                span.glyphicon.glyphicon-plus
+                ='  open tab with new gdb process'
+
+
+
+    script.
+        function remove_gdb_controller(gdbpid){
+            $.ajax({
+                url: "/remove_gdb_controller",
+                cache: false,
+                type: 'GET',
+                data: {gdbpid: gdbpid, signal_name: 'sigkill'},
+
+                success: function(response){
+                    setTimeout(()=>window.location.reload(), 500)
+                },
+                error: function(response){
+
+                },
+            })
+        }
+
+        function view_gdbgui_with_gdb_pid(gdbpid){
+            let url = '/?gdbpid=' + gdbpid
+            window.open(url, '_blank');
+            setTimeout(()=>window.location.reload(), 500)
+        }
+
+        function new_gdbgui_instance(){
+            window.open('/', '_blank');
+            setTimeout(()=>window.location.reload(), 500)
+        }
+=======
+            h1 This feature is only available in the pro version of gdbgui.
+            a.btn.btn-xl.btn-primary(href='http://gdbgui.com') Upgrade Now
+
+            p
+
+            h2 Below is a sample image of the dashboard
+
+            hr
+
+            a(href='http://gdbgui.com')
+                img(src='https://raw.githubusercontent.com/cs01/gdbgui/master/screenshots/dashboard.png')
+>>>>>>> 7dcaa6b5aaa97c920b86f3d7edd97eae0dceb832
