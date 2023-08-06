@@ -1,0 +1,50 @@
+Metadata-Version: 2.0
+Name: jsonschema-extractor
+Version: 0.6
+Summary: a framework to extract jsonschema's from a variety of models.
+Home-page: https://github.com/toumorokoshi/attrs-jsonschema
+Author: Yusuke Tsutsumi
+Author-email: yusuke@tsutsumi.io
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: System :: Software Distribution
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+
+====================
+jsonschema-extractor
+====================
+
+jsonschema-extractor is a library and extensible framework for
+extracting `json schema <http://json-schema.org/>`_ from various object and
+primitives.
+
+Out of the box support exists for:
+
+- `attrs <https://attrs.readthedocs.io/>`_
+- `typing <https://docs.python.org/3/library/typing.html>`_
+
+-----
+Usage
+-----
+
+.. code-block:: python
+
+
+    from typing import List
+    import jsonschema_extractor
+    assert jsonschema_extractor.extract(List[int]) == {
+        "type": "array",
+        "items": {"type": "integer"}
+    }
+
+
