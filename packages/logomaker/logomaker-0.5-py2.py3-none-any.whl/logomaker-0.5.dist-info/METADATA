@@ -1,0 +1,40 @@
+Metadata-Version: 2.0
+Name: logomaker
+Version: 0.5
+Summary: Package for making Sequence Logos
+Home-page: http://logomaker.cshl.edu
+Author: Ammar Tareen
+Author-email: tareen@cshl.edu
+License: MIT
+Keywords: Sequence Logos
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Text Processing :: Linguistic
+Requires-Dist: numpy
+Requires-Dist: backports.functools-lru-cache (==1.4)
+Requires-Dist: biopython (==1.70)
+Requires-Dist: click (==6.7)
+Requires-Dist: cycler (==0.10.0)
+Requires-Dist: Flask (==0.12.2)
+Requires-Dist: gunicorn
+Requires-Dist: functools32 (==3.2.3.post2)
+Requires-Dist: itsdangerous (==0.24)
+Requires-Dist: Jinja2 (==2.9.6)
+Requires-Dist: MarkupSafe (==1.0)
+Requires-Dist: matplotlib (==2.0.2)
+Requires-Dist: numpy (==1.13.3)
+Requires-Dist: pandas (==0.21.0)
+Requires-Dist: pyparsing (==2.2.0)
+Requires-Dist: python-dateutil (==2.6.1)
+Requires-Dist: pytz (==2017.3)
+Requires-Dist: six (==1.11.0)
+Requires-Dist: subprocess32 (==3.2.7)
+Requires-Dist: Werkzeug (==0.12.2)
+
+Logo maker
+--------
+
+logomaker_cmdline —-fasta_file 'fasta_file'
+
