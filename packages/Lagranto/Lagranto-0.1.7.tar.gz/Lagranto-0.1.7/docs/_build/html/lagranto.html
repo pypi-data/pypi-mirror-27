@@ -1,0 +1,618 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Basic examples &#8212; Lagranto 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tutorial" href="tutorial_lagranto.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="basic-examples">
+<span id="lagranto-package"></span><h1>Basic examples<a class="headerlink" href="#basic-examples" title="Permalink to this headline">¶</a></h1>
+<p>In a first step, let’s simply read the trajectories:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lagranto</span> <span class="k">import</span> <span class="n">Tra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;lsl_20110123_10&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span><span class="o">.</span><span class="n">load_ascii</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or to read a netcdf file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;lsl_20110123_10.4&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span><span class="o">.</span><span class="n">load_netcdf</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>The proprieties of the trajectories can be shown as follow::</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">trajs</span><span class="p">)</span>
+<span class="go">24 trajectories with 41 time steps.</span>
+<span class="go">Available fields: time/lon/lat/p/Q/RH/TH/BLH</span>
+<span class="go">total duration: -14400.0 minutes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">trajs</span><span class="o">.</span><span class="n">variables</span><span class="p">())</span>
+<span class="go">[&#39;time&#39;, &#39;lon&#39;, &#39;lat&#39;, &#39;p&#39;, &#39;Q&#39;, &#39;RH&#39;, &#39;TH&#39;, &#39;BLH&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">trajs</span><span class="p">[</span><span class="s1">&#39;Q&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(24, 41)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="docstrings">
+<h1>DocStrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tra">
+<h2>Tra<a class="headerlink" href="#tra" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="lagranto.Tra">
+<em class="property">class </em><code class="descclassname">lagranto.</code><code class="descname">Tra</code><span class="sig-paren">(</span><em>filename=''</em>, <em>usedatetime=True</em>, <em>array=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to work with LAGRANTO output.</p>
+<p>Read trajectories from a LAGRANTO file and return a structured numpy array</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>string</em>) – File containing lagranto trajectories</li>
+<li><strong>usedatetime</strong> (<em>bool</em>) – Read times as datetime objects, default True</li>
+<li><strong>array</strong> (<em>structured array</em>) – If defined creates a new Tra object filled with the array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>structured array (Tra)</strong></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">trajs(<a class="reference internal" href="#lagranto.Tra.ntra" title="lagranto.Tra.ntra">ntra</a>,<a class="reference internal" href="#lagranto.Tra.ntime" title="lagranto.Tra.ntime">ntime</a>) with variables as tuple.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>   <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mylslfile.nc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">trajs</span><span class="o">.</span><span class="n">load_netcdf</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">trajs</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:]</span>  <span class="c1"># return the longitudes for the first trajectory.</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">selected_trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">trajs</span><span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="p">:])</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Author <span class="classifier-delimiter">:</span> <span class="classifier">Nicolas Piaget, ETH Zurich , 2014</span></dt>
+<dd>Sebastiaan Crezee, ETH Zurich , 2014</dd>
+</dl>
+<dl class="method">
+<dt id="lagranto.Tra.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>trajs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>append trajectories</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trajs</strong> (<em>single Tra</em><em> or </em><em>list of Tra</em>) – Trajectories to concatenate with the current one</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lsl_20001010_00.4&#39;</span><span class="p">,</span> <span class="s1">&#39;lsl_2001010_01.4&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newtrajs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Tra</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newtrajs</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.Tra.concatenate">
+<code class="descname">concatenate</code><span class="sig-paren">(</span><em>trajs</em>, <em>time=False</em>, <em>inplace=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.concatenate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.concatenate" title="Permalink to this definition">¶</a></dt>
+<dd><p>To concatenate trajectories together.</p>
+<p>Concatenate trajectories together and return a new object.
+The trajectories should contain the same variables.
+if time=False, the number of timestep in each trajs should be the same
+if time=True, the number of trajectories in each Tra should be the same</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trajs</strong> (<a class="reference internal" href="#lagranto.Tra" title="lagranto.Tra"><em>Tra</em></a><em> or </em><em>list of Tra</em>) – Trajectories to concatenate with the current one</li>
+<li><strong>time</strong> (<em>bool</em><em>, </em><em>default False</em>) – if True concatenate along the time dimension</li>
+<li><strong>inplace</strong> (<em>bool</em><em>, </em><em>default False</em>) – if True append the trajs to current Tra object and return None</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Return a new Tra (trajectories) object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#lagranto.Tra" title="lagranto.Tra">Tra</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Create a new Tra object which include trajs and all newtrajs</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lsl_20001010_00.4&#39;</span><span class="p">,</span> <span class="s1">&#39;lsl_2001010_01.4&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newtrajs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Tra</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alltrajs</span> <span class="o">=</span> <span class="n">trajs</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">newtrajs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Append newtrajs to trajs</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newtrajs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Tra</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trajs</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">newtrajs</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lagranto.Tra.duration">
+<code class="descname">duration</code><a class="headerlink" href="#lagranto.Tra.duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time duration in minutes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.Tra.get_array">
+<code class="descname">get_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.get_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.get_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trajectories array as numpy object</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lagranto.Tra.initial">
+<code class="descname">initial</code><a class="headerlink" href="#lagranto.Tra.initial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give the initial time of the trajectories.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.Tra.load_ascii">
+<code class="descname">load_ascii</code><span class="sig-paren">(</span><em>filename</em>, <em>usedatetime=True</em>, <em>msv=-999.999</em>, <em>gz=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.load_ascii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.load_ascii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load trajectories from an ascii file</p>
+<p>Parameters:</p>
+<dl class="docutils">
+<dt>usedatetime: bool, default True</dt>
+<dd>If true return the dates as datetime object</dd>
+<dt>msv: float, default -999.999</dt>
+<dd>Change &lt;msv&gt; value into np.nan</dd>
+<dt>gzip: bool, default False</dt>
+<dd>If true read from gzip file</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.Tra.load_netcdf">
+<code class="descname">load_netcdf</code><span class="sig-paren">(</span><em>filename</em>, <em>usedatetime=True</em>, <em>msv=-999</em>, <em>unit='hours'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.load_netcdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.load_netcdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load trajectories from a netcdf</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<em>string</em><em>,</em>) – path to a netcdf file containing trajectories</li>
+<li><strong>usedatetime</strong> (<em>bool</em><em>, </em><em>default True</em>) – If True then return time as datetime object</li>
+<li><strong>msv</strong> (<em>float</em><em>, </em><em>default -999</em>) – Define the missing value</li>
+<li><strong>unit</strong> (<em>string</em><em>, </em><em>default hours</em>) – Define the units of the times (hours, seconds or hhmm)</li>
+<li><strong>exclude</strong> (<em>list of string</em><em>, </em><em>default empty</em>) – Define a list of variables to exclude from reading</li>
+<li><strong>date</strong> (<em>datetime</em><em> or </em><em>list</em>) – Can be used to select particular dates, for example
+to read in a single timestep</li>
+<li><strong>indices</strong> (<em>list</em><em> or </em><em>tuple</em>) – Can be used to select particular trajectories</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lagranto.Tra.ntime">
+<code class="descname">ntime</code><a class="headerlink" href="#lagranto.Tra.ntime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of time steps</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lagranto.Tra.ntra">
+<code class="descname">ntra</code><a class="headerlink" href="#lagranto.Tra.ntra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of trajectories</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.Tra.set_array">
+<code class="descname">set_array</code><span class="sig-paren">(</span><em>array</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.set_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.set_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>To change the trajectories array.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lagranto.Tra.startdate">
+<code class="descname">startdate</code><a class="headerlink" href="#lagranto.Tra.startdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the starting date of the trajectories</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lagranto.Tra.variables">
+<code class="descname">variables</code><a class="headerlink" href="#lagranto.Tra.variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the names of the variables</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.Tra.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>filename</em>, <em>fileformat='netcdf'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to write the trajectories to a file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.Tra.write_ascii">
+<code class="descname">write_ascii</code><span class="sig-paren">(</span><em>filename</em>, <em>gz=False</em>, <em>digit=3</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.write_ascii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.write_ascii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the trajectories in an ASCII format</p>
+<blockquote>
+<div><p>Parameters:</p>
+<dl class="docutils">
+<dt>filename <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>filename where the trajectories are written</dd>
+<dt>mode <span class="classifier-delimiter">:</span> <span class="classifier">string, default w</span></dt>
+<dd>define the mode for opening the file.
+By default in write mode (‘w’),
+append (a) is another option</dd>
+</dl>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<em>string</em>) – filename where the trajectories are written</li>
+<li><strong>mode</strong> (<em>string</em><em>, </em><em>default w</em>) – define the mode for opening the file.
+By default in write mode (‘w’),
+append (‘a’) is another option.</li>
+<li><strong>gz</strong> (<em>boolean</em><em>, </em><em>default False</em>) – If true write the file as a gzip file</li>
+<li><strong>digit</strong> (<em>int</em><em>, </em><em>default 3</em>) – Number of digit after the comma to use for lon, lat;
+Only 3 or 2 digits allowed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.Tra.write_netcdf">
+<code class="descname">write_netcdf</code><span class="sig-paren">(</span><em>filename</em>, <em>exclude=None</em>, <em>unit='hours'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#Tra.write_netcdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.Tra.write_netcdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the trajectories in a netCDF file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>trajs</strong> (<a class="reference internal" href="#lagranto.Tra" title="lagranto.Tra"><em>Tra</em></a>) – A Tra instance</li>
+<li><strong>filename</strong> (<em>string</em>) – The name of the output file</li>
+<li><strong>exclude</strong> (<em>list</em><em>, </em><em>optional</em>) – A list of variables to exclude</li>
+<li><strong>unit</strong> (<em>string</em><em>, </em><em>optional</em>) – The unit of the dates, can be hours, seconds or hhmm</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lagrantorun">
+<h2>LagrantoRun<a class="headerlink" href="#lagrantorun" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="lagranto.LagrantoRun">
+<em class="property">class </em><code class="descclassname">lagranto.</code><code class="descname">LagrantoRun</code><span class="sig-paren">(</span><em>dates</em>, <em>workingdir='.'</em>, <em>outputdir='.'</em>, <em>startf='startf.4'</em>, <em>lslname='lsl_{:%Y%m%d%H}.4'</em>, <em>tracevars=''</em>, <em>field=''</em>, <em>version='cosmo'</em>, <em>linkfiles=None</em>, <em>nprocesses=10</em>, <em>sdate=None</em>, <em>fresh=False</em>, <em>cmd_header=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Lagranto calculation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dates</strong> (<em>list</em>) – list of (startdate, enddate) tuple</li>
+<li><strong>workingdir</strong> (<em>string</em><em>, </em><em>optional</em>) – path to the model output directory, default to current</li>
+<li><strong>outputdir</strong> (<em>string</em><em>, </em><em>optional</em>) – path to the trajectory utput directory, defautl to current</li>
+<li><strong>startf</strong> (<em>string</em><em>, </em><em>optional</em>) – name of the startf to use (or to create), default to startf.4
+The format parameter date can be used, for ex: startf_{date:%Y%m%d%H}.4</li>
+<li><strong>lslname</strong> (<em>string</em><em>, </em><em>optional</em>) – name of the lsl file, define its type, default to lsl_{:%Y%m%d%H}.4</li>
+<li><strong>tracevars</strong> (<em>string</em><em>, </em><em>optional</em>) – name of a tracevars file as used by trace, default to none</li>
+<li><strong>field</strong> (<em>string</em><em>, </em><em>optional</em>) – name of a single field to trace, default to none</li>
+<li><strong>version</strong> (<em>string</em><em>, </em><em>optional</em>) – name of the model version to use, currently only cosmo (default)</li>
+<li><strong>linkfiles</strong> (<em>function</em><em>, </em><em>optional</em>) – function used to overwrite link_files in run.
+Should be used if COSMO output is not standard netcdf</li>
+<li><strong>nprocesses</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of processes used when running in parallel, default to 10</li>
+<li><strong>sdate</strong> (<em>datetime object</em><em>,</em>) – Starting date of the simulation;
+useful if files are named in forecast mode</li>
+<li><strong>fresh</strong> (<em>bool</em><em>, </em><em>optional</em>) – Fresh start. Remove output directory first.</li>
+<li><strong>cmd_header</strong> (<em>string</em><em>, </em><em>optional</em>) – Change the header using for running the command;
+see <code class="docutils literal"><span class="pre">run_cmd</span></code> help for more details.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="lagranto.LagrantoRun.caltra">
+<code class="descname">caltra</code><span class="sig-paren">(</span><em>startdate</em>, <em>enddate</em>, <em>filename=''</em>, <em>outfile=''</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.caltra"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.caltra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute trajectories for the given startdate</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.LagrantoRun.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the output directory</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.LagrantoRun.create_startf">
+<code class="descname">create_startf</code><span class="sig-paren">(</span><em>date</em>, <em>specifier</em>, <em>filename=''</em>, <em>tolist=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.create_startf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.create_startf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a file with the starting position of the trajectories.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>date</strong> (<em>datetime</em>) – date for which the startf date is produced</li>
+<li><strong>specifier</strong> (<em>string</em>) – detailed description of starting positions;
+(see LAGRANTO documentations for more details)</li>
+<li><strong>filename</strong> (<em>string</em>) – filename where starting positions are saved;
+the default is defined by <cite>LagrantoRun</cite>
+Can make use of the format parameter date, for example:
+startf_{date:%Y%m%d%H}.4</li>
+<li><strong>tolist</strong> (<em>bool</em>) – <dl class="docutils">
+<dt>If the starting position should be saved as a list of points;</dt>
+<dd>Useful if the same file is used for different starting times</dd>
+</dl>
+</li>
+<li><strong>kwargs</strong> (<em>dict</em>) – <p>key, value options, possible values are listed bellow;</p>
+<ul>
+<li>cmd_header:
+header to add to the shell command;
+(see <cite>run_cmd</cite> for more details)</li>
+<li>options:
+list of options to pass to the startf function;
+(see the LAGRANTO documentation for more details)</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.LagrantoRun.density">
+<code class="descname">density</code><span class="sig-paren">(</span><em>inpfile=None</em>, <em>outfile=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.density"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the density of trajectories</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.LagrantoRun.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>caltra_kw=None</em>, <em>trace_kw=None</em>, <em>startf_kw=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run caltra, trace, and/or create_startf.</p>
+<p>Run single_run for each dates tuple
+See single_run description for more details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>caltra_kw</strong> (<em>dictionary</em>) – Arguments to pass to the caltra function</li>
+<li><strong>trace_kw</strong> (<em>dictionary</em>) – Arguments to pass to the trace function</li>
+<li><strong>startf_kw</strong> (<em>dictionary</em>) – Arguments to pass to the create_startf function</li>
+<li><strong>kwargs</strong> – Arguments to pass to the single_run function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>A list of single_run result</strong></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.LagrantoRun.run_parallel">
+<code class="descname">run_parallel</code><span class="sig-paren">(</span><em>caltra_kw=None</em>, <em>trace_kw=None</em>, <em>startf_kw=None</em>, <em>nprocesses=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.run_parallel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.run_parallel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run caltra, trace, and/or create_startf in parallel.</p>
+<p>Run single_run for each dates tuple using <cite>multiprocessing.Pool</cite>.
+See single_run description for more details.</p>
+<p>Warning:  If you use run_parallel with create_startf and
+if the starting file is not a list, be sure that every starting file
+has a different name, for example doing as follow:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">LagrantoRun</span><span class="p">(</span><span class="n">startf</span><span class="o">=</span><span class="s1">&#39;startf_{date:%Y%m</span><span class="si">%d</span><span class="s1">_%H.4}&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>caltra_kw</strong> (<em>dictionary</em>) – Arguments to pass to the caltra function</li>
+<li><strong>trace_kw</strong> (<em>dictionary</em>) – Arguments to pass to the trace function</li>
+<li><strong>startf_kw</strong> (<em>dictionary</em>) – Arguments to pass to the create_startf function</li>
+<li><strong>nprocesses</strong> (<em>int</em><em>,</em>) – Number of processors to use</li>
+<li><strong>kwargs</strong> – Arguments to pass to the single_run function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>A list of single_run results</strong></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.LagrantoRun.select">
+<code class="descname">select</code><span class="sig-paren">(</span><em>inpfile=None</em>, <em>outfile=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.select"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform selection of trajectories</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.LagrantoRun.single_run">
+<code class="descname">single_run</code><span class="sig-paren">(</span><em>sd</em>, <em>ed</em>, <em>caltra_kw=None</em>, <em>trace_kw=None</em>, <em>startf_kw=None</em>, <em>type='both'</em>, <em>debug=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.single_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.single_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run caltra, trace and/or create_startf for a given starting date</p>
+<p>Compute a trajectory set using caltra, trace and/or create_startf in a
+temporary directory. Need a working installation of LAGRANTO.</p>
+<p>If caltra, trace or create_startf return a error, single_run return
+a LagrantoException error with the path of the temporary directory.
+In this case, the temporary directory is not deleted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sd</strong> (<em>datetime</em>) – Starting date of the trajectory</li>
+<li><strong>ed</strong> (<em>datetime</em>) – Ending date of the trajectory</li>
+<li><strong>caltra_kw</strong> (<em>dictionary</em>) – Arguments to pass to the caltra function</li>
+<li><strong>trace_kw</strong> (<em>dictionary</em>) – Arguments to pass to the trace function</li>
+<li><strong>startf_kw</strong> (<em>dictionary</em>) – Arguments to pass to the create_startf function</li>
+<li><strong>type</strong> (<em>string</em><em> (</em><em>default both</em><em>)</em>) – Define the type a run to perform:
+both: caltra + trace
+caltra: caltra
+trace: trace
+all: create_startf + caltra + trace
+create: create_startf + caltra</li>
+<li><strong>debug</strong> (<em>Boolean</em>) – If True raise LagrantoException instead of return it as string</li>
+<li><strong>kwargs</strong> (<em>dictionnary</em>) – Arguments to pass to the link_files function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>output of caltra, trace and/or create_startf</strong></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lagranto.LagrantoRun.trace">
+<code class="descname">trace</code><span class="sig-paren">(</span><em>date</em>, <em>filename=''</em>, <em>outfile=''</em>, <em>tracevars=''</em>, <em>tracevars_content=''</em>, <em>field=''</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lagranto/lagranto.html#LagrantoRun.trace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lagranto.LagrantoRun.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trace variable along a trajectory.</p>
+<p>Trace meteorological fields along trajectories</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>date</strong> (<em>datetime object</em>) – starting date of the trajectories to trace</li>
+<li><strong>filename</strong> (<em>string</em><em>, </em><em>optional</em>) – If not specified use <cite>LagrantoRun.lslname</cite></li>
+<li><strong>outfile</strong> (<em>string</em><em>, </em><em>optional</em>) – If not specified same as <cite>filename</cite></li>
+<li><strong>tracevars</strong> (<em>string</em><em>, </em><em>optional</em>) – Name of the file with the field to trace;
+If not specified use <cite>LagrantoRun.tracevars</cite></li>
+<li><strong>tracevars_content</strong> (<em>string</em><em>, </em><em>optional</em>) – <p>Content of the tracevars file;</p>
+<p>”“”n
+QV      1000. P 1n
+PV      1.    T 1n
+“”“</p>
+</li>
+<li><strong>field</strong> (<em>string</em><em>,</em>) – Specify a field to trace as follow: QV 1.</li>
+<li><strong>kwargs</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_lagranto.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#docstrings">DocStrings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tra">Tra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lagrantorun">LagrantoRun</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/lagranto.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Nicolas Piaget.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/lagranto.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

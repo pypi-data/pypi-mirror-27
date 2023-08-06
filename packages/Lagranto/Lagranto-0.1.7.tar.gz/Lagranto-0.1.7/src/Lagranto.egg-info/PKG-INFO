@@ -1,0 +1,52 @@
+Metadata-Version: 1.2
+Name: Lagranto
+Version: 0.1.7
+Summary: Library to work with trajectories.
+Home-page: https://lagranto.readthedocs.io/en/latest/
+Author: Nicolas Piaget
+Author-email: nicolas.piaget@env.ethz.ch
+License: GPL-3.0+
+Download-URL: https://git.iac.ethz.ch/npiaget/Lagranto
+Description-Content-Type: UNKNOWN
+Description: 
+        |docs| |pipelines|
+        
+        ################################################
+        Lagranto - A Library to work with trajectories.
+        ################################################
+        
+        A recent build of the documentation is available at https://lagranto.readthedocs.io/en/latest/
+        
+        .. |docs| image:: https://readthedocs.org/projects/lagranto/badge/?version=latest
+            :target: http://lagranto.readthedocs.io/en/latest/?badge=latest
+            :alt: Documentation Status
+            
+        
+        .. |pipelines| image:: https://gitlab.com/atmosdyn/Lagranto/badges/master/pipeline.svg  
+            :target: https://gitlab.com/atmosdyn/Lagranto/commits/master
+        
+        
+        
+        Documentation
+        -------------
+        
+        To compile the documentation the `sphinx` package have to be installed::
+        
+            conda install sphinx
+        
+        To compile the html documentation::
+        
+            cd docs
+            make html
+        
+Keywords: data,science,meteorology,climate trajectories
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+Requires-Python: >=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4

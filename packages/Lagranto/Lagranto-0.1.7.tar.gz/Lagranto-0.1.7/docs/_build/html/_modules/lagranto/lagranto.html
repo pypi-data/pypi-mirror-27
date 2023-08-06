@@ -1,0 +1,997 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>lagranto.lagranto &#8212; Lagranto 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for lagranto.lagranto</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">module with the main trajectories class</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># -*- coding:utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">multiprocessing.pool</span> <span class="k">import</span> <span class="n">Pool</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">mkdtemp</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="k">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">path</span> <span class="k">import</span> <span class="n">Path</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">SameFileError</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">SameFileError</span>
+
+
+<span class="kn">from</span> <span class="nn">.tools</span> <span class="k">import</span> <span class="n">LagrantoException</span><span class="p">,</span> <span class="n">run_cmd</span>
+<span class="kn">from</span> <span class="nn">.formats</span> <span class="k">import</span> <span class="n">from_netcdf</span><span class="p">,</span> <span class="n">to_ascii</span><span class="p">,</span> <span class="n">from_ascii</span><span class="p">,</span> <span class="n">to_netcdf</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tra&#39;</span><span class="p">,</span> <span class="s1">&#39;LagrantoRun&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="Tra"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra">[docs]</a><span class="k">class</span> <span class="nc">Tra</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class to work with LAGRANTO output.</span>
+
+<span class="sd">    Read trajectories from a LAGRANTO file and return a structured numpy array</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename : string</span>
+<span class="sd">            File containing lagranto trajectories</span>
+<span class="sd">        usedatetime: bool</span>
+<span class="sd">            Read times as datetime objects, default True</span>
+<span class="sd">        array: structured array</span>
+<span class="sd">            If defined creates a new Tra object filled with the array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        structured array (Tra): trajs(ntra,ntime) with variables as tuple.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt;    filename = &#39;mylslfile.nc&#39;</span>
+<span class="sd">    &gt;&gt;&gt;    trajs = Tra()</span>
+<span class="sd">    &gt;&gt;&gt;    trajs.load_netcdf(filename)</span>
+<span class="sd">    &gt;&gt;&gt;    trajs[&#39;lon&#39;][0,:]  # return the longitudes for the first trajectory.</span>
+
+<span class="sd">    &gt;&gt;&gt; trajs = Tra(filename)</span>
+<span class="sd">    &gt;&gt;&gt; selected_trajs = Tra(array=trajs[[10, 20, 30], :])</span>
+
+<span class="sd">    Author : Nicolas Piaget, ETH Zurich , 2014</span>
+<span class="sd">             Sebastiaan Crezee, ETH Zurich , 2014</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_startdate</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">usedatetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialized a Tra object.</span>
+
+<span class="sd">        If filename is given, try to load it directly;</span>
+<span class="sd">        Arguments to the load function can be passed as key=value argument.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">typefile</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;typefile&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">typefile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;typefile is not used anymore;&#39;</span> \
+                  <span class="s1">&#39;it will be remove in futur version&#39;</span>
+            <span class="k">raise</span> <span class="ne">DeprecationWarning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_array</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_array</span> <span class="o">=</span> <span class="n">array</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_netcdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">usedatetime</span><span class="o">=</span><span class="n">usedatetime</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">IOError</span><span class="p">,</span> <span class="ne">RuntimeError</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">load_ascii</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">usedatetime</span><span class="o">=</span><span class="n">usedatetime</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Unkown fileformat. Known formats &quot;</span> 
+                              <span class="s2">&quot;are ascii or netcdf&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dtypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">descr</span>
+            <span class="n">dtypes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">descr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">dtypes</span> <span class="o">=</span> <span class="p">[(</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dtypes</span><span class="p">]</span>
+            <span class="n">newarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+                <span class="n">newarr</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+            <span class="n">newarr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_array</span> <span class="o">=</span> <span class="n">newarr</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot; </span><span class="se">\</span>
+<span class="s2">            </span><span class="si">{}</span><span class="s2"> trajectories with </span><span class="si">{}</span><span class="s2"> time steps. </span><span class="se">\n</span><span class="s2"> </span><span class="se">\</span>
+<span class="s2">            Available fields: </span><span class="si">{}</span><span class="se">\n</span><span class="s2"> </span><span class="se">\</span>
+<span class="s2">            total duration: </span><span class="si">{}</span><span class="s2"> minutes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ntra</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ntime</span><span class="p">,</span>
+                <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">duration</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="c1"># Assume it&#39;s an empty Tra()</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">            Empty trajectories container.</span><span class="se">\n\</span>
+<span class="s2">            Hint: use load_ascii() or load_netcdf()</span><span class="se">\n\</span>
+<span class="s2">            to load data&quot;</span>
+        <span class="k">return</span> <span class="n">string</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ntra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the number of trajectories&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Be careful with the dimensions, &quot;</span>
+                 <span class="s2">&quot;you may want to change the shape:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                 <span class="s2">&quot;either shape + (1,) or (1,)+shape&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ntime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the number of time steps&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Be careful with the dimensions, &quot;</span>
+                 <span class="s2">&quot;you may want to change the shape:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                 <span class="s2">&quot;either shape + (1,) or (1,)+shape&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the names of the variables&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">duration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Time duration in minutes.&quot;&quot;&quot;</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">delta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">timedelta</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">/</span> <span class="mf">60.</span>
+        <span class="k">return</span> <span class="n">delta</span> <span class="o">*</span> <span class="mf">60.</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">initial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Give the initial time of the trajectories.&quot;&quot;&quot;</span>
+        <span class="n">starttime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">starttime</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">datetime</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">startdate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the starting date of the trajectories&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startdate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">time0</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">time0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_startdate</span> <span class="o">=</span> <span class="n">time0</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">datetime</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_startdate</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startdate</span>
+
+<div class="viewcode-block" id="Tra.set_array"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.set_array">[docs]</a>    <span class="k">def</span> <span class="nf">set_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;To change the trajectories array.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_array</span> <span class="o">=</span> <span class="n">array</span></div>
+
+<div class="viewcode-block" id="Tra.get_array"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.get_array">[docs]</a>    <span class="k">def</span> <span class="nf">get_array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the trajectories array as numpy object&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_array</span></div>
+
+<div class="viewcode-block" id="Tra.concatenate"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.concatenate">[docs]</a>    <span class="k">def</span> <span class="nf">concatenate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trajs</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;To concatenate trajectories together.</span>
+
+<span class="sd">        Concatenate trajectories together and return a new object.</span>
+<span class="sd">        The trajectories should contain the same variables.</span>
+<span class="sd">        if time=False, the number of timestep in each trajs should be the same</span>
+<span class="sd">        if time=True, the number of trajectories in each Tra should be the same</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">            trajs: Tra or list of Tra</span>
+<span class="sd">                Trajectories to concatenate with the current one</span>
+<span class="sd">            time: bool, default False</span>
+<span class="sd">                if True concatenate along the time dimension</span>
+<span class="sd">            inplace: bool, default False</span>
+<span class="sd">                if True append the trajs to current Tra object and return None</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tra</span>
+<span class="sd">            Return a new Tra (trajectories) object</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Create a new Tra object which include trajs and all newtrajs</span>
+
+<span class="sd">        &gt;&gt;&gt; files = [&#39;lsl_20001010_00.4&#39;, &#39;lsl_2001010_01.4&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; filename = files[0]</span>
+<span class="sd">        &gt;&gt;&gt; trajs = Tra(filename)</span>
+<span class="sd">        &gt;&gt;&gt; newtrajs = [Tra(f) for f in files]</span>
+<span class="sd">        &gt;&gt;&gt; alltrajs = trajs.concatenate(newtrajs)</span>
+
+<span class="sd">        Append newtrajs to trajs</span>
+
+<span class="sd">        &gt;&gt;&gt; trajs = Tra(filename)</span>
+<span class="sd">        &gt;&gt;&gt; newtrajs = [Tra(f) for f in files]</span>
+<span class="sd">        &gt;&gt;&gt; trajs.concatenate(newtrajs, inplace=True)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trajs</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+            <span class="n">trajs</span> <span class="o">=</span> <span class="p">(</span><span class="n">trajs</span><span class="p">,)</span>
+        <span class="k">if</span> <span class="n">time</span><span class="p">:</span>
+            <span class="n">trajstuple</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">,)</span>
+            <span class="n">trajstuple</span> <span class="o">+=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">tra</span><span class="o">.</span><span class="n">T</span> <span class="k">for</span> <span class="n">tra</span> <span class="ow">in</span> <span class="n">trajs</span><span class="p">)</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">trajstuple</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">trajstuple</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_array</span><span class="p">(),)</span>
+            <span class="n">trajstuple</span> <span class="o">+=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">tra</span><span class="o">.</span><span class="n">get_array</span><span class="p">()</span> <span class="k">for</span> <span class="n">tra</span> <span class="ow">in</span> <span class="n">trajs</span><span class="p">)</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">trajstuple</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_array</span> <span class="o">=</span> <span class="n">test</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">newtrajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">()</span>
+            <span class="n">newtrajs</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">newtrajs</span></div>
+
+<div class="viewcode-block" id="Tra.append"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.append">[docs]</a>    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trajs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;append trajectories</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------</span>
+<span class="sd">        trajs: single Tra or list of Tra</span>
+<span class="sd">                Trajectories to concatenate with the current one</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        &gt;&gt;&gt; files = [&#39;lsl_20001010_00.4&#39;, &#39;lsl_2001010_01.4&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; filename = files[0]</span>
+<span class="sd">        &gt;&gt;&gt; trajs = Tra(filename)</span>
+<span class="sd">        &gt;&gt;&gt; newtrajs = [Tra(f) for f in files]</span>
+<span class="sd">        &gt;&gt;&gt; trajs.append(newtrajs)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">trajs</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Tra.write"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">fileformat</span><span class="o">=</span><span class="s1">&#39;netcdf&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method to write the trajectories to a file&quot;&quot;&quot;</span>
+        <span class="nb">globals</span><span class="p">()[</span><span class="s1">&#39;_write_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fileformat</span><span class="p">)](</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Tra.load_netcdf"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.load_netcdf">[docs]</a>    <span class="k">def</span> <span class="nf">load_netcdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">usedatetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">msv</span><span class="o">=-</span><span class="mi">999</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;hours&#39;</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method to load trajectories from a netcdf file&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startdate</span> <span class="o">=</span> <span class="n">from_netcdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span>
+                                                   <span class="n">usedatetime</span><span class="o">=</span><span class="n">usedatetime</span><span class="p">,</span>
+                                                   <span class="n">msv</span><span class="o">=</span><span class="n">msv</span><span class="p">,</span>
+                                                   <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span>
+                                                   <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="n">load_netcdf</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">from_netcdf</span><span class="o">.</span><span class="vm">__doc__</span>
+
+<div class="viewcode-block" id="Tra.write_netcdf"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.write_netcdf">[docs]</a>    <span class="k">def</span> <span class="nf">write_netcdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;hours&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write netcdf&quot;&quot;&quot;</span>
+        <span class="n">to_netcdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">)</span></div>
+    <span class="n">write_netcdf</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">to_netcdf</span><span class="o">.</span><span class="vm">__doc__</span>
+
+<div class="viewcode-block" id="Tra.write_ascii"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.write_ascii">[docs]</a>    <span class="k">def</span> <span class="nf">write_ascii</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">gz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">digit</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write ascii&quot;&quot;&quot;</span>
+        <span class="n">to_ascii</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">gz</span><span class="o">=</span><span class="n">gz</span><span class="p">,</span> <span class="n">digit</span><span class="o">=</span><span class="n">digit</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
+    <span class="n">write_ascii</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">to_ascii</span><span class="o">.</span><span class="vm">__doc__</span>
+
+<div class="viewcode-block" id="Tra.load_ascii"><a class="viewcode-back" href="../../lagranto.html#lagranto.Tra.load_ascii">[docs]</a>    <span class="k">def</span> <span class="nf">load_ascii</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">usedatetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">msv</span><span class="o">=-</span><span class="mf">999.999</span><span class="p">,</span> <span class="n">gz</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load ascii&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startdate</span> <span class="o">=</span> <span class="n">from_ascii</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span>
+                                                  <span class="n">usedatetime</span><span class="o">=</span><span class="n">usedatetime</span><span class="p">,</span>
+                                                  <span class="n">msv</span><span class="o">=</span><span class="n">msv</span><span class="p">,</span>
+                                                  <span class="n">gz</span><span class="o">=</span><span class="n">gz</span><span class="p">)</span></div>
+    <span class="n">load_ascii</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">from_ascii</span><span class="o">.</span><span class="vm">__doc__</span></div>
+
+
+<span class="k">def</span> <span class="nf">intmpdir</span><span class="p">(</span><span class="n">afunc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wrapper to excute a command in a temporary directory</span>
+
+<span class="sd">    Require workingdir as first argument of the function wrapped</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">afunc</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrapper itself&quot;&quot;&quot;</span>
+        <span class="n">workingdir</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">no_tmp_dir</span> <span class="o">=</span> <span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;no_tmp_dir&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">workingdir</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">==</span> <span class="s1">&#39;/tmp&#39;</span> <span class="ow">or</span> <span class="n">no_tmp_dir</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">afunc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+        <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">mkdtemp</span><span class="p">())</span>
+        <span class="n">lwkds</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                 <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;outputdir&#39;</span><span class="p">,</span> <span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="s1">&#39;sdate&#39;</span><span class="p">]}</span>
+        <span class="n">link_files</span><span class="p">(</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">,</span> <span class="o">**</span><span class="n">lwkds</span><span class="p">)</span>
+        <span class="n">nargs</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmpdir</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">afunc</span><span class="p">(</span><span class="o">*</span><span class="n">nargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+        <span class="n">tmpdir</span><span class="o">.</span><span class="n">rmdir_p</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">out</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="nd">@intmpdir</span>
+<span class="k">def</span> <span class="nf">create_startf</span><span class="p">(</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">specifier</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;cosmo&#39;</span><span class="p">,</span>
+                  <span class="n">outputdir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sdate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tolist</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cmd_header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Create a startfile for LAGRANTO.&quot;&quot;&quot;</span>
+    <span class="n">outputdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outputdir</span><span class="p">)</span>
+    <span class="n">workingdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">workingdir</span><span class="p">)</span>
+    <span class="n">create</span> <span class="o">=</span> <span class="s2">&quot;startf.</span><span class="si">{version}</span><span class="s2"> &quot;</span>
+    <span class="n">create</span> <span class="o">+=</span> <span class="s2">&quot;{date:%Y%m</span><span class="si">%d</span><span class="s2">_%H} </span><span class="si">{filename}</span><span class="s2"> </span><span class="si">{specifier}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+                <span class="n">create</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">option</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">LagrantoException</span><span class="p">(</span><span class="s1">&#39;options as to be a list of string&#39;</span><span class="p">)</span>
+    <span class="c1"># if tolist:</span>
+    <span class="c1">#     filename = Path(filename).splitext()[0] + &#39;.4&#39;</span>
+    <span class="n">create</span> <span class="o">=</span> <span class="n">create</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">,</span>
+                           <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">specifier</span><span class="o">=</span><span class="n">specifier</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">run_cmd</span><span class="p">(</span><span class="n">create</span><span class="p">,</span> <span class="n">workingdir</span><span class="p">,</span> <span class="n">cmd_header</span><span class="o">=</span><span class="n">cmd_header</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tolist</span><span class="p">:</span>
+        <span class="n">lslname</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">lslname</span><span class="p">)</span><span class="o">.</span><span class="n">splitext</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.startf&#39;</span>
+        <span class="n">lsl2list</span> <span class="o">=</span> <span class="s1">&#39;lsl2list.</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">lslname</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="n">run_cmd</span><span class="p">(</span><span class="n">lsl2list</span><span class="p">,</span> <span class="n">workingdir</span><span class="p">,</span> <span class="n">cmd_header</span><span class="o">=</span><span class="n">cmd_header</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">workingdir</span> <span class="o">/</span> <span class="n">filename</span><span class="p">,</span> <span class="n">outputdir</span> <span class="o">/</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">SameFileError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">if</span> <span class="n">tolist</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">out</span><span class="p">,</span> <span class="n">filename</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="nd">@intmpdir</span>
+<span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">inpfile</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">crit</span><span class="p">,</span>
+           <span class="n">outputdir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sdate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;cosmo&#39;</span><span class="p">,</span>
+           <span class="n">cmd_header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Select trajectories.&quot;&quot;&quot;</span>
+    <span class="n">netcdf_format</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;netcdf_format&#39;</span><span class="p">,</span> <span class="s1">&#39;CF&#39;</span><span class="p">)</span>
+    <span class="n">select_cmd</span> <span class="o">=</span> <span class="s1">&#39;select.</span><span class="si">{version}</span><span class="s1"> </span><span class="si">{inpfile}</span><span class="s1"> </span><span class="si">{outfile}</span><span class="s1"> &quot;</span><span class="si">{crit}</span><span class="s1">&quot;&#39;</span>
+    <span class="n">select_cmd</span> <span class="o">=</span> <span class="n">select_cmd</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">inpfile</span><span class="o">=</span><span class="n">inpfile</span><span class="p">,</span>
+                                   <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">crit</span><span class="o">=</span><span class="n">crit</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">run_cmd</span><span class="p">(</span><span class="n">select_cmd</span><span class="p">,</span> <span class="n">workingdir</span><span class="p">,</span>
+                  <span class="n">netcdf_format</span><span class="o">=</span><span class="n">netcdf_format</span><span class="p">,</span> <span class="n">cmd_header</span><span class="o">=</span><span class="n">cmd_header</span><span class="p">)</span>
+    <span class="n">outputdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outputdir</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">workingdir</span> <span class="o">/</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">outputdir</span> <span class="o">/</span> <span class="n">outfile</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">SameFileError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="nd">@intmpdir</span>
+<span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">outputdir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tracevars</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+          <span class="n">tracevars_content</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sdate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;cosmo&#39;</span><span class="p">,</span>
+          <span class="n">cmd_header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Trace variables along a trajectory.&quot;&quot;&quot;</span>
+    <span class="n">netcdf_format</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;netcdf_format&#39;</span><span class="p">,</span> <span class="s1">&#39;CF&#39;</span><span class="p">)</span>
+    <span class="n">workingdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">workingdir</span><span class="p">)</span>
+    <span class="n">outputdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outputdir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">outfile</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="n">trace_cmd</span> <span class="o">=</span> <span class="s1">&#39;trace.</span><span class="si">{version}</span><span class="s1"> </span><span class="si">{filename}</span><span class="s1"> </span><span class="si">{outfile}</span><span class="s1">&#39;</span>
+    <span class="n">tracevars_file</span> <span class="o">=</span> <span class="s1">&#39;tracevars&#39;</span>
+    <span class="k">if</span> <span class="n">tracevars</span><span class="p">:</span>
+        <span class="n">tracevars_file</span> <span class="o">=</span> <span class="n">tracevars</span>
+        <span class="n">trace_cmd</span> <span class="o">+=</span> <span class="s1">&#39; -v &#39;</span> <span class="o">+</span> <span class="n">tracevars</span>
+    <span class="k">if</span> <span class="n">tracevars_content</span><span class="p">:</span>
+        <span class="k">with</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">workingdir</span><span class="p">)</span> <span class="o">/</span> <span class="n">tracevars_file</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fname</span><span class="p">:</span>
+            <span class="n">fname</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tracevars_content</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">field</span><span class="p">:</span>
+        <span class="n">trace_cmd</span> <span class="o">+=</span> <span class="s1">&#39; -f &#39;</span> <span class="o">+</span> <span class="n">field</span>
+    <span class="n">trace_cmd</span> <span class="o">=</span> <span class="n">trace_cmd</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span>
+                                 <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">run_cmd</span><span class="p">(</span><span class="n">trace_cmd</span><span class="p">,</span> <span class="n">workingdir</span><span class="p">,</span>
+                  <span class="n">netcdf_format</span><span class="o">=</span><span class="n">netcdf_format</span><span class="p">,</span> <span class="n">cmd_header</span><span class="o">=</span><span class="n">cmd_header</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">workingdir</span> <span class="o">/</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">outputdir</span> <span class="o">/</span> <span class="n">outfile</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">SameFileError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="nd">@intmpdir</span>
+<span class="k">def</span> <span class="nf">caltra</span><span class="p">(</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">startdate</span><span class="p">,</span> <span class="n">enddate</span><span class="p">,</span> <span class="n">startfile</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span>
+           <span class="n">jump</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">outputdir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sdate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;cosmo&#39;</span><span class="p">,</span>
+           <span class="n">cmd_header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">withtrace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tracevars_content</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+           <span class="n">tracevars</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate trajectories for air parcels.</span>
+
+<span class="sd">    starting at positions specified in startfile.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">outputdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outputdir</span><span class="p">)</span>
+    <span class="n">netcdf_format</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;netcdf_format&#39;</span><span class="p">,</span> <span class="s1">&#39;CF&#39;</span><span class="p">)</span>
+    <span class="n">no_tmp_dir</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;no_tmp_dir&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;prefix&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">no_tmp_dir</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">outputdir</span> <span class="o">/</span> <span class="n">filename</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">withtrace</span><span class="p">:</span>
+        <span class="n">caltra_cmd</span> <span class="o">=</span> <span class="s1">&#39;caltra.</span><span class="si">{version}</span><span class="s1">&#39;</span>
+        <span class="n">caltra_cmd</span> <span class="o">+=</span> <span class="s1">&#39; {startdate:%Y%m</span><span class="si">%d</span><span class="s1">_%H} {enddate:%Y%m</span><span class="si">%d</span><span class="s1">_%H}&#39;</span>
+        <span class="n">caltra_cmd</span> <span class="o">+=</span> <span class="s1">&#39; </span><span class="si">{startfile}</span><span class="s1"> </span><span class="si">{filename}</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="n">jump</span><span class="p">:</span>
+            <span class="n">caltra_cmd</span> <span class="o">+=</span> <span class="s1">&#39; -j&#39;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">caltra_cmd</span> <span class="o">+=</span> <span class="s1">&#39; -</span><span class="si">{key}</span><span class="s1"> </span><span class="si">{value}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">caltra_cmd</span> <span class="o">=</span> <span class="n">caltra_cmd</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">startdate</span><span class="o">=</span><span class="n">startdate</span><span class="p">,</span> <span class="n">enddate</span><span class="o">=</span><span class="n">enddate</span><span class="p">,</span>
+                                       <span class="n">startfile</span><span class="o">=</span><span class="n">startfile</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+                                       <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tracevars_file</span> <span class="o">=</span> <span class="n">tracevars</span> <span class="k">if</span> <span class="n">tracevars</span> <span class="k">else</span> <span class="s1">&#39;tracevars&#39;</span>
+        <span class="k">if</span> <span class="n">tracevars_content</span><span class="p">:</span>
+            <span class="k">with</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">workingdir</span><span class="p">)</span> <span class="o">/</span> <span class="n">tracevars_file</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fname</span><span class="p">:</span>
+                <span class="n">fname</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tracevars_content</span><span class="p">)</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">enddate</span> <span class="o">-</span> <span class="n">startdate</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="n">caltra_cmd</span> <span class="o">=</span> <span class="s1">&#39;caltra </span><span class="si">{startfile}</span><span class="s1"> </span><span class="si">{delta:1.0f}</span><span class="s1"> </span><span class="si">{filename}</span><span class="s1"> &#39;</span>
+        <span class="n">caltra_cmd</span> <span class="o">+=</span> <span class="s1">&#39;-ref {startdate:%Y%m</span><span class="si">%d</span><span class="s1">_%H%M}&#39;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">caltra_cmd</span> <span class="o">+=</span> <span class="s1">&#39; -</span><span class="si">{key}</span><span class="s1"> </span><span class="si">{value}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">caltra_cmd</span> <span class="o">=</span> <span class="n">caltra_cmd</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">startdate</span><span class="o">=</span><span class="n">startdate</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span>
+                                       <span class="n">startfile</span><span class="o">=</span><span class="n">startfile</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">run_cmd</span><span class="p">(</span><span class="n">caltra_cmd</span><span class="p">,</span> <span class="n">workingdir</span><span class="p">,</span> <span class="n">netcdf_format</span><span class="o">=</span><span class="n">netcdf_format</span><span class="p">,</span>
+                  <span class="n">cmd_header</span><span class="o">=</span><span class="n">cmd_header</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">no_tmp_dir</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">workingdir</span> <span class="o">/</span> <span class="n">filename</span><span class="p">,</span> <span class="n">outputdir</span> <span class="o">/</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">SameFileError</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="nd">@intmpdir</span>
+<span class="k">def</span> <span class="nf">density</span><span class="p">(</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">inpfile</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span>
+            <span class="n">outputdir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sdate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;cosmo&#39;</span><span class="p">,</span>
+            <span class="n">cmd_header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate trajectories density.&quot;&quot;&quot;</span>
+    <span class="n">outputdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outputdir</span><span class="p">)</span>
+    <span class="n">netcdf_format</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;netcdf_format&#39;</span><span class="p">,</span> <span class="s1">&#39;CF&#39;</span><span class="p">)</span>
+    <span class="n">density_cmd</span> <span class="o">=</span> <span class="s1">&#39;density.</span><span class="si">{version}</span><span class="s1"> </span><span class="si">{inpfile}</span><span class="s1"> </span><span class="si">{outfile}</span><span class="s1">&#39;</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">density_cmd</span> <span class="o">+=</span> <span class="s1">&#39; -</span><span class="si">{key}</span><span class="s1"> </span><span class="si">{value}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">density_cmd</span> <span class="o">=</span> <span class="n">density_cmd</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inpfile</span><span class="o">=</span><span class="n">inpfile</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span>
+                                     <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">run_cmd</span><span class="p">(</span><span class="n">density_cmd</span><span class="p">,</span> <span class="n">workingdir</span><span class="p">,</span>
+                  <span class="n">netcdf_format</span><span class="o">=</span><span class="n">netcdf_format</span><span class="p">,</span> <span class="n">cmd_header</span><span class="o">=</span><span class="n">cmd_header</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">workingdir</span> <span class="o">/</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">outputdir</span> <span class="o">/</span> <span class="n">outfile</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">SameFileError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span> <span class="nf">link_files</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">,</span> <span class="n">outputdir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;cosmo&#39;</span><span class="p">,</span>
+               <span class="n">sdate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sfiles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">startdate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">enddate</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Link data from `folder`, `outputdir`, to `tmpdir`.</span>
+
+<span class="sd">    Transform lff[d,f]*.nc files from `folder` in P and S files.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    folder: string,</span>
+<span class="sd">        Path to the origin folder</span>
+<span class="sd">    tmpdir: string,</span>
+<span class="sd">        Path to the destination folder</span>
+<span class="sd">    outputdir: string,</span>
+<span class="sd">        Path to the folder where results are saved</span>
+<span class="sd">    version: string,</span>
+<span class="sd">        Only cosmo is available for now</span>
+<span class="sd">    sdate: datetime object,</span>
+<span class="sd">        Starting date of the cosmo run;</span>
+<span class="sd">        Useful is the cosmo file are named in forecast mode</span>
+<span class="sd">    sfiles: boolean,</span>
+<span class="sd">        If True create link with prefix S as well, pointing to the same files</span>
+<span class="sd">        as the P files.</span>
+<span class="sd">    startdate: datetime object,</span>
+<span class="sd">        First date for which to link files. (inclusive)</span>
+<span class="sd">    enddate: datetime object,</span>
+<span class="sd">        Last date for which ti link files (exclusive)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># the necessary files</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
+    <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">files</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">&#39;cosmo&#39;</span><span class="p">:</span>
+        <span class="n">constant_file</span> <span class="o">=</span> <span class="n">folder</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s1">&#39;l*c.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">constant_file</span><span class="o">.</span><span class="n">isfile</span><span class="p">():</span>
+            <span class="n">constant_file</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">/</span> <span class="s1">&#39;LMCONSTANTS&#39;</span><span class="p">)</span>
+        <span class="n">cosmofiles</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s1">&#39;lff[df]*[0-9].nc&#39;</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">cosmofiles</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">fname</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;lffd%Y%m</span><span class="si">%d</span><span class="s1">%H.nc&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">sfname</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">days</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">sfname</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">])</span>
+                                                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sfname</span><span class="p">),</span>
+                                                                <span class="mi">2</span><span class="p">)]</span>
+                <span class="n">date</span> <span class="o">=</span> <span class="n">sdate</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">days</span><span class="p">,</span> <span class="n">hours</span><span class="o">=</span><span class="n">hours</span><span class="p">,</span>
+                                         <span class="n">minutes</span><span class="o">=</span><span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span><span class="o">=</span><span class="n">seconds</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">startdate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">date</span> <span class="o">&lt;</span> <span class="n">startdate</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">enddate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">date</span> <span class="o">&gt;=</span> <span class="n">enddate</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">pfile</span> <span class="o">=</span> <span class="s1">&#39;P{:%Y%m</span><span class="si">%d</span><span class="s1">_%H}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+            <span class="n">fname</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">/</span> <span class="n">pfile</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">sfiles</span><span class="p">:</span>
+                <span class="n">sfile</span> <span class="o">=</span> <span class="s1">&#39;S{:%Y%m</span><span class="si">%d</span><span class="s1">_%H}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+                <span class="n">fname</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">/</span> <span class="n">sfile</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">cosmofiles</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fname</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">/</span> <span class="n">fname</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">if</span> <span class="n">outputdir</span><span class="p">:</span>
+        <span class="n">outputdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outputdir</span><span class="p">)</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">outputdir</span><span class="o">.</span><span class="n">files</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">fname</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">/</span> <span class="n">fname</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="LagrantoRun"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun">[docs]</a><span class="k">class</span> <span class="nc">LagrantoRun</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Perform Lagranto calculation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dates: list</span>
+<span class="sd">        list of (startdate, enddate) tuple</span>
+<span class="sd">    workingdir: string, optional</span>
+<span class="sd">        path to the model output directory, default to current</span>
+<span class="sd">    outputdir: string, optional</span>
+<span class="sd">        path to the trajectory utput directory, defautl to current</span>
+<span class="sd">    startf: string, optional</span>
+<span class="sd">        name of the startf to use (or to create), default to startf.4</span>
+<span class="sd">        The format parameter date can be used, for ex: startf_{date:%Y%m%d%H}.4</span>
+<span class="sd">    lslname: string, optional</span>
+<span class="sd">        name of the lsl file, define its type, default to lsl_{:%Y%m%d%H}.4</span>
+<span class="sd">    tracevars: string, optional</span>
+<span class="sd">        name of a tracevars file as used by trace, default to none</span>
+<span class="sd">    field: string, optional</span>
+<span class="sd">        name of a single field to trace, default to none</span>
+<span class="sd">    version: string, optional</span>
+<span class="sd">        name of the model version to use, currently only cosmo (default)</span>
+<span class="sd">    linkfiles: function, optional</span>
+<span class="sd">        function used to overwrite link_files in run.</span>
+<span class="sd">        Should be used if COSMO output is not standard netcdf</span>
+<span class="sd">    nprocesses: int, optional</span>
+<span class="sd">        Number of processes used when running in parallel, default to 10</span>
+<span class="sd">    sdate: datetime object,</span>
+<span class="sd">        Starting date of the simulation;</span>
+<span class="sd">        useful if files are named in forecast mode</span>
+<span class="sd">    fresh: bool, optional</span>
+<span class="sd">        Fresh start. Remove output directory first.</span>
+<span class="sd">    cmd_header: string, optional</span>
+<span class="sd">        Change the header using for running the command;</span>
+<span class="sd">        see ``run_cmd`` help for more details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">workingdir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">outputdir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
+                 <span class="n">startf</span><span class="o">=</span><span class="s1">&#39;startf.4&#39;</span><span class="p">,</span> <span class="n">lslname</span><span class="o">=</span><span class="s1">&#39;lsl_{:%Y%m</span><span class="si">%d</span><span class="s1">%H}.4&#39;</span><span class="p">,</span>
+                 <span class="n">tracevars</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;cosmo&#39;</span><span class="p">,</span> <span class="n">linkfiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">nprocesses</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sdate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cmd_header</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dates</span> <span class="o">=</span> <span class="n">dates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">workingdir</span><span class="p">)</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outputdir</span><span class="p">)</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">fresh</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span><span class="o">.</span><span class="n">makedirs_p</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">startf</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">startf</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lslname</span> <span class="o">=</span> <span class="n">lslname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tracevars</span> <span class="o">=</span> <span class="n">tracevars</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">field</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">link_files</span> <span class="o">=</span> <span class="n">linkfiles</span> <span class="k">if</span> <span class="n">linkfiles</span> <span class="k">else</span> <span class="n">link_files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nprocesses</span> <span class="o">=</span> <span class="n">nprocesses</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sdate</span> <span class="o">=</span> <span class="n">sdate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_header</span> <span class="o">=</span> <span class="n">cmd_header</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">caltra_outfile</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">density_outfile</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">select_outfile</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="LagrantoRun.create_startf"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.create_startf">[docs]</a>    <span class="k">def</span> <span class="nf">create_startf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">specifier</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tolist</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                      <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a file with the starting position of the trajectories.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date: datetime</span>
+<span class="sd">            date for which the startf date is produced</span>
+<span class="sd">        specifier: string</span>
+<span class="sd">            detailed description of starting positions;</span>
+<span class="sd">            (see LAGRANTO documentations for more details)</span>
+<span class="sd">        filename: string</span>
+<span class="sd">            filename where starting positions are saved;</span>
+<span class="sd">            the default is defined by `LagrantoRun`</span>
+<span class="sd">            Can make use of the format parameter date, for example:</span>
+<span class="sd">            startf_{date:%Y%m%d%H}.4</span>
+<span class="sd">        tolist: bool</span>
+<span class="sd">            If the starting position should be saved as a list of points;</span>
+<span class="sd">             Useful if the same file is used for different starting times</span>
+<span class="sd">        kwargs: dict</span>
+<span class="sd">            key, value options, possible values are listed bellow;</span>
+
+<span class="sd">            - cmd_header:</span>
+<span class="sd">              header to add to the shell command;</span>
+<span class="sd">              (see `run_cmd` for more details)</span>
+<span class="sd">            - options:</span>
+<span class="sd">              list of options to pass to the startf function;</span>
+<span class="sd">              (see the LAGRANTO documentation for more details)</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="n">startf</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">startf</span> <span class="o">=</span> <span class="n">startf</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">startf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">startf</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">create_startf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">startf</span><span class="p">,</span> <span class="n">specifier</span><span class="p">,</span>
+                            <span class="n">outputdir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span><span class="p">,</span> <span class="n">sdate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sdate</span><span class="p">,</span>
+                            <span class="n">version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">tolist</span><span class="o">=</span><span class="n">tolist</span><span class="p">,</span>
+                            <span class="n">cmd_header</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd_header</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tolist</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">startf</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+<div class="viewcode-block" id="LagrantoRun.caltra"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.caltra">[docs]</a>    <span class="k">def</span> <span class="nf">caltra</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startdate</span><span class="p">,</span> <span class="n">enddate</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute trajectories for the given startdate&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lslname</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">startf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">startf</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">startdate</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">outfile</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">caltra_outfile</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">startdate</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">caltra_outfile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lslname</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">startdate</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">caltra</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">startdate</span><span class="p">,</span> <span class="n">enddate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startf</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">caltra_outfile</span><span class="p">,</span> <span class="n">outputdir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span><span class="p">,</span>
+                      <span class="n">sdate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sdate</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+                      <span class="n">cmd_header</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd_header</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LagrantoRun.trace"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.trace">[docs]</a>    <span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tracevars</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+              <span class="n">tracevars_content</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Trace variable along a trajectory.</span>
+
+<span class="sd">        Trace meteorological fields along trajectories</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date: datetime object</span>
+<span class="sd">            starting date of the trajectories to trace</span>
+<span class="sd">        filename: string, optional</span>
+<span class="sd">            If not specified use `LagrantoRun.lslname`</span>
+<span class="sd">        outfile: string, optional</span>
+<span class="sd">            If not specified same as `filename`</span>
+<span class="sd">        tracevars: string, optional</span>
+<span class="sd">            Name of the file with the field to trace;</span>
+<span class="sd">            If not specified use `LagrantoRun.tracevars`</span>
+<span class="sd">        tracevars_content: string, optional</span>
+<span class="sd">            Content of the tracevars file;</span>
+
+<span class="sd">            .. code_block: python</span>
+
+<span class="sd">            \&quot;\&quot;\&quot;\n</span>
+<span class="sd">            QV      1000. P 1\n</span>
+<span class="sd">            PV      1.    T 1\n</span>
+<span class="sd">            \&quot;\&quot;\&quot;</span>
+
+<span class="sd">        field: string,</span>
+<span class="sd">            Specify a field to trace as follow: QV 1.</span>
+<span class="sd">        kwargs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tracef</span> <span class="o">=</span> <span class="n">tracevars</span> <span class="k">if</span> <span class="n">tracevars</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracevars</span>
+        <span class="n">fieldv</span> <span class="o">=</span> <span class="n">field</span> <span class="k">if</span> <span class="n">field</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span> <span class="k">if</span> <span class="n">filename</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">lslname</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">trace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span>
+                     <span class="n">outputdir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span><span class="p">,</span> <span class="n">tracevars</span><span class="o">=</span><span class="n">tracef</span><span class="p">,</span>
+                     <span class="n">tracevars_content</span><span class="o">=</span><span class="n">tracevars_content</span><span class="p">,</span>
+                     <span class="n">field</span><span class="o">=</span><span class="n">fieldv</span><span class="p">,</span> <span class="n">sdate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sdate</span><span class="p">,</span>
+                     <span class="n">version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">cmd_header</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd_header</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LagrantoRun.density"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.density">[docs]</a>    <span class="k">def</span> <span class="nf">density</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inpfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the density of trajectories&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">inpfile</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">inpfile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">caltra_outfile</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Provide an input file or run caltra&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">outfile</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">density_outfile</span> <span class="o">=</span> <span class="s1">&#39;density.4&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">density_outfile</span> <span class="o">=</span> <span class="n">outfile</span>
+        <span class="k">return</span> <span class="n">density</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">inpfile</span><span class="o">=</span><span class="n">inpfile</span><span class="p">,</span>
+                       <span class="n">outfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">density_outfile</span><span class="p">,</span> <span class="n">outputdir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span><span class="p">,</span>
+                       <span class="n">sdate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sdate</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+                       <span class="n">cmd_header</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd_header</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LagrantoRun.select"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.select">[docs]</a>    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inpfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform selection of trajectories&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">inpfile</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">inpfile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">caltra_outfile</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Provide an input file or run caltra&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">outfile</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">select_outfile</span> <span class="o">=</span> <span class="s1">&#39;selected.4&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">select_outfile</span> <span class="o">=</span> <span class="n">outfile</span>
+        <span class="k">return</span> <span class="n">select</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">inpfile</span><span class="o">=</span><span class="n">inpfile</span><span class="p">,</span>
+                      <span class="n">outfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">select_outfile</span><span class="p">,</span> <span class="n">outputdir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span><span class="p">,</span>
+                      <span class="n">sdate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sdate</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+                      <span class="n">cmd_header</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd_header</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LagrantoRun.run"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caltra_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trace_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">startf_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run caltra, trace, and/or create_startf.</span>
+
+<span class="sd">        Run single_run for each dates tuple</span>
+<span class="sd">        See single_run description for more details.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        caltra_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the caltra function</span>
+<span class="sd">        trace_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the trace function</span>
+<span class="sd">        startf_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the create_startf function</span>
+<span class="sd">        kwargs:</span>
+<span class="sd">            Arguments to pass to the single_run function</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ------</span>
+<span class="sd">        A list of single_run result: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">caltra_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">caltra_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">trace_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">trace_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">startf_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">startf_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">startdate</span><span class="p">,</span> <span class="n">enddate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dates</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_run</span><span class="p">(</span><span class="n">startdate</span><span class="p">,</span> <span class="n">enddate</span><span class="p">,</span> <span class="n">caltra_kw</span><span class="o">=</span><span class="n">caltra_kw</span><span class="p">,</span>
+                                  <span class="n">trace_kw</span><span class="o">=</span><span class="n">trace_kw</span><span class="p">,</span>
+                                  <span class="n">startf_kw</span><span class="o">=</span><span class="n">startf_kw</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span></div>
+
+<div class="viewcode-block" id="LagrantoRun.run_parallel"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.run_parallel">[docs]</a>    <span class="k">def</span> <span class="nf">run_parallel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caltra_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trace_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">startf_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">nprocesses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run caltra, trace, and/or create_startf in parallel.</span>
+
+<span class="sd">        Run single_run for each dates tuple using `multiprocessing.Pool`.</span>
+<span class="sd">        See single_run description for more details.</span>
+
+<span class="sd">        Warning:  If you use run_parallel with create_startf and</span>
+<span class="sd">        if the starting file is not a list, be sure that every starting file</span>
+<span class="sd">        has a different name, for example doing as follow:</span>
+
+<span class="sd">        &gt;&gt;&gt; LagrantoRun(startf=&#39;startf_{date:%Y%m%d_%H.4}&#39;, ...)</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        caltra_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the caltra function</span>
+<span class="sd">        trace_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the trace function</span>
+<span class="sd">        startf_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the create_startf function</span>
+<span class="sd">        nprocesses: int,</span>
+<span class="sd">            Number of processors to use</span>
+<span class="sd">        kwargs:</span>
+<span class="sd">            Arguments to pass to the single_run function</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        A list of single_run results: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">caltra_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">caltra_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">trace_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">trace_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">startf_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">startf_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">nprocesses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nprocesses</span> <span class="o">=</span> <span class="n">nprocesses</span>
+
+        <span class="n">single_run</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">single_run</span><span class="p">,</span> <span class="n">caltra_kw</span><span class="o">=</span><span class="n">caltra_kw</span><span class="p">,</span>
+                             <span class="n">trace_kw</span><span class="o">=</span><span class="n">trace_kw</span><span class="p">,</span> <span class="n">startf_kw</span><span class="o">=</span><span class="n">startf_kw</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nprocesses</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="n">single_run</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dates</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span></div>
+
+<div class="viewcode-block" id="LagrantoRun.single_run"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.single_run">[docs]</a>    <span class="k">def</span> <span class="nf">single_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sd</span><span class="p">,</span> <span class="n">ed</span><span class="p">,</span> <span class="n">caltra_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trace_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">startf_kw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run caltra, trace and/or create_startf for a given starting date</span>
+
+<span class="sd">        Compute a trajectory set using caltra, trace and/or create_startf in a</span>
+<span class="sd">        temporary directory. Need a working installation of LAGRANTO.</span>
+
+<span class="sd">        If caltra, trace or create_startf return a error, single_run return</span>
+<span class="sd">        a LagrantoException error with the path of the temporary directory.</span>
+<span class="sd">        In this case, the temporary directory is not deleted.</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sd: datetime</span>
+<span class="sd">            Starting date of the trajectory</span>
+<span class="sd">        ed: datetime</span>
+<span class="sd">            Ending date of the trajectory</span>
+<span class="sd">        caltra_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the caltra function</span>
+<span class="sd">        trace_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the trace function</span>
+<span class="sd">        startf_kw: dictionary</span>
+<span class="sd">            Arguments to pass to the create_startf function</span>
+<span class="sd">        type: string (default both)</span>
+<span class="sd">            Define the type a run to perform:</span>
+<span class="sd">            both: caltra + trace</span>
+<span class="sd">            caltra: caltra</span>
+<span class="sd">            trace: trace</span>
+<span class="sd">            all: create_startf + caltra + trace</span>
+<span class="sd">            create: create_startf + caltra</span>
+<span class="sd">        debug: Boolean</span>
+<span class="sd">            If True raise LagrantoException instead of return it as string</span>
+<span class="sd">        kwargs: dictionnary</span>
+<span class="sd">            Arguments to pass to the link_files function</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        output of caltra, trace and/or create_startf: str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">caltra_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">caltra_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">trace_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">trace_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">startf_kw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">startf_kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="n">workingdir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span>
+        <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">mkdtemp</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span> <span class="o">=</span> <span class="n">tmpdir</span>
+        <span class="n">nkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+                   <span class="s1">&#39;outputdir&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span><span class="p">,</span>
+                   <span class="s1">&#39;sdate&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sdate</span><span class="p">}</span>
+        <span class="n">nkwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">link_files</span><span class="p">(</span><span class="n">workingdir</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">,</span> <span class="o">**</span><span class="n">nkwargs</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;both&#39;</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">caltra</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="n">ed</span><span class="p">,</span> <span class="o">**</span><span class="n">caltra_kw</span><span class="p">)</span>
+                <span class="n">out</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="o">**</span><span class="n">trace_kw</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;caltra&#39;</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">caltra</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="n">ed</span><span class="p">,</span> <span class="o">**</span><span class="n">caltra_kw</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;trace&#39;</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="o">**</span><span class="n">trace_kw</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;create&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;specifier&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">startf_kw</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="k">raise</span> <span class="n">LagrantoException</span><span class="p">(</span><span class="s1">&#39;specifier need to be specified&#39;</span>
+                                            <span class="s1">&#39; in startf_kw for type:&quot;</span><span class="si">{}</span><span class="s1">&quot;, &#39;</span>
+                                            <span class="s1">&#39;see create_starf function&#39;</span>
+                                            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span>
+                <span class="n">out</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_startf</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="o">**</span><span class="n">startf_kw</span><span class="p">)</span>
+                <span class="n">out</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">caltra</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="n">ed</span><span class="p">,</span> <span class="o">**</span><span class="n">caltra_kw</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
+                    <span class="n">out</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="o">**</span><span class="n">trace_kw</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">LagrantoException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">err</span><span class="o">.</span><span class="n">args</span> <span class="o">+=</span> <span class="p">(</span><span class="n">tmpdir</span><span class="p">,)</span>
+            <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+                <span class="k">raise</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">err</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workingdir</span> <span class="o">=</span> <span class="n">workingdir</span>
+        <span class="n">tmpdir</span><span class="o">.</span><span class="n">rmtree_p</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+<div class="viewcode-block" id="LagrantoRun.clear"><a class="viewcode-back" href="../../lagranto.html#lagranto.LagrantoRun.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove the output directory&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputdir</span><span class="o">.</span><span class="n">rmtree_p</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table Of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_lagranto.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lagranto.html">Basic examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lagranto.html#docstrings">DocStrings</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Nicolas Piaget.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,8 @@
+graft src
+include README
+include LICENSE.txt
+include AUTHORS.txt
+include tests/test_data/*
+recursive-include tests *
+recursive-include docs *
+recursive-exclude * *.pyc

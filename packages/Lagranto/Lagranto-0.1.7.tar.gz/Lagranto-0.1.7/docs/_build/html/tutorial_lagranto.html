@@ -1,0 +1,206 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Tutorial &#8212; Lagranto 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Basic examples" href="lagranto.html" />
+    <link rel="prev" title="Installation" href="install.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>The goal of this section is show how to calculate trajectories, analyzed them and plot them using the <a class="reference internal" href="lagranto.html#lagranto-package"><span class="std std-ref">Basic examples</span></a>.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#calculation">Calculation</a></li>
+<li><a class="reference internal" href="#analyze">Analyze</a></li>
+<li><a class="reference internal" href="#plotting">Plotting</a></li>
+<li><a class="reference internal" href="#writing">Writing</a></li>
+</ul>
+<div class="section" id="calculation">
+<h2>Calculation<a class="headerlink" href="#calculation" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="lagranto.html#lagranto-package"><span class="std std-ref">Basic examples</span></a> provide a class, <a class="reference internal" href="lagranto.html#lagranto.LagrantoRun" title="lagranto.LagrantoRun"><code class="xref py py-class docutils literal"><span class="pre">lagranto.LagrantoRun</span></code></a>, to wrap the Lagranto programs in python. It allow to calculate trajectories in parallel. You can take a look at the docstring to get familiar with the class.</p>
+<p>Let’s say that we want to calculate Warm Conveyor Belt trajectories for a 5 day period in June 2013.
+Using Era-Interim we can start trajectories every 6 hour and we will calculate them for 48 hours forward in time. Since <a class="reference internal" href="lagranto.html#lagranto.LagrantoRun" title="lagranto.LagrantoRun"><code class="xref py py-class docutils literal"><span class="pre">lagranto.LagrantoRun</span></code></a> needs a list of (startdate, enddate), we can build the dates as follow:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">dypy.small_tools</span> <span class="kn">import</span> <span class="n">interval</span>
+<span class="n">startdate</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">enddate</span> <span class="o">=</span> <span class="n">startdate</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[(</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">48</span><span class="p">))</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span>
+          <span class="n">interval</span><span class="p">(</span><span class="n">startdate</span><span class="p">,</span> <span class="n">enddate</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">6</span><span class="p">))]</span>
+</pre></div>
+</div>
+<p>If the Era-interim data are in the <cite>erainterim</cite> folder and if the output files should be written in the <cite>output</cite> folder, then the <a class="reference internal" href="lagranto.html#lagranto.LagrantoRun" title="lagranto.LagrantoRun"><code class="xref py py-class docutils literal"><span class="pre">lagranto.LagrantoRun</span></code></a> can be initialized as follow:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lagranto</span> <span class="kn">import</span> <span class="n">LagrantoRun</span>
+<span class="n">lrun</span> <span class="o">=</span> <span class="n">LagrantoRun</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">workingdir</span><span class="o">=</span><span class="s1">&#39;erainterim&#39;</span><span class="p">,</span>
+                   <span class="n">outputdir</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;ecmwf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We want to start the trajectories every 20km in the box [5E, 40E, 30N, 60N], so let’s create a starting file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">specifier</span> <span class="o">=</span> <span class="s2">&quot;&#39;box.eqd(5,20,40,50,20)@profile(850,500,10)@hPa&#39;&quot;</span>
+<span class="n">out_create_startf</span> <span class="o">=</span> <span class="n">lrun</span><span class="o">.</span><span class="n">create_startf</span><span class="p">(</span><span class="n">startdate</span><span class="p">,</span> <span class="n">specifier</span><span class="p">,</span> <span class="n">tolist</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <cite>tolist</cite> argument is needed if we want to use the same staring file for all starting time of the trajectories.
+We can now calculate the trajectories, but first starting for a single date to test our setup:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">out_caltra</span> <span class="o">=</span> <span class="n">lrun</span><span class="o">.</span><span class="n">caltra</span><span class="p">(</span><span class="o">*</span><span class="n">dates</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We can also test tracing Q along a trajectories:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">out_trace</span> <span class="o">=</span> <span class="n">lrun</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">dates</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;Q 1.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can now calculate and trace the trajectories in parallel, but for this we will use a tracevars file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">tracevars</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Q         1.    0 P</span>
+<span class="s2">U          1.    0 P</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">lrun</span><span class="o">.</span><span class="n">run_parallel</span><span class="p">(</span><span class="n">trace_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;tracevars_content&#39;</span><span class="p">:</span> <span class="n">tracevars</span><span class="p">},</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <cite>tracevars_content</cite> keyword argument will be passed to trace to create a tracevars file with Q and U.
+The <cite>type</cite> keyword argument determine what is run in parallel, currently both, trace, and caltra are available.</p>
+</div>
+<div class="section" id="analyze">
+<h2>Analyze<a class="headerlink" href="#analyze" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have calculated trajectories let’s read them and analyze them. By default the name of the files are formatted as <cite>lsl_{:%Y%m%d%H}.4</cite>.
+So if we want to read the trajectories started at 00 UTC 01 June 2013 we can do as follow:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lagranto</span> <span class="kn">import</span> <span class="n">Tra</span>
+<span class="n">filename_template</span> <span class="o">=</span> <span class="s1">&#39;output/lsl_{:%Y%m</span><span class="si">%d</span><span class="s1">%H}.4&#39;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">filename_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">()</span>
+<span class="n">trajs</span><span class="o">.</span><span class="n">load_netcdf</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">trajs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can now test if the trajectories fulfill the standard criteria for WCB, an ascent greater than 500 hPa in 48 hours.
+To make it clear, the goal of this exmple is not to replace the fortran routines of the LAGRANTO package but to illustrate the possibilities that python provides to analyze trajectories using a simple example.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">wcb_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">trajs</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">][:,</span> <span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">trajs</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">wcb_trajs</span> <span class="o">=</span> <span class="n">Tra</span><span class="p">()</span>
+<span class="n">wcb_trajs</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">trajs</span><span class="p">[</span><span class="n">wcb_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">wcb_trajs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have WCB trajectories, let’s plot them on a map. We will use cartopy for this.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="kn">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="kn">as</span> <span class="nn">cfeature</span>
+<span class="kn">from</span> <span class="nn">lagranto.plotting</span> <span class="kn">import</span> <span class="n">plot_trajs</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">crs</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Stereographic</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">180</span> <span class="o">-</span> <span class="mi">170</span><span class="p">,</span>
+                         <span class="n">central_latitude</span><span class="o">=</span><span class="mi">90</span> <span class="o">-</span> <span class="mi">43</span><span class="p">,</span>
+                         <span class="n">true_scale_latitude</span><span class="o">=</span><span class="mi">90</span> <span class="o">-</span> <span class="mi">43</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">land_50m</span> <span class="o">=</span> <span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span><span class="s1">&#39;cultural&#39;</span><span class="p">,</span> <span class="s1">&#39;admin_0_countries&#39;</span><span class="p">,</span>
+                                         <span class="s1">&#39;50m&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                                         <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">land_50m</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+<span class="n">plot_trajs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">wcb_trajs</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="c1"># fig.savefig(&#39;wcb_trajs_{date:%Y%m%d_%H}.pdf&#39;.format(date=dates[-1][0]), bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+<img alt="_images/wcb_trajs_20130529_18.png" src="_images/wcb_trajs_20130529_18.png" />
+</div>
+<div class="section" id="writing">
+<h2>Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h2>
+<p>The WCB trajectories can also be written to disk as follow:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">wcb_trajs</span><span class="o">.</span><span class="n">write_netcdf</span><span class="p">(</span><span class="s1">&#39;output/wcb_trajs.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#calculation">Calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analyze">Analyze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing">Writing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lagranto.html">Basic examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lagranto.html#docstrings">DocStrings</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tutorial_lagranto.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Nicolas Piaget.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/tutorial_lagranto.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
