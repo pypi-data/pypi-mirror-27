@@ -1,0 +1,59 @@
+Metadata-Version: 2.0
+Name: certbot-django
+Version: 0.2.0
+Summary: Full-stack Django / LetsEncrypt / Certbot Integration
+Home-page: https://gitlab.com/thelabnyc/certbot-django
+Author: Craig Weber
+Author-email: crgwbr@gmail.com
+License: ISC
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Security
+Classifier: Topic :: System :: Installation/Setup
+Classifier: Topic :: System :: Networking
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Utilities
+Requires-Dist: asymmetric-jwt-auth (>=0.4.1)
+Requires-Dist: Django (>=1.11)
+Requires-Dist: djangorestframework (>=3.4.7)
+Requires-Dist: requests (>=2.13.0)
+Provides-Extra: coordinator
+Requires-Dist: acme (>=0.1.1); extra == 'coordinator'
+Requires-Dist: certbot (>=0.9.3); extra == 'coordinator'
+Requires-Dist: zope.interface; extra == 'coordinator'
+Provides-Extra: development
+Requires-Dist: flake8 (>=3.2.1); extra == 'development'
+Requires-Dist: requests-mock (>=1.3.0); extra == 'development'
+Requires-Dist: sphinx (>=1.5.2); extra == 'development'
+Requires-Dist: versiontag (>=1.2.0); extra == 'development'
+
+==============
+Certbot Django
+==============
+
+|  |license| |kit| |format|
+
+This is a combined plugin for the certbot ACME client and also a Django-app for proving ACME challenges.
+
+**Full Documentation**: https://certbot-django.readthedocs.io
+
+
+.. |license| image:: https://img.shields.io/pypi/l/certbot-django.svg
+    :target: https://pypi.python.org/pypi/certbot-django
+.. |kit| image:: https://badge.fury.io/py/certbot-django.svg
+    :target: https://pypi.python.org/pypi/certbot-django
+.. |format| image:: https://img.shields.io/pypi/format/certbot-django.svg
+    :target: https://pypi.python.org/pypi/certbot-django
+
+
