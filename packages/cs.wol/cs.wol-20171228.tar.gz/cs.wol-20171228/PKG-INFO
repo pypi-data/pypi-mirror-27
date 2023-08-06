@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: cs.wol
+Version: 20171228
+Summary: Tool for sending a wake on LAN (WOL) packet out a specific interface to a specific MAC address.
+Home-page: https://bitbucket.org/cameron_simpson/css/commits/all
+Author: Cameron Simpson
+Author-email: cs@cskk.id.au
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Every WOL tool I have seen takes IP addresses and (a) infers the
+        outbound NIC from the routing table (directly or naively) and (b)
+        does not provide control for specifying the outbound NIC. I needed
+        a tool to wake devices on a specific NIC, which do not have IP
+        addresses, or do not have known IP addresses.
+Keywords: python2,python3
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
