@@ -1,0 +1,38 @@
+Metadata-Version: 2.0
+Name: bossdata
+Version: 0.3.0
+Summary: Tools to access SDSS spectroscopic data.
+Home-page: https://github.com/dkirkby/bossdata
+Author: bossdata developers
+Author-email: dkirkby@uci.edu
+License: MIT
+Keywords: bossdata
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Requires-Dist: astropy (>=2.0.1)
+Requires-Dist: fitsio (>=0.9.11)
+Requires-Dist: numpy (>=1.13)
+Requires-Dist: progressbar2 (>=3.34)
+Requires-Dist: pydl (>=0.6.0)
+Requires-Dist: requests (>=2.14)
+Requires-Dist: six (>=1.10)
+
+A python package for working with `spectroscopic data <http://www.sdss.org/dr12/spectro/spectro_basics/>`_ from the `Sloan Digital Sky Survey <http://www.sdss.org>`_.
+
+* Free software: MIT license
+* Documentation: https://bossdata.readthedocs.org
+* Releases: https://pypi.python.org/pypi/bossdata
+* Code: https://github.com/dkirkby/bossdata
+
+What's new in version 0.3.0:
+
+* Add support for python3.
+
+
