@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- invoice -->
+        <!-- form -->
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">periodic_invoice.invoice</field>
+            <field name="type">form</field>
+            <field name="name">invoice_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_view_tree">
+            <field name="model">periodic_invoice.invoice</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_tree</field>
+        </record>
+
+        <!-- action-view -->
+        <record model="ir.action.act_window" id="act_invoice_form">
+            <field name="name">Invoice template</field>
+            <field name="res_model">periodic_invoice.invoice</field>
+        </record>
+    
+        <!-- views in action-view -->
+        <record model="ir.action.act_window.view" id="act_invoice_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_form"/>
+        </record>
+
+        <!-- menu -->
+        <menuitem parent="account_invoice.menu_invoices" action="act_invoice_form"
+                id="menu_invoice_form" icon="mds-icon-invoicecalendar"/>
+
+        <!-- permissions - deny all (allow by role: see role_...xml) -->
+        <record model="ir.model.access" id="access_invoice_anon">
+            <field name="model" search="[('model', '=', 'periodic_invoice.invoice')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- invoice line -->
+        <!-- form -->
+        <record model="ir.ui.view" id="invline_view_form">
+            <field name="model">periodic_invoice.invline</field>
+            <field name="type">form</field>
+            <field name="name">invline_form</field>
+        </record>
+        <record model="ir.ui.view" id="invline_view_tree">
+            <field name="model">periodic_invoice.invline</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">invline_tree</field>
+        </record>
+        <record model="ir.ui.view" id="invline_view_tree_sequence">
+            <field name="model">periodic_invoice.invline</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">invline_tree_sequence</field>
+        </record>
+        <!-- permissions - deny all -->
+        <record model="ir.model.access" id="access_invline_anon">
+            <field name="model" search="[('model', '=', 'periodic_invoice.invline')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        
+    </data>
+</tryton>
