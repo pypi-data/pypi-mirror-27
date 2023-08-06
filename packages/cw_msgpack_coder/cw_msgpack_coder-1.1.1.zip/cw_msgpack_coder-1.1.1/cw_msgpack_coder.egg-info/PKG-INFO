@@ -1,0 +1,29 @@
+Metadata-Version: 1.1
+Name: cw-msgpack-coder
+Version: 1.1.1
+Summary: Simple and fast Python any object serialization with use msgpack.
+Home-page: https://github.com/ChameleonRed/cw_msgpack_coder
+Author: Cezary K. Wagner
+Author-email: Cezary.Wagner@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: CW Msgpack Coder
+        ================
+        
+        Introduction
+        ____________
+        
+        Simple pure Python object encoder and decoder using msgpack (u-msgpack-python package at bottom).
+        
+        It allows encode Python object with high speed and compression since we using msgpack at bottom.
+        
+        It reduce code overhead to minimum and allow you focus on algorithms.
+        
+Keywords: msgpack serialization streaming object encoding decoding
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
