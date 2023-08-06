@@ -1,0 +1,372 @@
+Release procedures
+==================
+
+This section documents various release procedures. This includes:
+
+- General versioning schema principles.
+- General backporting principles.
+- Releases of major versions.
+- Releases of minor versions.
+- Releases of patch versions.
+
+
+Versioning schema
+-----------------
+
+*Django Conntrackt* project employs `semantic versioning
+<http://semver.org/>`_ schema. In short:
+
+- Each version is composed of major, minor, and patch number. For example, in
+  version ``1.2.3``, ``1`` is the major, ``2`` is the minor, and ``3`` is the
+  patch number.
+- Major number is bumped when making a backwards incompatible
+  change. I.e. anything that depends on *Django Conntrackt* may need to make
+  changes in order to keep working correctly.
+- Minor number is bumped when new features or changes are made without breaking
+  backwards compatibility. I.e. if you were using version ``1.2.3``, you should
+  be safe to upgrade to version ``1.3.0`` without making any changes to whatever
+  is using *Django Conntrackt*.
+- Patch number is bumped when making purely bug-fix backwards compatible
+  changes. Patch releases are generally more likely to remain stable simply due
+  to limited scope of changes (new features can sometimes introduce unexpected
+  bugs). It shouild be noted that due to relatively limited resources I have
+  (plus, the roles are mainly used by myself :), patch releases might be a bit
+  more scarce, and I might opt for going for minor release instead to reduce
+  amount of work needed (backporting and releasing).
+
+In addition to versioning schema, *Django Conntrackt* employs a specific
+nomenclature for naming the branches:
+
+- All new development and bug-fixing uses ``default`` branch as the base.
+- Patch releases are based off the maintenance branches. Mainteance branches are
+  named after the ``MAJOR`` and ``MINOR`` number of the version. For example, if
+  a new release is made with version ``1.2.0``, the corresponding branch that is
+  created for maintenance will be named ``1.2`` (notice the absence of ``.0`` at
+  the end).
+
+
+Backporting fixes
+-----------------
+
+From time to time it might become useful to apply a bug-fix to both the master
+branch, and to maintenace branch.
+
+When a bug is discovered in one of the roles (or maybe documentation), and it
+should be applied to maintenance branch as well, procedure is as follows:
+
+1. Create a new bug report in `issue tracker
+   <https://projects.majic.rs/conntrackt>`_. Target version should be
+   either the next minor or next major release (i.e. whatver will get released
+   from the master branch).
+
+2. Create a copy of the bug report, modifying the issue title to include phrase
+   ``(backport to MAJOR.MINOR)`` at the end, with ``MAJOR`` and ``MINOR``
+   replaced with correct versioning information for the maintenance
+   branch. Make sure to set correct target version (patch release).
+
+3. Resolve the bug for next major/minor release.
+
+4. Reslove the bug in maintenace branch by backporting (using graft if
+   possible) the fix into maintenace branch. Make sure to reword the
+   commit message (to reference the backport issue) .
+
+
+Releasing new minor/major version
+---------------------------------
+
+New minor/major releases are based off of the ``default`` branch ``tip``.
+
+When releasing a new minor/major version, procedure is as follows:
+
+1. Verify that there are no outstanding issues blocking the release.
+
+2. Switch to the project Python virtual environment::
+
+     workon conntrackt
+
+3. Make sure you are on the ``default`` branch tip::
+
+     hg update default
+     hg parents
+     hg tip
+
+4. Extract current version, set release version, and set issue associated with
+   making the release::
+
+     CURRENT_VERSION=$(grep '^version = ' docs/conf.py | sed -e "s/^version = '//;s/'$//")
+     NEW_VERSION="MAJOR.MINOR.PATCH"
+     ISSUE="CONNT-NUMBER"
+
+5. Double-check what the associated issues is, what the current version string
+   is, and what the release version will be::
+
+     echo "[$ISSUE] $CURRENT_VERSION -> $NEW_VERSION"
+
+6. Verify that documentation builds and looks correct::
+
+     (cd docs/; make clean html; firefox _build/html/index.html)
+
+7. Run tests::
+
+     (cd testproject; python manage.py test)
+
+8. Test the quick-start instructions to ensure they are still
+   applicable.
+
+9. Add release notes to file ``docs/releasenotes.rst``. Release notes template
+   should be as follows::
+
+      VERSION
+      -------
+
+      GENERAL DESCRIPTION
+
+      Breaking changes:
+
+      * CHANGE DESCRIPTION
+
+      New features/improvements:
+
+      * FEATURE/IMPROVEMENT DESCRIPTION
+
+      Bug-fixes:
+
+      * BUG-FIX DESCRIPTION
+
+10. Clean-up the documentation build, and check what files need to be updated::
+
+      (cd docs; make clean; grep -r "${CURRENT_VERSION/./\\.}" .)
+
+11. Update all relevant documents with new version information, as obtained from
+    the previous command. At the very least this includes changes to:
+
+    - ``docs/conf.py``
+
+12. Ensure documentation builds correctly::
+
+      (cd docs/; make clean html)
+
+13. Update version information in ``setup.py``.
+
+14. Show the changes before making a commit::
+
+      hg diff
+
+15. Commit the changes::
+
+      hg commit -m "$ISSUE: Preparing for release $NEW_VERSION."
+
+16. Create tag::
+
+      hg tag -m "RELEASE DESCRIPTION" "$NEW_VERSION" 
+
+17. Clean-up the documentation build, check what files need to be switched back
+    to development version, and determine development version::
+
+     (cd docs; make clean; grep -r "${NEW_VERSION/./\\.}" .)
+     echo "${NEW_VERSION%.*}-dev"
+
+18. Update all relevant documents with development version information, as
+    obtained from the previous command. At the very least this includes changes
+    to:
+
+    - ``docs/conf.py``
+
+19. Update version information in ``setup.py``.
+
+20. Show the changes before committing them::
+
+      hg diff
+
+21. Commit the changes::
+
+      hg commit -m "$ISSUE: Bumping version to ${NEW_VERSION%.*}-dev (switching back to development)."
+
+22. Push the changes to upstream repository and its mirror::
+
+      hg push
+      hg push bitbucket
+
+24. Create the maintenace branch::
+
+      git checkout -b "${NEW_VERSION%.*}" "$NEW_VERSION"
+
+25. Clean-up the documentation build, check what files need to be switched to
+    maintenace version, and determine maintenace version::
+
+      (cd docs; make clean; grep -r "${NEW_VERSION/./\\.}" .)
+      echo "${NEW_VERSION%.*}-maint"
+
+26. Update all relevant documents with new version information, as obtained from
+    the previous command. At the very least this includes changes to:
+
+    - ``docs/conf.py``
+    - ``usage.rst``
+
+27. Show the changes before making a commit::
+
+      git diff docs/
+
+28. Commit the changes::
+
+      git add docs/
+      git commits -m "$ISSUE: Creating maintenance branch for release $NEW_VERSION."
+
+29. Push the maintenance branch::
+
+      git push origin "${NEW_VERSION%.*}"
+
+30. Switch back to the master branch::
+
+      git checkout master
+
+31. Delete the local branch::
+
+      git branch -d "${ISSUE,,}"
+
+32. Mark issue as resolved in the issue tracker.
+
+33. Release the version via release center in the issue tracker.
+
+34. Archive all other releases.
+
+
+Releasing new patch version
+---------------------------
+
+New patch releases are based off of the specific maintenance branch ``HEAD``.
+
+When releasing a new patch release, procedure is as follows:
+
+1. Verify that there are no outstanding issues blocking the release.
+
+2. Switch to the project Python virtual environment::
+
+     workon conntrackt
+
+3. Set the new version and issuer associated with making the release::
+
+     NEW_VERSION="MAJOR.MINOR.PATCH"
+     ISSUE="MAR-NUMBER"
+
+4. Make sure you are on the maintenance branch for that version::
+
+     git checkout "${NEW_VERSION%.*}"
+
+5. Extract current version::
+
+     CURRENT_VERSION=$(grep '^version = ' docs/conf.py | sed -e "s/^version = '//;s/'$//")
+
+6. Double-check what the associated issues is, what the current version string
+   is, and what the release version will be::
+
+     echo "[$ISSUE] $CURRENT_VERSION -> $NEW_VERSION"
+
+7. Create issue branch::
+
+     git checkout -b "${ISSUE,,}"
+
+8. Verify that documentation builds and looks correct::
+
+     (cd docs/; make clean html; firefox _build/html/index.html)
+
+9. Test all roles using `Molecule <https://molecule.readthedocs.io/>`_ to make
+   sure no regressions were introduced::
+
+     ./scripts/run_tests.sh -r all
+
+10. Test deployment of test site from scratch to make sure all roles behave
+    correctly.
+
+11. Add release notes to file ``docs/releasenotes.rst``. Release notes template
+    should be as follows::
+
+      VERSION
+      -------
+
+      GENERAL DESCRIPTION
+
+      Bug-fixes:
+
+      * ``ROLE`` role
+
+        * BUG-FIX DESCRIPTION
+
+12. Clean-up the documentation build, and check what files need to be updated::
+
+      (cd docs; make clean; grep -r "${CURRENT_VERSION/./\\.}" .)
+
+13. Update all relevant documents with new version information, as obtained from
+    the previous command. At the very least this includes changes to:
+
+    - ``docs/conf.py``
+    - ``usage.rst``
+
+14. Ensure documentation builds correctly::
+
+      (cd docs/; make clean html)
+
+15. Show the changes before making a commit::
+
+      git diff docs/
+
+16. Commit the changes::
+
+      git add docs/
+      git commits -m "$ISSUE: Preparing for release $NEW_VERSION."
+
+17. Create annotated and signed Git tag::
+
+      git tag --sign -a "$NEW_VERSION" -m "RELEASE DESCRIPTION"
+
+18. Clean-up the documentation build, check what files need to be switched back
+    to maintenance version, and determine maintenance version::
+
+     (cd docs; make clean; grep -r "${NEW_VERSION/./\\.}" .)
+     echo "${NEW_VERSION%.*}-maint"
+
+19. Update all relevant documents with maintenance version information, as
+    obtained from the previous command. At the very least this includes changes
+    to:
+
+    - ``docs/conf.py``
+    - ``usage.rst``
+
+20. Show the changes before committing them::
+
+      git diff docs/
+
+21. Commit the changes::
+
+      git add docs/
+      git commits -m "$ISSUE: Bumping version to ${NEW_VERSION%.*}-maint (switching back to maintenance)."
+
+22. Verify GnuPG signatures::
+
+      git gpgcheck
+      git verify-tag "$NEW_VERSION"
+
+23. Merge changes back into the maintenance branch::
+
+      git checkout "${NEW_VERSION%.*}"
+      git merge "${ISSUE,,}"
+      
+24. Push the tag and changes to mainteance branch::
+
+      git push
+      git push origin "${NEW_VERSION}"
+
+25. Delete the local branch::
+
+      git branch -d "${ISSUE,,}"
+
+26. Switch back to the master branch::
+
+      git checkout master
+
+27. Mark issue as resolved in the issue tracker.
+
+28. Release the version via release center in the issue tracker.
+
+29. Archive all old patch releases with the same major and minor number as new
+    release version.
