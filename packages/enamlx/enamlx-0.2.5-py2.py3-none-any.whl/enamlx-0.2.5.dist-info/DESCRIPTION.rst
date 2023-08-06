@@ -1,0 +1,92 @@
+Copyright (c) 2015 frmdstryr
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+Download-URL: https://github.com/frmdstryr/enamlx/
+Description-Content-Type: UNKNOWN
+Description: # About
+        Additional Qt Widgets for Enaml.
+        
+        _Note: This is in a very early state but still usable_
+        
+        
+        
+        #### Featuring ####
+        
+        
+        __TableView__
+        
+        Table view using enaml syntax. See example for usage.
+        
+        ![table view](https://lh6.googleusercontent.com/FUfzbzZpsMuGymnNdzBeXgONZXJGQreswK05lMP1zRlesxY70Xo14dxYBBOrqb23DCf6yOMeXYqHNxEaNtdc13GNmri6-pQ3-uoq4rcgRvHh3b8J58MVx_xZaifCHz2Hv0Q3CoQ)
+        
+        1. Text/Icons/Checkboxes
+        2. Delegate widgets (any widget can be child of a cell)
+        3. Right click menus per item
+        4. Tested and working with 1 million+ rows. 
+        
+        
+        
+        __DoubleSpinBox__
+        
+        SpinBox that works with float values
+        
+        
+        __PlotItem__
+        
+        Plot widgets using PyQtGraph
+        
+        
+        ![plot item](https://lh5.googleusercontent.com/pqa4WZnMzaU72pYnqc75AghnJGC8Z6kCELcsHkR3n_VTQzEmCB9di7reqqQbCIpnfAVXSCEXK6y07_DMyQ51XUCUAOe-xczfKsYKCRROPbUlDHcGMNSFaBmZRGxXP9Clya_q34I) 
+        
+        __ConsoleWidget__
+        
+        IPython console widget.
+        
+        
+        __VispyCanvas__
+        
+        VisPy widget
+        
+        Coming soon...
+        
+        __OCCViewer__
+        
+        Widget for viewing models from opencascade 
+        
+        # Usage
+        
+        ```python
+        
+        # Before importing enaml
+        import enamlx
+        enamlx.install()
+        
+        ```
+        
+Keywords: enaml,qt,tree,table,widgets
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
