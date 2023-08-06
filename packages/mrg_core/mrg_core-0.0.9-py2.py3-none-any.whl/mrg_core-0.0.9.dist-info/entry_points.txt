@@ -1,0 +1,6 @@
+[console_scripts]
+mrgarchive = mrg_core.mrg_core.archive:main
+mrgdb = mrg_core.mrg_core.vmodb:main
+mrgdbadmin = mrg_core.mrg_core.vmodbadmin:main
+mrgpasswd = mrg_core.mrg_core.passwd:main
+
