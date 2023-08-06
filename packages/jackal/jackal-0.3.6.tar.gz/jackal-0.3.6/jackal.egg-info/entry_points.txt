@@ -1,0 +1,17 @@
+[console_scripts]
+jk-add-tag = jackal.scripts.tags:add_tag
+jk-configure = jackal.config:manual_configure
+jk-filter = jackal.scripts.filter:filter
+jk-format = jackal.scripts.filter:format
+jk-hosts = jackal.scripts.hosts:main
+jk-import-nmap = jackal.scripts.import_nmap:main
+jk-nessus = jackal.scripts.nessus:main
+jk-netdiscover = jackal.scripts.netdiscover:main
+jk-nmap-discover = jackal.scripts.nmap:nmap_discover
+jk-overview = jackal.scripts.services:overview
+jk-ranges = jackal.scripts.ranges:main
+jk-services = jackal.scripts.services:main
+jk-sniffer = jackal.scripts.sniffer:main
+jk-status = jackal.scripts.status:main
+jk-tomcat-brute = jackal.scripts.tomcat_brute:main
+
