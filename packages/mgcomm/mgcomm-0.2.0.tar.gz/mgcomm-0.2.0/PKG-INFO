@@ -1,0 +1,29 @@
+Metadata-Version: 1.1
+Name: mgcomm
+Version: 0.2.0
+Summary: small utility library with handy fixtures
+Home-page: https://gitlab.com/mgoral/mgcomm
+Author: Michał Góral
+Author-email: dev@mgoral.org
+License: MIT
+Description: mgcomm
+        ======
+        
+        Usually when writing some CLI apps I end up writing the same stuff over and over
+        again. Like searching for configuration files according to Freedesktop's
+        standards. Or handling user input from either which can be collected from stdin,
+        read from a file or piped in. This kind of stuff. So I decided to collect it in
+        a small (probably personal) library which actually has some tests, sane
+        interface and most important: can be easily used just by adding it to
+        requirements.txt.
+        
+Platform: linux
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities
