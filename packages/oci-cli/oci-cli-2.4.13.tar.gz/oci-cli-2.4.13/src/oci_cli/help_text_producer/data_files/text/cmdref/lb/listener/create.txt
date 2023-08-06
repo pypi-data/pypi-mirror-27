@@ -1,0 +1,109 @@
+create
+******
+
+
+Description
+===========
+
+Adds a listener to a load balancer.
+
+
+Usage
+=====
+
+   oci lb listener create [OPTIONS]
+
+
+Options
+=======
+
+
+--default-backend-set-name [text]
+---------------------------------
+
+The name of the associated backend set. [required]
+
+
+--name [text]
+-------------
+
+A friendly name for the listener. It must be unique and it cannot be
+changed. Avoid entering confidential information.
+
+Example: *My listener* [required]
+
+
+--port [integer]
+----------------
+
+The communication port for the listener.
+
+Example: *80* [required]
+
+
+--protocol [text]
+-----------------
+
+The protocol on which the listener accepts connection requests. To get
+a list of valid protocols, use the ListProtocols operation.
+
+Example: *HTTP* [required]
+
+
+--load-balancer-id [text]
+-------------------------
+
+The [OCID] of the load balancer on which to add a listener. [required]
+
+
+--ssl-certificate-name [text]
+-----------------------------
+
+A friendly name for the certificate bundle. It must be unique and it
+cannot be changed. Valid certificate bundle names include only
+alphanumeric characters, dashes, and underscores. Certificate bundle
+names cannot contain spaces. Avoid entering confidential information.
+
+
+--ssl-verify-depth [integer]
+----------------------------
+
+The maximum depth for peer certificate chain verification.
+
+
+--ssl-verify-peer-certificate [boolean]
+---------------------------------------
+
+Whether the load balancer listener should verify peer certificates.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.

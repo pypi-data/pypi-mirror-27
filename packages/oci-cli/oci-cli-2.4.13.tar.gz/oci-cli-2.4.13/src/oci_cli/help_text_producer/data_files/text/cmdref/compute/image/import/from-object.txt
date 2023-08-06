@@ -1,0 +1,81 @@
+from-object
+***********
+
+
+Description
+===========
+
+Imports an exported image from the Oracle Cloud Infrastructure Object
+Storage Service using the namespace, bucket name, and object name to
+identify the location to import from.
+
+For more information about importing exported images, see Image
+Import/Export.
+
+You may optionally specify a display name for the image, which is
+simply a friendly name or description. It does not have to be unique,
+and you can change it. See UpdateImage. Avoid entering confidential
+information.
+
+
+Usage
+=====
+
+   oci compute image import from-object [OPTIONS]
+
+
+Options
+=======
+
+
+--compartment-id, -c [text]
+---------------------------
+
+The OCID of the compartment containing the instance you want to use as
+the basis for the image. [required]
+
+
+--display-name [text]
+---------------------
+
+A user-friendly name for the image. It does not have to be unique, and
+it's changeable. Avoid entering confidential information.
+
+You cannot use an Oracle-provided image name as a custom image name.
+
+Example: *My Oracle Linux image*
+
+
+-ns, --namespace [text]
+-----------------------
+
+The Object Storage Service namespace to import the image from.
+[required]
+
+
+-bn, --bucket-name [text]
+-------------------------
+
+The name of the bucket to import the image from. [required]
+
+
+--name [text]
+-------------
+
+The name of the object identifying the image to import. [required]
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.

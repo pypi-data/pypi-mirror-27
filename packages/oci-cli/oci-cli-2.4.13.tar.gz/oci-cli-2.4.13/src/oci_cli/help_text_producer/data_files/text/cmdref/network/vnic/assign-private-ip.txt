@@ -1,0 +1,86 @@
+assign-private-ip
+*****************
+
+
+Description
+===========
+
+Assigns a secondary private IP address to the specified VNIC. The
+secondary private IP must be in the same subnet as the VNIC. This
+command can also be used to move an existing secondary private IP to
+the specified VNIC.
+
+For more information about secondary private IPs, see Managing IP
+Addresses
+
+
+Usage
+=====
+
+   oci network vnic assign-private-ip [OPTIONS]
+
+
+Options
+=======
+
+
+--vnic-id [text]
+----------------
+
+The OCID of the VNIC to assign the private IP to. The VNIC and private
+IP must be in the same subnet. [required]
+
+
+--display-name [text]
+---------------------
+
+A user-friendly name. Does not have to be unique, and it's changeable.
+Avoid entering confidential information.
+
+
+--hostname-label [text]
+-----------------------
+
+The hostname for the private IP. Used for DNS. The value is the
+hostname portion of the private IP's fully qualified domain name
+(FQDN) (for example, *bminstance-1* in FQDN
+*bminstance-1.subnet123.vcn1.oraclevcn.com*). Must be unique across
+all VNICs in the subnet and comply with RFC 952 and RFC 1123.
+
+For more information, see DNS in Your Virtual Cloud Network.
+
+Example: *bminstance-1*
+
+
+--ip-address [text]
+-------------------
+
+A private IP address of your choice. Must be an available IP address
+within the subnet's CIDR. If you don't specify a value, Oracle
+automatically assigns a private IP address from the subnet.
+
+Example: *10.0.3.3*
+
+
+--unassign-if-already-assigned
+------------------------------
+
+Force reassignment of the IP address if it's already assigned to
+another VNIC in the subnet. This is only relevant if an IP address is
+associated with this command.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.
