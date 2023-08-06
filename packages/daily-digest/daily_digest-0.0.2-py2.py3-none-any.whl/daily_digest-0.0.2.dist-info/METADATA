@@ -1,0 +1,23 @@
+Metadata-Version: 2.0
+Name: daily-digest
+Version: 0.0.2
+Summary: Simple daily summary email with charts.
+Home-page: https://github.com/nickromano/django-daily-digest
+Author: Nick Romano
+Author-email: nick.r.romano@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: CairoSVG (>=2.0.3)
+Requires-Dist: Django (>=1.8)
+Requires-Dist: premailer
+
+Simple daily summary email with charts.
+
+
