@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: everest-pipeline
+Version: 2.0.9
+Summary: EPIC Variability Extraction and Removal for Exoplanet Science Targets
+Home-page: http://github.com/rodluger/everest
+Author: Rodrigo Luger
+Author-email: rodluger@uw.edu
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        EPIC Variability Extraction and Removal for Exoplanet Science Targets:
+        A pipeline for de-trending `K2`, `Kepler`, and `TESS` light curves with
+        pixel level decorrelation and Gaussian processes. The Python interface
+        allows easy access to the online EVEREST de-trended light curve catalog;
+        alternatively, users can de-trend their own light curves with customized
+        settings. Read the documentation at https://github.com/rodluger/everest
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Astronomy
