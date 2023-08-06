@@ -1,0 +1,11 @@
+include HISTORY LICENSE VERSION
+include *.yml
+
+recursive-include registerMap *.py
+
+recursive-exclude registerMap *.empty
+recursive-exclude registerMap *tests*
+
+prune scripts
+
+global-exclude __pycache__
