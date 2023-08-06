@@ -1,0 +1,13 @@
+lxml
+click
+botocore==1.8.15
+awscli==1.14.11
+boto3>=1.5.1
+requests[security]
+configparser
+
+[test]
+pytest-runner
+pytest
+mock
+coverage < 4
