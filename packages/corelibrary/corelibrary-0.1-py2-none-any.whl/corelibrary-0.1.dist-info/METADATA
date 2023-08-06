@@ -1,0 +1,50 @@
+Metadata-Version: 2.0
+Name: corelibrary
+Version: 0.1
+Summary: A core financial risk analytics library.
+Home-page: https://github.com/pbrisk/corelibrary
+Author: Deutsche Postbank AG [pbrisk]
+Author-email: pbrisk_at_github@icloud.com
+License: European Union Public Licence 1.1
+Description-Content-Type: UNKNOWN
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Education
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Office/Business :: Financial
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Utilities
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: businessdate
+Requires-Dist: dcf
+Requires-Dist: goma
+Requires-Dist: mathtoolspy
+Requires-Dist: mitschreiben
+Requires-Dist: numpy
+Requires-Dist: putcall
+Requires-Dist: scipy
+Requires-Dist: shortrate
+Requires-Dist: timewave
+Requires-Dist: unicum
+
+======================================================
+corelibrary (A core financial risk analytics library.)
+======================================================
+
+.. image:: https://img.shields.io/codeship/d3bf85c0-4cc1-0134-e025-7e829346aa02/master.svg
+    :target: https://codeship.com//projects/170286
+
+.. image:: https://readthedocs.org/projects/core/badge
+    :target: http://corelibrary.readthedocs.io
+
+
