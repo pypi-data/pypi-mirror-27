@@ -1,0 +1,105 @@
+Metadata-Version: 1.1
+Name: iota_balance_change_alert
+Version: 0.1.2
+Summary: IOTA Balance Change Alert checks the balance on one or more addresses at a specified interval and alerts the user if there's any change in balance.
+Home-page: https://github.com/plenarius/iota_balance_change_alert
+Author: James Greenhalgh
+Author-email: plenarius@gmail.com
+License: MIT license
+Description-Content-Type: UNKNOWN
+Description: =========================
+        IOTA Balance Change Alert
+        =========================
+        
+        
+        .. image:: https://img.shields.io/pypi/v/iota_balance_change_alert.svg
+                :target: https://pypi.python.org/pypi/iota_balance_change_alert
+        
+        .. image:: https://img.shields.io/travis/plenarius/iota_balance_change_alert.svg
+                :target: https://travis-ci.org/plenarius/iota_balance_change_alert
+        
+        .. image:: https://readthedocs.org/projects/iota-balance-change-alert/badge/?version=latest
+                :target: https://iota-balance-change-alert.readthedocs.io/en/latest/?badge=latest
+                :alt: Documentation Status
+        
+        .. image:: https://pyup.io/repos/github/plenarius/iota_balance_change_alert/shield.svg
+             :target: https://pyup.io/repos/github/plenarius/iota_balance_change_alert/
+             :alt: Updates
+        
+        
+        IOTA Balance Change Alert checks the balance on one or more addresses at a specified interval and alerts the user if there's any change in balance.
+        
+        
+        * Free software: MIT license
+        * Documentation: https://iota-balance-change-alert.readthedocs.io.
+        
+        
+        Features
+        --------
+        
+        * Users can be alerted via text message, email, popup or system sound
+        
+        Installation
+        ------------
+        To install IOTA Balance Change Alert, run this command in your terminal:
+        
+        .. code-block:: console
+        
+            $ pip install iota_balance_change_alert
+            $ mkdir $HOME/.ibca && wget https://raw.githubusercontent.com/plenarius/iota_balance_change_alert/master/config.ini.example -O $HOME/.ibca/config.ini
+        
+        If you want to be informed via text message you need to sign up for a free Twilio acccount at https://www.twilio.com and get their python library
+        
+        .. code-block:: console
+        
+            $ pip install twilio
+        
+        Usage
+        -----
+        Make sure to edit your config.ini to include your desired IOTA addresses and methods of alert. You do not need to specify the location of your config file if it's installed in $HOME/.ibca/config.ini.
+        
+        .. code-block:: console
+        
+            $ iota_balance_change_alert --config path/to/config.ini
+        
+        Credits
+        ---------
+        
+        This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+        
+        .. _Cookiecutter: https://github.com/audreyr/cookiecutter
+        .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+        
+        
+        
+        =======
+        History
+        =======
+        
+        0.1.2 (2017-12-23)
+        ------------------
+        
+        * Minor bugfix to email notifications
+        * Added some more documentation
+        
+        0.1.1 (2017-12-11)
+        ------------------
+        
+        * First release on PyPI.
+        
+        0.1.0 (2017-12-11)
+        ------------------
+        
+        * First release on github.
+        
+Keywords: iota_balance_change_alert
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
