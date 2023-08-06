@@ -1,0 +1,160 @@
+Metadata-Version: 1.1
+Name: parseMFT
+Version: 0.2
+Summary: Parse the $MFT from an NTFS filesystem.
+Home-page: http://github.com/thoromyr/parseMFT
+Author: Tim Doty
+Author-email: pip@baldskirkja.com
+License: LICENSE.txt
+Download-URL: https://github.com/thoromyr/parseMFT/archive/v0.2.tar.gz
+Description: Parse MFT
+        =========
+        
+        parseMFT.py is designed to fully parse the MFT file from an NTFS filesystem
+        and present the results as accurately as possible in multiple formats. It is
+        intended to be safe to use. A large MFT can require many GB of RAM to fully
+        load into memory so by default an MFT is parsed in two passes: once loading
+        all record names into memory and building full file paths, and a second pass
+        loading only one record at a time and printing it out.
+        
+        Naturally a single pass is quicker: the amount of time required to process
+        an MFT depends in part on the output format, but a single pass takes about
+        half the time of the standard two pass method. In order to take advantage
+        of the speed increase use the --inmemory option. However, if parseMFT thinks
+        that doing so might require more than the maximum allowed memory (4 GB by
+        default) it will abort and report how much memory it thinks could be
+        required to process.
+        
+        Note that the actual memory requirement may be substantially less: the
+        estimates are intentionally conservative and -- especially for huge MFTs --
+        may substantially overestimate the actual memory requirement.
+        
+        Installation
+        ============
+        You should soon be able to install parseMFT with pip:
+        
+            pip install parseMFT
+            
+        Alternatively:
+        
+            git clone https://github.com/thoromyr/parseMFT.git
+            cd parseMFT
+            python setup.py install (or, just run it from that directory)
+        
+        Usage
+        =====
+        <pre>
+        usage: parseMFT.py [-h] (-c | -j | -b | -g | -t) [-o FILE] [-e] [-i INDENT]
+                           [-s] [-l] [-k] [--legacy_l2t_date] [-f] [-x STRING] [-w]
+                           [--max_memory MAX_MEMORY] [-a] [-m]
+                           [--estimate_memory_only] [-p] [-d] [-v] [-q] [-V]
+                           MFT_FILE
+        
+        Parse Windows MFT and output timeline
+        
+        positional arguments:
+          MFT_FILE              read MFT from FILE
+        
+        optional arguments:
+          -h, --help            show this help message and exit
+          -c, --csv             CSV format output
+          -j, --json            JSON format output [use --inmemory to get all data]
+          -b, --bodyfile        Bodyfile format output
+          -g, --timesketch      Timesketch compatible output
+          -t, --timeline        Plaso/log2timeline compatible output
+          -o FILE, --output FILE
+                                write results to FILE [default is STDOUT]
+          -e, --excel           Make output Excel friendly, normally used with -c
+          -i INDENT, --indent INDENT
+                                Number of spaces to indent in json output; only
+                                meaningful when used with -j
+          -s, --stdinfo         Prefer STD_INFO timestamps to FILENAME timestamps
+          -l, --localtz         Report times using local timezone
+          -k, --keep_fractional_seconds
+                                Keep fractional seconds in date/time stamps
+          --legacy_l2t_date     Use legacy l2t "MM/DD/YYYY" date format
+          -f, --fullpath        Bodyfile uses full path rather than just filename;
+                                ignored without -b
+          -x STRING, --invalid_data STRING
+                                Text to use for an invalid or missing data, e.g., when
+                                time is zero (1601-01-01 00:00:00) [default is an
+                                empty string]
+          -w, --windows_path    File paths should use the windows path separator
+                                instead of linux
+          --max_memory MAX_MEMORY
+                                Set the maximum memory for --inmemory [default is 4
+                                GB]
+          -a, --anomaly         Turn on anomaly detection
+          -m, --inmemory        Load in a single pass. Faster but uses more memory.
+          --estimate_memory_only
+                                Terminate after estimating the amount of memory
+                                required.
+          -p, --progress        Show systematic progress reports
+          -d, --debug           Turn on debugging output [implies -vvv, use -q to
+                                suppress verbose output]
+          -v, --verbose         Show non-fatal errors
+          -q, --quiet           Suppress error messages
+          -V, --version         show program's version number and exit
+        
+        To avoid unicode errors in the console: "export PYTHONIOENCODING=UTF-8"
+        </pre>
+        
+        Output
+        ======
+        
+        parseMFT can produce output in JSON, CSV or bodyfile format and conform to 
+        plaso/l2t or timesketch.
+        
+        CSV output
+        ----------
+        Although JSON is considered to be the authoritative output format, CSV is more
+        commonly used. While technically CSV stands for "comma separate values" the
+        format is generalized and other characters, such as pipes, can be used as value
+        delimiters. Looked at through this lense, the bodyfile format is a CSV with
+        a pipe delimiter and a particular set of fields.
+        
+        The 'csv' output format is then just a default set of fields (and delimiter)
+        that happens to differ from that of 'bodyfile', 'timeline' and 'timesketch'.
+        
+        Update History
+        ==============
+        [See CHANGES.txt]
+        
+        - Version 0.2: csv, plaso/l2t and timesketch working correctly
+        - Version 0.1: bodyfile output working correctly
+        - Version 0.0: rework so that internal representation can be dumped as JSON
+        
+        
+        Inspiration
+        ===========
+        For an initial incident response triage was pulling the MFT but needed a quick
+        way to parse it for analysis. To this end wanted something quicker/simpler than
+        plaso but also that could be dumped into timesketch.
+        
+        The analyzeMFT project looked good, but had a muddled internal format that
+        couldn't be cleanly dumped to JSON, plus some architectural issues that made
+        the prospect of extending it a non-starter. But it still served as a good basis.
+        
+        An effort has been made to retain the same options, but some (such as using -v
+        for --version instead of --verbose) have been changed to better adhere to
+        common conventions.
+        
+        
+        Future work
+        ===========
+        
+        - further improvements to internal representation
+        - fully implement options
+        - fix JSON output
+        - read from STDIN
+        - validate output
+        
+        
+        Useful Documentation
+        ====================
+        
+        1) http://dubeyko.com/development/FileSystems/NTFS/ntfsdoc.pdf
+        
+        
+Keywords: mft,forensics
+Platform: UNKNOWN

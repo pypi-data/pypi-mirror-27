@@ -1,0 +1,20 @@
+2017-12-19  --  fixes to spinner
+                more code cleanup
+                added --legacy_l2t_date (currently ignored)
+                improved handling of MFT records (name)
+                csv output working
+                l2t output working
+                timesketch output working
+                added --max_memory and protective abort for large MFT
+2017-12-17  --  store both unix time and date str, cleanup
+				major cleanup
+				added (code) documentation
+				various fixes
+				bodyfile output first pass verified
+2017-12-16  --  used ctime instead of crtime in bodyfile
+				implemented csv export
+2017-12-15  --  made expandPaths() own function; made Progress class
+				parses MFT, builds file paths
+				[fixed] extraneous pipe chars
+				book keeping
+				start of rewrite (many changes)
