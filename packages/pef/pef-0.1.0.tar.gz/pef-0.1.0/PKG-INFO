@@ -1,0 +1,61 @@
+Metadata-Version: 1.1
+Name: pef
+Version: 0.1.0
+Summary: Yet another .gitignore magician in your command line.
+Home-page: https://github.com/cls1991/dp
+Author: cls1991
+Author-email: tzk19910406@hotmail.com
+License: Apache License 2.0
+Description-Content-Type: UNKNOWN
+Description: dp
+        ==
+        
+        .. image:: https://img.shields.io/pypi/l/dp.svg
+            :target: https://pypi.python.org/pypi/dp
+        
+        .. image:: https://img.shields.io/pypi/v/dp.svg
+            :target: https://pypi.python.org/pypi/dp
+        
+        .. image:: https://img.shields.io/pypi/pyversions/dp.svg
+            :target: https://pypi.python.org/pypi/dp
+        
+        Enhancement for pip uninstall command, that it removes all dependencies of an uninstalled package.
+        
+        ☤ Installation
+        --------------
+        
+        You can install "dp" via pip from `PyPI <https://pypi.python.org/pypi/dp>`_:
+        
+        ::
+        
+            $ pip install dp
+        	
+        ☤ Usage
+        -------
+        
+        ::
+        
+            $ dp --help
+            Usage: dp [OPTIONS] [PACKAGES]...
+        
+            Remove packages and theirs dependencies.
+        
+            Options:
+              --help  Show this message and exit.
+        
+Keywords: pip,dependency
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Operating System :: OS Independent
