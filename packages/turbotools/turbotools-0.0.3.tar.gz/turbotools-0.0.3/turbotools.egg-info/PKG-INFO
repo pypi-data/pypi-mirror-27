@@ -1,0 +1,38 @@
+Metadata-Version: 1.1
+Name: turbotools
+Version: 0.0.3
+Summary: Toolset. 
+Home-page: https://github.com/anshengme/turbotools
+Author: ansheng
+Author-email: ianshengme@gmail.com
+License: LICENSE.txt
+Description-Content-Type: UNKNOWN
+Description: 
+        Turbotools
+        ^^^^^^^^^^^^^^^^
+        
+        .. image:: https://travis-ci.org/anshengme/turbotools.svg?branch=master
+           :target: https://travis-ci.org/anshengme/turbotools
+        
+        .. image:: https://coveralls.io/repos/github/anshengme/turbotools/badge.svg?branch=master
+           :target: https://coveralls.io/github/anshengme/turbotools?branch=master
+        
+        .. image:: https://img.shields.io/pypi/v/turbotools.svg?
+           :target: http://badge.fury.io/py/turbotools
+        
+        .. image:: https://img.shields.io/pypi/pyversions/turbotools.svg
+           :target: https://github.com/anshengme/turbotools
+        
+        .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
+           :target: https://github.com/anshengme/turbotools/blob/master/LICENSE
+        
+        
+        发布PyPi
+        ----------------
+        
+        ::
+        
+            python setup.py sdist
+            twine upload dist/*
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
