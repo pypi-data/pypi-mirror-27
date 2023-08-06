@@ -1,0 +1,37 @@
+Metadata-Version: 1.0
+Name: friendpaste-api
+Version: 0.1.1-alpha
+Summary: Simple Python API for friendpaste.com
+Home-page: https://github.com/Jorjon/friendpaste-api
+Author: Jorjon
+Author-email: jorjon@jorjon.com
+License: MIT
+Description: 
+        
+        Friendpaste API
+        ===============
+        
+        Installation
+        ------------
+        
+        ``pip install friendpaste-api``
+        
+        
+        Requirements
+        ------------
+        
+        -  `requests <http://docs.python-requests.org/en/master/>`__
+        
+        
+        Usage
+        -----
+        
+        .. code:: python
+        
+            from friendpaste import fp_write
+        
+            # Update post using hash
+            fp_write('y0Z1ia3h47j8ddRSn2QiPy', 'My new text')
+        
+Keywords: friendpaste,api,scrapper
+Platform: UNKNOWN
