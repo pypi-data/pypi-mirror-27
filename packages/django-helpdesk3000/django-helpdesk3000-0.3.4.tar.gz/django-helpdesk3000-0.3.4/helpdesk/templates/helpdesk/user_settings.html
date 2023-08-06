@@ -1,0 +1,36 @@
+{% extends "helpdesk/inner.html" %}
+
+{% load i18n %}
+
+{% block helpdesk_title %}{% trans "Change Settings" %}{% endblock %}
+
+{% block helpdesk_widgets %}
+    {% if show_password_change_link %}
+        {% url 'auth_password_change' as password_change_url %} 
+        <h2>Change Password</h2>
+        <p>
+        Change your password <a href="{{ password_change_url }}" title="change your password">here</a>.
+        </p>
+    {% endif %}
+    
+    {% blocktrans %}
+    <h2>Settings</h2>
+    <p>Use the following options to change the way your helpdesk system works for you. These settings do not impact any other user.</p>
+    {% endblocktrans %}
+    
+    <form method='post' action='./'>
+        {% csrf_token %}
+        <div>
+            {% for field in form %}
+                <div>
+                    {{ field }}
+                    <label for='id_{{ field.name }}'>{{ field.label }}</label>
+                    {% if field.errors %}<div class='error'>{{ field.errors }}</div>{% endif %}
+                    {% if field.help_text %}<div class='form_help_text'>{{ field.help_text }}</div>{% endif %}
+                    <br/>
+                </div>
+            {% endfor %}
+        </div>
+        <input type='submit' value='{% trans "Save Options" %}' />
+    </form>
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends "helpdesk/inner.html" %}
+{% load i18n %}
+{% load helpdesktags %}
+
+{% block welcome_subtext %}
+    {% if helpdesk_settings.HELPDESK_CUSTOM_WELCOME %}
+    <p>{% trans "From here you can quickly see tickets submitted by you, tickets you are working on, and those tickets that have no owner." %}</p>
+    {% else %}
+    <p>{% trans "From here you can quickly see your own tickets, and those tickets that have no owner.<br/>Why not pick up an orphan ticket and sort it out for a customer?" %}</p>
+    {% endif %}
+{% endblock %}
+
+{% block helpdesk_widgets %}
+    
+    <div class="dk-widget">
+        <h3>{% trans "Summary" %}</h3>
+        <hr />
+        <table width='100%'>
+            <thead>
+                <tr class='row_columnheads'>
+                    <th>{% trans "Queue" %}</th>
+                    <th class="center queue-count">{% trans "Open" %}</th>
+                    <th class="center queue-count">{% trans "Resolved" %}</th>
+                    <th class="center queue-count">{% trans "Closed" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for queue in dash_tickets %}
+                    <tr>
+                        <td><a href='{% url 'helpdesk_list' %}?queue={{ queue.queue }}&status=1&status=2'>{{ queue.name }}</a></td>
+                        <td class="center">{% if queue.open %}<a href='{% url 'helpdesk_list' %}?queue={{ queue.queue }}&status=1&status=2'>{% endif %}{{ queue.open }}{% if queue.open %}</a>{% endif %}</td>
+                        <td class="center">{% if queue.resolved %}<a href='{% url 'helpdesk_list' %}?queue={{ queue.queue }}&status=3'>{% endif %}{{ queue.resolved }}{% if queue.resolved %}</a>{% endif %}</td>
+                        <td class="center">{% if queue.closed %}<a href='{% url 'helpdesk_list' %}?queue={{ queue.queue }}&status=4'>{% endif %}{{ queue.closed }}{% if queue.closed %}</a>{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    {% if all_tickets_reported_by_current_user %}
+        <div class="dk-widget">
+            <h3>{% trans "Your Submissions" %}</h3>
+            <hr />
+            <table width='100%'>
+                <thead>
+                    <tr class='row_columnheads'><th>Ticket #</th><th>{% trans "Priority" %}</th><th>{% trans "Title" %}</th><th>{% trans "Queue" %}</th><th>{% trans "Status" %}</th><th>{% trans "Last Update" %}</th></tr>
+                </thead>
+                <tbody>
+                    {% for ticket in all_tickets_reported_by_current_user %}
+                        <tr>
+                            <td><a href='{{ ticket.get_absolute_url }}'>{{ ticket.ticket }}</a></td>
+                            <td>{{ ticket.get_priority_span }}</td>
+                            <td class="title-value"><a href='{{ ticket.get_absolute_url }}'>{{ ticket.title }}</a></td>
+                            <td>{{ ticket.queue }}</td>
+                            <td>{{ ticket.get_status }}</td>
+                            <td><span title='{{ ticket.modified|date:"r" }}'>{{ ticket.modified|timesince }}</span></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    
+    {% if user_tickets %}
+        <div class="dk-widget">
+            <h3>{% trans "Your Open Tickets" %}</h3>
+            <hr />
+            <table width='100%'>
+                <thead>
+                    <tr class='row_columnheads'>
+                        <th>{% sortable_column_link request "id" 'o1' "Ticket&nbsp;#" 'priority' %}</th>
+                        <th>{% sortable_column_link request "priority" 'o1' "Priority" 'priority' %}</th>
+                        <th>{% sortable_column_link request "title" 'o1' "Title" 'priority' %}</th>
+                        <th>{% sortable_column_link request "queue" 'o1' "Queue" 'priority' %}</th>
+                        <th>{% sortable_column_link request "status" 'o1' "Status" 'priority' %}</th>
+                        <th>{% sortable_column_link request "modified" 'o1' "Last Update" 'priority' %}</th>
+                        <th>{% sortable_column_link request "due_on" 'o1' "Due" 'priority' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in user_tickets %}
+                        <tr>
+                            <td><a href='{{ ticket.get_absolute_url }}'>{{ ticket.ticket }}</a></td>
+                            <td>{{ ticket.get_priority_span }}</td>
+                            <td class="title-value"><a href='{{ ticket.get_absolute_url }}'>{{ ticket.title }}</a></td>
+                            <td>{{ ticket.queue }}</td>
+                            <td>{{ ticket.get_status }}</td>
+                            <td><span title='{{ ticket.modified|date:"r" }}'>{{ ticket.modified|timesince|nbsp }}</span></td>
+                            <td style="white-space:nowrap;">
+                                {% if ticket.due_date %}
+                                    {% if ticket.due_date > current_dt %}
+                                        <span style="" title='{{ ticket.due_date|date:"r" }}'>in {{ ticket.due_date|timeuntil }}</span>
+                                    {% else %}
+                                        <span style="color:red;" title='{{ ticket.due_date|date:"r" }}'>{{ ticket.due_date|timesince }} ago</span>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    
+    {% if unassigned_tickets %}
+        <div class="dk-widget">
+            <h3>{% trans "Unassigned Tickets" %}</h3>
+            <hr />
+            <table width='100%'>
+                <thead>
+                    <tr class='row_columnheads'>
+                        <th>{% sortable_column_link request 'id' 'o2' 'Ticket&nbsp;#' 'priority' %}</th>
+                        <th>{% sortable_column_link request 'priority' 'o2' "Priority" 'priority' %}</th>
+                        <th>{% sortable_column_link request 'title' 'o2' "Title" 'priority' %}</th>
+                        <th>{% sortable_column_link request 'queue' 'o2' "Queue" 'priority' %}</th>
+                        <th>{% sortable_column_link request 'created' 'o2' "Created" 'priority' %}</th>
+                        <th>{% sortable_column_link request 'due_on' 'o2' "Due" 'priority' %}</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in unassigned_tickets %}
+                        <tr>
+                            <td><a href='{{ ticket.get_absolute_url }}'>{{ ticket.ticket }}</a></td>
+                            <td>{{ ticket.get_priority_span }}</td>
+                            <td class="title-value"><a href='{{ ticket.get_absolute_url }}'>{{ ticket.title }}</a></td>
+                            <td>{{ ticket.queue }}</td>
+                            <td><span title='{{ ticket.created|date:"r" }}'>{{ ticket.created|timesince }} ago</span></td>
+                            <td style="white-space:nowrap;">
+                                {% if ticket.due_date %}
+                                    {% if ticket.due_date > current_dt %}
+                                        <span style="" title='{{ ticket.due_date|date:"r" }}'>in {{ ticket.due_date|timeuntil }}</span>
+                                    {% else %}
+                                        <span style="color:red;" title='{{ ticket.due_date|date:"r" }}'>{{ ticket.due_date|timesince }} ago</span>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            <td><a href='{{ ticket.get_absolute_url }}?take'><span class='button button_take'>{% trans "Take" %}</span></a>
+                            {% if helpdesk_settings.HELPDESK_DASHBOARD_SHOW_DELETE_UNASSIGNED %}
+                               | <a href='{% url 'helpdesk_delete' ticket.id %}'><span class='button button_delete'>{% trans "Delete" %}</span></a>{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    
+    {% if user_tickets_closed_resolved %}
+        <div class="dk-widget">
+            <h3>{% trans "Your Resolved Tickets" %}</h3>
+            <hr />
+            <table width='100%'>
+                <thead>
+                    <tr class='row_columnheads'><th>Ticket #</th><th>{% trans "Priority" %}</th><th>{% trans "Title" %}</th><th>{% trans "Queue" %}</th><th>{% trans "Status" %}</th><th>{% trans "Last Update" %}</th></tr>
+                </thead>
+                <tbody>
+                    {% for ticket in unassigned_tickets %}
+                        <tr>
+                            <td><a href='{{ ticket.get_absolute_url }}'>{{ ticket.ticket }}</a></td>
+                            <td>{{ ticket.get_priority_span }}</td>
+                            <td class="title-value"><a href='{{ ticket.get_absolute_url }}'>{{ ticket.title }}</a></td>
+                            <td>{{ ticket.queue }}</td>
+                            <td>{{ ticket.get_status }}</td>
+                            <td><span title='{{ ticket.modified|date:"r" }}'>{{ ticket.modified|timesince }}</span></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock helpdesk_widgets %}
