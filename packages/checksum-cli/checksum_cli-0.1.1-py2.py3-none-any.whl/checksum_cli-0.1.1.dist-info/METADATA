@@ -1,0 +1,60 @@
+Metadata-Version: 2.0
+Name: checksum-cli
+Version: 0.1.1
+Summary: A command line interface program use for generate the checksum of file.
+Home-page: https://github.com/cupen/checksum-cli
+Author: cupen
+Author-email: cupen@foxmail.com
+License: WTFPL
+Keywords: checksum cli
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Utilities
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=2.7.*,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*
+
+# INTRODUCTION
+A command line interface program use for generate the checksum of file.
+
+# INSTALL
+```bash
+$ pip install checksum-cli
+```
+or (It's not recommended unless you need to change code.)
+```bash
+$ git clone https://github.com/cupen/checksum-cli.git --depth=1
+$ cd checksum-cli
+$ python setup.py install
+```
+
+# USAGE
+```bash
+$ checksum /a/file/path/to/foobar --hash md5
+$ checksum /a/file/path/to/foobar --hash sha1
+$ checksum /a/file/path/to/foobar --hash sha256
+```
+
+# LICENCE
+```
+DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+            Version 2, December 2004
+
+Copyright (C) 2017 cupen <cupen@foxmail.com>
+
+Everyone is permitted to copy and distribute verbatim or modified
+copies of this license document, and changing it is allowed as long
+as the name is changed.
+
+    DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+0. You just DO WHAT THE FUCK YOU WANT TO.
+```
+
+
+
