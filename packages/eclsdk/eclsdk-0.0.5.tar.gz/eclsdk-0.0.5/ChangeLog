@@ -1,0 +1,74 @@
+CHANGES
+=======
+
+0.0.5
+-----
+
+* added environment to Stack resource class
+* Add fixes after integration test
+* :heavy\_plus\_sign: version upgrade
+* Modified for swift
+* Add sdk for new tenant connections
+* Add sdk for new tenant connections
+
+0.0.4
+-----
+
+* add nameserver & mul\_delete recordsets
+* add dns module
+* Update \_proxy.py
+* add orchestration.stack.stack\_abandon method
+* turn ignore\_missing=True to ignore\_missing=False
+* fix sdk.orchestration stack creation's auth bug
+* :heavy\_plus\_sign: version upgrade
+
+0.0.3
+-----
+
+* :heavy\_plus\_sign: version upgrade
+* Delete redundancy from waf response body rows
+
+0.0.2
+-----
+
+* :new: (IF-18) fixed method name
+* :new: (IF-18) fixed method name
+* :recycle: (IF-18) fixed docstring
+* :recycle: (IF-18) added props and fixed interface of cancel host based method
+* :recycle: (IF-18) fixed typo
+* :recycle: (IF-18) fixed interfaces of update ha firewall
+* :new: (IF-18) added host based quantity update method
+* :new: (IF-18) added host based menu update method
+* :new: (IF-18) added host based create and delete method
+* :new: (IF-18) added host based order info get method
+* :new: (IF-18) added host based order status get method
+* :new: (IF-18) added waf update and delete method
+* :new: (IF-18) added waf order status get method
+* :new: (IF-18) added waf create method
+* :new: (IF-18) added waf list method
+* :new: (IF-18) added ha firewall delete method and fix some fault
+* :new: (IF-18) added ha firewall update method
+* :recycle: (IF-18) fixed code layout and fault
+* :new: (IF-18) added ha firewall create method
+* :new: (IF-18) added ha firewall list method
+* :new: (IF-18) added all single firewall api methods
+* :recycle: fixed condition of create instance
+* :bug: fixed TYPO
+* :recycle: fixed list devices interface to make device object
+* :recycle: fixed body handling method
+* :recycle: added new prop to create databases
+* :recycle: fixed
+* :recycle: fixed
+* :recycle: fixed each resource's params
+* :new: add a part of security order api methods
+* :recycle: fixed database service methods
+* :new: added prop to dh usage resource
+* :heavy\_plus\_sign: version upgrade
+* :new: added security device interfaces method
+* :recycle: commented out extra import
+* :new: added security devices method
+
+0.0.1
+-----
+
+* :new: first commit
