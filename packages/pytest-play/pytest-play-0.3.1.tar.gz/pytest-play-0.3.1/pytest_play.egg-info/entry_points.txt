@@ -1,0 +1,6 @@
+[playcommands]
+default = pytest_play.providers:SplinterCommandProvider
+
+[pytest11]
+pytest-play = pytest_play.plugin
+
