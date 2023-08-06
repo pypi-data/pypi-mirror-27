@@ -1,0 +1,77 @@
+Metadata-Version: 1.1
+Name: termnote
+Version: 1.0.4
+Summary: A simple, yet powerful and handy terminal based note taking python app
+Home-page: https://github.com/sayanarijit/termnote
+Author: Arijit Basu
+Author-email: sayanarijit@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/sayanarijit/termnote/archive/v1.0.4.tar.gz
+Description-Content-Type: UNKNOWN
+Description: # TermNote
+        
+        A simple, yet powerful and handy terminal based note taking python app
+        
+        
+        ### Requirement:
+        
+        * requires python (>2 or 3)
+        
+        
+        ### Usage:
+        
+        * Install with pip
+        
+        ```
+        pip install termnote
+        ```
+        
+        Note: For the sake of LAZYNESS, 'tn' is a shortcut for 'termnote'
+        
+        * Create your 1st note (Tip: default editor is vi; to change it, set $EDITOR environment variable)
+        
+        ```
+        export EDITOR=vim
+        
+        tn my first note
+        ```
+        
+        * Write "I love cheeze" and close editor. Note is created. Now lets find the note by keywords
+        
+        ```
+        tn cheez
+        ```
+        
+        or by filename
+        
+        ```
+        tn first no
+        ```
+        
+        * List all notes
+        
+        ```
+        tn
+        ```
+        
+Keywords: Notes Management Terminal App
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Utilities
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX
