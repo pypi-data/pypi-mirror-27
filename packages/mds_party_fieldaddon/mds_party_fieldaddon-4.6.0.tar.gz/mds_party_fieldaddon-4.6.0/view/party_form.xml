@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<data>
+    <xpath expr="/form/group[@id='checkboxes']" position="after">
+        <label name="pfafirstname"/>
+        <field name="pfafirstname"/>
+        <label name="pfacompany"/>
+        <field name="pfacompany"/>
+        <label name="pfadepartment"/>
+        <field name="pfadepartment"/>
+    </xpath>
+</data>
