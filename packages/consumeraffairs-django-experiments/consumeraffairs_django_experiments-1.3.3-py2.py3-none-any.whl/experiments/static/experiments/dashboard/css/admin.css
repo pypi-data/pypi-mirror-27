@@ -1,0 +1,140 @@
+a.experiment-state-selected:link {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+h5.experiment-dates {
+    margin-top: 0;
+    letter-spacing: normal;
+}
+
+.hidden-relevant-goals {
+    /* Hides the actual Django admin "Relevant Goals" section so it can
+       be replaced with easier to use checkboxes */
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+}
+
+.experiment-results-container {
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.experiment-results-table {
+    width: 100%;
+}
+
+.experiment-results-table th {
+    cursor: pointer;
+}
+
+thead th.experiment-toggle-goals {
+    color: #aaa;
+}
+
+.experiment-results-table tbody tr td:nth-child(2n) {
+    background: #eee;
+}
+
+.experiment-results-table.experiment-hide-irrelevant .experiment-irrelevant-goal {
+    display: none;
+}
+
+.experiment-alternative-enrolled {
+    display: none;
+}
+
+.experiment-selected-alternative .experiment-alternative-join {
+    display: none;
+}
+
+.experiment-selected-alternative .experiment-alternative-enrolled {
+    display: inline;
+}
+
+.experiment-alternative-join {
+    display: inline;
+}
+
+.experiment-high-confidence,
+.experiment-positive-improvement {
+    color: green;
+    font-weight: bold;
+}
+
+.experiment-negative-improvement {
+    color: red;
+    font-weight: bold;
+}
+
+.experiment-high-confidence:after {
+    content: '  ✓';
+}
+
+.experiment-low-confidence:after {
+    content: '  ✗';
+}
+
+.experiment-mwu-goal {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* tool buttons */
+body.experiments-experiment .grp-object-tools a.experiment-state-toggle,
+body.model-experiment .object-tools a.experiment-state-toggle {
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4fb2d3),color-stop(100%, #309bbf));
+    background: -moz-linear-gradient(#4fb2d3,#309bbf);
+    background: -webkit-linear-gradient(#4fb2d3,#309bbf);
+    background: linear-gradient(#4fb2d3,#309bbf);
+}
+body.experiments-experiment .grp-object-tools a.experiment-state-toggle:hover {
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff),color-stop(100%, #eeeeee));
+    background: -moz-linear-gradient(#ffffff,#eeeeee);
+    background: -webkit-linear-gradient(#ffffff,#eeeeee);
+    background: linear-gradient(#ffffff,#eeeeee);
+    border-color: #777;
+    color: #444;
+}
+body.model-experiment .object-tools a.experiment-state-toggle:hover {
+    background: #417690;
+}
+
+/* alternatives inline */
+body.experiments-experiment #experimentalternative_set-group h2,
+body.model-experiment #experimentalternative_set-group h2 {
+    display: none;
+}
+body.experiments-experiment #experimentalternative_set-group .js-alternatives h2,
+body.model-experiment #experimentalternative_set-group .js-alternatives h2 {
+    display: block;
+}
+body.experiments-experiment #experimentalternative_set-group > .grp-tools,
+body.model-experiment #experimentalternative_set-group > .grp-tools {
+    display: none;
+}
+body.experiments-experiment .js-alternatives,
+body.model-experiment .js-alternatives {
+    margin-bottom: 5px;
+}
+
+/* conditionals inline */
+#admin_conditionals-group .inline-related .form-row {
+    display: none;
+}
+#admin_conditionals-group .inline-related .form-row.copy_from {
+    display: block;
+}
+#admin_conditionals-group .inline-related.has_original .form-row {
+    display: block;
+}
+#admin_conditionals-group .inline-related.has_original .form-row.copy_from {
+    display: none;
+}
+
+/* misc */
+body.experiments-experiment table.relevant-goals,
+body.model-experiment table.relevant-goals {
+    margin-bottom: 1em;
+}
