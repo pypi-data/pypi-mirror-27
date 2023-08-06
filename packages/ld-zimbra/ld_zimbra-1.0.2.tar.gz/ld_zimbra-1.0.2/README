@@ -1,0 +1,32 @@
+Este módulo tem como objetivo realizar alterações simples em contas de e-mail no zimbra utilizando a API SOAP.
+
+Para conseguir realizar a conexão com o administrador do Zimbra é necessário criar o seguinte
+arquivo de configuração dentro do diretório home:
+
+~/config/config.yml
+
+
+O arquivo config.yml, deve conter o seguinte conteúdo:
+
+
+mail:
+  server: <server>
+  user: '<user>'
+  password: '<password>'
+  port: <port>
+
+
+Abaixo temos um exemplo de como utilizar o módulo:
+
+
+zimbra = ZimbraModule()
+#criar um usuario
+print(zimbra.create_account('usuario@email.com.br','senha'))
+
+#add um usuario na lista de distribuição
+id = zimbra.get_list_distribution('lista@email.com.br') #busca o ID da lista de distribuição
+print(zimbra.add_member_dl(id,'usuario@email.com.br')) #add o usuário na lista
+
+#desativar uma conta
+id = zimbra.get_account('usuario@email.com.br') #busca o ID da conta
+print(zimbra.account_inative(id)) #desativa a conta
