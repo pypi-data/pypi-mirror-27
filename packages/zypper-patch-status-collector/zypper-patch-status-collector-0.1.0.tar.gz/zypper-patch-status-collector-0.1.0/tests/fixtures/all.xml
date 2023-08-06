@@ -1,0 +1,61 @@
+<?xml version='1.0'?>
+<stream>
+<update-status version="0.6">
+<update-list>
+ <update name="openSUSE-2017-1234" edition="1" arch="noarch" status="needed" category="recommended" severity="important" pkgmanager="false" restart="false" interactive="false" kind="patch">
+  <summary>Some update  </summary>
+  <description>Some description.</description>
+  <license></license>
+  <source url="http://download.opensuse.org/update/leap/42.3/oss" alias="download.opensuse.org-oss_1"/>
+ </update>
+ <update name="openSUSE-2017-1235" edition="1" arch="noarch" status="needed" category="recommended" severity="low" pkgmanager="false" restart="false" interactive="false" kind="patch">
+  <summary>Some other update</summary>
+  <description>Some other description.</description>
+  <license></license>
+  <source url="http://download.opensuse.org/update/leap/42.3/oss" alias="download.opensuse.org-oss_1"/>
+ </update>
+ <update name="openSUSE-2017-1236" edition="1" arch="noarch" status="needed" category="security" severity="important" pkgmanager="false" restart="false" interactive="false" kind="patch">
+  <summary>Some security update</summary>
+  <description>Some description for it
+</description>
+  <license></license>
+  <source url="http://download.opensuse.org/update/leap/42.3/oss" alias="download.opensuse.org-oss_1"/>
+ </update>
+ <update name="openSUSE-2017-1237" edition="1" arch="noarch" status="needed" category="optional" severity="moderate" pkgmanager="false" restart="false" interactive="false" kind="patch">
+  <summary>Some optional update</summary>
+  <description>Some description for it
+</description>
+  <license></license>
+  <source url="http://download.opensuse.org/update/leap/42.3/oss" alias="download.opensuse.org-oss_1"/>
+ </update>
+ <update name="openSUSE-2017-1238" edition="1" arch="noarch" status="needed" category="feature" severity="low" pkgmanager="false" restart="false" interactive="false" kind="patch">
+  <summary>Some feature update</summary>
+  <description>Some description for it
+</description>
+  <license></license>
+  <source url="http://download.opensuse.org/update/leap/42.3/oss" alias="download.opensuse.org-oss_1"/>
+ </update>
+ <update name="openSUSE-2017-1239" edition="1" arch="noarch" status="needed" category="document" severity="unspecified" pkgmanager="false" restart="false" interactive="false" kind="patch">
+  <summary>Some optional update</summary>
+  <description>Some description for it
+</description>
+  <license></license>
+  <source url="http://download.opensuse.org/update/leap/42.3/oss" alias="download.opensuse.org-oss_1"/>
+ </update>
+ <update name="openSUSE-2017-1240" edition="1" arch="noarch" status="needed" category="yast" severity="critical" pkgmanager="false" restart="false" interactive="false" kind="patch">
+  <summary>Some optional update</summary>
+  <description>Some description for it
+</description>
+  <license></license>
+  <source url="http://download.opensuse.org/update/leap/42.3/oss" alias="download.opensuse.org-oss_1"/>
+ </update>
+ <update name="openSUSE-2017-1241" edition="1" arch="noarch" status="needed" category="optional" severity="moderate" pkgmanager="false" restart="false" interactive="false" kind="patch">
+  <summary>Some other optional update</summary>
+  <description>Some description for it
+</description>
+  <license></license>
+  <source url="http://download.opensuse.org/update/leap/42.3/oss" alias="download.opensuse.org-oss_1"/>
+ </update>
+</update-list>
+</update-status>
+</stream>

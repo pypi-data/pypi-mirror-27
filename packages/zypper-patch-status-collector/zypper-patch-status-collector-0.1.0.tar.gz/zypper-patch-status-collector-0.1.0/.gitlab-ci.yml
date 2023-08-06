@@ -1,0 +1,43 @@
+---
+
+before_script:
+  - pip install tox
+
+stages:
+  - test
+  - publish
+
+test-py27:
+  image: python:2.7
+  stage: test
+  script:
+    - tox -e py27
+
+test-py34:
+  image: python:3.4
+  stage: test
+  script:
+    - tox -e py34
+
+test-py35:
+  image: python:3.5
+  stage: test
+  script:
+    - tox -e py35
+
+test-py36:
+  image: python:3.6
+  stage: test
+  script:
+    - tox -e py36
+
+publish:
+  image: python:latest
+  stage: publish
+  before_script:
+    - pip install 'twine' 'wheel>=0.30.0'  # previous versions have reproducibility issues
+  script:
+    - SOURCE_DATE_EPOCH="$(git log -1 --format=format:%ct)" python setup.py sdist bdist_wheel
+    - twine upload dist/*
+  only:
+    - tags
