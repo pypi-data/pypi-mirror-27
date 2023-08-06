@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: upload-haddocks
+Version: 0.4
+Summary: Fix up Haskell documentation and upload it to Hackage
+Home-page: https://github.com/rcook/upload-haddocks
+Author: Richard Cook
+Author-email: rcook@rcook.org
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: upload-haddocks by Richard Cook
+        ===============================
+        
+        |View on PyPI| |Licence|
+        
+        Simple script that fixes hyperlinks in Haskell documentation generated
+        using ``stack haddock`` and then uploads it to the appropriate location
+        on `Hackage <http://hackage.haskell.org/>`__
+        
+        Clone repository
+        ----------------
+        
+        ::
+        
+            git clone https://github.com/rcook/upload-haddocks.git
+        
+        Developer notes
+        ---------------
+        
+        Various package properties are defined in
+        ``upload-haddocks/__init__py``:
+        
+        -  ``__project_name__``
+        -  ``__version__``
+        -  ``__description__``
+        
+        When publishing a new build of the package, ensure that ``__version__``
+        is incremented as appropriate.
+        
+        Licence
+        -------
+        
+        `MIT License <LICENSE>`__
+        
+        Released under `MIT License <LICENSE>`__
+        
+        .. |View on PyPI| image:: https://img.shields.io/pypi/v/upload-haddocks.svg
+           :target: https://pypi.python.org/pypi/upload-haddocks
+        .. |Licence| image:: https://img.shields.io/badge/license-MIT-blue.svg
+           :target: https://raw.githubusercontent.com/rcook/upload-haddocks/master/LICENSE
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
