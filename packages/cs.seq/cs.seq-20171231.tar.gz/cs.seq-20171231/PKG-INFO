@@ -1,0 +1,28 @@
+Metadata-Version: 1.1
+Name: cs.seq
+Version: 20171231
+Summary: Stuff to do with counters, sequences and iterables.
+Home-page: https://bitbucket.org/cameron_simpson/css/commits/all
+Author: Cameron Simpson
+Author-email: cs@cskk.id.au
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Presents:
+        
+        * Seq, a class for thread safe sequential integer generation.
+        
+        * seq(), a function to return such a number from a default global Seq instance.
+        
+        * the(), first(), last(), get0(): return the only, first, last or optional-first element of an iterable respectively.
+        
+        * TrackingCounter, a counting object with facilities for users to wait for it to reach arbitrary values.
+Keywords: python2,python3
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
