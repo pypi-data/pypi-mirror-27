@@ -1,0 +1,7 @@
+include README.md
+include LICENSE.md
+
+recursive-include scatl *.py *.jinja 
+
+prune scatl/static/scatl/node_modules
+include scatl/static/scatl/dist/*

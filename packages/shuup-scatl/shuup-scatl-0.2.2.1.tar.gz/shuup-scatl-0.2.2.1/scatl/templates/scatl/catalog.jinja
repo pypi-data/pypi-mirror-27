@@ -1,0 +1,16 @@
+{% extends 'shuup/front/base.jinja' %}
+
+{% block title %}{% trans %}Catalog{% endtrans %}{% endblock %}
+
+{% block breadcrumb %}
+    {% call macros.breadcrumb() %}
+        {{ macros.render_breadcrumb_item(url('shuup:index'), name=_('Home')) }}
+        {{ macros.render_breadcrumb_item(url=None, name=_('Catalog'), active=True) }}
+    {% endcall %}
+{% endblock %}
+
+{% block content %}
+    {% placeholder 'catalog' %}
+        {% plugin 'scatl.catalog' %}{% endplugin %}
+    {% endplaceholder %}
+{% endblock %}
