@@ -1,0 +1,80 @@
+Metadata-Version: 1.0
+Name: pysec-aws
+Version: 0.1
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: # pysec-aws
+        Convert simple text-based list of IP addresses, to AWS CloudFormation templates.
+        
+        ## Sample Text File and Syntax
+        ```
+        ## File:   MyInternalApi_Whitelisting_Production.txt
+        ## Syntax: <ip-address>/<cidr>:<portFrom>-<portTo>^<protocol>
+        52.35.22.100/32:80-443^tcp
+        52.35.22.101/32:443^udp
+        52.35.23.0/21:80^tcp
+        ```
+        
+        ## Usage
+        
+        ```python
+        >>> import pysec
+        >>> my_conversion = pysec.CFConversion(input_file_path='/mypath/MyInternalApi_Whitelisting_Production.txt')
+        [INFO] File loaded successfully - 3 ingress rules detected
+        
+        >>> my_conversion
+        {'requests': [{'toPort': '443', 'ip': '52.35.22.100', 'cidr': '32', 'ipProtocol': 'tcp', 'fromPort': '80'}, {'toPort': '443', 'ip': '52.35.22.101', 'cidr': '32', 'ipProtocol': 'udp', 'fromPort': '443'}, {'toPort': '80', 'ip': '52.35.23.0', 'cidr': '21', 'ipProtocol': 'tcp', 'fromPort': '80'}]}
+        
+        >> my_conversion.generate_template(group_name='MySecurityGroup', vpc='vpc-82c92af3')
+        [INFO] Generated Troposphere object
+        
+        >>> my_conversion.to_file(output_file_path='/mypath/artifact.yaml', format='yml')
+        [INFO] CF Template flushed to disk: /mypath/artifact.yaml
+        
+        >>> my_conversion.to_file(output_file_path='/mypath/artifact.json', format='json')
+        [INFO] CF Template flushed to disk: /mypath/artifact.json
+        ```
+        
+        ### Artifacts
+        
+        ```yaml
+        Outputs:
+          SecurityGroupId:
+            Description: Security Group Id
+            Value: !Ref 'MySecurityGroup'
+        Resources:
+          MySecurityGroup:
+            Properties:
+              GroupDescription: Security group created by automated process - MySecurityGroup
+              SecurityGroupIngress:
+                - CidrIp: 52.35.22.100/32
+                  FromPort: '80'
+                  IpProtocol: tcp
+                  ToPort: '443'
+                - CidrIp: 52.35.22.101/32
+                  FromPort: '443'
+                  IpProtocol: udp
+                  ToPort: '443'
+                - CidrIp: 52.35.23.0/21
+                  FromPort: '80'
+                  IpProtocol: tcp
+                  ToPort: '80'
+              VpcId: vpc-82c92af3
+            Type: AWS::EC2::SecurityGroup
+        ```
+        
+        ## Use cases
+        
+        If you need to manage a lot of dynamic security group that allow access between multiple AWS accounts, you can use this to keep simple ip lists in your repo per environment / branch, and build them into cloudformation templates during your CICD template, this is easier to manage then making changes directly to a template stored on git.
+        Alternatively, one could automate the process of building CF templates using this tool -- pull requests can trigger build and update of existing stack (this will require contributions to this tool).
+        
+        ## Notes
+        
+        Contributions welcome, no pip packages yet.
+        
+        Plan is to expand this tool to help manage security groups.
+        
+Platform: UNKNOWN
