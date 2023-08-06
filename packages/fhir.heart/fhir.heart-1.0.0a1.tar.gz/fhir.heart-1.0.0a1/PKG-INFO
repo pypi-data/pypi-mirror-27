@@ -1,0 +1,140 @@
+Metadata-Version: 1.1
+Name: fhir.heart
+Version: 1.0.0a1
+Summary: Health Relationship Trust Profile (HEART) implementation for FHIR (Fast Healthcare Interoperability Resources) compliance for Healthcare System.
+Home-page: https://pypi.python.org/pypi/fhir.heart
+Author: Md Nazrul Islam
+Author-email: email2nazrul@gmail.com
+License: GPL version 2
+Description-Content-Type: UNKNOWN
+Description: .. contents::
+        
+        collective.fhir.heart
+        =====================
+        
+        The the Health Relationship Trust (`HEART`_) implementation of IAM(Identity Access Management), authentication and security system for FHIR compliance healthcare system, powered by `OAuth 2.0`_, `OpenID Connect 1.0`_, `Plone`_.
+        
+        
+        Features
+        --------
+        
+        - `HEART profile for OAuth 2.0`_.
+        - `HEART profile for OpenID Connect`_.
+        - `HEART profile for User-Managed Access (UMA)`_.
+        - HEART profile for Fast Healthcare Interoperability Resources (FHIR) OAuth 2.0 scopes.
+        - HEART profile for FHIR UMA resource set types, scopes, and claims-gathering flows (referencing the previous specifications as appropriate).
+        
+        
+        Examples
+        --------
+        
+        This add-on can be seen in action at the following sites:
+        - Is there a page on the internet where everybody can see the features?
+        
+        
+        Documentation
+        -------------
+        
+        Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+        
+        
+        Translations
+        ------------
+        
+        This product has been translated into
+        
+        - Klingon (thanks, K'Plai)
+        
+        
+        Installation
+        ------------
+        
+        Install collective.fhir.heart by adding it to your buildout::
+        
+            [buildout]
+        
+            ...
+        
+            eggs =
+                collective.fhir.heart
+        
+        
+        and then running ``bin/buildout``
+        
+        
+        Contribute
+        ----------
+        
+        - Issue Tracker: https://github.com/collective/collective.fhir.heart/issues
+        - Source Code: https://github.com/collective/collective.fhir.heart
+        - Documentation: https://docs.plone.org/foo/bar
+        
+        
+        Support
+        -------
+        
+        If you are having issues, please let us know.
+        We have a mailing list located at: project@example.com
+        
+        
+        License
+        -------
+        
+        The project is licensed under the GPLv2.
+        
+        Contributors
+        ============
+        
+        - Md Nazrul Islam, email2nazrul@gmail.com
+        
+        
+        Changelog
+        =========
+        
+        
+        1.0.0a1 (2017-12-21)
+        --------------------
+        
+        - Initial release.
+          [nazrulworld]
+        
+        
+        Health Relationship Trust Profile (HEART) Specifications
+        ========================================================
+        
+        - `Health Relationship Trust Profile for OAuth 2.0`_
+        - `Health Relationship Trust Profile for OpenID Connect 1.0`_
+        - `Health Relationship Trust Profile for User-Managed Access 1.0`_
+        - `OpenID Connect Core 1.0 incorporating errata set 1`_
+        
+        
+        .. _`OAuth 2.0`: https://oauth.net/2/
+        .. _`OpenID Connect 1.0`: http://openid.net/connect/
+        .. _`Plone`: https:/www.plone.org/
+        .. _`FHIR`: https://www.hl7.org/fhir/
+        .. _`HEART`: http://openid.net/wg/heart/
+        .. _`Health Relationship Trust Profile for OAuth 2.0`: http://openid.net/specs/openid-heart-oauth2-1_0.html
+        .. _`Health Relationship Trust Profile for OpenID Connect 1.0`: http://openid.net/specs/openid-heart-openid-connect-1_0.html
+        .. _`Health Relationship Trust Profile for User-Managed Access 1.0`: http://openid.net/specs/openid-heart-uma-1_0.html
+        .. _`OpenID Connect Core 1.0 incorporating errata set 1`: http://openid.net/specs/openid-connect-core-1_0.html
+        .. _`HEART profile for OAuth 2.0`: http://openid.net/specs/openid-heart-oauth2-1_0.html
+        .. _`HEART profile for OpenID Connect`: http://openid.net/specs/openid-heart-openid-connect-1_0.html
+        .. _`HEART profile for User-Managed Access (UMA)`: http://openid.net/specs/openid-heart-uma-1_0.html
+Keywords: Python Plone oauth2 fhir openid
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: 4.3
+Classifier: Framework :: Plone :: 5.0
+Classifier: Framework :: Plone :: 5.1
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Intended Audience :: Healthcare Industry
+Classifier: Intended Audience :: Information Technology
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
