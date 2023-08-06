@@ -1,0 +1,7 @@
+recursive-exclude * __pycache__
+recursive-exclude * *.pyc
+recursive-exclude * *.pyo
+recursive-exclude * *.orig
+global-exclude */test_data/*
+include requirements.txt
+include requirements/*.txt
