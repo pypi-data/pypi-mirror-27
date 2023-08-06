@@ -1,0 +1,16 @@
+#!python
+
+# Quarg: Zero-effort CLI generation.
+#
+# To use on an unmodified script, run quarg in place of the Python
+# intepreter. See the README file for more details.
+
+import sys
+sys.argv = sys.argv[1:]
+
+__name__ = "__quarg_main__"
+exec(open(sys.argv[0]).read())
+
+import quarg
+__name__ = "__main__"
+quarg.main()
