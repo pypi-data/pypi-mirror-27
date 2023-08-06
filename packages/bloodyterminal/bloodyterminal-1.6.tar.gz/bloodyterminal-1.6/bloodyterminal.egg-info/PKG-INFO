@@ -1,0 +1,76 @@
+Metadata-Version: 1.1
+Name: bloodyterminal
+Version: 1.6
+Summary: A little helper to structure your terminal output
+Home-page: https://github.com/TheBloodyScreen/bloodyterminal/
+Author: TheBloodyScreen
+Author-email: jaydee@thebloodyscreen.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Bloody Terminal
+        ===============
+        
+        A simple piece of code to help structure your console outputs. BT makes
+        use of colorama to provide a few options to create a consistent console
+        output “theme”. 
+        
+        |
+        
+        As of v1.5 Bloody Terminal now also provides options for windows 10 toast notifications.
+        
+        ----
+        
+        .. code:: python
+        
+            from bloodyterminal import btext
+        
+            btext.success("your string")
+            bt.info("your string")
+            bt.warning("your string")
+            bt.debug("your string")
+            bt.custom("your prefix", "your string")
+        
+        Will result in something like this: 
+        
+        |alt text|
+        
+        .. |alt text| image:: https://d3vv6lp55qjaqc.cloudfront.net/items/0O0b1D0Y0f320U1u3D2Q/Image%202017-12-15%20at%207.10.11%20AM.png?X-CloudApp-Visitor-Id=411fc111b6ab769874aa3f398e8fb6a6&v=54bae9c2
+        
+        The [INFO] prefix has a more vibrant yellow color in most terminals.
+        
+        |
+        
+        Similarly this:
+        
+        .. code:: python
+        
+            from bloodyterminal import btoast
+        
+            btoast.success("your title", "your message", 2)
+            btoast.info("your title", "your message", 2)
+            btoast.warning("your title", "your message", 2)
+            btoast.debug("your title", "your message", 2)
+            btoast.custom("your title", "your message", 2)
+        
+        Will result in something like this: (a little hard to see in the gif but every time the icon changes is a new toast)
+        
+        .. image:: https://thebloodyscreen.com/btoast.gif
+        
+        |
+        
+        To test this you can also use btext.demo() and btoast.demo() to get these outputs.
+        
+        
+        NOTE: I did not create the coloring or the toast functionality! Credit to those go to `colorama <https://pypi.python.org/pypi/colorama>`_ and `win10toast <https://pypi.python.org/pypi/win10toast/0.8>`_
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
