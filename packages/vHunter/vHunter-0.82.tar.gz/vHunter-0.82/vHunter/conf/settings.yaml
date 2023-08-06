@@ -1,0 +1,33 @@
+min_python: 3.5.0
+proc_title: vhunter
+log_file: 
+    mac_os: /usr/local/var/log/vHunter/vHunter.log 
+    linux: /var/log/vHunter/vHunter.log
+log_level: DEBUG
+log_format: "[%(asctime)s %(process)d/%(module)s/%(funcName)s] %(message)s"
+
+scenarios_dirs: 
+    - conf/scenarios/
+supported_platforms:
+    - mac_os
+    - linux
+commands:
+    - fallback_distro_command: 'cat /etc/*release | grep -P "(^ID=.*)|(^VERSION_ID=.*)"'
+
+mail_notifier:
+    domain: 'email-smtp.eu-west-1.amazonaws.com'
+    account: 'AKIAJG2UC3H4TXLB3JGA'
+    pass: 'QWhCaUxYSDMySWVMOGZqczNDaCtBUGZWOHJpVDRSbWtPYmRZalhpQ3AwbXc='
+    subject: '%s Vulnerabilities detected on %s machine(s)'
+    body: |
+        Here is list of vulnerabilities found:
+        %s
+
+nvdapi:
+    url: http://vhunter.tk
+    resource: /nvdapi/vulnerabilities
+    filter_fields:
+        - product
+        - vendor
+        - version
+    port: 80

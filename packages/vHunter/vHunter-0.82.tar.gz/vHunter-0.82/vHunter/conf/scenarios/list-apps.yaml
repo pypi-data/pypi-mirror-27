@@ -1,0 +1,14 @@
+list-apps-scenario:
+    job:
+        debian: dpkg -l | awk 'gsub("[0-9]:", "") match($3,"([0-9]+\.*)*[0-9]*") { print $2 "," substr($3, RSTART, RLENGTH)}' | sed 's/\.$//' | tail -n+6
+        ubuntu: dpkg -l | awk 'gsub("[0-9]:", "") match($3,"([0-9]+\.*)*[0-9]*") { print $2 "," substr($3, RSTART, RLENGTH)}' | sed 's/\.$//' | tail -n+6
+        mac_os: brew list --versions | sed -e 's/ /,/g'
+        centos: yum list | grep -P "(\@CentOS|base)" | awk '{ split($1, a, "."); split($2, b, "-"); print a[1] "," b[1]}' | tail -n+2
+        default: echo 'distro not found' && test 1 -gt 2
+    min_score: 5.0
+    driver: BasicDriver
+    how_often: 10 # in minutes
+    notifiers:
+        - MailNotifier
+    receivers:
+        - evemorgen1911@gmail.com
