@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% block comments %}
+<!--
+# Copyright (c) 2015 Riverbed Technology, Inc.
+#
+# This software is licensed under the terms and conditions of the MIT License
+# accompanying the software ("License").  This software is distributed "AS IS"
+# as set forth in the License.
+-->
+{% endblock %}
+
+{% block title %}App Framework: Column Help{% endblock %}
+
+{% block header %}
+    <script type="text/javascript">
+        $(document).ready( function() {
+            {% if results %}
+                var cols, data;
+
+                {% if device == 'NetProfiler' %}
+                    cols = [
+                        {data: "KeyColumn", title: "Is Key Column", sortable:true},
+                        {data: "Key", title: "Column Key", sortable:true},
+                        {data: "Label", title: "Label", sortable:true},
+                        {data: "ID", title: "Column ID", sortable:true}
+                    ];
+                    data = [
+                        {% for iskey, key, label, id in results %}
+                            {KeyColumn:"{{ iskey }}", Key:"{{ key }}", Label:"{{ label }}", ID:"{{ id }}"},
+                        {% endfor %}
+                    ];
+                {% elif device == 'NetShark' %}
+                    cols = [
+                        {data: "ID", title: "Column ID", sortable:true},
+                        {data: "Description", title: "Description", sortable:true},
+                        {data: "Type", title: "Column Type", sortable:true}
+                    ];
+                    data = [
+                        {% for id, description, type in results %}
+                            {ID:"{{ id }}", Description:"{{ description }}", Type:"{{ type }}"},
+                        {% endfor %}
+                    ];
+                {% elif device == 'AppResponse' %}
+                    {% if data_type == 'columns' %}
+                        cols = [
+                            {data: 'id', title: 'ID', sortable: true},
+                            {data: 'field', title: 'Field', sortable: true},
+                            {data: 'label', title: 'Label', sortable: true},
+                            {data: 'metric', title: 'Metric', sortable: true},
+                            {data: 'iskey', title: 'IsKey', sortable: true},
+                            {data: 'type', title: 'Type', sortable: true},
+                            {data: 'unit', title: 'Unit', sortable: true},
+                            {data: 'description', title: 'Description', sortable: true},
+                            {data: 'synthesized', title: 'Additional Details', sortable: true},
+                        ];
+
+                        data = [
+                            {% for id, field, label, metric, type, unit, description, synthesized, grouped_by, iskey in results %}
+                                {id:"{{id}}", field:"{{ field }}", label:"{{ label }}", metric:"{{ metric }}",
+                                 iskey:"{{ iskey }}", type:"{{ type }}", unit:"{{ unit }}",
+                                 description:"{{ description }}", synthesized:"{{ synthesized }}"},
+                            {% endfor %}
+                        ];
+
+                    {% else %}
+                        cols = [
+                                {data: 'name', title: 'Name', sortable: true},
+                                {data: 'groups', title: 'Groups', sortable: true},
+                                {data: 'filters_on_metrics', title: 'Support Filters on Metrics', sortable: true},
+                                {data: 'granularities', title: 'Granularities (Seconds)', sortable: true},
+                        ];
+                        data = [
+                            {% for name, filters_on_metrics, granularities, groups in results %}
+                                {name:"{{name}}", groups:"{{groups}}", filters_on_metrics:"{{ filters_on_metrics }}", granularities:"{{ granularities }}"},
+                            {% endfor %}
+                        ];
+                    {% endif %}
+                {% endif %}
+
+                var $table = $('<table></table>')
+                    .attr('id', self.id + '_datatable')
+                    .addClass('display')
+                    .addClass('compact');
+                var $content = $('#sort');
+                $content.append($table);
+
+                $table.DataTable({
+                    data: data,
+                    columns: cols,
+                    info: true,
+                    lengthChange: true,
+                    paging: false,
+                    scrollY: false,
+                    searching: true
+                });
+            {% endif %}
+
+            // enable dropdown choices based on this relationship table
+            //|-----------------------------+------------+----------------------|
+            //| realm                       | centricity | groupby              |
+            //|-----------------------------+------------+----------------------|
+            //| traffic_summary             | hos,int    | all (except thu)     |
+            //| traffic_overall_time_series | hos,int    | tim                  |
+            //| traffic_flow_list           | hos        | hos                  |
+            //| identity_list               | hos        | thu                  |
+            //|-----------------------------+------------+----------------------|
+
+            var realm_options = $('#id_realm').html();
+            var group_options = $('#id_groupby').html();
+            var centricity_options = $('#id_centricity').html();
+
+            $('#id_realm').change(function(e) {
+                var text = $('#id_realm :selected').attr('value');
+                $('#id_groupby').html(group_options);
+                $('#id_centricity').html(centricity_options);
+
+                if (text == 'traffic_summary') {
+                    $('#id_groupby [value="thu"]').remove();
+                } else if (text == 'traffic_overall_time_series') {
+                    $('#id_groupby :not([value^="tim"])').remove();
+                } else if (text == 'traffic_flow_list') {
+                    $('#id_groupby :not([value^="hos"])').remove();
+                    $('#id_centricity :not([value^="hos"])').remove();
+                } else if (text == 'identity_list') {
+                    $('#id_groupby :not([value^="thu"])').remove();
+                    $('#id_centricity :not([value^="hos"])').remove();
+                }
+            });
+
+            {% if device == 'AppResponse' and data_type == 'columns' %}
+                var source_options = JSON.parse('{{ report_sources|safe }}');
+                var group = $('#id_group :selected').attr('value');
+                var source = $('#id_source :selected').attr('value');
+
+                //set the field to show source options based on the group
+                var options = '<option value="">---&nbsp;</option>';
+                if (group != ''){
+                    j = source_options[group];
+                    for (var i = 0; i < j.length; i++) {
+                        options += '<option value="' + j[i] + '">' + j[i] + '</option>';
+                    }
+                }
+                $("#id_source").html(options);
+
+                // preserve the original selected field
+                opts = document.getElementById("id_source").options
+
+                for (var i = 0; i < opts.length; i ++) {
+                    if (opts[i].text == source) {
+                        opts[i].selected = true;
+                        break;
+                    }
+                }
+
+                //if group changes, update the corresponding sources
+                $('#id_group').change(function(e) {
+                    var text = $('#id_group :selected').attr('value');
+                    var options = '<option value="">---&nbsp;</option>';
+                    if (text != ''){
+                        j = source_options[text];
+                        for (var i = 0; i < j.length; i++) {
+                            options += '<option value="' + j[i] + '">' + j[i] + '</option>';
+                        }
+                     }
+                     $("#id_source").html(options);
+               });
+           {% endif %}
+    });
+    </script>
+
+    <style type="text/css">
+        .form-inline input {
+            margin-bottom: 5px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        {% if device == 'AppResponse' and data_type == 'sources' %}
+            <h3 align="center">{{ device }} Source Helper</h3>
+        {% else %}
+            <h3 align="center">{{ device }} Column Helper</h3>
+        {% endif %}
+        <form id="profiler" class="form-inline" action='' method='post' align="center">
+            <div class="row-fluid" align="center">
+                <div class="span10 offset1">
+                    <div class="span">
+                        {% if form.valid_devices %}
+                            {% csrf_token %}
+                            <table>{{ form.as_table }}</table>
+                            {% if device == 'AppResponse' and data_type == 'sources' %}
+                                <br><input id="submit" type="submit" value="Find Sources" class="btn btn-primary">
+                            {% else %}
+                                <br><input id="submit" type="submit" value="Find Columns" class="btn btn-primary">
+                            {% endif %}
+                        {% else %}
+                            <table>
+                                <tr><td>No enabled devices found.</td></tr>
+                                {% if user.is_superuser %}
+                                    <tr><td>See <a href="{% url 'device-list' %}">device manager</a> to add or enable devices</td></tr>
+                                {% endif %}
+                            </table>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% if results %}
+        <div id="results-container" class="container-fluid">
+            <div id="sort" class="row-fluid yui3-skin-sam" align="center">
+            </div>
+        </div>
+    {% endif %}
+    <P></P>
+{% endblock %}
