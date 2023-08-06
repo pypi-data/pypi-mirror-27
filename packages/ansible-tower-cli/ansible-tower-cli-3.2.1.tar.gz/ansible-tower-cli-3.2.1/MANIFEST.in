@@ -1,0 +1,10 @@
+# ----------------------
+# -- Package Metadata --
+# ----------------------
+include LICENSE
+include README.rst
+include HISTORY.rst
+include requirements.txt
+recursive-include docs *
+recursive-include tests *
+include tox.ini
