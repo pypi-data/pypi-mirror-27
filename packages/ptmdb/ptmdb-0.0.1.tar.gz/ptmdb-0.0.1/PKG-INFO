@@ -1,0 +1,28 @@
+Metadata-Version: 1.1
+Name: ptmdb
+Version: 0.0.1
+Summary: Project to allow a pandas dataframe to save to MongoDB
+Home-page: UNKNOWN
+Author: Jimmy Hennessy
+Author-email: jimmy@woden.ie
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: PTMDB Library
+        =======================
+        
+        A small library to allow a pandas data frame to be saved to a MongoDB repository
+        
+        *Dependancies*::
+        	import pandas as pd
+        	import pymongo as py
+        
+        *Usage*::
+        	import PTMDB as pmdb
+        	
+Keywords: sample setuptools development
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.5
