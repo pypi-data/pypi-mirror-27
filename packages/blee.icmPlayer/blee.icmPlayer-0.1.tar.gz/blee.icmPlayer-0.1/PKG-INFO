@@ -1,0 +1,64 @@
+Metadata-Version: 1.1
+Name: blee.icmPlayer
+Version: 0.1
+Summary: Blee-ICM-Plaer: A Blee (ByStar Libre-Halaal Emacs Environmen) ICM (Interactive Command Modules) Player. Takes an ICM as input and allows for its command-line execution through a rich
+Home-page: http://www.by-star.net/PLPC/180047
+Author: Mohsen Banan
+Author-email: libre@mohsen.1.banan.byname.net
+License: AGPL
+Download-URL: http://www.by-star.net/PLPC/180047
+Description: ==============
+        blee.icmPlayer
+        ==============
+        
+        .. contents::
+           :depth: 3
+        ..
+        
+        Overview
+        ========
+        
+        Blee-ICM-Plaer: A Blee (ByStar Libre-Halaal Emacs Environmen) ICM
+        (Interactive Command Modules) Player. Takes an ICM as input and allows
+        for its command-line execution through a rich interactive emacs
+        inteface. Emacs dynamic interactions are implemented based on org-mode
+        dynamic blocks.
+        
+        Support
+        =======
+        
+        | For support, criticism, comments and questions; please contact the
+          author/maintainer
+        | `Mohsen Banan <http://mohsen.1.banan.byname.net>`__ at:
+          http://mohsen.1.banan.byname.net/contact
+        
+        Documentation
+        =============
+        
+        Part of ByStar Digital Ecosystem http://www.by-star.net.
+        
+        This module’s primary documentation is in
+        http://www.by-star.net/PLPC/180047
+        
+        Installation
+        ============
+        
+        ::
+        
+            sudo pip install blee.icmPlayer
+        
+        Usage
+        =====
+        
+        ::
+        
+            /usr/local/bin/bleeIcmPlayer.py
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
