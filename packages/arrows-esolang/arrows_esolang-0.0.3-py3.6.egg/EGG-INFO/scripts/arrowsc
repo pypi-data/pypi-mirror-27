@@ -1,0 +1,83 @@
+#!/usr/bin/python3
+import argparse
+from arrows_esolang import *
+
+parser = argparse.ArgumentParser(description='arrows-esolang compiler')
+parser.add_argument('source', type=str, help='the source file for the compiler')
+
+def parse(x, y, p):
+
+    if (x, y, p) in visited: 
+        return visited[(x, y, p)]
+
+    register = 0
+    me = Statement()
+    visited[(x, y, p)] = me
+
+    pp = get_paths(data, x, y)
+    pp = check_paths(data, x, y, pp)
+
+    if len(pp) == 2:
+        me.kind = NodeType.CONDITIONAL
+        me.if_zero = parse(x, y, rhr(p))
+        me.if_else = parse(x, y, lhr(p))
+        return me
+
+    p = pp[0]
+    me.kind = NodeType.ACTION
+    register = 0
+    pathy = 0
+    while not is_at_arrow(data, x, y, p):
+        x += p[0]
+        y += p[1]
+        pathy += 1
+        if pathy == 5:
+            pathy = 0
+            register += 1
+        if is_at_turn(data, x, y, p):
+            pathy = 0
+            p = get_paths_turn(data, x, y)[0]
+            if p == (1, 0):
+                me.add_action(ActionType.SUBTRACT_RIGHT, register)
+                register = 0
+            elif p == (0, -1):
+                me.add_action(ActionType.PUSH_RIGHT, register)
+                register = 0
+            elif p == (-1, 0):
+                me.add_action(ActionType.SUBTRACT_LEFT, register)
+                register = 0
+            elif p == (0, 1):
+                me.add_action(ActionType.PUSH_LEFT, register)
+                register = 0
+
+    if is_at_out(data, x, y, p):
+        me.add_action(ActionType.PRINT, register)
+        register = 0
+    x, y = get_skip(x, y, p)
+    while data[y][x]:
+        if is_at_in(data, x, y, p):
+            me.add_action(ActionType.READ, register)
+            register = 0
+        if not in_bounds(x, y, data):
+            me.add_action(ActionType.END, register)
+            register = 0
+            return me
+        x += p[0]
+        y += p[1]
+    x += p[0]
+    y += p[1]
+    if not in_bounds(x, y, data):
+        me.add_action(ActionType.END, register)
+        register = 0
+        return me
+    me.next = parse(x, y, p)
+    return me
+
+args = parser.parse_args()
+data = load(args.source)
+visited = {}
+x, y = find_start(data)
+p = get_paths(data, x, y)
+p = check_paths(data, x, y, p)
+parse(x, y, p[0])
+print(visited)
