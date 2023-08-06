@@ -1,0 +1,82 @@
+update
+******
+
+
+Description
+===========
+
+Updates the specified private IP. You must specify the object's OCID.
+Use this operation if you want to:
+
+    - Change the display name for a secondary private IP. - Change
+   the hostname for a secondary private IP.
+
+To move a secondary private IP to another VNIC, use the *bcms network
+vnic assign-private-ip* command with the --unassign-if-already-
+assigned switch.
+
+This operation cannot be used with primary private IPs. To update the
+hostname for the primary IP on a VNIC, use UpdateVnic.
+
+
+Usage
+=====
+
+   oci network private-ip update [OPTIONS]
+
+
+Options
+=======
+
+
+--private-ip-id [text]
+----------------------
+
+The private IP's OCID. [required]
+
+
+--display-name [text]
+---------------------
+
+A user-friendly name. Does not have to be unique, and it's changeable.
+Avoid entering confidential information.
+
+
+--hostname-label [text]
+-----------------------
+
+The hostname for the private IP. Used for DNS. The value is the
+hostname portion of the private IP's fully qualified domain name
+(FQDN) (for example, *bminstance-1* in FQDN
+*bminstance-1.subnet123.vcn1.oraclevcn.com*). Must be unique across
+all VNICs in the subnet and comply with RFC 952 and RFC 1123.
+
+For more information, see DNS in Your Virtual Cloud Network.
+
+Example: *bminstance-1*
+
+
+--if-match [text]
+-----------------
+
+For optimistic concurrency control. In the PUT or DELETE call for a
+resource, set the *if-match* parameter to the value of the etag from a
+previous GET or POST response for that resource.  The resource will be
+updated or deleted only if the etag you provide matches the resource's
+current etag value.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.

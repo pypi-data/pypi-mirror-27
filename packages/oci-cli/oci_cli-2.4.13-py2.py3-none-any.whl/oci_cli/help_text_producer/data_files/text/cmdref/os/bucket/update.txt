@@ -1,0 +1,76 @@
+update
+******
+
+
+Description
+===========
+
+Updates a bucket's user-defined metadata.
+
+Example:
+   oci os bucket update -ns mynamespace --name mybucket --metadata
+   '{"key1":"value1","key2":"value2"}'
+
+
+Usage
+=====
+
+   oci os bucket update [OPTIONS]
+
+
+Options
+=======
+
+
+-ns, --namespace [text]
+-----------------------
+
+The top-level namespace used for the request. [required]
+
+
+--name [text]
+-------------
+
+The name of the bucket. [required]
+
+
+--if-match [text]
+-----------------
+
+The entity tag to match.
+
+
+--metadata [text]
+-----------------
+
+Arbitrary string keys and values for user-defined metadata. Must be in
+JSON format. Values will be appended to existing metadata. To remove a
+key, set it to null. Example: '{"key1":"value1","key2":null}'
+
+
+--public-access-type [NoPublicAccess|ObjectRead]
+------------------------------------------------
+
+The type of public access available on this bucket. Allows
+authenticated caller to access the bucket or contents of this bucket.
+By default a bucket is set to NoPublicAccess. It is treated as
+NoPublicAccess when this value is not specified. When the type is
+NoPublicAccess the bucket does not allow any public access. When the
+type is ObjectRead the bucket allows public access to the GetObject
+operation only.
+
+
+--from-json [text]
+------------------
+
+Provide input to this command as a JSON document from a file.
+
+Options can still be provided on the command line. If an option exists
+in both the JSON document and the command line then the command line
+specified value will be used
+
+
+-?, -h, --help
+--------------
+
+Show this message and exit.
