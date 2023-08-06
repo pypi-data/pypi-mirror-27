@@ -1,0 +1,73 @@
+=== ongoing (0.3.X - to be released as 0.4) ===
+
+- Allow up to 10 decimal places
+- Substract partial payments from outstanding amounts
+
+=== 0.3 ===
+
+- Added active field to account
+- Hide inactive accounts and remove them from yearly overview
+- Added transaction export view
+- Fixed freckle integration
+- Added payee management views
+- Improved transaction form
+- Added enctype and novalidate parameters to forms
+- Added letsfreckle invoices to dashboard
+- Improved and enhanced transaction form
+- Added account statistics
+- Added CU views for transactions and invoices
+- Improved balance to handle multi-currency objects
+- Fixed payee template
+- Replaced locale currency with intcomma and floatformat
+- Added payee overview and invoice balance
+- Prepared app for Django 1.9 and Python 3.5
+- Bugfix: Fall back to old currency histories if there's no current one
+- Bugfix: Home view crashes when account is empty
+- Bugfix: Fixed Unicode bug in `Transaction.get_description`
+- Bugfix: Income column in year view did not convert foreign currency's before adding
+- Added `Type` column to tansactions table
+- Added `collect_invoices` management command
+
+=== 0.2 ===
+
+- Added migration to move currency data
+- Added django-currency-history to auto-track rates
+- Removed currency and currency rate model
+- Better rendering of description and invoice PDF, considering children
+- Bugfix: next_month calculation was faulty
+- Bugfix: Making timezone aware row values naive
+- Showing whole year on year view, even future months
+- Added description column to invoice
+- Added /current-month/ and /current-year/ views
+- Added filters to admins
+- Bugfix: Filter for outstanding invoices was wrong
+- Added unicode method to CurrencyRate model
+- Rendering months with localtime off on year_view.html
+- sqlite and postgres return different things when truncating a date, applied
+  quick fix so that it works with postgres / need to find a workaround so that
+  tests and real-world-usage both work
+- added 'parent' to Transaction list admin
+
+=== 0.1 ===
+- Initial commit
+
+
+# Suggested file syntax:
+#
+# === (ongoing) ===
+# - this is always on top of the file
+# - when you release a new version, you rename the last `(ongoing)` to the new
+#   version and add a new `=== (ongoing) ===` to the top of the file
+#
+# === 1.0 ===
+# - a major version is created when the software reached a milestone and is
+#   feature complete
+#
+# === 0.2 ===
+# - a minor version is created when new features or significant changes have
+#   been made to the software.
+#
+# === 0.1.1 ==
+# - for bugfix releases, fixing typos in the docs, restructuring things, simply
+#   anything that doesn't really change the behaviour of the software you
+#   might use the third digit which is also sometimes called the build number.
