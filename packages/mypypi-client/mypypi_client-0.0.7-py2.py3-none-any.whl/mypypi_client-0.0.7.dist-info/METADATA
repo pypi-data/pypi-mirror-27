@@ -1,0 +1,29 @@
+Metadata-Version: 2.0
+Name: mypypi-client
+Version: 0.0.7
+Summary: Client library for MyPyPI
+Home-page: https://gitlab.com/massood/mypypi
+Author: Massood
+Author-email: massoodkhaari@gmail.com
+License: Closed-Source Proprietary License
+Description-Content-Type: UNKNOWN
+Keywords: mypypi sample
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: PyYAML (==3.12)
+Provides-Extra: dev
+Provides-Extra: test
+
+# MyPyPI
+
+## Installation
+
+    pip install -e git+ssh://git@gitlab.com/massood/mypypi.git@master#egg=mypypi-client
+
+
