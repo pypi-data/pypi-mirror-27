@@ -1,0 +1,61 @@
+Metadata-Version: 1.1
+Name: bbcondeparser
+Version: 1.0.1
+Summary: parser for Conde Nast BBCode
+Home-page: https://github.com/cnduk/bbcondeparser
+Author: Conde Nast Digital UK
+Author-email: condenet.technical@condenast.co.uk
+License: MIT
+Download-URL: https://github.com/cnduk/bbcondeparser/tarball/v1.0.1
+Description: BB Condé Parser
+        ===============
+        
+        A portable, extensible BB Code parser written by Condé Nast Britain
+        
+        Hello, World!
+        -------------
+        
+        .. code-block:: python
+        
+            from bbcondeparser import BaseTag, BaseTreeParser
+        
+            class ExcitedTag(BaseTag):
+                tag_name = 'excite'
+        
+                def _render(self):
+                    child_text = self.render_children()
+                    return '<b><i>{}</i></b>'.format(child_text)
+        
+            class Parser(BaseTreeParser):
+                tags = [ExcitedTag]
+                
+            
+            parsed = Parser("[excite]Hello, World![/excite]")
+            
+            print(parsed.render())
+        
+        
+        .. code-block:: shell
+        
+            >>> python hello_world.py
+            <b><i>Hello, World!</i></b>
+            >>>
+        
+        
+        Documentation
+        -------------
+        
+        Further documentation is in the works, and will be present on the
+        `github page <https://github.com/cnduk/bbcondeparser>`_.
+        
+Keywords: bbcode
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Text Processing :: Markup
