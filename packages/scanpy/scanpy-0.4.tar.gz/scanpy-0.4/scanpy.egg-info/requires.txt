@@ -1,0 +1,15 @@
+anndata>=0.3.4
+matplotlib==2.0.0  # >= 2.0.2 sometimes crashes in sc.pl.aga_graph, need to resolve
+pandas
+scipy
+seaborn
+psutil
+h5py
+xlrd
+scikit-learn
+statsmodels
+networkx
+natsort
+joblib
+profilehooks
+tqdm
