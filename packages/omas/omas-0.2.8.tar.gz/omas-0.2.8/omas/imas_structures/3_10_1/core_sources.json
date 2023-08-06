@@ -1,0 +1,1206 @@
+{
+ "core_sources.vacuum_toroidal_field.b0": {
+  "full_path": "core_sources.vacuum_toroidal_field.b0",
+  "coordinates": [
+   "core_sources.time"
+  ],
+  "description": "Vacuum toroidal field at R0 [T]; Positive sign means anti-clockwise when viewed from above. The product R0B0 must be consistent with the b_tor_vacuum_r field of the tf IDS. {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].electrons.energy_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons.energy_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].a_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].a_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].z_n_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].z_n_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.volume_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.volume_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].neutral_type.name": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].neutral_type.name",
+  "coordinates": [],
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].j_parallel_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].j_parallel_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"j_parallel\" {dynamic} [A.m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].electrons.energy": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons.energy",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for the electron energy equation {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.ids_properties.comment": {
+  "full_path": "core_sources.ids_properties.comment",
+  "coordinates": [],
+  "description": "Any comment describing the content of this IDS {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.area_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.area_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"area\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].energy_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].energy_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.vacuum_toroidal_field.r0": {
+  "full_path": "core_sources.vacuum_toroidal_field.r0",
+  "coordinates": [],
+  "description": "Reference major radius where the vacuum toroidal magnetic field is given (usually a fixed position such as the middle of the vessel at the equatorial midplane) {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].electrons.particles_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons.particles_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"particles\" {dynamic} [m^-3.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.rho_tor_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.rho_tor_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].energy_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].energy_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].conductivity_parallel_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].conductivity_parallel_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"conductivity_parallel\" {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].multiple_states_flag": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].multiple_states_flag",
+  "coordinates": [],
+  "description": "Multiple states calculation flag : 0-Only one state is considered; 1-Multiple states are considered and are described in the state structure {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].particles_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].particles_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"particles\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.time": {
+  "full_path": "core_sources.time",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Generic time [s] {dynamic}",
+  "data_type": "flt_1d_type"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].particles_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].particles_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"vibrational_level\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].z_n_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].z_n_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.vacuum_toroidal_field": {
+  "full_path": "core_sources.vacuum_toroidal_field",
+  "coordinates": [],
+  "description": "Characteristics of the vacuum toroidal field (used in Rho_Tor definition and in the normalization of current densities)",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].momentum_tor_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].momentum_tor_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"momentum_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.psi_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.psi_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.code.version": {
+  "full_path": "core_sources.code.version",
+  "coordinates": [],
+  "description": "Version of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:]": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Source terms related to the different ions species",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].total_ion_energy_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].total_ion_energy_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"total_ion_energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].electrons.particles_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons.particles_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"particles\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].total_ion_energy_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].total_ion_energy_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"total_ion_energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].neutral_type": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].neutral_type",
+  "coordinates": [],
+  "description": "Neutral type (if the considered state is a neutral), in terms of energy. ID =1: cold; 2: thermal; 3: fast; 4: NBI",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].particles_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].particles_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"particles\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].j_parallel": {
+  "full_path": "core_sources.source[:].profiles_1d[:].j_parallel",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Parallel current density source, average(J.B) / B0, where B0 = core_sources/vacuum_toroidal_field/b0 {dynamic} [A.m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].neutral_type.index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].neutral_type.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.volume_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.volume_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"volume\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"vibrational_level\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].electrons.energy_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons.energy_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].particles": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].particles",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for ion density equation {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].energy_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].energy_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"energy\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.vacuum_toroidal_field.r0_error_index": {
+  "full_path": "core_sources.vacuum_toroidal_field.r0_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"r0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].particles": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].particles",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for the charge state density transport equation {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_max": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_max",
+  "coordinates": [],
+  "description": "Maximum Z of the charge state bundle {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_min_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_min_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_min\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.vacuum_toroidal_field.b0_error_index": {
+  "full_path": "core_sources.vacuum_toroidal_field.b0_error_index",
+  "coordinates": [
+   "core_sources.time"
+  ],
+  "description": "Index in the error_description list for \"b0\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].identifier.name": {
+  "full_path": "core_sources.source[:].identifier.name",
+  "coordinates": [],
+  "description": "Short string identifier {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].energy_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].energy_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].neutral_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].neutral_index",
+  "coordinates": [],
+  "description": "Index of the corresponding neutral species in the ../../neutral array {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.rho_tor_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.rho_tor_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"rho_tor\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].particles_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].particles_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_max_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_max_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_max\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].energy_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].energy_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].z_n_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].z_n_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].momentum_tor_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].momentum_tor_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"momentum_tor\" {dynamic} [kg.m^-1.s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.ids_properties": {
+  "full_path": "core_sources.ids_properties",
+  "coordinates": [],
+  "description": "Interface Data Structure properties. This element identifies the node above as an IDS",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:]": {
+  "full_path": "core_sources.source[:].profiles_1d[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Source profiles for various time slices {dynamic}",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].grid.rho_tor": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.rho_tor",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Toroidal flux coordinate. rho_tor = sqrt(b_flux_tor/(pi*b0)) ~ sqrt(pi*r^2*b0/(pi*b0)) ~ r [m]. The toroidal field used in its definition is indicated under vacuum_toroidal_field/b0 {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].energy_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].energy_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"energy\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].identifier.index": {
+  "full_path": "core_sources.source[:].identifier.index",
+  "coordinates": [],
+  "description": "Integer identifier (enumeration index within a list) {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].z_ion_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].z_ion_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_ion\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.ids_properties.homogeneous_time": {
+  "full_path": "core_sources.ids_properties.homogeneous_time",
+  "coordinates": [],
+  "description": "1 if the time of this IDS is homogeneous. In this case, the time values for this IDS are stored in ../time just below the root of this IDS. Otherwise, the time values are stored in the various time fields at lower levels in the tree. {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].z_n_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].z_n_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].multiplicity_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].multiplicity_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].z_ion_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].z_ion_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_ion\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].particles": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].particles",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for ion density equation {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].a": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].a",
+  "coordinates": [],
+  "description": "Mass of atom {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_upper",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Upper error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].j_parallel_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].j_parallel_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"j_parallel\" {dynamic} [A.m^-2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].identifier.description": {
+  "full_path": "core_sources.source[:].identifier.description",
+  "coordinates": [],
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.vacuum_toroidal_field.r0_error_lower": {
+  "full_path": "core_sources.vacuum_toroidal_field.r0_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].energy": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].energy",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for the ion energy transport equation. {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid",
+  "coordinates": [],
+  "description": "Radial grid",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_level": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_level",
+  "coordinates": [],
+  "description": "Vibrational level (can be bundled) {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].conductivity_parallel_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].conductivity_parallel_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"conductivity_parallel\" {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].label": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].label",
+  "coordinates": [],
+  "description": "String identifying charge state (e.g. C+, C+2 , C+3, C+4, C+5, C+6, ...) {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.area_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.area_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].particles_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].particles_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].particles_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].particles_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].multiplicity": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].multiplicity",
+  "coordinates": [],
+  "description": "Multiplicity of the atom {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].z_n_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].z_n_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_n\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].z_n": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].z_n",
+  "coordinates": [],
+  "description": "Nuclear charge {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].energy_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].energy_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].energy": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].energy",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source terms for the charge state energy transport equation {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].energy_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].energy_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"energy\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].multiplicity": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].multiplicity",
+  "coordinates": [],
+  "description": "Multiplicity of the atom {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.vacuum_toroidal_field.b0_error_lower": {
+  "full_path": "core_sources.vacuum_toroidal_field.b0_error_lower",
+  "coordinates": [
+   "core_sources.time"
+  ],
+  "description": "Lower error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].particles_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].particles_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"particles\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.code": {
+  "full_path": "core_sources.code",
+  "coordinates": [],
+  "description": "Generic decription of the code specific parameters for the code that has produced this IDS",
+  "data_type": ""
+ },
+ "core_sources.code.output_flag": {
+  "full_path": "core_sources.code.output_flag",
+  "coordinates": [
+   "core_sources.time"
+  ],
+  "description": "Output flag : 0 means the run is successful, other values mean some difficulty has been encountered, the exact meaning is then code specific. Negative values mean the result shall not be used. {dynamic}",
+  "data_type": "INT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].particles_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].particles_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"particles\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].multiple_states_flag": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].multiple_states_flag",
+  "coordinates": [],
+  "description": "Multiple states calculation flag : 0-Only one state is considered; 1-Multiple states are considered and are described in the state structure {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_level_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.code.name": {
+  "full_path": "core_sources.code.name",
+  "coordinates": [],
+  "description": "Name of the code {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_lower",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Lower error for \"rho_tor_norm\" {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].electrons.energy_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons.energy_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"energy\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].electron_configuration": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].electron_configuration",
+  "coordinates": [],
+  "description": "Configuration of atomic orbitals of this state, e.g. 1s2-2s1 {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].energy": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].energy",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for the ion energy transport equation. {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].electrons.particles_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons.particles_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"particles\" {dynamic} [m^-3.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].a_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].a_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:]": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Source terms related to the different neutral species",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].electrons.particles": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons.particles",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for electron density equation {dynamic} [m^-3.s^-1]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:]": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "List of elements forming the atom or molecule",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].grid.area": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.area",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Cross-sectional area of the flux surface {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].j_parallel_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].j_parallel_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"j_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].label": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].label",
+  "coordinates": [],
+  "description": "String identifying the neutral species (e.g. H, D, T, He, C, ...) {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].a_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].a_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].label": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].label",
+  "coordinates": [],
+  "description": "String identifying ion (e.g. H+, D+, T+, He+2, C+, ...) {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].momentum_tor_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].momentum_tor_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"momentum_tor\" {dynamic} [kg.m^-1.s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:]": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Source terms related to the different charge states of the species (energy, excitation, ...)",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_max_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_max_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_max\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].energy_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].energy_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.area_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.area_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"area\" {dynamic} [m^2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_min_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_min_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_min\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].momentum_tor": {
+  "full_path": "core_sources.source[:].profiles_1d[:].momentum_tor",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for total toroidal momentum equation {dynamic} [kg.m^-1.s^-2]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].total_ion_energy": {
+  "full_path": "core_sources.source[:].profiles_1d[:].total_ion_energy",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for the total (summed over ion species) energy equation {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_mode": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_mode",
+  "coordinates": [],
+  "description": "Vibrational mode of this state, e.g. \"A_g\". Need to define, or adopt a standard nomenclature. {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].electrons": {
+  "full_path": "core_sources.source[:].profiles_1d[:].electrons",
+  "coordinates": [],
+  "description": "Sources for electrons",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].energy": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].energy",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source terms for the charge state energy transport equation {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].conductivity_parallel_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].conductivity_parallel_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"conductivity_parallel\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:]": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "List of elements forming the atom or molecule",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].z_ion_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].z_ion_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"z_ion\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.vacuum_toroidal_field.r0_error_upper": {
+  "full_path": "core_sources.vacuum_toroidal_field.r0_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"r0\" {constant} [m]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.volume_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.volume_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"volume\" {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].z_n": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].z_n",
+  "coordinates": [],
+  "description": "Nuclear charge {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_level_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"vibrational_level\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Normalised toroidal flux coordinate. The normalizing value for rho_tor_norm, is the toroidal flux coordinate at the equilibrium boundary (LCFS or 99.x % of the LCFS in case of a fixed boundary equilibium calculation, see time_slice/boundary/b_flux_pol_norm in the equilibrium IDS) {dynamic} [-]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.psi_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.psi_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"psi\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].particles_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].particles_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:]": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Source terms related to the different charge states of the species (ionisation, energy, excitation, ...)",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].label": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].label",
+  "coordinates": [],
+  "description": "String identifying state {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].energy_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].energy_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.vacuum_toroidal_field.b0_error_upper": {
+  "full_path": "core_sources.vacuum_toroidal_field.b0_error_upper",
+  "coordinates": [
+   "core_sources.time"
+  ],
+  "description": "Upper error for \"b0\" {dynamic} [T]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].conductivity_parallel": {
+  "full_path": "core_sources.source[:].profiles_1d[:].conductivity_parallel",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Parallel conductivity due to this source {dynamic} [ohm^-1.m^-1]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.volume": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.volume",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Volume enclosed inside the magnetic surface {dynamic} [m^3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].a_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].a_error_upper",
+  "coordinates": [],
+  "description": "Upper error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].a_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].a_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"a\" {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].a": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].a",
+  "coordinates": [],
+  "description": "Mass of atom {dynamic} [Atomic Mass Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].electron_configuration": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].electron_configuration",
+  "coordinates": [],
+  "description": "Configuration of atomic orbitals of this state, e.g. 1s2-2s1 {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:]": {
+  "full_path": "core_sources.source[:]",
+  "base_coord": true,
+  "coordinates": [
+   "1...15"
+  ],
+  "description": "Set of source terms",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].z_ion": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].z_ion",
+  "coordinates": [],
+  "description": "Ion charge (of the dominant ionisation state; lumped ions are allowed) {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.code.parameters": {
+  "full_path": "core_sources.code.parameters",
+  "coordinates": [],
+  "description": "List of the code specific parameters in XML format {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].ion_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].ion_index",
+  "coordinates": [],
+  "description": "Index of the corresponding ion species in the ../../ion array {dynamic}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_min": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_min",
+  "coordinates": [],
+  "description": "Minimum Z of the charge state bundle {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].energy_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].energy_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"energy\" {dynamic} [W.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].particles_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].particles_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].particles_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].particles_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_mode": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].vibrational_mode",
+  "coordinates": [],
+  "description": "Vibrational mode of this state, e.g. \"A_g\". Need to define, or adopt a standard nomenclature. {dynamic}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm_error_index",
+  "coordinates": [
+   "1...N"
+  ],
+  "description": "Index in the error_description list for \"rho_tor_norm\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.rho_tor_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.rho_tor_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"rho_tor\" {dynamic} [m]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].neutral_type.description": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].neutral_type.description",
+  "coordinates": [],
+  "description": "Verbose description {constant}",
+  "data_type": "STR_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].multiplicity_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_max_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_max_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_max\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].particles_error_upper": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].particles_error_upper",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Upper error for \"particles\" {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.psi": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.psi",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Poloidal magnetic flux {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].identifier": {
+  "full_path": "core_sources.source[:].identifier",
+  "coordinates": [],
+  "description": "Source term identifier",
+  "data_type": ""
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].multiplicity_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].multiplicity_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"multiplicity\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].particles": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].particles",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Source term for the charge state density transport equation {dynamic} [s^-1.m^-3]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].multiplicity_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].multiplicity_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"multiplicity\" {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].total_ion_energy_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].total_ion_energy_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"total_ion_energy\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].grid.psi_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].grid.psi_error_lower",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Lower error for \"psi\" {dynamic} [Wb]",
+  "data_type": "FLT_1D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_level": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].state[:].vibrational_level",
+  "coordinates": [],
+  "description": "Vibrational level (can be bundled) {dynamic} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_min_error_lower": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].z_min_error_lower",
+  "coordinates": [],
+  "description": "Lower error for \"z_min\" {constant} [Elementary Charge Unit]",
+  "data_type": "FLT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].element[:].a_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].element[:].a_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"a\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].ion[:].state[:].energy_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].ion[:].state[:].energy_error_index",
+  "coordinates": [
+   "core_sources.source[:].profiles_1d[:].grid.rho_tor_norm"
+  ],
+  "description": "Index in the error_description list for \"energy\" {constant}",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].time": {
+  "full_path": "core_sources.source[:].profiles_1d[:].time",
+  "coordinates": [],
+  "description": "Time {dynamic} [s]",
+  "data_type": "INT_0D"
+ },
+ "core_sources.source[:].profiles_1d[:].neutral[:].element[:].z_n_error_index": {
+  "full_path": "core_sources.source[:].profiles_1d[:].neutral[:].element[:].z_n_error_index",
+  "coordinates": [],
+  "description": "Index in the error_description list for \"z_n\" {constant}",
+  "data_type": "INT_0D"
+ }
+}
