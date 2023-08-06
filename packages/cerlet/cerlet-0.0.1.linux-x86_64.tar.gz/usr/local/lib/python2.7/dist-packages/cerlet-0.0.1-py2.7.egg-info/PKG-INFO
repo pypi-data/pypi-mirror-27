@@ -1,0 +1,43 @@
+Metadata-Version: 1.1
+Name: cerlet
+Version: 0.0.1
+Summary: Certmonger helper for Let's Encrypt
+Home-page: http://cerlet.com
+Author: Antonia Stevens
+Author-email: a@antevens.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: # CerLet CertMonger Let's Encrypt Helper
+        Helper integration to allow certmonger to communicate with the Let's Encrypt CA
+        
+        This package integrates Certmonger (and by extension FreeIPA/Sattellite) with
+        the Let's Encrypt community Certificate Authority.
+        
+        This allows hosts in FreeIPA to automatically get publically trusted certificates
+        for all purposes.
+        
+        Due to using DNS based authentication certificates ban be issued for private
+        servers as well as public ones without any service interruptions. This also
+        allows certificates to include an alias per principal or any number of host/DNS
+        names.
+        
+        This package includes python libraries which will be installed in the default
+        site-packages directory of your python distribution (or virtualenv) and an entry
+        point script that will be installed under /usr/libexec/certmonger.
+        
+Keywords: cerlet certbot certmonger freeipa satellite spacewalk letsencrypt certificate ssl tls https
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: Security
+Classifier: Topic :: Security :: Cryptography
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
