@@ -1,0 +1,13 @@
+#documentation
+#recursive-include docs/_build/html *
+
+#data files for ebl models
+include ebltable/data/*
+
+#example files
+include examples/example*.py
+include notebooks/example*.ipynb
+
+#Misc
+include LICENSE
+include README.rst
