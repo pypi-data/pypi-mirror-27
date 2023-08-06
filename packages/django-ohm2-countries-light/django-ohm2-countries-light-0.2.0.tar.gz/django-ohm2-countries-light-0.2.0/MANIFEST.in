@@ -1,0 +1,8 @@
+include LICENSE
+include README.rst
+recursive-include docs *
+recursive-include ohm2_countries_light/management *
+recursive-include ohm2_countries_light/migrations *
+recursive-include ohm2_countries_light/templates *
+recursive-include ohm2_countries_light/static *
+recursive-include ohm2_countries_light/images *
