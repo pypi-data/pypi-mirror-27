@@ -1,0 +1,91 @@
+Metadata-Version: 1.1
+Name: twitch-chat-wrapper
+Version: 0.1
+Summary: Simple Twitch Chat Wrapper written in Python
+Home-page: https://github.com/arthurbarros/twitch_chat_wrapper
+Author: Arthur Barros
+Author-email: arthbarros@gmail.com
+License: Copyright (c) 2017 by Arthur Barros and contributors.  See AUTHORS
+for more details.
+
+Some rights reserved.
+
+Redistribution and use in source and binary forms of the software as well
+as documentation, with or without modification, are permitted provided
+that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above
+  copyright notice, this list of conditions and the following
+  disclaimer in the documentation and/or other materials provided
+  with the distribution.
+
+* The names of the contributors may not be used to endorse or
+  promote products derived from this software without specific
+  prior written permission.
+
+THIS SOFTWARE AND DOCUMENTATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE AND DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.
+Description-Content-Type: UNKNOWN
+Description: TwitchChatWrapper
+        -----------------
+        
+        This is a simple twitch chat wrapper written on python that I use to build simple bots fast.
+        
+        
+        # installation
+        
+        ```
+        pip intall twitch_chat_wrapper
+        ```
+        
+        # fetchin Twitch oauth password token
+        
+        Follow this link https://twitchapps.com/tmi/ and save the token
+        
+        # usuage
+        
+        ```python
+        from twitch_chat_wrapper import TwitchChatWrapper
+        
+        
+        def message_handler(username, message):
+            print(username, message)
+        
+        
+        twitch = TwitchChatWrapper(
+            bot_nickname="AwesomeBot", 
+            oauth_pass="oauth:r1xxk1111111111112222222222xwd", 
+            channel="hardlydifficult") 
+        
+        twitch.events.on_message += message_handler
+        
+        twitch.loop()
+        ```
+        
+        # shout out
+        
+        To https://www.twitch.tv/hardlydifficult which is building a awesome gamedev twitch community
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Software Development
