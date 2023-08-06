@@ -1,0 +1,45 @@
+Este módulo irá realizar o envio de e-mail utilizando como base o módulo ldap3.
+
+Para conseguir fazer a conexão com o servidor, é necessário criar um arquivo de configuração. 
+Este por sua vez deve estar no mesmo diretório onde o módulo será utilizado. Como por exemplo:
+
+
+./config/config.yml
+./arquivo.py
+
+O arquivo config.yml, deve conter o seguinte conteúdo:
+
+
+ldap:
+  server: <server>
+  user: <user>
+  password: '<password>'
+  dominio: <domain>
+  dc: <domain component>
+  
+
+Abaixo temos um exemplo da utilização deste módulo:
+
+ldap = LdapModule()
+
+# Criando um usuário
+ldap.add_user('Nome do usuário','Senha')
+
+# Movendo o usuário para o cn=INACTIVE
+ldap.inative_user('Nome do usuário')
+
+
+Dentro do módulo existe um método que a primeira linha deverá ser editada conforme a estrutura do LDAP(linhas 62 e 85),
+como o exemplo abaixo:
+
+self.connection.add('cn=%s,cn=USERS,%s'%(nome,dc), <---------------
+                                ['inetOrgPerson','organizationalPerson','person','posixAccount','top'],
+                                {'uid':'%s'%login, 
+                                'uidNumber':id, 
+                                'gidNumber':id,
+                                'homeDirectory':'/home/%s'%login,
+                                'givenName': '%s'%nome,
+                                'sn':'%s'%sobrenome,
+                                'mail': '%s@%s'%(login, dominio),
+                                'userPassword':'%s'%senha})
+ 
