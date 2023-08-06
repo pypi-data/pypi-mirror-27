@@ -1,0 +1,12 @@
+[Unit]
+Description=ArchMap GeoJSON/KML generator - quad-daily timer
+
+[Timer]
+# Run every 6 hours starting from 00:00 UTC
+OnCalendar=*-*-* 00,06,12,18:00:00 UTC
+
+Persistent=true
+Unit=archmap.service
+
+[Install]
+WantedBy=multi-user.target
