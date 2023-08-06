@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- menu: writing (@ root) -->
+        <menuitem name="Writing" sequence="50" id="menu_writing" icon="tryton-crm"/>
+        <record model="ir.ui.menu-res.group" 
+                id="menu_writing-group_writing_serialletter_view">
+            <field name="menu" ref="menu_writing"/>
+            <field name="group" ref="group_writing_serialletter_view"/>
+        </record>
+        <record model="ir.ui.menu-res.group" 
+                id="menu_writing-group_writing_serialletter_edit">
+            <field name="menu" ref="menu_writing"/>
+            <field name="group" ref="group_writing_serialletter_edit"/>
+        </record>
+       
+    </data>
+</tryton>
