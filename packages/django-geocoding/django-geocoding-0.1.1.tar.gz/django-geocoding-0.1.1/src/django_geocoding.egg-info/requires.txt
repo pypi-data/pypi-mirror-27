@@ -1,0 +1,28 @@
+click
+django-environ
+django-formtools
+django-import-export
+django-localflavor
+django-pascal-templates
+django-powerbank
+opencage
+psycopg2
+pycountry
+pytz
+requests
+django>=1.8
+
+[:python_version < "3.3"]
+pathlib
+
+[:python_version < "3.4"]
+enum34
+
+[:python_version < "3.5"]
+django<2.0
+
+[:python_version >= "3.5"]
+django>=2.0
+
+[factories]
+factory-boy
