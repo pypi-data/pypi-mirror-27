@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+import hko_weather
+from cement.core import backend
+from cement.core.foundation import CementApp
+from cement.core.controller import CementBaseController, expose
+
+# define an application base controller
+class HKOBaseController(CementBaseController):
+    class Meta:
+        label = 'base'
+        description = "Base Application to use hko_weather API"
+
+        arguments = [
+            (['-l', '--lang'],
+             dict(action='store', default="zh", choices=["en","zh"], help='Language options')),
+            ]
+
+
+    @expose(help="Show Help")
+    def default(self):
+        self.app.args.print_help()
+
+    @expose(help="Current Weather From HKO")
+    def current_weather(self):
+        current_weather = hko_weather.current_weather(self.app.pargs.lang)
+        print(current_weather.text())
+
+    @expose(help="Current warning summary From HKO")
+    def current_warning_summary(self):
+        current_warning_summary = hko_weather.current_warning_summary(self.app.pargs.lang)
+        print(current_warning_summary.text())
+
+    @expose(help="Current warning bullet From HKO")
+    def current_warning_bullet(self):
+        current_warning_bullet = hko_weather.current_warning_bullet(self.app.pargs.lang)
+        print(current_warning_bullet.text())
+
+    @expose(help="Nine Days Forecast From HKO")
+    def nine_days_forecast(self):
+        nine_days_forecast = hko_weather.nine_days_forecast(self.app.pargs.lang)
+        print(nine_days_forecast.text())
+
+    @expose(help="Local Forecast From HKO")
+    def local_forecast(self):
+        local_forecast = hko_weather.local_forecast(self.app.pargs.lang)
+        print(local_forecast.text())
+
+    @expose(help="Current Warning Summary From HKO")
+    def local_forecast(self):
+        current_warning_summary = hko_weather.current_warning_summary(self.app.pargs.lang)
+        print(current_warning_summary.text())
+
+    @expose(help="Current Warning Summary From HKO")
+    def local_forecast(self):
+        current_warning_summary = hko_weather.current_warning_summary(self.app.pargs.lang)
+        print(current_warning_summary.text())
+
+    @expose(help="World Earth Quake From HKO")
+    def world_earth_quake(self):
+        world_earth_quake = hko_weather.world_earth_quake(self.app.pargs.lang)
+        print(world_earth_quake.text())
+
+    @expose(help="Local Earth Quake From HKO")
+    def local_earth_quake(self):
+        local_earth_quake = hko_weather.local_earth_quake(self.app.pargs.lang)
+        print(local_earth_quake.text())
+
+class MyApp(CementApp):
+    class Meta:
+        label = 'hko_weather'
+        base_controller = HKOBaseController
+
+
+with MyApp() as app:
+    app.run()
