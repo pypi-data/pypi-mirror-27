@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "dumping postgres database `rapidpro` to $1"
+su - postgres -c "pg_dump -C rapidpro > $1"
