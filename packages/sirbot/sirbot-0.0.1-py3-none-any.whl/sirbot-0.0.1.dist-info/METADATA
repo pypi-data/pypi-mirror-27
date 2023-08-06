@@ -1,0 +1,65 @@
+Metadata-Version: 2.0
+Name: sirbot
+Version: 0.0.1
+Summary: Rewrite of sir-bot-a-lot
+Home-page: https://github.com/pyslackers/sir-bot-a-lot2
+Author: Ovv <contact@ovv.wtf>
+Author-email: contact@ovv.wtf
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: sirbot,chatbot,bot,slack
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: ~=3.6
+Requires-Dist: aiohttp
+Provides-Extra: dev
+Requires-Dist: gidgethub; extra == 'dev'
+Requires-Dist: coverage; extra == 'dev'
+Requires-Dist: pytest-coverage; extra == 'dev'
+Requires-Dist: sphinx; extra == 'dev'
+Requires-Dist: asynctest; extra == 'dev'
+Requires-Dist: tox; extra == 'dev'
+Requires-Dist: pytest (>=3.3.0); extra == 'dev'
+Requires-Dist: aiohttp; extra == 'dev'
+Requires-Dist: slack-sansio; extra == 'dev'
+Requires-Dist: flake8; extra == 'dev'
+Requires-Dist: pytest-runner; extra == 'dev'
+Requires-Dist: sphinxcontrib-napoleon; extra == 'dev'
+Requires-Dist: sphinxcontrib-asyncio; extra == 'dev'
+Requires-Dist: pytest-asyncio; extra == 'dev'
+Provides-Extra: doc
+Requires-Dist: sphinxcontrib-napoleon; extra == 'doc'
+Requires-Dist: sphinxcontrib-asyncio; extra == 'doc'
+Requires-Dist: sphinx; extra == 'doc'
+Provides-Extra: full
+Requires-Dist: gidgethub; extra == 'full'
+Requires-Dist: aiohttp; extra == 'full'
+Requires-Dist: slack-sansio; extra == 'full'
+Provides-Extra: github
+Requires-Dist: gidgethub; extra == 'github'
+Provides-Extra: install
+Requires-Dist: aiohttp; extra == 'install'
+Provides-Extra: setup
+Requires-Dist: pytest-runner; extra == 'setup'
+Provides-Extra: slack
+Requires-Dist: slack-sansio; extra == 'slack'
+Provides-Extra: tests
+Requires-Dist: flake8; extra == 'tests'
+Requires-Dist: pytest (>=3.3.0); extra == 'tests'
+Requires-Dist: coverage; extra == 'tests'
+Requires-Dist: pytest-coverage; extra == 'tests'
+Requires-Dist: pytest-asyncio; extra == 'tests'
+Requires-Dist: asynctest; extra == 'tests'
+
+Sir-bot-a-lot
+=============
+
+The good Sir Bot-a-lot. An asynchronous python bot framework.
+
+
