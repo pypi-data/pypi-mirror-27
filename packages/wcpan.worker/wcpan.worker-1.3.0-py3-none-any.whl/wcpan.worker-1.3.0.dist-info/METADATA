@@ -1,0 +1,33 @@
+Metadata-Version: 2.0
+Name: wcpan.worker
+Version: 1.3.0
+Summary: A multithread worker for Tornado
+Home-page: https://github.com/legnaleurc/wcpan.worker
+Author: Wei-Cheng Pan
+Author-email: legnaleurc@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: tornado (>=5)
+Requires-Dist: wcpan.logger
+
+wcpan.worker
+============
+
+A multithread worker for Tornado.
+
+.. code:: python
+
+    from wcpan.worker import AsyncWorker
+
+    worker = AsyncWorker()
+    worker.start()
+
+    # this will be run on another thread
+    result = await worker.do(your_blocking_function)
+
+    # do this later
+    worker.do_later(your_blocking_function)
+
+
