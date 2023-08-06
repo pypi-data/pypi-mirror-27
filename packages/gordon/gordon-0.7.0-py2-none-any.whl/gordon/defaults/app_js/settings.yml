@@ -1,0 +1,8 @@
+lambdas:
+  helloworld:
+    code: helloworld
+    handler: code.handler
+    runtime: nodejs6.10
+    #description: Simple functions in js which says hello
+    #role:
+    #memory:
