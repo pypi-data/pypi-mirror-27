@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import os
+
+from rapidpro_controller import get_logger
+from rapidpro_controller.dump import cleanup_backups
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main():
+    logger.info("starting backup cleaning...")
+    success, removed, kept = cleanup_backups()
+    logger.info("... {nbr} backup files deleted and {nbk} kept."
+                .format(nbr=len(removed), nbk=len(kept)))
+    if not success:
+        logger.error("... unable to delete some of the backup files.")
+
+
+if __name__ == '__main__':
+    main()
