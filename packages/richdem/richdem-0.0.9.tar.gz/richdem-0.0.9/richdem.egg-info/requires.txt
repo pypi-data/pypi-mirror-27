@@ -1,0 +1,6 @@
+
+[:python_version < "3.4"]
+numpy<1.12,>=1.7
+
+[:python_version > "3.4"]
+numpy<2,>=1.7
