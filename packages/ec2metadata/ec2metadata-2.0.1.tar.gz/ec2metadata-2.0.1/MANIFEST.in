@@ -1,0 +1,7 @@
+include LICENSE
+include Makefile
+include python3-ec2metadata.spec
+include README.md
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
