@@ -1,0 +1,70 @@
+Metadata-Version: 1.1
+Name: Flask-XStatic-Files
+Version: 0.0.2
+Summary: Easily use XStatic files in flask
+Home-page: http://github.com/agx/flask-xstatic-files
+Author: Guio Günther
+Author-email: agx@sigxcpu.org
+License: LGPLv3+
+Description-Content-Type: UNKNOWN
+Description: Flask-XStatic-Files
+        ===================
+        
+        .. image:: https://travis-ci.org/agx/flask-xstatic-files.svg?branch=master
+            :target: https://travis-ci.org/agx/flask-xstatic-files
+        
+        .. highlight:: python
+        
+        A `Flask`_ extionsion to serve `XStatic`_ files. Can be useful if you
+        don't use an asset pipeline and want to serve e.g. XStatic packaged
+        javascript files like `JQuery`_ directly.
+        
+        Setup
+        -----
+        Upon initialization tell Flask about the XStatic modules you want to
+        use. This example uses JQuery and D3::
+        
+            app = Flask(__name__)
+            app.config.from_object(__name__)
+            app.config.['XSTATIC_MODULES'] = ['jquery', 'd3']
+            xsf = XStaticFiles(app)
+        
+        The modules can be given as list or comma separated (``jquery,d3``).
+        
+        Serving Files
+        -------------
+        The extension already installs a route handler for you so files under
+        ``/xstatic/<module>/`` are served automatically. To generate these
+        URLs you can use ``url_for``::
+        
+          xsf.url_for('jquery', 'jquery.min.js')
+        
+        In templates you can use ``xstatic_url_for``:
+        
+        .. code-block:: html
+        
+            <script type=text/javascript src="{{ xstatic_url_for(module='jquery', path='jquery.min.js') }}"></script>
+        
+        to generate these URLs.  This has the advantage that you can later
+        serve files from a static web server by adjusting ``XSTATIC_ROOT`` and
+        ``XSTATIC_PROTO`` without having to modify any code.
+        
+        In case you want to serve XStatic files from other URLs use ``serve``
+        or ``serve_or_404``::
+        
+          @app.route('/somewhere-else/jquery/jquery.min.js')
+          def serve_jquery():
+              return xsf.serve_or_404('jquery', 'jquery.min.js')
+        
+        .. _Flask: http://flask.pocoo.org/
+        .. _XStatic: https://xstatic.readthedocs.io/en/latest/
+        .. _JQuery: https://pypi.python.org/pypi/XStatic-jQuery
+        
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
