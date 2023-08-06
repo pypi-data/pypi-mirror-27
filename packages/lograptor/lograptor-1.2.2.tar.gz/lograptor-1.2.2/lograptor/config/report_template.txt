@@ -1,0 +1,17 @@
+***********************************************************
+ ${title}
+***********************************************************
+
+Search patterns: ${patterns}
+Search patterns file: ${pattern_files}
+Filters: ${filters}
+Hostnames: ${hosts}
+Applications: ${apps}
+
+First event: ${first_event}
+Last event: ${last_event}
+Processed files: ${files}
+Total files examined: ${tot_files}
+Total log lines parsed: ${lines}
+${subreports}
+----- Brought to you by lograptor ${version} -----
