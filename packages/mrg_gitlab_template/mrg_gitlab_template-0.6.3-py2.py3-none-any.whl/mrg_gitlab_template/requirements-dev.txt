@@ -1,0 +1,16 @@
+# This is a PIP 6+ requirements file
+
+# All dependencies can be installed using:
+# $ pip install -r requirements.txt
+
+pytest
+pytest-cov
+pytest-mock
+pytest-html
+pytest-pylint
+
+docutils
+sphinx
+sphinx-rtd-theme
+sphinxcontrib-plantuml
+sphinxcontrib-mermaid
