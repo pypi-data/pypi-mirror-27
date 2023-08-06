@@ -1,0 +1,261 @@
+#compdef jutge
+
+_jutge_subcommands() {
+    local subcommands; subcommands=(
+        'test:test program using cases from database'
+        {add-test,add}':add custom case to database'
+        'show:show title, statement or test cases corresponding to problem code'
+        'archive:move program to archive folder'
+        {upload,up}':upload program for jutge evaluation'
+        'import:add programs to archived folder from a zip file'
+        'new:create new file'
+        {download,down}':download problem files to local database'
+        'check:check last sent submissions'
+        'cookie:save cookie to temporary file for later use'
+        'login:login to jutge.org and save cookie'
+    )
+    _describe -t subcommands 'Use subcommand' subcommands "$@"
+}
+
+_jutge_compilers() {
+    local compilers; compilers=(
+        'BEEF:Flexible Brainfuck interpreter [Brainfuck]'
+        'Chicken:Chicken [Scheme]'
+        'CLISP:GNU CLISP [Lisp]'
+        'Erlang:Erlang [Erlang]'
+        'F2C:Fortran 77 Compiler [Fortran]'
+        'FBC:FreeBASIC Compiler [BASIC]'
+        'FPC:Free Pascal Compiler [Pascal]'
+        'G++:GNU C++ Compiler [C++]'
+        'G++11:GNU C++11 Compiler [C++]'
+        'GCC:GNU C Compiler [C]'
+        'GCJ:GNU Java Compiler [Java]'
+        'GDC:GNU D Compiler [D]'
+        'GFortran:GNU Fortran Compiler [Fortran]'
+        'GHC:Glasgow Haskell Compiler [Haskell]'
+        'GNAT:GNU Ada Compiler [Ada]'
+        'Go:Go [Go]'
+        'GObjC:GNU Objective-C Compiler [Objective-C]'
+        'GPC:GNU Pascal Compiler [Pascal]'
+        'Guile:Guile [Scheme]'
+        'IVL08:Icarus Verilog (tgt-nusmv) [Verilog]'
+        'JDK:OpenJDK Runtime Environment [Java]'
+        'Lua:Lua [Lua]'
+        'MakePRO2:Make for PRO2 [Make]'
+        'MonoCS:Mono C# Compiler [C#]'
+        'nodejs:NodeJS [JavaScript]'
+        'P1++:GNU C++ Compiler with extra flags for beginners [C++]'
+        'P2C:Pascal to C translator [Pascal]'
+        'Perl:Perl [Perl]'
+        'PHP:PHP [PHP]'
+        'PRO2:PRO2 - GNU C++ Compiler [C++]'
+        'Python:Python [Python]'
+        'Python3:Python3 [Python]'
+        'Quiz:Quiz compiler [Quiz]'
+        'R:R [R]'
+        'Ruby:Ruby [Ruby]'
+        'RunHaskell:Glasgow Haskell Compiler (with tweaks for testing in the judge) [Haskell]'
+        'RunPython:Python3 Interpreter (with tweaks for testing in the judge) [Python]'
+        'Stalin:Stalin [Schem]'
+        'Verilog:Icarus Verilog [Verilog]'
+        'WS:Whitespace interpreter [Whitespace]'
+    )
+    _describe -t compilers 'Use compiler' compilers "$@"
+}
+
+_arguments -C '1:SUBCOMMAND:_jutge_subcommands' \
+    '--no-download[do not attempt to fetch data from jutge.org]'\
+    '--cookie[PHPSESSID cookie]:cookie'\
+    + '(help)' {-h,--help}'[show help and exit]' \
+    + '(verbosity)' \
+        {-q,--quiet}'[supress output]'\
+        {-v,--verbosity}'[more verbose output]' \
+    + '(regex)' {-r,--regex}'[regex]:regex'\
+    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+    + '(args)' '*::arg:->args'
+case $state in
+    (args)
+        case $line[1] in
+            (test)
+                _arguments \
+                    '1:filename:_files' \
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--diff-prog[diff shell command to compare tests]:command' \
+                    '--diff-flags[diff shell command flags used to compare tests]:command' \
+                    '--inp-suffix[input file suffix]:suffix' \
+                    '--cor-suffix[correct output file suffix]:suffix' \
+                    '--no-custom[do not test custom cases]'\
+                    \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+                    + '(code)' {-c,--code}'[code to use instead of searching in filename]'
+            ;;
+            (add|add-test)
+                _arguments \
+                    '1:code:_files'\
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--delete[delete all custom tests]' \
+                    '--inp-suffix[input file suffix]:suffix' \
+                    '--cor-suffix[correct output file suffix]:suffix' \
+                    '-o[delete all custom tests]' \
+                    \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+                    + '(input)' {-i,--input-file}'[input file]:file:_files' \
+                    + '(output)' {-o,--output-file}'[output file]:file:_files' \
+            ;;
+            (show)
+                _arguments \
+                    '1:action:(title stat cases)' \
+                    '2:code:_files'\
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    '--inp-suffix[input file suffix]:suffix' \
+                    '--cor-suffix[correct output file suffix]:suffix'\
+                    '--html[use use html instead of pypandoc to print problem statement (faster)]'\
+                    \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+            ;;
+            (archive)
+                _arguments \
+                    '1:filename:_files' \
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--overwrite[overwrite program if already in archive]' \
+                    '--copy[copy file instead of moving to the archive]'\
+                    \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+                    + '(folder)' {-f,--folder}'[folder where program will be archived]:folder:_files -/'
+            ;;
+            (upload|up)
+                _arguments \
+                    '1:filename:_files' \
+                    '--compiler[compiler id to use]:compiler:_jutge_compilers'\
+                    '--problem-set[upload all files from a problem set]'\
+                    '--skip-test[do not test against public test cases before upload]'\
+                    '--delay[delay between jutge-org upload requests]:milliseconds'\
+                    '--no-skip-accepted[do not skip accepted problems when uploading a problem set]'\
+                    '--check[wait for veredict from jutge]'\
+                    \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    + '(code)' {-c,--code}'[problem code]:code' \
+            ;;
+            (import)
+                _arguments \
+                    '1:zip_file:_files -g "*.zip"' \
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--overwrite[overwrite program if already in archive]' \
+                    '--delay[delay between jutge.org GET requests]:milliseconds' \
+                    \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+                    + '(folder)' {-f,--folder}'[folder where program will be archived]:folder:_files -/'
+            ;;
+            (new)
+                _arguments \
+                    '1:code' \
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--overwrite[overwrite program if already in archive]' \
+                    '--problem-set[upload all files from a problem set]'\
+                    \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+                    + '(type)' {-t,--type}'[file extension]:ext'
+            ;;
+            (download|down)
+                _arguments \
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    '--overwrite[overwrite program if already in archive]' \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+                    + '(code)' \
+                        {-p,--prog}'[filename from which we can extract the problem code]:prog:_files' \
+                        {-c,--code}'[code]:code'
+            ;;
+            (check)
+                _arguments \
+                    '1:code:_files'\
+                    '--cookie[PHPSESSID cookie]:cookie'\
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--last[only show last submission]' \
+                    '--reverse[only show last submission]' \
+                    \
+                    + '(action)' \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'\
+            ;;
+            (cookie)
+                _arguments \
+                    '1:cookie' \
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--skip-check[Save cookie file even if not valid]' \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'
+            ;;
+            (login)
+                _arguments \
+                    '--no-download[do not attempt to fetch data from jutge.org]' \
+                    '--email[email to login to jutge.org]:email'\
+                    '--password[password]:password'\
+                    '--prompt[prompt user to input credentials]'\
+                    \
+                    + '(help)' {-h,--help}'[show help and exit]' \
+                    + '(verbosity)' \
+                        {-q,--quiet}'[supress output]'\
+                        {-v,--verbosity}'[more verbose output]' \
+                    + '(regex)' {-r,--regex}'[regex]:regex'\
+                    + '(database)' {-d,--database}'[directory containing test cases]:database:_files -/'
+            ;;
+    esac
+    ;;
+esac
