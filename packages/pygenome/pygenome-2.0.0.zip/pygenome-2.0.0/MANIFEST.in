@@ -1,0 +1,17 @@
+# MANIFEST.in
+# This tells distutils what files to distribute.
+
+include LICENSE.txt
+include README.md
+include MANIFEST.in
+include setup.py
+include versioneer.py
+include pygenome/_version.py
+include pygenome/Saccharomyces_cerevisiae.zip
+
+recursive-include tests *
+recursive-include docs *
+recursive-include scripts *
+global-exclude *.pyc
+global-exclude *~
+
