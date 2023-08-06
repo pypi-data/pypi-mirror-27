@@ -1,0 +1,59 @@
+Metadata-Version: 1.1
+Name: mimesis
+Version: 1.0.2
+Summary: Mimesis: mock data for developers.
+Home-page: https://github.com/lk-geimfari/mimesis
+Author: Likid Geimfari (Isaak Uchakaev)
+Author-email: likid.geimfari@gmail.com
+License: MIT License
+Description-Content-Type: UNKNOWN
+Description: 
+        Mimesis is a fast and easy to use library for Python programming
+        language, which helps generate mock data for a variety of purposes in
+        a variety of languages. This data can be particularly useful during
+        software development and testing.
+        
+        Installation
+        ------------
+        
+        To install mimesis, simply:
+        
+        .. code:: bash
+            $ pip install mimesis
+        
+        
+        Documentation
+        -------------
+        
+        Mimesis is very simple to use, and the below examples should help you
+        get started. Complete documentation for Mimesis is available on `Read
+        the Docs <http://mimesis.readthedocs.io/>`__.
+        
+        
+        Getting started
+        ---------------
+        
+        As we said above, this library is really easy to use. A simple usage
+        example is given below:
+        
+        .. code:: python
+        
+            >>> from mimesis import Personal
+            >>> from mimesis.enums import Gender
+            >>> person = Personal('en')
+            >>> person.full_name(gender=Gender.FEMALE)
+            'Antonetta Garrison'
+            >>> person.occupation()
+            'Backend Developer'
+        
+        
+Keywords: fake,mock,data,populate,database,testing,generate,mimesis,dummy
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Testing
