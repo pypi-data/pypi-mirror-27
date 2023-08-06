@@ -1,0 +1,11 @@
+language: python
+python:
+- '3.5'
+- '3.6'
+install:
+- pip install -r requirements.txt
+script:
+- pytest
+env:
+  global:
+    secure: A8+b5f/B+HDn4pbHjp0ILbHvappe0v2qi1ajjWxhMQS2xdEoljY6xBT9IVykDY8HQK/rcNAzvTjKNLiG2N0cfHU29TcnDqhmpuJ4nthkBAZEm/2TTvd2V32+xUyjBWEf6/ZdPQDQDbM1Bxb/Yetx3hoUMAJgJpH1FysFYmTiUKAsdVIylqy3K/+pQ8Q0FlPyTeN31mctOt5yPff2miDwT+xTaim5YH6r9oIrtARbWVqpybZYDJeQmY2t/r0tQEnA6T4TlT4ctaB7Foh7WkYoNSfTS08V5gX0LHrWNq/0OvabhX5CxR0j//po5w/PR28QBCg2LU9E4QooarkQrMe7bxhK9lu+cV/crDBi2XRoBJU/svQoAvDJWxIcJRdgCeXeeR9WPHd/zyVVu9FTJyXYKptZt0P22QXis4983fs0GKQCUC+T/zpguQpz+p3Ux6LPobMsOdHfgTsT616ID53dpzT6nyotElP18ZkSl4rm1JwexgajsTOKQOV2EgAoB3/n+Ii6v7DpInrX+D96sjlHGWdQJ7VZdmY7ZszgeCE2JCAWHrxiKS2klD0Y2eElSeEdDZJnH0xiW4RJcq7EOe3Ud/AIL4rJ2TbPu4+/LJnjs727jcV+Tj/bIrpjGkCUMlw1EKaiefXNQpEIGz4iGgBvyYG+YZfyuY79/IGbacmGqXA=
