@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import sys
+import os
+
+from rapidpro_controller import (get_logger, run_command, DISABLED,
+                                 MASTER, SLAVE, WORKING)
+from rapidpro_controller.states import get_local_role, get_local_status
+from rapidpro_controller.cluster import is_ip_master
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main(args):
+
+    logger.warning("received ip-slave event. {}.".format(", ".join(args)))
+
+    role = get_local_role()
+    status = get_local_status()
+    has_ip = is_ip_master()
+
+    if role == SLAVE:
+        logger.warning(". already slave. ignoring.")
+        return 0
+
+    if role == MASTER and status in (WORKING, DISABLED) and not has_ip:
+        # we should become the new slave
+        logger.warning(". switching from master to slave")
+
+        # change state to transient
+        return run_command(['rapidpro-change-role', SLAVE, '--force'])
+
+
+if __name__ == '__main__':
+    main(sys.argv[1:])

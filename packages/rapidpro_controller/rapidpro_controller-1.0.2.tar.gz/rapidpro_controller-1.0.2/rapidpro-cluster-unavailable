@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import os
+import sys
+
+from rapidpro_controller import (get_logger, log_success, log_failure,
+                                 THIS_SERVER)
+from rapidpro_controller.cluster import make_unavailable
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main(args):
+    peer = args[0] if len(args) else THIS_SERVER
+
+    logger.info("making node `{}` unavailable for cluster".format(peer))
+    if make_unavailable(peer, force=True):
+        log_success(logger)
+    else:
+        log_failure(logger)
+        return 1
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))

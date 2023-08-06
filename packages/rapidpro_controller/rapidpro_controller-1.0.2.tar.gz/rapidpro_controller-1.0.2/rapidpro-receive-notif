@@ -1,0 +1,81 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import sys
+import os
+
+from rapidpro_controller import (get_logger, run_command, MASTER, THIS_SERVER,
+                                 WORKING, DISABLED, TRANSIENT,
+                                 log_success, log_failure)
+from rapidpro_controller.states import get_local_role, get_local_status
+from rapidpro_controller.alerts import alert
+from rapidpro_controller.cluster import is_ip_master
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main():
+    role = get_local_role()
+    status = get_local_status()
+    has_ip = is_ip_master()
+
+    if role == MASTER and status == WORKING and has_ip:
+        # we are alone now but don't react to it.
+        logger.info("received peer-failure-notif. ignoring as working master.")
+        return
+
+    elif role == MASTER and status == WORKING and not has_ip:
+        # we are alone and working but don't have the IP. should get IP
+        logger.info("received peer-failure-notif. already working master "
+                    "but without IP. requesting it.")
+        run_command(['rapidpro-cluster-requestip', '--force'])
+
+    elif role == MASTER and status == TRANSIENT:
+        logger.warning("received peer-failure-notif "
+                       "but we're in transient state. ignoring.")
+        return 0
+
+    elif role == MASTER:
+        # hum. we're not ready and peer crashed. alert team
+        logger.warning("received peer-failure-notif. "
+                       "alerting as non-working master.")
+
+        message = "{server} received peer-failure notif request but is a " \
+                  "non-working master ({status}); {ip} serving prod IP." \
+                  .format(server=THIS_SERVER, status=status,
+                          ip="is" if has_ip else "is NOT")
+        success, _, _, _, _, _ = alert(message)
+        return 0
+
+    # we're a slave
+    if status in (WORKING, DISABLED):
+        # ok, we've been waiting for it.
+        # let's promote to master \o/
+        logger.info("received peer-failure-notif. "
+                    "alerting as non-working master.")
+
+        if run_command(['rapidpro-change-role', 'master', '--force']) == 0:
+            log_success(logger, msg="became a master \o/")
+            if not is_ip_master():
+                logger.info("Requesting IP as we don't have it yet.")
+                run_command(['rapidpro-cluster-requestip'])
+        else:
+            log_failure(logger, msg="could not become a master")
+
+    if status == TRANSIENT:
+        # hum. can't guess what's going on. let's inform the team
+        logger.error("received peer-failure-notif. "
+                     "alerting as slave in transient state.")
+
+        message = "{server} received peer-failure notif request but is a " \
+                  "slave in transient state." \
+                  .format(server=THIS_SERVER)
+        success, _, _, _, _, _ = alert(message)
+        return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
