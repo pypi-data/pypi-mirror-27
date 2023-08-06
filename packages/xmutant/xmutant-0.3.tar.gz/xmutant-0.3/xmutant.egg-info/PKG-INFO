@@ -1,0 +1,46 @@
+Metadata-Version: 1.1
+Name: xmutant
+Version: 0.3
+Summary: The python3 bytecode based mutation analysis framework
+Home-page: http://github.com/vrthra/xmutant.py
+Author: Rahul Gopinath
+Author-email: rahul@gopinath.org
+License: GPLv3
+Description: 
+        This package provides a byte-code based mutation analysis framework for Python. It computes the mutation score (The quality score) of your doctests. Bytecode based mutation analysis ensures that invalid mutants are completely avoided (unlike source code based mutants), and also that trivial redundant and equivalent mutants (that can be distinguished by compiler) are already removed.  It uses coverage analysis to ensure that only covered mutants that have a chance to be detected are run. It also includes randomized evaluation of equivalent mutants (use -a to set the number of attempts to be made).
+        
+                Compatibility
+                -------------
+                It was tested on Python 3.6
+                
+                
+                To run
+                ------
+                
+                  python xmutant.py -a <attempts> <module to be tested>
+                
+                Mutation Operators (on bytecode)
+                --------------------------------
+                
+                - modify constants
+                - replace boolean comparators (< <= == != > >=)
+                - replace arithmetic operators (+ - * / // ./. ** % << >> ^)
+                - remove unary negation and invert
+                - invert unary signs
+                - swap 'and' and 'or' in boolean expressions
+                - swap inplace 'and' and 'or' in assignments
+                - swap 'jump if * or pop' and 'jump if * and pop'
+                - swap 'pop if true' and 'pop if false'      
+              
+        
+Keywords: mutation-testing mutation-analysis
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Testing
