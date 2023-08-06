@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+
+import argparse, logging, sys
+from karamel.exception import KaramelException
+from karamel.command import Command, SearchCommand
+from karamel.logger import logger
+
+__version__ = '0.1.2'
+__program__ = 'karamel'
+__description__ = 'Karamel is a library let you build powerful Package Manager based on Git and other Version Control System.'
+
+
+class Karamel(Command):
+
+    def __init__(self):
+        super().__init__(__program__, __description__)
+        self.add_argument('-v', '--version', help='Show program\'s version number and exit.', action='store_true')
+        self.add_argument('-h', '--help', action='help', default=argparse.SUPPRESS, help='Show this help message and exit.')
+
+        self.add_command(SearchCommand('https://gitlab.com/karamel/test_package_manager/raw/master/packages.yml'))
+
+    def callback(self, args):
+        show_version(args)
+        print(self.parser.print_help())
+        raise SystemExit(0)
+
+
+def show_version(args):
+    if args.version:
+        print('{0} {1}\nPython {2}'.format(__program__, __version__, sys.version))
+        raise SystemExit(0)
+
+
+if __name__ == '__main__':
+    try:
+        karamel = Karamel()
+        karamel.run()
+    except KaramelException as e:
+        logger.error(e)
+    except (KeyboardInterrupt, SystemExit):
+        pass
