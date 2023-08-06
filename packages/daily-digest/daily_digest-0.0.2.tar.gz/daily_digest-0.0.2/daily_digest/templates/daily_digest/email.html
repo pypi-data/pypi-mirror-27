@@ -1,0 +1,16 @@
+{% extends 'daily_digest/base.html' %}
+
+{% block body %}
+
+{% for chart in charts %}
+<h3>{{ chart.title }}</h3>
+
+{% if chart.svg_data %}
+	{{ chart.svg_data|safe }}
+{% else %}
+	<img class="chart" width="100%" src="cid:{{ chart.slug }}"/>
+{% endif %}
+<br />
+{% endfor %}
+
+{% endblock %}
