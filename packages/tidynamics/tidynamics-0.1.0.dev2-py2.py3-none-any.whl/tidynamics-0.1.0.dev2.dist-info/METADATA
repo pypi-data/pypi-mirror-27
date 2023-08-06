@@ -1,0 +1,38 @@
+Metadata-Version: 2.0
+Name: tidynamics
+Version: 0.1.0.dev2
+Summary: Tiny package to compute dynamics correlations
+Home-page: https://pypi.python.org/pypi/tidynamics
+Author: Pierre de Buyl
+Author-email: pdebuyl@pdebuyl.be
+License: BSD
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+
+tidynamics
+==========
+
+A tiny package to compute the dynamics of stochastic and molecular simulations.
+
+tidynamics depends only on `Python <https://www.python.org/>`_ and `NumPy
+<http://www.numpy.org/>`_ and performs the computation of
+
+- Mean-square displacements
+- Correlation functions
+
+tidynamics accepts as input NumPy arrays storing the positions and velocities of particles.
+
+tidynamics relies on the so-called Fast Correlation Algorithm proposed by Kneller and others
+for the `nMOLDYN <http://dirac.cnrs-orleans.fr/plone/software/nmoldyn/>`_ analysis program.
+
+The development of tidynamics is in early stages but it features several tests.
+
+:License: BSD 3-clause
+:Author: Pierre de Buyl
+:Website: http://lab.pdebuyl.be/tidynamics/
+
+
+
