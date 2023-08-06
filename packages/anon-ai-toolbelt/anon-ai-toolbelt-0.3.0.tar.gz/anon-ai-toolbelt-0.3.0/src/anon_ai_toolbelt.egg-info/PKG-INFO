@@ -1,0 +1,161 @@
+Metadata-Version: 1.2
+Name: anon-ai-toolbelt
+Version: 0.3.0
+Summary: A command-line tool for using the Anon AI web service.
+Home-page: https://github.com/anon-ai/toolbelt
+Author: Anon AI
+Author-email: info@anon.ai
+License: MIT
+Description: Anon AI Toolbelt
+        ================
+        
+        The Anon AI Toolbelt is a command line interface (CLI) tool for managing
+        and anonymising data with the `Anon AI web service <https://anon.ai>`__.
+        
+        It's developed in Python and the code is published under the `MIT
+        License <https://github.com/anon-ai/toolbelt/blob/master/LICENSE>`__ at
+        `github.com/anon-ai/toolbelt <https://github.com/anon-ai/toolbelt>`__.
+        
+        Installation
+        ------------
+        
+        Install using ``pip`` into a Python3 environment:
+        
+        .. code:: bash
+        
+            pip install anon-ai-toolbelt
+        
+        Note that the toolbelt only works with Python3 and installs dependencies
+        including the `Python Cryptography
+        Toolkit <https://pypi.python.org/pypi/pycrypto>`__.
+        
+        Usage
+        -----
+        
+        The primary workflow is for a data controller to ``push`` data into the
+        system and then for data processors to ``pull`` the data down in
+        anonymised form.
+        
+        -  `anon login <#login>`__
+        -  `anon push INPUT\_FILE RESOURCE <#push>`__
+        -  `anon pull RESOURCE OUTPUT\_FILE <#pull>`__
+        -  `anon pipe URL OUTPUT\_FILE <#pipe>`__
+        
+        Login
+        ~~~~~
+        
+        Login with your API credentials (writes to
+        ``~/.config/anon.ai/config.json``):
+        
+        .. code:: bash
+        
+            anon login
+            > key: ...
+            > secret: ...
+        
+        Push
+        ~~~~
+        
+        Push a data snapshot up to ingest and store it.
+        
+        .. code:: bash
+        
+            anon push foo.dump mydb
+        
+        When ingesting structured data you should specify the data format:
+        
+        .. code:: bash
+        
+            anon push foo.dump mydb --format postgres
+        
+        In this example, ``mydb`` is an arbitrary resource name that you use to
+        identify this ingested data source. Subsequent pushes to the same name
+        are usually used to store a new snapshot of the same file or database.
+        
+        The stored data is encrypted using AES-256 with a per-account encryption
+        key that lives in (and never leaves) a `secure
+        vault <https://www.vaultproject.io/>`__. You can also optionally provide
+        your own encryption key:
+        
+        .. code:: bash
+        
+            anon push foo.dump mydb --encryption-key LONG_RANDOM_STRING
+        
+        Note that:
+        
+        1. your encryption key is **never persisted** in our system -- so you
+           have to manage it and give it to any users that you want to share
+           anonymised data with
+        2. there's no strict requirement on length or format for your encryption
+           key value (we SHA-256 hash it along with your per-account encryption
+           key) but we recommend at least 16 bytes entropy
+        
+        Pull
+        ~~~~
+        
+        Pull down an anonymised copy of an ingested data snapshot:
+        
+        .. code:: bash
+        
+            anon pull mydb foo.dump
+        
+        Optionally provide an encryption key (to decrypt the stored data with)
+        and / or configure how you'd like it anonymised:
+        
+        .. code:: bash
+        
+            anon pull mydb foo.dump --config config.json --encryption-key ...
+        
+        Pipe
+        ~~~~
+        
+        Pipe data through to anonymise it:
+        
+        .. code:: bash
+        
+            anon pipe http://humanstxt.org/humans.txt /tmp/humans.anon.txt
+        
+        This parses, analyses and anonymises the data on the fly, i.e.: without
+        persisting it. The data source must currently be a URL.
+        
+        Versions
+        ~~~~~~~~
+        
+        You can ``pull`` specific snapshot versions by targeting them by name:
+        
+        .. code:: bash
+        
+            anon pull mydb --snapshot someid
+        
+        You can also ``push`` snapshots up with a specific name:
+        
+        .. code:: bash
+        
+            anon push foo.sql mydb --snapshot someid
+        
+        Tab completion
+        ~~~~~~~~~~~~~~
+        
+        Enable ``bash`` completion by adding the following to your ``.bashrc``:
+        
+        .. code:: bash
+        
+            eval "$(_ANON_COMPLETE=source anon)"
+        
+        If you use ``zsh``, you can emulate bash completion by first adding
+        ``bashcompinit`` to your ``.zshrc``:
+        
+        .. code:: bash
+        
+            autoload bashcompinit
+            bashcompinit
+            eval "$(_ANON_COMPLETE=source anon)"
+        
+        For more information see `Anon AI <https://anon.ai>`__.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3
