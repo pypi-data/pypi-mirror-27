@@ -1,0 +1,61 @@
+.csv-list {
+    border: 1px solid #e1e4e5;
+    margin-bottom: 24px;
+}
+
+.csv-list-item {
+    padding: 1em 0.5em;
+}
+
+.csv-list-item:nth-child(2n-1) {
+    background-color: #f3f6f6;
+}
+
+.csv-list-item:not(:last-child) {
+    border-bottom: 1px solid #e1e4e5;
+}
+
+.csv-list-title {
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid rgb(141, 141, 141);
+}
+
+.csv-list-title .csv-list-key {
+    display: inline-block;
+    margin-right: 0.5em;
+    font-weight: bold;
+}
+
+.csv-list-title .csv-list-key::after {
+    content: ":";
+}
+
+.csv-list-title .csv-list-value {
+    display: inline-block;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.csv-list-field {
+    margin-bottom: 0;
+}
+
+.csv-list-field:not(:last-child) {
+    border-bottom: 1px dashed #e1e4e5;
+}
+
+.csv-list-field .csv-list-key {
+    display: inline-block;
+    margin-right: 0.5em;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.csv-list-field .csv-list-key::after {
+    content: ":";
+}
+
+.csv-list-field .csv-list-value {
+    display: inline-block;
+    vertical-align: top;
+}
