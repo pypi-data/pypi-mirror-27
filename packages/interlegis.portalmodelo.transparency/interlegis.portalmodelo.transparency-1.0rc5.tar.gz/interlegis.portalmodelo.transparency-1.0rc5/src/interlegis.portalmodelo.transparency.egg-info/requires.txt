@@ -1,0 +1,19 @@
+interlegis.portalmodelo.api
+lxml
+plone.app.dexterity [grok]
+plone.app.referenceablebehavior
+plone.dexterity
+plone.directives.form
+Products.GenericSetup
+rows [all]
+setuptools
+zope.i18nmessageid
+zope.interface
+
+[test]
+plone.app.robotframework
+plone.app.testing [robot] >=4.2.2
+plone.browserlayer
+plone.testing
+unittest2
+zope.component
