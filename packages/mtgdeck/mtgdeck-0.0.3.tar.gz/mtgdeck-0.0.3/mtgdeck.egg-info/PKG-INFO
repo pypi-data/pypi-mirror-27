@@ -1,0 +1,56 @@
+Metadata-Version: 1.1
+Name: mtgdeck
+Version: 0.0.3
+Summary: MTG deck list decoder and encoder library and application
+Home-page: https://github.com/pedros/mtgdeck
+Author: Pedro Silva
+Author-email: psilva+git@pedrosilva.pt
+License: UNKNOWN
+Download-URL: https://github.com/pedros/mtgdeck/archive/0.0.3.tar.gz
+Description: .. image:: https://travis-ci.org/pedros/mtgdeck.svg?branch=master
+           :target: https://travis-ci.org/pedros/mtgdeck
+        
+        .. image:: https://ci.appveyor.com/api/projects/status/1afabyk0mdbrwsd7?svg=true
+           :target: https://ci.appveyor.com/project/pedros/mtgdeck
+        
+        .. image:: https://codecov.io/gh/pedros/mtgdeck/branch/master/graph/badge.svg
+          :target: https://codecov.io/gh/pedros/mtgdeck
+        
+        mtgdeck
+        =======
+        
+        MTG decklist decoder and encoder library and application
+        
+        What is it?
+        -----------
+        
+        ``mtgdeck`` is an application and library for decoding and encoding various
+        decklist formats for Magic: The Gathering.
+        
+        
+        Usage
+        -----
+        
+        ::
+           
+           # Automatically determine input format in standard input
+           # and encode using default encoder (text) to standard output
+           mtgdeck < input.mws > output.txt
+        
+           # Decode a Cockatrice decklist and encode to OCTGN, specifying files
+           mtgdeck -d cod -e octgn -i input.cod -o output.o8d
+        
+Keywords: magic-the-gathering,parser,encoder-decoder,command-line-app,library python3
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Games/Entertainment
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing :: Filters
+Classifier: Topic :: Utilities
