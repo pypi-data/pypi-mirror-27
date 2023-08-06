@@ -1,0 +1,35 @@
+Metadata-Version: 1.1
+Name: oamap
+Version: 0.1.0
+Summary: Toolset for computing directly on hierarchically nested, columnar data, such as Apache Arrow.
+Home-page: https://github.com/diana-hep/oamap
+Author: Jim Pivarski (DIANA-HEP)
+Author-email: pivarski@fnal.gov
+License: BSD 3-clause
+Download-URL: https://github.com/diana-hep/oamap/releases
+Description: Large datasets can be more compact and faster to access when they are laid out in columns (see `Apache Arrow <https://arrow.apache.org/>`_). Even hierarchically nested data can be presented this way, though converting the data between the columnar form and the object form can degrade performance. Non-hierarchical data (rectangular tables) is often accessed without materializing rows (see `Apache Drill <https://drill.apache.org/docs/performance/>`_), but this is more complex for data containing arbitrary-length lists of objects.
+        
+        OAMap is a suite of tools for performing calculations in this way. The name stands for Object-Array-Map, in analogy with Object-Relational-Mapping (ORM) in relational databases. Pure Python calculations are considerably faster and more memory efficient when datasets are expressed in OAMaps, but the real power comes from *compiling* columized code. This toolset includes `extensions to Numba <http://numba.pydata.org/numba-doc/dev/extending/index.html>`_ that will compile your object-oriented code into native array manipulations. Generally, you'd use uncompiled Python for low latency exploration of the data and Numba-compiled functions for high throughput.
+        
+        OAMap only strictly depends on Numpy, but `Numba <http://numba.pydata.org/>`_ will accelerate it and `pyarrow <https://arrow.apache.org/docs/python/index.html>`_, `h5py <http://www.h5py.org/>`_, etc. provide hooks for converting data among various formats.
+Platform: Any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: Software Development
+Classifier: Topic :: Utilities
