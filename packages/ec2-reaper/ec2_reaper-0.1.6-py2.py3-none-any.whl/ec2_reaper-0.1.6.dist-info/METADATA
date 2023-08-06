@@ -1,0 +1,83 @@
+Metadata-Version: 2.0
+Name: ec2-reaper
+Version: 0.1.6
+Summary: CLI & module for terminating instances that match tag and age requirements.
+Home-page: https://github.com/inhumantsar/python-ec2-reaper
+Author: Shaun Martin
+Author-email: shaun@samsite.ca
+License: BSD license
+Description-Content-Type: UNKNOWN
+Keywords: ec2-reaper
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: boto3
+Requires-Dist: pytz
+Requires-Dist: slacker
+Requires-Dist: click
+
+==========
+EC2 Reaper
+==========
+
+
+.. image:: https://img.shields.io/pypi/v/ec2_reaper.svg
+        :target: https://pypi.python.org/pypi/ec2_reaper
+
+.. image:: https://img.shields.io/travis/inhumantsar/ec2_reaper.svg
+        :target: https://travis-ci.org/inhumantsar/ec2_reaper
+
+.. image:: https://readthedocs.org/projects/ec2-reaper/badge/?version=latest
+        :target: https://ec2-reaper.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://pyup.io/repos/github/inhumantsar/ec2_reaper/shield.svg
+     :target: https://pyup.io/repos/github/inhumantsar/ec2_reaper/
+     :alt: Updates
+
+
+CLI & module for terminating instances that match tag and age requirements.
+
+
+* Free software: BSD license
+* Documentation: https://ec2-reaper.readthedocs.io.
+
+Testing
+---------
+
+    docker run --rm -it -w /workspace -v $(pwd):/workspace python:2 /bin/bash
+    $ pip install -r requirements.txt -r requirements_dev.txt
+    $ tox -e py27
+
+Features
+---------
+
+* TODO
+
+Credits
+---------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+=======
+History
+=======
+
+0.1.0 (2017-11-27)
+------------------
+
+* First release on PyPI.
+
+
