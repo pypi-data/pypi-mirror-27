@@ -1,0 +1,75 @@
+Metadata-Version: 1.1
+Name: myrollingforecastpackagem
+Version: 1.0.1
+Summary: A Python project for rolling prediction
+Home-page: https://github.com/RohenHun/packagem
+Author: Molnar Daniel
+Author-email: molnardaniel0309@gmail.com
+License: MIT
+Description: Feladatom megvalósítása során egy osztályt alkottam, amiben a benne található függvényeket felhasználva a felhasználó könnyen tud alkalmazni adatbányászati lépéseket a számára fontos adathalmazon. Így a következőkben ezeknek a függvényeknek a lényeges működését írom le, hogy bárki használni tudja ezek ismeretében.
+        Rollingpredict(path): A legfontosabb függvény az inicializáló függvény, ami létrehozza ezt az osztályt. A path tagváltozóba a megadott fájl elérési útját kell tenni, amivel később dolgozni szeretnénk. Gyakran .csv fájlokkal dolgoznak a fejlesztők, ami vesszővel tagolt adatokat tartalmaz egymás után (innen ered az angol neve is, ami a Comma Separated Value). Mivel nagyon elterjedt, és könnyű ilyen formátummá konvertálni a fájlokat, ezért a csomagom megvalósításánál ezt választottam formátumnak, amit aztán a felhasználó beolvas. Egy példa létrehozásra, ahol a D meghajtón levő Szakdolgozat mappában található L1-train.csv nevű fájlból levő adatokkal lehet tovább dolgozni: Rollingpredict('D:\Szakdolgozat\L1-train.csv')
+        
+        show_originalpath(): Kiírja az érvényes elérési utat a feldolgozandó adathalmazról. Az alábbi függvény tehát akkor hasznos, ha megakarunk bizonyosodni, hogy a program jó helyről veszi az adatokat.
+        
+        read_originalfile(): Az alábbi függvény szolgál a korábban megadott fájl tényleges beolvasására az adatbányászati feladatokhoz.
+        
+        show_originalfile(): Ennek segítségével lehet a beolvasott fájl tartalmát megnézni, hogy megbizonyosodjon a felhasználó a beolvasás sikerességéről. Itt a panda csomag Dataframe táblázat típúsában jelennek meg az adatok táblázat formában. Azért választottam ezt a formátumot, mert széles körben elterjedt a használata, és több más program is kompatibilis a felhasználásával. 
+        
+        read_calendar(path): A csomag létrehozásakor gondoltam arra, hogy az ünnepekre is figyeljek adatelemzések során. Így ha a felhasználó szeretné, hogy ezeket is figyelembe vegye a program, akkor lehetősége van csv. fájl beolvasására, ami ebben a sorrendben tartalmazza az adatokat: Dátum (ÉÉÉÉ-HH-NN formátumban), hét hányadik napja (0-6 formátumban), hétvége (0:nem, 1:igen), illetve ünnepnap-e (0:nem, 1:igen). Természetesen a naptár fájl megadásnak a beolvasása csak opcionális a felhasználó számára, aki nem akar ezzel foglalkozni, anélkül is tudja futtatni a további függvényeket.
+        
+        read_calendaralt(path): Szinte megegyezik a fenti függvénnyel azzal a különbséggel, hogy vessző helyett pontosvesszővel tagolt adatokat olvas be. Példa alkalmazására: 	read_calendaralt('D:\Szakdolgozat\calendar.csv')
+        
+        select_numcolumns(*columns): Lehetőség van arra, ha a beolvasott adatokon az oszlopok számát csökkenteni szeretné a felhasználó. Ilyen eset lehet, hogy egy fájl 30 oszlopnyi adatot tartalmaz, de a felhasználó számára ez áltáthatatlan. Ilyenkor felsorolja az oszlopok számát, amiket meg akar tartani, és a későbbiek során már csak ezekkel az oszlopokkal fog foglalkozni a program. Az oszlopok számozása 0-val kezdődik, hiszen a programozók számára ez a megszokott logika, így én is ezt követtem. Példa az alkalmazására, ahol a 3- 6. oszlopokat választom ki:	select_numcolumns(2, 3, 4, 5 )
+        
+        select_textcolumns(*columnstext): A fentebbi függvénnyel megegyező, de itt nem az oszlop számát kell megadni, hanem a nevét. 
+        show_work(): Az oszlopok kiválasztása után ezzel meg tudja nézni a felhasználó, hogy tényleg jó oszlopokat jelölt ki, és tényleg ezekkel akar dolgozni. Ha ez megtörtént, akkor a következő függvények már veszik a továbbiakban az adatok forrását.
+        reset_worktooriginal(): Megtörténhet az, hogy rossz oszlopokat jelölt ki a felhasználó, vagy inkább mégis az eredeti oszlopokkal szeretne dolgozni, akkor ez a függvény a feldolgozandó adatokat visszaállítja a beolvasás során megadott fájlra, vagyis visszaáll az eredeti állapotra.
+        autopredict_week(tickhour, tickday, tickweek, datecolumn, weekendcolumn, fromrow, tillrow, predictcolumn, *columns):  Egyik fő függvény. Használata során a gördülő kiértékelés módszerével mindig kiszámolja naponta a következő hétig levő adatokat. Működési elven használja a naptárt, ha meg van adva neki, és figyelembe veszi ezáltal az ünnepnapokat. A tickhour, tickday és tickweek során adja meg a felhasználó, hogy az adott adathalmazában hány periódus 1 óra, 1 nap és 1 hét. Erre azért van szükség, mert sok adathalmaznál lehet, hogy nincs megadva a dátum, és így nem lehetne tudni a periódusok közti valóságos időintervallumot. Míg így a felhasználóra van bízva, aki ennek a birtokában van, így biztonságos, hogy nem lesz a dátumok miatt ezzel baj. A datecolumn felelős a naptárért, ahol ugyanis meg lehet adni a dátum oszlopszámának indexét számmal. Fontos, hogy itt is 0-val kezdődik az indexelés a programozói megszokás miatt. Ha nem akarja a felhasználó, hogy ezt számításba vegye a program, akkor egy -1 vagy kisebb számot írjon, hogy így jelezze, hogy nem kívánja ezt a funkciót használni. Azonban ha megadja a valós oszlop indexet, ami a dátumot tartalmazza (ÉÉÉÉ-HH-NN) formátumban, akkor figyeli a naptárat is, ha az is meg lett adva korábban, és számításba veszi az ünnepnapokat. A weekendcolumn arra szolgál, ha a felhasználó az adathalmazában tárolja azt is, hogy hétvége volt-e az a nap, és szeretné ezt is beleszámítani az adatok kiértékelésénél, ha nem, akkor itt is egy negatív számot adhat meg jelezve, hogy nem kívánja ezt a kapcsolót használni. A GradientBoosting módszert használva (Az alapértelmezett értékeket választottam, ami n_estimators=100, max_depth=3, learning_rate=0.10 takarja. Ha ez nem felelne meg a felhasználónak, akkor lehetősége van más függvényeket használni, amiben ez is állítható) mindig felépíti az addig birtokában levő adatokból a tanuló adathalmazt, majd a következő egy hétre, ami ismeretlen, a korábbi hét adatát illetve az utolsó ismert adatot veszi szempontúl. A fromrow és tillrow paraméterekkel lehet változtatni, hogy melyik sortól induljon a kiértékelés, illetve melyik sornál érjen véget. Ezek után naponta lefuttatja mindig a következő hétre, és 4 db listát hoz létre, amiben a következőket tárolja: becsült érték, valós érték, melyik indexre vonatkoznak a fentiek, illetve mennyi órával korábban számította ezt ki. Így ezeket az adatokat már a későbbiekben fel lehet használni. 
+        
+        autopredict_day(tickhour, tickday, tickweek, datecolumn, weekendcolumn, fromrow, tillrow, predictcolumn, *columns): Hasonló a fentebbi függvényhez működésben, azonban óránként fut, és a következő napig levő értékeket számolja ki.
+        
+        autopredict_day_24_48(tickhour, tickday, tickweek, datecolumn, weekendcolumn, fromrow, tillrow, predictcolumn, *columns): Ez is hasonló a fentebbi 2 függvényhez, azonban ez naponta fut le, és a utána levő 24-48 óra közötti részt számolja ki.
+        
+        manualpredict_week(nestimators, maxdepth, learningrate, tickhour, tickday, tickweek, datecolumn, weekendcolumn, fromrow, tillrow, predictcolumn, *columns): Ha a felhasználónak nem felel meg az alapbeállítás a GradientBoosting során, akkor itt lehetősége van ezt a 3 paramétert bekonfigurálnia a pontosabb eredmény érdekében. Ez tehát a autopredict_week másik változata, ahol több beállítási lehetőség van a felhasználó számára.
+        
+        manualpredict_day(nestimators, maxdepth, learningrate, tickhour, tickday, tickweek, datecolumn, weekendcolumn, fromrow, tillrow, predictcolumn, *columns): Hasonlóan ez is az autopredict_day bővebb változata, ahol a felhasználó az alapbeállításokat képes felülírni.
+        
+        
+        manualpredict_day_24_48(nestimators, maxdepth, learningrate, tickhour, tickday, tickweek, datecolumn, weekendcolumn, fromrow, tillrow, predictcolumn, *columns): Ez pedig az autopredict_day_24_48 bővített változata, ahol több beállítási lehetőség áll a felhasználó rendelkezésére.
+        
+        showpredicted(startindex, endindex, showday, showday24_48, showweek): Amikor a korábbi függvények közül lefuttattuk valamelyiket, akkor lehetőség van a kapott adatok megjelenítésére pandas Dataframe formátumban. Így oszloponként megkapjuk a predikált értéket, a valós értéket, a predikált érték eredeti adathalmazban levő indexét, illetve, hogy hány órával korábban került ez kiszámításra. Lehetőség van egyszerre több adat lekérdezésére a startindex és endindex kapcsolóval, ahol az kerül kiválasztásra, hogy az eredeti adathalmaz melyik indexű predikált elemeire vagyunk kíváncsiak, majd a showday, showday24_48 és showweek kapcsolóval lehet meghatározni, hogy csak a predict_day, predict_day_24_48 vagy predict_week által számított értékeket, vagy akár mindet mutassa be egyszerre.
+        
+        predictedtocsv(startindex, endindex, showday, showday24_48, showweek, name): Hasonló a korábbi függvényhez, azonban itt el lehet menteni a kapott eredményeket .csv formátumú fájlba. Itt csak a name kapcsoló került hozzáadásra, aminél meg lehet adni a fájl nevét. 
+        
+        error_week(): A heti kiértékelés hibáit számítja ki minden egyes periódusra levetítve. Egyszerűbben fogalmazva, ha az adathalmaz óránként tartalmazott adatokat, akkor minden órára kivetíti, hogy kiértékelésnél mekkora a hiba a valós adathoz képest. Ezt a korábban emlegetett MAE, RMSE és MAPE képletekkel számolom ki. Végül egy táblázatos formában megjeleníti az eredményeket, amit később a kirajzolásnál forrásul veszik későbbi függvények.
+        
+        error_day(): Hasonló a korábbi függvényhez, azonban itt a napi kiértékelésekhez kapcsolatos hibát veszi alapul.
+        
+        error_day_24_48(): A fentebbi 2 függvényhez hasonló, azonban itt a predict_day_24_48 függvény kiértékelésénél kapott eredmények valós értékhez viszonyított pontosságát számolja ki. 
+        
+        error_all(showday, showday24_48, showweek): A korábbi függvények összesített változata. Itt ki lehet választani, hogy melyik kiértékelések pontosságát vegye figyelembe, vagy akár az összeset lehet választani egyszerre. Ugyanúgy a mínusz számokkal lehet kikapcsolni a kapcsolókat.
+        
+        draw_plot_error_week(showmae, showrmse, showmape, name): Ez a függvény felelős azért, ha a heti kiértékelés pontosságát nem csak számszerűen szeretné látni a felhasználó, hanem grafikusan is. Ilyenkor egy diagrammot rajzol ki a program, amiben megmutatja, hogy az eltelt idő hogyan befolyásolja a pontosság sikerét. Ilyenkor az várható, hogy ha mondjuk óránként vannak az adatok, akkor 1 órával később pontosabb adatokat számolt a függvény, mint 1 héttel később, hiszen az idő múlásával egyre nehezebb pontosabb eredményt adni. Lehetőség van a kirajzolásnál meghatározni, hogy a korábban 3 ismertetett képletekből melyikre vagyunk kíváncsiak, vagy akár egyszerre az összeset is ki lehet rajzolni. A korábbiakhoz megfelelően itt is a mínusz számokkal lehet jelezni a kapcsoló kikapcsolását, ha valamelyik értékekre nem tart igényt a felhasználó.
+        
+        draw_plot_error_day(showmae, showrmse, showmape, name): A fentebbi függvény napi kiértékelésre módosított változata. Működése megegyezik a fentebb írtakkal.
+        
+        draw_plot_error_day_24_48(showmae, showrmse, showmape, name): Ez is hasonlóan működik a korábbi 2 függvényhez, azonban itt a predict_day_24_48 függvény pontosságát lehet meghatározni.
+        
+        draw_plot_error_all(showmae, showrmse, showmape, name): A korábbi 3 függvény összesített változata, ahol az összes kiértékelést figyelembe veszi a függvény, és úgy rajzolja ki a pontosságot az adott intervallumhoz.
+        
+        
+        
+        
+Keywords: sample setuptools development
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
