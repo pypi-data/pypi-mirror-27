@@ -1,0 +1,56 @@
+Metadata-Version: 1.1
+Name: macos-free
+Version: 1.0.1
+Summary: Memory usage for macos, an alternative to free command.
+Home-page: https://github.com/cls1991/free
+Author: cls1991
+Author-email: tzk19910406@hotmail.com
+License: Apache License 2.0
+Description-Content-Type: UNKNOWN
+Description: # free
+        
+        [![PyPI](https://img.shields.io/pypi/l/free.svg)](https://pypi.python.org/pypi/macos-free)
+        [![PyPI](https://img.shields.io/pypi/v/free.svg)](https://pypi.python.org/pypi/macos-free)
+        [![PyPI](https://img.shields.io/pypi/pyversions/free.svg)](https://pypi.python.org/pypi/macos-free)
+        [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
+        
+        Memory usage for macos,  an alternative to free command.
+        
+        ## Installation
+        
+        You can install "macos-free" via `pip` from `PyPI`:
+        
+        	$ pip install macos-free
+        	
+        ## Usage
+        
+        	Usage: free [OPTIONS]
+        
+        	Options:
+        	  -b, --bytes    show output in bytes
+        	  -k, --kilo     show output in kilobytes
+        	  -m, --mega     show output in megabytes
+        	  -g, --giga     show output in gigabytes
+        	  --tera         show output in terabytes
+        	  -h, --human    show human-readable output
+        	  --si           use powers of 1000 not 1024
+        	  -V, --version  output version information and exit
+        	  --help         Show this message and exit.
+        
+        
+Keywords: memory,free
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Operating System :: MacOS
