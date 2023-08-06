@@ -1,0 +1,619 @@
+.\" Man page generated from reStructuredText.
+.
+.TH GIT-BLACKHOLE-BASIC-USAGE 5 "" "" "Git blackhole manual"
+.SH NAME
+git-blackhole-basic-usage \- Examples
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.SH PREPARATION
+.\" Some preparation needed for cram test:
+.\" 
+.\" $ export HOME=$PWD
+.\" $ git config --global user.email "test@blackhole"
+.\" $ git config --global user.name "Test Black-Hole"
+.
+.sp
+For a demonstration purpose, create a "remote" git repository used as
+a blackehole:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git init \-\-bare blackhole.git
+Initialized empty Git repository in */blackhole.git/ (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Initialize remote origin:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git init \-\-bare origin.git
+Initialized empty Git repository in */origin.git/ (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Initialize local git repository:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git init local
+Initialized empty Git repository in */local/.git/ (glob)
+$ cd local/
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+First commit:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ touch README.txt
+$ git add .
+$ git commit \-\-message \(aqFirst commit\(aq > /dev/null
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Push it to the origin:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git remote add origin ../origin.git
+$ git push \-\-set\-upstream origin master
+To ../origin.git
+ * [new branch]      master \-> master
+Branch master set up to track remote branch master from origin.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH INITIALIZE GIT-BLACKHOLE
+.sp
+Initialize blackhole:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole init ../blackhole.git
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+It just adds git remote named \(aqblackhole\(aq (by default) and put prefix
+\fBheads/$HOST/$RELPATH\fP to \fBfetch\fP and \fBpush\fP configuration, where
+\fB$RELPATH\fP is the relative path to the repository from \fB$HOME\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git remote
+blackhole
+origin
+$ tail \-n4 .git/config | sed s/$(hostname)/myhost/g
+[remote "blackhole"]
+      url = ../blackhole.git
+      fetch = +refs/heads/heads/myhost/local/*:refs/remotes/blackhole/*
+      push = +refs/heads/*:heads/myhost/local/*
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH PUSH TO THE REMOTE BLACKHOLE
+.sp
+Since blackhole is just a remote repository, \fBgit push\fP works
+normally:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git push blackhole master
+To ../blackhole.git
+ * [new branch]      master \-> heads/*/local/master (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+There is \fBgit blackhole push\fP command to push all local branches
+\fIand\fP \fBHEAD\fP to the blackhole.  Note that local \fBHEAD\fP is pushed
+to remote branch named \fBheads/$HOST/$RELPATH/HEAD\fP\&.:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole push
+To ../blackhole.git
+ * [new branch]      HEAD \-> heads/*/local/HEAD (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Suppose you made a commit and pushed to the remote blackhole:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ echo change >> README.txt
+$ git add .
+$ git commit \-\-message \(aqSecond commit\(aq > /dev/null
+$ git blackhole push
+To ../blackhole.git
+   *  HEAD \-> heads/*/local/HEAD (glob)
+   *  master \-> heads/*/local/master (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+but then decide to change the commit.:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ echo change >> README.txt
+$ git add .
+$ git commit \-\-amend \-\-message \(aqChanged second commit\(aq > /dev/null
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Running \fBgit blackhole push\fP works just fine since internally it
+uses \fBgit push \-\-force\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole push
+To ../blackhole.git
+ + * HEAD \-> heads/*/local/HEAD (forced update) (glob)
+ + * master \-> heads/*/local/master (forced update) (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+\fBgit blackhole push\fP command pushes stashes as well:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ echo change >> README.txt
+$ git stash
+Saved working directory and index state WIP on master: * (glob)
+$ git blackhole push
+To ../blackhole.git
+ * [new branch]      stash@{0} \-> stash/*/local/0 (glob)
+$ git stash drop
+Dropped refs/stash@{0} (*) (glob)
+$ git \-\-git\-dir=../blackhole.git branch \-\-list | sed s/$(hostname)/myhost/g
+  heads/myhost/local/HEAD
+  heads/myhost/local/master
+  stash/myhost/local/0
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+(BTW, let\(aqs not forget to push to the normal repository origin):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git push origin master
+To ../origin.git
+   *  master \-> master (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH TRASH BRANCH
+.sp
+Make a new branch which would be trashed later.:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git checkout \-b garbage
+Switched to a new branch \(aqgarbage\(aq
+$ echo change >> README.txt
+$ git add .
+$ git commit \-\-message \(aqGarbage commit\(aq > /dev/null
+$ git checkout master
+Switched to branch \(aqmaster\(aq
+Your branch is up\-to\-date with \(aqorigin/master\(aq.
+$ git branch \-\-list
+  garbage
+* master
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Trash \fBgarbage\fP branch:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole trash\-branch garbage
+To ../blackhole.git
+ * [new branch]      * \-> trash/*/local/*/* (glob)
+Deleted branch garbage (was *). (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Trashed branch is pushed to remote branch named
+\fBtrash/$HOST/$RELPATH/$REV[:2]/$REV[2:]\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git \-\-git\-dir=../blackhole.git branch \-\-list | sed s/$(hostname)/myhost/g
+  heads/myhost/local/HEAD
+  heads/myhost/local/master
+  stash/myhost/local/0
+  trash/myhost/local/*/* (glob)
+$ b=$(git \-\-git\-dir=../blackhole.git branch \-\-list | grep trash/)
+$ git \-\-git\-dir=../blackhole.git show $b
+commit * (glob)
+Author: Test Black\-Hole <test@blackhole>
+Date:   * (glob)
+
+    GIT\-BLACKHOLE: Trash branch "garbage" at * (glob)
+
+    GIT\-BLACKHOLE\-JSON:
+    {*"branch": "garbage"*} (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+In the commit message, the heading prefix "GIT\-BLACKHOLE:" indicates
+that this commit is made by git\-blackhole.  The rest of the heading
+has some human\-readable message.  The second line is empty.  The third
+line is JSON hodling some meta\-info.
+.sp
+Note that you cannot trash current checked out branch:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git checkout \-b garbage
+Switched to a new branch \(aqgarbage\(aq
+$ git blackhole trash\-branch garbage
+Cannot trash the branch \(aqgarbage\(aq which you are currently on.
+[1]
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Upstream branch
+.sp
+Suppose the branch to be trashed has upstream repository:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git push \-\-set\-upstream origin garbage
+To ../origin.git
+ * [new branch]      garbage \-> garbage
+Branch garbage set up to track remote branch garbage from origin.
+$ git \-\-git\-dir=../origin.git branch \-\-list
+  garbage
+* master
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Then, to remove upstream branch, pass \fB\-\-remove\-upstream\fP or \fB\-u\fP
+option:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git checkout master
+Switched to branch \(aqmaster\(aq
+Your branch is up\-to\-date with \(aqorigin/master\(aq.
+$ git blackhole trash\-branch \-\-remove\-upstream garbage
+To ../blackhole.git
+ * [new branch]      * \-> trash/*/local/*/* (glob)
+Deleted branch garbage (was *). (glob)
+To ../origin.git
+ \- [deleted]         garbage
+$ git \-\-git\-dir=../origin.git branch \-\-list
+* master
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Note that \fB\-\-remove\-upstream\fP is no\-op when upstream repository is
+not set.  To show this, let\(aqs make garbage branch once again.:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git checkout \-b garbage
+Switched to a new branch \(aqgarbage\(aq
+$ echo another change >> README.txt
+$ git add .
+$ git commit \-\-message \(aqGarbage commit\(aq > /dev/null
+$ git checkout master
+Switched to branch \(aqmaster\(aq
+Your branch is up\-to\-date with \(aqorigin/master\(aq.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+The last line of the output of \fBtrash\-branch \-\-remove\-upstream\fP
+notify you that any upstream branch is not touched:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole trash\-branch \-\-remove\-upstream garbage
+To ../blackhole.git
+ * [new branch]      * \-> trash/*/local/*/* (glob)
+Deleted branch garbage (was *). (glob)
+Not removing upstream branch as upstream is not configured.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH TRASH STASH
+.sp
+Stash some commits:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ echo change 0 >> README.txt
+$ git stash
+Saved working directory and index state WIP on master: * (glob)
+$ echo change 1 >> README.txt
+$ git stash
+Saved working directory and index state WIP on master: * (glob)
+$ git stash list
+stash@{0}: WIP on master: * Changed second commit (glob)
+stash@{1}: WIP on master: * Changed second commit (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Trash \fBstash@{0}\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole trash\-stash 0 2>&1 | tee ../stdout\-stash0
+To ../blackhole.git
+ * [new branch]      * \-> trash/*/local/*/* (glob)
+Dropped stash@{0} (*) (glob)
+$ git stash list
+stash@{0}: WIP on master: * Changed second commit (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Trashed branch is pushed to remote branch as in the case of trashing
+branch:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ b=$(sed \-rn \(aqs#.*(trash/[^ ]*).*#\e1#p\(aq ../stdout\-stash0)
+$ git \-\-git\-dir=../blackhole.git show $b
+commit * (glob)
+Author: Test Black\-Hole <test@blackhole>
+Date:   * (glob)
+
+    GIT\-BLACKHOLE: Trash a stash at * (glob)
+
+    GIT\-BLACKHOLE\-JSON:
+    {*"command": "trash\-stash"*} (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Stash range
+.sp
+Suppose there are many stashes:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ for i in $(seq 10)
+> do
+>   echo change $i >> README.txt
+>   git stash save \-\-quiet "Stash No.$i"
+> done
+$ git stash list
+stash@{0}: On master: Stash No.10
+stash@{1}: On master: Stash No.9
+stash@{2}: On master: Stash No.8
+stash@{3}: On master: Stash No.7
+stash@{4}: On master: Stash No.6
+stash@{5}: On master: Stash No.5
+stash@{6}: On master: Stash No.4
+stash@{7}: On master: Stash No.3
+stash@{8}: On master: Stash No.2
+stash@{9}: On master: Stash No.1
+stash@{10}: WIP on master: * Changed second commit (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Then passing range of stash comes in handy:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole trash\-stash 0,3\-5,8\- > /dev/null 2>&1
+$ git stash list
+stash@{0}: On master: Stash No.9
+stash@{1}: On master: Stash No.8
+stash@{2}: On master: Stash No.4
+stash@{3}: On master: Stash No.3
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH FETCHING TRASHES
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole fetch\-trash
+From ../blackhole
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+ * [new branch]      trash/*/local/*/* \-> refs/bh/trash/*/* (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Trashes are now available in \fBrefs/bh/trash/XX/XXXX...\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ sha1=$(sed \-rn \(aqs#.*trash/[^/]+/[^/]+/([^ ]*).*#\e1#p\(aq ../stdout\-stash0)
+$ git show "refs/bh/trash/$sha1"
+commit * (glob)
+Author: Test Black\-Hole <test@blackhole>
+Date:   * (glob)
+
+    GIT\-BLACKHOLE: Trash a stash at * (glob)
+
+    GIT\-BLACKHOLE\-JSON:
+    {*"command": "trash\-stash"*} (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+\fBls\-trash\fP prints sha1 of trash commits:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole ls\-trash | wc \-l
+11
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Use \fBshow\-trash\fP to see trashed commits:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole show\-trash | grep \-v Merge: | head \-n3
+commit * (glob)
+Author: Test Black\-Hole <test@blackhole>
+Date:   * (glob)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Use \fBrm\-local\-trash\fP to remove local trashes:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+$ git blackhole rm\-local\-trash \-\-all
+$ git blackhole ls\-trash
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.\" Generated by docutils manpage writer.
+.

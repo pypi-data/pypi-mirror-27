@@ -1,0 +1,350 @@
+.\" Man page generated from reStructuredText.
+.
+.TH GIT-BLACKHOLE 1  "" "" "Git blackhole manual"
+.SH NAME
+git-blackhole \- it can suck any commits
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.SH SYNOPSIS
+.nf
+git blackhole init [\-\-name <repo>] <url>
+git blackhole push [\-\-remote <repo>]
+git blackhole warp [\-\-remote <repo>]
+git blackhole trash\-branch [\-\-remote <repo>] <branch>
+git blackhole trash\-stash [\-\-remote <repo>] <stash_range>
+git blackhole fetch\-trash [\-\-remote <repo>]
+git blackhole ls\-trash
+git blackhole show\-trash
+git blackhole rm\-local\-trash (\-\-all | <ref>...)
+git blackhole [<subcommand>] (\-h|\-\-help)
+.fi
+.sp
+.SH DESCRIPTION
+.sp
+The aim of \fBgit\-blackhole\fP is to connect any of your repositories to
+a single repository ("blackhole" repository) to which you can push any
+commits \-\-\- WIP commits, branches no longer needed, and useless
+stashes.
+.sp
+There are three main features of \fBgit\-blackhole\fP:
+.INDENT 0.0
+.IP 1. 3
+\fBContinuous backup\fP\&.  You can use \fBgit\-blackhole\fP to
+continuously backup commits in background to a remote repository
+(or actually any repository) called blackhole repository.
+.sp
+Run \fBgit blackhole init\fP and then setup \fBpost\-commit\fP hook to
+run \fBgit blackhole push\fP\&.  See the help of \fBgit blackhole push\fP
+for the details.
+.sp
+By combining with \fI\%git\-wip\fP command, you can backup/share
+uncommitted changes as well.
+.IP 2. 3
+\fBSharing local repository state\fP\&.  Since \fBgit\-blackhole\fP can
+push commits and the location of HEAD to the blackhole repository,
+the state of a repository in one machine is accessible from other
+machines.
+.sp
+For example, if you forget to push a commit from your desktop (to
+the usual remote) but want to resume the work from your laptop,
+\fBgit blackhole warp\fP would be helpful.
+.IP 3. 3
+\fBRecoverable trash can\fP\&.  Use \fBgit blackhole trash\-branch\fP and
+\fBgit blackhole trash\-stashes\fP to remove branches and stashes from
+the local repository after sending them to the remote blackhole
+repository.  They are stored remotely as ordinary branches so that
+you can recover them easily.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \fBgit blackhole init\fP
+Add blackhole remote at \fIurl\fP with \fIname\fP\&.
+.sp
+This command runs \fBgit remote add <name> <url>\fP and configure
+appropriate \fIremote.<name>.fetch\fP and \fIremote.<name>.pushe\fP
+properties so that remote blackhole repository at \fIurl\fP acts
+as if it is a yet another remote repository.
+.sp
+To be more precise, each local branch is related to the branch at
+the blackhole remote with the prefix \fBheads/$HOST/$RELPATH/\fP
+where \fB$HOST\fP is the name of local machine and \fB$RELPATH\fP is
+the path of the repository relative to \fB$HOME\fP\&.
+.TP
+.B \fBgit blackhole warp\fP
+Peek into other repositories through the blackhole.
+.TP
+.B \fBgit blackhole push\fP
+Push branches and HEAD forcefully to blackhole \fIremote\fP\&.
+.sp
+Note that local HEAD is pushed to the remote branch named
+\fBheads/$HOST/$RELPATH/HEAD\fP (see help of \fBgit blackhole init\fP)
+instead of real remote HEAD.  This way, if the blackhole remote is
+shared with other machine, you can recover the HEAD at \fB$HOST\fP\&.
+.sp
+It is useful to call this command from the \fBpost\-commit\fP hook:
+.INDENT 7.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+nohup git blackhole push \-\-no\-verify &> /dev/null &
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+See also \fIgithooks(5)\fP\&.
+.sp
+To push revisions created by \fI\%git\-wip\fP command, add option
+\fB\-\-ref\-glob=\(aqrefs/wip/*\(aq\fP\&.
+.TP
+.B \fBgit blackhole trash\-branch\fP
+[EXPERIMENTAL] Save \fIbranch\fP in blackhole \fIremote\fP before deletion.
+.sp
+The \fIbranch\fP is pushed to the branch of the blackhole \fIremote\fP
+named \fBtrash/$HOST/$RELPATH/$SHA1[:2]/$SHA1[2:]\fP where \fB$HOST\fP
+is the name of local machine, \fB$RELPATH\fP is the path of the
+repository relative to \fB$HOME\fP, and \fB$SHA1\fP is the revision of
+the commit.  (To be more precise, \fB$SHA\fP is the revision of the
+commit recording the revision of \fIbranch\fP and some meta
+information).
+.sp
+Use \fBgit blackhole fetch\-trash\fP to retrieve all trashes from
+remote and store them locally.  Commands \fBgit blackhole
+ls\-branch\fP and \fBgit blackhole show\-branch\fP can be used to list
+and show trash commits.
+.sp
+\fBWARNING:\fP
+.INDENT 7.0
+.INDENT 3.5
+Commands to navigate through trashes (e.g., \fBgit
+blackhole show\-branch\fP) are still preliminary.  Furthermore,
+how trash metadata is stored may change in the future.
+However, since trashes are ordinary git branches in remote,
+they can be dealt with standard git commands.
+.UNINDENT
+.UNINDENT
+.TP
+.B \fBgit blackhole trash\-stash\fP
+[EXPERIMENTAL] Save stashes in blackhole \fIremote\fP before deletion.
+.sp
+It works as (almost) the same way as \fBgit blackhole trash\-branch\fP\&.
+.sp
+Several stashes can be specified in \fIstash_range\fP\&.  It takes
+single numbers (e.g., 3) and ranges (e.g., 3\-5 or 8\-) separated by
+commas.  Each range is in the form \fBx\-y\fP which selects stashes
+\fBx, x+1, x+2, ..., y\fP\&.  The upper limit \fBy\fP can be omitted,
+meaning "until the last stash".  For example, when you have
+stashes 0 to 10, \fBgit blackhole trash\-stash 0,3\-5,8\-\fP removes
+stashes 0, 3, 4, 5, 8, 9, and 10.
+.TP
+.B \fBgit blackhole fetch\-trash\fP
+Fetch trashes from remote to \fBrefs/bh/trash/\fP\&.
+.TP
+.B \fBgit blackhole ls\-trash\fP
+List trashes fetched by \fBgit blackhole fetch\-trash\fP\&.
+.TP
+.B \fBgit blackhole show\-trash\fP
+Run \fBgit show\fP on trashes fetched by \fBgit blackhole fetch\-trash\fP\&.
+.TP
+.B \fBgit blackhole rm\-local\-trash\fP
+Remove trashes fetched by \fBgit blackhole fetch\-trash\fP\&.
+.UNINDENT
+.SH OPTIONS
+.SS \fBgit blackhole init\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see what is
+going to happen. (default: False)
+.TP
+.BI \-\-name \ NAME
+name of the remote blackhole repository (default: blackhole)
+.UNINDENT
+.SS \fBgit blackhole warp\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see what
+is going to happen. (default: False)
+.TP
+.BI \-\-name \ NAME
+Name of the repository at <HOST>:<RELPATH>, accessed
+through the blackhole. Set to "bh_<HOST>" if empty.
+(default: )
+.TP
+.BI \-\-url \ URL
+URL of the remote blackhole repository Use
+remote.<REMOTE>.url if not given. (default: None)
+.TP
+.BI \-\-remote \ REMOTE
+name of the remote blackhole repository (default:
+blackhole)
+.TP
+.BI \-\-relpath \ RELPATH
+The repository relative to the $HOME at <HOST>. Use
+current repository root if empty. (default: None)
+.UNINDENT
+.SS \fBgit blackhole push\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see
+what is going to happen. (default: False)
+.TP
+.B \-\-verify
+passed to git\-push (default: None)
+.TP
+.B \-\-no\-verify
+passed to git\-push (default: True)
+.TP
+.BI \-\-remote \ REMOTE
+name of the remote blackhole repository (default:
+blackhole)
+.TP
+.BI \-\-ref\-glob \ REF_GLOBS
+add glob patterns to be pushed, e.g., wip/* (default:
+[])
+.TP
+.B \-\-ignore\-error
+quick with code 0 on error (default: False)
+.TP
+.B \-\-skip\-if\-no\-blackhole
+do nothing if git blackhole is not configured
+(default: False)
+.UNINDENT
+.SS \fBgit blackhole trash\-branch\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see
+what is going to happen. (default: False)
+.TP
+.B \-\-verify
+passed to git\-push (default: None)
+.TP
+.B \-\-no\-verify
+passed to git\-push (default: True)
+.TP
+.BI \-\-remote \ REMOTE
+name of the remote blackhole repository (default:
+blackhole)
+.TP
+.B \-\-remove\-upstream\fP,\fB  \-u
+remove branch in upstream repository. i.e., remove
+branch.<branch>.merge at branch.<branch>.remote.
+ignored if no remote is set. (default: False)
+.UNINDENT
+.SS \fBgit blackhole trash\-stash\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see what
+is going to happen. (default: False)
+.TP
+.B \-\-verify
+passed to git\-push (default: None)
+.TP
+.B \-\-no\-verify
+passed to git\-push (default: True)
+.TP
+.BI \-\-remote \ REMOTE
+name of the remote blackhole repository (default:
+blackhole)
+.TP
+.B \-\-keep\-stashes\fP,\fB  \-k
+when this option is given, do not remove local stashes.
+(default: False)
+.UNINDENT
+.SS \fBgit blackhole fetch\-trash\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see what is
+going to happen. (default: False)
+.TP
+.BI \-\-remote \ REMOTE
+name of the remote blackhole repository (default:
+blackhole)
+.UNINDENT
+.SS \fBgit blackhole ls\-trash\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see what is
+going to happen. (default: False)
+.UNINDENT
+.SS \fBgit blackhole show\-trash\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see what is
+going to happen. (default: False)
+.UNINDENT
+.SS \fBgit blackhole rm\-local\-trash\fP
+.INDENT 0.0
+.TP
+.B \-\-verbose\fP,\fB  \-v
+print git commands to run (default: False)
+.TP
+.B \-\-dry\-run\fP,\fB  \-n
+do nothing when given. Use it with \-\-verbose to see what is
+going to happen. (default: False)
+.TP
+.B \-\-all\fP,\fB  \-a
+remove all local copy of trashes (default: False)
+.UNINDENT
+.SH SEE ALSO
+.sp
+git\-blackhole\-basic\-usage(5)
+.\" Generated by docutils manpage writer.
+.

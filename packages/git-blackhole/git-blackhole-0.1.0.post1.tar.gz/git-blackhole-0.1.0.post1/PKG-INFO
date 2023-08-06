@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: git-blackhole
+Version: 0.1.0.post1
+Summary: Continuous backup and recoverable trash can for Git
+Home-page: https://github.com/tkf/git-blackhole
+Author: Takafumi Arakaki
+Author-email: aka.tkf@gmail.com
+License: BSD-2-Clause
+Description: 
+        Continuous backup and recoverable trash can for Git
+        
+        The aim of ``git-blackhole`` is to connect any of your repositories to
+        a single repository ("blackhole" repository) to which you can push any
+        commits --- WIP commits, branches no longer needed, and useless
+        stashes.
+        
+        There are three main features of ``git-blackhole``:
+        
+        1. **Continuous backup**.  You can use ``git-blackhole`` to
+           continuously backup commits in background to a remote repository
+           (or actually any repository) called blackhole repository.
+        
+           Run ``git blackhole init`` and then setup ``post-commit`` hook to
+           run ``git blackhole push``.  See the help of ``git blackhole push``
+           for the details.
+        
+           By combining with git-wip_ command, you can backup/share
+           uncommitted changes as well.
+        
+        2. **Sharing local repository state**.  Since ``git-blackhole`` can
+           push commits and the location of HEAD to the blackhole repository,
+           the state of a repository in one machine is accessible from other
+           machines.
+        
+           For example, if you forget to push a commit from your desktop (to
+           the usual remote) but want to resume the work from your laptop,
+           ``git blackhole warp`` would be helpful.
+        
+        3. **Recoverable trash can**.  Use ``git blackhole trash-branch`` and
+           ``git blackhole trash-stashes`` to remove branches and stashes from
+           the local repository after sending them to the remote blackhole
+           repository.  They are stored remotely as ordinary branches so that
+           you can recover them easily.
+        
+        .. _git-wip: https://github.com/bartman/git-wip
+        
+        
+Keywords: Git,Backup,CLI
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Version Control :: Git
