@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- permissions -->
+        <record model="res.group" id="group_writing_serialletter_view">
+            <field name="name">Serial letter - view</field>
+        </record>
+        <record model="res.group" id="group_writing_serialletter_edit">
+            <field name="name">Serial letter - edit</field>
+        </record>
+        <!-- group member: administrator -->
+        <record model="res.user-res.group" id="user_admin_group_writing_serialletter_edit">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_writing_serialletter_edit"/>
+        </record>
+       
+    </data>
+</tryton>

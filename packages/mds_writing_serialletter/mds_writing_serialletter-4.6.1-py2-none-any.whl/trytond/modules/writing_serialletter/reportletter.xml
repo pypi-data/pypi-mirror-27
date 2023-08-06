@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- report für serienbrief -->
+        <record model="ir.action.report" id="report_serialletter">
+            <field name="name">Serial letter</field>
+            <field name="model">writing_serialletter.letter</field>
+            <field name="report_name">writing_serialletter.report_serialletter</field>
+            <field name="report">writing_serialletter/report/serialletter.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_serialletter_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">writing_serialletter.letter,-1</field>
+            <field name="action" ref="report_serialletter"/>
+        </record>
+
+    </data>
+</tryton>
