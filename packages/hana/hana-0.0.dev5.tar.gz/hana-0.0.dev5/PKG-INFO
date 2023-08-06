@@ -1,0 +1,39 @@
+Metadata-Version: 1.1
+Name: hana
+Version: 0.0.dev5
+Summary: Static site generator
+Home-page: https://github.com/mayo/hana
+Author: Mayo Jordanov
+Author-email: mayo@oyam.ca
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Hana
+        ====
+        
+        [![Build Status](https://travis-ci.org/mayo/hana.svg?branch=master)](https://travis-ci.org/mayo/hana)
+        
+        Yet another static site generator.
+        
+        Hana is a simple pipeling that keeps track of files and writes them out to an output directory at the end. Any processing that needs to happen is implemented with plugins. Because of this, Hana is template system agnostic, and can be used to process any files,.
+        
+        Hana plugins consist of callables that accept two parameters: reference to Hana itself, and files that need to be processed.
+        
+        
+Keywords: hana static site generator processing file
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet
+Classifier: Topic :: Internet :: WWW/HTTP :: Site Management
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Software Development :: Code Generators
