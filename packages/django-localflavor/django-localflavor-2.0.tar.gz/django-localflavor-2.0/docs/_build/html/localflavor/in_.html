@@ -1,0 +1,194 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>India (in) &#8212; django-localflavor 2.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Iceland (is)" href="is_.html" />
+    <link rel="prev" title="Israel (il)" href="il.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="is_.html" title="Iceland (is)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="il.html" title="Israel (il)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="india-in">
+<h1>India (<code class="docutils literal"><span class="pre">in</span></code>)<a class="headerlink" href="#india-in" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-localflavor.in_.forms">
+<span id="forms"></span><h2>Forms<a class="headerlink" href="#module-localflavor.in_.forms" title="Permalink to this headline">¶</a></h2>
+<p>India-specific Form helpers.</p>
+<dl class="class">
+<dt id="localflavor.in_.forms.INAadhaarNumberField">
+<em class="property">class </em><code class="descclassname">localflavor.in_.forms.</code><code class="descname">INAadhaarNumberField</code><span class="sig-paren">(</span><em>required=True</em>, <em>widget=None</em>, <em>label=None</em>, <em>initial=None</em>, <em>help_text=''</em>, <em>error_messages=None</em>, <em>show_hidden_initial=False</em>, <em>validators=()</em>, <em>localize=False</em>, <em>disabled=False</em>, <em>label_suffix=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/in_/forms.html#INAadhaarNumberField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.in_.forms.INAadhaarNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field for Aadhaar number issued by Unique Identification Authority of India (UIDAI).</p>
+<p>Checks the following rules to determine whether the number is valid:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Conforms to the XXXX XXXX XXXX format.</li>
+<li>No group consists entirely of zeroes.</li>
+</ul>
+</div></blockquote>
+<p>Important information:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Aadhaar number is a proof of identity but not of citizenship.</li>
+<li>Aadhaar number is issued to every resident of India including
+foreign citizens.</li>
+<li>Aadhaar number is not mandatory.</li>
+</ul>
+</div></blockquote>
+<p>More information can be found at
+<a class="reference external" href="http://uidai.gov.in/what-is-aadhaar-number.html">http://uidai.gov.in/what-is-aadhaar-number.html</a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.in_.forms.INStateField">
+<em class="property">class </em><code class="descclassname">localflavor.in_.forms.</code><code class="descname">INStateField</code><span class="sig-paren">(</span><em>required=True</em>, <em>widget=None</em>, <em>label=None</em>, <em>initial=None</em>, <em>help_text=''</em>, <em>error_messages=None</em>, <em>show_hidden_initial=False</em>, <em>validators=()</em>, <em>localize=False</em>, <em>disabled=False</em>, <em>label_suffix=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/in_/forms.html#INStateField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.in_.forms.INStateField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates its input is a Indian state name or abbreviation.</p>
+<p>It normalizes the input to the standard two-letter vehicle
+registration abbreviation for the given state or union territory</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.1: </span>Added Telangana to list of states. More details at
+<a class="reference external" href="https://en.wikipedia.org/wiki/Telangana#Bifurcation_of_Andhra_Pradesh">https://en.wikipedia.org/wiki/Telangana#Bifurcation_of_Andhra_Pradesh</a></p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.in_.forms.INStateSelect">
+<em class="property">class </em><code class="descclassname">localflavor.in_.forms.</code><code class="descname">INStateSelect</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/in_/forms.html#INStateSelect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.in_.forms.INStateSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Select widget that uses a list of Indian states/territories as its choices.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.1: </span>Added Telangana to list of states. More details at
+<a class="reference external" href="https://en.wikipedia.org/wiki/Telangana#Bifurcation_of_Andhra_Pradesh">https://en.wikipedia.org/wiki/Telangana#Bifurcation_of_Andhra_Pradesh</a></p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="localflavor.in_.forms.INZipCodeField">
+<em class="property">class </em><code class="descclassname">localflavor.in_.forms.</code><code class="descname">INZipCodeField</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/localflavor/in_/forms.html#INZipCodeField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#localflavor.in_.forms.INZipCodeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that validates input as an Indian zip code, with the format XXXXXXX.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="localflavor.in_.in_states.STATE_CHOICES">
+<code class="descclassname">localflavor.in_.in_states.</code><code class="descname">STATE_CHOICES</code><em class="property"> = (('KA', 'Karnataka'), ('AP', 'Andhra Pradesh'), ('KL', 'Kerala'), ('TN', 'Tamil Nadu'), ('MH', 'Maharashtra'), ('UP', 'Uttar Pradesh'), ('GA', 'Goa'), ('GJ', 'Gujarat'), ('RJ', 'Rajasthan'), ('HP', 'Himachal Pradesh'), ('JK', 'Jammu and Kashmir'), ('TG', 'Telangana'), ('AR', 'Arunachal Pradesh'), ('AS', 'Assam'), ('BR', 'Bihar'), ('CG', 'Chattisgarh'), ('HR', 'Haryana'), ('JH', 'Jharkhand'), ('MP', 'Madhya Pradesh'), ('MN', 'Manipur'), ('ML', 'Meghalaya'), ('MZ', 'Mizoram'), ('NL', 'Nagaland'), ('OR', 'Orissa'), ('PB', 'Punjab'), ('SK', 'Sikkim'), ('TR', 'Tripura'), ('UA', 'Uttarakhand'), ('WB', 'West Bengal'), ('AN', 'Andaman and Nicobar'), ('CH', 'Chandigarh'), ('DN', 'Dadra and Nagar Haveli'), ('DD', 'Daman and Diu'), ('DL', 'Delhi'), ('LD', 'Lakshadweep'), ('PY', 'Pondicherry'))</em><a class="headerlink" href="#localflavor.in_.in_states.STATE_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of states</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="localflavor.in_.in_states.STATES_NORMALIZED">
+<code class="descclassname">localflavor.in_.in_states.</code><code class="descname">STATES_NORMALIZED</code><em class="property"> = {'an': 'AN', 'andaman and nicobar': 'AN', 'andra pradesh': 'AP', 'andrapradesh': 'AP', 'andhrapradesh': 'AP', 'ap': 'AP', 'andhra pradesh': 'AP', 'ar': 'AR', 'arunachal pradesh': 'AR', 'assam': 'AS', 'as': 'AS', 'bihar': 'BR', 'br': 'BR', 'cg': 'CG', 'chattisgarh': 'CG', 'ch': 'CH', 'chandigarh': 'CH', 'daman and diu': 'DD', 'dd': 'DD', 'dl': 'DL', 'delhi': 'DL', 'dn': 'DN', 'dadra and nagar haveli': 'DN', 'ga': 'GA', 'goa': 'GA', 'gj': 'GJ', 'gujarat': 'GJ', 'himachal pradesh': 'HP', 'hp': 'HP', 'hr': 'HR', 'haryana': 'HR', 'jharkhand': 'JH', 'jh': 'JH', 'jammu and kashmir': 'JK', 'jk': 'JK', 'karnataka': 'KA', 'karnatka': 'KA', 'ka': 'KA', 'kerala': 'KL', 'kl': 'KL', 'ld': 'LD', 'lakshadweep': 'LD', 'maharastra': 'MH', 'mh': 'MH', 'maharashtra': 'MH', 'meghalaya': 'ML', 'ml': 'ML', 'mn': 'MN', 'manipur': 'MN', 'madhya pradesh': 'MP', 'mp': 'MP', 'mizoram': 'MZ', 'mizo': 'MZ', 'mz': 'MZ', 'nl': 'NL', 'nagaland': 'NL', 'orissa': 'OR', 'odisa': 'OR', 'orisa': 'OR', 'or': 'OR', 'pb': 'PB', 'punjab': 'PB', 'py': 'PY', 'pondicherry': 'PY', 'rajasthan': 'RJ', 'rajastan': 'RJ', 'rj': 'RJ', 'sikkim': 'SK', 'sk': 'SK', 'tamil nadu': 'TN', 'tn': 'TN', 'tamilnadu': 'TN', 'tamilnad': 'TN', 'telangana': 'TG', 'tg': 'TG', 'tr': 'TR', 'tripura': 'TR', 'ua': 'UA', 'uttarakhand': 'UA', 'up': 'UP', 'uttar pradesh': 'UP', 'westbengal': 'WB', 'bengal': 'WB', 'wb': 'WB', 'west bengal': 'WB'}</em><a class="headerlink" href="#localflavor.in_.in_states.STATES_NORMALIZED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized state names</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">India (<code class="docutils literal"><span class="pre">in</span></code>)</a><ul>
+<li><a class="reference internal" href="#module-localflavor.in_.forms">Forms</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="il.html"
+                        title="previous chapter">Israel (<code class="docutils literal"><span class="pre">il</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="is_.html"
+                        title="next chapter">Iceland (<code class="docutils literal"><span class="pre">is</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/localflavor/in_.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="is_.html" title="Iceland (is)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="il.html" title="Israel (il)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">django-localflavor 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Django Software Foundation and individual contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>
