@@ -1,0 +1,8 @@
+ansible<3.0,>=2.0
+configparser>=3.0
+click<7.0,>=6.0
+PyYaml<4.0,>=3.0
+six<2.0,>=1.0
+
+[:python_version == "2.7"]
+futures<4.0,>=3.0
