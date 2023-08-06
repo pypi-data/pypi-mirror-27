@@ -1,0 +1,58 @@
+Metadata-Version: 1.1
+Name: spirit.zptlint
+Version: 0.1
+Summary: Linter for Zope Page Templates.
+Home-page: https://github.com/it-spirit/spirit.zptlint
+Author: it-spirit
+Author-email: development@it-spir.it
+License: BSD
+Download-URL: http://pypi.python.org/pypi/spirit.zptlint
+Description-Content-Type: UNKNOWN
+Description: spirit.zptlint
+        ==============
+        
+        .. image:: https://img.shields.io/pypi/v/spirit.zptlint.svg
+           :target: https://pypi.python.org/pypi/spirit.zptlint
+           :alt: PyPI Version
+        
+        .. image:: https://img.shields.io/pypi/pyversions/spirit.zptlint.svg
+           :target: https://pypi.python.org/pypi/spirit.zptlint
+           :alt: Supported Python Versions
+        
+        .. image:: https://img.shields.io/travis/it-spirit/spirit.zptlint/master.svg
+           :target: http://travis-ci.org/it-spirit/spirit.zptlint
+           :alt: Travis CI status
+        
+        .. image:: https://img.shields.io/coveralls/github/it-spirit/spirit.zptlint/master.svg
+           :target: https://coveralls.io/github/it-spirit/spirit.zptlint?branch=master
+           :alt: Coverage Status
+        
+        This package provides a linter for Zope Page Templates.
+        It is a replacement for the non-maintained `zptlint <https://pypi.python.org/pypi/zptlint>`_.
+        
+        It also loads additional expressions from other packages, if they are available.
+        Currently the following packages are supported:
+        
+        - `z3c.macro <https://pypi.python.org/pypi/z3c.macro>`_
+        
+        Changelog
+        =========
+        
+        0.1 (2017-12-22)
+        ----------------
+        
+        - Create linter based on ``zptlint``.
+        - Load optional ``z3c.macro`` expressions.
+        
+Keywords: zope,linter,template
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Code Generators
+Classifier: Topic :: Utilities
