@@ -1,0 +1,36 @@
+Metadata-Version: 1.1
+Name: retox
+Version: 1.0.0
+Summary: distributing activities of the tox tool
+Home-page: https://github.com/tonybaloney/retox
+Author: Anthony Shaw
+Author-email: UNKNOWN
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: ReTox
+        ~~~~~
+        
+        A command line service that runs your tox tests in parallel, using threading and multicore CPUs.
+        
+        See your tox environments in a dashboard and automatically watch source folders for file changes and re-run tests.
+        
+        
+        Credits
+        -------
+        
+        This was inspired by detox
+Platform: unix
+Platform: linux
+Platform: osx
+Platform: cygwin
+Platform: win32
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities
+Classifier: Programming Language :: Python
