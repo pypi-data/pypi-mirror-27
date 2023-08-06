@@ -1,0 +1,28 @@
+CHANGES
+=======
+
+0.0.2
+-----
+
+* Convert build to use PBR tools
+* Upgrade mypy and pylint deps
+* Upgrade pylintrc conf using Makefile command
+* Update dependencies
+* Update release process
+* Create \_version.py file using Makefile
+* Fix typos in README
+* Fix DESIGN.md formatting
+* Convert REAMDE.md to RST doc in setup.py
+* Upgrade wrapt module
+* Automate git version tagging and release
+* Integrate mypy type checking into CI
+* Add basic framework for click cli commands
+* Remove 'install' target because it conflicts with pip-sync
+* Update PyPi categories
+* Add srm package and link main() to setup.py entry point
+* Setup project build tools and workflow
+
+0.0.1
+-----
+
+* Initial commit
