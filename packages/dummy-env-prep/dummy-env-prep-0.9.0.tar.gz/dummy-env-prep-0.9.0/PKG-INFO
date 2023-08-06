@@ -1,0 +1,39 @@
+Metadata-Version: 1.1
+Name: dummy-env-prep
+Version: 0.9.0
+Summary: A handy template for including requirements in an environment
+Home-page: https://github.com/lockefox/dummy-env-prep
+Author: John Purcell
+Author-email: jpurcell.ee@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: ==============
+        dummy-env-prep
+        ==============
+        
+        It can be hard to manage shell-script style python in a build or automated environment.  Wrap up requirements easily in one ``pip install`` and place it at the front of a Bamboo, Jenkins, or Ansible script.
+        
+        This is meant as a demo.  Please fork for your own needs.
+        
+        Includes
+        ========
+        
+        .. include:: requirements.txt
+            :code:
+        
+        
+        Includes
+        ========
+        
+        .. code-block::
+        
+            plumbum==1.6.3
+        requests
+        
+        
+Keywords: environment setup requirements packaging automation
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Software Development :: Build Tools
