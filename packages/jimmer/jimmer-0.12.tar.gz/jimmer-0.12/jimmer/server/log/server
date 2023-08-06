@@ -1,0 +1,241 @@
+2017-12-14 09:06:15,232 DEBUG asyncio Using selector: SelectSelector
+2017-12-14 09:06:15,245 DEBUG server __init__
+2017-12-14 09:06:15,246 INFO root start			Server started successfully at 127.0.0.1:7777.
+2017-12-14 09:06:23,947 DEBUG server handle		Message received from client 127.0.0.1:52633.
+						Message: {'user': {'status': None, 'account_name': 'newUser', 'password': None}, 'time': 1513231583, 'action': 'presence', 'msgtype': 'status'}
+2017-12-14 09:06:24,133 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'response': 200}
+2017-12-14 09:06:24,133 DEBUG server handle		Message received from client 127.0.0.1:52633.
+						Message: {'user_id': 'newUser', 'action': 'get_contacts', 'time': 1513231584}
+2017-12-14 09:06:24,146 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'response': 202, 'quantity': 5}
+2017-12-14 09:06:24,147 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'user_id': '#chat', 'action': 'contact_list', 'time': 1513231584}
+2017-12-14 09:06:24,147 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'user_id': 'newUser1', 'action': 'contact_list', 'time': 1513231584}
+2017-12-14 09:06:24,148 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'user_id': 'newUser2', 'action': 'contact_list', 'time': 1513231584}
+2017-12-14 09:06:24,148 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'user_id': '#chat2', 'action': 'contact_list', 'time': 1513231584}
+2017-12-14 09:06:24,149 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'user_id': '#chat3', 'action': 'contact_list', 'time': 1513231584}
+2017-12-14 09:06:28,973 DEBUG server handle		Message received from client 127.0.0.1:52634.
+						Message: {'time': 1513231588, 'msgtype': 'status', 'action': 'presence', 'user': {'status': None, 'account_name': 'newUser1', 'password': None}}
+2017-12-14 09:06:29,048 DEBUG server handle		Message sent to client 127.0.0.1:52634.
+						Message: {'response': 200}
+2017-12-14 09:06:29,103 DEBUG server handle		Message received from client 127.0.0.1:52634.
+						Message: {'time': 1513231589, 'action': 'get_contacts', 'user_id': 'newUser1'}
+2017-12-14 09:06:29,115 DEBUG server handle		Message sent to client 127.0.0.1:52634.
+						Message: {'response': 202, 'quantity': 3}
+2017-12-14 09:06:29,116 DEBUG server handle		Message sent to client 127.0.0.1:52634.
+						Message: {'user_id': 'newUser', 'action': 'contact_list', 'time': 1513231589}
+2017-12-14 09:06:29,116 DEBUG server handle		Message sent to client 127.0.0.1:52634.
+						Message: {'user_id': '#chat', 'action': 'contact_list', 'time': 1513231589}
+2017-12-14 09:06:29,117 DEBUG server handle		Message sent to client 127.0.0.1:52634.
+						Message: {'user_id': 'newUser2', 'action': 'contact_list', 'time': 1513231589}
+2017-12-14 09:06:34,865 DEBUG server handle		Message received from client 127.0.0.1:52633.
+						Message: {'from': 'newUser', 'time': 1513231594, 'message': 'ewgewrg', 'encoding': 'utf-8', 'to': 'newUser1', 'action': 'msg'}
+2017-12-14 09:06:34,866 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'response': 200}
+2017-12-14 09:06:49,762 DEBUG server handle		Message received from client 127.0.0.1:52640.
+						Message: {'user': {'status': None, 'account_name': 'newUser2', 'password': None}, 'time': 1513231609, 'action': 'presence', 'msgtype': 'status'}
+2017-12-14 09:06:49,873 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'response': 200}
+2017-12-14 09:06:49,900 DEBUG server handle		Message received from client 127.0.0.1:52640.
+						Message: {'user_id': 'newUser2', 'action': 'get_contacts', 'time': 1513231609}
+2017-12-14 09:06:49,914 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'response': 202, 'quantity': 3}
+2017-12-14 09:06:49,915 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'user_id': 'newUser', 'action': 'contact_list', 'time': 1513231609}
+2017-12-14 09:06:49,916 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'user_id': 'newUser1', 'action': 'contact_list', 'time': 1513231609}
+2017-12-14 09:06:49,916 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'user_id': '#chat', 'action': 'contact_list', 'time': 1513231609}
+2017-12-14 09:07:05,376 DEBUG server handle		Message received from client 127.0.0.1:52640.
+						Message: {'from': 'newUser2', 'time': 1513231625, 'message': '<img src="client\\images\\smiles\\biggrin.gif"/>', 'encoding': 'utf-8', 'to': 'newUser', 'action': 'msg'}
+2017-12-14 09:07:05,377 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'response': 200}
+2017-12-14 09:07:10,838 DEBUG server handle		Message received from client 127.0.0.1:52640.
+						Message: {'from': 'newUser2', 'time': 1513231630, 'message': '<img src="client\\images\\smiles\\biggrin.gif"/>', 'encoding': 'utf-8', 'to': 'newUser1', 'action': 'msg'}
+2017-12-14 09:07:10,839 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'response': 200}
+2017-12-14 09:07:27,634 DEBUG server handle		Message received from client 127.0.0.1:52640.
+						Message: {'from': 'newUser2', 'time': 1513231647, 'message': 'dqdwqd', 'encoding': 'utf-8', 'to': 'newUser', 'action': 'msg'}
+2017-12-14 09:07:27,635 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'response': 200}
+2017-12-14 09:07:47,287 DEBUG server handle		Message received from client 127.0.0.1:52633.
+						Message: {'time': 1513231667, 'action': 'quit'}
+2017-12-14 09:07:47,288 DEBUG server handle		Message sent to client 127.0.0.1:52633.
+						Message: {'response': 200}
+2017-12-14 09:07:47,393 ERROR asyncio Task exception was never retrieved
+future: <Task finished coro=<Server.handle() done, defined at C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py:62> exception=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)>
+Traceback (most recent call last):
+  File "C:\python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py", line 68, in handle
+    data = yield from reader.read(MAX_DATA)
+  File "C:\python35\lib\asyncio\streams.py", line 627, in read
+    yield from self._wait_for_data('read')
+  File "C:\python35\lib\asyncio\streams.py", line 457, in _wait_for_data
+    yield from self._waiter
+  File "C:\python35\lib\asyncio\futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\python35\lib\asyncio\tasks.py", line 296, in _wakeup
+    future.result()
+  File "C:\python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\python35\lib\asyncio\selector_events.py", line 669, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2017-12-14 09:07:48,151 DEBUG server handle		Message received from client 127.0.0.1:52634.
+						Message: {'time': 1513231668, 'action': 'quit'}
+2017-12-14 09:07:48,152 DEBUG server handle		Message sent to client 127.0.0.1:52634.
+						Message: {'response': 200}
+2017-12-14 09:07:48,237 ERROR asyncio Task exception was never retrieved
+future: <Task finished coro=<Server.handle() done, defined at C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py:62> exception=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)>
+Traceback (most recent call last):
+  File "C:\python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py", line 68, in handle
+    data = yield from reader.read(MAX_DATA)
+  File "C:\python35\lib\asyncio\streams.py", line 627, in read
+    yield from self._wait_for_data('read')
+  File "C:\python35\lib\asyncio\streams.py", line 457, in _wait_for_data
+    yield from self._waiter
+  File "C:\python35\lib\asyncio\futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\python35\lib\asyncio\tasks.py", line 296, in _wakeup
+    future.result()
+  File "C:\python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\python35\lib\asyncio\selector_events.py", line 669, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2017-12-14 09:07:49,592 DEBUG server handle		Message received from client 127.0.0.1:52640.
+						Message: {'time': 1513231669, 'action': 'quit'}
+2017-12-14 09:07:49,592 DEBUG server handle		Message sent to client 127.0.0.1:52640.
+						Message: {'response': 200}
+2017-12-14 09:07:49,693 ERROR asyncio Task exception was never retrieved
+future: <Task finished coro=<Server.handle() done, defined at C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py:62> exception=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)>
+Traceback (most recent call last):
+  File "C:\python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py", line 68, in handle
+    data = yield from reader.read(MAX_DATA)
+  File "C:\python35\lib\asyncio\streams.py", line 627, in read
+    yield from self._wait_for_data('read')
+  File "C:\python35\lib\asyncio\streams.py", line 457, in _wait_for_data
+    yield from self._waiter
+  File "C:\python35\lib\asyncio\futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\python35\lib\asyncio\tasks.py", line 296, in _wakeup
+    future.result()
+  File "C:\python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\python35\lib\asyncio\selector_events.py", line 669, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2017-12-14 12:41:33,203 ERROR asyncio Task exception was never retrieved
+future: <Task finished coro=<Server.handle() done, defined at C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py:62> exception=JSONDecodeError('Extra data: line 1 column 135 (char 134)',)>
+Traceback (most recent call last):
+  File "C:\python35\lib\asyncio\tasks.py", line 239, in _step
+    result = coro.send(None)
+  File "C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py", line 70, in handle
+    data = json.loads(data.decode())
+  File "C:\python35\lib\json\__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "C:\python35\lib\json\decoder.py", line 342, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 135 (char 134)
+2017-12-14 12:41:39,476 DEBUG server handle		Message received from client 127.0.0.1:60248.
+						Message: {'user': {'status': None, 'account_name': 'newUser1', 'password': None}, 'time': 1513244499, 'action': 'presence', 'msgtype': 'status'}
+2017-12-14 12:41:39,678 DEBUG server handle		Message sent to client 127.0.0.1:60248.
+						Message: {'response': 200}
+2017-12-14 12:41:39,685 DEBUG server handle		Message received from client 127.0.0.1:60248.
+						Message: {'time': 1513244499, 'action': 'get_contacts', 'user_id': 'newUser1'}
+2017-12-14 12:41:39,715 DEBUG server handle		Message sent to client 127.0.0.1:60248.
+						Message: {'response': 202, 'quantity': 3}
+2017-12-14 12:41:39,716 DEBUG server handle		Message sent to client 127.0.0.1:60248.
+						Message: {'user_id': 'newUser', 'action': 'contact_list', 'time': 1513244499}
+2017-12-14 12:41:39,718 DEBUG server handle		Message sent to client 127.0.0.1:60248.
+						Message: {'user_id': '#chat', 'action': 'contact_list', 'time': 1513244499}
+2017-12-14 12:41:39,718 DEBUG server handle		Message sent to client 127.0.0.1:60248.
+						Message: {'user_id': 'newUser2', 'action': 'contact_list', 'time': 1513244499}
+2017-12-14 12:41:50,079 DEBUG server handle		Message received from client 127.0.0.1:60253.
+						Message: {'user': {'status': None, 'account_name': 'newUser', 'password': None}, 'time': 1513244510, 'action': 'presence', 'msgtype': 'status'}
+2017-12-14 12:41:50,173 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'response': 200}
+2017-12-14 12:41:50,174 DEBUG server handle		Message received from client 127.0.0.1:60253.
+						Message: {'time': 1513244510, 'action': 'get_contacts', 'user_id': 'newUser'}
+2017-12-14 12:41:50,194 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'response': 202, 'quantity': 5}
+2017-12-14 12:41:50,194 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'user_id': '#chat', 'action': 'contact_list', 'time': 1513244510}
+2017-12-14 12:41:50,195 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'user_id': 'newUser1', 'action': 'contact_list', 'time': 1513244510}
+2017-12-14 12:41:50,196 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'user_id': 'newUser2', 'action': 'contact_list', 'time': 1513244510}
+2017-12-14 12:41:50,196 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'user_id': '#chat2', 'action': 'contact_list', 'time': 1513244510}
+2017-12-14 12:41:50,197 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'user_id': '#chat3', 'action': 'contact_list', 'time': 1513244510}
+2017-12-14 12:41:54,015 DEBUG server handle		Message received from client 127.0.0.1:60253.
+						Message: {'from': 'newUser', 'time': 1513244514, 'message': 'qdqwdqwd', 'encoding': 'utf-8', 'to': 'newUser1', 'action': 'msg'}
+2017-12-14 12:41:54,016 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'response': 200}
+2017-12-14 12:42:00,147 DEBUG server handle		Message received from client 127.0.0.1:60253.
+						Message: {'from': 'newUser', 'time': 1513244520, 'message': '<img src="client\\images\\smiles\\biggrin.gif"/>', 'encoding': 'utf-8', 'to': 'newUser1', 'action': 'msg'}
+2017-12-14 12:42:00,148 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'response': 200}
+2017-12-14 12:42:07,051 DEBUG server handle		Message received from client 127.0.0.1:60248.
+						Message: {'from': 'newUser1', 'time': 1513244527, 'message': '<img src="client\\images\\smiles\\bad.gif"/>', 'encoding': 'utf-8', 'action': 'msg', 'to': 'newUser'}
+2017-12-14 12:42:07,052 DEBUG server handle		Message sent to client 127.0.0.1:60248.
+						Message: {'response': 200}
+2017-12-14 12:42:14,742 DEBUG server handle		Message received from client 127.0.0.1:60253.
+						Message: {'time': 1513244534, 'action': 'quit'}
+2017-12-14 12:42:14,742 DEBUG server handle		Message sent to client 127.0.0.1:60253.
+						Message: {'response': 200}
+2017-12-14 12:42:14,847 ERROR asyncio Task exception was never retrieved
+future: <Task finished coro=<Server.handle() done, defined at C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py:62> exception=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)>
+Traceback (most recent call last):
+  File "C:\python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py", line 68, in handle
+    data = yield from reader.read(MAX_DATA)
+  File "C:\python35\lib\asyncio\streams.py", line 627, in read
+    yield from self._wait_for_data('read')
+  File "C:\python35\lib\asyncio\streams.py", line 457, in _wait_for_data
+    yield from self._waiter
+  File "C:\python35\lib\asyncio\futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\python35\lib\asyncio\tasks.py", line 296, in _wakeup
+    future.result()
+  File "C:\python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\python35\lib\asyncio\selector_events.py", line 669, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2017-12-14 12:42:15,887 DEBUG server handle		Message received from client 127.0.0.1:60248.
+						Message: {'time': 1513244535, 'action': 'quit'}
+2017-12-14 12:42:15,888 DEBUG server handle		Message sent to client 127.0.0.1:60248.
+						Message: {'response': 200}
+2017-12-14 12:42:15,997 ERROR asyncio Task exception was never retrieved
+future: <Task finished coro=<Server.handle() done, defined at C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py:62> exception=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)>
+Traceback (most recent call last):
+  File "C:\python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "C:\Users\ealesid\PycharmProjects\geekbrains_python\jimmer\jimmer\server\server.py", line 68, in handle
+    data = yield from reader.read(MAX_DATA)
+  File "C:\python35\lib\asyncio\streams.py", line 627, in read
+    yield from self._wait_for_data('read')
+  File "C:\python35\lib\asyncio\streams.py", line 457, in _wait_for_data
+    yield from self._waiter
+  File "C:\python35\lib\asyncio\futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\python35\lib\asyncio\tasks.py", line 296, in _wakeup
+    future.result()
+  File "C:\python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\python35\lib\asyncio\selector_events.py", line 669, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
