@@ -1,0 +1,64 @@
+Metadata-Version: 2.0
+Name: foliantcontrib.flatten
+Version: 1.0.0
+Summary: Preprocessor for Foliant doc maker that flattens a nested source tree into a single file. Required for Pandoc backend.
+Home-page: https://github.com/foliant-docs/foliantcontrib
+Author: Konstantin Molchanov
+Author-email: moigagoo@live.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Documentation
+Classifier: Topic :: Utilities
+Requires-Dist: foliant (>=1.0.0)
+Requires-Dist: foliantcontrib.includes
+
+<raw>
+# Project Flattener for Foliant
+
+This preprocessor converts a Foliant project source directory into a single Markdown file containing all the sources, preserving order and inheritance.
+
+This preprocessor is used by backends that require a single Markdown file as input instead of a directory. The Pandoc backend is one such example.
+
+
+## Installation
+
+```shell
+$ pip install foliantcontrib.flatten
+```
+
+
+## Config
+
+This preprocessor is required by Pandoc backend, so if you use it, you don't need to install Flatten or enable it in the project config manually.
+
+However, it's still a regular preprocessor, and you can run it manually by listing it in `preprocessors`:
+
+
+```yaml
+preprocessors:
+  - flatten
+```
+
+The preprocessor has only one option—`flat_src_file_name`. It's the name of the flattened file that is created in the tmp directory:
+
+```yaml
+preprocessors:
+  - flatten:
+      flat_src_file_name: flattened.md
+```
+
+Default value is `__all__.md`.
+
+> **Note**
+>
+> Flatten preprocessor uses includes, so when you install Pandoc backend, Includes preprocessor will also be installed, along with Flatten.
+</raw>
+
+
