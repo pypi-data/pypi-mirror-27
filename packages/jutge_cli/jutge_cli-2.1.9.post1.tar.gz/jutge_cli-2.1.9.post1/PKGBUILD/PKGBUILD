@@ -1,0 +1,32 @@
+# Maintainer: Aleix Boné <abone9999@gmail.com>
+pkgname=python-jutge_cli-git 
+pkgver=r197.3b08f6f
+pkgrel=1
+pkgdesc="Command line utilities for jutge.org online jutge"
+arch=('any')
+url="https://github.com/Leixb/jutge_cli"
+license=('GPL3')
+depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-argparse' 'python-pypandoc' 'python-yaml')
+optdepends=('python-lxml: faster html parser' )
+makedepends=('git') 
+provides=("${pkgname%-git}")
+conflicts=("jutgeutils-git" "${pkgname%-git}")
+source=("git+https://github.com/Leixb/jutge_cli")
+md5sums=('SKIP')
+
+pkgver() {
+    name="${pkgname#python-}"
+    cd "$srcdir/${name%-git}"
+
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    name="${pkgname#python-}"
+    cd "$srcdir/${name%-git}"
+
+    python setup.py install --root="${pkgdir}" --optimize=1
+
+    # Add completion for zsh
+    install -Dm644 "zsh_completion/_jutge" "${pkgdir}/usr/share/zsh/functions/Completion/Unix/_jutge"
+}
