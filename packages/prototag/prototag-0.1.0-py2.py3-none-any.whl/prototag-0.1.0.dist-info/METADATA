@@ -1,0 +1,83 @@
+Metadata-Version: 2.0
+Name: prototag
+Version: 0.1.0
+Summary: A small cli tool to filter plain text files by header tags.
+Home-page: https://github.com/flxbe/prototag
+Author: Felix Bernhardt
+Author-email: felix.bernhardt@mailbox.org
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: cli
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Utilities
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3
+Requires-Dist: docopt
+Requires-Dist: yaml
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+Requires-Dist: pytest; extra == 'test'
+Requires-Dist: pytest-cov; extra == 'test'
+
+Prototag
+========
+
+A simple CLI tool to filter and list ``.md`` files based on comment headers.
+
+Motivation
+----------
+
+After testing multiple sophisticated tools to document small ideas or meetups,
+I found plain ``.md`` files and a flat directory structure to work best
+for me. I have built this tool to help me search these protocols in the
+terminal.
+
+The cli tool ``ptag`` scans a given directory for ``.md`` files and tries to
+extract a block comment at the start. If this comment includes valid ``yaml``,
+the file is considered valid. One can specify selectors to further filter all
+valid files. The list of results is then printed to stdout.
+
+Example
+-------
+
+Consider the file ``~/protocols/example.md``:
+
+.. code-block:: md
+
+    <!--
+    author: 
+      - jan
+      - olli
+    tag: 
+      - idea
+      - python
+    -->
+
+    # Heading
+
+    Some text.
+
+One can filter the ``~/protocols`` directory using the cli tool ``ptag``. The
+following command would return the above created filename.
+
+.. code-block:: bash
+
+    ptag -t idea,python -a jan ~/protocols
+
+This is equivalent to
+
+.. code-block:: bash
+
+    cd ~/protocols
+    ptag -t idea,python -a jan
+
+
