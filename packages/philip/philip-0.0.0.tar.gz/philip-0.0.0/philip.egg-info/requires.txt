@@ -1,0 +1,10 @@
+click
+pip-tools
+pew
+toml
+
+[:python_version < "3.2"]
+backports.tempfile
+
+[:python_version < "3.4"]
+pathlib
