@@ -1,0 +1,28 @@
+Metadata-Version: 2.0
+Name: logslacker
+Version: 0.0.1.dev1
+Summary: Log handler wrapper for the Slack Python API
+Home-page: http://github.com/inJeans/LogSlacker
+Author: Christopher Jon Watkins
+Author-email: christopher.watkins@me.com
+License: MIT
+Keywords: slack logger handler log loghandler
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: System :: Logging
+Requires-Dist: slackclient
+
+LogSlacker
+----------
+
+To use (with caution), simply do::
+
+    >>> from logslacker import SlackLogHandler
+    >>> handler = SlackLogHandler()
+    >>> print handler.test()
+
