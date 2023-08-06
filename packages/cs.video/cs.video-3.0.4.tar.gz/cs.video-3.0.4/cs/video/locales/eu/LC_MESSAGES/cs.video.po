@@ -1,0 +1,84 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-11-24 07:49+0000\n"
+"PO-Revision-Date: 2017-11-24 08:53+0100\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Language-Team: \n"
+"Language: eu\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: profiles/default/actions.xml
+msgid "Activate VideoFolderness"
+msgstr "Bideo karpeta izatea aktibatu"
+
+#: profiles/default/actions.xml
+msgid "Deactivate VideoFolderness"
+msgstr "Bideo karpeta izatea desaktibatu"
+
+#: content/video.py:50
+msgid "Duration"
+msgstr "Iraupena"
+
+#: content/video.py:51
+msgid "Enter the duration in seconds"
+msgstr "Bideoaren iraupena segundotan"
+
+#: content/video.py:69
+msgid "Image"
+msgstr "Irudia"
+
+#: content/video.py:40
+msgid "Is panoramic?"
+msgstr "Panoramikoa da?"
+
+#: content/video.py:30
+msgid "Paste here the URL fo the flash video"
+msgstr "Kopiatu hemen fitxategiaren helbidea"
+
+#: content/video.py:41
+msgid "Select if this video is in 16:9 format instead on 4:3"
+msgstr "Aukeratu bideoa 16:9 formatuan badago 4:3 beharrean"
+
+#: content/video.py:29
+msgid "URL"
+msgstr "URLa"
+
+#: profiles/default/actions.xml
+msgid "Video ATOM Feed"
+msgstr "Video ATOM Feed"
+
+#: browser/activate.py:19
+msgid "Video Folder activated"
+msgstr "Bideo karpeta aktibatuta"
+
+#: browser/activate.py:22
+msgid "Video Folder deactivated"
+msgstr "Bideo karpeta desaktibatuta"
+
+#: profiles.zcml:13
+msgid "Video object for referring external FLV files"
+msgstr "Kanpoko FLV bideoei erreferentzia egiten dien objektua"
+
+#: profiles.zcml:13
+msgid "cs.video"
+msgstr "cs.video"
+
+#. Default: "More videos..."
+#: skins/video_templates/all_videos.pt:73
+msgid "label_more_videos"
+msgstr "Bideo gehiago..."
+
+#. Default: "Video Feed"
+#: skins/video_templates/all_videos.pt:13
+#: skins/video_templates/video_archive.pt:14
+msgid "label_video_feed"
+msgstr "Bideoen XML jarioa"

@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+  <body>
+
+    <metal:block fill-slot="head_slot">
+      <tal:rss condition="here/@@videofolderness/isVideoFolder"
+               i18n:domain="cs.video">
+        <link rel="alternate" href="" title="Video Feed" type="application/atom+xml"
+              i18n:attributes="title label_video_feed"
+              tal:attributes="href string:${here/absolute_url}/atom.xml" />
+      </tal:rss>
+    </metal:block>
+
+
+    <div metal:fill-slot="main">
+      <metal:main-macro define-macro="main">
+        <div class="videos"
+             tal:define="last_videos here/@@last_videos;
+                         last_video last_videos/last_video;
+                         bideo_obj python:last_video and last_video[0] or None;
+                         from_sections last_videos/from_sections;
+                         showmore python:False;
+                         rss_action python:{'category': 'document_actions', 'available': True, 'title': 'RSS feed of this listing', 'url': here.absolute_url() + '/atom.xml', 'name': 'RSS feed of this listing', 'visible': True, 'allowed': True, 'id': 'rss', 'permissions': ('View',)};
+                         new_actions actions;
+                         isVideoFolder here/@@videofolderness/isVideoFolder;
+                         dummy python:isVideoFolder and dactions.append(rss_action) or None;
+                         dummy python:new_actions.update({'document_actions':dactions});
+                         actions new_actions;
+
+">
+
+          <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+          </div>
+
+          <div id="video-column-one">
+
+            <h1 tal:content="here/Title" class="documentFirstHeading">
+              Title or id
+            </h1>
+            
+            <p class="documentDescription"
+               tal:content="here/Description"
+               tal:condition="here/Description">
+              Description
+            </p>
+            
+            <tal:block define="last_video last_videos/last_video"
+                       condition="last_video">
+              
+              <h2 tal:content="bideo_obj/Title">
+                Title or id
+              </h2>
+              
+              <p class="documentDescription"
+                 tal:condition="bideo_obj/Description"
+                 tal:content="bideo_obj/Description">
+                Description
+              </p>
+
+              <metal:one use-macro="here/all_videos/macros/one-video" />
+             
+            </tal:block>
+          </div>
+
+          <metal:all-related define-macro="all-related">
+            <div id="video-column-two"
+                 tal:define="contentFilter python:{'portal_type': ['Video'],
+                             'sort_on': 'created',
+                             'sort_order': 'reverse',};
+                             limit_display python:9;
+                             ploneview here/@@plone;
+                             base python:ploneview.isStructuralFolder() and here or here.aq_parent;
+                             fc python:base.getFolderContents(contentFilter, full_objects=True, batch=True, b_size=limit_display or 100);
+                             over_limit python:limit_display and len(fc) > limit_display;
+                             fc python:(over_limit and fc[:limit_display]) or fc;
+                             batch fc;
+                             from_sections python:[{'section': {'Title': base.Title(), 'absolute_url': base.absolute_url(), 'Description': base.Description()},'videos': fc}];">
+              
+              <metal:related use-macro="here/all_videos/macros/related-videos" />
+              
+              <div metal:use-macro="here/batch_macros/macros/navigation" />
+              
+            </div>       
+          </metal:all-related>
+        </div>
+        <div class="visualClear"><!-- --></div>
+      </metal:main-macro>
+    </div>
+  </body>
+</html>

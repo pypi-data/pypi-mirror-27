@@ -1,0 +1,92 @@
+Metadata-Version: 1.1
+Name: cs.video
+Version: 3.0.4
+Summary: Video object for referring external FLV files
+Home-page: http://code.codesyntax.com/private/cs.video
+Author: Mikel Larreategi
+Author-email: mlarreategi@codesyntax.com
+License: GPL
+Description-Content-Type: UNKNOWN
+Description: Introduction
+        =============
+        
+        cs.video provides a Video object to refere to externally hosted FLV files. It uses FlowPlayer to show the video in the Plone site.
+        
+        It also provides to additional views for Folder and Large Folders to show current folder's videos and also a video archive to show videos on folders inside current folder.
+        
+        We are using this at https://dantzan.eus/bideoak
+        
+        In its template the video is shown using FlowPlayer, which is included and distributed with the product.
+        
+        A macro called player is defined in the video_view template to be able to reuse the player in other templates such as portlets
+        
+        
+        - Code repository: https://github.com/codesyntax/cs.video
+        
+        
+        Changelog
+        =========
+        
+        3.0.4 (2017-12-12)
+        ------------------
+        
+        - this should use an IntegerWidget [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        -  [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        - [ci skip] [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        
+        
+        3.0.3 (2017-11-24)
+        ------------------
+        
+        - readme [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        -  [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        - [ci skip] [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        
+        
+        3.0.2 (2017-11-24)
+        ------------------
+        
+        - translations [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        - remove fatsyndication/basesyndication traces [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        - indentation [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        - add new field [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        -  [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        - [ci skip] [Mikel Larreategi <mlarreategi@codesyntax.com>]
+        
+        
+        
+        3.0.1 (2017-11-24)
+        ------------------
+        
+        - Plone 4.3 compatibility
+          [erral]
+        
+        2.0 (2012/10/17)
+        -------------------
+        
+         - Plone 4 version
+           [erral]
+        
+        
+        1.x (LONG TIME AGO)
+        --------------------
+        
+         - Old versions...
+           [erral]
+        
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)

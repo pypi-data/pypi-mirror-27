@@ -1,0 +1,89 @@
+/** Style for Videos **/
+
+.more-videos {
+    text-transform: none !important;
+    text-align: right;
+    letter-spacing: 0 !important;
+    margin-left: 200px;
+}
+
+.link-image {
+    margin: 5px auto;
+    width:133px;
+    height: 105px;
+    position:relative;
+}
+
+.video-image {
+    position:absolute;
+    width:128px;
+    height:95px;
+    z-index:0;
+}
+
+
+.frame {
+    height:95px;
+    position:absolute;
+    width:128px;
+    z-index:0;
+}
+
+*html .frame {
+    display: none;
+}
+
+#video-column-one {
+    width: 400px;
+    float: left;
+    padding: 0 1em 1em 1em;
+}
+#video-column-one h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
+    margin-top:0;
+}
+#video-column-two {
+    width: 500px;
+    float: right;
+    margin: 1em 0 0 0;
+}
+#video-column-two .listingBar {
+    float: right;
+    display: block;
+    clear: left;
+}
+
+#video-column-one .documentByLine {
+    margin-bottom:10px;
+}
+
+#related-videos {
+    margin-bottom: 1em;      
+}
+
+
+#related-videos .vevent {
+        width: 138px;
+        padding: 0 10px;
+        float: left;
+        margin-top: 1px;
+        margin-right: 1px;
+}
+
+#video-column-one #player {
+        border:5px solid #EFEFEF;
+        padding:1px;
+        width:400px;
+}
+#related-videos h2 {
+       font-size: 1em;
+       margin-left: 5px;
+}
+
+#related-videos img.video-image {
+        margin: 0px 5px 5px 0;
+        padding: 2px;
+        border: 1px solid #ccc;
+        background: #fff;
+}
