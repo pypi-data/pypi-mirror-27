@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+import argparse
+
+from main import Sudden
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-u', '--update', dest='update', action='store_true')
+
+parser.add_argument('-i', dest='tool', required=False, nargs='+', metavar='conda', help='any tool to be installed')
+
+args = parser.parse_args()
+print(args)
+
+s = Sudden()
+
+if args.update:
+    s.update()
+if len(args.tool) > 0:
+	s.install(args.tool)
