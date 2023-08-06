@@ -1,0 +1,98 @@
+Metadata-Version: 2.0
+Name: YuleLog
+Version: 0.0.3
+Summary: Terminal based X-Mas Yule Log Fireplace
+Home-page: https://github.com/Duroktar/YuleLog
+Author: Scott Doucet
+Author-email: duroktar@gmail.com
+License: MIT License
+Keywords: christmas yule fireplace
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Topic :: Games/Entertainment
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: asciimatics (==1.7.2)
+Requires-Dist: Pillow (==3.4.2)
+Requires-Dist: pyfiglet (==0.7.5)
+
+YuleLog
+=======
+**Have yourself a Merry Terminal Christmas**
+
+
+Overview
+--------
+Yule Log Fireplace with a retro twist!
+
+- Restart the snowfall by pressing enter. 
+
+- Press `x` to stop the program.
+
+Tested with Python 2.7 and 3.5 on Linux and Windows.
+
+- **Made with Asciimatics!**
+
+- **WORKS BEST IN FULL SCREEN**
+
+Installation / Usage
+--------------------
+
+To install use pip:
+
+::
+
+    $ pip install YuleLog
+
+
+Or clone the repo:
+
+::
+
+    $ git clone https://github.com/Duroktar/YuleLog.git
+
+    $ python setup.py install
+
+Example
+-------
+
+Run directly from the command line (thanks to setup.py entry script)
+
+::
+
+    $ YuleLog
+
+Or as a python module
+
+::
+
+    $ python -m yule_log
+
+
+
+Changes
+-------
+Version 0.0.3:
+ - Fix broken deps
+
+Version 0.0.2:
+ - Fixed Fire not showing issue (#1)
+
+Version 0.0.1:
+
+- First release
+
+
+Credits & thanks
+----------------
+- Asciimatics - https://github.com/peterbrittain/asciimatics
+
+Created by
+----------
+Scott Doucet, 2016
+
