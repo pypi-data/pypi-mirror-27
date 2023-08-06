@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- config-menu -->
+        <record model="ir.ui.menu-res.group" 
+                id="menu_configuration_form-group_account_admin">
+            <field name="menu" ref="menu_configuration_form"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+        
+        <!-- config-table -->
+        <record model="ir.model.access" 
+                id="access_configuration-group_account_admin">
+            <field name="model" search="[('model', '=', 'periodic_invoice.configuration')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>

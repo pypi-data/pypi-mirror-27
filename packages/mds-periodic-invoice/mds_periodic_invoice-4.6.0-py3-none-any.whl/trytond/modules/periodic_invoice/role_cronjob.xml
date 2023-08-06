@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- table -->
+        <record model="ir.model.access" 
+                id="access_invoice-group_cronjob_invoice">
+            <field name="model" search="[('model', '=', 'periodic_invoice.invoice')]"/>
+            <field name="group" ref="group_cronjob_invoice"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" 
+                id="access_invline-group_cronjob_invoice">
+            <field name="model" search="[('model', '=', 'periodic_invoice.invline')]"/>
+            <field name="group" ref="group_cronjob_invoice"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- config-table -->
+        <record model="ir.model.access" 
+                id="access_configuration-group_cronjob_invoice">
+            <field name="model" search="[('model', '=', 'periodic_invoice.configuration')]"/>
+            <field name="group" ref="group_cronjob_invoice"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+    </data>
+</tryton>
