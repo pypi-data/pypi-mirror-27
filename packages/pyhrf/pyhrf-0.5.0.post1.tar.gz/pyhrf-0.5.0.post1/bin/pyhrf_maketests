@@ -1,0 +1,17 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+import unittest
+import logging
+
+from pyhrf import logger
+from pyhrf.test import *
+
+logger.setLevel(logging.CRITICAL)
+
+#TODO : create different test scenarios ...
+if 0:
+    import cProfile
+    cProfile.run("unittest.main()", 'unittest.prf')
+else:
+    unittest.main()

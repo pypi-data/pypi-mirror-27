@@ -1,0 +1,81 @@
+Metadata-Version: 1.1
+Name: pyhrf
+Version: 0.5.0.post1
+Summary: Analysis of fMRI data based on the study of hemodynamics
+Home-page: http://pyhrf.org
+Author: Jaime Arias
+Author-email: jaime.arias@inria.fr
+License: CeCILLv2
+Download-URL: https://github.com/pyhrf/pyhrf
+Description-Content-Type: UNKNOWN
+Description: .. -*- mode: rst -*-
+        
+        PyHRF
+        =====
+        
+        .. image:: https://img.shields.io/pypi/v/pyhrf.svg
+            :target: https://pypi.python.org/pypi/pyhrf
+        
+        .. image:: https://img.shields.io/travis/pyhrf/pyhrf/master.svg
+            :target: https://travis-ci.org/pyhrf/pyhrf
+        
+        .. image:: https://readthedocs.org/projects/pyhrf/badge/?version=latest
+            :target: http://pyhrf.readthedocs.io/en/latest
+        
+        .. image:: https://img.shields.io/coveralls/pyhrf/pyhrf/master.svg
+            :target: https://coveralls.io/r/pyhrf/pyhrf?branch=master
+        
+        .. image:: https://img.shields.io/gitter/room/pyhrf/pyhrf.svg
+            :target:  https://gitter.im/pyhrf/pyhrf
+        
+        .. contents::
+        
+        What is PyHRF?
+        **************
+        
+        PyHRF is a set of tools to analyze fMRI data and specifically study hemodynamics.
+        
+        
+        Installation
+        ************
+        
+        For installation instructions, see `installation website <http://www.pyhrf.org/installation.html>`_.
+        
+        Documentation
+        *************
+        
+        PyHRF documentation is available on the web:
+        
+            http://www.pyhrf.org/manual.html
+        
+        Website
+        *******
+        
+        The PyHRF site is:
+        
+            http://www.pyhrf.org/
+        
+        Bug reports
+        ***********
+        
+        To search for bugs or report them, please use the PyHRF Bug Tracker at:
+        
+            https://github.com/pyhrf/pyhrf/issues
+        
+        License information
+        *******************
+        
+        PyHRF is under the CeCILL v2. See the file ``LICENCE`` for details.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Medical Science Apps.
