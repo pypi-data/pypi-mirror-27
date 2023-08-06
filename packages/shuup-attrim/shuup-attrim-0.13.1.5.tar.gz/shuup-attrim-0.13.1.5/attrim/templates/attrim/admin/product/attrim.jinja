@@ -1,0 +1,32 @@
+{% from "shuup/admin/macros/general.jinja" import content_block with context %}
+{% from "shuup/admin/macros/multilanguage.jinja" import language_dependent_content_tabs, render_monolingual_fields %}
+
+{% block extra_css %}
+    <style>
+        span.select2.select2-container {
+            float: none !important;
+        }
+    
+        #attrim-attrs-list {
+            margin-left: 9px;
+            padding: 0;
+            list-style: none;
+        }
+        
+        #attrim-attrs-list > h4 {
+            margin-top: 25px;
+        }
+    </style>
+{% endblock %}
+
+{% set attribute_formset = form[form_def.name] %}
+
+{% call content_block(_("Attrim"), "fa-tags") %}
+    {{ attribute_formset.management_form }}
+    <ul id="attrim-attrs-list">
+        {% for attribute_form in attribute_formset %}
+            <h4>{{ attribute_form.name }}</h4>
+            {{ attribute_form.as_ul() }}
+        {% endfor %}
+    </ul>
+{% endcall %}
