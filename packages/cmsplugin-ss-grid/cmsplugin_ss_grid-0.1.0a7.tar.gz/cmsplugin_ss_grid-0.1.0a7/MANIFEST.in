@@ -1,0 +1,4 @@
+include LICENSE.txt
+recursive-include  cmsplugin_ss_grid/templates *
+recursive-include  cmsplugin_ss_grid/static *
+recursive-exclude * *.pyc

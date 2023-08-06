@@ -1,0 +1,12 @@
+{% load cms_tags %}
+{% spaceless %}
+<div class="background {{ instance.background_classes }}" style="{{ instance.background_style }}"{% if instance.background_id %} id="{{ instance.background_id }}"{% endif %}>
+    <div class="container">
+        <div class="row">
+            {% for plugin in instance.child_plugin_instances %}
+                {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endspaceless %}

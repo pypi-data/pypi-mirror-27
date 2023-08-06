@@ -1,0 +1,65 @@
+Metadata-Version: 1.2
+Name: cmsplugin_ss_grid
+Version: 0.1.0a7
+Summary: Bootstrap grid plugin for djangocms
+Home-page: https://github.com/alexjbartlett/cmsplugin-ss-grid
+Author: Alex J Bartlett
+Author-email: alex@sourceshaper.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        djangocms bootstrap grid
+        ==================================
+        
+        An opinionated implementation of a bootstrap grid plugin for djangocms.
+        
+        Installation
+        ------------
+        
+            pip install cmsplugin_ss_grid
+        
+        In your settings.py
+        
+            INSTALLED_APPS = (
+                ...
+                'cmsplugin_ss_grid',
+            )
+        
+        In settings.py:
+        
+            CMSPLUGIN_SS_GRID = dict(
+                CELL_DEFAULT_CLASS='class-added-to-all-cells'
+            )
+        
+        Development
+        -----------
+        
+        We use djangocms-helper to execute django commands and run tests.
+        
+        To run test:
+        
+            djangocms-helper cmsplugin_ss_grid test --cms
+        
+        
+        Create migrations:
+        
+            djangocms-helper cmsplugin_ss_grid makemigrations --cms
+        
+        Tested on
+            * Python 2.7. 3.4, 3.5
+            * Django 1.8, 1.9, 1.10
+            * DjangoCms 3.4
+        
+Keywords: djangocms bootstrap grid
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Python: >=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4

@@ -1,0 +1,8 @@
+{% load cms_tags %}
+{% spaceless %}
+<div class="{{ instance.css_classes }}" style="{{ instance.style }}">
+    {% for plugin in instance.child_plugin_instances %}
+        {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+    {% endfor %}
+</div>
+{% endspaceless %}
