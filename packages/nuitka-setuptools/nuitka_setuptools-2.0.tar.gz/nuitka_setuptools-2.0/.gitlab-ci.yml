@@ -1,0 +1,27 @@
+image: python:3
+
+before_script:
+  - pip install -U pip setuptools wheel twine
+  - pip install .
+
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+  - cd tests
+  - python setup.py bdist_wheel
+  # Inspect built wheel
+  - cd dist
+  - python -c 'import zipfile,glob; zipfile.ZipFile(*glob.glob("*.whl")).printdir()'
+
+deploy:
+  stage: deploy
+  script:
+  - python setup.py sdist
+  - python setup.py bdist_wheel
+  - twine upload -u $PYPI_USER -p $PYPI_PASS dist/*
+  only:
+  - tags
