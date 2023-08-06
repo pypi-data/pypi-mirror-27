@@ -1,0 +1,68 @@
+{# vim: set syntax=htmldjango: #}
+{% extends "exordium/base.html" %}
+{% load static %}
+
+{% block body %}
+<table class="album_info">
+    <tr>
+        <td class="album_art_cell">
+{% if album.has_album_art %}<a href="{% url 'exordium:origalbumart' album.pk album.art_ext %}"><img src="{% url 'exordium:albumart' album.pk 'album' %}" border="0"/></a>{% else %}<img src="{% static 'exordium/no_album_art.png' %}">{% endif %}
+
+{% if request.user.is_staff %}
+<form method="GET" action="{% url 'exordium:albumartupdate' album.pk %}">
+    <input class="album_art_regen" type="submit" value="Force Album Art Regen" />
+</form>
+{% endif %}
+
+        </td>
+        <td class="album_info_cell">
+<p>Artist: <strong><a href="{% url 'exordium:artist' album.artist.normname %}">{{ album.artist }}</a></strong></p>
+
+{% for artist in groups %}
+{% if forloop.first %}<p>Ensemble{{ groups|pluralize }}: {% endif %}
+<strong><a href="{% url 'exordium:artist' artist.normname %}">{{ artist }}</a></strong>{% if not forloop.last %},{% endif %}
+{% if forloop.last %}{% if have_empty_group %} <em>(Some tracks have no ensemble)</em>{% endif %}</p>{% endif %}
+{% endfor %}
+
+{% for artist in conductors %}
+{% if forloop.first %}<p>Conductor{{ conductors|pluralize }}: {% endif %}
+<strong><a href="{% url 'exordium:artist' artist.normname %}">{{ artist }}</a></strong>{% if not forloop.last %},{% endif %}
+{% if forloop.last %}{% if have_empty_conductor %} <em>(Some tracks have no conductor)</em>{% endif %}</p>{% endif %}
+{% endfor %}
+
+{% for artist in composers %}
+{% if forloop.first %}<p>Composer{{ composers|pluralize }}: {% endif %}
+<strong><a href="{% url 'exordium:artist' artist.normname %}">{{ artist }}</a></strong>{% if not forloop.last %},{% endif %}
+{% if forloop.last %}{% if have_empty_composer %} <em>(Some tracks have no composer)</em>{% endif %}</p>{% endif %}
+{% endfor %}
+
+<p>Album: <strong>{{ album }}</strong></p>
+{% if album.year != 0 %}<p>Year: <strong>{{ album.year }}</strong></p>{% endif %}
+
+<p>Tracks: <strong>{{ album.song_set.count }}</strong></p>
+
+<p>Length: <strong>{{ album.get_total_time_str }}</strong></p>
+
+<p>Added on: <strong>{{ album.time_added }}</strong></p>
+
+{% if show_download_button %}
+<form method="GET" action="{% url 'exordium:albumdownload' album.pk %}">
+    <input type="submit" value="Download as Zipfile ({{ album.get_total_size_str }})" />
+</form>
+{% endif %}
+<button class="albumstreambutton" onClick="jplayerAdd([{% for record in album.get_songs_ordered %}{title:'{% if record.tracknum != 0 %}{{ record.tracknum }}. {% endif %}{{ record.title|addslashes }} ({{ record.album|addslashes }})', artist:'{{ record.artist|addslashes }}', type:'{{ record.filetype }}', url:'{% autoescape off %}{{ record.get_download_url|addslashes }}{% endautoescape %}', poster:'{% if record.album.has_album_art %}{% url 'exordium:albumart' record.album.pk 'album' %}{% else %}{% static 'exordium/no_album_art.png' %}{% endif %}'}{% if not forloop.last %}, {% endif %}{% endfor %}]);">Stream Album (HTML5 pop-up)</button>
+<br />
+<br />
+
+<form method="GET" action="{% url 'exordium:m3udownload' album.pk %}">
+    <input type="submit" value="Stream Album (.m3u playlist)" />
+</form>
+
+</td>
+</tr>
+</table>
+
+{% block albumbody %}
+{% endblock %}
+
+{% endblock %}

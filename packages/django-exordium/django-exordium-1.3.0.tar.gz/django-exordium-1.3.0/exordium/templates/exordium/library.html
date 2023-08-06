@@ -1,0 +1,36 @@
+{# vim: set syntax=htmldjango: #}
+{% extends "exordium/base.html" %}
+
+{% block body %}
+<p><strong>Base Path:</strong> {{ base_path }}<br />
+<strong>Media URL Prefix:</strong> {{ media_url }}<br />
+{% if support_zipfile %}
+<strong>Zipfile Support:</strong> Yes<br />
+<strong>Zipfile Path:</strong> {{ zipfile_path }}<br />
+<strong>Zipfile URL Prefix:</strong> {{ zipfile_url }}
+{% else %}
+<strong>Zipfile Support:</strong> No<br />
+{% endif %}
+</p>
+
+<p>This catalog currently contains {{ count_artists }} artist{{ count_artists|pluralize }},
+{{ count_albums }} album{{ count_albums|pluralize }}, and
+{{ count_songs }} song{{ count_songs|pluralize }}.</p>
+
+<form method="GET" action="{% url 'exordium:library_update' %}">
+    <p><strong>Process Library Updates:</strong></p>
+    <blockquote class="update_form">
+        <p>
+        <strong>Update Type:</strong><br />
+        <input type="radio" name="type" value="add" checked /> Just Add New Music<br />
+        <input type="radio" name="type" value="update" /> Full Update (Add/Update/Clean)
+        </p>
+        <p>
+        <strong>Options:</strong><br />
+        <input type="checkbox" name="debug" value="yes" /> Include debug output
+        </p>
+        <input type="submit" value="Start Process" />
+    </blockquote>
+</form>
+
+{% endblock %}

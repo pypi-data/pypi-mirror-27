@@ -1,0 +1,5 @@
+{# vim: set syntax=htmldjango: #}
+{% if status == 'error' %}<span class="red">{{ line }}</span><br />
+{% elif status == 'success' %}<span class="green">{{ line }}</span><br />
+{% elif status == 'info' %}{{ line }}<br />
+{% elif debug and status == 'debug' %}{{ line }}<br />{% endif %}
