@@ -1,0 +1,29 @@
+Metadata-Version: 1.0
+Name: fsoopify
+Version: 0.1.3.7
+Summary: UNKNOWN
+Home-page: https://github.com/Cologler/fsoopify-python
+Author: cologler
+Author-email: skyoflw@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: # fsoopify
+        
+        Just make file system oopify.
+        
+        ## install
+        
+        ``` cmd
+        pip install fsoopify
+        ```
+        
+        ## usage
+        
+        ``` py
+        import fsoopify
+        
+        file/dir = fsoopify.NodeInfo.from_path(...)
+        ```
+        
+Keywords: python,fs,oop,oopify,filesystem
+Platform: UNKNOWN
