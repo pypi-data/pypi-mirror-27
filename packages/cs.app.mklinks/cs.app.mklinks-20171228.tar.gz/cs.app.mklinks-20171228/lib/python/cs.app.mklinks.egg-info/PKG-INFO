@@ -1,0 +1,26 @@
+Metadata-Version: 1.1
+Name: cs.app.mklinks
+Version: 20171228
+Summary: Tool for finding and hardlinking identical files.
+Home-page: https://bitbucket.org/cameron_simpson/css/commits/all
+Author: Cameron Simpson
+Author-email: cs@cskk.id.au
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Mklinks walks supplied paths looking for files with the same content,
+        based on a cryptographic checksum of their content. It hardlinks
+        all such files found, keeping the newest version.
+        
+        Unlike some rather naive tools out there, mklinks only compares
+        files with other files of the same size, and is hardlink aware - a
+        partially hardlinked tree is processed efficiently and correctly.
+Keywords: python2,python3
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
