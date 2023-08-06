@@ -1,0 +1,46 @@
+Metadata-Version: 1.1
+Name: django-podcast
+Version: 0.0.1.dev0
+Summary: A small django app to easily publish podcasts
+Home-page: https://github.com/hmleal/django-podcast
+Author: Henrique Leal
+Author-email: hm.leal@hotmail.com
+License: UNKNOWN
+Description: django-podcast
+        ==============
+        
+            A small django app to easily publish podcasts
+        
+        Installation
+        ~~~~~~~~~~~~
+        
+        1. Add ``podcast`` to your ``INSTALLED_APPS`` in ``settings.py``
+        
+           .. code:: python
+        
+               INSTALLED_APPS = (
+               ...
+               'podcast',
+               )
+        
+        2. Add these lines to your URL configuration, ``urls.py``
+        
+           .. code:: python
+        
+               urlpatterns = (
+               (r'^podcasts/', include('podcast.urls')),
+               )
+        
+        Relevant links
+        ~~~~~~~~~~~~~~
+        
+        -  `RSS 2.0 specification <https://cyber.harvard.edu/rss/rss.html>`__
+        -  `DjangoAppChecklist <http://djangoappschecklist.com>`__
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Django :: 2.0
+Classifier: Framework :: Django :: 1.11
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
