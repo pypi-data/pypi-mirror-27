@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: pydwm
+Version: 0.1.2
+Summary: A simple python wrapper around DWM.
+Home-page: https://github.com/benwah/pydwm
+Author: Benoit C. Sirois
+Author-email: benoitcsirois@gmail.com
+License: MIT License
+Description: This is a very simple python wrapper around DWM. It downloads DWM, compiles it as a shared object and exposes DWM's main function as pydwm:init_dwm. Installing this via pip will give you a pydwm executable, which just runs dwm.
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: X11 Applications
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Desktop Environment :: Window Managers
