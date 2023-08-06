@@ -1,0 +1,29 @@
+Metadata-Version: 2.0
+Name: metagenscope
+Version: 0.1.1
+Summary: MetaGenScope-CLI is used to upload data sets to the MetaGenScope web platform.
+Home-page: https://github.com/bchrobot/python-metagenscope
+Author: Benjamin Chrobot
+Author-email: benjamin.chrobot@alum.mit.edu
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Unix
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: click
+Requires-Dist: requests
+Requires-Dist: configparser
+
+MetaGenScope-CLI is used to upload data sets to the MetaGenScope web platform.
+
+
