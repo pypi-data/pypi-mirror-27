@@ -1,0 +1,53 @@
+Metadata-Version: 2.0
+Name: Romanize
+Version: 1.0.2
+Summary: Transcribe Greek text to Latin alphabet using the ISO 843:1997 standard (also known as ELOT 743:1987)
+Home-page: https://github.com/gschizas/RomanizePython
+Author: George Schizas
+Author-email: gschizas@gmail.com
+License: Apache Software License
+Description-Content-Type: UNKNOWN
+Platform: any
+Classifier: Programming Language :: Python
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Natural Language :: English
+Classifier: Natural Language :: Greek
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing
+Requires: colorama
+
+romanize
+========
+
+Transcribe Greek text to Latin alphabet using the ISO 843:1997 standard (also known as ELOT 743:1987)
+
+Usage
+-----
+It's a simple function, so you can just import it to your program and use it:
+
+    from romanize import romanize
+    print(romanize('Ελευθέριος Βενιζέλος'))
+
+You can also use it as a standalone module:
+
+    python romanize.py Ελευθερία ή Θάνατος
+
+Or use it as a filter:
+
+    python romanize.py < text_in_cp1253.txt
+
+
+
+
+Version 1.0.0
+-------------
+* Initial release
+
+Version 1.0.1
+-------------
+* Made into a package
+* Separated tests from main function
+
