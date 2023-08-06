@@ -1,0 +1,48 @@
+Metadata-Version: 2.0
+Name: screwdriver
+Version: 0.11.0
+Summary: Collection of random python tools and utilities 
+Home-page: https://github.com/cltrudeau/screwdriver
+Author: Christopher Trudeau
+Author-email: ctrudeau+pypi@arsensa.com
+License: MIT
+Keywords: tools
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: six (>=1.10)
+
+screwdriver
+***********
+
+Another tool for your python toolset.  General odds and ends that kept coming
+up in projects.
+
+Installation
+============
+
+.. code-block:: bash
+
+    $ pip install screwdriver
+
+Supports
+========
+
+screwdriver has been tested with Python 2.7, 3.5, and 3.6
+
+Docs & Source
+=============
+
+Docs: http://screwdriver.readthedocs.io/en/latest/
+
+Source: https://github.com/cltrudeau/screwdriver
+
+
