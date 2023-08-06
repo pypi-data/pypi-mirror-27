@@ -1,0 +1,37 @@
+Metadata-Version: 1.1
+Name: XOR_CheckSum_zsd
+Version: 1.0.6.dev1
+Summary: XOR_CheckSum tools
+Home-page: https://github.com/zhangsheng377/XOR_CheckSum_zsd
+Author: zhangsheng377
+Author-email: 435878393@qq.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        \>\>\> from XOR_CheckSum import XOR_CheckSum_string
+        
+        \>\>\> XOR_CheckSum_string('CCICA,0,00')
+        
+        123
+        
+        \>\>\> hex(XOR_CheckSum_string('CCICA,0,00'))
+        
+        '0x7b'
+        
+        \>\>\> hex(XOR_CheckSum_string('CCICA,0,00', encoding="utf-8"))
+        
+        '0x7b'
+        
+        \>\>\> hex(XOR_CheckSum_string('CCICA,0,00', encoding="utf-16"))
+        
+        '0x7a'
+        
+Keywords: XOR checksum string zsd
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
