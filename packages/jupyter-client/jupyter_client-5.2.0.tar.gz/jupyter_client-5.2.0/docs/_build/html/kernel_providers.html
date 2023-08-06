@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kernel providers &mdash; jupyter_client 5.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="jupyter_client 5.1.0 documentation" href="index.html"/>
+        <link rel="next" title="jupyter_client API" href="api/index.html"/>
+        <link rel="prev" title="Making simple Python wrapper kernels" href="wrapperkernels.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> jupyter_client
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="messaging.html">Messaging in Jupyter</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kernels.html">Making kernels for Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wrapperkernels.html">Making simple Python wrapper kernels</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kernel providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-kernel-provider">Creating a kernel provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finding-kernel-types">Finding kernel types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kernel-providers-included-in-jupyter-client">Kernel providers included in <code class="docutils literal"><span class="pre">jupyter_client</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#glossary">Glossary</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">jupyter_client API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Changes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in Jupyter Client</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">jupyter_client</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Kernel providers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/kernel_providers.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kernel-providers">
+<h1>Kernel providers<a class="headerlink" href="#kernel-providers" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a new interface under development, and may still change.
+Not all Jupyter applications use this yet.
+See <a class="reference internal" href="kernels.html#kernelspecs"><span class="std std-ref">Kernel specs</span></a> for the established way of discovering kernel types.</p>
+</div>
+<div class="section" id="creating-a-kernel-provider">
+<h2>Creating a kernel provider<a class="headerlink" href="#creating-a-kernel-provider" title="Permalink to this headline">¶</a></h2>
+<p>By writing a kernel provider, you can extend how Jupyter applications discover
+and start kernels. For example, you could find kernels in an environment system
+like conda, or kernels on remote systems which you can access.</p>
+<p>To write a kernel provider, subclass
+<code class="xref py py-class docutils literal"><span class="pre">jupyter_client.discovery.KernelProviderBase</span></code>, giving your provider an ID
+and overriding two methods.</p>
+<dl class="class">
+<dt id="MyKernelProvider">
+<em class="property">class </em><code class="descname">MyKernelProvider</code><a class="headerlink" href="#MyKernelProvider" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="MyKernelProvider.id">
+<code class="descname">id</code><a class="headerlink" href="#MyKernelProvider.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A short string identifying this provider. Cannot contain forward slash
+(<code class="docutils literal"><span class="pre">/</span></code>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="MyKernelProvider.find_kernels">
+<code class="descname">find_kernels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#MyKernelProvider.find_kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the available kernel types this provider knows about.
+Return an iterable of 2-tuples: (name, attributes).
+<em>name</em> is a short string identifying the kernel type.
+<em>attributes</em> is a dictionary with information to allow selecting a kernel.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="MyKernelProvider.make_manager">
+<code class="descname">make_manager</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#MyKernelProvider.make_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare and return a <a class="reference internal" href="api/manager.html#jupyter_client.KernelManager" title="jupyter_client.KernelManager"><code class="xref py py-class docutils literal"><span class="pre">KernelManager</span></code></a> instance
+ready to start a new kernel instance of the type identified by <em>name</em>.
+The input will be one of the names given by <a class="reference internal" href="#MyKernelProvider.find_kernels" title="MyKernelProvider.find_kernels"><code class="xref py py-meth docutils literal"><span class="pre">find_kernels()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>For example, imagine we want to tell Jupyter about kernels for a new language
+called <em>oblong</em>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># oblong_provider.py</span>
+<span class="kn">from</span> <span class="nn">jupyter_client.discovery</span> <span class="k">import</span> <span class="n">KernelProviderBase</span>
+<span class="kn">from</span> <span class="nn">jupyter_client</span> <span class="k">import</span> <span class="n">KernelManager</span>
+<span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">which</span>
+
+<span class="k">class</span> <span class="nc">OblongKernelProvider</span><span class="p">(</span><span class="n">KernelProviderBase</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="s1">&#39;oblong&#39;</span>
+
+    <span class="k">def</span> <span class="nf">find_kernels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">which</span><span class="p">(</span><span class="s1">&#39;oblong-kernel&#39;</span><span class="p">):</span>
+            <span class="k">return</span>  <span class="c1"># Check it&#39;s available</span>
+
+        <span class="c1"># Two variants - for a real kernel, these could be something like</span>
+        <span class="c1"># different conda environments.</span>
+        <span class="k">yield</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Oblong (standard)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;oblong&#39;</span><span class="p">},</span>
+            <span class="s1">&#39;argv&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;oblong-kernel&#39;</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="k">yield</span> <span class="s1">&#39;rounded&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Oblong (rounded)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;oblong&#39;</span><span class="p">},</span>
+            <span class="s1">&#39;argv&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;oblong-kernel&#39;</span><span class="p">],</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">make_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;standard&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">KernelManager</span><span class="p">(</span><span class="n">kernel_cmd</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;oblong-kernel&#39;</span><span class="p">],</span>
+                                 <span class="n">extra_env</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ROUNDED&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">})</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;rounded&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">KernelManager</span><span class="p">(</span><span class="n">kernel_cmd</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;oblong-kernel&#39;</span><span class="p">],</span>
+                                 <span class="n">extra_env</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ROUNDED&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown kernel </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You would then register this with an <em>entry point</em>. In your <code class="docutils literal"><span class="pre">setup.py</span></code>, put
+something like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="p">(</span><span class="o">...</span>
+    <span class="n">entry_points</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;jupyter_client.kernel_providers&#39;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="c1"># The name before the &#39;=&#39; should match the id attribute</span>
+        <span class="s1">&#39;oblong = oblong_provider:OblongKernelProvider&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="finding-kernel-types">
+<h2>Finding kernel types<a class="headerlink" href="#finding-kernel-types" title="Permalink to this headline">¶</a></h2>
+<p>To find and start kernels in client code, use
+<a class="reference internal" href="#jupyter_client.discovery.KernelFinder" title="jupyter_client.discovery.KernelFinder"><code class="xref py py-class docutils literal"><span class="pre">jupyter_client.discovery.KernelFinder</span></code></a>. This uses multiple kernel
+providers to find available kernels. Like a kernel provider, it has methods
+<code class="docutils literal"><span class="pre">find_kernels</span></code> and <code class="docutils literal"><span class="pre">make_manager</span></code>. The kernel names it works
+with have the provider ID as a prefix, e.g. <code class="docutils literal"><span class="pre">oblong/rounded</span></code> (from the example
+above).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jupyter_client.discovery</span> <span class="k">import</span> <span class="n">KernelFinder</span>
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KernelFinder</span><span class="o">.</span><span class="n">from_entrypoints</span><span class="p">()</span>
+
+<span class="c1">## Find available kernel types</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">attributes</span> <span class="ow">in</span> <span class="n">kf</span><span class="o">.</span><span class="n">find_kernels</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;display_name&#39;</span><span class="p">])</span>
+<span class="c1"># oblong/standard : Oblong (standard)</span>
+<span class="c1"># oblong/rounded : Oblong(rounded)</span>
+<span class="c1"># ...</span>
+
+<span class="c1">## Start a kernel by name</span>
+<span class="n">manager</span> <span class="o">=</span> <span class="n">kf</span><span class="o">.</span><span class="n">make_manager</span><span class="p">(</span><span class="s1">&#39;oblong/standard&#39;</span><span class="p">)</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">start_kernel</span><span class="p">()</span>
+</pre></div>
+</div>
+<span class="target" id="module-jupyter_client.discovery"></span><dl class="class">
+<dt id="jupyter_client.discovery.KernelFinder">
+<em class="property">class </em><code class="descclassname">jupyter_client.discovery.</code><code class="descname">KernelFinder</code><span class="sig-paren">(</span><em>providers</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.discovery.KernelFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages a collection of kernel providers to find available kernel types</p>
+<p><em>providers</em> should be a list of kernel provider instances.</p>
+<dl class="classmethod">
+<dt id="jupyter_client.discovery.KernelFinder.from_entrypoints">
+<em class="property">classmethod </em><code class="descname">from_entrypoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.discovery.KernelFinder.from_entrypoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load all kernel providers advertised by entry points.</p>
+<p>Kernel providers should use the &#8220;jupyter_client.kernel_providers&#8221;
+entry point group.</p>
+<p>Returns an instance of KernelFinder.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.discovery.KernelFinder.find_kernels">
+<code class="descname">find_kernels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.discovery.KernelFinder.find_kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over available kernel types.</p>
+<p>Yields 2-tuples of (prefixed_name, attributes)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="jupyter_client.discovery.KernelFinder.make_manager">
+<code class="descname">make_manager</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#jupyter_client.discovery.KernelFinder.make_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a KernelManager instance for a given kernel type.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kernel-providers-included-in-jupyter-client">
+<h2>Kernel providers included in <code class="docutils literal"><span class="pre">jupyter_client</span></code><a class="headerlink" href="#kernel-providers-included-in-jupyter-client" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">jupyter_client</span></code> includes two kernel providers:</p>
+<dl class="class">
+<dt id="jupyter_client.discovery.KernelSpecProvider">
+<em class="property">class </em><code class="descclassname">jupyter_client.discovery.</code><code class="descname">KernelSpecProvider</code><a class="headerlink" href="#jupyter_client.discovery.KernelSpecProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offers kernel types from installed kernelspec directories.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="kernels.html#kernelspecs"><span class="std std-ref">Kernel specs</span></a></p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="jupyter_client.discovery.IPykernelProvider">
+<em class="property">class </em><code class="descclassname">jupyter_client.discovery.</code><code class="descname">IPykernelProvider</code><a class="headerlink" href="#jupyter_client.discovery.IPykernelProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offers a kernel type using the Python interpreter it&#8217;s running in.</p>
+<p>This checks if ipykernel is importable first.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Kernel instance</dt>
+<dd>A running kernel, a process which can accept ZMQ connections from frontends.
+Its state includes a namespace and an execution counter.</dd>
+<dt>Kernel type</dt>
+<dd>The software to run a kernel instance, along with the context in which a
+kernel starts. One kernel type allows starting multiple, initially similar
+kernel instances. For instance, one kernel type may be associated with one
+conda environment containing <code class="docutils literal"><span class="pre">ipykernel</span></code>. The same kernel software in
+another environment would be a different kernel type. Another software package
+for a kernel, such as <code class="docutils literal"><span class="pre">IRkernel</span></code>, would also be a different kernel type.</dd>
+<dt>Kernel provider</dt>
+<dd>A Python class to discover kernel types and allow a client to start instances
+of those kernel types. For instance, one kernel provider might find conda
+environments containing <code class="docutils literal"><span class="pre">ipykernel</span></code> and allow starting kernel instances in
+these environments.</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/index.html" class="btn btn-neutral float-right" title="jupyter_client API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="wrapperkernels.html" class="btn btn-neutral" title="Making simple Python wrapper kernels" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
