@@ -1,0 +1,35 @@
+//
+// This file auto-generated with generate-wrappers.js
+// Date: Fri Dec 15 2017 14:52:39 GMT+0100 (W. Europe Standard Time)
+//
+// Load all three.js python wrappers
+var loadedModules = [
+    require('./LineBasicMaterial.autogen.js'),
+    require('./LineDashedMaterial.autogen.js'),
+    require('./Material.js'),
+    require('./MeshBasicMaterial.autogen.js'),
+    require('./MeshDepthMaterial.autogen.js'),
+    require('./MeshLambertMaterial.autogen.js'),
+    require('./MeshNormalMaterial.autogen.js'),
+    require('./MeshPhongMaterial.autogen.js'),
+    require('./MeshPhysicalMaterial.autogen.js'),
+    require('./MeshStandardMaterial.autogen.js'),
+    require('./MeshToonMaterial.autogen.js'),
+    require('./PointsMaterial.autogen.js'),
+    require('./RawShaderMaterial.autogen.js'),
+    require('./ShaderMaterial.autogen.js'),
+    require('./ShadowMaterial.autogen.js'),
+    require('./SpriteMaterial.autogen.js'),
+];
+
+for (var i in loadedModules) {
+    if (loadedModules.hasOwnProperty(i)) {
+        var loadedModule = loadedModules[i];
+        for (var target_name in loadedModule) {
+            if (loadedModule.hasOwnProperty(target_name)) {
+                module.exports[target_name] = loadedModule[target_name];
+            }
+        }
+    }
+}
+
