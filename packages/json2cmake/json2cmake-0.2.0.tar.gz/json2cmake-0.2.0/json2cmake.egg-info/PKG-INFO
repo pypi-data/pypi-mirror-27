@@ -1,0 +1,37 @@
+Metadata-Version: 1.1
+Name: json2cmake
+Version: 0.2.0
+Summary: Generate CMakeLists.txt from a compile_commands.json
+Home-page: https://github.com/AbigailBuccaneer/json2cmake
+Author: AbigailBuccaneer
+Author-email: UNKNOWN
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: # json2cmake
+        
+        [![Build Status](https://travis-ci.org/AbigailBuccaneer/json2cmake.svg?branch=master)](https://travis-ci.org/AbigailBuccaneer/json2cmake)
+        
+        `json2cmake` converts [JSON compilation database][] files into [CMake][] files.
+        The resulting `CMakeLists.txt` file can then be used to recompile the same object files with less overhead via [Ninja][], used as an IDE project file for [CLion][], or for integration into a larger CMake project.
+        
+        The output files only include [object library][] definitions, as a `compile_commands.json` file typically doesn't contain any linker commands.
+        
+        [JSON compilation database]: http://clang.llvm.org/docs/JSONCompilationDatabase.html
+        [CMake]: https://cmake.org/
+        [Ninja]: https://ninja-build.org/
+        [CLion]: https://www.jetbrains.com/clion/
+        [object library]: https://cmake.org/Wiki/CMake/Tutorials/Object_Library
+        
+Keywords: c c++ cmake development
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
