@@ -1,0 +1,41 @@
+language: python
+sudo: false
+python:
+- '2.7'
+- '3.4'
+- '3.5'
+- '3.6-dev'
+- '3.7-dev'
+- 'nightly'
+
+install:
+  - python -m pip install --upgrade pip
+  - python -m pip install --upgrade setuptools
+  - python -m pip install ".[ci]" -c requirements.txt
+
+matrix:
+  include:
+    - os: linux
+      language: python
+      python: 3.6
+      script:
+        - python setup.py test --pytest-args "--cov=setuptools_scm_build_number --cov-report=html --cov-branch --ignore=setup.py"
+        - python setup.py check -srm
+      after_success:
+        - flake8 setuptools_scm_build_number
+        - codecov
+
+script:
+  - python setup.py test
+  - python setup.py check -srm
+
+deploy:
+  provider: pypi
+  user: Ilya.Kulakov
+  password:
+    secure: "IG9EAngmgkjJNXIZGv2MsYbvONTzd3b601sFROoRiwoOuLRiUDw+4g3ris/jbmBqkFm9OJD1n2+OLQjJeWqHiLV1j6bfK/BRSEj5qOuQEQ+VvYmycLN6OWq/YKb9SoIGyfqCjGukXB0HnVFy7WPQa0vfQH3BAT3YZdz4MEEvB9fd4OeAECheq6MJOW8w5Ei2ft7mkKhsGO1d7yMbmjnnv/TPlIEiQVXGwQ7ZFbSYeX2ge8dgp7slBr6HwREUlwCBgfMaUimmG40cPTxeSLblXtdwoa06IIjej+1c51qDluPKT0g9Q11kr/BV3AoJ0CmeAepZMoK9p6MwTHFaFpiVUILMYin6+oU5bm3IpRRwvXqpfK03k01aATvg1fAEA3F1zNUJW9mBOhw0XbRMrwTQjz4YgORvfFabKvjObsWoQf8FYMNMK4qGg1lAwAd5SPSTDEobhxJ8PVDWyoCO7R225slpWU2+kReYgd6/m73sNLNyCL6rpRoHv6vZjYb+JBxi8L6GU3Nu3td1nBXOb6RZdAUnCwoQPJqiDw9G9ztygdj4jGyccwstIurFg8lwPm3KB4WTR4FYGdM5mLqp+eyMRA0RvcXbtDmuvBLae2J6LzNwjvmbUvPEuC6m9L7s1zYFJKQPig3euOk/9ZvIpF8N8LzrJceO6ltyFQ/OsT5D8G0="
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true
+    branch: master
+    python: 3.6

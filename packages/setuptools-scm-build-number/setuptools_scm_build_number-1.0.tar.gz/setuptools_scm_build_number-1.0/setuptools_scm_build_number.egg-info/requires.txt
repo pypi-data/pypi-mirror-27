@@ -1,0 +1,12 @@
+setuptools_scm>=1.10.0
+
+[ci]
+pytest
+codecov
+docutils
+flake8
+pygments
+pytest-cov
+
+[tests]
+pytest
