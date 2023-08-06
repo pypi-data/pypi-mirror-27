@@ -1,0 +1,235 @@
+CHANGES
+=======
+
+0.11.0
+------
+
+* Bump snapcraft version to 0.11.0
+* Add linter to ensure workspace cleanup
+* Get full output from tests when run through tox
+
+0.10.0
+------
+
+* Bump snapcraft version to 0.10.0
+* Set empty columns for the empty column test
+* Remove type shenanigans from GetListConfigParser
+* Don't silence all JJB output when we are installed
+* Add linter to check that list views have columns configured
+* Fix existing view test case to be a valid definition
+* Only log critical messages in \`jenkins-jobs lint\`
+* Capture stderr in integration tests
+* Remove now-unnecessary cast call
+* Improve first line of README
+* Flesh README out a little
+* Run integration tests against JJB trunk in Travis
+
+0.9.0
+-----
+
+* Bump snapcraft version to 0.9.0
+* Split CheckEnvInject.actual\_check up with a helper method
+* Add check\_env\_inject linter (#40)
+* Make GetListConfigParser[section].getlist work
+* Introduce type alias for lint check results
+* Use an unused port in the JJB integration test configuration
+* Always use a config file for JJB integration tests
+
+0.8.0
+-----
+
+* Bump snapcraft version to 0.8.0
+* Handle unconfigured projects
+* Expand the integration testing of check\_job\_references
+* Add CheckJobReferences linter
+* Add missing text in docs
+* Actually store LintContext.run\_ctx
+* Add LintContext.run\_ctx attribute, and populate it in lint\_job\_xml
+* Move LintContext and RunContext to new .models module
+* Pass correct object names to lint\_job\_xml (in RunContext)
+* Pass an (empty) RunContext to lint\_job\_xml
+* Use GetListConfigParser.getlist where lists are expected
+* Add .getlist() method to the config parser we use internally
+* Add Code Climate badge to README.md
+* Split CheckShebang.shell\_check in to three functions
+* Split \_parse\_testcases in to two functions
+* Use defaults and only\_run in integration tests
+* Add support for defaults to integration tests
+* Add only\_run configuration option
+* Clarify that disable\_linters config should be comma-separated
+* Refactor LINTERS mocking to helper function
+* Make TestLintJobXML tests able to handle new configuration options
+* Split integration test definitions in to separate files
+* Run Python 3.5 tests against nightly to handle Mock bug
+* Pass a filtered config to linters via LintContext
+* Add a LintContext object to capture the context of a Linter run
+* Add pip caching to travis runs
+* Run integration tests in parallel
+
+0.7.1
+-----
+
+* Bump snapcraft version to 0.7.1
+* Skip over views when performing lint checks
+* Pass ElementTree.ElementTree objects to Linter tests
+
+0.7.0
+-----
+
+* Update snapcraft version to 0.7.0
+* Add integration tests for check\_shebang required\_shell\_options config
+* Get tox to output missing coverage lines on failure
+* Add required\_shell\_options configuration to CheckShebang
+* Add default info to allow\_default\_shebang configuration
+* Move linter default configuration on to the Linter object
+* Remove Linter.name attribute
+* Make linters.LINTERS a dict instead of a list
+* Move \_filter\_config to new config submodule
+* Make CONFIG\_DEFAULTS type annotation more specific
+* Move integration tests earlier in Travis run
+* Add integration test for multiple shell builders
+* Add readthedocs badge
+* Add documentation
+* Add docs Travis target
+* Add docs tox target
+* Add docs skeleton
+* Switch getboolean call to one that type-checks correctly
+* Add allow\_default\_shebang config option for check\_shebang
+* Allow all config sections beginning with job\_linter through filter
+* Make tox enforce coverage targets locally
+* Add integration tests to hit full coverage
+* Add codecov.yml to enforce 100% integration test coverage
+* Use envsitepackagesdir to get integration test coverage working in tox
+* Remove coverage.xml before second codecov run
+* Use correct arguments for codecov
+* Push integration test coverage report to codecov
+* Add coverage output to integration\_tests tox target
+* Force integration tests to have a description
+* Add descriptions to integration tests
+* Drop test\_config\_doesnt\_cause\_explosion integration test
+* Add default configuration so passing no config works
+* Add disable\_linter config option
+* Create tests.mocks package and start using it
+
+0.6.0
+-----
+
+* Bump snapcraft version to 0.6.0
+* Fix config handling in integration tests
+* Exit non-zero when \`jenkins-jobs lint\` fails
+* Add expect\_success to integration tests to check exit codes
+* Add name attribute to linters
+* Alphabetise methods in Linter
+* Refactor config filtering to a separate function
+* Copy the config we're given before modifying it
+* Filter out non-job\_linter sections from config before passing on
+* Write out JJB configuration in \_jjb\_subcommand\_runner
+* Add integration test support for config files
+* Add integration\_tests to lint target and fix errors
+* Move codecov travis target first
+* Rename integration\_tests/tests.ini to tests.yaml
+* Add unit test to cover the extended error message code path
+* Add integration test for CheckForEmptyShell and tighten up message
+* Enable linters to return extended error messages
+* Modify Linter.check to pass through actual\_check result
+* Add integration test for shebang checking
+* Introduce LintResult enum for lint results
+* Remove spurious object subclassing
+* Remove output except on failures
+* Pass job\_name in to lint\_job\_xml
+* Add integration test runner for \`jenkins-jobs lint\`
+* Refactor integration tests to support multiple runners
+* Only parametrize integration tests in pytest\_generate\_tests
+* Raise an error if integration tests have duplicate names
+* Ensure that pytest uses the correct name for integration tests
+* Add copyright header to integration\_tests/tests.py
+* Add integration tests to Travis runs
+* Add integration\_tests tox target
+* Add initial integration test
+* Add linter to ensure shell builders aren't empty
+* Refactor shared shell test code in to parent class
+* Refactor shell-builder logic in to ShellBuilderLinter
+* Add CheckShebang test for multiple shell builders in a job
+* Refactor TestCheckShebang XML string generation
+
+0.5.0
+-----
+
+* Bump snapcraft version to 0.5.0
+* Add copyright headers to test files
+* Add docstrings for jenkins\_job\_linter.jjb\_subcommand
+* Add tests for jenkins\_job\_linter.test\_jjb\_subcommand
+* Add dependency on jenkins-job-builder
+* Fix mypy warnings for jjb\_subcommand
+* Add a \`jenkins-jobs lint\` subcommand when installed together
+
+0.4.0
+-----
+
+* Bump snapcraft version to 0.4.0
+* Make CheckShebang testing more exhaustive
+* Fix CheckShebang to actually require -eux
+* Add pydocstyle to lint target (and fix violations)
+* Only accept readable files as --conf arguments
+* Pass config through to linters
+* Pass config through to lint\_job\_xml
+* Add (unused) --conf argument
+
+0.3.0
+-----
+
+* Bump snapcraft.yaml version to 0.3.0
+* Add --ignore-missing-imports to mypy tox target
+* Use Stevedore to enable third-party linters
+* Run mypy in strict mode
+* Handle empty shell sections in CheckShebang
+* Move linters to their own module
+* Configure the environment in the snap to make click happy
+
+0.2.0
+-----
+
+* Bump snapcraft.yaml version to 0.2.0
+* Add tests to lint target
+* Install test-requirements.txt in lint environment
+* Ensure isort detects jenkins\_job\_linter as a first-party module
+* Add lint to default tox targets
+* Use click to ensure argument is an existent directory
+* Modify TestMain to use click.testing.CliRunner
+* Replace argparse with click
+* Add requires.io badge
+* Add snapcraft badge
+* Add snapcraft.yaml to build a snap package
+* Add nocover pragmas for un-testable portions of the code
+* Add tests for full unit-test coverage
+* Add tests for main
+* Add tests for lint\_jobs\_from\_directory
+
+0.1.2
+-----
+
+* Add codecov badge
+* Pass the environment variables required by codecov
+* Add codecov tox/Travis target
+* Add Travis badge
+* Improve CheckShebang linting
+* Add .travis.yml
+* Add lint tox environment
+* Start adding testing
+* Add tox with mypy checking (and fix types)
+* Enable linters to indicate they aren't applicable to a file
+* Add CheckShebang linter
+* Allow linters to output explanatory text
+
+0.1.1
+-----
+
+* Restore [files] section of setup.cfg
+* Move file in to a package
+* Fix setup.cfg
+
+0.1.0
+-----
+
+* Add initial implementation
+* Initial commit
