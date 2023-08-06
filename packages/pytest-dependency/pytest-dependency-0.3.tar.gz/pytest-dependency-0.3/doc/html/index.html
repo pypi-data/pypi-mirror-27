@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pytest-dependency - Manage dependencies of tests &mdash; pytest-dependency 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="pytest-dependency 0.3 documentation" href="#" />
+    <link rel="next" title="About pytest-dependency" href="about.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="about.html" title="About pytest-dependency"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">pytest-dependency 0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pytest-dependency-manage-dependencies-of-tests">
+<h1>pytest-dependency - Manage dependencies of tests<a class="headerlink" href="#pytest-dependency-manage-dependencies-of-tests" title="Permalink to this headline">¶</a></h1>
+<p>This pytest plugin manages dependencies of tests.  It allows to mark
+some tests as dependent from other tests.  These tests will then be
+skipped if any of the dependencies did fail or has been skipped.</p>
+<div class="section" id="content-of-the-documentation">
+<h2>Content of the documentation<a class="headerlink" href="#content-of-the-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About pytest-dependency</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about.html#what-is-the-purpose">What is the purpose?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#how-does-it-work">How does it work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#why-is-this-useful">Why is this useful?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#copyright-and-license">Copyright and License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#system-requirements">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#interaction-with-other-packages">Interaction with other packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#download">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using pytest-dependency</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#naming-tests">Naming tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#using-test-classes">Using test classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#parametrized-tests">Parametrized tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#marking-dependencies-at-runtime">Marking dependencies at runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#dynamic-compilation-of-marked-parameters">Dynamic compilation of marked parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#grouping-tests-using-fixtures">Grouping tests using fixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#depend-on-all-instances-of-a-parametrized-test-at-once">Depend on all instances of a parametrized test at once</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuring pytest-dependency</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#notes-on-configuration-for-other-plugins">Notes on configuration for other plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-file-options">Configuration file options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#command-line-options">Command line options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pytest-dependency - Manage dependencies of tests</a><ul>
+<li><a class="reference internal" href="#content-of-the-documentation">Content of the documentation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="about.html"
+                        title="next chapter">About pytest-dependency</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="about.html" title="About pytest-dependency"
+             >next</a> |</li>
+        <li><a href="#">pytest-dependency 0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016-2017, Rolf Krahl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

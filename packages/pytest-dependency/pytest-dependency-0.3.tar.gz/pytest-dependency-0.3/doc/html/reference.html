@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reference &mdash; pytest-dependency 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="pytest-dependency 0.3 documentation" href="index.html" />
+    <link rel="prev" title="Configuring pytest-dependency" href="configuration.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuring pytest-dependency"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pytest.mark.dependency">
+<tt class="descclassname">&#64;</tt><tt class="descclassname">pytest.mark.</tt><tt class="descname">dependency</tt><big>(</big><em>name=None</em>, <em>depends=[]</em><big>)</big><a class="headerlink" href="#pytest.mark.dependency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark a test to be used as a dependency for other tests or to
+depend on other tests.</p>
+<p>This will cause the test results to be registered internally and
+thus other tests may depend on the test.  The list of dependencies
+for the test may be set in the depends argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<tt class="xref py py-class docutils literal"><span class="pre">str</span></tt>) &#8211; the name of the test to be used for referencing by
+dependent tests.  If not set, it defaults to the node ID
+defined by pytest, that is the name of the test function,
+extended by the parameters if applicable.</li>
+<li><strong>depends</strong> (iterable of <tt class="xref py py-class docutils literal"><span class="pre">str</span></tt>) &#8211; dependencies, a list of names of tests that this
+test depends on.  The test will be skipped unless all of the
+dependencies have been run successfully.  The dependencies
+must also have been decorated by the marker.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="module-pytest_dependency"></span><dl class="function">
+<dt id="pytest_dependency.depends">
+<tt class="descclassname">pytest_dependency.</tt><tt class="descname">depends</tt><big>(</big><em>request</em>, <em>other</em><big>)</big><a class="headerlink" href="#pytest_dependency.depends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add dependency on other test.</p>
+<p>Call pytest.skip() unless a successful outcome of all of the tests in
+other has been registered previously.  This has the same effect as
+the <cite>depends</cite> keyword argument to the <a class="reference internal" href="#pytest.mark.dependency" title="pytest.mark.dependency"><tt class="xref py py-func docutils literal"><span class="pre">pytest.mark.dependency()</span></tt></a>
+marker.  In contrast to the marker, this function may be called at
+runtime during a test.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>request</strong> &#8211; the value of the <cite>request</cite> pytest fixture related
+to the current test.</li>
+<li><strong>other</strong> (iterable of <tt class="xref py py-class docutils literal"><span class="pre">str</span></tt>) &#8211; dependencies, a list of names of tests that this
+test depends on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.</span></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="configuration.html"
+                        title="previous chapter">Configuring pytest-dependency</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuring pytest-dependency"
+             >previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016-2017, Rolf Krahl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

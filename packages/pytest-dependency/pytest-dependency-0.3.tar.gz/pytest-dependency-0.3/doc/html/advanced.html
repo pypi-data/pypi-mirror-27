@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Advanced usage &mdash; pytest-dependency 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="pytest-dependency 0.3 documentation" href="index.html" />
+    <link rel="next" title="Configuring pytest-dependency" href="configuration.html" />
+    <link rel="prev" title="Using pytest-dependency" href="usage.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuring pytest-dependency"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Using pytest-dependency"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="advanced-usage">
+<h1>Advanced usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline">¶</a></h1>
+<p>This section contains some advanced examples for using
+pytest-dependency.</p>
+<div class="section" id="dynamic-compilation-of-marked-parameters">
+<h2>Dynamic compilation of marked parameters<a class="headerlink" href="#dynamic-compilation-of-marked-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, the parameter values for parametrized tests cannot easily
+be typed as a simple list.  It may need to be compiled at run time
+depending on a set of test data.  This also works together with
+marking dependencies in the individual test instances.</p>
+<p>Consider the following example test module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="c1"># Test data</span>
+<span class="c1"># Consider a bunch of Nodes, some of them are parents and some are children.</span>
+
+<span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">NodeMap</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">NodeMap</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">if</span> <span class="n">parent</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">NodeMap</span><span class="p">[</span><span class="n">parent</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="n">parents</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">),</span>  <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">),</span>  <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">),</span>  <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">),</span> <span class="p">]</span>
+<span class="n">childs</span> <span class="o">=</span>  <span class="p">[</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span> 
+            <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">),</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">),</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;j&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">),</span> 
+            <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">),</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">),</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">),</span> <span class="p">]</span>
+
+<span class="c1"># The test for the parent shall depend on the test of all its children.</span>
+<span class="c1"># Create enriched parameter lists, decorated with the dependency marker.</span>
+
+<span class="n">childparam</span> <span class="o">=</span> <span class="p">[</span> 
+    <span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">dependency</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test_child[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">c</span><span class="p">)(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">childs</span>
+<span class="p">]</span>
+<span class="n">parentparam</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">dependency</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;test_parent[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">p</span><span class="p">,</span> 
+        <span class="n">depends</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;test_child[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+    <span class="p">)(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parents</span>
+<span class="p">]</span>
+
+<span class="nd">@pytest.mark.parametrize</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">childparam</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_child</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="s2">&quot;deliberate fail&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">False</span>
+
+<span class="nd">@pytest.mark.parametrize</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="n">parentparam</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_parent</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>In principle, this example works the very same way as the basic
+example for <a class="reference internal" href="usage.html#usage-parametrized"><em>Parametrized tests</em></a>.  The only difference is that
+the lists of paramters are dynamically compiled beforehand.  The test
+for child <cite>l</cite> deliberately fails, just to show the effect.  As a
+consequence, the test for its parent <cite>d</cite> will be skipped.</p>
+</div>
+<div class="section" id="grouping-tests-using-fixtures">
+<span id="advanced-grouping-fixtures"></span><h2>Grouping tests using fixtures<a class="headerlink" href="#grouping-tests-using-fixtures" title="Permalink to this headline">¶</a></h2>
+<p>pytest features the <a class="reference external" href="https://docs.pytest.org/en/latest/fixture.html#automatic-grouping-of-tests-by-fixture-instances">automatic grouping of tests by fixture
+instances</a>.  This is particularly useful if there is a set of test
+cases and a series of tests shall be run for each of the test case
+respectively.</p>
+<p>Consider the following example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">pytest_dependency</span> <span class="kn">import</span> <span class="n">depends</span>
+
+<span class="nd">@pytest.fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">testcase</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">param</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">param</span>
+    <span class="k">return</span> <span class="n">param</span>
+
+<span class="nd">@pytest.mark.dependency</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test_a</span><span class="p">(</span><span class="n">testcase</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">testcase</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="s2">&quot;deliberate fail&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">False</span>
+
+<span class="nd">@pytest.mark.dependency</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test_b</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">testcase</span><span class="p">):</span>
+    <span class="n">depends</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;test_a[</span><span class="si">%d</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">testcase</span><span class="p">])</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>The test instances of <cite>test_b</cite> depend on <cite>test_a</cite> for the same
+parameter value.  The test <cite>test_a[7]</cite> deliberately fails, as a
+consequence <cite>test_b[7]</cite> will be skipped.  Note that we need to call
+<a class="reference internal" href="reference.html#pytest_dependency.depends" title="pytest_dependency.depends"><tt class="xref py py-func docutils literal"><span class="pre">pytest_dependency.depends()</span></tt></a> to mark the dependencies, because
+there is no way to use the <a class="reference internal" href="reference.html#pytest.mark.dependency" title="pytest.mark.dependency"><tt class="xref py py-func docutils literal"><span class="pre">pytest.mark.dependency()</span></tt></a> marker on
+the parameter values here.</p>
+<p>If many tests in the series depend on a single test, it might be an
+option, to move the call to <a class="reference internal" href="reference.html#pytest_dependency.depends" title="pytest_dependency.depends"><tt class="xref py py-func docutils literal"><span class="pre">pytest_dependency.depends()</span></tt></a> in a
+fixture on its own.  Consider:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">pytest_dependency</span> <span class="kn">import</span> <span class="n">depends</span>
+
+<span class="nd">@pytest.fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">testcase</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">param</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">param</span>
+    <span class="k">return</span> <span class="n">param</span>
+
+<span class="nd">@pytest.fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dep_testcase</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">testcase</span><span class="p">):</span>
+    <span class="n">depends</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;test_a[</span><span class="si">%d</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">testcase</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">testcase</span>
+
+<span class="nd">@pytest.mark.dependency</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test_a</span><span class="p">(</span><span class="n">testcase</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">testcase</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="s2">&quot;deliberate fail&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">False</span>
+
+<span class="nd">@pytest.mark.dependency</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test_b</span><span class="p">(</span><span class="n">dep_testcase</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@pytest.mark.dependency</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test_c</span><span class="p">(</span><span class="n">dep_testcase</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>In this example, both <cite>test_b[7]</cite> and <cite>test_c[7]</cite> are skipped, because
+<cite>test_a[7]</cite> deliberately fails.</p>
+</div>
+<div class="section" id="depend-on-all-instances-of-a-parametrized-test-at-once">
+<h2>Depend on all instances of a parametrized test at once<a class="headerlink" href="#depend-on-all-instances-of-a-parametrized-test-at-once" title="Permalink to this headline">¶</a></h2>
+<p>If a test depends on a all instances of a parametrized test at once,
+listing all of them in the <a class="reference internal" href="reference.html#pytest.mark.dependency" title="pytest.mark.dependency"><tt class="xref py py-func docutils literal"><span class="pre">pytest.mark.dependency()</span></tt></a> marker
+explicitly might not be the best solution.  But you can dynamically
+compile these lists from the parameter values, as in the following
+example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="k">def</span> <span class="nf">instances</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">vstr</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">vstr</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>
+
+
+<span class="n">params_a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+
+<span class="nd">@pytest.mark.parametrize</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">params_a</span><span class="p">)</span>
+<span class="nd">@pytest.mark.dependency</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test_a</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">13</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="s2">&quot;deliberate fail&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+<span class="nd">@pytest.mark.dependency</span><span class="p">(</span><span class="n">depends</span><span class="o">=</span><span class="n">instances</span><span class="p">(</span><span class="s2">&quot;test_a&quot;</span><span class="p">,</span> <span class="n">params_a</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_b</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">params_c</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="nd">@pytest.mark.parametrize</span><span class="p">(</span><span class="s2">&quot;x,y&quot;</span><span class="p">,</span> <span class="n">params_c</span><span class="p">)</span>
+<span class="nd">@pytest.mark.dependency</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test_c</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="s2">&quot;deliberate fail&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+<span class="nd">@pytest.mark.dependency</span><span class="p">(</span><span class="n">depends</span><span class="o">=</span><span class="n">instances</span><span class="p">(</span><span class="s2">&quot;test_c&quot;</span><span class="p">,</span> <span class="n">params_c</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_d</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">params_e</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">]</span>
+
+<span class="nd">@pytest.mark.parametrize</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">params_e</span><span class="p">)</span>
+<span class="nd">@pytest.mark.dependency</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test_e</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;e&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="s2">&quot;deliberate fail&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+<span class="nd">@pytest.mark.dependency</span><span class="p">(</span><span class="n">depends</span><span class="o">=</span><span class="n">instances</span><span class="p">(</span><span class="s2">&quot;test_e&quot;</span><span class="p">,</span> <span class="n">params_e</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_f</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Here, <cite>test_b</cite>, <cite>test_d</cite>, and <cite>test_f</cite> will be skipped because they
+depend on all instances of <cite>test_a</cite>, <cite>test_c</cite>, and <cite>test_e</cite>
+respectively, but <cite>test_a[13]</cite>, <cite>test_c[6-5]</cite>, and <cite>test_e[def]</cite> fail.
+The list of the test instances is compiled in the helper function
+<cite>instances()</cite>.</p>
+<p>Unfortunately you need knowledge how pytest encodes parameter values
+in test instance names to write this helper function.  Note in
+particular how lists of parameter values are compiled into one single
+string in the case of multi parameter tests.  But also note that this
+example of the <cite>instances()</cite> helper will only work for simple cases.
+It requires the parameter values to be scalars that can easily be
+converted to strings.  And it will fail if the same list of parameters
+is passed to the same test more then once, because then, pytest will
+add an index to the name to disambiguate the parameter values.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Advanced usage</a><ul>
+<li><a class="reference internal" href="#dynamic-compilation-of-marked-parameters">Dynamic compilation of marked parameters</a></li>
+<li><a class="reference internal" href="#grouping-tests-using-fixtures">Grouping tests using fixtures</a></li>
+<li><a class="reference internal" href="#depend-on-all-instances-of-a-parametrized-test-at-once">Depend on all instances of a parametrized test at once</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="previous chapter">Using pytest-dependency</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="configuration.html"
+                        title="next chapter">Configuring pytest-dependency</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuring pytest-dependency"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Using pytest-dependency"
+             >previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016-2017, Rolf Krahl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
