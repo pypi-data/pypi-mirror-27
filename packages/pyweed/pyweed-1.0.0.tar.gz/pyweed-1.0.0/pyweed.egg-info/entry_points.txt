@@ -1,0 +1,6 @@
+[console_scripts]
+pyweed_build_launcher = pyweed.build_launcher:build
+
+[gui_scripts]
+pyweed = pyweed.pyweed_launcher:launch
+
