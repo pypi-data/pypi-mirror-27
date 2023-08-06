@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- view for form and tree -->
+        <record model="ir.ui.view" id="greetings_view_form">
+            <field name="model">writing_serialletter.greetings</field>
+            <field name="type">form</field>
+            <field name="name">greetings_form</field>
+        </record>
+        <record model="ir.ui.view" id="greetings_view_tree">
+            <field name="model">writing_serialletter.greetings</field>
+            <field name="type">tree</field>
+            <field name="name">greetings_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_writing_serialletter_greetings_form">
+            <field name="name">Greetings</field>
+            <field name="res_model">writing_serialletter.greetings</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_writing_serialletter_greetings_form1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="greetings_view_tree"/>
+            <field name="act_window" ref="act_writing_serialletter_greetings_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_writing_serialletter_greetings_form2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="greetings_view_form"/>
+            <field name="act_window" ref="act_writing_serialletter_greetings_form"/>
+        </record>
+
+        <!-- menuitem -->
+        <menuitem parent="party.menu_configuration" 
+                    action="act_writing_serialletter_greetings_form"
+                    id="menu_greetings" sequence="55" icon="tryton-list"/>
+        <record model="ir.ui.menu-res.group" 
+                id="menu_greetings-group_party_admin">
+            <field name="menu" ref="menu_greetings"/>
+            <field name="group" ref="party.group_party_admin"/>
+        </record>
+
+        <!-- permissions -->
+        <record model="ir.model.access" id="access_greetings_anon">
+            <field name="model" search="[('model', '=', 'writing_serialletter.greetings')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_greetings_edit">
+            <field name="model" search="[('model', '=', 'writing_serialletter.greetings')]"/>
+            <field name="group" ref="party.group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>
