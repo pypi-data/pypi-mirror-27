@@ -1,0 +1,139 @@
+Metadata-Version: 1.0
+Name: pyne-xmas-elves
+Version: 0.6.1
+Summary: The Great Elf Game adapted for Python North East - client & server
+Home-page: http://github.com/pythonnortheast/xmas-elves
+Author: Scott Walton
+Author-email: scott@pythonnortheast.com
+License: MIT
+Description: 
+        Christmas Elves
+        ===============
+        
+        The annual Christmas Elves game server and client
+        
+        Python North East December brings you the Christmas Elf Challenge. Your task,
+        should you choose to accept it, is to collect the most
+        
+        Running your Game
+        -----------------
+        
+        This part of the guide will give you the instructions to set up the game so you
+        can start trying to set a high score!
+        
+        Installation
+        ^^^^^^^^^^^^
+        
+        Make sure you have Python installed - if you have Windows, check out the
+        `Beginner's Guide of the Xmas Elves document <https://docs.google.com/document/d/1p3upVEv7zDcT_0ZQKbJqo_nudHUwIoLAo1TkxzBb7ZA/edit?usp=sharing>`_.
+        
+        Once you're ready, you can get the client code running:
+        
+        .. code-block:: bash
+        
+           pyvenv venv
+           . venv/bin/activate
+           pip install pyne-xmas-elves
+        
+        Building your Bot
+        ^^^^^^^^^^^^^^^^^
+        
+        Create your game file, called ``game.py``\ :
+        
+        .. code-block:: python
+        
+           from pyne_xmas_elves.client import BaseGame
+        
+        
+           class Game(BaseGame):
+               """Your main Game Class.
+               """
+        
+               PLAYER_NAME = 'Tom Cooper'
+        
+               def turn(self, elves_available):
+                   """Take a single turn.
+        
+                   The elves_available argument will tell you how many elves you can use
+                   as a guide.
+                   """
+                   send_to_woods = elves_available // 2
+                   send_to_forest = (elves_available - send_to_woods) // 2
+                   send_to_mountains = elves_available - send_to_forest
+                   return (send_to_woods,
+                           send_to_forest,
+                           send_to_mountains)
+        
+        Helper Attributes
+        ~~~~~~~~~~~~~~~~~
+        
+        While taking a turn, you can access the following attributes on ``self``\ :
+        
+        
+        * ``amount_raised``
+        * ``current_turn``
+        * ``last_turn``
+        
+        Run the game
+        ^^^^^^^^^^^^
+        
+        After creating your bot, you can run the game:
+        
+        .. code-block:: bash
+        
+           elves game
+        
+        Running the Server
+        ------------------
+        
+        Installing Dependencies
+        ^^^^^^^^^^^^^^^^^^^^^^^
+        
+        The server is self-contained with an SQLite database, so just install the
+        requirements:
+        
+        .. code-block:: bash
+        
+           pip install -r requirements.txt
+        
+        Running
+        ^^^^^^^
+        
+        We're using Django Channels, so running the server is as easy as:
+        
+        .. code-block:: bash
+        
+           python server/manage.py runserver
+        
+        The API
+        -------
+        
+        To interact with the server session, we use a simple REST API to send new data
+        into the server. The full API docs can be found by running a server and
+        navigating to ``/docs/``.
+        
+        Starting a New Session
+        ^^^^^^^^^^^^^^^^^^^^^^
+        
+        To start a new session, send a ``POST`` request with a ``name`` variable
+        form-encoded to ``https://<host>/sessions/``\ :
+        
+        .. code-block:: bash
+        
+           curl https://example.com/sessions/ -X POST -d player_name="Scott"
+        
+        and you'll get a simple JSON object back with a ``session`` URL that you post your
+        turns against.
+        
+        Taking a Turn
+        ^^^^^^^^^^^^^
+        
+        To take a turn, make a ``POST`` request against the ``day`` endpoint of a session.
+        
+        Instructions and Rules
+        ----------------------
+        
+        See the `attached Google Doc <https://docs.google.com/document/d/1p3upVEv7zDcT_0ZQKbJqo_nudHUwIoLAo1TkxzBb7ZA/edit?usp=sharing>`_ for the rules and any of the
+        latest tips and tricks.
+        
+Platform: UNKNOWN
