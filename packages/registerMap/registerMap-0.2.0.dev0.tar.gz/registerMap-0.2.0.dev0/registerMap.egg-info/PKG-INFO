@@ -1,0 +1,52 @@
+Metadata-Version: 1.1
+Name: registerMap
+Version: 0.2.0.dev0
+Summary: YAML based register map definitions for digital hardware and embedded software development
+Home-page: https://gitlab.com/blueskyjunkie/registerMap
+Author: Russell Smiley
+Author-email: im.russell.smiley@gmail.com
+License: GPLV3
+Description-Content-Type: UNKNOWN
+Description: [![pipeline status](https://gitlab.com/registerMap/registerMap/badges/master/pipeline.svg)](https://gitlab.com/registerMap/registerMap/commits/master)
+        [![coverage report](https://gitlab.com/registerMap/registerMap/badges/master/coverage.svg)](https://gitlab.com/registerMap/registerMap/commits/master)
+        [![Documentation Status](https://readthedocs.org/projects/registermap/badge/?version=latest)](http://registermap.readthedocs.io/en/latest/?badge=latest)
+        
+        [![PyPI version](https://badge.fury.io/py/registerMap.svg)](https://badge.fury.io/py/registerMap)
+        [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.322502.svg)](https://doi.org/10.5281/zenodo.322502)
+        
+        # registerMap
+        
+        A Python 3 framework for creating and maintaining register maps for integrated circuit design and embedded
+        software development.
+        
+        ## Main Features
+        
+        * define a register map by the *relationships* and *order* of modules, registers and fields
+        * generate address of registers and modules automatically from relationships
+        * constrain registers and modules by size or address
+        * automatically manage registers that span multiple memory units
+        * arbitrary number of memory unit bits (but constant across the register map)
+        * arbitrary number of address bits (but constant across the register map)
+        * automatically avoid allocating register/module addresses to page registers
+        
+        ## Installation
+        
+        The simplest way to acquire ``registerMap`` is using ``pip``.
+        
+            pip install registerMap
+        
+        ## Documentation
+        
+        Head over to [readthedocs](http://registermap.readthedocs.io/)
+        
+Keywords: registermap buildtools development hardware digital register
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: System :: Hardware
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5

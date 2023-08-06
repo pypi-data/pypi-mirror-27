@@ -1,0 +1,32 @@
+image: registry.gitlab.com/blueskyjunkie/gitlabci-python-build:5
+
+stages:
+  - build
+  - test
+  - deploy
+
+
+buildPackage:
+  stage: build
+  script:
+    - /bin/sh -c "/venv/bin/python3 setup.py bdist_wheel"
+  artifacts:
+    paths:
+      - build/*
+      - dist/*.whl
+
+
+unitTests:
+  stage: test
+  before_script:
+    - /bin/sh -c "/venv/bin/python setup.py develop"
+  script:
+    - /bin/sh -c "/venv/bin/nosetests --with-cov --logging-level=INFO --cov-report term-missing --cov registerMap"
+
+
+packageInstallTest:
+  stage: test
+  dependencies:
+    - buildPackage
+  script:
+    - /bin/sh -c "/venv/bin/pip3 install dist/registerMap*.whl"
