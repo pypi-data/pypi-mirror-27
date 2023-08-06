@@ -1,0 +1,268 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    color: #404040;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+a:hover {
+    color: orange;
+}
+
+hr {
+    background-color: #d0d0d0;
+    border: none;
+    color: #e0e0e0;
+    height: 1px;
+}
+
+p {
+    margin: 0 0 8px 0;
+}
+
+pre {
+    background-color: #f0f0f0;
+    border: 1px solid #404040;
+    border-radius: 4px;
+    margin: 0;
+    padding: 16px;
+    max-width: 800px;
+}
+
+/* Headings */
+
+h1 {
+    font-size: 32px;
+}
+h2 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 24px;
+}
+h1, h2 {
+    font-weight: 500;
+}
+h1, h2, h3 {
+    margin: 8px 0 16px 0;
+}
+h1:first-child, h2:first-child, h3:first-child {
+    margin-top: 0;
+}
+
+/* Forms */
+
+form {
+    max-width: 512px;
+}
+form .buttons {
+    margin: 16px 0;
+    text-align: right;
+}
+
+form.center {
+    margin: 0 auto;
+}
+form.center .buttons {
+    margin: 16px 0;
+    text-align: center;
+}
+
+form.with-border {
+    border: 1px solid #404040;
+    border-radius: 2px;
+    padding: 8px;
+}
+
+button, input[type="submit"] {
+    border: 1px solid gray;
+    border-radius: 2px;
+    color: #404040;
+    cursor: pointer;
+    margin: 0;
+    padding: 4px;
+}
+
+button.danger, input[type="submit"].danger {
+    background-color: lightpink;
+    border-color: darkred;
+    color: darkred;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+}
+
+textarea {
+    height: 200px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Navigation */
+
+ul.nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0 8px;
+}
+ul.nav > li,
+ul.nav > li > form {
+    margin: 0;
+    padding: 0;
+}
+
+ul.nav > li > a,
+ul.nav > li > span,
+ul.nav > li > form > input[type="submit"] {
+    background-color: transparent;
+    border: none;
+    color: #404040;
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 8px;
+    text-decoration: none;
+}
+
+ul.nav > li > span {
+    cursor: auto;
+}
+
+ul.nav > li > a:hover,
+ul.nav > li > form > input[type="submit"]:hover {
+    background-color: #f0f0f0;
+    color: #202020;
+}
+
+ul.nav > li > form > input[type="submit"].danger {
+    background-color: lightpink;
+    border-radius: 0;
+    color: darkred;
+}
+ul.nav > li > form > input[type="submit"]:hover.danger {
+    color: #202020;
+    background-color: pink;
+}
+
+ul.nav.nav-right {
+    justify-content: flex-end;
+}
+
+ul#meta-nav > li > a,
+ul#meta-nav > li > span,
+ul#meta-nav > li > form > input[type="submit"] {
+    font-size: 14px;
+}
+
+ul#main-nav {
+    border-bottom: 1px solid #e0e0e0;
+}
+ul#bottom-nav {
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Page structure & layout */
+
+header, footer, #content, #flash {
+    padding: 16px;
+}
+
+#page-title {
+    margin: 0;
+    padding: 16px;
+    padding-bottom: 0;
+}
+
+header,
+header * {
+    background-color: #404040;
+    color: #f8f8f8;
+}
+
+header a,
+header a:hover {
+    color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+footer {
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+}
+footer * {
+    color: #606060;
+    font-size: 13px;
+}
+
+.small {
+    font-size: 13px;
+}
+
+ul.flash {
+    background-color: lightblue;
+    border: 1px solid darkblue;
+    border-radius: 4px;
+    color: darkblue;
+    margin: 16px;
+    padding: 0;
+    list-style: none;
+}
+ul.flash > li {
+    padding: 4px 8px;
+}
+
+ul.flash.error {
+    background-color: lightpink;
+    border-color: darkred;
+    color: darkred;
+}
+
+/* Content */
+
+#content {
+    max-width: 1024px;
+}
+
+#content > h3 > a {
+    color: #404040;
+    text-decoration: none;
+}
+
+/* Grids */
+
+.row,
+.column {
+    display: grid;
+    grid-row-gap: 16px;
+    grid-column-gap: 16px;
+}
+
+.row > *,
+.column > * {
+    display: block;
+}
+
+/* Alerts */
+
+.danger {
+    background-color: lightpink;
+    border: 1px solid darkred;
+    border-radius: 2px;
+    color: darkred;
+    padding: 8px;
+}
