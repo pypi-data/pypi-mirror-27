@@ -1,0 +1,14 @@
+
+[async]
+aioredis
+
+[sync]
+redis
+
+[testing]
+pytest
+coverage
+pytest-cov
+mockredispy-kblin>=2.9.3.3
+mockaioredis>=0.0.10
+pytest-asyncio
