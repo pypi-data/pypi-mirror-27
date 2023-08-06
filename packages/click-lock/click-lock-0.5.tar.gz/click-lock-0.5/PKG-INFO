@@ -1,0 +1,72 @@
+Metadata-Version: 1.1
+Name: click-lock
+Version: 0.5
+Summary: Adds locks and timeouts to click entrypoints
+Home-page: https://github.com/baverman/click-lock/
+Author: Anton Bobrov
+Author-email: baverman@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: click-lock
+        ==========
+        
+        Adds locks and timeouts to `Click <http://click.pocoo.org/>`_ entrypoints.
+        
+        Where is only one function ``click_lock.lock_group`` with the
+        same interface as ``click.group``. You define root group and can
+        use it to declare commands or subgroups:
+        
+        .. code:: python
+        
+            # example.py
+            import click
+            from click_lock import lock_group
+        
+            cli = lock_group()
+        
+            @cli.command()
+            @click.argument('seconds', type=int)
+            def wait(seconds):
+                """Wait for particular amount of seconds"""
+                import time
+                time.sleep(seconds)
+        
+            cli()
+        
+        Now you have some additional options::
+        
+            Usage: example.py [OPTIONS] COMMAND [ARGS]...
+        
+            Options:
+              --lock fname          Path to lock file
+              --timeout seconds     Limit script execution time
+              --trace / --no-trace  Log traceback in case of timeout  [default: True]
+              --help                Show this message and exit.
+        
+            Commands:
+              wait  Wait for particular amount of seconds
+        
+        For example, lock script execution::
+        
+            python example.py --lock /tmp/example.lck wait 10
+        
+        Limit script execution::
+        
+            python example.py --timeout 5 wait 10
+        
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Internet
+Classifier: Topic :: System :: Distributed Computing
+Classifier: Topic :: System :: Systems Administration
