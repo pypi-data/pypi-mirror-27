@@ -1,0 +1,44 @@
+Metadata-Version: 2.0
+Name: NIWLittleUtils
+Version: 0.1.0.dev10
+Summary: NIWLittleUtils is a tool collection.
+Home-page: https://bitbucket.org/birdhackor/niwlittleutils
+Author: NIWyclin (a.k.a. birdhackor)
+Author-email: NIWLittleUtils@mymail.niwyclin.org
+License: LGPLv3
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: scandir; python_version < "3.5"
+
+NIWLittleUtils
+==============
+
+State: |built_state| |version_state| |license_state|
+
+Documentation: https://niwlittleutils.readthedocs.org/
+
+Repo: https://bitbucket.org/birdhackor/niwlittleutils
+
+.. |built_state| image:: https://api.shippable.com/projects/542a36e280088cee586d09c4/badge?branchName=master
+   :target: https://app.shippable.com/projects/542a36e280088cee586d09c4/builds/latest
+.. |version_state| image:: https://img.shields.io/pypi/v/NIWLittleUtils.svg?style=flat-square
+   :target: https://pypi.python.org/pypi/NIWLittleUtils
+.. |license_state| image:: https://img.shields.io/pypi/l/NIWLittleUtils.svg?style=flat-square
+
+Intro
+=====
+NIWLittleUtils is a tool collection that contain some useful module and function.
+
+Read the docs at http://niwlittleutils.readthedocs.org/
+
+This library is a work in progress.  Please give feedback!
+
+
