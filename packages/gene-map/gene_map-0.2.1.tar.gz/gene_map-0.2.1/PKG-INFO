@@ -1,0 +1,72 @@
+Metadata-Version: 1.1
+Name: gene_map
+Version: 0.2.1
+Summary: Map gene ids using uniprot's website.
+Home-page: https://github.com/kpj/gene_map
+Author: kpj
+Author-email: kpjkpjkpjkpjkpjkpj@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: gene\_map
+        =========
+        
+        |PyPI|
+        
+        Tool for converting between various gene ids.
+        
+        Installation
+        ------------
+        
+        .. code:: bash
+        
+            $ pip install gene_map
+        
+        Usage
+        -----
+        
+        .. code:: bash
+        
+            $ gene_map --help
+            Usage: gene_map [OPTIONS]
+        
+              Map gene ids between various formats.
+        
+            Options:
+              -i, --input TEXT   If it exists, treated as file with whitespace-separated
+                                 gene ids. Otherwise treated as a gene id itself.
+                                 [required]
+              --from TEXT        Source ID type.  [required]
+              --to TEXT          Target ID type.  [required]
+              -o, --output TEXT  CSV-file to save result to.
+              --help             Show this message and exit.
+        
+        Getting started
+        ---------------
+        
+        Inputs can be either gene ids or files containing whitespace-separated
+        gene ids:
+        
+        .. code:: bash
+        
+            $ cat mygenes.txt
+            P63244 P08246
+            P68871
+            $ gene_map -i P35222 -i InvalidID -i mygenes.txt -i P04637 --from ACC --to Gene_Name
+            ID_from,ID_to
+            P35222,CTNNB1
+            InvalidID,
+            P63244,RACK1
+            P08246,ELANE
+            P68871,HBB
+            P04637,TP53
+        
+        .. |PyPI| image:: https://img.shields.io/pypi/v/gene_map.svg?style=flat
+           :target: https://pypi.python.org/pypi/gene_map
+        
+Keywords: vydia video playback
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3 :: Only
