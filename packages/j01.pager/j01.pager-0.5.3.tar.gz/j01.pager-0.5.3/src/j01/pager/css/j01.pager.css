@@ -1,0 +1,54 @@
+.j01Pager {
+  height: 24px;
+  color: #a5a5a5;
+}
+.j01Pager a {
+  line-height: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0 7px;
+  margin: 0;
+  float: left;
+}
+.j01Pager div.first {
+  top: 0;
+  float: left;
+}
+.j01Pager div.batch {
+  overflow: hidden;
+  float: left;
+}
+.j01Pager div.last {
+  left: 0;
+  float: left;
+}
+.j01Pager span {
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+}
+.j01Pager span.current {
+  cursor: default;
+  font-weight: bold;
+  padding: 0 7px;
+  margin: 0;
+  float: left;
+}
+.j01Pager span.previous,
+.j01Pager span.next {
+  width: 20px;
+  text-align: center;
+  float: left;
+}
+.j01Pager ul {
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.j01Pager ul li {
+  display: inline;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
