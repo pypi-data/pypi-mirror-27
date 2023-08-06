@@ -1,0 +1,26 @@
+Este módulo irá realizar o envio de e-mail a partir do smtplib.
+
+Para conseguir realizar o envio, é necessário criar seu arquivo de configuração dentro do home do usuário, da seguinte forma:
+
+~/config/config.yml
+
+O arquivo config.yml, deve conter o seguinte conteúdo:
+
+smtp:
+  server: <server>
+  port: <port>
+  user: <email>
+  password: <password>
+  env: prod
+
+Abaixo temos um exemplo da utilização deste módulo:
+
+
+msg = Email()
+msg.email = ['user@message.com.br', 'user2@message.com']
+msg.subject = 'subject'
+msg.mensagem = 'Test message'
+msg.sendmail()
+
+
+
