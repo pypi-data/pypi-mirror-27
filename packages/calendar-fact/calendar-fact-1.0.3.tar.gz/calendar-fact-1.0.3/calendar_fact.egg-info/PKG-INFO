@@ -1,0 +1,63 @@
+Metadata-Version: 1.2
+Name: calendar-fact
+Version: 1.0.3
+Summary: Generate calendar fact from xkcd.com/1930
+Home-page: https://gitlab.com/uda/calendar-fact
+Author: Yehuda Deutsch
+Author-email: yeh@uda.co.il
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Calendar fact
+        =============
+        
+        Taken from `xkcd.com/1930 <https://xkcd.com/1930/>`__, this command
+        generates calendar facts. Useful for MODs, head or foot lines in apps
+        etc.
+        
+        Installation
+        ------------
+        
+        Install by running:
+        
+        .. code:: shell
+        
+            pip install calendar-fact
+        
+        Usage in shell
+        --------------
+        
+        Run:
+        
+        .. code:: shell
+        
+            calendar-fact
+        
+        Usage in code
+        -------------
+        
+        .. code:: python
+        
+            from calendar_fact import get_fact
+        
+            new_fact = get_fact()
+        
+        License
+        -------
+        
+        The code is released under the MIT license.
+        
+        The texts are released under the CC-BY-NC 2.5 license as explained at
+        `XKCD's license <https://xkcd.com/license.html>`__ page.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.6
