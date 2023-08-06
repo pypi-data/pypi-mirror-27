@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>LMC Viewer</title>
+
+    <style>
+${BOOTSTRAP_CSS}
+    </style>
+    <style>
+${LMC_VIEWER_CSS}
+    </style>
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>LMC Viewer</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group wr-only">
+            <label>
+              <input class="wr-side-by-side" type="checkbox">
+              Side-by-side
+            </label>
+          </div>
+          <div class="input-group entropy-only">
+            <label>
+              Log-prob minimum
+              <input class="entropy-min" type="number" max="0", value="-10">
+            </label>
+          </div>
+          <div class="results"></div>
+          <pre class="wr-settings wr-only"></pre>
+          <div class="detail"></div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="pretty"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+${JQUERY_JS}
+    </script>
+    <script type="text/javascript">
+${BOOTSTRAP_JS}
+    </script>
+    <script type="text/javascript">
+${D3_JS}
+    </script>
+    <script type="text/javascript">
+${LMC_VIEWER_JS}
+    </script>
+    <script type="text/javascript">
+      $$(function () {
+          ${LMC_SETUP}
+      });
+    </script>
+  </body>
+</html>
