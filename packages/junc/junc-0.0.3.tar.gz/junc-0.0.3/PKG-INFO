@@ -1,0 +1,50 @@
+Metadata-Version: 1.1
+Name: junc
+Version: 0.0.3
+Summary: Connect to servers easily
+Home-page: https://github.com/llamicron/junc
+Author: Luke Sweeney
+Author-email: llamicron@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: # Junc (Short for Junction)
+        ## SSH to servers easily
+        ```bash
+        # Connect to a raspberry pi
+        $ junc connect my_rpi
+        # Connect to an AWS EC2
+        $ junc connect my_ec2
+        
+        # Connect to anything with an ip
+        ```
+        
+        ## Usage
+        ```bash
+        # Add a server
+        $ junc add [server_name] [username]@[ip]
+        # OR
+        $ junc add
+        Name: [server_name]
+        Username: [username]
+        IP: [ip]
+        
+        # See all your servers
+        $ junc list
+        # TODO: Add a server table here
+        
+        $ junc connect [server_name]
+        Connecting...
+        # OR
+        $ junc connect
+        Name: [server_name]
+        Connecting...
+        ```
+        
+        
+Keywords: connect ip ssh pipe raspberry pi rpi raspberry-pi ec2 server
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
