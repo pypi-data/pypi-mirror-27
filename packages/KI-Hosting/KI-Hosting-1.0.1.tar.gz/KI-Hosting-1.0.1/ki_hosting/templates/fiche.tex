@@ -1,0 +1,57 @@
+\documentclass{ki019}
+
+\usepackage[T1]{fontenc}
+\usepackage{array}
+
+\newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
+
+\newenvironment{tableau}[1]{
+\LARGE #1\\
+\vspace{0.4cm}
+\begin{tabular}{|K{5cm}|K{10cm}|}
+}
+{
+\end{tabular}
+\vspace{0.5cm}
+}
+
+\BLOCK{ if draft }
+\usepackage{draftwatermark}
+\SetWatermarkLightness{0.75}
+\SetWatermarkAngle{40}
+\SetWatermarkScale{2}
+\SetWatermarkFontSize{2cm}
+\SetWatermarkText{Draft for approval}
+\BLOCK{ endif }
+
+\begin{document}
+
+\pagestyle{empty}
+
+\noindent
+
+\section{\VAR{title}}
+
+\begin{center}
+
+\BLOCK{ for table in tables }
+\VAR{table}
+
+\BLOCK{ endfor }
+\end{center}
+
+\vspace{-0.5cm}
+\noindent
+\VAR{footnote}
+
+\BLOCK{ if not draft and not ki }
+\vspace{0.5cm}
+\Large
+\begin{tabular}{p{6cm}p{9.5cm}}
+Signature du RSI & Signature du responsable hébergement du KI
+\end{tabular}
+\BLOCK{ endif }
+
+\Footer{\today}
+
+\end{document}
