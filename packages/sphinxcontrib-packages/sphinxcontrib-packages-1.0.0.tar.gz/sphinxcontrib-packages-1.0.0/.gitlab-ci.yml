@@ -1,0 +1,6 @@
+image: paternal/pythons
+
+tox:
+  script:
+    - tox
+  coverage: '/.*sphinxcontrib-packages.*\s(\d+)\%$/'
