@@ -1,0 +1,77 @@
+Metadata-Version: 2.0
+Name: django-includes
+Version: 0.2.1
+Summary: Include django views as a subparts of other django views, using either HTTP (with esi or hinclude) or direct render.
+Home-page: https://github.com/hartym/django-includes
+Author: Romain Dorgueil
+Author-email: romain@dorgueil.net
+License: Apache License, Version 2.0
+Download-URL: https://github.com/hartym/django-includes/archive/0.2.1.tar.gz
+Platform: UNKNOWN
+Requires-Dist: CacheControl (~=0.12)
+Requires-Dist: PyJWT (~=1.5)
+Requires-Dist: django (>=1.10)
+Requires-Dist: requests (~=2.18)
+Provides-Extra: dev
+Requires-Dist: coverage (<5.0,>=4.4); extra == 'dev'
+Requires-Dist: pytest (<4.0,>=3.1); extra == 'dev'
+Requires-Dist: pytest-cov (<3.0,>=2.5); extra == 'dev'
+Requires-Dist: yapf; extra == 'dev'
+
+django-includes
+===============
+
+Experimental software. There is no tests, no documentation, use it are your own risks (or don't).
+
+Currently testing that with django 2 and python 3.5+ only, which will be the only supported target.
+
+Install
+:::::::
+
+* Add 'django_includes' to INSTALLED_APPS.
+* Add DjangoIncludesExtension to Jinja2 environment.
+
+.. code-block:: python
+
+    from django_includes.jinja2 import DjangoIncludesExtension
+
+    def environment(**options):
+        env = Environment(**options)
+
+        # your logic here
+
+        env.add_extension(DjangoIncludesExtension)
+
+        return env
+
+* Use `{{ render_sync(request, 'mused.views.MusicGroupListView', musicgenre=object) }}` in templates.
+
+Now, that's only the "synchronous render",
+
+Install hinclude
+::::::::::::::::
+
+If you wanna use hinclude (a simple javascript that loads asynchronously some part of your page):
+
+Add hinclude url to your project:
+
+.. code-block:: python
+
+    from django_includes.views import include_view
+
+    urlpatterns += [
+        path('hinclude/<token>', include_view, kwargs={'via': 'hinclude'}, name='hinclude')
+    ]
+
+Add hinclude to your layout
+
+.. code-block:: html
+
+    <html lang="en" xmlns:hx="http://purl.org/NET/hinclude">
+    <head>
+        <script src="{{ static('hinclude.js') }}"></script>
+
+* Use `{{ render_hinclude(request, 'mused.views.MusicGroupListView', musicgenre=object) }}` in templates.
+
+Note that this will use json web tokens to encode the parameters, using your django secret as a "seed" for encryption.
+
