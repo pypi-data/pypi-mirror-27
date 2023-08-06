@@ -1,0 +1,8 @@
+filters>=1.2.2
+six
+
+[:python_version < "3.0"]
+Django<2.0
+
+[:python_version >= "3.0"]
+Django
