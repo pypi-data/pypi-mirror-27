@@ -1,0 +1,11 @@
+[console_scripts]
+b6_verifier = bio_utils.verifiers.b6:main
+binary_guesser = bio_utils.verifiers.binary:main
+fasta_verifier = bio_utils.verifiers.fasta:main
+fastq_verifier = bio_utils.verifiers.fastq:main
+filter_b6_evalue = bio_utils.blast_tools.filter_b6_evalue:main
+gff3_verifier = bio_utils.verifiers.gff3:main
+retrieve_query_sequences = bio_utils.blast_tools.retrieve_query_sequences:main
+retrieve_subject_sequences = bio_utils.blast_tools.retrieve_subject_sequences:main
+sam_verifier = bio_utils.verifiers.sam:main
+
