@@ -1,0 +1,17 @@
+Transaction:
+  label: "Transaction"
+  extends: Interval
+  icon: fa-money
+  properties:
+    from:
+      label: "From (eg. payer)"
+      type: entity
+      schema: LegalEntity
+    to:
+      label: "To (eg. beneficiary)"
+      type: entity
+      schema: LegalEntity
+    asset:
+      label: "Asset"
+      type: entity
+      schema: Asset
