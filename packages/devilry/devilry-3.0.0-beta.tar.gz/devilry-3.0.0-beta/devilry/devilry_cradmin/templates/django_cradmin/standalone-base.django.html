@@ -1,0 +1,19 @@
+{% extends "django_cradmin/standalone-base-internal.django.html" %}
+{% load static %}
+
+{% block styles %}
+    {{ block.super }}
+    {% include "devilry_theme3/favicons.django.html" %}
+{% endblock styles %}
+
+{% block global-pre-body %}
+{#    {% if request.user.is_authenticated %}#}
+{#        {% include "devilry_header/header2include.django.html" with devilry_header2_role=request.cradmin_instance.devilry_rolename %}#}
+{#    {% endif %}#}
+{% endblock global-pre-body %}
+
+{% block global-bodyclass %}
+    {% if request.devilryrole_type %}
+        devilry-body-{{ request.devilryrole_type }}
+    {% endif %}
+{% endblock global-bodyclass %}
