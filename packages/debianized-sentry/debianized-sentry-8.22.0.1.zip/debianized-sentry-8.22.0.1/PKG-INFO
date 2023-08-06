@@ -1,0 +1,48 @@
+Metadata-Version: 1.1
+Name: debianized-sentry
+Version: 8.22.0.1
+Summary: Debian packaging for Sentry, a modern realtime error logging and aggregation platform.
+Home-page: https://github.com/1and1/debianized-sentry#sentry-debian-packaging
+Author: Juergen Hermann
+Author-email: jh@web.de
+License: BSD 3-clause
+Description: | Copyright ©  2017 1&1 Group
+        | BSD 3-clause license, see LICENSE for details.
+        |
+        | Copyright (c) 2017 Sentry (https://sentry.io) and individual contributors.
+        | All rights reserved.
+        
+        This puts the ``sentry`` Python package and its dependencies as released
+        on PyPI into a DEB package, using ``dh-virtualenv``.
+        The resulting *omnibus package* is thus easily installed to and removed
+        from a machine, but is not a ‘normal’ Debian ``python-*`` package.
+        Services are controlled by ``systemd`` units.
+        
+        The final package includes the official ``sentry-plugins`` and some other
+        commonly needed plugins.
+        
+        See the `GitHub README`_ for more.
+        
+        .. _`GitHub README`: https://github.com/1and1/debianized-sentry#sentry-debian-packaging
+        
+        
+        The Sentry package fundamentally is just a simple server and web UI.
+        It will handle authenticating clients (such as Raven) and all of
+        the logic behind storage and aggregation.
+        
+        That said, Sentry is not limited to Python. The primary implementation
+        is in Python, but it contains a full API for sending events from any
+        language, in any application.
+Keywords: debian-packages,dh-virtualenv,sentry,deployment,devops,omnibus-packages
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: System :: Monitoring
+Classifier: Topic :: System :: Logging

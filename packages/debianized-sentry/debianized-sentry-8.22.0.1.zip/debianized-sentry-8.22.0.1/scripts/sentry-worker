@@ -1,0 +1,9 @@
+#! /bin/bash
+#
+# Helper to launch Sentry Worker Service.
+
+. /etc/default/sentry
+. /opt/venvs/sentry/bin/activate
+export SENTRY_CONF
+
+/usr/bin/sentry run worker -l "$SENTRY_LOGLEVEL_WORKER"
