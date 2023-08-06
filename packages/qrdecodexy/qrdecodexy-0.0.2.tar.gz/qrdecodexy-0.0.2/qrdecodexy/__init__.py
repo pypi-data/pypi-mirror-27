@@ -1,0 +1,1 @@
+from .qrdecodexy import *
