@@ -1,0 +1,66 @@
+Metadata-Version: 1.0
+Name: js.videojs
+Version: 6.6.0
+Summary: Fanstatic packaging of Video.js
+Home-page: UNKNOWN
+Author: Fanstatic Developers
+Author-email: fanstatic@googlegroups.com
+License: BSD
+Description: js.videojs
+        **********
+        
+        Introduction
+        ============
+        
+        This library packages `Video.js`_ for `fanstatic`_.
+        
+        .. _`fanstatic`: http://fanstatic.org
+        .. _`Video.js`: http://www.videojs.com/
+        
+        This requires integration between your web framework and ``fanstatic``,
+        and making sure that the original resources (shipped in the ``resources``
+        directory in ``js.videojs``) are published to some URL.
+        
+        
+        How to use?
+        ===========
+        
+        You can import videojs from ``js.videojs`` and ``need`` it where you want
+        these resources to be included on a page::
+        
+          >>> from js.videojs import videojs
+          >>> videojs.need()
+        
+        CHANGES
+        *******
+        
+        6.6.0 (2017-12-20)
+        ==================
+        
+        - Update to v6.6.0
+        
+        
+        5.13.2 (2016-11-21)
+        ===================
+        
+        - Update to 5.13.2.
+        
+        
+        5.10.2 (2016-05-19)
+        ===================
+        
+        - Updated to 5.10.2
+        
+        
+        5.1.0 (2015-11-12)
+        ==================
+        
+        - Updated to 5.1.0
+        
+        
+        4.5.1 (2014-04-04)
+        ==================
+        
+        - Initial release.
+        
+Platform: UNKNOWN
