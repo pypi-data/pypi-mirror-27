@@ -1,0 +1,213 @@
+Metadata-Version: 1.1
+Name: pyXMLSecurity
+Version: 0.17
+Summary: pure Python XML Security
+Home-page: http://blogs.mnt.se
+Author: Leif Johansson
+Author-email: leifj@sunet.se
+License: BSD
+Description: python XML Security
+        ===================
+        
+        .. image:: https://img.shields.io/travis/leifj/pyXMLSecurity.svg
+           :target: https://travis-ci.org/leifj/pyXMLSecurity
+           :alt: Travis Build
+        .. image:: https://img.shields.io/coveralls/leifj/pyXMLSecurity.svg
+           :target: https://coveralls.io/r/leifj/pyXMLSecurity?branch=master
+           :alt: Coverage
+        .. image:: https://img.shields.io/requires/github/leifj/pyXMLSecurity.svg
+           :target: https://requires.io/github/leifj/pyXMLSecurity/requirements/?branch=master
+           :alt: Requirements Status
+        .. image:: https://img.shields.io/codeclimate/github/leifj/pyXMLSecurity.svg
+           :target: https://codeclimate.com/github/leifj/pyXMLSecurity
+           :alt: Code Climate
+        .. image:: https://img.shields.io/pypi/l/pyXMLSecurity.svg
+           :target: https://github.com/leifj/pyXMLSecurity/blob/master/LICENSE.txt
+           :alt: License
+        .. image:: https://img.shields.io/pypi/format/pyXMLSecurity.svg
+           :target: https://pypi.python.org/pypi/pyXMLSecurity
+           :alt: Format
+        .. image:: https://img.shields.io/pypi/v/pyXMLSecurity.svg
+           :target: https://pypi.python.org/pypi/pyXMLSecurity
+           :alt: PyPI Version
+        
+        This is a python implementation of XML-Security - XML-DSIG only right now. There are no
+        dependencies except lxml currently.
+        
+        This code was inspired by https://github.com/andrewdyates/xmldsig (this implementation is
+        a refactor and extension of that implementation) and includes a pure-python RSA implementation
+        https://github.com/andrewdyates/rsa_x509_pem by and with permission from Andrew Yates.
+        
+        In order to sign with a PKCS#11-module you need to install pykcs11 (http://www.bit4id.org/pykcs11/)
+        
+        This package is available under the NORDUnet BSD license (cf LICENSE.txt)
+        
+        Limitations:
+        
+        - only support for enveloped signatures
+        - only support for RSA-SHA1 signatures
+        - no encryption support
+        
+        Some of those limitations might be addressed. Patches and pull-requests are most welcome!
+        
+        
+        News
+        ====
+        
+        0.1
+        ---
+        
+        *Release date: UNRELEASED*
+        
+        * This is the first unreleased version of the code
+        * http://github.com/leifj/pyXMLSecurity
+        
+        0.2
+        ---
+        
+        *Release date: Mon Aug 27 12:42:45 CEST 2012*
+        
+        * more rubust algorithm uri parsing
+        * support for "#"-style IDs
+        * partial support for <Transform/> elts with child-elements
+        * make all exceptions an XMLSecException
+        * first draft: sign
+        * various cleanups
+        
+        0.3
+        ---
+        
+        *Release date: Tue Aug 28 09:46:47 CEST 2012*
+        
+        * handle #-style references (remove top-level comments and PIs)
+        * don't unescape &amp; &lt; and &gt;
+        * don't give empty inclusive ns prefix list to c14n
+        * move exception to separate file
+        * first version of the pkcs11 shim layer
+        
+        0.4
+        ---
+        
+        *Release date: Wed Aug 29 12:43:05 CEST 2012*
+        
+        * starting on tests
+        * cleanup pkcs11 layer
+        * various bugfixes and cleanup
+        
+        0.5
+        ---
+        
+        *Release date: Wed Sep  5 11:52:58 CEST 2012*
+        
+        * Fix bug when signing using non-p11 keys
+        * More robust PEM-unfolding
+        
+        0.6
+        ---
+        
+        *Release date: Fri Nov 30 10:29:03 CET 2012*
+        
+        * Allow Reference@URI to be passed as argument
+        
+        0.7
+        ---
+        
+        *Release date: Mon Feb  4 15:53:32 CET 2013*
+        
+        * Minor fixes
+        
+        0.8
+        ---
+        
+        *Release date: Wed Apr  3 09:05:53 CEST 2013*
+        
+        * Multiple bugfixes
+        * More SAML and P11 testcases
+        
+        0.9
+        ---
+        
+        *Release date: Mon Jun 24 11:24:20 CEST 2013*
+        
+        * Bugfixes
+        * Protection against wrapping attacks (new API!)
+        
+        0.10
+        ------
+        
+        *Release date: Thu Sep 12 20:16:04 CEST 2013*
+        
+        * fix PEM parser bug
+        * switch to semantic versioning
+        
+        0.11
+        ------
+        
+        *Release date: Fri Oct 11 17:06:53 CEST 2013*
+        
+        * better control over the position of the signature element
+        
+        0.12
+        ----
+        
+        *Release date: Wed Dec  4 15:00:29 CET 2013*
+        
+        * use pyconfig to control configuration parameters
+        * support sha2 algorithms
+        * several bugfixes for c14n
+        
+        0.13
+        ----
+        
+        *Release date: lör 22 mar 2014 10:44:49 CET*
+        
+        * various unicode fixes related to pkcs#11
+        * skip certain tests unless opensc is installed
+        * use existing SignatureValue if present
+        * various fixes from Fredrik T and Maya W
+        
+        0.14
+        ----
+        
+        *Release date: Mon Dec  1 08:58:54 CET 2014*
+        
+        * Add explicit call to C_Initialize
+        * Various bugs fixed - from Fredrik T
+        * Allow caller control over session close
+        
+        0.15
+        ----
+        
+        *Release date: mån 16 nov 2015 13:40:26 CET*
+        
+        * xmlsign: a simple sign cmdline tool
+        * optionally drop signatures when validating
+        * avoid logging keysize in p11 case
+        * put a lock around pyasn1 parser
+        * make cert loading thread safe
+        * bugfixes
+        
+        0.16
+        ----
+        
+        *Release ons 13 dec 2017 21:10:29 CET*
+        
+        * crypto abstraction
+        * switch to sha256 default
+        * verify and sign cmdline tools
+        * lots of bugfixes
+        
+        0.17
+        ----
+        
+        *Release tor 14 dec 2017 12:27:48 CET*
+        
+        * fix base64 bug
+        * fix bug in cmdline verify serialization
+        
+Keywords: xml xml-dsig security digital signature rsa
+Platform: UNKNOWN
+Requires: defusedxml
+Requires: lxml
+Requires: pyconfig
+Requires: requests
