@@ -1,0 +1,290 @@
+#!/usr/bin/env python
+
+import os
+import subprocess
+import time
+import logging
+import socket
+import sys
+
+import shade
+
+from nova_ha_monitor.config import ConsulComputeConfig
+from nova_ha_monitor.config import ConsulHAConfig
+
+from nova_ha_utils import mdadm
+from nova_ha_utils import block
+from nova_ha_utils import util
+
+from pyghmi.ipmi import command as ipmi_command
+
+from retrying import retry
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+
+#public interface is only the run method
+#don't want to prefix everything with _
+
+# !!!!! WE SHOULDN'T GENERALY USE DEV PATHs AS THESE ARE TRAINSIENT
+#       AND DIFFERENT ON RECOVERED NODE AND HA NODE
+
+# Returns runtime_info dict, see scripts/runtime_info
+# Example:
+# {
+#     "hw_model": "Supermicro", 
+#     "md_arrays": {
+#         "588d89c9:f60a576a:c703a4dc:3d71c5f3": {
+#             "devices": {
+#                 "35000cca04dab44fc": {
+#                     "type": "scsi", 
+#                     "uuid": "35000cca04dab44fc"
+#                 }, 
+#                 "35000cca04dab5958": {
+#                     "type": "scsi", 
+#                     "uuid": "35000cca04dab5958"
+#                 }, 
+#                 "35000cca04dab607c": {
+#                     "type": "scsi", 
+#                     "uuid": "35000cca04dab607c"
+#                 }, 
+#                 "35000cca04dab80cc": {
+#                     "type": "scsi", 
+#                     "uuid": "35000cca04dab80cc"
+#                 }
+#             }, 
+#             "level": "raid10", 
+#             "name": "lab-node1:md1", 
+#             "num_devices": "4", 
+#             "state": "clean", 
+#             "uuid": "588d89c9:f60a576a:c703a4dc:3d71c5f3"
+#         }
+#     }, 
+#     "time": {
+#         "datetime": "2017-07-13 15:38:39", 
+#         "timestamp": 1499953119.827288
+#     }
+# }
+@retry(wait_fixed=2000, stop_max_attempt_number=3)
+def get_consul_host_info(consul_conf):
+    return consul_conf.get_runtime_config()
+
+@retry(wait_fixed=2000, stop_max_attempt_number=3)
+def bmc_server_power_down_failsafe(consul_conf):
+    bmc_info = {
+        'bmc': consul_conf.get_bmc_ip(),
+        'userid': consul_conf.get_bmc_user(),
+        'password': consul_conf.get_bmc_password(),
+        'port': 623
+    }
+
+    ipmi_cmd = ipmi_command.Command(**bmc_info)
+
+    if ipmi_cmd.get_power()['powerstate'] == 'on':
+        ipmi_cmd.set_power('off')
+        time.sleep(10) # TODO: is this enough? how does 'powerstate' change?
+        if ipmi_cmd.get_power()['powerstate'] == 'on':
+            raise Exception('Node was not powered down.')
+
+@retry(wait_fixed=2000, stop_max_attempt_number=1)
+def wait_nova_host_down(os_client, failed_node):
+    for hypervisor in os_client.list_hypervisors():
+        # we should probably work with openstack ids
+        # not hypervisor hostnames - that could be dangerous
+        if hypervisor['hypervisor_hostname'] == failed_node:
+            if hypervisor['state'] == 'down':
+                return
+            else:
+                raise Exception('Nova node not in state "down"')
+    raise Exception('Nova hypervisor with given hostname was not found.')
+
+# failasafe methods are those which do idempotent operation
+#  and validate result
+@retry(wait_fixed=2000, stop_max_attempt_number=5)
+def ha_node_nova_enable_failsafe(os_client, ha_node):
+    os_client.nova_client.services.enable(ha_node, 'nova-compute')
+
+    time.sleep(3)
+
+    for hypervisor in os_client.list_hypervisors():
+        if hypervisor['hypervisor_hostname'] == ha_node:
+            if hypervisor['state'] == 'up' and\
+               hypervisor['status'] == 'enabled':
+                return None
+            else:
+                raise Exception('Enabled HA hypervisor not in "UP" state')
+    raise Exception('unexpected')
+
+# Identify failed node and make sure that only one HA node will
+#  enter critical section by using Consul locks.
+@retry(wait_fixed=2000, stop_max_attempt_number=1)
+def pick_recovery_target(ha_node):
+    #FIXME: Replace by python only implementation.
+    #       consul.kv.put(acquire=sessionid) to use consul k/v lock.
+    script = 'pick_recovery_target'
+    stdout = subprocess.check_output(['/opt/consul/bin/consul',
+                                      'lock',
+                                      '-try',
+                                      '4s',
+                                      'ha_cluster/lock',
+                                      script,
+                                      '-n',
+                                      ha_node])
+
+    # we should use some sane wire format - json maybe, 
+    # instead of totally custom <outout></output>
+    output = [x.split('<output>')[1] for x in stdout.splitlines() if len(x.split('<output>')) == 3]
+
+    if len(output) != 1:
+        raise Exception('Unexpected pick_recovery_target_output: {}'.format(output))
+    
+    if output[0] == 'nothing_picked':
+        logging.info('No recovery target found or already migrating, exitting.')
+        return None
+    else:
+        return output[0]
+
+# Check if we can see failed node disk wwns on a local ha node.
+# TODO: document this function, rename vars (checks if HA node sees all disks which are raid10 on railed node made of)
+def check_remote_array_availability(failed_node_info, scsi_dev_map):
+    if len(failed_node_info['md_arrays']) != 1:
+        raise Exception("Unexpected number of raid10s")
+    for array in failed_node_info['md_arrays'].values():
+        # TODO: We need to identify nova-vm raid with more than a type (uuid maybe ?)
+        if array['level'] == 'raid10':
+            for dev in array['devices'].values():
+                if dev['uuid'] not in scsi_dev_map:
+                    logging.error('Devices with required UUIDs are not present in scsi dev map.')
+                    raise Exception('Devices with required UUIDs are not present in scsi dev map.')
+
+# We could improve failsafe check by instrumenting
+# the ha_node if it took over particular machine
+@retry(wait_fixed=2000, stop_max_attempt_number=5)
+def evacuate_host_failsafe(os_client, ha_node, failed_node):
+    hypervisors = os_client.nova_client.hypervisors.search(failed_node, servers=True)
+    logging.info('ha-node: %s, failed_node: %s, hypervisors selected: %s', ha_node,
+                 failed_node, hypervisors)
+
+    for hyper in hypervisors:
+        if hasattr(hyper, 'servers'):
+            for server in hyper.servers:
+                logging.info('HA node %s is evacuating server: %s', ha_node, server)
+                try:
+                    os_client.nova_client.servers.evacuate(server=server['uuid'],
+                                                    host=ha_node, on_shared_storage=True)
+                except:
+                    # FIXME Is pass correct here we are leaving hypervisors
+                    #       in non-determinisc state
+                    pass
+
+# we could improve this method by doing cleanup after
+# failed try to assemle array as it is not really
+# an idempotent operation
+@retry(wait_fixed=2000, stop_max_attempt_number=1)
+def assemble_raid_failsafe(md_uuid):
+    raid_index = 20
+    while True:
+        md_dev_path = "/dev/md{}".format(raid_index)
+        if not os.path.exists(md_dev_path):
+            break
+        raid_index += 1
+
+    # FIXME we should first check and then execute (makes it more reliable
+    #      at least for testing loops and doesnt hurt production)
+    #
+    # if test_mdadm_state:
+    #   mdadm_assemble
+    mdadm.mdadm_assemble_by_uuid(md_uuid,md_dev_path)
+
+    time.sleep(1)
+
+    md_arrays = mdadm.get_md_local_runtime_info_by_uuid()
+    md_state = md_arrays[md_uuid]['state']
+    if md_state == 'active' or md_state == 'clean':
+        #assemble_raid_failsafe.counter += 1
+        return None
+    else:
+        raise "not active"
+
+@retry(wait_fixed=2000, stop_max_attempt_number=1)
+def mount_xfs_on_raid_dev_failsafe(raid, mountpoint):
+    # FIXME we should first check and then execute (makes it more reliable
+    #       at least for testing loops and doesnt hurt production)
+    subprocess.check_output(['/bin/mount',
+                             raid['dev_path'],
+                             mountpoint])
+
+    time.sleep(1)
+
+    mounts = util.get_mounted_filesystems_by_mountpoint()
+
+    mount_dev = mounts[mountpoint]['dev_path']
+    mount_dev_info = block.get_block_device_basic_info(mount_dev)
+    if mount_dev_info['uuid'] == raid['uuid']:
+        return None
+    else:
+        raise Exception('Nova HA instance filesystem not mounted.')
+
+def ha_monitor():
+    # Get consul Compute server config instance
+    ha_conf = ConsulHAConfig(socket.gethostname())
+
+    # Initiate cloud definition
+    os_client = shade.operator_cloud(cloud=ha_conf.get_os_cloud())
+
+    # Get local ha-node wwns we will compare them to list of wwns
+    # from runtime_info from failed node.
+    dev_map = block.get_scsi_device_map_by_wwn()
+
+    # We should introduce fqdn normalization
+    logging.info('Picking recovery target on ')
+    # FIXME: not idempotent 
+    failed_node = pick_recovery_target(ha_conf.node)
+    if not failed_node:
+        sys.exit(0)
+    logging.info('.....picked %s', failed_node)
+
+    # Get consul Compute server config instance
+    conf = ConsulComputeConfig(failed_node)
+
+    logging.info('Getting runtime info from consul')
+    node_info = get_consul_host_info(conf)
+    logging.info('.....got runtime info from consul')
+
+    logging.info('Checking remote array availability')
+    check_remote_array_availability(node_info, dev_map)
+    logging.info('.....arrays available')
+
+    logging.info('STONITH the failed node')
+    bmc_server_power_down_failsafe(conf)
+    logging.info('.....done STONITH')
+
+    logging.info('Waiting failed node appears down in nova')
+    wait_nova_host_down(os_client, conf.node)
+    logging.info('.....nova host down')
+
+    raid = node_info['md_arrays'].values()[0]
+
+    logging.info('Assembling raid10 array UUID: %s', raid['uuid'])
+    # FIXME: not idempotent 
+    assemble_raid_failsafe(raid['uuid'])
+    logging.info('.....done assembling')
+
+    md_raids = mdadm.get_md_local_runtime_info_by_uuid()
+
+    logging.info('Mounting the filesystem')
+    # FIXME: not idempotent 
+    mount_xfs_on_raid_dev_failsafe(md_raids[raid['uuid']], ha_conf.get_nova_mountpoint())
+    logging.info('....done mounting')
+
+    logging.info('Enabling ha node in Nova')
+    ha_node_nova_enable_failsafe(os_client, ha_conf.node)
+    logging.info('.....done enabling')
+
+    logging.info('Evacuating host')
+    evacuate_host_failsafe(os_client, ha_conf.node, conf.node)
+    logging.info('.....done evacuating')
+
+    logging.info('Succesfully executed nova host evacuate')
+
+if __name__ == '__main__':
+    ha_monitor()

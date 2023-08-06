@@ -1,0 +1,63 @@
+#!/usr/bin/env python
+
+import sys
+import os
+import re
+import argparse
+import logging
+
+from nova_ha_monitor.config import ConsulComputeConfig
+from nova_ha_monitor.config import ConsulHAConfig
+
+from retrying import retry
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+
+@retry(wait_fixed=2000, stop_max_attempt_number=5)
+def mark_nodes(ha_conf, conf):
+
+    ha_conf.set_status_in_use(True)
+    conf.set_status_recovered(True)
+
+    # Verify that we can read current values from consul.
+    if not ha_conf.get_status_in_use() or not conf.get_status_recovered():
+        raise
+
+def pick_recovery_target():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-n", "--ha-node", type=str, required=True)
+    args = parser.parse_args()
+
+    ha_node = args.ha_node
+
+    ha_conf = ConsulHAConfig(ha_node)
+
+    ha_node_in_use = ha_conf.get_status_in_use()
+    compute_nodes = ha_conf.get_compute_nodes()
+
+    #
+    # Check if current HA node is already in use if true exit
+    if ha_node_in_use:
+        logging.info('HA node %s already in use exiting....', ha_node)
+        sys.stdout.write("<output>{}<output>".format('nothing_picked'))
+        sys.exit(0)
+
+    if not compute_nodes:
+        logging.info('No compute nodes defined on a system exiting...')
+        sys.stdout.write("<output>{}<output>".format('nothing_picked'))
+        sys.exit(0)
+
+    for node in compute_nodes:
+        conf = ConsulComputeConfig(node)
+
+        if conf.get_status_failed() and not conf.get_status_recovered():
+            mark_nodes(ha_conf, conf)
+            sys.stdout.write("<output>{}<output>".format(node))
+            sys.exit(0)
+
+    sys.stdout.write("<output>{}<output>".format('nothing_picked'))
+    sys.exit(0)
+    
+
+if __name__ == '__main__':
+    pick_recovery_target()
