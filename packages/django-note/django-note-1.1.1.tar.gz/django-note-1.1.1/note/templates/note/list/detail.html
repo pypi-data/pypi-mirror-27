@@ -1,0 +1,27 @@
+{% extends 'note/base.html' %}
+
+{% block content %}
+    <div>List {{ notes_list.name }}</div><div><a href="{% url 'note:index' %}">Back</a></div>
+    <div>
+        <ul>
+            {% for item in notes_list.items %}
+                <li>
+                    <a href="{% url 'note:list-item-detail' notes_list.id item.id %}">
+                        {% if item.done %}
+                            <s>{{ item.title }}</s>
+                        {% else %}
+                            {{ item.title }}
+                        {% endif %}
+                    </a>
+                    <a href="{% url 'note:list-item-update' notes_list.id item.pk %}">update</a>
+                    <a href="{% url 'note:list-item-delete' notes_list.id item.pk %}">delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <a href="{% url 'note:list-item-add' notes_list.pk %}">add item</a>
+        <a href="{% url 'note:list-update' notes_list.pk %}">update</a>
+        <a href="{% url 'note:list-delete' notes_list.pk %}">delete</a>
+    </div>
+{% endblock %}

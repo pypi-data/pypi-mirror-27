@@ -1,0 +1,9 @@
+{% extends 'note/base.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {% block form-content %}{{ form }}{% endblock %}
+        <input type="submit" value="{% block submit-value %}Save{% endblock %}">
+    </form>
+{% endblock %}

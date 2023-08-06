@@ -1,0 +1,7 @@
+{% extends 'note/list/crud_base.html' %}
+
+{% block form-content %}
+    Are you sure you want to delete '{{ note.title }}' item?
+{% endblock %}
+
+{% block submit-value %}Yes{% endblock %}

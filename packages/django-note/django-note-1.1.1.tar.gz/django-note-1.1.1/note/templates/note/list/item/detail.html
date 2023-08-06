@@ -1,0 +1,14 @@
+{% extends 'note/base.html' %}
+
+{% block content %}
+    <div>{{ note.title }}</div>
+    <div>Status:
+        {% if note.done %}
+            done
+        {% else %}
+            undone
+        {% endif %}
+        .
+    </div>
+    <div>{{ note.text }}</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'note/base.html' %}
+
+{% block content %}
+    <div>Welcome, {{ request.user.username }}</div>
+    <div>
+        <ul>
+        {% for notes_list in notes_lists %}
+            <li>
+                <a href="{% url 'note:list-detail' notes_list.id %}">
+                    {% if notes_list.completed %}
+                        <s>{{ notes_list.name }}</s>
+                    {% else %}
+                        {{ notes_list.name }}
+                    {% endif %}
+                </a>
+                <a href="{% url 'note:list-update' notes_list.id %}">update</a>
+                <a href="{% url 'note:list-delete' notes_list.id %}">delete</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <a href="{% url 'note:list-add' %}">create new</a>
+    </div>
+{% endblock %}
