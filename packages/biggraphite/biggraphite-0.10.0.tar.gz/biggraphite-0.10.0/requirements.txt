@@ -1,0 +1,34 @@
+# Commande line
+humanize
+parsedatetime
+progressbar2
+scandir
+tabulate
+
+# Memory driver
+sortedcontainers
+
+# Cassandra driver
+# 3.12.0 suffers from https://datastax-oss.atlassian.net/projects/PYTHON/issues/PYTHON-862
+cassandra-driver==3.11.0
+scales
+
+# Core
+six
+enum34
+cachetools
+prometheus_client
+
+# Metadata cache
+lmdb
+
+# Graphite
+whisper>=1.1.0
+carbon>=1.1.0
+graphite-web>=1.1.0
+
+# We could use Django<2.0 but we match what graphire requires instead.
+Django>=1.8,<1.11.99
+
+# Optional:
+# ipython
