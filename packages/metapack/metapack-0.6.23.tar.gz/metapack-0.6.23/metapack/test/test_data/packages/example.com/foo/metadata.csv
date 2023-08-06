@@ -1,0 +1,52 @@
+Declare,metatab-latest
+Title,A Fairly Simple Dtata Package
+Description,"An example data package, from the Metatab tutorial at"
+Description,https://github.com/CivicKnowledge/metatab-py/blob/master/README.rst
+Identifier,96cd659b-94ad-46ae-9c18-4018caa64355
+Name,example.com-simple_example-2017-us-2
+Dataset,simple-example
+Origin,example.com
+Time,2017
+Space,US
+Version,2
+Modified,2017-11-23T16:37:48
+Issued,2017-09-20T16:05:59
+Distribution,http://library.metatab.org/example.com-simple_example-2017-us-2/metadata.csv
+Distribution,http://library.metatab.org/example.com-simple_example-2017-us-2.zip
+Distribution,http://library.metatab.org/example.com-simple_example-2017-us-2.xlsx
+Distribution,http://library.metatab.org/example.com-simple_example-2017-us-2.csv
+Giturl,https://github.com/Metatab/metapack.git
+
+Section,Contacts,email,
+Origin,example.com,,
+Creator,Eric Busboom,eric@civicknowledge. com,
+Wrangler,Eric Busboom,eric@civicknowledge. com,
+
+Section,Documentation,Title,Description
+Homepage,http://metatab.org,Metatab Home Page,Main Metatab home page
+Documentation,https://github.com/CivicKnowledge/metatab-py/blob/master/README.rst,Metatab Python Package README,The README in the Metatab Githup repo contains the tutorial for generating this package.
+
+Section,Resources,Name,Description
+Datafile,http://public.source.civicknowledge.com/example.com/sources/random-names.csv,random-names,Names and a random number
+Datafile,http://public.source.civicknowledge.com/example.com/sources/renter_cost_excel07.xlsx,renter_cost,"Portion of income spent on rent, extracted from the ACS"
+Datafile,http://public.source.civicknowledge.com/example.com/sources/latin1.csv#encoding=latin1,unicode-latin1,"The same data as unicode-utf8, but re-encoded to latin1"
+
+Section,Schema,AltName,DataType,Description
+Table,random-names,,,
+Table.Column,Name,name,text,
+Table.Column,Size,size,number,
+Table,renter_cost,,,
+Table.Column,Renter Costs,renter_costs,integer,
+Table.Column,,col1,text,
+Table.Column,,col2,integer,
+Table.Column,,col3,number,
+Table.Column,,col4,number,
+Table.Column,,col5,number,
+Table,unicode-latin1,,,
+Table.Column,Origin (English),origin_english,text,
+Table.Column,Name (English),name_english,text,
+Table.Column,Origin (Native),origin_native,string,
+Table.Column,Name (Native),name_native,string,
+
+Section,Notes,,
+Note,,,

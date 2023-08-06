@@ -1,0 +1,26 @@
+[appurl.urls]
+.ipynb = metapack.appurl:JupyterNotebookUrl
+metapack+ = metapack.appurl:MetapackUrl
+metatab+ = metapack.appurl:MetapackUrl
+
+[console_scripts]
+metaaws = metapack.cli.metaaws:metaaws
+metasql = metapack.cli.metasql:metasql
+metaworld = metapack.cli.metaworld:metaworld
+mp = metapack.cli.mp:mp
+
+[mt.subcommands]
+ckan = metapack.cli.metakan:metakan
+notebook = metapack.cli.notebook:notebook
+pack = metapack.cli.metapack:metapack
+run = metapack.cli.run:run
+s3 = metapack.cli.metas3:metas3
+
+[nbconvert.exporters]
+hugo = metapack.jupyter:HugoExporter
+metapack = metapack.jupyter:MetapackExporter
+
+[rowgenerators]
+<JupyterNotebookUrl> = metapack.rowgenerator:JupyterNotebookSource
+<MetapackUrl> = metapack.rowgenerator:MetapackGenerator
+
