@@ -1,0 +1,58 @@
+It's All Ghosts
+===============
+
+What this is
+------------
+
+It's All Ghosts is a universal "editor extension" for the GhostText_ browser
+add-on.
+
+While `It's All Text`_ was able to spawn almost any editor, GhostText focuses
+on such editors that are able to run plugin code on their own. This leaves
+users of most simple editors, like joe_, jupp_, nano_, gedit_ or kwrite_ behind.
+
+Compared to fully supported editors, there is a small trade-off: GhostText
+can update the text live between the input field and the editor.  This is
+not possible with It's All Ghosts.  Instead, It's All Ghosts simply spawns
+the editor on connect and passes the file contents back on exit.  It does,
+however, update the temporary file upon a change notification from the
+browser and some editors track file modifications - don't use that, however,
+because it will almost certainly destroy your contents somewhere.
+
+But apart from that, you can now again use your favourite editor again!
+
+How to define your editor
+-------------------------
+
+It's All Ghosts defaults to running nano in an xterm.
+
+You can place your own script to execute as editor into
+``$XDG_CONFIG_HOME/itsallghosts_cmd``. Example::
+
+    exec konsole --separate -e jstar $*
+
+This example runs jstar (from the joe_ suite) in KDE's Konsole instead.
+
+How to run
+----------
+
+Just make sure that ``itsallghosts`` is running in your desktop session.
+
+Development and contributing
+----------------------------
+
+It's All Ghosts is very basic and sure can use some improvements. You can
+report issues or contribute in the `EduGit repository` (also open to GitHub
+and other users).
+
+It's All Ghosts is licenced under the MIT license (see the LICENSE file for
+the text).
+
+.. _GhostText: https://github.com/GhostText/GhostText
+.. _joe: https://joe-editor.sourceforge.io/
+.. _jupp: https://www.mirbsd.org/jupp.htm
+.. _nano: https://www.nano-editor.org/
+.. _gedit: https://wiki.gnome.org/Apps/Gedit
+.. _kwrite: https://www.kde.org/applications/utilities/kwrite/
+.. _`It's All Text`: https://github.com/docwhat/itsalltext
+.. _`EduGit repository`: https://edugit.org/nik/itsallghosts
