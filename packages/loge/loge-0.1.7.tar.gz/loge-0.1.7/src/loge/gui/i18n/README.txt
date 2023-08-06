@@ -1,0 +1,1 @@
+Katalog z plikami tlumaczen. Po utworzniu pierwszego pliku README.txt do usuniecia.
