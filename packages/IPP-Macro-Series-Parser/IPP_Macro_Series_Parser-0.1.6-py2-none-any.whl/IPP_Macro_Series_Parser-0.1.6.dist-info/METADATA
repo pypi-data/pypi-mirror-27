@@ -1,0 +1,28 @@
+Metadata-Version: 2.0
+Name: IPP-Macro-Series-Parser
+Version: 0.1.6
+Summary: OpenFisca -- a versatile microsimulation free software
+Home-page: https://github.com/taxipp/ipp-macro-series-parser.git
+Author: IPP
+Author-email: taxipp@ipp.eu
+License: http://www.fsf.org/licensing/licenses/agpl-3.0.html
+Keywords: macro data aggregates beneficiaries parser
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Requires-Dist: glob2
+Requires-Dist: pandas
+Requires-Dist: py-expression-eval
+Requires-Dist: python-slugify
+Requires-Dist: pyxdg
+Requires-Dist: setuptools
+Requires-Dist: xlrd
+Requires-Dist: xlsxwriter
+Requires-Dist: xlwt
+
+OpenFisca includes a framework to simulate any tax and social system.
+
+

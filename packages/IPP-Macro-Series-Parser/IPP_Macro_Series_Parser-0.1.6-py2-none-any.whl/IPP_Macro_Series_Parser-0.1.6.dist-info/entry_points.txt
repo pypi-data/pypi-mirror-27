@@ -1,0 +1,6 @@
+[console_scripts]
+download-demographic-projections = ipp_macro_series_parser.scripts.demographic_projections_downloader:main
+download-prestations-sociales = ipp_macro_series_parser.scripts.prestations_sociales_downloader:main
+parse-prelevements-sociaux = ipp_macro_series_parser.scripts.prelevements_sociaux_parser:main
+parse-prestations-sociales = ipp_macro_series_parser.scripts.prestations_sociales_parser:main
+
