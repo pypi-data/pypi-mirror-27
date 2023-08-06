@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+
+import pyjst
+import argparse
+import os
+
+parser = argparse.ArgumentParser(description='Bake a template from corresponding JSON object')
+parser.add_argument('template', metavar='template', type=str, help='template file in templates folder ( default folder is ./templates/ )')
+parser.add_argument('-f', '--templates-folder', metavar='templates_folder', type=str, help='specify templates folder')
+parser.add_argument('-o', '-- output-path', metavar='output_path', type=str, help='specify path to output file')
+parser.add_argument('-d', '--data-path', metavar='data_path', type=str, help='specify data (JSON) file path')
+args = parser.parse_args()
+
+if args.templates_folder:
+    instance = pyjst.Baker(args.templates_folder)
+else:
+    instance = pyjst.Baker()
+
+if not args.data_path:
+    r = instance.bake(args.template)
+else:
+    if not os.path.isabs(args.data_path):
+        data_path = os.path.join(os.getcwd(), args.data_path)
+    else:
+        data_path = args.data_path
+    r = instance.bake_file(data_path, args.template)
+
+if not args.output:
+    output_path = os.path.join('output', args.template+'.jts')
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+else:
+    if not os.path.isabs(args.output_path):
+        output_path = os.path.join(os.getcwd(), args.output_path)
+    else:
+        output_path = args.output_path
+
+with open(output_path, 'w') as f:
+    f.write(r)
+print("Written file to {}".format(output_path))
