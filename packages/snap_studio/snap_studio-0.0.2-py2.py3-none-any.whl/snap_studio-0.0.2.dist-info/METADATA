@@ -1,0 +1,275 @@
+Metadata-Version: 2.0
+Name: snap-studio
+Version: 0.0.2
+Summary: SparklineData SNAP Studio
+Home-page: https://gitlab.com/SparklineData/Public/snap-studio
+Author: Ali Rathore
+Author-email: ali1rathore@gmail.com
+License: GNU General Public License v3
+Description-Content-Type: UNKNOWN
+Keywords: snap_studio
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: Flask (==0.12.2)
+Requires-Dist: Flask-Script (==2.0.3)
+Requires-Dist: Jinja2 (==2.10)
+Requires-Dist: MarkupSafe (==1.0)
+Requires-Dist: PyHive (==0.5.0)
+Requires-Dist: Werkzeug (==0.13)
+Requires-Dist: click (==6.7)
+Requires-Dist: flask-cors (==3.0.3)
+Requires-Dist: gunicorn (==19.7.1)
+Requires-Dist: itsdangerous (==0.24)
+Requires-Dist: sasl (==0.2.1)
+Requires-Dist: thrift (==0.10.0)
+Requires-Dist: thrift-sasl (==0.3.0)
+
+===========
+SNAP Studio
+===========
+
+
+.. image:: https://img.shields.io/pypi/v/snap_studio.svg
+        :target: https://pypi.python.org/pypi/snap_studio
+
+.. image:: https://img.shields.io/travis/ali--/snap_studio.svg
+        :target: https://travis-ci.org/ali--/snap_studio
+
+.. image:: https://readthedocs.org/projects/snap-studio/badge/?version=latest
+        :target: https://snap-studio.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://pyup.io/repos/github/ali--/snap_studio/shield.svg
+     :target: https://pyup.io/repos/github/ali--/snap_studio/
+     :alt: Updates
+
+
+SparklineData SNAP Studio
+
+
+* Free software: GNU General Public License v3
+* Documentation: https://snap-studio.readthedocs.io.
+
+
+Features
+--------
+
+* TODO
+
+# SNAP Cube Modeler
+
+> **Note:** This repository is private, the Docker image is public.
+
+| **Latest release** | [0.0.1 alpha](https://gitlab.com/SparklineData/snap-modeler) | 
+| -- | -- |
+| **Wiki** | [Public facing documentation](https://gitlab.com/SparklineData/snap-modeler/wikis/home) |
+| **Continuous Integration** | [![Build Status](https://gitlab.com/SparklineData/snap-modeler/badges/master/build.svg)](https://gitlab.com/SparklineData/snap-modeler/commits/master) |
+| **Issues** | Issues are tracked in the [SNAP repo](https://gitlab.com/SparklineData/snap/issues?scope=all&utf8=%E2%9C%93&state=opened&label_name[]=modeler) |
+<br/><br/>
+
+# Quick Start
+
+
+Use the prebuilt snap-modeler image.
+
+```
+docker run -it --net=host --name snap-modeler registry.gitlab.com/sparklinedata/snap-modeler
+```
+
+### Without docker 
+
+Requires Python 3.4+
+
+(Ubuntu only) Install sasl dependancies
+
+```
+apt-get install -y libsasl2-modules libsasl2-dev
+```
+
+Start the modeling server:
+
+```
+pip install -r requirements.txt
+FLASK_APP=app.py flask run --host=0.0.0.0 --port=8888
+```
+
+# Using Docker
+
+
+Build the image
+
+```
+docker build -t snap-modeler .
+```
+
+Run the container
+
+```
+docker run -it --net=host --name snap-modeler snap-modeler
+```
+
+## Design Decisions:
+
+#### Highest priority is User Experience
+
+  * Use strong visuals to provide guidance 
+  * **absolutely no runtime exceptions in the UI**
+  * **amazing hints, suggestions, guidance and error messages** while modeling
+  * tooltips, green/red colors, tourguide for various steps
+  * always show progress of background operations
+  * no operation should block user interaction
+  * see notes on user facing language
+
+#### Next priority is Developer Experience
+Modeler UI's are famously complex applications and become difficult to modify
+or refactor over time and require developers to learn a new framework before being productive.
+This project hopes to enable rapid refactoring and modification of the modeler UI.
+
+
+The choice of Elm for the frontend language is due to:
+* only 1 way to do anything.
+* strong compile time static type checking.
+* requires less testing due to immutability and types
+* easy for new developers to learn
+* guarantees no runtime exceptions.
+* provides a single framework for MVC.
+
+#### All modeler logic is in a statically compiled, functional, strongly-typed frontend language
+* minimizes need for interaction with backend
+* enables highly interactive UI for the user
+* (most importantly) make impossible states and impossible user-interactions impossible at compile time.
+  (for example, it should be impossible to choose a column without choosing a table.
+   We can guarantee this at compile time instead of having runtime validation)
+
+#### Enable various scenarios such as:
+* different data sources (S3, Athena, Redshift, Spark, Teradata, Druid, Files)
+* data profiling can be done without the modeler to calculate potential benefits
+
+
+## Frontend:
+
+Elm 0.18 + MaterialDesignLite
+
+#### Main.elm 
+entrypoint and boilerplate
+
+#### UserText.elm
+All text displayed to user is contained in this file.  This included:
+* ErrorMessage - messages about issues unrelated to cube modeling. Usually related to somthing wrong with in the real world.
+  * for example: no connection
+* Hints - messages presenting suggestions to user
+  * positive hint - tells user to do somthing they have not yet done
+  * negitive hint - tells user to not do somthing they are doing
+* Content - titles, headers, notes, descriptions, buttons, labels, tabs, icons, etc 
+
+#### CubeModeler.elm
+All the logic for creating a SNAP Cube from a set of TableInfos and ColumnInfos
+
+#### CubeModelerView.elm
+All of the user-facing logic
+
+#### DatatableView.elm
+A pure Elm implementation of searchable, sortable, selectable datatable.
+
+#### BackendClient.elm 
+definitions for messages sent to/from from server.
+* TableInfo
+* getAllTableInfos
+* ColumnInfo
+* getColumnInfos
+
+## Backend:
+
+Contains the logic for connecting to a data source and profiling
+the data and knows nothing about cubes or modeling.
+
+#### app.py
+A simple Flask backend server
+* hosts the modeler frontend
+* acts as HTTP to HiveThriftServer bridge
+
+## Getting Started:
+
+#### Starting the Modeler
+
+    elm-make Main.elm --output=static/index.js
+    pip install -r requirements.txt
+    FLASK_APP=app.py flask run --host=0.0.0.0 --port=8888
+
+#### Development
+Use elm-reactor to work on the Elm source with live-reloading
+
+Use Flask debugger to work on the Python source with live-reloading
+
+    FLASK_DEBUG=1 FLASK_APP=app.py flask run --host=0.0.0.0 --port=8888 --debugger
+
+
+## Notes on User-Facing language
+
+All user-facing language should be consistent.
+
+* Avoid jargon and specific terms at all costs, provide definitions where possible
+* Avoid long content and lots of details.  Reveal increasing detail about features while user explores them and actually needs the information.
+* For every message displayed to user ask "Does user really need to know this"
+* Write in small, scannable segments to facilitate discovery.
+* Keep sentances less that 30 words
+* Use Future Tense to describe an action (do "Message sent" instead of "Message has been sent")
+* Dont mix "Me/My" with "You/Your"
+  * dont: "Change **your** preferences in **My** Account"
+  * do: "Change personal preference in My Account"
+* Dont use words for numbers (do "You have 3 messages")
+* Focus on what the user can do with the app, rather than what the app is doing for user
+   * Don’t: “To get you started, we’re showing you popular posts on Facebook.”
+   * Do: “Get started with these popular posts on Facebook.”
+   * However, there’s an exception for this rule — when a human actually does take action for a user, such as reviewing an appeal or responding to a suggestion. In such case, the use of “we” is appropriate.
+     * Don’t: “Your appeal will be reviewed, and you will receive a response within a few days.”
+     * Do: “We’ll review your appeal and respond within a few days.”
+* Use sentence-style caps for all titles, headings, labels, menu items.
+  * Don’t: “SEARCH SETTINGS”
+  * Do: “Search settings”
+* Exclamation points should be avoided as they could come across as shouting.
+  * Don’t: “Learn about the new features of the app!”
+  * Do: “Welcome”
+* Cut out the wordiness. You should use simple, direct language that is easy for users to understand. All extra or common introductory phrases such as ‘you must,’ ‘due to the fact that’, ‘in order to’ should be omitted.
+  * Don’t: “Would you like to save your changes?”
+  * Do: “Save changes?”
+  * Don’t: “Are you sure you want to delete this photo?”
+  * Do: “Delete this photo?”
+  * Don’t: “OK|Cancel” 
+  * Do: “Remove|Keep”
+* Error messages are an inevitability. But you should make them a seamless part of user experience.
+   Your error messages sound like they’ve been written for humans and in order to achieve this your messages should clearly state:
+  * What went wrong and possibly why.
+  * What’s the next step the user should take to fix the error.
+* Write the message so that the user isn’t directly blamed for the error. Focus on the user problem, not the error itself.
+  * Don’t: “You’ve provided an incorrect email.”
+  * Do: “This email address cannot be used. Please ensure that the spelling is correct.”  
+
+
+Credits
+---------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+
+=======
+History
+=======
+
+0.1.0 (2017-12-15)
+------------------
+
+* First release on PyPI.
+
+
