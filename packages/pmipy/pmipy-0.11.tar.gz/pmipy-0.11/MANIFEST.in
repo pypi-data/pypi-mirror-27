@@ -1,0 +1,8 @@
+include README.rst
+include pmipy/tests/*.py
+include pmipy/tests/*.png
+include pmipy/*.py
+
+recursive-include docs *
+prune docs/_build
+
