@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: celery-connectors
+Version: 1.0.21
+Summary: Celery Connectors
+Home-page: https://github.com/jay-johnson/celery-connectors
+Author: Jay Johnson
+Author-email: jay.p.h.johnson@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Messaging examples for Celery and Kombu. Multiple publisher-subscriber examples for processing json or pickled messages from Redis, RabbitMQ or AWS SQS. Includes Kombu message processors using native Producer and Consumer classes as well as ConsumerProducerMixin workers for relay publish-hook support to automate pub-sub or auto-caching. Also includes a docker compose file for RabbitMQ, Redis and Flower containers too. Functional AWS SQS publish and subscribe tooling.
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
