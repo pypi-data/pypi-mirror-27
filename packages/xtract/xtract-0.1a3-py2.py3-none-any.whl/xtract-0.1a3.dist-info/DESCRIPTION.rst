@@ -1,0 +1,140 @@
+######
+xtract
+######
+
+|pipeline|_ |coverage|_
+
+Code: https://rolln.de/knoppo/xtract
+
+Documentation: https://docs.rolln.de/knoppo/xtract/master
+
+Coverage: https://coverage.rolln.de/knoppo/xtract/master
+
+
+Python library providing an API to unpack/decompress and pack/compress directories and files.
+It's a wrapper around the supported archive and compression formats.
+
+**Supported Archives:**
+
+   Archives are *always* unpacked to a new directory!
+
+* **rar**
+
+  * application/rar
+  * application/x-rar
+
+* **zip**
+
+  * application/zip
+  * application/x-zip
+
+* **tar**
+
+     *no compression (See usage examples below for an example of adding compression)*
+
+  * application/tar
+  * application/x-tar
+
+
+**Supported Compressions:**
+
+* **gz**
+
+  * application/gzip
+  * application/x-gzip
+
+* **xz**
+
+  * application/xz
+  * application/x-xz
+
+* **bz2**
+
+  * application/bzip
+  * application/x-bzip
+
+
+Installation
+============
+
+.. code-block:: bash
+
+   pip install xtract
+
+
+See the `quickstart documentation <https://docs.rolln.de/knoppo/xtract/master/quickstart.html#installation>`_
+for more detailed installation instructions.
+
+
+Usage Examples
+==============
+
+The convenience function ``xtract`` can be used to unpack/decompress anything:
+
+.. code-block:: python
+
+   >>> from xtract import xtract
+   >>> xtract('my-directory.tar.gz')
+   '/home/<user>/my-directory.tar'
+
+
+Use the ``all`` switch to loop until ``FileTypeNotSupported`` is raised:
+
+.. code-block:: python
+
+   >>> xtract('my-directory.tar.gz', all=True)
+   '/home/<user>/my-directory'
+
+
+Compress a file:
+
+.. code-block:: python
+
+   >>> from xtract import bz2
+   >>> bz2('my-file.txt', delete_source=True)
+   '/home/<user>/my-file.txt.bz2'
+
+
+Every function returns the destination (if successful) to chain them:
+
+   This creates an intermediate *.tar* file! Use ``delete_source=True`` to delete it afterwards.
+
+.. code-block:: python
+
+   >>> from xtract import tar, gzip
+   >>> gzip(
+   >>>     tar('my-directory', ['file1.txt', 'file2.txt']),
+   >>>     delete_source=True
+   >>> )
+   '/home/<user>/my-directory.tar.gz'
+
+
+See the `manual <https://docs.rolln.de/knoppo/xtract/master/manual.html>`_
+for more examples.
+
+
+License
+=======
+
+Copyright (c) 2017 Mathias Stelzer
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+.. |pipeline| image:: https://rolln.de/knoppo/xtract/badges/master/pipeline.svg
+.. _pipeline: https://rolln.de/knoppo/xtract/commits/master
+.. |coverage| image:: https://rolln.de/knoppo/xtract/badges/master/coverage.svg
+.. _coverage: https://rolln.de/knoppo/xtract/commits/master
+
+
