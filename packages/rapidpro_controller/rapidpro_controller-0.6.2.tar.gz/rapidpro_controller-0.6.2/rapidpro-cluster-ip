@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import sys
+import os
+
+from termcolor import colored
+
+from rapidpro_controller import get_logger, SERVERS, get_color, LINFO, LDANGER
+from rapidpro_controller.cluster import (get_ip_master)
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main():
+    ip_master = get_ip_master()
+
+    if ip_master not in SERVERS:
+        logger.critical("cluster IP {} on any node. "
+                        "Please make one available."
+                        .format(colored("NOT RUNNING", get_color(LDANGER))))
+        return 1
+
+    print(colored(ip_master, get_color(LINFO)))
+
+
+if __name__ == '__main__':
+    sys.exit(main())
