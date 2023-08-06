@@ -1,0 +1,69 @@
+Metadata-Version: 1.1
+Name: gy
+Version: 0.1.0
+Summary: Yet another .gitignore magician in your command line.
+Home-page: https://github.com/cls1991/gy
+Author: cls1991
+Author-email: tzk19910406@hotmail.com
+License: Apache License 2.0
+Description-Content-Type: UNKNOWN
+Description: gy
+        ==
+        
+        .. image:: https://img.shields.io/pypi/l/gy.svg
+            :target: https://pypi.python.org/pypi/gy
+        
+        .. image:: https://img.shields.io/pypi/v/gy.svg
+            :target: https://pypi.python.org/pypi/gy
+        
+        .. image:: https://img.shields.io/pypi/pyversions/gy.svg
+            :target: https://pypi.python.org/pypi/gy
+        
+        .. image:: https://travis-ci.org/cls1991/gy.svg?branch=master
+            :target: https://travis-ci.org/cls1991/gy
+        
+        Yet another .gitignore magician in your command line.
+        
+        ☤ Installation
+        --------------
+        
+        You can install "gy" via pip from `PyPI <https://pypi.python.org/pypi/gy>`_:
+        
+        ::
+        
+            $ pip install gy
+        	
+        ☤ Usage
+        -------
+        
+        ::
+        
+            $ gy --help
+            Usage: gy [OPTIONS] COMMAND [ARGS]...
+        
+            Yet another .gitignore magician in your command line.
+        
+            Options:
+              --help  Show this message and exit.
+        
+            Commands:
+              generate  generate .gitignore file
+              show      show all supported languages
+              update    update .gitignore zip
+        
+Keywords: .gitignore,magician
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Operating System :: OS Independent
