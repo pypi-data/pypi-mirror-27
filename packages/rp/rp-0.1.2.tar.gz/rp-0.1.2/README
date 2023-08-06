@@ -1,0 +1,5 @@
+Here's my readme
+Also: pip install qk
+python3 setup.py sdist
+twine upload dist/*
+twine register dist/*
