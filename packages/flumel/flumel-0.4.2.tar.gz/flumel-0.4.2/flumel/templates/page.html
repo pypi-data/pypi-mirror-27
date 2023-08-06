@@ -1,0 +1,41 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8">  
+    <title>{settings.INSTANCE_NAME}</title>  
+    <style type="text/css">
+        body {{
+            background-color: #3f51b5;
+            font-family: "Courier New", monospace;
+        }}
+        h1, a {{ color: #ff5722 }}
+        #container {{
+            position: absolute;
+            margin: auto;
+            padding: 1em;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            max-width: 500px;
+            max-height: 300px;
+            background-color: #fefefe;
+            border-radius: 3px;
+        }}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>{settings.INSTANCE_NAME}</h1>
+        <p>{settings.INSTANCE_BASELINE}</p>
+        <dl>
+            <dt>Pour s’abonner à un flux&nbsp;:</dt>
+            <dd>Envoyer « {settings.SUBSCRIBE_KEYWORD} URL » à {settings.BOT_EMAIL}</dd>
+            <dt>Pour se désabonner d’un flux&nbsp;:</dt>
+            <dd>Envoyer « {settings.UNSUBSCRIBE_KEYWORD} URL » à {settings.BOT_EMAIL}</dd>
+        </dl>
+        <p><a href="https://flumel.readthedocs.io/fr/latest/" rel="external">Documentation</a> <a href="https://gitlab.com/canarduck/flumel" rel="external">Code source</a></p>
+    </div>
+</body>  
+</html>
