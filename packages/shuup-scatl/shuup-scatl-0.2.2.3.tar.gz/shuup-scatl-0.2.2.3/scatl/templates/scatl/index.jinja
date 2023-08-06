@@ -1,0 +1,29 @@
+<scatl><h2>Loading...</h2></scatl>
+
+<link rel="stylesheet" type="text/css" media="screen" href="{{ static('scatl/dist/vendor.css') }}">
+
+<!--suppress JSUnusedLocalSymbols, JSValidateTypes -->
+<script>
+    "use strict"
+    window.DJANGO = {
+        priceRange: {
+            min: {{ product_price_min }},
+            max: {{ product_price_max }},
+        },
+        staticUrl: '{{ STATIC_URL }}',
+    }
+</script>
+
+<script>
+    "use strict"
+    function addBaseHref() {
+        let baseElem = document.createElement('base')
+        baseElem.href = '/'
+        document.head.appendChild(baseElem)
+    }
+    addBaseHref()
+</script>
+
+<script src="{{ static('scatl/dist/polyfills.js') }}"></script>
+<script src="{{ static('scatl/dist/vendor.js') }}"></script>
+<script src="{{ static('scatl/dist/app.js') }}"></script>
