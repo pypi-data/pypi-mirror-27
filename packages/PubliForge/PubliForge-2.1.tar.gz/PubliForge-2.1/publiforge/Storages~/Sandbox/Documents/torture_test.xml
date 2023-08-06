@@ -1,0 +1,1346 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Id: torture_test.xml 041563353b53 2017/01/15 09:54:52 Patrick $ -->
+<publidoc version="1.0">
+  <document type="example" xml:lang="fr">
+    <head>
+      <title>Torture test</title>
+      <shorttitle>Test</shorttitle>
+      <subtitle>Test des capacités de <name>publidoc</name></subtitle>
+      <subtitle>Représentation exhaustive des structures</subtitle>
+      <identifier type="ean" for="epub">9781449328030</identifier>
+      <identifier type="ean" for="print">9781449328031</identifier>
+      <identifier type="uri">http://www.prismallia.fr/Xml/torture_test</identifier>
+      <copyright>Prismallia, Paris, 2011-2016</copyright>
+      <collection>Sachez vous mettre à l'épreuve</collection>
+      <contributors>
+        <contributor>
+          <identifier type="uri">P²</identifier>
+          <firstname>Patrick</firstname>
+          <lastname>PIERRE</lastname>
+          <role>author</role>
+        </contributor>
+        <contributor>
+          <firstname>Tien Haï</firstname>
+          <lastname>NGUYEN</lastname>
+          <role>illustrator</role>
+        </contributor>
+        <contributor>
+          <identifier type="uri">pll</identifier>
+          <label>Prismallia</label>
+          <address>123 boulevard de Grenelle – 75015 Paris</address>
+          <link uri="http://www.prismallia.fr"/>
+          <role>publisher</role>
+          <role>packager</role>
+        </contributor>
+      </contributors>
+      <date value="2016-06-12"/>
+      <place>Paris</place>
+      <source type="book">
+        <identifier type="ean">9782843550362</identifier>
+        <title>L'art de mettre à l'épreuve</title>
+        <pages>312</pages>
+      </source>
+      <source type="file">
+        <identifier type="uri">hugo_miserables.xml</identifier>
+      </source>
+      <keywordset>
+        <keyword>publidoc</keyword>
+        <keyword>Cyrano</keyword>
+        <keyword>météo</keyword>
+      </keywordset>
+      <subjectset>
+        <subject>Littérature</subject>
+        <subject>Mathématiques</subject>
+      </subjectset>
+      <abstract>
+        <p>Ce fichier rassemble un maximum de situations afin de tester les
+        possibilités de <name>publidoc</name>.</p>
+      </abstract>
+      <cover>
+        <image id="torture_test_cover"/>
+      </cover>
+      <annotation>Ce fichier n'a pas de réelle signification.</annotation>
+      <indexset>
+        <index>
+          <entry>Publidoc</entry>
+        </index>
+      </indexset>
+    </head>
+
+    <!-- ================================================================== -->
+    <topic type="title">
+      <head>
+        <title>
+          <name>Publidoc</name>
+        </title>
+        <subtitle>Torture test</subtitle>
+      </head>
+      <section>
+        <p>Réalisation <link uri="http://www.prismallia.fr">Prismallia</link></p>
+      </section>
+    </topic>
+
+    <!-- ================================================================== -->
+    <topic type="copyright">
+      <head>
+        <abstract>
+          <p>Où l'on montre un exemple de page de copyright.</p>
+        </abstract>
+      </head>
+      <section>
+        <p>© <name of="company">Prismallia</name>, Paris 2011-2016</p>
+      </section>
+      <section>
+        <p>Direction éditoriale : <name of="person">Anne ONIME</name></p>
+        <p>Coordination éditoriale : <name of="person">Claire DENEAUTERRE</name></p>
+        <p>Édition : <name of="person">Yves ATROVITE</name></p>
+        <p>Direction artistique : <name of="person">Guy LIGUILI</name></p>
+        <p>Conception graphique : <name of="person">Patrick OTÉ</name></p>
+        <p>Réalisation numérique : <name of="company">Prismallia</name></p>
+      </section>
+      <section for="epub">
+        <p>EAN numérique : 9781449328030</p>
+      </section>
+      <section for="epub">
+        <p>EAN papier : 9781449328031</p>
+      </section>
+      <section type="law">
+        <p>
+          Le Code de la propriété intellectuelle interdit les copies ou
+          reproductions destinées à une utilisation collective. Toute
+          représentation ou reproduction intégrale ou partielle faite par
+          quelque procédé que ce soit, sans le consentement de l'auteur ou de
+          ses ayants cause, est illicite et constitue une contrefaçon
+          sanctionnée par les articles L335-2 et suivants du Code de la
+          propriété intellectuelle.
+        </p>
+      </section>
+    </topic>
+
+    <!-- ================================================================== -->
+    <topic type="dedication">
+      <section>
+        <p>À mes enfants…</p>
+      </section>
+    </topic>
+
+    <!-- ================================================================== -->
+    <topic type="inscription">
+      <section>
+        <blockquote type="inscription">
+          <p>Souviens-toi que le Temps est un joueur avide</p>
+          <p>Qui gagne sans tricher, à tout coup ! c'est la loi.</p>
+          <p>Le jour décroît ; la nuit augmente ; souviens-toi !</p>
+          <p>La gouffre a toujours soif ; la clepsydre se vide.</p>
+          <attribution>Charles Baudelaire, <name of="book">Les Fleurs du Mal,
+          L'Horloge</name> (1857), L'horloge</attribution>
+        </blockquote>
+      </section>
+    </topic>
+
+    <!-- ================================================================== -->
+    <division>
+      <head>
+        <title>Le niveau section</title>
+        <indexset>
+          <index>
+            <entry>section</entry>
+          </index>
+        </indexset>
+        <abstract>
+          <p>Où l'on aborde les différents types de section et les sections en
+          différentes langues.</p>
+        </abstract>
+      </head>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <front>
+        <section>
+          <p>Cette partie détaille les différents types de section :
+          <name>normale</name>, <name>box</name>, <name>ex</name>,
+          <name>sign</name>.</p>
+          <p>Elle donne un exemple de bibliographie.</p>
+        </section>
+        <section>
+          <p>Elle illustre également l'utilisation de plusieurs
+          langues<note>Français, anglais.</note>.</p>
+        </section>
+      </front>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <topic>
+        <head>
+          <title>Les types de section</title>
+          <indexset>
+            <index>
+              <entry>section</entry>
+            </index>
+          </indexset>
+        </head>
+        <header>
+          <media>
+            <image id="header">
+             <?tune-html-img-format png ?>
+             <?tune-html-img-size x45> ?>
+            </image>
+          </media>
+        </header>
+        <section>
+          <head>
+            <title>Section normale</title>
+            <indexset>
+              <index>
+                <entry>section</entry>
+                <entry>section normale</entry>
+              </index>
+            </indexset>
+          </head>
+          <section>
+            <p>Il dirigea la pointe du bambou vers le tableau noir : « Eh bien,
+            lis. »</p>
+            <p>Je lus la phrase à haute voix.</p>
+            <p>Alors, il alla prendre un abécédaire, et je lus sans difficulté
+            plusieurs pages…</p>
+            <p>Je crois qu'il eut ce jour-là la plus grande joie de sa vie.</p>
+            <p>Lorsque ma mère survint, elle me trouva au milieu des quatre
+            instituteurs, qui avaient renvoyé leurs élèves dans la cour de
+            récréation, et qui m'entendaient déchiffrer lentement l'histoire du
+            <index><w>Petit Poucet</w></index>… Mais au lieu d'admirer cet
+            exploit, elle pâlit, déposa ses paquets par terre, referma le
+            livre, et m'emporta dans ses bras, en disant : « Mon Dieu ! mon
+            Dieu !… »</p>
+            <p>Sur la porte de la classe, il y avait la concierge, qui était
+            une vieille femme corse : elle faisait des signes de croix. J'ai su
+            plus tard que c'était elle qui était allée chercher ma mère, en
+            l'assurant que « ces messieurs » allaient me faire « éclater le
+            cerveau ».</p>
+          </section>
+          <section>
+            <p>À table, mon père affirma qu'il s'agissait de superstitions
+            ridicules, que je n'avais fourni aucun effort, que j'avais appris à
+            lire comme un <index><w>perroquet</w></index> apprend à parler, et
+            qu'il ne s'en était même pas aperçu. Ma mère ne fut pas convaincue,
+            et de temps à autre elle posait sa main fraîche sur mon front et me
+            demandait : « Tu n'as pas mal à la tête ? »</p>
+            <p>Non, je n'avais pas mal à la tête, mais jusqu'à l'âge de six
+            ans, il ne me fut plus permis d'entrer dans une classe, ni d'ouvrir
+            un livre, par crainte d'une explosion cérébrale. Elle ne fut
+            rassurée que deux ans plus tard, à la fin de mon premier trimestre
+            scolaire, quand mon institutrice lui déclara que j'étais doué d'une
+            mémoire surprenante, mais que ma maturité d'esprit était celle d'un
+            enfant au berceau.</p>
+          </section>
+        </section>
+        <section>
+          <head>
+            <title>Section profonde</title>
+            <indexset><index><entry>section</entry><entry>section profonde</entry></index>
+            <index><entry>classification phylogénétique</entry></index></indexset>
+          </head>
+          <section>
+            <head>
+              <title>1. Archées</title>
+            </head>
+            <section>
+              <head>
+                <title>1.1. Crénarchées</title>
+              </head>
+              <section>
+                <head>
+                  <title>1.1.1. Thermoprotéales</title>
+                </head>
+                <p>…</p>
+              </section>
+              <section>
+                <head>
+                  <title>1.1.2. Désulfurococcales</title>
+                </head>
+                <p>…</p>
+              </section>
+              <section>
+                <head>
+                  <title>1.1.3. Sulfolobales</title>
+                </head>
+                <p>…</p>
+              </section>
+            </section>
+            <section>
+              <head>
+                <title>1.2. Euryarchées</title>
+              </head>
+              <p>…</p>
+            </section>
+          </section>
+          <section>
+            <head>
+              <title>2. Bactéries</title>
+            </head>
+            <p>…</p>
+          </section>
+          <section>
+            <head>
+              <title>3. Eucaryotes</title>
+            </head>
+            <section>
+              <head>
+                <title>3.1. Bicontes</title>
+              </head>
+              <section>
+                <head>
+                  <title>3.1.1. Lignée verte</title>
+                </head>
+                <section>
+                  <head>
+                    <title>3.1.1.1. Glaucophytes</title>
+                  </head>
+                  <p>…</p>
+                </section>
+                <section>
+                  <head>
+                    <title>3.1.1.2. Métabiontes</title>
+                  </head>
+                  <p>…</p>
+                </section>
+              </section>
+              <section>
+                <head>
+                  <title>3.1.2. Chromoalvéolés</title>
+                </head>
+                <p>…</p>
+              </section>
+              <section>
+                <head>
+                  <title>3.1.3. Rhizariens</title>
+                </head>
+                <p>…</p>
+              </section>
+              <section>
+                <head>
+                  <title>3.1.4. Excavobiontes</title>
+                </head>
+                <p>…</p>
+              </section>
+            </section>
+            <section>
+              <head>
+                <title>3.2. Unicontes</title>
+              </head>
+              <p>…</p>
+            </section>
+          </section>
+        </section>
+        <section type="box">
+          <head>
+            <title>Encadré</title>
+            <subtitle>« Casser sa pipe »</subtitle>
+            <indexset>
+              <index>
+                <entry>section</entry>
+                <entry>type encadré</entry>
+              </index>
+            </indexset>
+          </head>
+          <p>Il semblerait que cette expression vienne du Premier empire durant
+          les guerres Napoléoniennes.  Sur les champs de bataille de
+          l'époque, les médecins militaires (majors) ne disposaient pas du
+          matériel nécessaire pour anesthésier le soldat avant de
+          l'amputer. Pour résoudre ce problème, on avait trouvé une bien
+          maigre solution. Il s'agissait de donner une pipe en terre cuite au
+          patient qu'il place entre ses dents, pour éviter que ce dernier ne
+          crie. Dans le cas où le médecin échouait lors de l'opération et que
+          le soldat succombait, il lâchait alors la pipe qu'il tenait entre
+          ses mâchoires, et celle-ci tombait en se brisant.</p>
+          <p>Ce serait de là que naquit l'expression « casser sa pipe ».</p>
+        </section>
+        <section type="ex">
+          <head>
+            <title>Exemple</title>
+            <indexset>
+              <index>
+                <entry>section</entry>
+                <entry>type exemple</entry>
+              </index>
+            </indexset>
+          </head>
+          <p>Quand on meurt on perd le goût de la vie. Quand on casse sa pipe,
+          on perd le goût du tabac.</p>
+        </section>
+        <section type="sign">
+          <p>Jeanson Henri (signature)</p>
+        </section>
+        <section>
+          <head>
+            <title>Encart</title>
+          </head>
+          <section type="insert">
+            <p><name of="book">L'Aiguille creuse</name> est un roman de Maurice
+            <name of="person">Leblanc</name> mettant en scène les aventures
+            d'Arsène <name of="person">Lupin</name>,
+            gentleman-cambrioleur.</p>
+            <p>Il a été publié dans le journal <name of="newspaper">Je sais
+            tout</name>, du 15 novembre 1908 au 15 mai 1909, puis avec
+            quelques modifications, le roman entier a été édité en juin 1909.</p>
+          </section>
+          <section>
+            <head>
+              <title>L'Aiguille creuse</title>
+              <subtitle>Le coup de feu</subtitle>
+            </head>
+            <p>Raymonde prêta l’oreille. De nouveau et par deux fois le bruit se
+            fit entendre, assez net pour qu’on pût le détacher de tous les
+            bruits confus qui formaient le grand silence nocturne, mais si
+            faible qu’elle n’aurait su dire s’il était proche ou lointain,
+            s’il se produisait entre les murs du vaste château, ou dehors,
+            parmi les retraites ténébreuses du parc.</p>
+            <p>Doucement elle se leva. Sa fenêtre était entrouverte, elle en
+            écarta les battants. La clarté de la lune reposait sur un calme
+            paysage de pelouses et de bosquets où les ruines éparses de
+            l’ancienne abbaye se découpaient en silhouettes tragiques,
+            colonnes tronquées, ogives incomplètes, ébauches de portiques et
+            lambeaux d’arcs-boutants. Un peu d’air flottait à la surface des
+            choses, glissant à travers les rameaux nus et immobiles des
+            arbres, mais agitant les petites feuilles naissantes des massifs.</p>
+            <p>Et soudain, le même bruit… C’était vers sa gauche et audessous de
+            l’étage qu’elle habitait, par conséquent dans les salons qui
+            occupaient l’aile occidentale du château.</p>
+            <p>Bien que vaillante et forte, la jeune fille sentit l’angoisse de
+            la peur. Elle passa ses vêtements de nuit et prit les allumettes.</p>
+          </section>
+        </section>
+        <bibliography>
+          <entry>
+            <identifier type="ean">9782877065073</identifier>
+            <title>La gloire de mon père</title>
+            <contributors>
+              <contributor>
+                <firstname>Marcel</firstname>
+                <lastname>PAGNOL</lastname>
+                <role>author</role>
+              </contributor>
+              <contributor>
+                <label>De Fallois</label>
+                <role>publisher</role>
+              </contributor>
+            </contributors>
+            <pages>217</pages>
+          </entry>
+          <entry>
+            <identifier type="ean">9782253096334</identifier>
+            <title>Les Misérables</title>
+            <contributors>
+              <contributor>
+                <firstname>Victor</firstname>
+                <lastname>HUGO</lastname>
+                <role>author</role>
+              </contributor>
+              <contributor>
+                <label>Le Livre de Poche</label>
+                <role>publisher</role>
+              </contributor>
+            </contributors>
+            <pages>512</pages>
+            <collection>Les classiques</collection>
+          </entry>
+        </bibliography>
+        <footer>
+          <media>
+            <image id="footer" zoom="true">
+              <?tune-html-img-format png ?>
+            </image>
+          </media>
+        </footer>
+      </topic>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <topic>
+        <head>
+          <title>Les langues (<foreign xml:lang="en">languages</foreign>)</title>
+        </head>
+        <section xml:lang="fr">
+          <head>
+            <title>Moyen mnémotechnique pour les planètes</title>
+          </head>
+          <p>Mercredi, viens-tu manger avec Jean sur une nappe propre ? :
+          Mercure, Vénus, Terre, Mars, Astéroïdes, Saturne, Uranus, Neptune,
+          [Pluton].</p>
+        </section>
+        <section xml:lang="en">
+          <head>
+            <title>Don't look a gift horse in the mouth</title>
+          </head>
+          <section>
+            <head>
+              <title>Meaning</title>
+            </head>
+            <p>Don't be ungrateful when you receive a gift.</p>
+          </section>
+          <section>
+            <head>
+              <title>Origin</title>
+            </head>
+            <p>This comes into the category of phrases called proverbs. The
+            phrase is often expressed as "never look a gift horse in the
+            mouth".</p>
+            <p>As horses age their teeth begin to project further forward each
+            year and so their age can be estimated by checking how prominent
+            the teeth are.</p>
+          </section>
+        </section>
+      </topic>
+    </division>
+
+    <!-- ================================================================== -->
+    <division>
+      <head>
+        <title>Le niveau bloc</title>
+        <abstract>
+          <p>Où l'on aborde les différents types de bloc.</p>
+        </abstract>
+      </head>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <division>
+        <head>
+          <title>Le texte</title>
+        </head>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <front>
+          <section>
+            <p><name>Publidoc</name> comporte différents blocs de type texte :
+            les paragraphes (&lt;p&gt;), les dialogues (&lt;speech&gt;), les
+            listes (&lt;list&gt;), les citations (&lt;blockquote&gt;), les
+            <index><w>tableaux</w></index> (&lt;table&gt;).</p>
+          </section>
+        </front>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <topic>
+          <head>
+            <title>Les paragraphes</title>
+          </head>
+          <section xml:id="cosette">
+            <head>
+              <title>Les Misérables</title>
+              <subtitle>Extrait</subtitle>
+              <abstract>
+                <p>Où l’on apprend la mort de Jean Valjean.</p>
+              </abstract>
+            </head>
+            <p><index><entry>Les Misérables</entry><w>Cosette</w></index> et
+            <index><entry>Les Misérables</entry><w>Marius</w></index> tombèrent
+            à genoux, éperdus, étouffés de larmes, chacun sur une des mains de
+            <index><entry>Les Misérables</entry><w>Jean Valjean</w></index>.
+            Ces mains augustes ne remuaient plus.</p>
+            <p>Il était renversé en arrière, la lueur des deux chandeliers
+            l'éclairait ; sa face blanche regardait le ciel, il laissait
+            Cosette et Marius couvrir ses mains de baisers ; il était mort.</p>
+            <p>La nuit était sans étoiles et profondément obscure. Sans doute,
+            dans l'ombre, quelque ange immense était debout, les ailes
+            déployées, attendant l'âme.</p>
+          </section>
+          <section>
+            <head>
+              <title>Germinal</title>
+              <subtitle>Extrait</subtitle>
+              <abstract>
+                <p>Où l’on découvre une ambiance pesante.</p>
+              </abstract>
+            </head>
+            <section>
+              <p>Pas une parole n'était échangée. Ils tapaient tous, on
+              n'entendait que ces coups irréguliers, voilés et comme lointains.
+              Les bruits prenaient une sonorité rauque, sans un écho dans l'air
+              mort. Et il semblait que les ténèbres fussent d'un noir inconnu,
+              épaissi par les poussières volantes du charbon, alourdi par des
+              gaz qui pesaient sur les yeux. Les mèches des lampes, sous leurs
+              chapeaux de toile métallique, n'y mettaient que des points
+              rougeâtres.</p>
+              <p>On ne distinguait rien, la taille s'ouvrait, montait ainsi
+              qu'une large cheminée, plate et oblique, où la suie de dix hivers
+              aurait amassé une nuit profonde. Des formes spectrales s'y
+              agitaient, les lueurs perdues laissaient entrevoir une rondeur de
+              hanche, un bras noueux, une tête violente, barbouillée comme pour
+              un crime. Parfois, en se détachant, luisaient des blocs de
+              houille, des pans et des arêtes, brusquement allumés d'un reflet
+              de cristal.  Puis, tout retombait au noir, les rivelaines
+              tapaient à grands coups sourds, il n'y avait plus que le
+              halètement des poitrines, le grognement de gêne et de fatigue,
+              sous la pesanteur de l'air et la pluie des sources.</p>
+            </section>
+            <section type="sign">
+              <p>Émile ZOLA</p>
+            </section>
+          </section>
+        </topic>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <topic>
+          <head>
+            <title>Les dialogues</title>
+          </head>
+          <section>
+            <head>
+              <title>Cyrano de Bergerac</title>
+              <subtitle>Extrait</subtitle>
+              <subtitle>Une protectrice</subtitle>
+            </head>
+            <speech>
+              <speaker>Le fâcheux</speaker>
+              <p>Quoi, pas un grand seigneur pour couvrir de son nom ?…</p>
+            </speech>
+            <speech>
+              <speaker>Cyrano</speaker>
+              <stage>agacé</stage>
+              <p>Non, ai-je dit deux fois. Faut-il donc que je trisse ?…</p>
+              <p>Non, pas de protecteur… <stage>La main à son épée.</stage>
+              mais une protectrice !</p>
+            </speech>
+          </section>
+        </topic>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <topic>
+          <head>
+            <title>Les listes</title>
+          </head>
+          <section>
+            <head>
+              <title>la pâte à crêpes</title>
+            </head>
+            <list>
+              <head>
+                <title>Liste non ordonnée : les ingrédients</title>
+              </head>
+              <item>250 g de farine</item>
+              <item>3 œufs</item>
+              <item>75 cl de lait</item>
+              <item>2 cuillères à soupe de sucre</item>
+            </list>
+            <list type="ordered">
+              <head>
+                <title>Liste ordonnée : la recette</title>
+              </head>
+              <item>
+                <p>Versez dans une terrine 250 g de farine en fontaine &amp;
+                cassez 3 œufs au milieu.</p>
+                <p>Incorporez-les à la farine, en remuant avec une cuillère en
+                bois.</p>
+              </item>
+              <item>
+                <p>Versez 75 cl de lait, en délayant progressivement de
+                manière à éviter les grumeaux.</p>
+                <p>Si vous faites des crêpes sucrées, ajoutez 2 cuillères à
+                soupe de sucre.</p>
+              </item>
+              <item>
+                <p>Laissez reposer la pâte si possible 1 h avant de
+                l'utiliser.</p>
+              </item>
+              <item>
+                <p>Si vous voulez des crêpes plus fines, mettez moitié eau,
+                moitié lait.</p>
+                <p>Si vous les désirez plus légères, remplacez un verre de lait
+                par un verre de bière.</p>
+                <p>Si vous les aimez plus moelleuses, incorporez 1 blanc d'œuf
+                battu en neige à la pâte, au moment de confectionner les
+                crêpes.</p>
+              </item>
+            </list>
+          </section>
+          <section>
+            <list type="glossary">
+              <head>
+                <title>Glossaire : la comptabilité</title>
+              </head>
+              <item>
+                <label>Actif</label>
+                <p>Colonne de gauche du bilan qui représente les éléments
+                positifs du patrimoine d'une entreprise : ce qu'elle
+                possède.</p>
+              </item>
+              <item>
+                <label>Passif</label>
+                <p>Colonne de droite du bilan qui représente les dettes d'une
+                entreprise et ses capitaux propres.</p>
+              </item>
+            </list>
+          </section>
+          <section>
+            <?tune-latex-newpage?>
+            <list>
+              <head>
+                <title>Listes imbriquées : la météo aéronautique</title>
+              </head>
+              <item>
+                <list>
+                  <head>
+                    <title>METAR</title>
+                  </head>
+                  <item>METAR LFPB 230900Z 13003KT CAVOK 18/10 Q1015 NOSIG=</item>
+                  <item>METAR LFOR 230900Z 18003KT CAVOK 17/09 Q1015=</item>
+                </list>
+              </item>
+              <item>
+                <list>
+                  <head>
+                    <title>TAF</title>
+                  </head>
+                  <item>TAF LFOP 230800Z 230918 18005KT CAVOK BECMG 1416 24010KT BKN014 TEMPO 1618 RA BKN005=</item>
+                  <item>TAF LFOT 230800Z 230918 23007KT CAVOK=</item>
+                </list>
+              </item>
+            </list>
+          </section>
+        </topic>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <topic>
+          <head>
+            <title>Les citations</title>
+          </head>
+          <section>
+            <blockquote>
+              <p>Dans cent ans, qu'aimeriez-vous que l'on dise de vous ?</p>
+              <p>— J'aimerais que l'on dise : <quote>il se porte bien pour son
+              âge !</quote></p>
+              <attribution>Woody ALLEN</attribution>
+            </blockquote>
+            <blockquote>
+              <p>C'est une grande <gloss ref="grace">grâce</gloss> de <gloss
+              ref="pouvoir">pouvoir</gloss> s'accepter soi-même, mais c'est
+              une grâce suprême de pouvoir
+              <gloss ref="oublier">s'oublier</gloss>.</p>
+              <attribution>Sénèque</attribution>
+            </blockquote>
+          </section>
+        </topic>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <topic>
+          <head>
+            <title>Les <index><w>tableaux</w></index></title>
+          </head>
+          <section>
+            <head>
+              <title>Tableau standard</title>
+            </head>
+            <table>
+              <head>
+                <title>Consonnes sonores et sourdes en russe</title>
+              </head>
+              <tr>
+                <th>Consonnes sonores</th>
+                <th>Consonnes sourdes</th>
+              </tr>
+              <tr>
+                <td>г, б, з, д, в, ж</td>
+                <td>к, п, с, т, ф, ш</td>
+              </tr>
+            </table>
+            <table type="template">
+              <head>
+                <title>Journal de navigation</title>
+                <indexset>
+                  <index>
+                    <entry>journal de navigation</entry>
+                  </index>
+                </indexset>
+              </head>
+              <thead>
+                <tr>
+                  <td colspan="5">
+                    <p>Avion :</p>
+                    <p>Horamètre :</p>
+                  </td>
+                  <td colspan="4">
+                    <p>Autonomie :</p>
+                    <p>Heure :</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th> </th>
+                  <th>Rm</th>
+                  <th>D (NM)</th>
+                  <th colspan="2">He, Hr/Tsv (min)</th>
+                  <th>Radio</th>
+                  <th>VOR</th>
+                  <th>Alt. (ft)</th>
+                  <th>Zone…</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3" type="step">Chavenay</td>
+                  <td> </td>
+                  <td> </td>
+                  <td>Tour : 129,525</td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                </tr>
+                <tr align="center">
+                  <td> </td>
+                  <td>220°</td>
+                  <td>8</td>
+                  <td colspan="2">+5</td>
+                  <td> </td>
+                  <td> </td>
+                  <td>max : 2000</td>
+                  <td> </td>
+                </tr>
+                <tr>
+                  <td colspan="3" type="step">Étangs de Hollande</td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                </tr>
+                <tr align="center">
+                  <td> </td>
+                  <td>155°</td>
+                  <td>23</td>
+                  <td colspan="2">+14</td>
+                  <td> </td>
+                  <td> </td>
+                  <td>max : 2500</td>
+                  <td> </td>
+                </tr>
+                <tr>
+                  <td colspan="3" type="step">Étampes</td>
+                  <td> </td>
+                  <td> </td>
+                  <td>
+                    <p>Tour : 119,05</p>
+                  </td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                </tr>
+                <tr>
+                  <td colspan="5">
+                    <p>
+                      <highlight>ATIS</highlight>
+                    </p>
+                    <p>QNH</p>
+                    <p>QFU</p>
+                    <p>Visi.</p>
+                    <p>Vent</p>
+                  </td>
+                  <td colspan="4" align="right">
+                    <p>
+                      <highlight>ATIS</highlight>
+                    </p>
+                    <p>QNH</p>
+                    <p>QFU</p>
+                    <p>Visi.</p>
+                    <p>Vent</p>
+                  </td>
+                </tr>
+              </tbody>
+              <caption>Archive P²</caption>
+            </table>
+          </section>
+        </topic>
+      </division>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <division>
+        <head>
+          <title>Le multimedia</title>
+        </head>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <front>
+          <section>
+            <p><name>Publidoc</name> utilise une balise englobante
+            &lt;media&gt; pour la gestion du multimedia.</p>
+          </section>
+        </front>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <topic xml:id="images">
+          <head>
+            <title>L'image</title>
+            <indexset>
+              <index>
+                <entry>image</entry>
+              </index>
+            </indexset>
+          </head>
+          <section>
+            <media>
+              <head>
+                <title>Cosette</title>
+              </head>
+              <image id="cosette">
+                <?tune-latex-img-size .6\linewidth ?>
+                <copyright>Émile BAYARD</copyright>
+                <hotspot x="35%" y="32%" w="34%" h="50%" display="visible">
+                  <link idref="cosette"/>
+                </hotspot>
+              </image>
+              <caption>Illustration pour Les <name of="book">Misérables</name>.</caption>
+            </media>
+            <media type="logo">
+              <image id="prismallia_logo" type="icon" alt="Logo Prismallia">
+                <?tune-html-img-format svg ?>
+              </image>
+              <caption>Le logo de <name>Prismallia</name></caption>
+              <link uri="http://www.prismallia.fr"/>
+            </media>
+            <p>En typographie, un cul-de-lampe est un ornement placé en bas
+            d'une page de fin de chapitre ou de livre. Il prend généralement la
+            forme d’un triangle composé d'un dessin abstrait ou imagé comme
+            avec le fleuron typographique (<image id="culdelampe"/>). Le
+            cul-de-lampe désigne aussi l'arrangement décoratif d'un texte qui
+            va en diminuant, d'une ligne à l'autre, jusqu'à ne plus former
+            qu'une pointe sur la dernière ligne.</p>
+          </section>
+          <section>
+            <media xml:id="cockpit">
+              <head>
+                <indexset>
+                  <index>
+                    <entry>avion</entry>
+                  </index>
+                </indexset>
+                <annotation>
+                  <p>Ajouter des légendes.</p>
+                  <p>Vérifier les niveaux.</p>
+                </annotation>
+              </head>
+              <image id="f-gcru">
+                <hotspot x="68.2%" y="49.5%" w="7.5%" h="14.2%" type="zone"/>
+                <hotspot x="23.6%" y="49%" w="7.5%" h="14.2%" display="normal" type="caption">
+                  <spot dx="-1.5%" dy="-4.1%">
+                    <p>Directionnel</p>
+                  </spot>
+                  <scenario>
+                    <init action="hide" target="spot"/>
+                    <onclick action="show" target="spot"/>
+                  </scenario>
+                </hotspot>
+                <hotspot x="68.2%" y="33%" w="7.5%" h="14.2%" display="visible" type="caption">
+                  <spot dx="-2%" dy="-4.1%">
+                    <p>Compte-tours</p>
+                  </spot>
+                  <scenario>
+                    <init action="hide" target="spot"/>
+                    <onclick action="show" target="spot"/>
+                  </scenario>
+                </hotspot>
+                <hotspot x="55.3%" y="67.8%" w="7.5%" h="14.2%" display="pulse" type="zoom">
+                  <spot dx="-2.5%" dy="-6%" dw="5%">
+                    <image id="zoom_oil"/>
+                  </spot>
+                  <scenario>
+                    <init action="hide" target="spot"/>
+                    <onclick action="show" target="spot"/>
+                  </scenario>
+                </hotspot>
+                <hotspot x="1%" y="93.5%" w="0%">
+                  <p>Planche de bord</p>
+                </hotspot>
+              </image>
+              <caption x="1%" y="1%">Robin DR-400, F-GCRU.</caption>
+            </media>
+            <p>Le Robin DR-400 est un avion de tourisme monomoteur.</p>
+          </section>
+          <section>
+            <media type="insert">
+              <head>
+                <title>Avion de tourisme</title>
+                <indexset>
+                  <index>
+                    <entry>avion</entry>
+                  </index>
+                </indexset>
+              </head>
+              <image id="plane" type="animation"/>
+            </media>
+            <p>En France, après la Seconde Guerre mondiale, le gouvernement se
+            montra très volontariste pour lancer l'activité des sports aériens
+            et la formation de jeunes pilotes. Un certain nombre d'entreprises
+            ont démarré leur activité à cette époque comme Jodel avec des
+            ingénieurs/entrepreneurs comme Édouard <name
+            of="person">Joly</name> et Jean <name
+            of="person">Délémontez</name>. Ou se sont diversifié comme Bréguet
+            qui construisit des planeurs école.</p>
+            <p>Dans les années 1970, le succès des avions en bois et toile Robin
+            dérivés des Jodel maintient l'activité. Vers le milieu des années
+            1980, la Socata avec ses TB en aluminium perce sur le créneau des
+            avions de voyage.</p>
+            <p>Depuis le début des années 2000, l'aviation légère est en crise
+            en France. Les nouveaux types d'avion alliant structure en
+            composite, moteur diesel, parachute et glass cockpit ont
+            renouvelé le marché.</p>
+          </section>
+        </topic>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <topic>
+          <head>
+            <title>La musique et le son</title>
+          </head>
+          <section>
+            <head>
+              <audio id="ring" type="background"/>
+            </head>
+            <media>
+              <audio id="brahms_lullaby" type="music"/>
+              <caption>Johannes Brahms – Op.49 No.4 Wiegenlied / Lullaby</caption>
+            </media>
+            <p>Voici une petite musique (<audio id="amarok"/>).</p>
+          </section>
+        </topic>
+        <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+        <topic>
+          <head>
+            <title>La vidéo</title>
+          </head>
+          <section>
+            <media>
+              <video id="chicken_chair"/>
+              <image id="chicken_chair"/>
+              <caption>Chicken Chair</caption>
+            </media>
+          </section>
+          <section>
+            <media>
+              <video id="big_bug_bunny_trailer"/>
+              <image id="big_bug_bunny_trailer"/>
+              <caption>Bande annonce de Big Bug Bunny</caption>
+            </media>
+          </section>
+        </topic>
+      </division>
+    </division>
+
+    <!-- ================================================================== -->
+    <division type="inline">
+      <head>
+        <title>Le niveau courant</title>
+        <abstract>
+          <p>Où l'on aborde les balises de bas niveau.</p>
+        </abstract>
+      </head>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <front>
+        <section>
+          <p>Il existe de nombreuses balises de bas niveau.</p>
+        </section>
+      </front>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <topic xml:id="inline">
+        <section>
+          <list type="glossary">
+            <item>
+              <label>Ancres</label>
+              <p>Une ancre<anchor xml:id="ancre"/> est un objet embarqué, lourd,
+              souvent de métal et destiné à stabiliser des bateaux à un
+              endroit spécifique sur les fonds rocheux, vaseux ou sableux. Il
+              y a deux catégories d’ancrages (ou mouillage), les ancrages
+              provisoires et les ancrages permanents.</p>
+            </item>
+            <item>
+              <label>Indices et exposants</label>
+              <p>Un exposant 10<sup>-3</sup> suivi d'un indice
+              H<sub>2</sub>O.</p>
+            </item>
+            <item>
+              <label>Nombres</label>
+              <p>En horlogerie, <number>4</number> est écrit <number
+              type="roman">IIII</number> au lieu de <number
+              type="roman">IV</number>, essentiellement pour des raisons de
+              <index><w>lisibilité</w></index> sur un cadran rond. C'est ce qui
+              lui vaut son nom de <number>quatre</number> d'horloger.</p>
+            </item>
+            <item>
+              <label>Mathématiques</label>
+              <p>L'équation du second degré
+              <math><var>a</var><var>x</var><sup>2</sup> +
+              <var>b</var><var>x</var> + <var>c</var></math> admet les
+              solutions suivantes si elles existent :
+
+              <math xml:id="eqn2deg"><latex>x =
+              \frac{-b\pm\sqrt{b^2-4ac}}{2a}</latex></math></p>
+            </item>
+            <item>
+              <label>Acronymes</label>
+              <p>Le groupe <acronym>SNCF</acronym> constitué par
+              l'établissement public <acronym>SNCF</acronym> et ses 49
+              filiales, dont la plupart sont contrôlées par la société holding
+              <name of="company"><acronym>SNCF</acronym> Participations</name>,
+              est l'un des tout premiers groupes de transport et de logistique
+              en Europe.</p>
+            </item>
+            <item>
+              <label>Mises en valeur</label>
+              <p>La chimie se préoccupe de la manière dont les
+              <emphasis>92</emphasis> <emphasis>atomes</emphasis> qui
+              constituent le tableau de Mendeleieff peuvent se combiner pour
+              donner des composés et quelles sont les propriétes de ces
+              composés. Ces composés sont soit des
+              <highlight>molécules</highlight> soit des
+              <highlight>cristaux</highlight>.</p>
+            </item>
+            <item>
+              <label>Mots mentionnés</label>
+              <p>Le mot <mentioned>table</mentioned> n'a qu'une syllabe.</p>
+            </item>
+            <item>
+              <label>Expression littérale</label>
+              <p><literal>&lt;html&gt;</literal> est l'ancêtre de tous les
+              éléments.</p>
+            </item>
+            <item>
+              <label>Termes techniques</label>
+              <p>Un <term>hydrate</term> est un composé chimique contenant de
+              l'eau.</p>
+            </item>
+            <item>
+              <label>Didascalie</label>
+              <p>Une didascalie, dans le texte d'une pièce de théâtre ou le
+              scénario d'un film, est une note rédigée par l'auteur donnant des
+              indications d'action, de jeu ou de mise en scène. Par exemple :
+              <stage>agacé</stage> ou <stage>La main à son épée.</stage>.</p>
+            </item>
+            <item>
+              <label>Noms</label>
+              <p>La loi a changé, mais les chasseurs ne s'y soumettront
+              pas. C'est toute la substance du discours martelé par le leader
+              de <acronym>CPNT</acronym> (<name of="party">Chasse, Pêche,
+              Nature et Traditions</name>), <name of="person">Jean
+              Saint-Josse</name>, devant les chasseurs de la baie de Somme.</p>
+            </item>
+            <item>
+              <label>Mots étrangers</label>
+              <p>La boucle (ou <foreign>looping</foreign>) est une figure de
+              voltige aérienne. C'est une rotation de l'avion ou de
+              l'hélicoptère autour de son axe de tangage (axe des ailes).</p>
+            </item>
+            <item>
+              <label>Dates</label>
+              <p>Napoléon Bonaparte est né le <date of="birth"
+              value="1769-08-15">15 août 1769</date> à Ajaccio, en Corse et
+              mort le <date of="death" value="1821-05-05">5 mai 1821</date> sur
+              l'île Sainte-Hélène, au Royaume-Uni. […]</p>
+              <p>À son retour d’Italie, en <date value="1797-12">décembre
+              1797</date>, Bonaparte est accueilli comme un héros par le
+              Directoire. […]</p>
+              <p>En <date value="1800">1800</date>, Bonaparte attaque et vainc
+              l’Archiduché d'Autriche une nouvelle fois. […]</p>
+              <p><date value="1815-03-01">1<sup>er</sup> mars 1815</date> :
+              Débarqués à Golfe-Juan, Napoléon et sa petite troupe gagnent
+              Cannes où ils arrivent tard et d’où ils repartent tôt. […]</p>
+              <p>Dans les années , l’empereur Napoléon III
+              fait publier la correspondance de son oncle. […]</p>
+            </item>
+            <item>
+              <label>Citations</label>
+              <p><quote>Il faut manger pour vivre, et non pas vivre pour
+              manger.</quote> est une citation de l’<name
+              of="book">Avare</name> de Molière. Cependant il est possible
+              qu’il provienne de l’antiquité grecque. En effet, Diogène Laërce
+              l’attribue à Socrate.</p>
+              <p>
+                <quote>
+                  <phrase>Impossible de vous dire mon âge, il change tout
+                  le temps.</phrase>
+                  <attribution>Allais Alphonse (1855-1905)</attribution>
+                </quote>
+              </p>
+            </item>
+            <item>
+              <label>Lettrine</label>
+              <p><initial><c>U</c><w>ne lettrine</w></initial> est une lettre
+              initiale majuscule décorée placée en tête d'un texte et
+              occupant une hauteur supérieure à la ligne courante. Les autres
+              lettres du premier mot sont généralement en petites capitales.</p>
+            </item>
+            <item>
+              <label>Notes</label>
+              <p>Depuis leur entrée dans l'univers des mathématiques (avec
+              <note><w>Pascal</w><p>Blaise PASCAL est né le <date
+              value="1623-06-19">19 juin 1623</date> à Clermont.</p><p>Il est
+              mort le <date value="1662-08-19">19 août 1662</date> à
+              Paris.</p></note> au <number
+              type="roman">XVII</number><sup>e</sup> siècle), les probabilités
+              ont pris une place croissante dans notre façon d'appréhender le
+              monde. La mécanique quantique<note>La mécanique quantique est la
+              théorie mathématique et physique décrivant la structure et
+              l'évolution dans le <highlight>temps</highlight> et
+              l'<highlight>espace</highlight> des phénomènes physiques à
+              l'échelle de l'atome et en dessous.</note>, par exemple, repose
+              en partie sur le calcul des probabilités<note label="*">La
+              probabilité d'un événement est un nombre réel compris entre 0 et
+              1.</note>.</p>
+            </item>
+            <item>
+              <label>Liens</label>
+              <p>N'hésitez pas à visiter le site de <link
+              uri="http://www.prismallia.fr">Prismallia</link>.</p>
+              <p>Lisez également l'article sur les <link
+              idref="ancre">ancres</link> et la <link idref="images">page sur
+              les images</link> avec notamment sa photo de <link
+              idref="cockpit">cockpit</link>.</p>
+              <p>N'hésitez pas à revoir les <link
+              idref="eqn2deg">solutions</link> des équations du second
+              degré.</p>
+            </item>
+            <item>
+              <label>Pictogrammes</label>
+              <p>Le pictogramme <image id="exit"/> représentant un homme se
+              dirigeant vers une porte indique la direction de la sortie.</p>
+            </item>
+            <item>
+              <label>Avertissements</label>
+              <p>La sagesse tibétaine nous enseigne que
+              <quote><warning>l</warning>a maladie est un avertissement qui
+              nous est donné pour nous rappeler à
+              l’essentiel<warning>.</warning></quote></p>
+            </item>
+            <item>
+              <label>Lettres grecques</label>
+              <p><index><w>α</w></index> <index><w>β</w></index> γ δ ε</p>
+            </item>
+            <item>
+              <label>Symboles mathémathiques</label>
+              <p>∀ <index><w>∃</w></index> ∈ ∉ ∅ ∞</p>
+            </item>
+          </list>
+        </section>
+      </topic>
+    </division>
+
+    <!-- ================================================================== -->
+    <glossary xml:lang="fr" langto="en">
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <entry xml:id="danseur">
+        <mainterm>danseur</mainterm>
+        <alt-terms>
+          <alt-term type="fem">danseuse</alt-term>
+        </alt-terms>
+        <meanings gramcode="nom">
+          <meaning>
+            <definition>Personne qui danse à titre professionnel ou par plaisir.</definition>
+            <translation>dancer</translation>
+          </meaning>
+        </meanings>
+      </entry>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <entry xml:id="grace">
+        <mainterm>grâce</mainterm>
+        <meanings gramcode="n.f">
+          <meaning>
+            <definition>Faveur accordée à une personne.</definition>
+            <synonym>agrément</synonym>
+            <translation>favour</translation>
+          </meaning>
+          <meaning>
+            <definition>Remise de peine, pardon.</definition>
+            <example>La grâce présidentielle.</example>
+            <synonym>absolution</synonym>
+          </meaning>
+          <meaning>
+            <definition>Charme, élégance de quelqu'un.</definition>
+            <synonym>agilité</synonym>
+            <translation>grace</translation>
+          </meaning>
+          <meaning domain="religion">
+            <definition>Aide divine pouvant mener une personne à son salut.</definition>
+            <synonym>absolution</synonym>
+            <translation>mercy</translation>
+          </meaning>
+          <meaning>
+            <definition>Titre honorifique d'origine britannique.</definition>
+            <example>Merci de m'accorder audience, votre Grâce.</example>
+          </meaning>
+        </meanings>
+        <seealso ref="grace_a"/>
+      </entry>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <entry xml:id="grace_a">
+        <mainterm>grâce à</mainterm>
+        <meanings gramcode="loc">
+          <meaning>
+            <definition>Avec l'aide de quelque chose ou de quelqu'un.</definition>
+            <example>C'est grâce à toi !</example>
+            <translation>thanks to</translation>
+          </meaning>
+        </meanings>
+      </entry>
+      <entry xml:id="oublier">
+        <mainterm>(s')oublier</mainterm>
+        <meanings gramcode="v.t">
+          <meaning>
+            <definition>Perdre le souvenir.</definition>
+            <example>Il a oublié notre rendez-vous.</example>
+            <translation>to forget</translation>
+          </meaning>
+          <meaning>
+            <definition>Laisser par inadvertance.</definition>
+            <example>Oublier son portefeuille.</example>
+            <translation>to forget</translation>
+          </meaning>
+          <meaning>
+            <definition>Négliger.</definition>
+            <example>Oublier ses amis.</example>
+            <synonym>laisser</synonym>
+            <translation>to forget</translation>
+          </meaning>
+          <meaning>
+            <definition>Pardonner.</definition>
+            <synonym>amnistier</synonym>
+            <translation>to forgive</translation>
+          </meaning>
+        </meanings>
+      </entry>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <entry xml:id="pouvoir">
+        <mainterm>pouvoir</mainterm>
+        <meanings gramcode="n.m">
+          <meaning>
+            <definition>Puissance, possibilité.</definition>
+            <example>le pouvoir d'achat des Français</example>
+            <example>le pouvoir exampleécutif</example>
+            <example>le pouvoir législatif</example>
+            <example>le pouvoir judiciaire</example>
+            <example>un pouvoir surnaturel</example>
+            <example>un pouvoir magique</example>
+            <synonym>capacité</synonym>
+            <translation>power</translation>
+          </meaning>
+          <meaning>
+            <definition>autorité</definition>
+            <example>les pouvoirs publics</example>
+            <example>les pouvoirs adjudicateurs</example>
+            <synonym>souveraineté</synonym>
+            <translation>power</translation>
+          </meaning>
+          <meaning>
+            <definition>influence exercée sur quelqu'un</definition>
+            <synonym>permission</synonym>
+          </meaning>
+          <meaning>
+            <definition>Propriétés d'une chose.</definition>
+            <example>le pouvoir nettoyant d'un produit</example>
+            <example>le pouvoir des pierres</example>
+          </meaning>
+        </meanings>
+        <meanings gramcode="v.t">
+          <meaning>
+            <definition>Avoir la faculté de faire quelque chose.</definition>
+            <example>Je peux marcher.</example>
+            <translation>can</translation>
+            <translation>to be able to</translation>
+          </meaning>
+          <meaning>
+            <definition>Avoir l'autorisation</definition>
+            <translation>can</translation>
+            <translation>may</translation>
+            <translation>o be allowed</translation>
+          </meaning>
+          <meaning>
+            <definition>Oser, avoir de l'audace</definition>
+            <example>Comment peux-tu manger cela ?</example>
+            <translation>to can</translation>
+          </meaning>
+          <meaning>
+            <definition>Être possible</definition>
+            <example>Il peut se tromper</example>
+          </meaning>
+        </meanings>
+      </entry>
+    </glossary>
+  </document>
+</publidoc>

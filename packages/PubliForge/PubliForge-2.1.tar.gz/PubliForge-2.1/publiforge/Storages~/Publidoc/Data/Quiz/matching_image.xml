@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id$ -->
+<publiquiz version="1.0">
+  <quiz id="matching_image" xml:lang="fr">
+    <head>
+      <title>Exercice d'appariement avec images</title>
+    </head>
+
+    <instructions>
+      <p>Associez chaque petit avec son parent.</p>
+    </instructions>
+
+    <matching>
+      <match>
+        <item><image id="chat"/></item>
+        <item><image id="chaton"/></item>
+      </match>
+      <match>
+        <item><image id="elephant"/></item>
+        <item><image id="elephanteau"/></item>
+      </match>
+      <match>
+        <item><image id="lion"/></item>
+        <item><image id="lionceau"/></item>
+      </match>
+      <match>
+        <item><image id="ours"/></item>
+        <item><image id="ourson"/></item>
+      </match>
+      <match>
+        <item><image id="tigre"/></item>
+        <item><image id="tigreau"/></item>
+      </match>
+    </matching>
+  </quiz>
+</publiquiz>

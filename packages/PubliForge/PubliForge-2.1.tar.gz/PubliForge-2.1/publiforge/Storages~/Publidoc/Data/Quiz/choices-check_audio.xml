@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="choices-check_audio" xml:lang="fr">
+    <head>
+      <title>Questionnaire à choix multiple avec sons</title>
+    </head>
+
+    <instructions>
+      <p>Sélectionnez les cris de grenouille parmi ces sons.</p>
+    </instructions>
+
+    <choices-check>
+      <right> <audio id="choices-check_audioa01"/></right>
+      <wrong> <audio id="choices-check_audioa02"/></wrong>
+      <right> <audio id="choices-check_audioa03"/></right>
+      <wrong> <audio id="choices-check_audioa04"/></wrong>
+    </choices-check>
+  </quiz>
+</publiquiz>

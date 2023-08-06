@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="mip_image" xml:lang="fr">
+    <head>
+      <title>Images dans une image (PIP)</title>
+    </head>
+
+    <instructions>
+      <p>Entoure en vert les nombres multiples de 3 et en rouge ceux multiples
+      de 5.</p>
+    </instructions>
+
+    <blanks-media multiple="true">
+      <section>
+        <media>
+          <image id="bingo">
+            <dropzone x="30.3%" y="28.3%" w="11%" h="11%"><blank><image id="bingo_green"/></blank></dropzone>
+            <dropzone x="43.9%" y="28.3%" w="11%" h="11%"><blank><image id="bingo_red"/></blank></dropzone>
+            <dropzone x="58.0%" y="28.3%" w="11%" h="11%"><blank><image id="bingo_red"/></blank></dropzone>
+            <dropzone x="86.0%" y="28.3%" w="11%" h="11%"><blank><image id="bingo_green"/></blank></dropzone>
+          </image>
+        </media>
+        <media>
+          <image id="instruments">
+            <dropzone x="20%" y="18%" w="11%" h="9%"><blank><audio id="harmonica"/></blank></dropzone>
+            <dropzone x="62%" y="30%" w="11%" h="9%"><blank><audio id="accordeon"/></blank></dropzone>
+            <dropzone x="8%" y="80%" w="11%" h="9%"><blank><audio id="cornemuse"/></blank></dropzone>
+            <dropzone x="50%" y="85%" w="11%" h="9%"><blank><audio id="orgue"/></blank></dropzone>
+            <dropzone x="92%" y="65%" w="11%" h="9%"><blank><audio id="piano"/></blank></dropzone>
+          </image>
+        </media>
+      </section>
+    </blanks-media>
+  </quiz>
+</publiquiz>

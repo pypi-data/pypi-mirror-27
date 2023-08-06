@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Id:  $ -->
+<publiset version="1.0">
+  <composition xml:lang="fr" pi-fid="true" pi-source="true"
+               as="publidoc" attributes="version=1.0">
+    <division as="document" attributes="id=composition xml:lang=fr">
+      <head transform="composition.xsl">
+        <title>Exemple d'assemblage de sujets</title>
+        <shorttitle>Assemblage de sujets</shorttitle>
+        <subtitle>Composition</subtitle>
+        <identifier type="ean">9781449328030</identifier>
+        <copyright>Prismallia, Paris, 2011-2016</copyright>
+        <collection>Les chroniques</collection>
+        <contributors>
+          <contributor>
+            <firstname>Patrick</firstname>
+            <lastname>PIERRE</lastname>
+            <role>author</role>
+          </contributor>
+          <contributor>
+            <label>Prismallia</label>
+            <address>123 boulevard de Grenelle – 75015 Paris</address>
+            <link uri="http://www.prismallia.fr">Prismallia</link>
+            <role>packager</role>
+            <role>publisher</role>
+          </contributor>
+        </contributors>
+        <keywordset>
+          <keyword>Belgique</keyword>
+          <keyword>chasse</keyword>
+          <keyword>Pompidou</keyword>
+          <keyword>Portugal</keyword>
+          <keyword>Union européenne</keyword>
+        </keywordset>
+        <abstract>
+          <p>Ce document est un assemblage de plusieurs fichiers.</p>
+        </abstract>
+        <cover><image id="composition"/></cover>
+        <element name="difficulty">1</element>
+        <element name="requirements">
+          <element name="requirement">20<sup>e</sup> siècle</element>
+          <element name="requirement">Europe</element>
+        </element>
+      </head>
+
+      <!-- ========================== Événements ========================== -->
+      <division path="../Topics" xslt="composition.xsl">
+        <head>
+          <title>Les événements</title>
+          <indexset>
+            <index><entry>événements</entry></index>
+          </indexset>
+          <abstract>
+            <p>Où l'on évoque pêle-mêle quelques sujets d'actualité.</p>
+          </abstract>
+        </head>
+        <file title="Un nouveau centre Pompidou">centre_pompidou.xml</file>
+        <file title="Les chasseurs contestent" xpath="*">chasseurs.xml</file>
+        <file title="La Rolls Phantom" path="../Topics/Alternatives">rolls_phantom.xml</file>
+      </division>
+
+      <!-- =========================== Brèves ============================= -->
+      <division argument="compact">
+        <head>
+          <title>Les brèves</title>
+          <subtitle>Europe</subtitle>
+          <indexset>
+            <index><entry>brèves</entry><entry>Europe</entry></index>
+          </indexset>
+        </head>
+        <file title="Le Portugal préside l'UE" xslt="composition.xsl"
+              path="../Topics">portugal_ue.xml</file>
+      </division>
+
+      <!-- ======================== Photographies ========================= -->
+      <division>
+        <head>
+          <title>Les photographies avec légende</title>
+          <indexset>
+            <index><entry>photographie</entry></index>
+          </indexset>
+        </head>
+        <division as="topic" path="../Topics">
+          <file title="L'A380" xpath="topic/section">a380.xml</file>
+        </division>
+      </division>
+
+      <!-- ============================ Livres ============================ -->
+      <division path="../Documents" xslt="composition.xsl">
+        <head>
+          <title>Les livres</title>
+        </head>
+        <file title="Les Misérables">les_miserables.xml</file>
+      </division>
+    </division>
+  </composition>
+</publiset>

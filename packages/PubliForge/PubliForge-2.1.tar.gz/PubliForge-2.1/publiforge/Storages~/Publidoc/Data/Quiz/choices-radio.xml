@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="choices-radio" xml:lang="fr">
+    <head>
+      <title>Questionnaire à choix unique (QCU)</title>
+    </head>
+
+    <instructions>
+      <p>Quand on commande une « surprise » à Otorino le pizzaïolo<note>Un
+      pizzaïolo ou pizzaiole (mot francisé qui tombe de plus en plus en
+      désuétude, remplacé par son original italien) est un chef cuisinier ou
+      artiste qui prépare les pizzas dans une pizzeria.</note>, il choisit au
+      <index><w>hasard</w></index> trois des ingrédients :</p>
+      <list>
+        <item>olives ou anchois ;</item>
+        <item>poivrons ou artichaut ou champignons ;</item>
+        <item>jambon ou coppa.</item>
+      </list>
+      <p>Quelle est la <index><w>probabilité</w></index> d'obtenir une pizza
+      contenant des anchois et des poivrons ?</p>
+    </instructions>
+
+    <choices-radio>
+      <wrong>½</wrong>
+      <right>⅙</right>
+      <wrong>⅓</wrong>
+    </choices-radio>
+
+    <help>
+      <p>Pour trouver le nombre de cas possibles, le plus simple est de faire
+      un arbre.</p>
+    </help>
+
+    <answer>
+      <p>Pour trouver le nombre de cas possibles, le plus simple est de faire
+      un arbre.</p>
+      <p>Le nombre de cas favorables est 2.</p>
+      <p>On en déduit la probabilité cherchée : 2/12 = 1/6</p>
+      <link uri="proba01"/>
+    </answer>
+  </quiz>
+</publiquiz>

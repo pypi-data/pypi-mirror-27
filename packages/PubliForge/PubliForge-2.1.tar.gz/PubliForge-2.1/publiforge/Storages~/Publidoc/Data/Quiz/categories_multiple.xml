@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id$ -->
+<publiquiz version="1.0">
+  <quiz id="categories_multiple" xml:lang="fr">
+    <head>
+      <title>Exercice de catégories avec choix réutilisables</title>
+    </head>
+
+    <instructions>
+      <section>
+        <p>Les moyens de transport peuvent être divisés en deux groupes :</p>
+        <list>
+          <item>ceux utilisés pour des courtes distances comme le parcours de
+          la ville ;</item>
+          <item>ceux utilisés principalement pour des longs voyages.</item>
+        </list>
+      </section>
+    </instructions>
+
+    <categories multiple="true">
+      <category>
+        <head>
+          <title>Courtes distances</title>
+        </head>
+        <item>barque</item>
+        <item>métro</item>
+        <item>bus</item>
+        <item>taxi</item>
+        <item>vélo</item>
+        <item>tramway</item>
+        <item>marche</item>
+        <item>camion</item>
+      </category>
+
+      <category>
+        <head>
+          <title>Longs voyages</title>
+        </head>
+        <item>navire</item>
+        <item>avion</item>
+        <item>camion</item>
+      </category>
+    </categories>
+  </quiz>
+</publiquiz>

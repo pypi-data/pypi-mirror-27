@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id$ -->
+<publiquiz version="1.0">
+  <quiz id="matching_multiple" xml:lang="fr">
+    <head>
+      <title>Exercice d'appariement avec propositions réutilisables</title>
+    </head>
+
+    <instructions>
+      <p>Conjuguez le verbe <mentioned>chanter</mentioned> à l'imparfait.</p>
+    </instructions>
+
+    <matching multiple="true">
+      <match>
+        <item>Je</item>
+        <item>chantais</item>
+      </match>
+      <match>
+        <item>Tu</item>
+        <item>chantais</item>
+      </match>
+      <match>
+        <item>Il/elle</item>
+        <item>chantait</item>
+      </match>
+      <match>
+        <item>Nous</item>
+        <item>chantions</item>
+      </match>
+      <match>
+        <item>Vous</item>
+        <item>chantiez</item>
+      </match>
+      <match>
+        <item>Ils/elles</item>
+        <item>chantaient</item>
+      </match>
+    </matching>
+  </quiz>
+</publiquiz>

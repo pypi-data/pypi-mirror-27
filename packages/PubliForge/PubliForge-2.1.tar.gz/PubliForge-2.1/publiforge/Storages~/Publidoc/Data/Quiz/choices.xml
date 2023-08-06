@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <document id="choices" xml:lang="fr">
+    <head>
+      <title>Questionnaire à choix multiple et unique</title>
+    </head>
+
+    <!-- ================================================================== -->
+    <quiz id="q01">
+      <head>
+        <title>Question 2b</title>
+        <subjectset>
+          <subject>C_Croisement</subject>
+        </subjectset>
+      </head>
+
+      <instructions>
+        <media>
+          <image id="choices-q01i01"/>
+          <audio id="choices-q01a01" type="voice"/>
+        </media>
+        <p>En vue du sommet de côte :</p>
+      </instructions>
+
+      <choices-radio>
+        <wrong>
+          <p>je ralentis pour aider au dépassement</p>
+          <answer>
+            <p>Lorsque je suis sur le point d'être dépassé, je ne dois pas
+            varier mon allure.</p>
+          </answer>
+        </wrong>
+        <wrong>
+          <p>j'accélère pour interdire le dépassement</p>
+          <answer>
+            <p>Accélérer coûterait deux points au permis de conduire.</p>
+          </answer>
+        </wrong>
+        <right>
+          <p>je conserve mon allure</p>
+          <answer>
+            <p>Le sommet de côte est loin et le marquage au sol permet encore
+            le dépassement. Je conserve mon allure.</p>
+          </answer>
+        </right>
+      </choices-radio>
+
+      <answer>
+        <media>
+          <audio id="choices-q01a02" type="voice"/>
+        </media>
+        <p>Lorsque je suis sur le point d'être dépassé, je ne dois pas varier
+        mon allure. Exception faite s'il y a danger, afin d'aider un usager à
+        terminer la manœuvre de rabattement devant moi. Accélérer coûterait
+        deux points au permis de conduire. Le sommet de côte est loin et le
+        marquage au sol permet encore le dépassement. Je conserve mon
+        allure.</p>
+      </answer>
+    </quiz>
+
+    <!-- ================================================================== -->
+    <quiz id="q02">
+      <head>
+        <title>La limite de vitesse</title>
+      </head>
+
+      <instructions>
+        <media>
+          <image id="choices-q02i01"/>
+          <audio id="choices-q02a01" type="voice"/>
+        </media>
+        <p>Je suis un conducteur novice.</p>
+        <p>Ma vitesse sera limitée :</p>
+      </instructions>
+
+      <choices-radio>
+        <right>
+          <p>à 70 km/h</p>
+          <answer>
+            <p>Les limitations ponctuelles concernent tous les usagers.</p>
+          </answer>
+        </right>
+        <wrong>
+          <p>à 60 km/h</p>
+          <answer>
+            <p>Les limitations de vitesses concernant les conducteurs novices ne
+            touchent que les limitation générales : l'autoroute, les voies
+            rapides à chaussées séparées et la route.</p>
+          </answer>
+        </wrong>
+      </choices-radio>
+
+      <answer>
+        <media>
+          <audio id="choices-q02a02" type="voice"/>
+        </media>
+        <p>Les limitations de vitesse concernant les conducteurs novices ne
+        touchent que les limitations générales : l'autoroute à 110 km/h au lieu
+        de 130 km/h, les voies rapides à chaussées séparées, à 100 km/h au lieu
+        de 110 km/h, et la limite générale de 80 km/h sur route au lieu de
+        90 km/h. Les autres limitations ponctuelles concernent tous les
+        usagers. Je circulerai donc au maximum à 70 km/h.</p>
+      </answer>
+    </quiz>
+
+  </document>
+</publiquiz>

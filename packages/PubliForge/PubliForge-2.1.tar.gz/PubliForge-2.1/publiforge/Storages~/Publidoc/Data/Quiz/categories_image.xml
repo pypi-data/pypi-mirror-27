@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id$ -->
+<publiquiz version="1.0">
+  <quiz id="categories_image" xml:lang="fr">
+    <head>
+      <title>Exercice de catégories avec images</title>
+    </head>
+
+    <instructions>
+      <p>Classez les animaux suivants par mode de reproduction.</p>
+    </instructions>
+
+    <categories>
+      <category>
+        <head>
+          <title>Mammifère</title>
+        </head>
+        <item><image id="loup"/></item>
+        <item><image id="elephant"/></item>
+        <item><image id="lievre"/></item>
+      </category>
+      <category>
+        <head>
+          <title>Vivipare</title>
+        </head>
+        <item><image id="lezard"/></item>
+        <item><image id="hippocampe"/></item>
+      </category>
+      <category>
+        <head>
+          <title>Ovipare</title>
+        </head>
+        <item><image id="rouge-gorge"/></item>
+        <item><image id="couleuvre"/></item>
+      </category>
+    </categories>
+  </quiz>
+</publiquiz>

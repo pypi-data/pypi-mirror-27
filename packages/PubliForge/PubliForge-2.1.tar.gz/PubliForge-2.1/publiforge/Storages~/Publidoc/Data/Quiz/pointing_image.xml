@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<publiquiz version="1.0">
+  <quiz id="pointing_image" xml:lang="fr">
+    <head>
+      <title>Exercice de pointage sur images</title>
+    </head>
+
+    <instructions>
+      <p>Quel est le drapeau du Canada ?</p>
+    </instructions>
+    <pointing type="radio">
+      <p>
+        <point ref="right"><image id="drapeau1"/></point> /
+        <point><image id="drapeau2"/></point> /
+        <point><image id="drapeau3"/></point>
+      </p>
+    </pointing>
+  </quiz>
+</publiquiz>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publimeta version="1.0">
+  <metadatas>
+    <!-- ================================================================== -->
+    <metadata for="9782843550362" xml:lang="fr">
+      <title>Torture test pour la distribution</title>
+      <shorttitle>Test</shorttitle>
+      <subtitle>Test des capacités de <name>publidoc</name></subtitle>
+      <subtitle>Représentation exhaustive des structures</subtitle>
+      <identifier type="ean">9781449328030</identifier>
+      <identifier type="ean" for="kf8">9781449328031</identifier>
+      <identifier type="uri">http://www.prismallia.fr/Xml/torture_test</identifier>
+      <copyright>Prismallia, Paris, 2014</copyright>
+      <collection>Éprouvez-vous</collection>
+      <contributors>
+        <contributor>
+          <firstname>Patrick</firstname><lastname>PIERRE</lastname>
+          <role>author</role>
+        </contributor>
+        <contributor>
+          <firstname>Tien Haï</firstname><lastname>NGUYEN</lastname>
+          <role>illustrator</role>
+        </contributor>
+        <contributor>
+          <identifier type="uri">pll2</identifier>
+          <label>Prismallia</label>
+          <address>2 ter rue des Chantiers – 75005 Paris</address>
+          <link uri="http://www.prismallia.fr"/>
+          <role>publisher</role>
+          <role>packager</role>
+        </contributor>
+      </contributors>
+      <date value="2014-01"/>
+      <keywordset>
+        <keyword>publidoc</keyword>
+        <keyword>Cyrano</keyword>
+        <keyword>météo</keyword>
+      </keywordset>
+      <subjectset>
+        <subject>Littérature</subject>
+        <subject>Mathématiques</subject>
+      </subjectset>
+      <abstract>
+        <p>
+          Ce fichier rassemble un maximum de situations afin de tester les
+          possibilités de <name>publidoc</name>.
+        </p>
+      </abstract>
+      <price currency="EUR" territory="FR BE ES IT"
+             excluding-tax="true"  tax="0.07">12.62</price>
+      <price currency="EUR" territory="FR BE ES IT"
+             excluding-tax="false" tax="0.07">13.50</price>
+    </metadata>
+
+    <!-- ================================================================== -->
+    <metadata for="les_miserables" xml:lang="fr">
+      <title>Les Misérables</title>
+      <contributors>
+        <contributor>
+          <firstname>Victor</firstname><lastname>HUGO</lastname>
+          <role>author</role>
+        </contributor>
+        <contributor>
+          <label>Prismallia</label>
+          <role>publisher</role>
+        </contributor>
+      </contributors>
+      <date value="1862"/>
+      <subjectset>
+        <subject>Littérature</subject>
+      </subjectset>
+      <price currency="EUR" territory="FR"
+             excluding-tax="true"  tax="0.07">18.60</price>
+      <price currency="EUR" territory="FR"
+             excluding-tax="false" tax="0.07">19.90</price>
+    </metadata>
+
+    <!-- ================================================================== -->
+    <metadata for="9781449328030" xml:lang="fr">
+      <title>Exemple d'assemblage de sujets</title>
+      <contributors>
+        <contributor>
+          <firstname>Patrick</firstname>
+          <lastname>PIERRE</lastname>
+          <role>author</role>
+        </contributor>
+        <contributor>
+          <label>Prismallia</label>
+          <role>publisher</role>
+        </contributor>
+      </contributors>
+      <price currency="EUR" territory="FR"
+             excluding-tax="true"  tax="0.07">1.00</price>
+      <price currency="EUR" territory="FR"
+             excluding-tax="false" tax="0.07">0.93</price>
+    </metadata>
+
+    <!-- ================================================================== -->
+    <metadata for="9782351811340" xml:lang="fr">
+      <title>Balade musicale dans la nature</title>
+      <identifier type="ean">9782351811344</identifier>
+      <identifier type="ean" for="epub">9782351811344</identifier>
+      <identifier type="ean" for="kf8">9782351811345</identifier>
+      <identifier type="ean" for="paper">9782351811340</identifier>
+      <copyright>rue des enfants, 2010</copyright>
+      <collection>Restez Zen…</collection>
+      <contributors>
+        <contributor>
+          <firstname>Gilles</firstname>
+          <lastname>DIEDERICHS</lastname>
+          <role>author</role>
+        </contributor>
+        <contributor>
+          <firstname>Marie-Noëlle</firstname>
+          <lastname>HORVATH</lastname>
+          <role>illustrator</role>
+        </contributor>
+        <contributor>
+          <label>rue des enfants</label>
+          <role>publisher</role>
+        </contributor>
+        <contributor>
+          <label>Prismallia</label>
+          <role>packager</role>
+        </contributor>
+      </contributors>
+      <keywordset>
+        <keyword>écureuil</keyword>
+        <keyword>chamois</keyword>
+        <keyword>lynx</keyword>
+        <keyword>épervier</keyword>
+        <keyword>moutons</keyword>
+      </keywordset>
+      <subjectset>
+        <subject>Jeunesse</subject>
+      </subjectset>
+      <abstract>
+        <p>
+          En accompagnant Petit Écureuil, l'adorable guide de ce voyage, il
+          explore les paysages de nos régions, de la montagne jusqu'au bord de
+          la mer, en passant par la forêt ou la vallée.
+        </p>
+      </abstract>
+      <price currency="EUR" territory="FR"
+             excluding-tax="true" tax="0.07">9.25</price>
+      <price currency="EUR" territory="FR"
+             excluding-tax="false" tax="0.07">9.90</price>
+    </metadata>
+    
+  </metadatas>
+</publimeta>

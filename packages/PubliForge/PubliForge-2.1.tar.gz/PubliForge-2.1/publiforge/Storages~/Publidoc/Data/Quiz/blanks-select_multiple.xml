@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="blanks-select_multiple" xml:lang="fr">
+    <head>
+      <title>Exercice à trous avec suggestions réutilisables</title>
+    </head>
+
+    <instructions>
+      <p>Sans utiliser votre calculatrice, ni poser les opérations, retrouvez
+      le résultat exact de chaque multiplication.</p>
+    </instructions>
+
+    <blanks-select multiple="true">
+      <intruders>
+        <blank>1 169,73</blank>
+        <blank>848,78</blank>
+      </intruders>
+      <list>
+        <item>369 x 31,7 = <blank>11 697,3</blank></item>
+        <item>738 x 1,15 = <blank>848,7</blank></item>
+        <item>317 x 36,9 = <blank>11 697,3</blank></item>
+      </list>
+    </blanks-select>
+  </quiz>
+</publiquiz>

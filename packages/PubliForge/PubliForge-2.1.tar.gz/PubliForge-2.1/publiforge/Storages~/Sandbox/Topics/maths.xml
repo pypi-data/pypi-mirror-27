@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publidoc version="1.0">
+  <topic id="maths" xml:lang="fr">
+    <head>
+      <title>Quelques formules mathématiques</title>
+      <subjectset>
+        <subject>Mathématiques</subject>
+      </subjectset>
+    </head>
+
+    <section>
+      <head>
+        <title>Formule native</title>
+      </head>
+      <section>
+        <head><title>Le dernier théorème de Fermat</title></head>
+        <p>
+          Il n'existe pas de nombres entiers non nuls <var>x</var>,
+          <var>y</var> et <var>z</var> tels que :
+          <math xml:id="fermat" display="wide">
+            <var>x</var><sup>n</sup> + <var>y</var><sup>n</sup> = <var>z</var><sup>n</sup>
+          </math>
+          dès que <var>n</var> est un entier strictement supérieur à 2.
+        </p>
+      </section>
+    </section>
+
+    <section>
+      <head>
+        <title>Formule en LaTeX</title>
+      </head>
+      <section>
+        <head>
+          <title>Formule dans le texte</title>
+        </head>
+        <p>
+          On rappelle que la <highlight>moyenne</highlight> de <var>X</var> est
+          le nombre : <math type="important"><latex>\overline X =
+          \frac{1}{n}\left( {n_1 x_1 + n_2 x_2 + \dots + n_p x_p } \right)</latex></math>.
+        </p>
+        <p>
+          On appelle <highlight>variance</highlight> de la série
+          statistique <var>X</var>, le nombre :
+          <math><latex>V\left( X \right) =
+          \frac{1}{n}\left( {n_1 \left( {x_1 - \overline X } \right)^2
+          + \dots + n_p \left( {x_p - \overline X } \right)^2 }
+          \right)</latex></math> qu'on réécrit ainsi :
+          <math><latex>V\left( X \right) =
+          \frac{1}{n}\sum\limits_{i = 1}^p {n_i \left( {x_i - \overline X }
+          \right)^2 }</latex></math>.
+        </p>
+        <p>
+          L'<highlight>écart type</highlight> de <var>X</var> est le nombre :
+          <math><latex>
+            {\textrm{s}}\left(X\right) = \sqrt{V\left(X\right)}
+          </latex></math>
+        </p>
+      </section>
+
+      <section>
+        <head>
+          <title>Formule mise en évidence</title>
+        </head>
+        <p>
+          Soit la fonction :
+          <math xml:id="fonction" display="wide">
+            <latex>f(x) = x^2 + \sqrt[3]{\frac{3x}{2y-3}}</latex>
+          </math>
+        </p>
+      </section>
+
+      <section>
+        <head>
+          <title>Formule encadrée</title>
+        </head>
+        <p>
+          Les transformations de Lorentz :
+          <math xml:id="lorentz" display="box">
+            <latex plain="true">
+              \begin{eqnarray*}
+              ct' &amp; = &amp; \frac{ct-(v/c)x}{\sqrt{1-v^2/c^2}},\\
+              x'  &amp; = &amp; \frac{x-(v/c)ct}{\sqrt{1-v^2/c^2}},\\
+              y'  &amp; = &amp; y,\\
+              z'  &amp; = &amp; z.
+              \end{eqnarray*}
+            </latex>
+          </math>
+        </p>
+      </section>
+
+      <section>
+        <head>
+          <title>Formules numérotées</title>
+        </head>
+        <p>
+          Une expression matricielle :
+          <math display="numbered">
+            <latex>
+              \left[ \begin{array}{c} x_1 \\ x_2 \end{array} \right] =
+              \begin{bmatrix} A &amp; B \\ C &amp; D \end{bmatrix}
+              \times \left[\begin{array}{c} y_1 \\ y_2 \end{array}\right]
+            </latex>
+          </math>
+        </p>
+        <p>
+          Une intégrale :
+          <math display="numbered">
+            <latex>\int_0^1 \frac{1}{\sqrt{-\ln x}} \; \mathrm dx</latex>
+          </math>
+        </p>
+      </section>
+
+      <section>
+        <head>
+          <title>Formule numérotée et encadrée</title>
+        </head>
+        <p>
+          Les harmoniques sphériques sont des fonctions définies sur la
+          sphère. Ce sont les fonctions propres du laplacien bidimensionnel à
+          symétrie sphérique,
+          <math display="numbered-box">
+            <latex>
+              \left({\partial^2\over\partial\theta^2}
+              +\cot\theta{\partial\over\partial\theta}
+              +{1\over\sin^2\theta}{\partial^2\over\partial\varphi^2}\right)Y_\ell^m
+              = -\ell(\ell+1)Y_\ell^m\ .
+            </latex>
+          </math>
+          Les harmoniques sphériques forment un ensemble complet de fonctions des
+          angles <math><latex>\theta</latex></math> et
+          <math><latex>\varphi</latex></math> de sorte que toute fonction sur la
+          sphère peut se décomposer sur une base d'harmoniques sphériques.
+        </p>
+      </section>
+    </section>
+ </topic>
+</publidoc>

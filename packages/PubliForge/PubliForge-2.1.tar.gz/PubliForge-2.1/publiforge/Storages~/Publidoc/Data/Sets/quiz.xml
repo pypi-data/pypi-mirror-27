@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Id:  $ -->
+<publiset version="1.0">
+  <composition xml:lang="fr" as="publiquiz" attributes="version=1.0">
+    <division as="document" attributes="id=quiz xml:lang=fr"
+              path="../Quiz" xpath="//quiz">
+      <head>
+        <title>Ensemble d'exercices</title>
+      </head>
+      <file>choices-radio.xml</file>
+      <file>choices-radio_image.xml</file>
+      <file>choices-check.xml</file>
+      <file>choices-check_audio.xml</file>
+      <file>choices-check.xml</file>
+      <file>blanks-fill.xml</file>
+      <file>blanks-fill_strict.xml</file>
+      <file>blanks-fill_variant.xml</file>
+      <file argument="combobox">blanks-select.xml</file>
+      <file>blanks-select.xml</file>
+      <file>blanks-select_multiple.xml</file>
+      <file>blanks-select_dropzone.xml</file>
+      <file>pointing.xml</file>
+      <file>pointing_radio.xml</file>
+      <file argument="link">matching.xml</file>
+      <file>matching_multiple.xml</file>
+      <file>matching_image.xml</file>
+      <file>sort.xml</file>
+      <file>sort_image.xml</file>
+      <file>categories.xml</file>
+      <file argument="grid" mode="correct2">categories.xml</file>
+      <file argument="color">categories_multiple.xml</file>
+      <file>categories_image.xml</file>
+      <file>production.xml</file>
+      <file>composite.xml</file>
+    </division>
+  </composition>
+</publiset>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="composite" xml:lang="fr">
+    <head>
+      <title>Exercice composite</title>
+    </head>
+
+    <instructions>
+      <p>À quelle catégorie appartiennent les animaux suivants ?</p>
+    </instructions>
+
+    <composite>
+      <!-- ================================================================ -->
+      <subquiz>
+        <instructions>
+          <p>abeille</p>
+        </instructions>
+        <choices-radio>
+          <wrong>gastéropode</wrong>
+          <right>insecte</right>
+          <wrong>mollusque</wrong>
+        </choices-radio>
+      </subquiz>
+
+      <!-- ================================================================ -->
+      <subquiz>
+        <instructions>
+          <p>aigle</p>
+        </instructions>
+        <choices-check>
+          <right>oiseau</right>
+          <wrong>passereau</wrong>
+          <wrong>charognard</wrong>
+          <right>rapace</right>
+        </choices-check>
+      </subquiz>
+
+      <!-- ================================================================ -->
+      <subquiz>
+       <blanks-fill>
+          <p>L'abeille est un <blank>insecte</blank> qui vit dans une
+          <blank>ruche</blank>.</p>
+          <p>Elle fabrique du <blank>miel</blank>.</p>
+        </blanks-fill>
+      </subquiz>
+
+      <!-- ================================================================ -->
+      <subquiz>
+        <instructions>
+          <p>albatros</p>
+        </instructions>
+        <blanks-select>
+          <intruders>
+            <blank>reptile</blank>
+            <blank>oiseaux</blank>
+          </intruders>
+          <p>Catégorie : <blank>mammifère</blank></p>
+        </blanks-select>
+      </subquiz>
+
+      <!-- ================================================================ -->
+      <subquiz>
+        <instructions>
+          <p>dauphin</p>
+        </instructions>
+        <pointing>
+          <p>
+            <point ref="right">mammifère</point> /
+            <point ref="right">cétacé</point> /
+            <point>poisson</point> /
+            <point>batracien</point>
+          </p>
+        </pointing>
+      </subquiz>
+
+      <!-- ================================================================ -->
+      <subquiz>
+        <instructions>
+          <p>albatros</p>
+        </instructions>
+        <pointing type="radio">
+          <p>
+            <point ref="right">oiseau</point> /
+            <point>rongeur</point> /
+            <point>reptile</point>
+          </p>
+        </pointing>
+      </subquiz>
+
+      <!-- ================================================================ -->
+      <subquiz>
+        <instructions>
+          <p>Associez les animaux avec leur catégorie.</p>
+        </instructions>
+        <matching>
+          <match><item>oiseau</item>    <item>hirondelle</item></match>
+          <match><item>mammifère</item> <item>baleine</item></match>
+          <match><item>reptile</item>   <item>couleuvre</item></match>
+        </matching>
+      </subquiz>
+
+      <!-- ================================================================ -->
+      <subquiz>
+        <instructions>
+          <p>Qui mange qui ?</p>
+          <p>Rangez les animaux pour réaliser une chaîne alimentaire.</p>
+        </instructions>
+        <sort>
+          <comparison>mange</comparison>
+          <item>le loup (carnivore secondaire)</item>
+          <item>le lynx (carnivore primaire)</item>
+          <item>le lièvre (herbivore)</item>
+        </sort>
+      </subquiz>
+    </composite>
+
+    <help>
+      <p>Cet exercice est très facile et ne nécessite pas d'aide.</p>
+    </help>
+  </quiz>
+</publiquiz>

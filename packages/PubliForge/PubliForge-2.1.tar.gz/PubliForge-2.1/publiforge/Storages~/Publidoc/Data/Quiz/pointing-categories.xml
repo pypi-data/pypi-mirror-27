@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="pointing-categories" xml:lang="fr">
+    <head>
+      <title>Exercice de pointage avec catégories</title>
+    </head>
+    <instructions>
+      <p>Surligne les verbes avec la couleur correspondant à leur temps.</p>
+    </instructions>
+    <pointing-categories>
+      <categories>
+        <category id="1">imparfait</category>
+        <category id="2">passé simple</category>
+        <category id="3">participe présent</category>
+      </categories>
+      <section>
+        <section>
+          <head>
+            <title>Le coup de feu</title>
+          </head>
+          <p>Raymonde <point ref="cat2">prêta</point> l’oreille. De nouveau et
+          par deux fois le bruit se <point ref="cat2">fit</point> entendre,
+          assez net pour qu’on <point ref="cat2">pût</point> le détacher de
+          tous les bruits confus qui <point ref="cat1">formaient</point> le
+          grand silence nocturne, mais si faible qu’elle n’aurait su dire s’il
+          <point ref="cat1">était</point> proche ou lointain, s’il se <point
+          ref="cat1">produisait</point> entre les murs du vaste château, ou
+          dehors, parmi les retraites ténébreuses du parc.</p>
+        </section>
+        <section>
+          <p>Doucement elle se <point ref="cat2">leva</point>. Sa fenêtre
+          <point ref="cat1">était</point> entrouverte, elle en écarta les
+          battants. La clarté de la lune <point ref="cat1">reposait</point> sur
+          un calme paysage de pelouses et de bosquets où les ruines éparses de
+          l’ancienne abbaye se <point ref="cat1">découpaient</point> en
+          silhouettes tragiques, colonnes tronquées, ogives incomplètes,
+          ébauches de portiques et lambeaux d’arcs-boutants. Un peu d’air
+          <point ref="cat1">flottait</point> à la surface des choses, <point
+          ref="cat3">glissant</point> à travers les rameaux nus et immobiles
+          des arbres, mais <point ref="cat3">agitant</point> les petites
+          feuilles naissantes des massifs.</p>
+        </section>
+      </section>
+    </pointing-categories>
+  </quiz>
+</publiquiz>

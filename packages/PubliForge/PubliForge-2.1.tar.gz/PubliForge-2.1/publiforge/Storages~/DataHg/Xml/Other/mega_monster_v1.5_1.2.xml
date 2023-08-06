@@ -1,0 +1,1165 @@
+<?xml version="1.0"?>
+<!DOCTYPE prostbook SYSTEM "../../../../../public/dtd/prostbook_v1.5/prostbook_v1.5.dtd"[
+<!ENTITY nbsp "&#160;">
+<!ENTITY alpha "">
+<!ENTITY alpha "">
+<!ENTITY sum "">
+<!ENTITY beta "">
+<!ENTITY infin "">
+<!ENTITY pi "">
+<!ENTITY times "">
+<!ENTITY sigma "">
+<!ENTITY plusmn "">
+<!ENTITY omega "">
+
+]>
+<prostbook DTDVersion="v1.5">
+  <meta xmlns:dc="Dublin_Core" xmlns:ox="onix">
+    <dc:title>Tests Multiples DTD v1.5</dc:title>
+    <dc:creator>AV</dc:creator>
+    <dc:publisher>
+      <ox:Publisher Role="02">Ligaran</ox:Publisher>
+    </dc:publisher>
+    <dc:language language="FR"/>
+  </meta>
+  <front>
+    <page>
+      <book_title>Un Book Title</book_title>
+      <book_subtitle>Un sous titre</book_subtitle>
+      <book_authors>
+        <author><author_firstname>Firstname</author_firstname> <author_lastname>Lastname</author_lastname></author>  
+        <author>Auteur 2</author>
+      </book_authors>
+      <book_publisher>The publisher</book_publisher>
+    </page>
+    <page>
+      <book_copyright><p>A first paragraph of copyrights</p>
+      <p>Another Copyrights paragraph</p></book_copyright>
+      <book_translators>A book translator</book_translators>
+      <book_ean>the book ean</book_ean>
+      <book_isbn>the book isbn</book_isbn>
+      <book_issn>the book issn</book_issn>
+      <book_dedication>A Book dedication here</book_dedication>
+      <book_inscription><p>A book inscription as a paragraph</p></book_inscription>
+      <book_inscription><author>An author in a book inscription</author></book_inscription>
+      <book_inscription><source>A source as a book inscription</source></book_inscription>
+    </page>
+    <chapter>
+      <titles><title>Exemple inline</title></titles>
+      <div>
+        <p>
+          typo <i>en italique</i> ou 
+          <b>en gras</b> ou
+          <normal>en normal</normal>.
+        </p>
+        <p>
+          <b><i>de l'italique dans du gras</i></b> ou
+          <i><b>du gras dans de l'italique</b></i>
+        </p>
+        <p>
+          mais aussi les <sub>sub</sub> les <sup>sup</sup>,
+          les <sc>small caps</sc>, bref le <century>XXI</century><sub>ième</sub> siècle.
+        </p>
+        <p>
+          les retours <br/> à la ligne (br)
+        </p>
+        <p>
+          on peut aussi avoir <span>un span</span> ou <span class="red">un span de class red</span>
+        </p>
+        <p>
+          on peut aussi tout mélanger :
+          <i><sc>du sc dans du i</sc></i> voir même <br/>
+          <span>un span avec <i><sup>un sup dans un i</sup></i> et <b><sub>un sub dans un b</sub></b></span> ou autre chose...
+        </p>
+      </div>
+      
+    </chapter>
+  </front>
+  <body>
+    
+    <part id="part5">
+      <titles>
+        <title>Blocs</title>
+      </titles>
+
+      <chapter>
+        <titles>
+          <title>Exemple blocs simples</title>
+        </titles>
+        <div>
+          <p> on fait un p dans une div </p>
+          <p> et un deuxième </p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+          Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+          unknown printer took a galley of type and scrambled it to make a type specimen
+          book. It has survived not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in the 1960s
+          with the release of Letraset sheets containing Lorem Ipsum passages, and more
+          recently with desktop publishing software like Aldus PageMaker including
+          versions of Lorem Ipsum.</p>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+          in a piece of classical Latin literature from 45 BC, making it over 2000 years
+          old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+          Virginia, looked up one of the more obscure Latin words, consectetur, from a
+          Lorem Ipsum passage, and going through the cites of the word in classical
+          literature, discovered the undoubtable source. Lorem Ipsum comes from sections
+          1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+          Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
+          ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
+          "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+        </div>
+      </chapter>
+      <chapter>
+        <titles>
+          <title>Listes</title>
+        </titles>
+        <p>Une première liste :</p>
+        <list>
+          <p>la on commence une liste avec un p introductif</p>
+          <item><p>la on met le premier item</p>
+          <p>un deuxième paragraphe du premier item : Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+          in a piece of classical Latin literature from 45 BC, making it over 2000 years
+          old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+          Virginia, looked up one of the more obscure Latin words, consectetur, from a
+          Lorem Ipsum passage, and going through the cites of the word in classical
+          literature, discovered the undoubtable source. Lorem Ipsum comes from sections
+          1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+          Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
+          ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
+          "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p></item>
+          <item><p>et la le deuxième</p></item>
+          <item><p><label>-</label>avec un item </p></item>
+          <item><p><label>42</label>ou un label entier</p></item>
+        </list>
+        <p>Une seconde liste :</p>
+        <list>
+          <item><p>on peut aussi faire des listes dans les listes</p></item>
+          <item><p>un début d'item qui se poursuit en liste</p><list>
+          <item><p>sous-liste 1er item</p></item>
+          <item><p>sous-liste item 2</p><list>
+          <item><p>sous-sous-liste item 1</p></item>
+          <item><p>sous-sous-liste item 2</p></item>
+        </list>
+          </item>
+        </list>
+          </item>
+        </list>
+        <p>Une 3ieme liste :</p>
+        <list>
+          <item><p>on peut aussi faire une liste dans une liste</p></item>
+          <item><p>un début d'item qui se poursuit en list</p><list>
+          <p>un paragraph introductif de la sous-liste</p>
+          <item><p>sous-liste 1er item</p></item>
+          <item><p>sous-liste item 2</p>
+          </item>
+        </list>
+          </item>
+        </list>
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>Les div</title>
+        </titles>
+        <div align="center"><p>un p dans une div qui est alignée center</p></div>
+        <div align="right"><p>un p dans une div qui est alignée à droite</p></div>
+        <div border="1"><p>une div avec une bordure</p></div>
+        <div class="citation"><p>div de classe citation</p></div>
+        <div class="frame"><p>div de classe frame</p></div>
+        <div class="front_bookAuthors"><p>div de classe front_bookAuthors</p></div>
+        <div class="front_bookCopyright"><p>div de classe front_bookCopyright</p></div>
+        <div class="front_bookTitle"><p>div de classe front_bookTitle</p></div>
+        <div class="inscription"><p>div de classe inscription</p></div>
+        <div class="law_article"><p>div de classe law_article</p></div>
+        <div class="poem"><p>div de classe poem</p></div>
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>Les p</title>
+        </titles>
+        <div>
+          <p>un p normal</p>
+          <p class="inscription_author">un p de classe inscription_author</p>
+          <p class="source">un p de classe source</p>
+          <p indent="no">un p sans indentation</p>
+          <p align="left">un p aligné à gauche</p>
+          <p align="right">un p aligné à droite</p>
+          <p align="center">un p aligné center</p>
+          <p class="source" align="right" indent="no">un p de classe source aligné à droite, sans indent</p>
+        </div>			
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>Les lignes de séparation</title>
+        </titles>
+        <div>
+          <p>dans une div p on peut trouver plusieur type de rupture de ligne</p>
+          <p>la ligne blanche normale (bl)</p>
+          <bl/>
+          <p>la single star</p>
+          <bl type="single_star"/>
+          <p>la triple star</p>
+          <bl type="triple_star"/>
+          <p>et la suite</p>
+        </div>	
+        <div>
+          <title>Pour vérififier : la meme chose sans bl</title>
+          <p>dans une div p on peut trouver plusieur type de rupture de ligne</p>
+          <p>la ligne blanche normale (bl)</p>
+          <p>la single star</p>
+          <p>la triple star</p>
+          <p>et la suite</p>
+        </div>
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>deflist and deflist group</title>
+        </titles>
+        <div>
+          <dlg>
+            <dl>
+              <dt>un dt</dt>
+              <dd>et sa dd associée</dd>
+            </dl>
+            <dl>
+              <dt>un autre dt</dt>
+              <dd>et son autre dd</dd>
+            </dl>
+            <dl>
+              <dt>un 3ième dt</dt>
+              <dcd><list>
+                <item><p>avec une liste comme dcd</p></item>
+                <item><p>et un deuxième item</p></item>
+              </list>
+              </dcd>
+            </dl>
+          </dlg>
+        </div>
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>lines and lines group mainly for poetry stanza (baudelaire)</title>
+        </titles>
+        <div class="poem">
+          <lg>
+            <l>La sottise, l’erreur, le péché, la lésine,</l>
+            <l>Occupent nos esprits et travaillent nos corps,</l>
+            <l>Et nous alimentons nos aimables remords,</l>
+            <l>Comme les mendiants nourrissent leur vermine.</l>
+          </lg>
+          <lg>
+            <l>Nos péchés sont têtus, nos repentirs sont lâches&nbsp;;</l>
+            <l>Nous nous faisons payer grassement nos aveux,</l>
+            <l>Et nous rentrons gaiement dans le chemin bourbeux,</l>
+            <l>Croyant par de vils pleurs laver toutes nos taches.</l>
+          </lg>
+          <lg>
+            <l>Sur l’oreiller du mal c’est Satan Trismégiste</l>
+            <l>Qui berce longuement notre esprit enchanté,</l>
+            <l>Et le riche métal de notre volonté</l>
+            <l>Est tout vaporisé par ce savant chimiste.</l>
+          </lg>
+          <lg>
+            <l><page-start-break page-number="6"/>C’est le Diable qui tient les fils qui nous remuent&nbsp;!</l>
+            <l>Aux objets répugnants nous trouvons des appas&nbsp;;</l>
+            <l>Chaque jour vers l’Enfer nous descendons d’un pas,</l>
+            <l>Sans horreur, à travers des ténèbres qui puent.</l>
+          </lg>
+          <lg>
+            <l>Ainsi qu’un débauché pauvre qui baise et mange</l>
+            <l>Le sein martyrisé d’une antique catin,</l>
+            <l>Nous volons au passage un plaisir clandestin</l>
+            <l>Que nous pressons bien fort comme une vieille orange.</l>
+          </lg>
+          <lg>
+            <l>Dans nos cerveaux malsains, comme un million d’helminthes,</l>
+            <l>Grouille, chante et ripaille un peuple de Démons,</l>
+            <l>Et, quand nous respirons, la Mort dans nos poumons</l>
+            <l>S’engouffe, comme un fleuve, avec de sourdes plaintes.</l>
+          </lg>
+          <lg>
+            <l>Si le viol, le poison, le poignard, l’incendie,</l>
+            <l>N’ont pas encor brodé de leurs plaisants dessins</l>
+            <l>Le canevas banal de nos piteux destins,</l>
+            <l>C’est que notre âme, hélas&nbsp;! n’est pas assez hardie.</l>
+          </lg>
+          <lg>
+            <l>Mais parmi les chacals, les panthères, les lices,</l>
+            <l>Les singes, les scorpions, les vautours, les serpents,</l>
+            <l>Les monstres glapissants, hurlants, grognants, rampants,</l>
+            <l>Dans la ménagerie infâme de nos vices,</l>
+          </lg>
+          <lg>
+            <l>Il en est un plus laid, plus méchant, plus immonde&nbsp;!</l>
+            <l>Quoiqu’il ne pousse ni grands gestes ni grands cris,</l>
+            <l>Il ferait volontiers de la terre un débris</l>
+            <l>Et dans un bâillement avalerait le monde&nbsp;;</l>
+          </lg>
+          <lg>
+            <l><page-start-break page-number="7"/>C’est l’Ennui&nbsp;! — l’œil chargé d’un pleur involontaire,</l>
+            <l>Il rêve d’échafauds en fumant son houka.</l>
+            <l>Tu le connais, lecteur, ce monstre délicat,</l>
+            <l>— Hypocrite lecteur, — mon semblable, — mon frère&nbsp;!</l>
+          </lg>
+        </div>
+      </chapter>
+    </part>
+    <part id="part6">
+      <titles>
+        <title>Hierarchie</title>
+        <div><p>Ici c'est un p une div dans le titles pour tester les marges en présence d'une div (sans classe)</p>
+        <p>Ici un deuxième p de cette div</p>
+        </div>
+      </titles>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada vulputate magna quis tristique. Proin sagittis tristique arcu, et blandit mauris rutrum id. Vestibulum dapibus urna in mauris porttitor cursus. Praesent et est ut nulla ullamcorper consequat. In hac habitasse platea dictumst. Vestibulum eu dui quis lorem imperdiet laoreet. Quisque massa eros, congue a condimentum in, porta sed ante. Etiam scelerisque, purus aliquet gravida condimentum, orci tortor mattis arcu, at suscipit erat orci vitae risus. Donec turpis justo, fringilla ut feugiat in, tristique sed neque. Nulla hendrerit vestibulum nibh eu convallis.
+      </p>
+      <p>
+        Nulla sodales risus id libero luctus a aliquet arcu blandit. Etiam adipiscing euismod viverra. Sed non aliquam erat. Mauris in mauris vel ipsum pharetra laoreet sed luctus dui. Aliquam erat volutpat. Donec elit magna, blandit a fermentum eu, elementum et massa. Aliquam vitae elit tellus, sed interdum velit. Nulla laoreet fringilla sem, ut laoreet metus aliquam nec. Praesent sollicitudin tortor in ligula commodo rhoncus. Pellentesque tortor sapien, laoreet quis posuere sit amet, congue eu magna. In dapibus ultrices congue. Morbi sed ante quam. In hac habitasse platea dictumst. In ultrices dolor vel nibh porta tincidunt. Mauris quam felis, lacinia vel congue eu, iaculis quis sapien. Morbi eu nulla quam. Duis porttitor elementum orci, a blandit tortor aliquam sit amet.
+      </p>
+      <chapter>
+        <titles>
+          <title>Partie 1 chapitre 1</title>
+        </titles>
+        <div>
+          <p>p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1
+          p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1
+          p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1
+          p1c1 p1c1 p1c1 </p>
+        </div>
+        <section>
+          <titles>
+            <title>Partie 1 chapitre 1 section 1</title>
+          </titles>
+          <p> p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1
+          p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1
+          p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1
+          p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1
+          p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1
+          p1c1s1 p1c1s1 p1c1s1 p1c1s1 p1c1s1 </p>
+          <section>
+            <titles>
+              <div>
+                <p>une div dans le titles de la sous-section.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada vulputate magna quis tristique. 
+                </p>
+              </div>
+              <title>Partie 1 chapitre 1 section 1 sous-section1</title>
+            </titles>
+            <p>p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1
+            p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1
+            p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1
+            p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1
+            p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 </p>
+          </section>
+          <section>
+            <titles>
+              <title>Partie 1 chapitre 1 section 1 sous-section 2</title>
+              <div>
+                <p>
+                  une div (normale) dans le titles de la sous-sous-section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada vulputate magna quis tristique. Proin sagittis tristique arcu, et blandit mauris rutrum id. 
+                </p>
+              </div>
+            </titles>
+            <p>p1c1s1ss2 p1c1s1ss2 p1c1s1ss2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada vulputate magna quis tristique. </p>
+            <section>
+              <titles>
+                <title>Partie 1 chapitre 1 section 1 sous-section 2 ss-section
+                1</title>
+              </titles>
+              <p>p1c1s1ss2sss1 p1c1s1ss2sss1 p1c1s1ss2sss1 p1c1s1ss2sss1 p1c1s1ss2sss1
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada vulputate magna quis tristique. Proin sagittis tristique arcu, et blandit mauris rutrum id. Vestibulum dapibus urna in mauris porttitor cursus. Praesent et est ut nulla ullamcorper consequat. In hac habitasse platea dictumst. Vestibulum eu dui quis lorem imperdiet laoreet. Quisque massa eros, congue a condimentum in, porta sed ante. Etiam scelerisque, purus aliquet gravida condimentum, orci tortor mattis arcu, at suscipit erat orci vitae risus. Donec turpis justo, fringilla ut feugiat in, tristique sed neque. Nulla hendrerit vestibulum nibh eu convallis.
+              </p>
+            </section>
+            <section>
+              <titles>
+                <title>Partie 1 chapitre 1 section 1 sous-section 2 ss-section
+                2</title>
+              </titles>
+              <p>p1c1s1ss2sss2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada vulputate magna quis tristique. Proin sagittis tristique arcu, et blandit mauris rutrum id. Vestibulum dapibus urna in mauris porttitor cursus. Praesent et est ut nulla ullamcorper consequat. In hac habitasse platea dictumst. Vestibulum eu dui quis lorem imperdiet laoreet. Quisque massa eros, congue a condimentum in, porta sed ante. Etiam scelerisque, purus aliquet gravida condimentum, orci tortor mattis arcu, at suscipit erat orci vitae risus. Donec turpis justo, fringilla ut feugiat in, tristique sed neque. Nulla hendrerit vestibulum nibh eu convallis.
+              </p>
+            </section>
+            
+          </section>
+          
+          
+        </section>
+        <section>
+          <titles>
+            <title>Partie 1 chapitre 1 section 2</title>
+          </titles>
+          <p> 1c1s2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada vulputate magna quis tristique. Proin sagittis tristique arcu, et blandit mauris rutrum id. Vestibulum dapibus urna in mauris porttitor cursus. Praesent et est ut nulla ullamcorper consequat. In hac habitasse platea dictumst. Vestibulum eu dui quis lorem imperdiet laoreet. Quisque massa eros, congue a condimentum in, porta sed ante. Etiam scelerisque, purus aliquet gravida condimentum, orci tortor mattis arcu, at suscipit erat orci vitae risus. Donec turpis justo, fringilla ut feugiat in, tristique sed neque. Nulla hendrerit vestibulum nibh eu convallis.
+          </p>
+        </section>
+      </chapter>
+      <chapter>
+        <titles>
+          <title>Partie 1 Chapitre 2</title>
+          <div class="citation"><p>ici on a une citation d'un auteur qu'on aime bien</p><source>Une source</source></div>
+        </titles>
+        <p>
+          Nulla eu quam odio, in fringilla dolor. Donec quis nisi quis mi laoreet volutpat et ut felis. Nunc tincidunt tempor luctus. Morbi accumsan consequat arcu quis semper. Cras massa libero, venenatis eu eleifend ac, volutpat eget mauris. Proin molestie est placerat dolor lobortis sodales. Sed ultrices sodales elit, in pharetra orci tincidunt sit amet. In hac habitasse platea dictumst. Proin in massa et mauris elementum cursus sit amet at est. Donec a magna sit amet lorem aliquam fermentum a a turpis. Pellentesque ultrices blandit mauris sit amet posuere. Curabitur sed nisl ligula.
+        </p>
+        <p>
+          Donec sodales fermentum dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin ac lacus semper est rhoncus lacinia. Nulla vel congue est. Pellentesque nibh quam, rutrum at porta sit amet, varius id turpis. Proin posuere felis eu quam aliquam sollicitudin. Vestibulum vitae magna nisi. Curabitur quis hendrerit quam. Praesent dictum vulputate nisi, at facilisis diam luctus ac. Vivamus sed est nisl. Suspendisse in odio eget ante vestibulum porttitor ac non mi. Etiam erat nisl, auctor at fringilla ac, hendrerit a leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus massa lectus, faucibus id congue a, tristique in nulla. Donec adipiscing hendrerit eros at hendrerit.
+        </p>
+      </chapter>
+      <chapter>
+        <titles>
+          <title>Partie 1 Chapitre 3</title>
+        </titles>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada vulputate magna quis tristique. Proin sagittis tristique arcu, et blandit mauris rutrum id. Vestibulum dapibus urna in mauris porttitor cursus. Praesent et est ut nulla ullamcorper consequat. In hac habitasse platea dictumst. Vestibulum eu dui quis lorem imperdiet laoreet. Quisque massa eros, congue a condimentum in, porta sed ante. Etiam scelerisque, purus aliquet gravida condimentum, orci tortor mattis arcu, at suscipit erat orci vitae risus. Donec turpis justo, fringilla ut feugiat in, tristique sed neque. Nulla hendrerit vestibulum nibh eu convallis.
+        </p>
+        <p>
+          Nulla sodales risus id libero luctus a aliquet arcu blandit. Etiam adipiscing euismod viverra. Sed non aliquam erat. Mauris in mauris vel ipsum pharetra laoreet sed luctus dui. Aliquam erat volutpat. Donec elit magna, blandit a fermentum eu, elementum et massa. Aliquam vitae elit tellus, sed interdum velit. Nulla laoreet fringilla sem, ut laoreet metus aliquam nec. Praesent sollicitudin tortor in ligula commodo rhoncus. Pellentesque tortor sapien, laoreet quis posuere sit amet, congue eu magna. In dapibus ultrices congue. Morbi sed ante quam. In hac habitasse platea dictumst. In ultrices dolor vel nibh porta tincidunt. Mauris quam felis, lacinia vel congue eu, iaculis quis sapien. Morbi eu nulla quam. Duis porttitor elementum orci, a blandit tortor aliquam sit amet.
+        </p>
+      </chapter>
+    </part>
+    
+    <part id="part7">
+      <titles>
+        <title>Tableaux</title>
+      </titles>
+      <chapter>
+        <titles>
+          <title> Test structure tableau </title>
+        </titles>
+        <table>
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry>
+                  <p>theah1</p>
+                </entry>
+                <entry>
+                  <p>thead2</p>
+                </entry>
+              </row>
+            </thead>
+            <tfoot>
+              <row>
+                <entry>
+                  <p>tfoot1</p>
+                </entry>
+                <entry>
+                  <p>tfoot2</p>
+                </entry>
+              </row>
+            </tfoot>
+            <tbody>
+              <row>
+                <entry>
+                  <p>body row 1</p>
+                </entry>
+                <entry>
+                  <p>body row 2</p>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>tableau sans bordure sans span</title>
+        </titles>
+        <table>
+          <tgroup  cols="2" >
+            <tbody>
+              <row>
+                <entry>
+                  <p>a1</p>
+                </entry>
+                <entry>
+                  <p>a2</p>
+                </entry>
+                <entry>
+                  <p>a3</p>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <p>b1</p>
+                </entry>
+                <entry>
+                  <p>b2</p>
+                </entry>
+                <entry>
+                  <p>b3</p>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>tableau avec bordure</title>
+        </titles>
+        <p> toutes les bordures </p>
+        <table frame="all">
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry>
+                  <p>a1</p>
+                </entry>
+                <entry>
+                  <p>a2</p>
+                </entry>
+                <entry>
+                  <p>a3</p>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <p>b1</p>
+                </entry>
+                <entry>
+                  <p>b2</p>
+                </entry>
+                <entry>
+                  <p>b3</p>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <p/>
+        <p>bordure en bas</p>
+        <table frame="bottom">
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry>
+                  <p>a1</p>
+                </entry>
+                <entry>
+                  <p>a2</p>
+                </entry>
+                <entry>
+                  <p>a3</p>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <p>b1</p>
+                </entry>
+                <entry>
+                  <p>b2</p>
+                </entry>
+                <entry>
+                  <p>b3</p>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        
+        <p>bordure sur les cotes</p>
+        <table frame="sides">
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry>
+                  <p>a1</p>
+                </entry>
+                <entry>
+                  <p>a2</p>
+                </entry>
+                <entry>
+                  <p>a3</p>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <p>b1</p>
+                </entry>
+                <entry>
+                  <p>b2</p>
+                </entry>
+                <entry>
+                  <p>b3</p>
+                </entry>
+              </row>	
+            </tbody>
+          </tgroup>
+        </table>	
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>span colonne</title>
+        </titles>
+        <table>
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry>
+                  <p>a1</p>
+                </entry>
+                <entry>
+                  <p>a2</p>
+                </entry>
+              </row>
+              <row>
+                <entry spanname="1to2" >
+                  <p>a1sdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </chapter>
+      
+      <chapter>
+        <titles>
+          <title>test colsep et rowsep</title>
+        </titles>
+        <p> <br/>test colsep<br/></p>
+        <table colsep="1">
+          <tgroup cols="3" >
+            <tbody>
+              <row>
+                <entry><p>f1</p></entry>
+                <entry><p>f2</p></entry>
+                <entry ><p>f3</p></entry>
+              </row>
+              <row>
+                <entry><p>f1</p></entry>
+                <entry><p>f2</p></entry>
+                <entry><p>f3</p></entry>
+              </row>
+              <row>
+                <entry><p>f1</p></entry>
+                <entry><p>f2</p></entry>
+                <entry><p>f3</p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <p> <br/>test rowsep<br/></p>
+        <table rowsep="1">
+          <tgroup cols="3">
+            <tbody>
+              <row>
+                <entry><p>b1</p></entry>
+                <entry><p>b2</p></entry>
+                <entry><p>b3</p></entry>
+              </row>
+              <row>
+                <entry><p>c1</p></entry>
+                <entry><p>c2</p></entry>
+                <entry><p>c3</p></entry>
+              </row>
+              <row>
+                <entry><p>d1</p></entry>
+                <entry><p>d2</p></entry>
+                <entry><p>d3</p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <p> <br/>test rowsep et colsep<br/></p>
+        <table rowsep="1" colsep="1">
+          <tgroup cols="3">
+            <tbody>
+              <row>
+                <entry><p>b1</p></entry>
+                <entry><p>b2</p></entry>
+                <entry><p>b3</p></entry>
+              </row>
+              <row>
+                <entry morerows="1"><p>c1</p></entry>
+                <entry><p>c2</p></entry>
+                <entry><p>c3</p></entry>
+              </row>
+              <row>
+                <entry><p>d2</p></entry>
+                <entry><p>d3</p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <p>tableau issu de devellopze pour l'iphone p28 </p>
+        <table frame="topbot">
+          <caption>Tableau 1.1 : L’API de UIWebView</caption>
+          <tgroup cols="3" rowsep="1">
+            <colspec colnum="c1" colname="col1" colwidth="40"/>
+            <colspec colnum="c2" colname="col2" colwidth="20"/>
+            <colspec colnum="c3" colname="col3" colwidth="40"/>
+            <thead>
+              <row>
+                <entry align="left" valign="top">
+                  <p><b><i>Signature de la méthode</i></b></p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p><b><i>Invocation</i></b></p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p><b><i>Paramètres</i></b></p>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry align="left" valign="top">
+                  <p><code>-(BOOL)webView:(UIWebView *) webView shouldStartLoadWithRequest:(NSURLRequest *) request navigationType: (UIWebViewNavigationType) navigationType</code></p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p>Juste avant que la vue ne commence à charger le contenu.</p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p><code>webView</code> — la vue qui va charger le contenu.</p>
+                  <p><code>request</code> — l’emplacement du contenu à charger.</p>
+                  <p><code>navigationType</code> — le type d’action utilisateur qui déclenche le changement de la page.</p>
+                  <p>options de <code>UIWebViewNavigationTypeLinkClicked, FormSubmitted, Back-Forward, Reload, FormResubmitted et Other</code>.</p>
+                </entry>
+              </row>
+              <row>
+                <entry align="left" valign="top">
+                  <p><code>- (void)webViewDidStartLoad:(UIWebView *) webView</code></p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p>Après que la vue a commencé le chargement du contenu.</p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p><code>webView</code> — la vue qui charge le contenu.</p>
+                </entry>
+              </row>
+              <row>
+                <entry align="left" valign="top">
+                  <p><code>- (void)webViewDidFinishLoad:(UIWebView *) webView</code></p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p>Après que la vue a terminé avec succès le chargement du contenu.</p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p><code>webView</code> — la vue qui charge le contenu.</p>
+                </entry>
+              </row>
+              <row>
+                <entry align="left" valign="top">
+                  <p><code>- (void)webView:(UIWebView *) webView didFailLoadWithError:(NSError *) error</code></p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p>Si la vue n’a pas réussi à charger le contenu.</p>
+                </entry>
+                <entry align="left" valign="top">
+                  <p><code>webView</code> — la vue qui tente de charger le contenu.</p>
+                  <p><code>error</code> — un objet qui représente l’erreur générée.</p>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </chapter>
+    </part>
+    <part id="part8">
+      <titles>
+        <title>Images</title>
+      </titles>
+      <chapter>
+        <titles>
+          <title>Images Normales</title>
+        </titles>
+        <div>
+          <p> paragraphe qui sert a tester les images , image JPEG <img width="100"
+          height="100" src="etc/test.jpg"/>
+          </p>
+          <p> paragraphe qui sert a tester les images , image GIF <img width="100"
+          height="100" src="etc/test.gif"/>
+          </p>
+          
+          <p> paragraphe qui sert a tester les images , image PNG <img width="100"
+          height="100" src="etc/test.png"/>
+          </p>
+          <p>
+            Donec ultricies augue at eros euismod eleifend. Phasellus scelerisque placerat leo, in mattis felis mollis et. Duis tincidunt elit et risus viverra lobortis. Morbi pretium, massa interdum aliquet imperdiet, elit lectus fringilla leo, ut aliquam risus mi euismod arcu. Sed condimentum dolor sit amet urna tempus ac aliquam nunc dignissim. Curabitur nisl risus, ultricies et sagittis eu, rutrum at erat. Fusce dignissim faucibus turpis id sollicitudin. Duis vehicula tempus nisl, non bibendum neque porta nec. Cras nec porta sem. Mauris vitae ante eros. Phasellus vel velit eget purus hendrerit pulvinar. Ut urna enim, ultrices in tempus et, interdum et est. Phasellus egestas accumsan odio, vestibulum hendrerit nisl sagittis elementum. Etiam dui erat, ultricies faucibus dignissim.
+          </p>
+          <figure>
+            <img width="100" height="100" src="etc/test.jpg"/>
+            <caption_bloc>
+              <caption><label>Figure 1</label>Une figure avec une caption qui donne des détails sur le contenu de la figure</caption>
+            </caption_bloc>
+          </figure>
+          <p>
+            Donec ultricies augue at eros euismod eleifend. Phasellus scelerisque placerat leo, in mattis felis mollis et. Duis tincidunt elit et risus viverra lobortis. Morbi pretium, massa interdum aliquet imperdiet, elit lectus fringilla leo, ut aliquam risus mi euismod arcu. Sed condimentum dolor sit amet urna tempus ac aliquam nunc dignissim. Curabitur nisl risus, ultricies et sagittis eu, rutrum at erat. Fusce dignissim faucibus turpis id sollicitudin. Duis vehicula tempus nisl, non bibendum neque porta nec. Cras nec porta sem. Mauris vitae ante eros. Phasellus vel velit eget purus hendrerit pulvinar. Ut urna enim, ultrices in tempus et, interdum et est. Phasellus egestas accumsan odio, vestibulum hendrerit nisl sagittis elementum. Etiam dui erat, ultricies faucibus dignissim.
+          </p>
+        </div>
+      </chapter>
+      <chapter>
+        <titles>
+          <title>svg</title>
+        </titles>
+        <div>
+          <p> image SVG sans taille<img src="etc/test1.svg"/></p>
+          <p>
+            Donec ultricies augue at eros euismod eleifend. Phasellus scelerisque placerat leo, in mattis felis mollis et. Duis tincidunt elit et risus viverra lobortis. Morbi pretium, massa interdum aliquet imperdiet, elit lectus fringilla leo, ut aliquam risus mi euismod arcu. Sed condimentum dolor sit amet urna tempus ac aliquam nunc dignissim. Curabitur nisl risus, ultricies et sagittis eu, rutrum at erat. Fusce dignissim faucibus turpis id sollicitudin. Duis vehicula tempus nisl, non bibendum neque porta nec. Cras nec porta sem. Mauris vitae ante eros. Phasellus vel velit eget purus hendrerit pulvinar. Ut urna enim, ultrices in tempus et, interdum et est. Phasellus egestas accumsan odio, vestibulum hendrerit nisl sagittis elementum. Etiam dui erat, ultricies faucibus dignissim.
+          </p>
+          <p> image SVG à 500 300 <img src="etc/test1.svg" height="500" width="300"/></p>
+          <!--p> image SVG à 500px 300px <img src="etc/test1.svg" height="500px" width="300px"/></p>
+              <p> image SVG à 50% 50px <img src="etc/test1.svg" height="50%" width="50%"/></p!-->
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mi nunc, sollicitudin sed ultricies sed, commodo in eros. Duis ultrices nibh massa, nec rutrum magna. Suspendisse ac sapien neque, quis gravida enim. Etiam vestibulum placerat est, a hendrerit quam fermentum nec. Suspendisse ut magna vel eros iaculis pretium vehicula porttitor arcu. Integer sollicitudin sodales massa et pretium. Morbi consequat adipiscing libero, molestie adipiscing massa sodales non. Curabitur sit amet odio est, non ultrices enim. Suspendisse vitae ornare lectus. Donec volutpat nisl vel odio eleifend egestas.
+          </p>
+          
+          
+        </div>
+      </chapter>
+      <chapter>
+        <titles>
+          <title>Rotation</title>
+        </titles>
+        <div>
+          <p> rotation a 180 <img src="etc/test.png" width="100" height="100" clock-rotation="180"/></p>
+          <p> rotation a 90 <img src="etc/test.png" width="100" height="100" clock-rotation="90"/></p>
+          <p>rotation a 270 <img src="etc/test.png" width="100" height="100" clock-rotation="270"/></p>
+        </div>
+      </chapter>
+      
+    </part>
+    <part id="part9">
+      <titles>
+        <title>Maths</title>
+      </titles>
+      <chapter>
+        <titles>
+          <title>Exemple of maths</title>
+        </titles>
+        <section>
+          <titles>
+            <title>tests d'alignements</title> 
+            <div>
+              <p>des variables <eqn v-align="top">x</eqn> et <eqn v-align="top">Y</eqn> qui ne va pas en dessous de l'axe mathématique</p>
+              <p>des variables <eqn>y</eqn>, <eqn>p</eqn> et <eqn>Q</eqn>, <eqn>\frac{1}{2}</eqn> ou <eqn>\sqrt{3}</eqn> qui passent en dessous de l'axe mathématique</p>
+              <p>Du texte conprennant des variables <span class="math">x</span>, <span class="math">y</span>, <span class="math">X</span>, et éventuellement d'autres comme
+              <span class="math">P(n)=x<sup>4</sup>+z<sup>3</sup>-c<sub>k</sub></span> ou <span class="math"> &sum;<sub>i=1..&infin;</sub> (42 &times; 3) &plusmn; 2 </span>.	
+              On peut aussi avoir du grecque en unicode <span class="math">&#x03b1;, &#x0391;, &#x03b2;, &#x0392;, &#x03b5;, 	&#x0395;, &#x03c0;, &#x03c6;, &#x03a6;, &#x03c9;, &#x03a9;</span>
+              et même du grecque en html par les entités <span class="math">&alpha;, &beta;, &pi;, &sigma;, &omega; </span> voir même autre chose
+              </p>
+            </div>
+          </titles>
+        </section>
+        <section>
+          <titles>
+            <title>page 32 des paradoxes de l'infini</title>
+          </titles>
+          <p>On déduit facilement des equations [20] la relation :<eqn id-eqn="c2.1" display="block" eqn-label="[22]"><![CDATA[r_2 - a_2 < \frac{1}{4} \left(r_2 - a_2\right)]]></eqn>et les inégalités <eqn id-eqn="c2.2" display="block" eqn-label="[23]"><![CDATA[a_1 <  a_2 <  a_3 \dots <  r_3 <  r_2 <  r_1 ;]]></eqn>car <eqn>a_1</eqn> étant inférieur à <eqn>r_1</eqn> les relations [20] montrent que
+          <eqn>a_2</eqn> est compris entre <eqn>a_1</eqn> et <eqn>r_1</eqn> et que <eqn>r_2</eqn> est compris entre <eqn>a_ 2</eqn>
+          et <eqn>r_1</eqn>.</p><p>Des relations
+          [<link refid-eqn="c2.1">22</link>] et [<link refid-eqn="c2.2">23</link>] on conclut que si l'on désigne par <eqn>\epsilon</eqn> la différence <eqn>r_1-a_1</eqn>, la différence <eqn>r_n-a_n</eqn> est inférieure à  <eqn>\frac{\epsilon}{4^{n-1}}</eqn>et que par suite <eqn>r_n</eqn> et <eqn>a_n</eqn> sont des
+          valeurs approchées de <eqn>\frac{1}{\pi}</eqn>, l'une par excès l'autre par
+          défaut, avec une erreur inférieure
+          à <eqn>\frac{1}{4^{n-1}}</eqn></p>
+        </section>
+      </chapter>
+    </part>
+    <part id="part10">
+      <titles>
+        <title>Notes</title>
+      </titles>
+      <chapter>
+        <titles>
+          <title>Front chapter 1</title>
+        </titles>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus nisi, cursus vel consequat ac, ultricies et magna. Ut tincidunt tincidunt ante, eu venenatis arcu blandit vitae. Nunc sit amet enim sapien. Cras vehicula leo eget libero bibendum ut bibendum mauris fermentum. Nunc blandit risus a eros pellentesque rhoncus. Quisque non nisi sit amet lorem ultrices egestas. Praesent imperdiet lectus sapien, sed bibendum metus. 
+        <note_entry>
+          <label/>
+          <note><p>Note normale</p></note>
+        </note_entry>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus nisi, cursus vel consequat ac, ultricies et magna. Ut tincidunt tincidunt ante, eu venenatis arcu blandit vitae. Nunc sit amet enim sapien. Cras vehicula leo eget libero bibendum ut bibendum mauris fermentum. Nunc blandit risus a eros pellentesque rhoncus. Quisque non nisi sit amet lorem ultrices egestas. Praesent imperdiet lectus sapien, sed bibendum metus. Praesent nisi erat, ullamcorper ac tincidunt a, pellentesque eget quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eros odio, eleifend eu feugiat vitae, dignissim nec augue. Nunc adipiscing vestibulum. 
+        </p>
+        <section>
+          <titles>
+            <title>Front chapter 1 section 1</title>
+          </titles>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris placerat convallis nibh in sollicitudin. Ut fermentum venenatis mauris, sit amet euismod orci ullamcorper et. Pellentesque quis ipsum dolor. Vivamus vehicula commodo velit, vel cursus erat feugiat eu. Integer lacus leo, accumsan eu hendrerit a, tempor nec metus. Vivamus eu neque mauris, in pellentesque velit. Vivamus leo nisi, gravida sit amet tristique in, accumsan vel orci. Nunc vitae libero magna. In hac habitasse platea dictumst. Suspendisse et eleifend lacus. Aliquam cursus tincidunt odio non porttitor. Nullam eu mauris ipsum. Duis diam sapien, fringilla a volutpat nec, eleifend volutpat massa. Fusce scelerisque. 
+          <note_entry>
+            <label>1</label>
+            <note><p>Note (normale) avec un label (1)</p></note>
+          </note_entry>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisl et purus ultricies id interdum risus vestibulum. Maecenas magna massa, aliquet sit amet hendrerit quis, porta pharetra quam. Vivamus pretium quam eget odio venenatis volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce eu est sem, sit amet dictum nisi. Mauris vestibulum consequat enim eu blandit. Quisque nunc orci, dignissim sed lacinia eget, vestibulum sit amet neque. Mauris sed eros ac velit venenatis interdum. Integer tincidunt mollis dolor quis euismod. Cras condimentum venenatis metus, id condimentum eros tincidunt eget. Etiam laoreet feugiat aliquam.  </p>
+        </section>
+        <section>
+          <titles>
+            <title>Front chapter 1 section 2</title>
+          </titles>
+          <p>fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2
+          fc1s2 fc1s2 fc1s2 
+          <note_entry>
+            <label>2</label>
+            <note type="margin"><p>Note 2 de type margin</p></note>
+          </note_entry>
+          
+          fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2
+          fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 </p>
+          <p>Chapitre Preliminaire 2 Chapitre Preliminaire 2 Chapitre Preliminaire 2 Chapitre
+          Preliminaire 2 Chapitre Preliminaire 2 Chapitre Preliminaire 2 
+          <note_entry>
+            <label>3</label>
+            <note type="endpage"><p>Une note 3 de bas de page</p></note>
+          </note_entry>
+          Chapitre Preliminaire
+          2 Chapitre Preliminaire 2 Chapitre Preliminaire 2 Chapitre Preliminaire 2 Chapitre
+          Preliminaire 2 Chapitre Preliminaire 2 Chapitre Preliminaire 2 Chapitre Preliminaire
+          2 Chapitre Preliminaire 2 Chapitre Preliminaire 2 Chapitre Preliminaire 2 Chapitre
+          Preliminaire 2</p>
+          <p>Chapitre Preliminaire 2 : section 1. Chapitre Preliminaire 2 : section 1.
+          Chapitre Preliminaire 2 : section 1. Chapitre Preliminaire 2 : section 1.
+          Chapitre Preliminaire 2 : section 1. Chapitre Preliminaire 2 : section 1.
+          <note_entry>
+            <label>4</label>
+            <note type="endsection"><p>une note 4 de fin de section</p></note>
+          </note_entry>
+          Chapitre Preliminaire 2 : section 1. Chapitre Preliminaire 2 : section 1.
+          Chapitre Preliminaire 2 : section 1. Chapitre Preliminaire 2 : section 1.
+          Chapitre Preliminaire 2 : section 1. Chapitre Preliminaire 2 : section 1.
+          Chapitre Preliminaire 2 : section 1. </p>
+          <p>p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1<note_entry>
+          <label>5</label>
+          <note type="endchapter"><p>une note 5 de fin de chapitre</p></note>
+        </note_entry>
+        p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1
+        p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1
+        p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1 p1c1
+          p1c1 p1c1 p1c1 </p>
+        </section>
+      </chapter>
+
+    </part>
+    <part id="part11">
+      <titles>
+        <title>code</title>
+      </titles>
+      <chapter>
+        <titles><title>Exemple of computer code</title></titles>
+        <section><titles>
+          <title>page 65 de "développez pour l'iphone"</title>
+          </titles><p>Les images de retour (marquées par Back) dans les vues secondaires sont faites pour
+          revenir à la vue principale. Puisqu’il ne serait pas approprié que l’effet visuel associé à une
+          transition en arrière soit identique à celui d’une transition en avant, la valeur du second
+          paramètre de la fonction <code>setCurrentView</code> est fixée à <code>true</code>. Il indique
+          une transition visuelle en arrière. </p><p>Le code de <code>goMain</code> présenté ci-après est
+          associé au bouton <code>Retour</code> en tant que gestionnaire<code>onclick</code>. Puisque le
+          second argument vaut <code>true</code>, la transition associée à <code>mainView</code> se fait
+          dans un sens opposé au comportement standard. Nous pouvons ainsi faire en sorte que
+          l’utilisateur pense qu’une action précédente est annulée.<code/></p>
+          <codeblock>
+            <code><![CDATA[
+            function goMain(event) 
+            {
+            // Fixez la vue courante d’un StackLayout. var 
+            var stackLayout = document.getElementById(’stackLayout’).object; 
+            stackLayout.setCurrentView(’mainView’, true); 
+            }
+            ]]> </code>
+            </codeblock><p>Par rapport aux applications fondées sur une partie Navigateur, l’animation du
+            changement de vues offre d’autres possibilités. Elle constitue un autre élément d’information
+            donné à l’utilisateur. Lorsque l’animation utilisée pour passer à une vue n’est pas identique à
+            celle employée pour d’autres vues, l’utilisateur sait que cette vue a quelque chose de
+            différent. La <link>Figure 3.5</link> présente la liste des vues secondaires et la fonction
+        <code>goMain</code> dans Dashcode.</p></section>
+        <section><titles>
+          <title>page 184 de "le langage C++"</title>
+          </titles><p>Une boucle <code>do...while</code> garantit que les instructions de la boucle
+          s’exécuteront au moins une fois, car le corps de la boucle est exécuté avant le test de la
+          condition. Le code du Listing 7.7 correspond au
+          programme du listing précédent, mais utilise une boucle do...while.</p><codeblock
+          id-codeblock="listing_7.7">
+          <codecaption><label>Listing 7.7 : </label>Exemple de boucle <code>do...while</code></codecaption>
+          <code><![CDATA[ 1:   // Listing 7.7
+          2:   // Boucle do while
+          3:
+          4: #include <iostream>
+          5:
+          6: int main()
+          7: {
+          8:   using namespace std;
+          9:   int compteur;
+          10:   cout << "Combien de bips voulez-vous afficher ? ";
+          11:   cin >> compteur;
+          12:   do
+          13:   {
+          14:     cout << "Bip !\n";
+          15:     compteur--;
+          16:   } while (compteur >0 );
+          17:   cout << "Compteur à la sortie de la boucle : "
+          17a:       << counter << endl;
+          18:   return 0;
+          19: }]]></code>
+        </codeblock></section>
+      </chapter>
+    </part>
+    <part id="part12">
+      <titles>
+        <title>Indexes</title>
+      </titles>
+      <p>Sed euismod nisl et purus ultricies id interdum risus vestibulum<indexanchor id-indexanchor="index5" refindex-name="INDEX1"/>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisl et purus ultricies id interdum risus vestibulum. Maecenas magna massa, aliquet sit amet hendrerit quis, porta pharetra quam. Vivamus pretium quam eget odio venenatis volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce eu est sem, sit amet dictum nisi. Mauris vestibulum consequat enim eu blandit. Quisque nunc orci, dignissim sed lacinia eget, vestibulum sit amet neque. Mauris sed eros ac velit venenatis interdum. Integer tincidunt mollis dolor quis euismod. Cras condimentum venenatis metus, id condimentum eros tincidunt eget. Etiam laoreet feugiat aliquam. 
+      </p>
+      <chapter>
+        <titles>
+          <title>Front chapter 1</title>
+        </titles>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisl et purus ultricies id interdum risus vestibulum.
+        <indexanchor id-indexanchor="index1" refindex-name="INDEX1"/>
+        Sed ullamcorper consectetur feugiat. Sed dictum imperdiet dui in volutpat. Morbi nec metus quis dolor ornare laoreet vel ac risus. Duis eget magna tellus. Aliquam iaculis eros nec neque iaculis eu lobortis dui semper. Sed laoreet sollicitudin lectus non tempor. Pellentesque dignissim ultrices augue, et porttitor nisl aliquet quis. Curabitur sodales, quam vel fermentum accumsan, magna urna molestie justo, et dignissim dolor risus at erat. Sed tempor, ligula ut vulputate auctor, elit turpis. 
+        </p>
+        <section>
+          <titles>
+            <title>Front chapter 1 section 1</title>
+          </titles>
+          <p>Sed ullamcorper consectetur feugiat. Sed dictum imperdiet dui in volutpat.  
+          <indexanchor id-indexanchor="index2" refindex-name="INDEX1"/>
+          Duis luctus euismod eros vel imperdiet. Duis sollicitudin tincidunt metus pulvinar vulputate. Suspendisse elit lectus, fermentum ac ullamcorper et, interdum fringilla velit. Vivamus quis tristique ante. Sed ac ligula vitae enim ultrices semper ut non libero. Cras ultrices, nulla ut viverra porttitor, dolor velit tincidunt metus, ut fermentum nisl quam sit amet neque. Nunc interdum egestas felis, at tincidunt turpis posuere vitae. Nunc porta nibh ac ligula pulvinar at laoreet turpis placerat. Integer non lacus et nisi lobortis facilisis. Donec feugiat, neque ut. 
+          </p>
+        </section>
+        <section>
+          <titles>
+            <title>anchor fo index 3 and 4</title>
+          </titles>
+          <p>fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2
+          fc1s2 fc1s2 fc1s2 
+          <indexanchor id-indexanchor="index3" refindex-name="INDEX1"/>
+          <indexanchor id-indexanchor="index4" refindex-name="INDEX1"/>
+          fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2
+          fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 fc1s2 </p>
+        </section>
+        <section>
+          <titles>
+            <title>anchor fo index 6, 7</title>
+          </titles>
+          <p>p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1
+          p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1
+          p1c1s1ss1 p1c1s1ss1 <indexanchor id-indexanchor="index7" refindex-name="INDEX1"/>p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1
+          p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 p1c1s1ss1
+          p1c1s1ss1 p1c1s1ss1 p1c1s1ss1 <indexanchor id-indexanchor="index6" refindex-name="INDEX1"/>p1c1s1ss1 p1c1s1ss1 </p>
+        </section>
+        <section>
+          <titles>
+            <title>anchor fo index 8</title>
+          </titles>
+          <p>p2c1 p2c1 p2c1 p2c1 p2c1<indexanchor id-indexanchor="index8" refindex-name="INDEX1"/>
+          p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1
+          p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1 p2c1
+          </p>
+        </section>
+        
+      </chapter>
+      <chapter id="index">
+        <titles>
+          <title>Index</title>
+        </titles>
+        <indexentry index-name="INDEX1" id-indexentry="index.1">
+          premier index sans contenu <link refid-indexanchor="index1"/>
+        </indexentry>
+        <indexentry index-name="INDEX1" id-indexentry="index.2">
+          second index avec contenu entier <link refid-indexanchor="index2">2</link>
+        </indexentry>
+        <indexentry index-name="INDEX1" id-indexentry="index.3">
+          troisième index avec sous entrées
+          <subindex>
+            le premier sou-index <link refid-indexanchor="index3">3</link>
+          </subindex>
+          <subindex>
+            le second sous-index <link refid-indexanchor="index4">4</link>
+          </subindex>
+        </indexentry>
+        <indexentry index-name="INDEX1" id-indexentry="index.5">
+          une quatrième index avec un lien et des sous entrées
+          <link refid-indexanchor="index5"></link>
+          <subindex>le premier sous-index du 4 <link refid-indexanchor="index5">5</link></subindex>
+          <subindex>le second sous-index du 4 qui contient des sous entrées<link refid-indexanchor="index6">6</link>
+          <subindex>le premier sous-sous-index</subindex>				
+          <subindex>le second sous-sous-index (avec lien) <link refid-indexanchor="index7">7</link>
+          <subindex>le premier sousousous-index (avec lien) <link refid-indexanchor="index8">8</link></subindex>
+          <subindex>le second sousousous-index</subindex>
+          </subindex>
+          </subindex>
+        </indexentry>
+        <!--indexentry index-name="INDEX1" id-indexentry="index.9">un dernier index (situé après)
+            <link refid-indexanchor="index9">9</link>
+            </indexentry-->
+      </chapter>
+    </part>
+    <part id="part13">
+      <titles>
+        <title>Biblio</title>
+      </titles>
+      <chapter>
+        <titles>
+          <title>une biblio d'exemple</title>
+        </titles>
+        
+        <p>Test de refbib integre a un paragraphe premiere ref vers un livre : <link refid-bibref="bad1"></link>
+        <refbib id="bad1">
+          <author>Baudelaire</author>
+          <author>C Baudlaire Again</author>
+          <book_title>Les fleurs du mal</book_title>
+          </refbib> deuxieme vers un journal : <link refid-bibref="paw1"></link>				
+          <refbib id="paw1">  
+            <author>D Pawson</author>
+            <journal_title>Making XML Look Good in Print</journal_title>
+            <article_title>Article Title here</article_title>
+            </refbib> et troisieme avec seulement l'auteur <link refid-bibref="toto"></link>
+            <refbib id="toto">
+              <author><author_firstname>victor</author_firstname>
+              <author_lastname>Hugo</author_lastname></author>
+            </refbib>
+        </p>
+      </chapter>
+    </part>
+  </body>
+  <back>
+    <chapter>
+      <titles>
+        <title>un chapitre dans le back</title>
+      </titles>
+      <p>back chapter 1 back chapter 1 back chapter 1 back chapter 1 back chapter 1 back
+      chapter 1 back chapter 1 back chapter 1 back chapter 1 back chapter 1 back chapter 1
+      back chapter 1 back chapter 1 back chapter 1 </p>
+      <section>
+        <titles>
+          <title>section dans le back</title>
+        </titles>
+        <p>back chapter 1 section 1. back chapter 1 section 1. back chapter 1 section 1.
+        back chapter 1 section 1. back chapter 1 section 1. back chapter 1 section 1.
+        back chapter 1 section 1. back chapter 1 section 1. back chapter 1 section 1.
+        back chapter 1 section 1. back chapter 1 section 1. back chapter 1 section 1.
+        back chapter 1 section 1. back chapter 1 section 1. back chapter 1 section 1.
+        back chapter 1 section 1. </p>
+      </section>
+      <section>
+        <titles>
+          <title>section 2 dans le back</title>
+        </titles>
+        <p>back chapter 1 section 2. back chapter 1 section 2. back chapter 1 section 2.
+        back chapter 1 section 2. back chapter 1 section 2. back chapter 1 section 2.
+        back chapter 1 section 2. back chapter 1 section 2. back chapter 1 section 2.
+        back chapter 1 section 2. back chapter 1 section 2. back chapter 1 section 2.
+        </p>
+      </section>
+
+
+    </chapter>
+    <chapter>
+      <titles>
+        <title>un deuxième chapitre dans le back</title>
+      </titles>
+      <p> back chapter 2 back chapter 2 back chapter 2 back chapter 2 back chapter 2 back
+      chapter 2 back chapter 2 back chapter 2 back chapter 2 back chapter 2 back chapter 2
+      back chapter 2 back chapter 2 back chapter 2 back chapter 2 back chapter 2 back
+      chapter 2 back chapter 2 back chapter 2 back chapter 2 back chapter 2 back chapter 2
+      </p>
+    </chapter>
+    
+  </back>
+</prostbook>

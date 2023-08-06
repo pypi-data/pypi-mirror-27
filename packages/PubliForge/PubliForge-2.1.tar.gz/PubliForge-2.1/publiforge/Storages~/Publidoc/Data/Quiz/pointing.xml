@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="pointing" xml:lang="fr">
+    <head>
+      <title>Exercice de pointage</title>
+    </head>
+
+    <instructions>
+      <p>Sélectionnez le nom ou le pronom qui détermine l'accord de chaque
+      verbe mis en valeur.</p>
+    </instructions>
+
+    <pointing>
+      <section>
+        <p>Le centième <point ref="right">anniversaire</point> de la
+        <point>mort</point> de <point>Jules Verne</point> <highlight>a été
+        célébré</highlight> en 2005. Cet <point ref="right">écrivain</point> du
+        <number type="roman" value="19">XIX</number><sup>e</sup> siècle
+        <highlight>a</highlight> encore aujourd'hui de nombreux
+        <point>lecteurs</point>.  <point ref="right">Certains</point> le
+        <highlight>considèrent</highlight> comme l'<point>inventeur</point> du
+        roman de science-fiction.</p>
+      </section>
+      <section>
+        <p>La <point ref="right">découverte</point> de la <point>Terre</point>
+        <highlight>est</highlight> le <point>thème</point> principal de ses
+        <point>romans</point>. Passionné de <point>géographie</point> et de
+        <point>sciences</point>, <point ref="right">Jules Verne</point>
+        <highlight>a imaginé</highlight> des <point
+        ref="right">machines</point> extraordinaires qui
+        <highlight>permettent</highlight> d'explorer des
+        <point>contrées</point> lointaines ou inconnues. Ses <point
+        ref="right">héros</point> hors du commun
+        <highlight>parcourent</highlight> ainsi aussi bien les
+        <point>profondeurs</point> sous-marines que l'<point>espace</point>
+        interstellaire.</p>
+      </section>
+    </pointing>
+
+    <help>
+      <list>
+        <item>
+          Quand le sujet est un groupe nominal, le verbe s'accorde avec le
+          <highlight>nom noyau</highlight> du groupe.
+        </item>
+        <item>
+          Quand le sujet est le pronom relatif <mentioned>qui</mentioned>, le
+          verbe prend le nombre et la personne de
+          l'<highlight>antécédent</highlight>.
+        </item>
+      </list>
+    </help>
+  </quiz>
+</publiquiz>

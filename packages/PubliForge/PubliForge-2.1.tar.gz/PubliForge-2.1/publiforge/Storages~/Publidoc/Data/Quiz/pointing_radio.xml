@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="pointing_radio" xml:lang="fr">
+    <head>
+      <title>Exercice de pointage radio</title>
+    </head>
+
+    <instructions>
+      <section>
+        <p>Désignez Le mot qui représente le substantif du verbe.</p>
+      </section>
+    </instructions>
+
+    <pointing type="radio">
+      <p>
+        Changer :
+        <point>changage</point> /
+        <point ref="right">changement</point> /
+        <point>changation</point>
+      </p>
+    </pointing>
+  </quiz>
+</publiquiz>

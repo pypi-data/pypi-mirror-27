@@ -1,0 +1,582 @@
+@charset "UTF-8";
+
+/* $Id:  $ */
+
+@import url(publidoc.css);
+
+
+publiquiz {
+  display: block;
+  font-family: sans-serif;
+  padding: 0;
+}
+
+
+/* Component level ========================================================= */
+
+quiz:before  {
+  display: block;
+  color: #7f7f7f;
+  background-color: #ddddcc;
+  border: 1px solid #aeaea0;
+  font-weight: bold;
+  padding: .5em 5px .5em 5px;
+  content: collapser() " " insert-before-button() insert-after-button()
+           " " add-attribute-button() " Quiz";
+}
+
+quiz[id]:before {
+  content: collapser() " " insert-before-button() insert-after-button()
+           " " add-attribute-button() " Quiz"
+           " – ID = " text-field(attribute, "id", columns, 15, color, black);
+}
+quiz[type]:before {
+  content: collapser() " " insert-before-button() insert-after-button()
+           " " add-attribute-button() " Quiz"
+           " – Type = " text-field(attribute, type, columns, 10, color, black);
+}
+quiz[id][type]:before {
+  content: collapser() " " insert-before-button() insert-after-button()
+           " Quiz"
+           " – ID = " text-field(attribute, "id", columns, 15, color, black)
+           " – Type = " text-field(attribute, type, columns, 10, color, black);
+}
+
+quiz {
+  display: block;
+  border: 1px solid #aeaea0;
+  margin-bottom: .5em;
+  padding: 5px;
+  collapsible: yes;
+}
+quiz:last-child {
+  margin-bottom: 0;
+}
+
+quiz > head {
+  background-color: #ffffee;
+  padding: .3em .5em .3em .5em;
+  border-radius: 0.5em;
+}
+
+
+/* Top level =============================================================== */
+
+publiquiz > *:before {
+  display: block;
+  color: #bbbbbb;
+  background: #993333 url('top.png') repeat-x top left;
+  font-weight: bold;
+  padding: 1.2em 5px 1em 5px;
+}
+publiquiz > document:before {
+  content: add-attribute-button() " Document"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white);
+}
+publiquiz > document[id][xml|lang]:before {
+  content: "Document"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white)
+           " – Langue principale  = " combo-box(attribute, "xml:lang", font-size, 75%,
+             values, "en\A fr\A es", color, white);
+}
+publiquiz > quiz[id]:before {
+  content: add-attribute-button() " Quiz"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white);
+}
+publiquiz > quiz[id][type]:before {
+  content: add-attribute-button() " Quiz"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white)
+           " – Type = " text-field(attribute, type, columns, 10, color, white);
+}
+publiquiz > quiz[id][xml|lang]:before {
+  content: add-attribute-button() " Quiz"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white)
+           " – Langue principale = " combo-box(attribute, "xml:lang", font-size, 75%,
+             values, "en\A fr\A es", color, white);
+}
+publiquiz > quiz[id][type][xml|lang]:before {
+  content: "Quiz"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white)
+           " – Type = " text-field(attribute, type, columns, 10, color, white)
+           " – Langue principale = " combo-box(attribute, "xml:lang", font-size, 75%,
+             values, "en\A fr\A es", color, white);
+}
+
+publiquiz > * {
+  display: block;
+  margin: 5px;
+  padding: 0;
+  border: 0;
+}
+
+publiquiz > * > head {
+  background-color: #ffffee;
+  padding: .3em .5em .3em .5em;
+  border-radius: 0.5em;
+}
+
+publiquiz > * > head > title {
+  font-size: 140%;
+}
+
+
+/* Section level =========================================================== */
+
+quiz > *:before, quiz > composite > *:before {
+  display: block;
+  color: #7f7f7f;
+  text-align: left;
+  font-style: normal;
+  font-size: 75%;
+  padding-bottom: 3px;
+}
+
+quiz > *, quiz > composite > * {
+  display: block;
+}
+
+quiz > *:after, quiz > composite > *:after {
+  color: #7f7f7f;
+  content: insert-after-button();
+}
+
+quiz > head:after {
+  display: none;
+}
+
+/* instructions ~~~~~~~~~~~~~~~~~~~~~ */
+
+instructions:before {
+  background-color: #e8f0f7;
+  content: insert-before-button() " Consigne";
+}
+
+instructions {
+  display: block;
+  background-color: #e8f0f7;
+}
+
+instructions section:before, instructions section, instructions section:after {
+  margin-left: 1em;
+}
+
+/* choices ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+choices-radio:before {
+  color: #7f7f7f;
+  content: insert-before-button()
+           command-button(command, "putAttribute", parameter, "shuffle true", icon, icon(plus-box))
+           " QCM – radio";
+}
+choices-radio[shuffle]:before {
+  content: insert-before-button()
+           " QCM – radio"
+           " – shuffle = " label(attribute, shuffle, color, black)
+           set-attribute-button(attribute, shuffle, unset-attribute, yes);
+}
+
+choices-check:before {
+  color: #7f7f7f;
+  content: insert-before-button()
+           command-button(command, "putAttribute", parameter, "shuffle true", icon, icon(plus-box))
+           " QCM – check";
+}
+choices-check[shuffle]:before {
+  content: insert-before-button()
+           " QCM – check"
+           " – shuffle = " label(attribute, shuffle, color, black)
+           set-attribute-button(attribute, shuffle, unset-attribute, yes);
+}
+
+/* blanks ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+blanks-fill:before {
+  content: insert-before-button()
+           command-button(command, "putAttribute", parameter, "strict true", icon, icon(plus-box))
+           " Exercice à trous – saisie libre";
+}
+blanks-fill[strict]:before {
+  content: insert-before-button()
+           " Exercice à trous – saisie libre"
+           " – strict = " label(attribute, strict, color, black)
+           set-attribute-button(attribute, strict, unset-attribute, yes);
+}
+
+blanks-select:before {
+  content: insert-before-button()
+           command-button(command, "putAttribute", parameter, "multiple true", icon, icon(plus-box))
+           " Exercice à trous – liste fermée";
+}
+blanks-select[multiple]:before {
+  content: insert-before-button()
+           " Exercice à trous – liste fermée"
+           " – multiple = " label(attribute, multiple, color, black)
+           set-attribute-button(attribute, multiple, unset-attribute, yes);
+}
+
+/* point ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+point:before {
+  content: insert-before-button() " "
+           command-button(command, "putAttribute", parameter, "type radio", icon, icon(plus-box))
+           " Pointage";
+}
+point[type]:before {
+  content: insert-before-button()
+           " Pointage – type = " label(attribute, type, color, black)
+           set-attribute-button(attribute, type, unset-attribute, yes);
+}
+
+/* matching ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+matching:before {
+  content: insert-before-button() " "
+           command-button(command, "putAttribute", parameter, "multiple true", icon, icon(plus-box))
+           " Appariement";
+}
+matching[multiple]:before {
+  content: insert-before-button()
+           " Appariement – multiple = " label(attribute, multiple, color, black)
+           set-attribute-button(attribute, multiple, unset-attribute, yes)
+}
+
+/* sort ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+sort:before {
+  content: insert-before-button() 
+           command-button(command, "putAttribute", parameter, "shuffle true", icon, icon(plus-box))
+           " Tri";
+}
+sort[shuffle]:before {
+  content: insert-before-button()
+           " Tri – shuffle = " label(attribute, shuffle, color, black)
+           set-attribute-button(attribute, shuffle, unset-attribute, yes);
+}
+
+/* categories ~~~~~~~~~~~~~~~~~~~~~~ */
+
+categories:before {
+  content: insert-before-button() " "
+           command-button(command, "putAttribute", parameter, "multiple true", icon, icon(plus-box))
+           " Catégories";
+}
+categories[multiple]:before {
+  content: insert-before-button()
+           " Catégories – multiple = " label(attribute, multiple, color, black)
+           set-attribute-button(attribute, multiple, unset-attribute, yes)
+}
+
+/* production ~~~~~~~~~~~~~~~~~~~~~~ */
+
+production:before {
+  content: insert-before-button() " Production";
+}
+
+/* composite ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+composite:before {
+  content: insert-before-button()
+           command-button(command, "putAttribute", parameter, "multipage true", icon, icon(plus-box))
+           " Composite";
+}
+composite[multipage]:before {
+  content: insert-before-button()
+           " Composite – multipage = " label(attribute, multipage, color, black)
+           set-attribute-button(attribute, multipage, unset-attribute, yes)
+}
+
+subquiz {
+  display: block;
+  border-style: none;
+  margin: 0 0 .6em 1em;
+  padding: 0;
+}
+
+subquiz > *, subquiz > *:before  {
+  display: block;
+}
+
+subquiz > head {
+  background-color: #ffffee;
+  padding: .3em .5em .3em .5em;
+  border-radius: 0.5em;
+}
+
+subquiz > instructions:before {
+  content: "Consigne";
+}
+
+/* help ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+help:before {
+  margin-top: .5em;
+  background-color: #ffffdd;
+  content: insert-before-button() insert-button() " Aide ";
+}
+
+help, help > *:before, help > * {
+  background-color: #ffffdd;
+}
+
+/* answer ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+answer:before {
+  margin-top: .5em;
+  background-color: #eaffe9;
+  content: insert-before-button() insert-button() " Réponse";
+}
+
+answer, answer > *:before, answer > * {
+  background-color: #eaffe9;
+}
+
+answer:after {
+  display: none;   
+}
+
+
+/* Block level ============================================================= */
+
+/* image ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+right image, wrong image, item image {
+  content: concatenate("image('Images/", attr(id), ".png', -128, -96, smooth)");
+  vertical-align: middle;
+}
+
+/* dropzone ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+dropzone {
+  display: block;
+  padding: .4em;
+  margin: 0 1em .1em 0; 
+  background-color: #ffefd8;
+  border-radius: 1.5em;
+}
+
+dropzone image:before {
+  content: "";
+}
+dropzone > image {
+  content: concatenate("image('Images/", attr(id), ".png', -128, -96, smooth)");
+}
+
+dropzone > blank {
+  background-color: transparent;
+}
+
+dropzone:after {
+  display: marker;
+  padding-bottom: .7em;
+  content: insert-same-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+/* choices.right, choices.wrong ~~~~ */
+
+choices-radio right:before, choices-radio wrong:before,
+choices-check right:before, choices-check wrong:before {
+  display: marker;
+  content: insert-before-button(color, #7f7f7f, icon, icon(left-half-disc))
+           insert-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+choices-radio right, choices-radio wrong,
+choices-check right, choices-check wrong {
+  display: block;
+  margin-left: 24px;
+  font-size: 115%;
+  font-family: serif;
+}
+
+choices-radio > right:before {
+  color: #7f7f7f;
+  content: insert-before-button(icon, icon(left-half-disc))
+           insert-after-button(icon, icon(right-half-disc))
+           "  " icon(radio-on) " ";
+    
+}
+choices-radio > wrong:before {
+  color: #7f7f7f;
+  content: insert-before-button( icon, icon(left-half-disc))
+           insert-after-button(icon, icon(right-half-disc))
+           "  " icon(radio-off) " ";
+    
+}
+choices-check > right:before {
+  color: #7f7f7f;
+  content: insert-before-button(icon, icon(left-half-disc))
+           insert-after-button(icon, icon(right-half-disc))
+           command-button(command, "convert", parameter, "wrong", icon, icon(convert))
+           "  " icon(check-on) " ";
+}
+choices-check > wrong:before {
+  color: #7f7f7f;
+  content: insert-before-button(icon, icon(left-half-disc))
+           insert-after-button(icon, icon(right-half-disc))
+           command-button(command, "convert", parameter, "right", icon, icon(convert))
+           "  " icon(check-off) " ";
+}
+
+choices-radio > right, choices-radio > wrong {
+  margin-left: 52px;
+}
+choices-check > right, choices-check > wrong {
+  margin-left: 60px;
+}
+
+/* blanks.wrongs ~~~~~~~~~~~~~~~~~~~ */
+
+blanks-select > wrongs:before {
+  color: #7f7f7f;
+  content: "Intrus : ";
+}
+
+blanks-select > wrongs {
+  display: block;
+  margin: .5em 0 .5em 0;
+}
+
+wrongs > wrong {
+  display: inline;
+  background-color: #c7e0f8;
+}
+
+wrongs > wrong:after {
+  color: #7f7f7f;
+  content: "  –  ";
+  background-color: transparent;
+}
+wrongs > wrong:after:last-child {
+  content: insert-same-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+/* match ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+match:before {
+  display: marker;
+  color: #7f7f7f;
+  content: insert-same-before-button(icon, icon(left-half-disc))
+           insert-same-after-button(icon, icon(right-half-disc));
+}
+
+match {
+  display: block;
+  margin-left: 24px;
+  margin-bottom: .8em;
+}
+
+match > item:before {
+  display: none;
+}
+
+match item {
+  display: inline;
+}
+
+match > item:first-child:after {
+  color: #7f7f7f;
+  content: " —>  ";
+}
+match > item:last-child:after {
+  display: none;
+}
+
+/* sort > comparison ~~~~~~~~~~~~~~~ */
+
+comparison:before {
+  color: #7f7f7f;
+  content: "Logique de comparaison : "
+}
+
+comparison {
+  display: block;
+  margin: .2em 0 .5em 0;
+}
+
+/* sort > item ~~~~~~~~~~~~~~~~~~~~~ */
+
+sort > item:before {
+  color: #7f7f7f;
+  content: insert-before-button(icon, icon(left-half-disc))
+           text-field(attribute, "shuffle", columns, 1, font-size, 75%, color, black)
+           " ";
+}
+
+sort > item {
+  display: inline;
+}
+
+sort > item:after {
+  color: #7f7f7f;
+  content: insert-same-after-button(icon, icon(right-half-disc))
+           " " xpath("../comparison") " ";
+}
+sort > item:last-child:after {
+  content: insert-same-after-button(icon, icon(right-half-disc)) "\A";
+}
+
+/* category ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+category:before {
+  color: #7f7f7f;
+  content: "  " insert-before-button();
+}
+
+category {
+  display: block;
+  margin-bottom: .3em;
+}
+
+category > head {
+  display: block;
+}
+
+category > head > title:after {
+  content: "";
+}
+
+category > item {
+  margin-left: 1em;
+  margin-bottom: 0.8em;
+}
+
+category:after {
+  color: #7f7f7f;
+  content: "  " insert-same-after-button();
+}
+
+
+/* Inline level ============================================================ */
+
+/* blank ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+blank {
+  background-color: #c0ffc0;
+}
+
+s:after {
+  color:  #7f7f7f;
+  background-color: #c0ffc0;
+  content: insert-same-after-button(icon, icon(right-half-disc));
+}
+
+/* point.right & point.wrong ~~~~~~~ */
+
+point right:before, point wrong:before {
+  background: transparent;
+  color: #7f7f7f;
+}
+point right:before {
+  content: command-button(command, "convert", parameter, "wrong", icon, icon(convert));
+}
+point wrong:before {
+  content: command-button(command, "convert", parameter, "right", icon, icon(convert));
+}
+
+point right {
+  background-color: #c0ffc0;
+}
+
+point wrong {
+  background-color: #c7e0f8;
+}

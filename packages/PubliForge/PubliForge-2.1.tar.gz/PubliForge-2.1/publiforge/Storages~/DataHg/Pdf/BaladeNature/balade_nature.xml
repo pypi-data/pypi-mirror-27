@@ -1,0 +1,115 @@
+<publidoc version="1.0">
+  <!-- $Id:  $ -->
+  <document id="balade_nature" xml:lang="fr">
+    <head>
+      <title>Balade musicale dans la nature</title>
+      <identifier type="ean" for="epub">9782351811344</identifier>
+      <identifier type="ean" for="kf8">9782351811345</identifier>
+      <copyright>rue des enfants, 2010</copyright>
+      <collection>Restez Zen…</collection>
+      <contributors>
+        <contributor>
+          <firstname>Gilles</firstname>
+          <lastname>DIEDERICHS</lastname>
+          <role>author</role>
+        </contributor>
+        <contributor>
+          <firstname>Marie-Noëlle</firstname>
+          <lastname>HORVATH</lastname>
+          <role>illustrator</role>
+        </contributor>
+        <contributor>
+          <label>rue des enfants</label>
+          <link uri="http://www.ruedesenfants.fr">rue des enfants</link>
+          <role>publisher</role>
+        </contributor>
+        <contributor>
+          <label>Prismallia</label>
+          <link uri="http://www.prismallia.fr">Prismallia</link>
+          <role>packager</role>
+        </contributor>
+      </contributors>
+      <source type="book">
+        <identifier type="ean">9782351811340</identifier>
+        <title>Balade musicale dans la nature</title>
+        <pages>32</pages>
+      </source>
+      <subjectset>
+        <subject>Jeunesse</subject>
+      </subjectset>
+      <keywordset>
+        <keyword>écureuil</keyword>
+        <keyword>chamois</keyword>
+        <keyword>lynx</keyword>
+        <keyword>épervier</keyword>
+        <keyword>moutons</keyword>
+      </keywordset>
+      <abstract>
+        <p>
+          En accompagnant Petit Écureuil, l'adorable guide de ce voyage,
+          l'enfant explore les paysages de nos régions, de la montagne jusqu'au
+          bord de la mer, en passant par la forêt ou la vallée.
+        </p>
+      </abstract>
+      <cover>
+        <image id="balade_nature_cover"/>
+      </cover>
+    </head>
+    <!--====================================================================-->
+    <topic xml:id="tpc001">
+      <section>
+        <p> </p>
+      </section>
+    </topic>
+    <!--====================================================================-->
+    <topic xml:id="tpc002" type="title">
+      <section>
+        <media>
+          <image id="balade_nature_002"/>
+        </media>
+      </section>
+    </topic>
+    <!--====================================================================-->
+    <topic xml:id="tpc003" type="image">
+      <?tune-html-replace-by balade_nature-0001.xhtml?>
+      <head>
+        <title>Le lynx, le chamois et la marmotte</title>
+      </head>
+      <section>
+        <media>
+          <image id="balade_nature_003"/>
+        </media>
+      </section>
+    </topic>
+    <!--====================================================================-->
+    <topic xml:id="tpc004" type="image">
+      <?tune-html-replace-by balade_nature-0002.xhtml?>
+      <section>
+        <media>
+          <image id="balade_nature_004"/>
+        </media>
+      </section>
+    </topic>
+    <!--====================================================================-->
+    <topic xml:id="tpc005" type="image">
+      <?tune-html-replace-by balade_nature-0003.xhtml?>
+      <head>
+        <title>Le pic-vert, le coucou, le sanglier et le cerf</title>
+      </head>
+      <section>
+        <media>
+          <image id="balade_nature_005"/>
+        </media>
+      </section>
+    </topic>
+    <!--====================================================================-->
+    <topic xml:id="tpc006" type="image">
+      <?tune-html-replace-by balade_nature-0004.xhtml?>
+      <section>
+        <media>
+          <image id="balade_nature_006"/>
+        </media>
+      </section>
+    </topic>
+  </document>
+</publidoc>

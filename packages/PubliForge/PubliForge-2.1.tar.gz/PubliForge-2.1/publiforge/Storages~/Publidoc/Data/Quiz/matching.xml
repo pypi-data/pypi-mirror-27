@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="matching" xml:lang="fr">
+    <head>
+      <title>Exercice d'appariement</title>
+    </head>
+
+    <instructions>
+      <p>Associez les phrases suivantes avec leur contraire.</p>
+    </instructions>
+
+    <matching>
+      <intruders>
+        <item>On mange comme des ogres.</item>
+      </intruders>
+      <match>
+        <item>On s'entend très bien.</item>
+        <item>On s'entend comme chien et chat.</item>
+      </match>
+      <match>
+        <item>On a perdu le contact.</item>
+        <item>On a gardé contact.</item>
+      </match>
+      <match>
+        <item>On se chamaille souvent.</item>
+        <item>On ne se dispute jamais.</item>
+      </match>
+      <match>
+        <item>On s’amuse comme des fous.</item>
+        <item>On est plutôt sérieux ensemble.</item>
+      </match>
+    </matching>
+  </quiz>
+</publiquiz>

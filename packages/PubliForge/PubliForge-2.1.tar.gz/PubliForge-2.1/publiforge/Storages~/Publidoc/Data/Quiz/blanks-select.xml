@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="blanks-select" xml:lang="fr">
+    <head>
+      <title>Exercice à trous avec suggestions</title>
+    </head>
+
+    <instructions>
+      <p>Complètez le texte.</p>
+    </instructions>
+
+    <blanks-select success=".9">
+      <intruders>
+        <blank>la bergère</blank>
+        <blank>« Au feu ! »</blank>
+      </intruders>
+      <p>
+        Un berger aime faire croire que le loup attaque <blank>son
+        troupeau</blank>. À chaque fois qu'il crie « Au loup ! », tous les gens
+        du village viennent en courant. Cela amuse beaucoup <blank>le
+        berger</blank>.
+      </p>
+      <p>
+        <blank>Un jour</blank>, le loup attaque son troupeau. Le berger crie
+        <blank>« Au loup ! »</blank> mais personne ne vient et le loup emporte
+        sa plus belle brebis.
+        </p>
+    </blanks-select>
+  </quiz>
+</publiquiz>

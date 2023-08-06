@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="choices-radio_image" xml:lang="fr">
+    <head>
+      <title>Questionnaire à choix unique avec images</title>
+    </head>
+
+    <instructions>
+      <p>On considère le cube ABCDEFGH.</p>
+      <p>Quel est le patron dont la forme est celle de la pyramide AEEFGH à
+      base carrée et de sommet A ?</p>
+      <media>
+        <image id="choices-radio_imagei00" type="thumbnail"/>
+      </media>
+    </instructions>
+
+    <choices-radio>
+      <wrong>
+        <image id="choices-radio_imagei01"/>
+        <answer><p>Ce patron est celui d'une pyramide régulière.</p></answer>
+      </wrong>
+      <wrong>
+        <image id="choices-radio_imagei02"/>
+        <answer><p>Ce patron ne peut pas être « refermé ».</p></answer>
+      </wrong>
+      <right>
+        <image id="choices-radio_imagei03"/>
+      </right>
+    </choices-radio>
+  </quiz>
+</publiquiz>

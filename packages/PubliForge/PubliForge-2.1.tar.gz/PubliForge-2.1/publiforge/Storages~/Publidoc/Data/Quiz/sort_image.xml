@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id$ -->
+<publiquiz version="1.0">
+  <quiz id="sort_image" xml:lang="fr">
+    <head>
+      <title>Exercice de tri avec image</title>
+    </head>
+
+    <instructions>
+      <p>Rangez les animaux pour réaliser une chaîne alimentaire.</p>
+    </instructions>
+
+    <sort>
+      <comparison>sont mangés par</comparison>
+      <item shuffle="3"><image id="lievre"/></item>
+      <item shuffle="1"><image id="lynx"/></item>
+      <item shuffle="2"><image id="loup"/></item>
+    </sort>
+  </quiz>
+</publiquiz>

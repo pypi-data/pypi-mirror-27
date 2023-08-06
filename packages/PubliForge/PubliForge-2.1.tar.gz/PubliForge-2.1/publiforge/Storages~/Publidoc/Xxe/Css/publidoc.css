@@ -1,0 +1,712 @@
+@charset "UTF-8";
+
+@import url(xxe-config:common/css/cals_table.imp);
+
+/* $Id:  $ */
+
+*::comment { display: none; }
+
+publidoc {
+  display: block;
+  font-family: sans-serif;
+  padding: 0;
+}
+
+
+/* Head level ============================================================== */
+
+head {
+  display: block;
+  margin-bottom: .5em;
+  background-color: #fafafa;
+  padding: .2em .5em 0 .5em;
+  border: 1px solid #bbbbbb;
+  border-radius: 0.2em;
+}
+
+head > *:before {
+  display: marker;
+  color:  #7f7f7f;
+  content: insert-before-button() element-label() " :";
+}
+head > title:before { display: none; }
+head > shorttitle:before { display: none; }
+head > subtitle:before { display: none; }
+head > identifier[type="uri"]:before { content: insert-before-button() " URI :"; }
+head > identifier[type="ean"]:before { content: insert-before-button() " EAN :"; }
+head > copyright:before { content: insert-before-button() " Copyright :"; }
+head > collection:before { content: insert-before-button() " Collection :"; }
+head > contributors:before { content: insert-before-button() " Contributeurs :"; }
+head > date:before { content: insert-before-button() " Date :"; }
+head > place:before { content: insert-before-button() " Lieu :"; }
+head > source:before { content: insert-before-button() " Source :"; }
+head > keywordset:before { content: insert-before-button() " Mots clés :"; }
+head > subjectset:before { content: insert-before-button() " Thèmes :"; }
+head > abstract:before { content: insert-before-button() " Résumé :"; }
+head > cover:before { content: insert-before-button() " Couverture :"; }
+head > annotation:before { content: insert-before-button() " Annotation :"; }
+head > audio:before { content: insert-before-button() " Audio :"; }
+
+head > * {
+  display: block;
+  margin: 0 0 .8em 7.5em;
+}
+
+head > *:after {
+  color:  #7f7f7f;
+  content: " " insert-after-button();
+}
+
+/* title, shortitle & subtitle ~~~~~ */
+
+head > title, head > shorttitle {
+  font-weight: bold;
+  font-size: 120%;
+  margin: 0 0 .2em 0;
+}
+
+head > title {
+  color: #004080;
+}
+
+head > subtitle {
+  font-weight: bold;
+  color: #004080;
+  margin: 0 0 .2em 0;
+}
+
+/* contributors ~~~~~~~~~~~~~~~~~~~~ */
+
+contributor:before {
+  display: marker;
+  content: insert-before-button(color, #7f7f7f, icon, icon(left-half-disc))
+           insert-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+contributor {
+  display: block;
+  margin: 0 0 .2em 24px;
+}
+
+firstname:after, secondname:after, lastname:after, label:after,
+address:after {
+  content: insert-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+contributor > link[uri]:after {
+  content: " ‣ " text-field(attribute, uri, color, black, font-size, 80%) "]"
+           insert-after-button(icon, icon(right-half-disc));
+}
+contributor > link[idref]:after {
+  content: " ‣ " label(attribute, idref, color, black)
+           set-attribute-button(attribute, idref) "]"
+           insert-after-button(icon, icon(right-half-disc));
+}
+
+contributor role {
+  color: #7f7f7f;
+  content: " rôle : " combo-box(element, role, font-size, 75%,
+             labels, "auteur\A illustrateur\A éditeur\A packager"
+             values, "author\A illustrator\A publisher\A packager", color, black)
+           insert-same-after-button(icon, icon(right-half-disc));
+}
+
+/* source ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+head source[type="book"] {
+  display: none;
+}
+
+/* keyword & subject ~~~~~~~~~~~~~~~ */
+
+head keyword:after {
+  content: insert-same-after-button(color, #7f7f7f, icon, icon(right-half-disc))
+           " ";
+}
+
+head subject:before {
+  color: #7F7f7f;
+  content: "ID = " text-field(attribute, id, columns, 10, color, black, font-size, 75%);
+}
+head subject:after {
+  content: insert-same-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+
+/* Division level ========================================================== */
+
+division:before {
+  display: block;
+  color: #7f7f7f;
+  content: collapser() " " insert-before-button() insert-after-button()
+           " Division"
+}
+
+division {
+  display: block;
+  border: 1px dotted #7f7f7f;
+  padding: 5px;
+  margin-bottom: .5em;
+  collapsible: yes;
+  not-collapsible-head: 1;
+}
+division:last-child {
+  margin-bottom: 0;
+}
+
+division > head {
+  background-color: #ffffee;
+  padding: .3em .5em .3em .5em;
+  border-radius: 0.5em;
+}
+
+
+/* Component level ========================================================= */
+
+topic:before {
+  display: block;
+  color: #7f7f7f;
+  background-color: #ddddcc;
+  border: 1px solid #aeaea0;
+  font-weight: bold;
+  padding: .5em 5px .5em 5px;
+  content: collapser() " " insert-before-button() insert-after-button()
+           " " add-attribute-button() " Topic";
+}
+topic[id]:before {
+  content: collapser() " " insert-before-button() insert-after-button()
+           " " add-attribute-button() " Topic"
+           " – ID = " text-field(attribute, "id", columns, 15, color, black);
+}
+topic[type]:before {
+  content: collapser() " " insert-before-button() insert-after-button()
+           " " add-attribute-button() " Topic"
+           " – Type = " text-field(attribute, type, columns, 10, color, black);
+}
+topic[id][type]:before {
+  content: collapser() " " insert-before-button() insert-after-button()
+           " Topic"
+           " – ID = " text-field(attribute, "id", columns, 15, color, black)
+           " – Type = " text-field(attribute, type, columns, 10, color, black);
+}
+
+topic {
+  display: block;
+  border: 1px solid #aeaea0;
+  margin-bottom: .5em;
+  padding: 5px;
+  collapsible: yes;
+}
+topic:last-child {
+  margin-bottom: 0;
+}
+
+topic > head {
+  background-color: #ffffee;
+  padding: .3em .5em .3em .5em;
+  border-radius: 0.5em;
+}
+
+
+/* Top level =============================================================== */
+
+publidoc > *:before {
+  display: block;
+  color: #bbbbbb;
+  background: #993333 url('top.png') repeat-x top left;
+  font-weight: bold;
+  padding: 1.2em 5px 1em 5px;
+}
+publidoc > document:before {
+  content: add-attribute-button() " Document"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white);
+}
+publidoc > document[id][xml|lang]:before {
+  content: "Document"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white)
+           " – Langue principale  = " combo-box(attribute, "xml:lang", font-size, 75%,
+             values, "en\A fr\A es", color, white);
+}
+publidoc > topic[id]:before {
+  content: add-attribute-button() " Topic"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white);
+}
+publidoc > topic[id][type]:before {
+  content: add-attribute-button() " Topic"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white)
+           " – Type = " text-field(attribute, type, columns, 10, color, white);
+}
+publidoc > topic[id][xml|lang]:before {
+  content: add-attribute-button() " Topic"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white)
+           " – Langue principale = " combo-box(attribute, "xml:lang", font-size, 75%,
+             values, "en\A fr\A es", color, white);
+}
+publidoc > topic[id][type][xml|lang]:before {
+  content: "Topic"
+           " – ID = " text-field(attribute, "id", columns, 15, color, white)
+           " – Type = " text-field(attribute, type, columns, 10, color, white)
+           " – Langue principale = " combo-box(attribute, "xml:lang", font-size, 75%,
+             values, "en\A fr\A es", color, white);
+}
+
+publidoc > * {
+  display: block;
+  margin: 5px;
+  padding: 0;
+  border: 0;
+}
+
+publidoc > * > head {
+  background-color: #ffffee;
+  padding: .3em .5em .3em .5em;
+  border-radius: 0.5em;
+}
+
+publidoc > * > head > title {
+  font-size: 140%;
+  margin: .1em 0 .1em 0;
+}
+
+
+/* Section level =========================================================== */
+
+section:before {
+  display: block;
+  color: #7f7f7f;
+  text-align: left;
+  font-style: normal;
+  font-size: 75%;
+  padding-bottom: 3px;
+  content: insert-before-button() add-attribute-button(icon, icon(plus-box));
+}
+section[type]:before {
+  content: insert-before-button() add-attribute-button(icon, icon(plus-box))
+           " Type = " text-field(attribute, type, columns, 5, color, black);
+}
+section[for]:before {
+  content: insert-before-button() add-attribute-button(icon, icon(plus-box))
+           " Pour = " text-field(attribute, for, columns, 5, color, black);
+}
+section[xml|lang]:before {
+  content: insert-before-button() add-attribute-button(icon, icon(plus-box))
+           " Langue = " text-field(attribute, "xml:lang", columns, 2, color, black);
+}
+section[type][for]:before {
+  content: insert-before-button() add-attribute-button(icon, icon(plus-box))
+           " Type = " text-field(attribute, type, columns, 5, color, black)
+           " – Pour = " text-field(attribute, for, columns, 5, color, black);
+}
+section[type][xml|lang]:before {
+  content: insert-before-button() add-attribute-button(icon, icon(plus-box))
+           " Type = " text-field(attribute, type, columns, 5, color, black)
+           " – Langue = " text-field(attribute, "xml:lang", columns, 2, color, black);
+}
+section[for][xml|lang]:before {
+  content: insert-before-button() add-attribute-button(icon, icon(plus-box))
+           " Pour = " text-field(attribute, for, columns, 5, color, black)
+           " – Langue = " text-field(attribute, "xml:lang", columns, 2, color, black);
+}
+section[type][for][xml|lang]:before {
+  content: insert-before-button()
+           " Type = " text-field(attribute, type, columns, 5, color, black)
+           " Pour = " text-field(attribute, for, columns, 5, color, black)
+           " – Langue = " text-field(attribute, "xml:lang", columns, 2, color, black);
+}
+
+section section:before {
+  margin-left: 1em;
+}
+
+header, front, section, footer {
+  display: block;
+}
+
+section[type="box"] {
+  margin-bottom: .5em;
+  padding: 5px;
+  background-color: #e8f0f7;
+  border-radius: 0.2em;
+}
+section[type="ex"] { font-style: italic; }
+section[type="sign"] { text-align: right; }
+
+header, footer {
+  background-color: #fafafa;
+}
+
+front {
+  margin: 1em 20px 1em 20px;
+  background-color: #fafafa;
+}
+front p {
+  font-family: sans-serif;
+}
+
+section section {
+  margin-left: 1em;
+}
+
+section:after {
+  color: #7f7f7f;
+  content: insert-after-button();
+}
+section section:after {
+  margin-left: 1em;
+}
+
+
+/* Block level ============================================================= */
+
+p:before, speech:before, list:before,
+blockquote:before, table:before, media:before {
+  display: marker;
+  color: #7f7f7f;
+  content: insert-before-button(icon, icon(left-half-disc))
+           insert-after-button(icon, icon(right-half-disc));
+}
+
+p, speech, list, blockquote, table, media {
+  display: block;
+  margin-left: 24px;
+  font-size: 115%;
+  font-family: serif;
+}
+
+/* speech ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+speaker {
+  font-weight: bold;
+}
+
+stage:before, stage:after {
+  color: #7f7f7f;
+  content: "(";
+}
+stage:before {
+  content: " (";
+}
+stage {
+  font-style: italic;  
+}
+stage:after {
+  content: ")";
+}
+
+/* list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+list:before {
+  content: insert-before-button(color, #7f7f7f, icon, icon(left-half-disc))
+           insert-after-button(color, #7f7f7f, icon, icon(right-half-disc))
+           command-button(command, "putAttribute", parameter, "type ordered", icon, icon(convert));
+}
+list[type="ordered"]:before {
+  content: insert-before-button(color, #7f7f7f, icon, icon(left-half-disc))
+           insert-after-button(color, #7f7f7f, icon, icon(right-half-disc))
+           command-button(command, "removeAttribute", parameter, "type", icon, icon(convert));
+}
+list[type="glossary"]:before {
+  content: insert-before-button(color, #7f7f7f, icon, icon(left-half-disc))
+           insert-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+list {
+  margin: .3em 0 .3em 36px;
+}
+list[type="glossary"] {
+  margin: .3em 0 .3em 24px;
+}
+
+list > head {
+  font-size: 75%;
+}
+
+item {
+  display: list-item;
+}
+list[type="ordered"] > item {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+item:after {
+  content: insert-same-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+list:not([type="glossary"]) > item > p:before {
+  color: #7f7f7f;
+  content: insert-same-before-button(icon, icon(left-half-disc))
+           insert-same-after-button(icon, icon(right-half-disc));
+}
+list:not([type="glossary"]) > item > p {
+  display: inline;
+}
+list:not([type="glossary"]) > item > p:after {
+  color: #7f7f7f;  
+  content: "\A";
+}
+
+list[type="glossary"] > item > label {
+  font-weight: bold;
+}
+
+/* blockquote ~~~~~~~~~~~~~~~~~~~~~~ */
+
+blockquote { color: #004080; }
+
+attribution { font-style: italic; }
+
+/* table ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@extension "com.xmlmind.xmleditext.xhtml.table.TableSupport black rgb(238,238,224)";
+
+table {
+  display: table;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+table > head {
+  display: table-caption;
+  margin-left: 24px;
+  margin-bottom: 0;
+}
+
+table title {
+  font-size: 93%;
+  font-family: sans-serif;
+  color: black;
+}
+
+thead, tbody { 
+  display: table-row-group;
+}
+
+tr { 
+  display: table-row;
+}
+
+td, th {
+  display: table-cell;
+  border-style: solid;
+  border-width: 1px;
+  padding: .2em;
+}
+th {
+  font-weight: bold;
+}
+
+table > caption {
+  display: block;
+  font-family: sans-serif;
+  font-size: 93%;
+  color: #004080;
+}
+
+/* media ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+media {
+  margin-top: .5em;
+  margin-bottom: 1em;
+  padding: 10px;
+  border: 1px dashed #7f7f7f;
+}
+
+media image, media audio, media video {
+  display: block;
+  font-family: sans-serif;
+}
+
+media caption {
+  display: block;
+  font-family: sans-serif;
+  font-size: 93%;
+  color: #004080;
+}
+media caption:after {
+  content: insert-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+/* image ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+cover image {
+  content: concatenate("image('Images/", attr(id), ".png', -480, -360, smooth)");
+}
+
+p image, entry image {
+  content: concatenate("image('Images/", attr(id), ".png', -64, -48, smooth)");
+  vertical-align: middle;
+}
+
+p image[type="thumbnail"], entry image[type="thumbnail"] {
+  content: concatenate("image('Images/", attr(id), ".png', -128, -96, smooth)");
+  vertical-align: middle;
+}
+
+media image:before {
+  display: block;
+  text-align: left;
+  content: concatenate("image('Images/", attr(id), ".png', -480, -360, smooth)")
+           insert-button(color, #7f7f7f, icon, icon(pop-down))
+           insert-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+media image[type="thumbnail"]:before {
+  content: concatenate("image('Images/", attr(id), ".png', -128, -96, smooth)")
+           insert-button(color, #7f7f7f, icon, icon(pop-down))
+           insert-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+media image {
+  margin-bottom: .3em;
+}
+
+image > copyright {
+  display: block;
+  font-size: 75%;
+  font-style: italic;
+}
+
+/* hotspot ~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+hotspot {
+  display: block;
+  padding: .4em;
+  margin: 0 1em .1em 0; 
+  background-color: #ffefd8;
+  border-radius: 1.5em;
+}
+
+hotspot image:before {
+  content: "";
+}
+hotspot > image {
+  content: concatenate("image('Images/", attr(id), ".png', -128, -96, smooth)");
+}
+
+hotspot p:before {
+  content: "";
+}
+hotspot > p {
+  font-family: sans-serif;
+  font-size: 85%;
+  margin: 0 .5em 0 .5em;
+}
+
+hotspot:after {
+  display: marker;
+  padding-bottom: .7em;
+  content: insert-same-after-button(color, #7f7f7f, icon, icon(right-half-disc));
+}
+
+/* audio ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+audio {
+  content: text-field(attribute, id, color, black, font-size, 75%)
+           " type : " label(attribute, type, color, black) " "
+           set-attribute-button(attribute, type, icon, icon(pop-sw), color, black);
+}
+media audio {
+  content: "Audio : " text-field(attribute, id, color, black)
+           " type : " label(attribute, type, color, black) " "
+           set-attribute-button(attribute, type, icon, icon(pop-sw), color, black);
+}
+
+
+/* video ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+video {
+  content: text-field(attribute, id, color, black, font-size, 75%);
+}
+media video {
+  content: "Video : " text-field(attribute, id, color, black);
+}
+
+
+/* Inline level ============================================================ */
+
+/* sup, sub, var ~~~~~~~~~~~~~~~~~~~ */
+
+sup { font-family: sans-serif; vertical-align: super; font-size: 75%; white-space: nowrap; }
+sub { font-family: sans-serif; vertical-align: sub;   font-size: 75%; white-space: nowrap; }
+var { font-family: sans-serif; font-style: italic; }
+
+/* date ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+date[value]:after {
+  color: #7f7f7f;
+  content: " (" date-picker(attribute, value, columns, 7, color, black, font-size, 75%) ")";
+}
+head > date[value]:after {
+  color: #7f7f7f;
+  content: " (" date-picker(attribute, value, columns, 7, color, black, font-size, 75%)
+           ") " insert-after-button();
+}
+
+/* name ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+name { font-family: sans-serif; color: #004080; }
+
+/* note ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+note:before { font-size: 80%; color: #7f7f7f; content: "(Note : "; }
+note { font-family: sans-serif; color: #aeaea0; font-size: 80%; }
+note:after { font-size: 80%; color: #7f7f7f; content: ")"; }
+note p { display:inline; }
+
+/* foreign ~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+foreign { font-family: sans-serif; font-style: italic; }
+
+/* highlight ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+highlight { font-weight: bold; }
+
+/* emphasis ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+emphasis { font-style: italic; }
+
+/* mentioned ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+mentioned { font-style: oblique; }
+
+/* term ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+term { font-family: sans-serif; }
+
+/* link ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+link:before {
+  color: #7f7f7f;
+  font-family: sans-serif;
+  content: "["
+}
+
+media link {
+  display: block;
+}
+
+link:after {
+  color: #7f7f7f;
+  font-family: sans-serif;
+}
+link[uri]:after {
+  content: " ‣ " text-field(attribute, uri, color, black, font-size, 80%) "]";
+}
+link[idref]:after {
+  content: " ‣ " label(attribute, idref, color, black)
+           set-attribute-button(attribute, idref) "]";
+}
+
+/* smil ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+smil {
+  background-color: #ffffc0;
+}
+
+/* warning ~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+warning {
+  color: red;
+  font-weight: bold;
+}

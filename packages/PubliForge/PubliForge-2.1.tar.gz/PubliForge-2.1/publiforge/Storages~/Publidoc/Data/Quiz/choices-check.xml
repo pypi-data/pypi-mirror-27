@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="choices-check" xml:lang="fr">
+    <head>
+      <title>Questionnaire à choix multiple (QCM)</title>
+    </head>
+
+    <instructions>
+      <p>Mon chiffre des unités est le double de celui des dizaines, mon
+      chiffre des dixièmes est inférieur à celui des unités. Mon chiffre des
+      centièmes est supérieur à 7. Qui suis-je ? (deux solutions)</p>
+    </instructions>
+
+    <choices-check>
+      <wrong>724,36</wrong>
+      <right>324,18</right>
+      <right>812,19</right>
+      <wrong>963,49</wrong>
+    </choices-check>
+
+    <answer>
+      <p>Il faut procéder par élimination.</p>
+      <list>
+        <item>
+          Les quatre nombres vérifient la première condition (« mon chiffre des
+          unités est le double de celui des dizaines ») :
+          7<highlight>24</highlight>,36 ; 3<highlight>24</highlight>,18 ;
+          8<highlight>12</highlight>,19 et 9<highlight>63</highlight>,49.
+        </item>
+        <item>
+          Mais la deuxième condition (« mon chiffre des dixièmes est inférieur
+          à celui des unités ») t'amène à écarter le nombre
+          96<highlight>3</highlight>,<highlight>4</highlight>9 et la dernière
+          condition (« mon chiffre des centièmes est supérieur à 7 »), le
+          nombre 724,3<highlight>6</highlight>.
+        </item>
+      </list>
+    </answer>
+  </quiz>
+</publiquiz>

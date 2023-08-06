@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Id:  $ -->
+<publiset version="1.0">
+  <selection xml:lang="fr">
+    <head>
+      <title>Sélection de textes</title>
+    </head>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ Événements ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <division path="../Topics">
+      <head>
+        <title>Les événements</title>
+      </head>
+      <file>centre_pompidou.xml</file>
+      <file>chasseurs.xml</file>
+      <link uri="centre_pompidou.html">Un nouveau Centre Pompidou</link>
+      <link uri="chasseurs.html">Les chasseurs contestent la loi</link>
+    </division>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Brèves ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <division path="../Topics">
+      <head>
+        <title>Les brèves</title>
+      </head>
+      <file>portugal_ue.xml</file>
+      <link uri="portugal_ue.html">Lisbonne, samedi 1<sup>er</sup></link>
+    </division>
+  </selection>
+</publiset>

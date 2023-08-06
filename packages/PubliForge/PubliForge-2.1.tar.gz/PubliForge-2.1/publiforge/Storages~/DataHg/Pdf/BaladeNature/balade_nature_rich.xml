@@ -1,0 +1,251 @@
+<publidoc version="1.0">
+  <!-- $Id:  $ -->
+  <document id="balade_nature_rich" xml:lang="fr">
+    <head>
+      <title>Balade musicale dans la nature (enrichi)</title>
+      <identifier type="ean" for="epub">9782351811344</identifier>
+      <identifier type="ean" for="kf8">9782351811345</identifier>
+      <copyright>rue des enfants, 2010</copyright>
+      <contributors>
+        <contributor>
+          <firstname>Gilles</firstname>
+          <lastname>DIEDERICHS</lastname>
+          <role>author</role>
+        </contributor>
+        <contributor>
+          <firstname>Marie-Noëlle</firstname>
+          <lastname>HORVATH</lastname>
+          <role>illustrator</role>
+        </contributor>
+        <contributor>
+          <label>rue des enfants</label>
+          <link uri="http://www.ruedesenfants.fr">rue des enfants</link>
+          <role>publisher</role>
+        </contributor>
+        <contributor>
+          <label>Prismallia</label>
+          <link uri="http://www.prismallia.fr">Prismallia</link>
+          <role>packager</role>
+        </contributor>
+      </contributors>
+      <source type="book">
+        <identifier type="ean">9782351811340</identifier>
+        <title>Balade musicale dans la nature</title>
+        <pages>32</pages>
+      </source>
+      <subjectset>
+        <subject>Jeunesse</subject>
+      </subjectset>
+      <keywordset>
+        <keyword>écureuil</keyword>
+        <keyword>chamois</keyword>
+        <keyword>lynx</keyword>
+        <keyword>épervier</keyword>
+        <keyword>moutons</keyword>
+      </keywordset>
+      <abstract>
+        <p>
+          En accompagnant Petit Écureuil, l'adorable guide de ce voyage,
+          l'enfant explore les paysages de nos régions, de la montagne jusqu'au
+          bord de la mer, en passant par la forêt ou la vallée.
+        </p>
+      </abstract>
+      <cover>
+        <image id="balade_nature_rich_cover"/>
+      </cover>
+    </head>
+
+    <!--====================================================================-->
+    <topic xml:id="tpc001">
+      <section>
+        <p> </p>
+      </section>
+    </topic>
+
+    <!--====================================================================-->
+    <topic xml:id="tpc002" type="image">
+      <head>
+        <title>Page de titre</title>
+      </head>
+      <section>
+        <media>
+          <image id="balade_nature_002"/>
+        </media>
+      </section>
+    </topic>
+
+    <!--====================================================================-->
+    <topic xml:id="tpc003" type="image">
+      <head>
+        <title>Le lynx, le chamois et la marmotte</title>
+      </head>
+      <section>
+        <head>
+          <audio id="balade_nature_003_music" type="background"/>
+          <audio id="balade_nature_003_voice" type="smil"/>
+        </head>
+        <media>
+          <image id="balade_nature_003_rich">
+            <hotspot x="84%" y="74%" w="10.8%">
+              <image id="anim_chardon" type="animation"/>
+            </hotspot>
+            <hotspot x="45%" y="28%" w="16%" h="16%" display="pulse">
+              <spot dx="-3%" dy="-4%"><p>Le lynx</p></spot>
+              <scenario>
+                <init action="hide" target="spot"/>
+                <onclick action="show" target="spot"/>
+              </scenario>
+            </hotspot>
+            <hotspot x="13%" y="65%" w="16%" h="16%" display="pulse">
+              <spot dx="2%" dy="-1%"><p>L'écureuil</p></spot>
+              <scenario>
+                <init action="hide" target="spot"/>
+                <onclick action="show" target="spot"/>
+              </scenario>
+            </hotspot>
+          </image>
+          <caption y="87%">
+            <p>
+              <smil begin="0">Pour se nourrir,</smil>
+              <smil begin="0.953763">l'écureuil ronge</smil>
+              <smil begin="2.435503">des graines,</smil>
+              <smil begin="2.980510">des glands,</smil>
+              <smil begin="3.849116">des noisettes.</smil>
+            </p>
+            <p>
+              <smil begin="5.552264">Le lynx</smil>
+              <smil begin="7.315023">a une queue courte</smil>
+              <smil begin="8.439101">et une touffe de poils</smil>
+              <smil begin="9.282160">au sommet</smil>
+              <smil begin="10.074124">de chaque oreille.</smil>
+            </p>
+            <p>
+              <smil begin="11.726178">Quand le mouton</smil>
+              <smil begin="13.267528">crie,</smil>
+              <smil begin="13.940271">on dit</smil>
+              <smil begin="14.374574" end="15.004739">qu'il bêle.</smil>
+            </p>
+            <!-- <p>Petit Écureuil aperçoit la marmotte se baignant dans le ruisseau.</p> -->
+            <!-- <p>Le chamois prend son petit-déjeuner à base de trèfles et de plantain.</p> -->
+            <!-- <p>Le lynx s’est établi près d’un rocher et surplombe la prairie.</p> -->
+          </caption>
+        </media>
+      </section>
+    </topic>
+
+    <!--====================================================================-->
+    <topic xml:id="tpc004" type="image">
+      <section>
+        <head>
+          <audio id="balade_nature_004_voice" type="smil"/>
+        </head>
+        <media>
+          <image id="balade_nature_004_rich">
+            <hotspot x="11%" y="5%" w="16%" h="14%" display="pulse">
+              <spot dy="12%">
+                <p>L'épervier</p>
+              </spot>
+              <scenario><init action="hide"/><onclick action="show"/></scenario>
+            </hotspot>
+            <hotspot x="13%" y="28%" w="16%" h="14%" display="pulse">
+              <spot dy="5%"><p>Les moutons</p></spot>
+              <scenario>
+                <init action="hide" target="spot"/>
+                <onclick action="show" target="spot"/>
+              </scenario>
+            </hotspot>
+            <hotspot x="43%" y="52%" w="16%" h="14%" display="pulse">
+              <spot dx="-4%" dy="-3%" dw="0%"><p>Le chamois</p></spot>
+              <scenario>
+                <init action="hide" target="spot"/>
+                <onclick action="show" target="spot"/>
+              </scenario>
+            </hotspot>
+            <hotspot x="7%" y="71%" w="16%" h="14%" display="pulse">
+              <spot dy="-2%"><p>Le castor</p></spot>
+              <scenario>
+                <init action="hide" target="spot"/>
+                <onclick action="show" target="spot"/>
+              </scenario>
+            </hotspot>
+            <hotspot x="78.1%" y="67%" w="7.25%">
+              <image id="anim_trefle" type="animation"/>
+            </hotspot>
+          </image>
+          <caption y="87%">
+            <p>
+              <smil begin="0">Le castor</smil>
+              <smil begin="0.717270">ronge les arbres</smil>
+              <smil begin="1.654349">et construit</smil>
+              <smil begin="2.377403">des barrages sur les rivières.</smil>
+            </p>
+            <p>
+              <smil begin="4.106950">La brise</smil>
+              <smil begin="5.512568">est un</smil>
+              <smil begin="5.84228">petit vent</smil>
+              <smil begin="6.310820">léger.</smil>
+            </p>
+            <p>
+              <smil begin="7.415647">Le sapin a</smil>
+              <smil begin="8.670870">des feuilles</smil>
+              <smil begin="9.023721" end="10.192177">en forme d'aiguilles.</smil>
+            </p>
+            <!-- <p>Dans le ciel bleu, l’épervier plane et observe les chemins.</p> -->
+            <!-- <p>Plus loin, le troupeau de moutons broute l’herbe sauvage.</p> -->
+            <!-- <p>Le vent souffle doucement sur les pâturages et les forêts de sapins.</p> -->
+          </caption>
+        </media>
+      </section>
+    </topic>
+
+    <!--====================================================================-->
+    <topic xml:id="tpc005" type="image">
+      <head>
+        <title>Le pic-vert, le coucou, le sanglier et le cerf</title>
+      </head>
+      <section>
+        <head>
+          <audio id="balade_nature_005_music" type="background"/>
+        </head>
+        <media>
+          <image id="balade_nature_005">
+            <hotspot x="67%" y="19%" w="16%" h="14%" display="pulse">
+              <spot dx="-6%" dy="-8%" dw="18%"><image id="zoom_oiseau"/></spot>
+              <scenario>
+              <init action="hide" target="spot"/>
+              <onclick action="show" target="spot"/>
+              </scenario>
+            </hotspot>
+            <hotspot x="51%" y="67%" w="16%" h="14%" display="pulse">
+              <spot dx="-4%" dy="-6%" dw="9%"><image id="zoom_herisson"/></spot>
+              <scenario>
+                <init action="hide" target="spot"/>
+                <onclick action="show" target="spot"/>
+              </scenario>
+            </hotspot>
+            <hotspot x="72.1%" y="74%" w="8%" display="pulse">
+              <image id="grenouille"/>
+              <spot dy="-13.65%">
+                <image id="anim_grenouille3" type="animation"/>
+              </spot>
+              <scenario>
+                <init action="hide" target="spot"/>
+                <onclick action="show" target="spot"/>
+              </scenario>
+            </hotspot>
+          </image>
+        </media>
+      </section>
+     </topic>
+
+     <!--===================================================================-->
+     <topic xml:id="tpc006" type="image">
+      <?effect-glow?>
+      <section>
+        <media>
+          <image id="balade_nature_006"/>
+        </media>
+      </section>
+    </topic>
+  </document>
+</publidoc>

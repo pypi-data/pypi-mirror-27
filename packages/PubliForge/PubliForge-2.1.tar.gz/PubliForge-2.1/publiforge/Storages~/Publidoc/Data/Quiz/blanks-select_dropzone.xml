@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="blanks-select_dropzone" xml:lang="fr">
+    <head>
+      <title>Exercice à trous avec placement sur image</title>
+    </head>
+
+    <instructions>
+      <p>Placez correctement chaque élément de la voiture.</p>
+    </instructions>
+
+    <blanks-select>
+      <media>
+        <image id="blanks-select_dropzonei01">
+          <dropzone x="25%" y="45.5%"><blank>le volant</blank></dropzone>
+          <dropzone x="62%" y="24%"><blank>le pare-brise</blank></dropzone>
+          <dropzone x="63%" y="77%"><blank>le siège</blank></dropzone>
+          <dropzone x="46%" y="68%"><blank>le levier de vitesse</blank></dropzone>
+          <dropzone x="1%" y="25.4%"><blank>le rétroviseur</blank></dropzone>
+        </image>
+      </media>
+    </blanks-select>
+  </quiz>
+</publiquiz>

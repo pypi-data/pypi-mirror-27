@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="blanks-char" xml:lang="fr">
+    <head>
+      <title>Exercice de positionnement de caractères</title>
+    </head>
+
+    <instructions>
+      <p>Retrouvez les phrases cachées et insérez la ponctuation et les
+      espaces manquants.</p>
+    </instructions>
+
+    <correct-line remove-space="true">
+      <intruders>
+        <char>?</char>
+      </intruders>
+      <p><char function="uppercase">L</char>e petit chat est mort<char>.</char></p>
+      <p><char function="uppercase">C</char><char>'</char>est dommage<char> ; </char>mais quoi !</p>
+      <p><char function="uppercase">U</char>n Anneau pour les amener tous et dans les t<char function="accent">é</char>n<char function="accent">è</char>bres les lier<char>.</char></p>
+    </correct-line>
+  </quiz>
+</publiquiz>

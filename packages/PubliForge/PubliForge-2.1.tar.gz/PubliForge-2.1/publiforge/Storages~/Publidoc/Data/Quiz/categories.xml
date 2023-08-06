@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="categories" xml:lang="fr">
+    <head>
+      <title>Exercice de catégories</title>
+    </head>
+
+    <instructions>
+      <p>Classez les verbes suivants par groupe verbal.</p>
+    </instructions>
+
+    <categories>
+      <intruders>
+        <item>assez</item>
+      </intruders>
+      <category>
+        <head>
+          <title>Verbes du premier groupe</title>
+        </head>
+        <item>manger</item>
+        <item>chanter</item>
+        <item>se promener</item>
+        <item>rêver</item>
+      </category>
+      <category>
+        <head>
+          <title>Verbes du deuxième groupe</title>
+        </head>
+        <item>finir</item>
+        <item>choisir</item>
+        <item>réussir</item>
+      </category>
+      <category>
+        <head>
+          <title>Verbes du troisième groupe</title>
+        </head>
+        <item>partir</item>
+        <item>prendre</item>
+        <item>voir</item>
+        <item>cueillir</item>
+      </category>
+    </categories>
+  </quiz>
+</publiquiz>

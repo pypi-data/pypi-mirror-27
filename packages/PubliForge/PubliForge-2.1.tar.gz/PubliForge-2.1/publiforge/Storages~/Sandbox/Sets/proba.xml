@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Id:  $ -->
+<publiset version="1.0">
+  <composition id="proba" xml:lang="fr" as="publiquiz" attributes="version=1.0">
+    <division as="document" attributes="id=proba xml:lang=fr">
+      <head>
+        <title>Probabilités</title>
+        <keywordset>
+          <keyword>mathématiques</keyword>
+          <keyword>probabilité</keyword>
+        </keywordset>
+      </head>
+
+      <!-- ============================ Cours ============================= -->
+      <division path="../Topics" xslt="composition.xsl">
+        <head>
+          <title>Le cours</title>
+        </head>
+        <file>proba01.xml</file>
+      </division>
+
+      <!-- ========================== Exercices =========================== -->
+      <division path="../Quiz" xslt="composition.xsl">
+        <head>
+          <title>Les exercices</title>
+        </head>
+        <division>
+          <head>
+            <title>Probabilités</title>
+          </head>
+          <file>choices-radio.xml</file>
+        </division>
+        <division>
+          <head>
+            <title>Sujets annexes</title>
+          </head>
+          <file>choices-check.xml</file>
+          <file>choices-radio_image.xml</file>
+          <file>sort.xml</file>
+        </division>
+      </division>
+
+    </division>
+  </composition>
+</publiset>

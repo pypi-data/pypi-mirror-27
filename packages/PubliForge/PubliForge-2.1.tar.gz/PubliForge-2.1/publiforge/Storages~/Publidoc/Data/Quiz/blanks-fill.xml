@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="blanks-fill" xml:lang="fr">
+    <head>
+      <title>Exercice à trous</title>
+    </head>
+    
+    <instructions>
+      <p>Écrivez correctement les adjectifs de couleur.</p>
+    </instructions>
+
+    <blanks-fill>
+      <p>
+        Ses lèvres sont <blank>bleues</blank> (<mentioned>bleu</mentioned>) de
+        froid.
+      </p>
+      <p>
+        Les serviettes <blank><s>orange</s>
+        <help><p>Nom ?</p></help>
+        <answer><p>Orange est un nom.</p></answer></blank>
+        (<mentioned>orange</mentioned>) sont propres.
+      </p>
+      <p>
+        Il y a des taches <blank>blanchâtres</blank>
+        (<mentioned>blanchâtre</mentioned>) sur votre veste.
+      </p>
+    </blanks-fill>
+  </quiz>
+</publiquiz>

@@ -1,0 +1,40 @@
+
+
+/* ======== TOP LEVEL ======= */
+
+
+/* ~~~~~~ pdocVariable ~~~~~~ */
+
+.pdocVariable {
+    display: block;
+}
+
+
+/* ======= HEAD LEVEL ======= */
+
+
+/* ~~~~~~~~ pdocMeta ~~~~~~~~ */
+.pdocMeta tr.pquizAttribute {
+    background-color: #fafafa;
+}
+
+
+/* ===== COMPONENT LEVEL ==== */
+
+
+/* ~~~~~~~~ pquizQuiz ~~~~~~~ */
+
+.pquizQuiz {
+    margin: 0 3px 0 3px;
+}
+
+
+/* ====== BLOCK LEVEL ======= */
+
+
+/* ~~~~~~~ pdocImage ~~~~~~~~ */
+
+#content .pquizChoice img,
+#content .pquizItem img {
+    max-height: 80px;
+}

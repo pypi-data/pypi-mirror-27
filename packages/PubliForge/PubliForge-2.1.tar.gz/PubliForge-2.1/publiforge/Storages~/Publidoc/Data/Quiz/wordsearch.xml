@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<publiquiz version="1.0">
+  <quiz id="wordshearch" xml:lang="en">
+    <head>
+      <title>Word Search (Tolkien Universe)</title>
+    </head>
+    <instructions>
+      <p>Find the words of the list</p>
+    </instructions>
+    <wordsearch strict="true" wordlist="right">
+      <words>
+        <item startx="d" starty="2" endx="d" endy="6">Bilbo</item>
+        <item startx="h" starty="10" endx="o" endy="10">Sindarin</item>
+        <item startx="i" starty="1" endx="a" endy="1">Mount Doom</item>
+        <item startx="k" starty="14" endx="k" endy="2">Mithrandir</item>
+        <item startx="m" starty="1" endx="m" endy="7">Khuzdul</item>
+        <item startx="h" starty="3" endx="c" endy="3">Thorin</item>
+        <item startx="o" starty="15" endx="g" endy="15">Galadriel</item>
+        <item startx="b" starty="8" endx="o" endy="8">Lonely Mountain</item>
+        <item startx="c" starty="2" endx="f" endy="5">Ring</item>
+        <item startx="g" starty="13" endx="i" endy="11">Orc</item>
+        <item startx="j" starty="5" endx="j" endy="1">Elves</item>
+        <item startx="h" starty="13" endx="c" endy="13">Gondor</item>
+        <item startx="h" starty="11" endx="b" endy="11">Dwarves</item>
+        <item startx="l" starty="1" endx="l" endy="7">Legolas</item>
+        <item startx="h" starty="8" endx="e" endy="5">Maia</item>
+        <item startx="a" starty="7" endx="f" endy="7">Goblin</item>
+        <item startx="o" starty="9" endx="f" endy="9">Fellowship</item>
+      </words>
+      <grid>
+        <line><cell>M</cell><cell>O</cell><cell>O</cell><cell>D</cell><cell>T</cell><cell>N</cell><cell>U</cell><cell>O</cell><cell>M</cell><cell>S</cell><cell>E</cell><cell>L</cell><cell>K</cell><cell>V</cell><cell>J</cell></line>
+        <line><cell>S</cell><cell>A</cell><cell>R</cell><cell>B</cell><cell>E</cell><cell>W</cell><cell>R</cell><cell>W</cell><cell>V</cell><cell>E</cell><cell>K</cell><cell>E</cell><cell>H</cell><cell>Q</cell><cell>Z</cell></line>
+        <line><cell>R</cell><cell>X</cell><cell>N</cell><cell>I</cell><cell>R</cell><cell>O</cell><cell>H</cell><cell>T</cell><cell>T</cell><cell>V</cell><cell>L</cell><cell>G</cell><cell>U</cell><cell>Y</cell><cell>V</cell></line>
+        <line><cell>N</cell><cell>Y</cell><cell>J</cell><cell>L</cell><cell>N</cell><cell>Z</cell><cell>U</cell><cell>B</cell><cell>X</cell><cell>L</cell><cell>S</cell><cell>O</cell><cell>Z</cell><cell>W</cell><cell>M</cell></line>
+        <line><cell>T</cell><cell>Y</cell><cell>Y</cell><cell>B</cell><cell>A</cell><cell>G</cell><cell>L</cell><cell>M</cell><cell>U</cell><cell>E</cell><cell>P</cell><cell>L</cell><cell>D</cell><cell>D</cell><cell>C</cell></line>
+        <line><cell>G</cell><cell>V</cell><cell>P</cell><cell>O</cell><cell>T</cell><cell>I</cell><cell>Q</cell><cell>M</cell><cell>V</cell><cell>J</cell><cell>C</cell><cell>A</cell><cell>U</cell><cell>M</cell><cell>S</cell></line>
+        <line><cell>G</cell><cell>O</cell><cell>B</cell><cell>L</cell><cell>I</cell><cell>N</cell><cell>A</cell><cell>I</cell><cell>A</cell><cell>C</cell><cell>G</cell><cell>S</cell><cell>L</cell><cell>G</cell><cell>I</cell></line>
+        <line><cell>Y</cell><cell>L</cell><cell>O</cell><cell>N</cell><cell>E</cell><cell>L</cell><cell>Y</cell><cell>M</cell><cell>O</cell><cell>U</cell><cell>N</cell><cell>T</cell><cell>A</cell><cell>I</cell><cell>N</cell></line>
+        <line><cell>K</cell><cell>T</cell><cell>K</cell><cell>J</cell><cell>W</cell><cell>P</cell><cell>I</cell><cell>H</cell><cell>S</cell><cell>W</cell><cell>O</cell><cell>L</cell><cell>L</cell><cell>E</cell><cell>F</cell></line>
+        <line><cell>P</cell><cell>A</cell><cell>K</cell><cell>T</cell><cell>D</cell><cell>N</cell><cell>Y</cell><cell>S</cell><cell>I</cell><cell>N</cell><cell>D</cell><cell>A</cell><cell>R</cell><cell>I</cell><cell>N</cell></line>
+        <line><cell>N</cell><cell>S</cell><cell>E</cell><cell>V</cell><cell>R</cell><cell>A</cell><cell>W</cell><cell>D</cell><cell>C</cell><cell>K</cell><cell>L</cell><cell>X</cell><cell>K</cell><cell>M</cell><cell>Q</cell></line>
+        <line><cell>S</cell><cell>A</cell><cell>M</cell><cell>B</cell><cell>Z</cell><cell>J</cell><cell>P</cell><cell>R</cell><cell>K</cell><cell>E</cell><cell>S</cell><cell>I</cell><cell>M</cell><cell>P</cell><cell>J</cell></line>
+        <line><cell>D</cell><cell>P</cell><cell>R</cell><cell>O</cell><cell>D</cell><cell>N</cell><cell>O</cell><cell>G</cell><cell>J</cell><cell>D</cell><cell>W</cell><cell>P</cell><cell>P</cell><cell>U</cell><cell>O</cell></line>
+        <line><cell>R</cell><cell>R</cell><cell>I</cell><cell>D</cell><cell>N</cell><cell>A</cell><cell>R</cell><cell>H</cell><cell>T</cell><cell>I</cell><cell>M</cell><cell>S</cell><cell>P</cell><cell>N</cell><cell>H</cell></line>
+        <line><cell>A</cell><cell>B</cell><cell>H</cell><cell>O</cell><cell>A</cell><cell>I</cell><cell>L</cell><cell>E</cell><cell>I</cell><cell>R</cell><cell>D</cell><cell>A</cell><cell>L</cell><cell>A</cell><cell>G</cell></line>
+      </grid>
+    </wordsearch>
+  </quiz>
+</publiquiz>

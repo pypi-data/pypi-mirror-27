@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id$ -->
+<publiquiz version="1.0">
+  <quiz id="sort" xml:lang="fr">
+    <head>
+      <title>Exercice de tri</title>
+    </head>
+
+    <instructions>
+      <p>Rangez les nombres du plus petit au plus grand.</p>
+    </instructions>
+
+    <sort>
+      <comparison>&lt;</comparison>
+      <item shuffle="6">59</item>
+      <item shuffle="5">66</item>
+      <item shuffle="1">73</item>
+      <item shuffle="4">87</item>
+      <item shuffle="2">91</item>
+      <item shuffle="3">94</item>
+    </sort>
+  </quiz>
+</publiquiz>

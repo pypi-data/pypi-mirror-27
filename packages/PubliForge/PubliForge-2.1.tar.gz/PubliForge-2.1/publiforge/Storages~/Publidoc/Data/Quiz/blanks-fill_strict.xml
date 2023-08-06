@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  $ -->
+<publiquiz version="1.0">
+  <quiz id="blanks-fill_strict" xml:lang="fr">
+    <head>
+      <title>Exercice à trous strict</title>
+    </head>
+
+    <instructions>
+      <p>Écrivez correctement les adjectifs de couleur.</p>
+    </instructions>
+
+    <blanks-fill strict="true">
+      <section>
+        <p>La Mésopotamie est une région du <blank>Moyen
+         Orient</blank> située entre le <blank>Tigre</blank>
+         et l'<blank>Euphrate</blank>. Elle correspond à
+         l'<blank>Irak</blank> actuel. Il s'agit d'une zone
+         où l'irrigation n'est pas nécessaire pour l'agriculture.</p>
+      </section>
+      <section>
+        <p>Au <number type="roman" value="3">III</number><sup>e</sup>
+        millénaire av. J.-C., on distingue le Nord, appelé
+        l'<blank>Assyrie</blank> de la région du Sud, la
+        <blank>Babylonie</blank>.</p>
+      </section>
+    </blanks-fill>
+  </quiz>
+</publiquiz>

@@ -1,0 +1,61 @@
+/*
+ * ========= FLASHCARD ========
+ */
+
+/* ------ pquizFlashcard ---- */
+
+.pquizFlashcardContainer {
+    position: relative;
+    width: 30em;
+    height: 35em;
+    margin: 20px auto;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+
+    .pquizFlashcard {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transition: transform 1s;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+    }
+    .pquizFlashcard.flipped {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+
+    .pquizFlashcardSide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+
+        box-sizing: border-box;
+        border-radius: 10px;
+        border: 1px solid $pquizBorder-color;
+        box-shadow: 2px 2px 8px $pquizShadow-color;
+
+        & > div { padding: 10px; }
+        .pdocMedia { text-align: center; }
+    }
+
+    .pquizFlashcardSide.side1 {
+        background-color: #ffffff;
+    }
+
+    .pquizFlashcardSide.side2 {
+        background-color: #ffffff;
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+}
+
+/* - pquizFlashcardTurnOver - */
+
+.pquizFlashcardTurnOver {
+    margin-bottom: 20px;
+    text-align: center;
+}
