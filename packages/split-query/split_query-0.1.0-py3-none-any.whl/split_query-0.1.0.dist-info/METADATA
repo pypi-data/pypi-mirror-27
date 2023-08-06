@@ -1,0 +1,36 @@
+Metadata-Version: 2.0
+Name: split-query
+Version: 0.1.0
+Summary: Tools for breaking up queries for caching, processing, etc.
+Home-page: https://github.com/simonbowly/split-query
+Author: Simon Bowly
+Author-email: simon.bowly@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Dist: frozendict
+Requires-Dist: future
+Requires-Dist: iso8601
+Requires-Dist: msgpack-python
+Requires-Dist: pandas
+Requires-Dist: pytz
+Requires-Dist: sympy
+Requires-Dist: tables
+
+
+
+Split-Query
+================
+
+Tools for breaking up queries for caching, processing, etc.
+
+
