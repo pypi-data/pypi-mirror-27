@@ -1,0 +1,34 @@
+commands:
+- {fallback_distro_command: cat /etc/*release | grep -P "(^ID=.*)|(^VERSION_ID=.*)"}
+descriptions: {cli_description: vHunter is a automated reporting and searching system
+    for known system vulnerabilities, config_help: 'path to config user config file,
+    default is /etc/vHunter.yaml', host_help: host ip where master is operating, list_scenarios_help: 'vHunter
+    will list avaliable scenarios to stdout, then exit', log_file_help: 'path where
+    store logs to, default is /var/log/vHunter/vHunter.log', log_level_help: 'set
+    log level, default is ERROR, acceptable levels are: DEBUG, INFO, WARNING, ERROR',
+  master_help: Node will act as a master., master_slave_help: 'vHunter will try to
+    form cluster, due to avoidance of spamming sysadmins', not_supported_message: 'This
+    feature - %s flag - is not yet supported. But we are accepting PR''s :) If you
+    want to help please visit gh.com/evemorgen/vHunter', port_help: which port to
+    use when trying connect to master, scenario_help: path to directory keeping scenarios
+    to check, slave_help: Node will act as a slave. vHunter-slave will try to connect
+    to master on defined port (default is 1911), standalone_help: 'vHunter will operate
+    in standalone more, means it won''t try to form clusters'}
+log_file: {linux: /var/log/vHunter/vHunter.log, mac_os: /usr/local/var/log/vHunter/vHunter.log}
+log_format: '[%(asctime)s %(process)d/%(module)s/%(funcName)s] %(message)s'
+log_level: DEBUG
+mail_notifier: {account: AKIAJG2UC3H4TXLB3JGA, body: 'Here is list of vulnerabilities
+    found:
+
+    %s
+
+    ', domain: email-smtp.eu-west-1.amazonaws.com, pass: QWhCaUxYSDMySWVMOGZqczNDaCtBUGZWOHJpVDRSbWtPYmRZalhpQ3AwbXc=,
+  subject: '%s Vulnerabilities detected on %s machine(s)'}
+min_python: 3.5.0
+nvdapi:
+  filter_fields: [product, vendor, version]
+  port: 80
+  resource: /nvdapi/vulnerabilities
+  url: http://vhunter.tk
+scenarios_dirs: [conf/scenarios/]
+supported_platforms: [mac_os, linux]

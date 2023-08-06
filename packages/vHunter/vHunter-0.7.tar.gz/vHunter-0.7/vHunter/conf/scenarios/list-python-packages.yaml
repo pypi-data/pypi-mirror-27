@@ -1,0 +1,12 @@
+list-python-packages-scenario:
+    job:
+        default: pip3 freeze | sed -e 's/==/,/g'
+    min_score: 5.0
+    driver: BasicDriver
+    how_often: 3 # in minutes
+    receivers:
+        - evemorgen1911@gmail.com
+    notifiers:
+        - MailNotifier
+ 
+

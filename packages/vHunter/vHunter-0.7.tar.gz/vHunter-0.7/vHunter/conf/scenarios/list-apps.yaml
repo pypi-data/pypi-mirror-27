@@ -1,0 +1,13 @@
+list-apps-scenario:
+    job:
+        ubuntu: dpkg -l | awk ''{ print $2 \",\" $3}'' | tail -n +6
+        centos: yum list
+        mac_os: brew list --versions | sed -e 's/ /,/g'
+        default: echo ''distro not found''
+    min_score: 5.0
+    driver: BasicDriver
+    how_often: 10 # in minutes
+    notifiers:
+        - MailNotifier
+    receivers:
+        - evemorgen1911@gmail.com
