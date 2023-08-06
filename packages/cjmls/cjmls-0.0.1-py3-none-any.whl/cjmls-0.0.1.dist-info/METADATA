@@ -1,0 +1,48 @@
+Metadata-Version: 2.0
+Name: cjmls
+Version: 0.0.1
+Summary: Python wrapper for cjmls.
+Home-page: https://github.com/AlJohri/cjmls
+Author: Al Johri
+Author-email: al.johri@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: requests
+
+cjmls
+==========================
+
+|PyPi Version| |License Status|
+
+Python wrapper for cjmls. Requires Python 3.6+.
+
+Development
+-----------
+
+Setup
+~~~~~
+
+::
+
+    make install
+
+Test
+~~~~
+
+::
+
+    make test
+
+
+Disclaimer
+----------
+
+.. |PyPI Version| image:: https://img.shields.io/pypi/v/cjmls.svg
+   :target: https://pypi.python.org/pypi/cjmls
+.. |License Status| image:: https://img.shields.io/badge/license-MIT-blue.svg
+   :target: https://raw.githubusercontent.com/AlJohri/cjmls/master/LICENSE
+
