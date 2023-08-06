@@ -1,0 +1,36 @@
+Metadata-Version: 2.0
+Name: csgo-demoparser
+Version: 0.0.1
+Summary: CS:GO demo file parser.
+Home-page: https://github.com/ibm-dev-incubator/demoparser
+Author: Ryan Moe
+Author-email: ryan.moe@gmail.com
+License: Apache-2
+Description-Content-Type: UNKNOWN
+Keywords: setup
+Requires-Dist: suitcase
+Requires-Dist: cython
+Requires-Dist: protobuf
+Requires-Dist: sphinx
+
+``demoparser`` is a library for parsing CS:GO demo files.
+
+As the file is processed events are emitted for which callbacks can
+be registered.
+
+Quick start
+-----------
+
+1. Install::
+
+        pip install demoparser
+
+2. Parse a demo::
+
+   >>> from demoparser.demofile import DemoFile
+   >>> data = open('/path/to/demofile', 'rb').read()
+   >>> df = DemoFile(data)
+   >>> df.parse()
+
+
+
