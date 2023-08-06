@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- permissions for invoice-template-editor -->
+        <record model="res.group" id="group_periodic_invoice_view">
+            <field name="name">Periodic invoice - view</field>
+        </record>
+        
+        <!-- menu -->
+        <record model="ir.ui.menu-res.group" 
+                id="menu_invoice_form-group_periodic_invoice_view">
+            <field name="menu" ref="menu_invoice_form"/>
+            <field name="group" ref="group_periodic_invoice_view"/>
+        </record>
+        
+        <!-- table invoice -->
+        <record model="ir.model.access" 
+                id="access_invoice-group_periodic_invoice_view">
+            <field name="model" search="[('model', '=', 'periodic_invoice.invoice')]"/>
+            <field name="group" ref="group_periodic_invoice_view"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- table invoice-line -->
+        <record model="ir.model.access" 
+                id="access_invline-group_periodic_invoice_view">
+            <field name="model" search="[('model', '=', 'periodic_invoice.invline')]"/>
+            <field name="group" ref="group_periodic_invoice_view"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- config-table -->
+        <record model="ir.model.access" 
+                id="access_configuration-group_periodic_invoice_view">
+            <field name="model" search="[('model', '=', 'periodic_invoice.configuration')]"/>
+            <field name="group" ref="group_periodic_invoice_view"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+    </data>
+</tryton>

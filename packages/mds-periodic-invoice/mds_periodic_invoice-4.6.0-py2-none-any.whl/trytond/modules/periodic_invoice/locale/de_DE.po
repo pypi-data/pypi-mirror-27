@@ -1,0 +1,612 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+# periodic_invoice.invoice - menu
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoice template"
+msgstr "Rechnungsvorlage"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_form"
+msgid "Invoice template"
+msgstr "Rechnungsvorlage"
+
+msgctxt "model:periodic_invoice.invoice,name:"
+msgid "Invoice template"
+msgstr "Rechnungsvorlage"
+
+
+# invoice template
+msgctxt "error:periodic_invoice.invoice:"
+msgid "Interval number must be greater than zero."
+msgstr "Die Invervallzahl muß größer als Null sein."
+
+msgctxt "error:periodic_invoice.invoice:"
+msgid "The value 'start date' must be in the future."
+msgstr "Der Wert 'Startdatum' muß in der Zukunft liegen."
+
+msgctxt "error:periodic_invoice.invoice:"
+msgid "The value 'end date' must be after 'start date' or empty."
+msgstr "Der Wert 'Enddatum' muß nach 'Startdatum' liegen oder leer sein."
+
+msgctxt "error:periodic_invoice.invoice:"
+msgid "Invalid value in 'stop condition'."
+msgstr "Ungültiger wert in 'Stopbedingung'."
+
+msgctxt "error:periodic_invoice.invoice:"
+msgid "Invalid value in 'interval unit'."
+msgstr "Ungültiger wert in 'Intervalleinheit'."
+
+msgctxt "error:periodic_invoice.invoice:"
+msgid "The value 'calls to go' must be greater than 0 or empty."
+msgstr "Der Wert 'Anzahl Aufrufe' muß größer Null oder leer sein."
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Select time"
+msgstr "Zeitpunkt wählen"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Select repeat rule"
+msgstr "Wiederholregel wählen"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Title and Description"
+msgstr "Titel und Beschreibung"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Invoice data"
+msgstr "Rechnungsdaten"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Other Info"
+msgstr "Sonstiges"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Template settings"
+msgstr "Vorlageeinstellungen"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Created Invoices"
+msgstr "erstellte Rechnungen"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Target state"
+msgstr "Zielzustand"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Check"
+msgstr "Prüfen"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Create a draft invoice"
+msgstr "Entwurfsrechnung erstellen"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Information"
+msgstr "Information"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Placeholders:"
+msgstr "Platzhalter:"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "The field 'Description' of the invoice and the fields 'Description' and 'Notes' of the invoice lines support wildcards."
+msgstr "Das Feld 'Beschreibung' der Rechnung und die Felder 'Beschreibung' und 'Notizen' der Rechnungszeilen unterstützen Platzhalter."
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "To use placeholders in the description fields, write down the term in square brackets: [total], [invoicedate] etc."
+msgstr "Um Platzhalter in den Beschreibungsfeldern zu verwenden notieren Sie den Begriff in eckigen Klammern: [total], [invoicedate] etc."
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Start date of the invoice template"
+msgstr "Startdatum der Rechnungsvorlage"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "End date of the invoice template"
+msgstr "Endedatum der Rechnungsvorlage"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "E-mail address for sending the invoice"
+msgstr "Mailadresse für den Versand der Rechnung"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Invoice date of the invoice"
+msgstr "Rechnungsdatum der Rechnung"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "Payment term of the invoice"
+msgstr "Zahlungsfrist der Rechnung"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "untaxed amount with currency symbol"
+msgstr "Nettobetrag mit Währungssymbol"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "tax amount with currency symbol"
+msgstr "Steuerbetrag mit Währungssymbol"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "total amount with currency symbol"
+msgstr "Bruttobetrag mit Währungssymbol"
+
+msgctxt "view:periodic_invoice.invoice:"
+msgid "the following placeholders are supported:"
+msgstr "folgende Platzhalter werden unterstützt:"
+
+
+msgctxt "field:periodic_invoice.invoice,name:"
+msgid "Title"
+msgstr "Titel"
+
+msgctxt "help:periodic_invoice.invoice,name:"
+msgid "Title of the invoice template"
+msgstr "Titel der Rechnungsvorlage"
+
+msgctxt "field:periodic_invoice.invoice,desc:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:periodic_invoice.invoice,date_start:"
+msgid "Start date"
+msgstr "Startdatum"
+
+msgctxt "help:periodic_invoice.invoice,date_start:"
+msgid "Select the start date to calculate the next execution time."
+msgstr "Wählen Sie das Startdatum zur Berechnung des nächsten Ausführungszeitpunktes."
+
+msgctxt "field:periodic_invoice.invoice,date_lastrun:"
+msgid "last call date"
+msgstr "letztes Aufrufdatum"
+
+msgctxt "field:periodic_invoice.invoice,date_end:"
+msgid "End date"
+msgstr "Enddatum"
+
+msgctxt "help:periodic_invoice.invoice,date_end:"
+msgid "Select the end date to stop the creation of invoices."
+msgstr "Wählen Sie das Enddatum aus, um die Erstellung von Rechnungen zu stoppen."
+
+msgctxt "field:periodic_invoice.invoice,date_nextrun:"
+msgid "Next call date"
+msgstr "nächste Ausführung"
+
+msgctxt "field:periodic_invoice.invoice,active2:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "help:periodic_invoice.invoice,active2:"
+msgid "When activated, the invoice is created at the next time."
+msgstr "Wenn eingeschaltet wird die Rechnung zum nächsten Zeitpunkt erstellt."
+
+msgctxt "field:periodic_invoice.invoice,intervalunit:"
+msgid "Interval unit"
+msgstr "Intervalleinheit"
+
+msgctxt "help:periodic_invoice.invoice,intervalunit:"
+msgid "Select the interval unit to determine the next execution date."
+msgstr "Wählen Sie die Intervalleinheit für die Bestimmung des nächsten Ausführungszeitpunktes aus."
+
+msgctxt "selection:periodic_invoice.invoice,intervalunit:"
+msgid "day"
+msgstr "Tage"
+
+msgctxt "selection:periodic_invoice.invoice,intervalunit:"
+msgid "week"
+msgstr "Woche"
+
+msgctxt "selection:periodic_invoice.invoice,intervalunit:"
+msgid "month"
+msgstr "Monat"
+
+msgctxt "selection:periodic_invoice.invoice,intervalunit:"
+msgid "year"
+msgstr "Jahr"
+
+msgctxt "field:periodic_invoice.invoice,intervalnumber:"
+msgid "Interval number"
+msgstr "Intervallzahl"
+
+msgctxt "field:periodic_invoice.invoice,stopcondition:"
+msgid "Stop condition"
+msgstr "Stopbedingung"
+
+msgctxt "selection:periodic_invoice.invoice,stopcondition:"
+msgid "do not stop"
+msgstr "nicht beenden"
+
+msgctxt "selection:periodic_invoice.invoice,stopcondition:"
+msgid "stop after 'number of calls' repeats"
+msgstr "nach 'Anzahl Aufrufe' Wiederholungen beenden"
+
+msgctxt "selection:periodic_invoice.invoice,stopcondition:"
+msgid "stop at 'end date'"
+msgstr "am 'Enddatum' beenden"
+
+msgctxt "field:periodic_invoice.invoice,calls_to_go:"
+msgid "Number of calls"
+msgstr "Anzahl Aufrufe"
+
+msgctxt "help:periodic_invoice.invoice,calls_to_go:"
+msgid "Disables the repeat function after 'Number of calls'."
+msgstr "Deaktiviert die Wiederholfunktion nach 'Anzahl Aufrufe'."
+
+msgctxt "field:periodic_invoice.invoice,calls_done:"
+msgid "Calls done"
+msgstr "erledigte Aufrufe"
+
+msgctxt "field:periodic_invoice.invoice,calls_donetotal:"
+msgid "Total number of calls"
+msgstr "erledigte Aufrufe gesamt"
+
+msgctxt "field:periodic_invoice.invoice,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:periodic_invoice.invoice,invdesc:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "help:periodic_invoice.invoice,invdesc:"
+msgid "Description for the generated invoice"
+msgstr "Beschreibung für die erzeugte Rechnung"
+
+msgctxt "field:periodic_invoice.invoice,invdate:"
+msgid "Invoice date"
+msgstr "Rechnungsdatum"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "create date"
+msgstr "Erstelldatum"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "the first of the current month"
+msgstr "der Erste des aktuellen Monats"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "first day in the previous month"
+msgstr "der erste Tag des vorigen Monats"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "first working day in the previous month"
+msgstr "der erste Arbeitstag des vorigen Monats"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "first working day in the current month"
+msgstr "der erste Arbeitstag des aktuellen Monats"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "the last day in the current month"
+msgstr "der letzte Tag des aktuellen Monats"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "last day in the current year"
+msgstr "der letzte Tag des aktuellen Jahres"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "last day in the previous month"
+msgstr "der letzte Tag des vorigen Monats"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "last day in the previous year"
+msgstr "der letzte Tag des vorigen Jahres"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "last working day in the current month"
+msgstr "der letzte Arbeitstag des aktuellen Monats"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "last working day in the current year"
+msgstr "der letzte Arbeitstag des aktuellen Jahres"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "last working day in the previous month"
+msgstr "der letzte Arbeitstag des vorigen Monats"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "last working day in the previous year"
+msgstr "der letzte Arbeitstag des vorigen Jahres"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "create date minus 1 day"
+msgstr "Erstelldatum minus 1 Tag"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "create date minus 2 days"
+msgstr "Erstelldatum minus 2 Tage"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "create date minus 3 days"
+msgstr "Erstelldatum minus 3 Tage"
+
+msgctxt "selection:periodic_invoice.invoice,invdate:"
+msgid "create date minus 4 days"
+msgstr "Erstelldatum minus 4 Tage"
+
+msgctxt "field:periodic_invoice.invoice,reference:"
+msgid "Reference"
+msgstr "Beleg-Nr."
+
+msgctxt "field:periodic_invoice.invoice,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:periodic_invoice.invoice,invoice_address:"
+msgid "Invoice Address"
+msgstr "Rechnungsadresse"
+
+msgctxt "field:periodic_invoice.invoice,invtype:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "selection:periodic_invoice.invoice,invtype:"
+msgid "Credit Note"
+msgstr "Gutschrift an Kunde"
+
+msgctxt "selection:periodic_invoice.invoice,invtype:"
+msgid "Invoice"
+msgstr "Kundenrechnung"
+
+msgctxt "selection:periodic_invoice.invoice,invtype:"
+msgid "Supplier Credit Note"
+msgstr "Gutschrift von Lieferant"
+
+msgctxt "selection:periodic_invoice.invoice,invtype:"
+msgid "Supplier Invoice"
+msgstr "Lieferantenrechnung"
+
+msgctxt "field:periodic_invoice.invoice,payment_term:"
+msgid "Payment Term"
+msgstr "Zahlungsbedingung"
+
+msgctxt "field:periodic_invoice.invoice,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:periodic_invoice.invoice,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:periodic_invoice.invoice,invoices:"
+msgid "Invoices"
+msgstr "Rechnungen"
+
+msgctxt "help:periodic_invoice.invoice,invoices:"
+msgid "Invoices created from this template"
+msgstr "Rechnungen, welche von dieser Vorlage erstellt wurden"
+
+msgctxt "field:periodic_invoice.invoice,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:periodic_invoice.invoice,lines:"
+msgid "Lines"
+msgstr "Positionen"
+
+msgctxt "field:periodic_invoice.invoice,total_amount:"
+msgid "Total"
+msgstr "Brutto"
+
+msgctxt "field:periodic_invoice.invoice,tax_amount:"
+msgid "Tax"
+msgstr "Steuer"
+
+msgctxt "field:periodic_invoice.invoice,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Netto"
+
+msgctxt "field:periodic_invoice.invoice,targstate:"
+msgid "Target state"
+msgstr "Zielzustand"
+
+msgctxt "help:periodic_invoice.invoice,targstate:"
+msgid "State of the invoice after the automatic create"
+msgstr "Zustand der Rechnung nach dem automatischen erstellen"
+
+msgctxt "selection:periodic_invoice.invoice,targstate:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:periodic_invoice.invoice,targstate:"
+msgid "Validated"
+msgstr "Geprüft"
+
+msgctxt "selection:periodic_invoice.invoice,targstate:"
+msgid "Posted"
+msgstr "Festgeschrieben"
+
+msgctxt "selection:periodic_invoice.invoice,targstate:"
+msgid "sent by mail"
+msgstr "per Mail gesendet"
+
+msgctxt "field:periodic_invoice.invoice,email:"
+msgid "E-mail"
+msgstr "Mailadresse"
+
+msgctxt "help:periodic_invoice.invoice,email:"
+msgid "E-mail address for sending the invoice"
+msgstr "Mailadresse für den Versand der Rechnung"
+
+msgctxt "field:periodic_invoice.invoice,runatweekday:"
+msgid "weekdays only"
+msgstr "nur Werktags"
+
+msgctxt "help:periodic_invoice.invoice,runatweekday:"
+msgid "move execution date to a working day"
+msgstr "Ausführungsdatum auf einen Arbeitstag verschieben"
+
+
+# groups
+msgctxt "model:res.group,name:group_periodic_invoice_edit"
+msgid "Periodic invoice - edit"
+msgstr "periodische Rechnung - Ändern"
+
+msgctxt "model:res.group,name:group_periodic_invoice_view"
+msgid "Periodic invoice - view"
+msgstr "periodische Rechnung - Ansicht"
+
+msgctxt "model:res.group,name:group_cronjob_invoice"
+msgid "Periodic invoices - Cronjob"
+msgstr "periodische Rechnung - Zeitgeber"
+
+
+# cron
+msgctxt "model:ir.cron,name:cronjob_invoice"
+msgid "Periodic invoices"
+msgstr "periodische Rechnungen"
+
+msgctxt "model:res.user,name:user_cronjob_invoice"
+msgid "Cron periodic invoices"
+msgstr "Zeitplaner periodische Rechnungen"
+
+
+# configuration
+msgctxt "error:periodic_invoice.configuration:"
+msgid "Invalid syntax of the date '%s'. (allowed: DD.MM. or DD.MM.YYYY)"
+msgstr "Ungültige Syntax des Datums '%s'. (erlaubt: TT.MM. oder TT.MM.JJJJ)"
+
+msgctxt "model:ir.action,name:act_configuration_form"
+msgid "Invoice template"
+msgstr "Rechnungsvorlage"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration_form"
+msgid "Invoice template"
+msgstr "Rechnungsvorlage"
+
+msgctxt "model:periodic_invoice.configuration,name:"
+msgid "Invoice template"
+msgstr "Rechnungsvorlage"
+
+msgctxt "field:periodic_invoice.configuration,holidays:"
+msgid "Holidays"
+msgstr "Feiertage"
+
+msgctxt "view:periodic_invoice.configuration:"
+msgid "Holidays"
+msgstr "Feiertage"
+
+msgctxt "view:periodic_invoice.configuration:"
+msgid "Holidays are not used for the invoice date if 'working day' has been selected."
+msgstr "Feiertage werden nicht für das Rechnungsdatum verwendet wenn 'Arbeitstag' gewählt wurde."
+
+msgctxt "view:periodic_invoice.configuration:"
+msgid "- one date per line"
+msgstr "- ein Datum pro Zeile"
+
+msgctxt "view:periodic_invoice.configuration:"
+msgid "- use the scheme DD.MM. for a yearly recurring date"
+msgstr "- verwenden Sie das Schema DD.MM. für ein jährlich wiederholendes Datum"
+
+msgctxt "view:periodic_invoice.configuration:"
+msgid "- use the schema DD.MM.YYYY for a fixed date in one year"
+msgstr "- verwenden Sie das Schema DD.MM.YYYY für ein festes Datum in einem Jahr"
+
+msgctxt "help:periodic_invoice.configuration,company:"
+msgid "Choose the company for which the invoices should be created automatically."
+msgstr "Wählen Sie das Unternehmen für welche die Rechnungen automatisch erstellt werden sollen."
+
+msgctxt "field:periodic_invoice.configuration,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+
+
+# periodic_invoice.invline
+msgctxt "error:periodic_invoice.invline:"
+msgid "Line with 'line' type must have an account."
+msgstr "Auf einer Zeile vom Typ 'Rechnungsposition' muss ein Konto eingetragen sein."
+
+msgctxt "error:periodic_invoice.invline:"
+msgid "Line without 'line' type must have an invoice."
+msgstr "Eine Zeile, die nicht vom Typ 'Rechnungsposition' ist, muss einer Rechnung zugeordnet werden."
+
+msgctxt "view:periodic_invoice.invline:"
+msgid "General"
+msgstr "Allgemein"
+
+msgctxt "view:periodic_invoice.invline:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "view:periodic_invoice.invline:"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen"
+
+msgctxt "view:periodic_invoice.invline:"
+msgid "Notes"
+msgstr "Notizen"
+
+msgctxt "field:periodic_invoice.invline,invoice:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "field:periodic_invoice.invline.line,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "selection:periodic_invoice.invline,type:"
+msgid "Comment"
+msgstr "Kommentar"
+
+msgctxt "selection:periodic_invoice.invline,type:"
+msgid "Line"
+msgstr "Position"
+
+msgctxt "selection:periodic_invoice.invline,type:"
+msgid "Subtotal"
+msgstr "Zwischensumme"
+
+msgctxt "selection:periodic_invoice.invline,type:"
+msgid "Title"
+msgstr "Überschrift"
+
+msgctxt "field:periodic_invoice.invline,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:periodic_invoice.invline,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:periodic_invoice.invline,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:periodic_invoice.invline,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Maßeinheitenkategorie"
+
+msgctxt "field:periodic_invoice.invline,product:"
+msgid "Product"
+msgstr "Variante"
+
+msgctxt "field:periodic_invoice.invline,quantity:"
+msgid "Quantity"
+msgstr "Anzahl"
+
+msgctxt "field:periodic_invoice.invline,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:periodic_invoice.invline,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:periodic_invoice.invline,note:"
+msgid "Note"
+msgstr "Notiz"
+
+msgctxt "field:periodic_invoice.invline,unit_price:"
+msgid "Unit Price"
+msgstr "Einzelpreis"
+
+msgctxt "field:periodic_invoice.invline,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:periodic_invoice.invline,taxes:"
+msgid "Taxes"
+msgstr "Steuern"

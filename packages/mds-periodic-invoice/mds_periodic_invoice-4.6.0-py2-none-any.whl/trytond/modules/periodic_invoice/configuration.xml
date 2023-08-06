@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- config-form -->
+        <record model="ir.ui.view" id="configuration_form">
+            <field name="model">periodic_invoice.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <!-- action-view -->
+        <record model="ir.action.act_window" id="act_configuration_form">
+            <field name="name">Invoice template</field>
+            <field name="res_model">periodic_invoice.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_configuration_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="configuration_form"/>
+            <field name="act_window" ref="act_configuration_form"/>
+        </record>
+
+        <menuitem parent="account.menu_account_configuration" 
+                action="act_configuration_form" id="menu_configuration_form" 
+                icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_configuration-anon">
+            <field name="model" search="[('model', '=', 'periodic_invoice.configuration')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+    </data>
+</tryton>
