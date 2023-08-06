@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# File: {FILE_NAME}
+# Author: {AUTHOR_NAME}
+from sqlalchemy import Column, Integer
+from sqlalchemy.dialects.mysql import DATETIME
+
+from orm.database import BASE
+
+
+class {CLASS_NAME}Statistics(BASE):
+    """Persistent object of ``{CLASS_NAME}Statistics``
+    """
+    __tablename__ = "{PROJECT_NAME}_statistics"
+
+    start_time = Column('start_time', DATETIME(fsp=6))
+    finish_time = Column('finish_time', DATETIME(fsp=6))
+    finish_status = Column('finish_status', Integer)
