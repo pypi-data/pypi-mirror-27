@@ -1,0 +1,7 @@
+include README.rst
+include CHANGES.rst
+include setup.cfg
+include *.in
+include tox.ini
+include *.rst
+recursive-include src/devpi_theme_16 *
