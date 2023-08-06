@@ -1,0 +1,33 @@
+Metadata-Version: 1.2
+Name: ib_dl
+Version: 1.0
+Summary: Historical market data downloader using Interactive Brokers TWS
+Home-page: https://github.com/tibkiss/ib_dl
+Author: Tibor Kiss
+Author-email: tibor.kiss@gmail.com
+License: Apache License, Version 2.0
+Description-Content-Type: UNKNOWN
+Description: # Historical market data downloader 
+        Utility to download historical market data from Interactive Brokers.
+        The heavy lifting is done by [ib_insync](https://github.com/erdewit/ib_insync) project.
+        
+        ## Requirements
+         * Python 3.6
+         * [ib_insync](https://github.com/erdewit/ib_insync)
+         * [IB's TWS API](http://interactivebrokers.github.io)
+         
+        ## Usage
+         * Install with pip: `pip install ib_dl`
+         * Start TWS, enable API access
+         * Download data: `ib_dl SPY "1 M" /path/to/dest/dir localhost:7492:999`
+        
+        For further details see the help screen.
+        
+        ## License
+        [Apache License Version 2.0](http://www.apache.org/licenses/)
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Office/Business :: Financial :: Investment
+Requires-Python: >=3.6
