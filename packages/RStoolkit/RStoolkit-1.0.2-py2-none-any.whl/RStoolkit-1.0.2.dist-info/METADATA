@@ -1,0 +1,52 @@
+Metadata-Version: 2.0
+Name: RStoolkit
+Version: 1.0.2
+Summary: A powerful and useful package for remote sensing image&video preocessing.
+Home-page: https://github.com/zhaoxuhui/RStoolkit
+Author: zhaoxuhui
+Author-email: zhaoxuhui@whu.edu.cn
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: RemoteSensing Image Video
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Classifier: Topic :: Scientific/Engineering :: GIS
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Requires-Dist: gdal (>=2.1.4)
+Requires-Dist: opencv-python (>=3.1.0)
+
+A powerful and useful package for remote sensing image&video preocessing.
+
+-"image" model contains useful functions for image processing such as image bit-depth convert.
+
+-"video" model contains useful functions for video processing.
+
+-"common" model contains some function for common use,such as findAllFiles().
+
+IMPORTANT Dependencies:
+
+* GDAL
+* OpenCV
+
+You can install them manually with this command:
+
+pip install gdal
+pip install opencv-python
+
+GDAL package website:https://pypi.python.org/pypi/GDAL/2.2.3
+
+OpenCV website:https://pypi.python.org/pypi/opencv-python
+
+If you have any problem using this package,you can connect me via email.
+
+E-mail:zhaoxuhui@whu.edu.cn
+
+Enjoy it!
+
+
