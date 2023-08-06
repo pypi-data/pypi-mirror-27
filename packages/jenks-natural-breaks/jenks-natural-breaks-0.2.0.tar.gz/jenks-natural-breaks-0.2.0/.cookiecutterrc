@@ -1,0 +1,52 @@
+# This file exists so you can easily regenerate your project.
+#
+# `cookiepatcher` is a convenient shim around `cookiecutter`
+# for regenerating projects (it will generate a .cookiecutterrc
+# automatically for any template). To use it:
+#
+#    pip install cookiepatcher
+#    cookiepatcher gh:ionelmc/cookiecutter-pylibrary project-path
+#
+# See:
+#    https://pypi.python.org/pypi/cookiepatcher
+#
+# Alternatively, you can run:
+#
+#    cookiecutter --overwrite-if-exists --config-file=project-path/.cookiecutterrc gh:ionelmc/cookiecutter-pylibrary
+
+default_context:
+
+    appveyor:                  'yes'
+    c_extension_function:      'jenks_matrices'
+    c_extension_module:        '_jenks_matrices'
+    c_extension_optional:      'no'
+    c_extension_support:       'cffi'
+    codacy:                    'no'
+    codeclimate:               'no'
+    codecov:                   'yes'
+    command_line_interface:    'no'
+    command_line_interface_bin_name: 'jenks-natural-breaks'
+    coveralls:                 'no'
+    distribution_name:         'jenks-natural-breaks'
+    email:                     'c@cwa.lv'
+    full_name:                 'Charlie Arnold'
+    github_username:           'cwalv'
+    landscape:                 'no'
+    license:                   'MIT license'
+    linter:                    'flake8'
+    package_name:              'jenks_natural_breaks'
+    project_name:              'jenks_natural_breaks'
+    project_short_description: 'CFFI accelerated Jenks classification'
+    release_date:              'today'
+    repo_name:                 'jenks_natural_breaks'
+    requiresio:                'yes'
+    scrutinizer:               'no'
+    sphinx_doctest:            'no'
+    sphinx_theme:              'sphinx-rtd-theme'
+    test_matrix_configurator:  'no'
+    test_matrix_separate_coverage: 'no'
+    test_runner:               'pytest'
+    travis:                    'yes'
+    version:                   '0.1.0'
+    website:                   'https://github.com/cwalv/jenks_natural_breaks'
+    year:                      'now'

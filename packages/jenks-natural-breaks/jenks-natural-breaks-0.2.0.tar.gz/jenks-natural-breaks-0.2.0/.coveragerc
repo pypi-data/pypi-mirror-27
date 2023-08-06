@@ -1,0 +1,16 @@
+[paths]
+source =
+   src/jenks_natural_breaks
+   */site-packages/jenks_natural_breaks
+
+[run]
+branch = true
+source =
+    jenks_natural_breaks
+    tests
+parallel = true
+
+[report]
+show_missing = true
+precision = 2
+omit = *migrations*
