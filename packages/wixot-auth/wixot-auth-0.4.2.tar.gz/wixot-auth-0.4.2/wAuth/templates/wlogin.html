@@ -1,0 +1,10 @@
+{% extends "admin/login.html" %}
+{% load i18n admin_urls %}
+{% block content %}
+
+<div id="content-main">
+  <div class="submit-row">
+   <a href="{% url 'social:begin' 'google-oauth2' %}">Wixot Login</a><br>
+  </div>
+</div>
+{% endblock %}

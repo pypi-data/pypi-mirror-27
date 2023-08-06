@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: wixot-auth
+Version: 0.4.2
+Summary: A simple Google OAuth2 for wixot
+Home-page: https://www.example.com/
+Author: Emre
+Author-email: yourname@example.com
+License: BSD License
+Description-Content-Type: UNKNOWN
+Description: =====
+        Wixot Auth
+        =====
+        
+        Wixot Auth
+        
+        Quick start
+        -----------
+        
+        1. Settings::
+            INSTALLED_APPS = [
+                ...
+                'wAuth',
+            ]
+        
+        
+        1. Add "wAuth" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED_APPS = [
+                ...
+                'wAuth',
+            ]
+        
+        2. Include the polls URLconf in your project urls.py like this::
+        
+            url(r'^',include('wAuth.urls')),
+        
+        3. Run `python manage.py migrate` to create the polls models.
+        
+        4. Start the development server and visit http://127.0.0.1:8000/wlogin/
+           to auth with wixot mail.
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content

@@ -1,0 +1,21 @@
+{% extends "admin/login.html" %}
+{% load i18n admin_urls %}
+{% block content %}
+
+<div id="content-main">
+  <div class="submit-row">
+    <p>Kullanıcı Adı: {{ user.username }}</p>
+    <p>Email: {{ user.email}}</p>
+    {% if data == 'wixot_user' %}
+    <li><a href="/admin">Admin Panel</a></li>
+    {% else %}
+    <h3>Lütfen Wixot mail ile oturum açın.</h3>
+    <li><a href="/wlogin">Login Page</a></li>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
+
+
+
