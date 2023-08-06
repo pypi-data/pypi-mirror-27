@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import os
+import sys
+
+from rapidpro_controller import get_logger
+from rapidpro_controller.dump import database_cold_backup
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main():
+    try:
+        if database_cold_backup():
+            logger.info("launched postgres dump")
+        else:
+            logger.debug("skipped postgres dump")
+    except:
+        logger.error("failed to launch postrges dump")
+        return 1
+    else:
+        return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
