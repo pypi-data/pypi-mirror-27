@@ -1,0 +1,15 @@
+{% load thumbnail %}
+<header{% if alignment %} class="{{ alignment }}"{% endif %}>
+  {% if image %}
+    {% thumbnail image thumb_opts.size crop=thumb_opts.crop upscale=thumb_opts.upscale subject_location=image.subject_location as thumbnail %}
+    <img class="filer_image {% if thumb_opts.alignment %}{{ thumb_opts.alignment }}{% endif %} img-responsive"
+         src="{{ thumbnail.url }}"
+         alt="{{ image.default_alt_text }}">
+  {% endif %}
+  {% if title %}
+    <h{{ heading_level }}>{{ title }}</h{{ heading_level }}>
+  {% endif %}
+  {% if subtitle %}
+    <p class="subtitle">{{ subtitle }}</p>
+  {% endif %}
+</header>
