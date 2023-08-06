@@ -1,0 +1,23 @@
+Metadata-Version: 1.2
+Name: tokenTracer
+Version: 0.0.1
+Summary: Keycloak token endpoint packet sniffer for HTTP request/response authentication tokens
+Home-page: https://github.com/Bio-Core/tokenTracer
+Author: Dale Dupont
+Author-email: dale.dupont@uhnresearch.ca
+License: MIT
+Description: Packet sniffer command-line utility that filters for HTTP packets.                         The packet sniffer has filters for authentication request/response                         pairs to the Keycloak token endpoint that exchange access tokens.                         The sniffer may pretty-print or write JSON to either stdout or to an output file.                         The utility may either sniff live from a network interface or read from a packet capture file.
+Keywords: utility command-line debugging logging logger monitoring monitor network packet sniffer sniffing HTTP authentication token tokens filter
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: Software Development :: Debuggers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Natural Language :: English
+Classifier: Topic :: System :: Networking :: Monitoring
+Classifier: Topic :: Utilities
+Classifier: Topic :: System :: Logging
+Requires-Python: >=2.7
