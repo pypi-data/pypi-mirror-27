@@ -1,0 +1,12 @@
+[Unit]
+Description=rpi2casterd - hardware interface control daemon for rpi2caster
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/rpi2casterd
+User=monotype
+Group=monotype
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
