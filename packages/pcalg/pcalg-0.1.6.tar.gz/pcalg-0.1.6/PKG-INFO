@@ -1,0 +1,55 @@
+Metadata-Version: 1.1
+Name: pcalg
+Version: 0.1.6
+Summary: CPDAG Estimation using PC-Algorithm
+Home-page: UNKNOWN
+Author: Keiichi SHIMA
+Author-email: keiichi@iijlab.net
+License: BSD License
+Description: CPDAG Estimation using PC-Algorithm
+        ===================================
+        
+        Overview
+        --------
+        
+        This package provides functions to estimate a skeleton graph and a
+        completed partially acyclic graph (CPDAG) from a data matrix that
+        describes the appearance patterns of the graph nodes. The detailed
+        algorithm is written in [Kalisch2007].
+        
+        Code
+        ----
+        
+        The source code is available at https://github.com/keiichishima/pcalg
+        
+        Bug Reports
+        -----------
+        
+        Please submit bug reports or patches through the GitHub interface.
+        
+        Contributors
+        ------------
+        
+        -  Satoru Kobayashi, https://github.com/cpflat
+        
+        References
+        ----------
+        
+        [Kalisch2007] Markus Kalisch and Peter Bhlmann. Estimating
+        high-dimensional directed acyclic graphs with the pc-algorithm. In The
+        Journal of Machine Learning Research, Vol. 8, pp. 613-636, 2007.
+        
+        Author
+        ------
+        
+        Keiichi SHIMA / IIJ Innovation Institute Inc. / WIDE project
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
