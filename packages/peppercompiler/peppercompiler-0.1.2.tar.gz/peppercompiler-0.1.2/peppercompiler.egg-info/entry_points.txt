@@ -1,0 +1,6 @@
+[console_scripts]
+pepper-compiler = peppercompiler.compiler:main
+pepper-design-spurious = peppercompiler.design.spurious_design:main
+pepper-finish = peppercompiler.finish:main
+spuriousSSM = peppercompiler._spuriousSSM_wrapper:main
+
