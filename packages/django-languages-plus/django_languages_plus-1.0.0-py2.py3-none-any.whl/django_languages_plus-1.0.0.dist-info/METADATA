@@ -1,0 +1,187 @@
+Metadata-Version: 2.0
+Name: django-languages-plus
+Version: 1.0.0
+Summary: A django model & fixture containing common languages and culture codes
+Home-page: https://github.com/cordery/django-languages-plus
+Author: Andrew Cordery
+Author-email: cordery@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: django-languages-plus
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 1.11
+Classifier: Framework :: Django :: 2.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: Django (>=1.11)
+Requires-Dist: django-countries-plus (>=1.2.1)
+
+=============================
+Django Languages Plus
+=============================
+
+.. image:: https://badge.fury.io/py/django-languages-plus.svg
+    :target: https://badge.fury.io/py/django-languages-plus
+
+.. image:: https://travis-ci.org/cordery/django-languages-plus.svg?branch=master
+    :target: https://travis-ci.org/cordery/django-languages-plus
+
+.. image:: https://codecov.io/gh/cordery/django-languages-plus/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/cordery/django-languages-plus
+
+
+
+django-languages-plus provides models and fixtures for working with both common languages and 'culture codes' or locale codes, like pt-BR.
+
+Note that this is only a small (but popular) subset of all living languages, and is not even a comprehensive set of the ISO 639 languages.  It does however include the endonym/autonym/exonym.
+
+The Language model contains all ISO 639-1 languages and related information from http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+The model provides the following fields (original wikipedia.org column name in parentheses).
+
+* name_en (ISO Language Name)
+* name_native (Native Name)
+* iso_639_1 (639-1)
+* iso_639_2T = (639-2/T)
+* iso_639_2B = (639-2/B)
+* iso_639_3 = (639-3)
+* family = (Language Family)
+* countries_spoken
+
+
+------------
+Installation
+------------
+
+::
+
+    pip install django-languages-plus
+
+
+------------
+Usage
+------------
+
+1. Add ``languages_plus`` to your INSTALLED_APPS
+
+2. Migrate your database and load the language data fixture::
+
+        python manage.py migrate
+        python manage.py loaddata languages_data.json.gz
+
+3. In your code use::
+
+        from languages_plus.models import Language
+        lang = Language.objects.get(iso_639_1='en')
+
+---------------------------------------
+Generating Culture Codes (ex: pt_BR)
+---------------------------------------
+django-countries-plus(https://pypi.python.org/pypi/django-countries-plus) is now an explicit requirement.  After installing both packages you can run the following command once to associate the two datasets and generate a list of culture codes (pt_BR for example)::
+
+        from languages_plus.utils import associate_countries_and_languages
+        associate_countries_and_languages()
+
+---------------------------------------
+Requirements
+---------------------------------------
+django-countries-plus
+
+Django:  Tested for 1.11, 2.0. Should also work on most previous versions of Django 1.7+.
+
+
+
+Running Tests
+-------------
+
+Does the code actually work?
+
+::
+
+    source <YOURVIRTUALENV>/bin/activate
+    (myenv) $ pip install tox
+    (myenv) $ tox
+
+Credits
+-------
+
+Tools used in rendering this package:
+
+*  Cookiecutter_
+*  `cookiecutter-djangopackage`_
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`cookiecutter-djangopackage`: https://github.com/pydanny/cookiecutter-djangopackage
+
+
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0.0]
+# Added
+- Added support and tests for Django 2.0 (thanks decibyte)
+- Improved associate_countries_and_languages's handling of countries with no languages (thanks decibyte)
+
+### Changed
+- Dropped Language.name_other (unused)
+- Dropped Language.iso_639_6 (Proposal was withdrawn [https://www.iso.org/standard/43380.html])
+- The fixture is now called languages_data.json.gz
+- The fixture is no longer loaded by migration and must be manually loaded
+- Dropped test support for Django <1.11
+- Cleaned up project and documentation
+
+
+### Fixed
+- Fixed issue with Country().get_all_languages
+- Fixed issue with CultureCode.objects.filter_by_codes
+
+## [0.1.6] - 2015-02-22
+### Added
+- Added django-countries-plus as an explicit requirement
+
+## [0.1.5] - 2015-01-11
+
+### Changed
+- Returned to the use of initial_data.
+
+### Fixed
+Eliminated warning for renaming get_query_set to get_queryset.
+
+## [0.1.4] - 2015-01-10
+### Fixed
+- Corrected version number on setup.py
+
+## [0.1.3] - 2015-01-10
+### Added
+- Added Python 3 support.
+- Added basic tests for models.
+- Added countries plus as requirement.
+
+### Changed
+- Changed the way fixtures auto loaded
+
+## [0.1.2] - 2014-11-07
+### Fixed
+- Fixed gzipped fixture loading.
+
+## [0.1.1] - 2014-11-05
+### Added
+- Added missing initial data fixture.
+
+## [0.1.0] - 2014-05-21
+### Added
+- Initial release.
+
+
