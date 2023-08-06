@@ -1,0 +1,111 @@
+  <?xml version="1.0" encoding="utf-8"?>
+  <ns1:systemMetadata xmlns:ns1="http://ns.dataone.org/service/types/v2.0">
+    <serialVersion>59</serialVersion>
+    <identifier>PID_bixtbcchrkzz</identifier>
+    <formatId>netCDF-3</formatId>
+    <size>276</size>
+    <checksum algorithm="SHA-1">d6cd77e7d4ed5727def6b2e8b8a7fdb56a9315df</checksum>
+    <submitter>subj_wc</submitter>
+    <rightsHolder>subj_i</rightsHolder>
+    <accessPolicy>
+      <allow>
+        <subject>subj1</subject>
+        <permission>read</permission>
+      </allow>
+      <allow>
++       <subject>subj2</subject>
++       <subject>subj3</subject>
+        <subject>subj4</subject>
+-       <subject>subj3</subject>
+-       <subject>subj2</subject>
+-       <permission>read</permission>
+        <permission>write</permission>
+      </allow>
+      <allow>
++       <subject>subj10</subject>
++       <subject>subj11</subject>
++       <subject>subj12</subject>
+        <subject>subj5</subject>
++       <subject>subj6</subject>
+        <subject>subj7</subject>
+-       <subject>subj6</subject>
+        <subject>subj8</subject>
+-       <permission>read</permission>
+-       <permission>changePermission</permission>
+-     </allow>
+-     <allow>
+-       <subject>subj11</subject>
+        <subject>subj9</subject>
+-       <subject>subj10</subject>
+-       <subject>subj12</subject>
+        <permission>changePermission</permission>
+      </allow>
+    </accessPolicy>
+    <replicationPolicy numberReplicas="0" replicationAllowed="false">
+      <blockedMemberNode>mn_j</blockedMemberNode>
+      <blockedMemberNode>mn_oa</blockedMemberNode>
+      <blockedMemberNode>mn_r</blockedMemberNode>
+    </replicationPolicy>
++   <archived>false</archived>
+    <dateUploaded>2028-12-06T00:35:24.696889Z</dateUploaded>
+    <dateSysMetadataModified>2028-12-16T00:35:24.696889Z</dateSysMetadataModified>
+    <originMemberNode>mn_pn</originMemberNode>
+    <authoritativeMemberNode>mn_g</authoritativeMemberNode>
+    <replica>
+-     <replicaMemberNode>mn_dh</replicaMemberNode>
+?                           ^^
+
++     <replicaMemberNode>mn_gx</replicaMemberNode>
+?                           ^^
+
+-     <replicationStatus>completed</replicationStatus>
+?                        ^^^^ --
+
++     <replicationStatus>failed</replicationStatus>
+?                        ^^^
+
+-     <replicaVerified>2042-06-30T05:30:11.779721Z</replicaVerified>
+?                      ^^^^  ^  ---- ^^  ^ ^^^^
+
++     <replicaVerified>1973-08-14T23:47:18.621357Z</replicaVerified>
+?                      ^^^^  ^ ++++  ^^  ^ ^  +++
+
+    </replica>
+    <replica>
+      <replicaMemberNode>mn_wr</replicaMemberNode>
+      <replicationStatus>requested</replicationStatus>
+      <replicaVerified>2023-11-05T11:20:25.020399Z</replicaVerified>
+    </replica>
+    <replica>
+      <replicaMemberNode>mn_x</replicaMemberNode>
+      <replicationStatus>queued</replicationStatus>
+      <replicaVerified>2035-07-03T19:42:09.673155Z</replicaVerified>
+    </replica>
+    <replica>
+-     <replicaMemberNode>mn_gx</replicaMemberNode>
+?                           ^^
+
++     <replicaMemberNode>mn_dh</replicaMemberNode>
+?                           ^^
+
+-     <replicationStatus>failed</replicationStatus>
+?                        ^^^
+
++     <replicationStatus>completed</replicationStatus>
+?                        ^^^^ ++
+
+-     <replicaVerified>1973-08-14T23:47:18.621357Z</replicaVerified>
++     <replicaVerified>2042-06-30T05:30:11.779721Z</replicaVerified>
+    </replica>
+    <seriesId>SID_cqkaeewauixy</seriesId>
+    <mediaType name="media_type_ig">
++     <property name="prop_ch">sd</property>
++     <property name="prop_jg">qt</property>
++     <property name="prop_wl">ft</property>
+      <property name="prop_xz">eu</property>
+-     <property name="prop_jg">qt</property>
+-     <property name="prop_ch">sd</property>
+-     <property name="prop_wl">ft</property>
+    </mediaType>
+    <fileName>file_vdl</fileName>
+  </ns1:systemMetadata>
