@@ -1,0 +1,29 @@
+Metadata-Version: 2.0
+Name: philip
+Version: 0.0.0
+Summary: Predictable Python package management
+Home-page: https://github.com/taion/philip
+Author: Jimmy Jia
+Author-email: tesrin@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: pip pipfile
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: click
+Requires-Dist: pip-tools
+Requires-Dist: pew
+Requires-Dist: toml
+Requires-Dist: backports.tempfile; python_version < "3.2"
+Requires-Dist: pathlib; python_version < "3.4"
+
+UNKNOWN
+
+
