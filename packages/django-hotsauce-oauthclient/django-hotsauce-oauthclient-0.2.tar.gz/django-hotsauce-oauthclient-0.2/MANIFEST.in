@@ -1,0 +1,10 @@
+global-include README README.* BUGS TODO CHANGES
+global-include LICENSE INSTALL AUTHORS 
+global-exclude lib/*.egg-info 
+global-exclude push_changes.*
+global-exclude bin/*
+
+include ez_setup.py PKG-INFO.in setup.cfg bootstrap djangorc.sample
+
+recursive-include docs *.txt *.rst *.wiki *.patch
+recursive-include lib *.py *.pyx *.pxd

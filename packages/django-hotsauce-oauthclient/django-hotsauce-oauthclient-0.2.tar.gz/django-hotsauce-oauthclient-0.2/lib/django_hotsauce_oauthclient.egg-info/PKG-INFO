@@ -1,0 +1,41 @@
+Metadata-Version: 1.1
+Name: django-hotsauce-oauthclient
+Version: 0.2
+Summary: Simple WSGI middleware for OAuth 2.0
+Home-page: https://www.isotopesoftware.ca/software/django-hotsauce-oauthclient/
+Author: Etienne Robillard
+Author-email: tkadm30@yandex.ru
+License: Apache
+Description: django-hotsauce-oauthclient
+        ===========================
+        
+        .. image:: docs/_static/oauth2.png
+        
+        This module provides a simple WSGI middleware that requires the user to
+        authenticate via the specific `OAuth 2.0`_ service e.g. Facebook_, Google_,
+        GitHub_.
+        
+        You can install the package via downloading from PyPI_:
+        
+        .. code-block:: console
+        
+           $ pip install django-hotsauce-oauthclient
+        
+        Read the documentation as well.
+        
+        .. _OAuth 2.0: http://oauth.net/2/
+        .. _Facebook: http://www.facebook.com/
+        .. _Google: http://www.google.com/
+        .. _GitHub: https://github.com/
+        .. _PyPI: https://pypi.python.org/pypi/django-hotsauce-oauthclient
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware
