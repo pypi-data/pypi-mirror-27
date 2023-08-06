@@ -1,0 +1,29 @@
+language: python
+env:
+    global:
+    -GH_REF: github.com/dseuss/mpnum.git
+
+notifications:
+    email: false
+
+python:
+    - '2.7'
+    - '3.4'
+    - '3.5'
+    - '3.6'
+
+addons:
+    apt:
+        packages:
+            - libhdf5-serial-dev
+
+install:
+    # install test dependencies
+    - pip install --only-binary=numpy,scipy,h5py -r requirements.txt
+    - pip install coveralls
+    - pip freeze
+
+script:
+    - bash tests/travis.sh
+after_success:
+    coveralls
