@@ -1,0 +1,43 @@
+Metadata-Version: 1.1
+Name: payeer_api
+Version: 0.1
+Summary: Python Payeer API client
+Home-page: https://github.com/AshotS/payeer_api
+Author: AshotS
+Author-email: sarckisyanashot@yandex.ru
+License: MIT license
+Description-Content-Type: UNKNOWN
+Description: ================
+        payeer_api
+        ================
+        
+        payeer_api - Реализация клиента для Payeer API.
+        
+        До использования следует ознакомиться с официальной документацией
+        Payeer (https://payeercom.docs.apiary.io/). Приложение реализует
+        протокол взаимодействия, описанный в этом документе.
+        
+        Установка
+        =========
+        
+        ::
+        
+            $ pip install payeer_api
+        
+        Использование
+        =============
+        
+        Пример::
+        
+        from payeer_api import PayeerAPI
+        
+        account = 'P1000000'
+        api_id = '123456789'
+        api_pass = 'KRicaFodFrgJer6'
+        
+        p = PayeerAPI(account, api_id, api_pass)
+        
+        p.get_balance()
+Keywords: payeer
+Platform: UNKNOWN
+Requires: requests
