@@ -1,0 +1,3 @@
+This is a scikit intended to include numerical methods for smoothing
+data. 
+
