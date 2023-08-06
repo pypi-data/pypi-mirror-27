@@ -1,0 +1,5 @@
+include README.rst
+include LICENSE
+include logomaker/make_logo_arguments.txt
+include logomaker/logomaker_cmdline
+recursive-include make_logo_arguments.txt
