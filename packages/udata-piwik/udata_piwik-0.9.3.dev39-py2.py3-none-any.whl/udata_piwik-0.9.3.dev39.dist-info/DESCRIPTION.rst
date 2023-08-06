@@ -1,0 +1,88 @@
+uData-piwik
+===========
+
+
+.. image:: https://badges.gitter.im/Join%20Chat.svg
+    :target: https://gitter.im/opendatateam/udata
+    :alt: Join the chat at https://gitter.im/opendatateam/udata
+
+
+This plugin provide integration between uData and Piwik
+
+Compatibility
+-------------
+
+**udata-piwik** requires Python 2.7+ and `uData`_.
+
+Installation
+------------
+
+Install `uData`_.
+
+Remain in the same virtual environment (for Python) and use the same version of npm (for JS).
+
+Install **udata-piwik**:
+
+.. code-block:: shell
+
+    pip install udata-piwik
+
+
+
+Modify your local configuration file of **udata** (typically, `udata.cfg`) as following:
+
+.. code-block:: python
+
+    PLUGINS = ['piwik']
+    # Tracked site id in Piwik
+    PIWIK_ID = 1
+    PIWIK_URL = 'stats.data.gouv.fr'
+    PIWIK_AUTH = '<32-chars-auth-token-from-piwik>'
+    # Mapping of piwik goals {'<name_in_udata>': <id_in_piwik>}
+    # All keys are required
+    PIWIK_GOALS = {
+        'NEW_DATASET': 1,
+        'NEW_REUSE': 2,
+        'NEW_FOLLOW': 3,
+        'SHARE': 4,
+        'RESOURCE_DOWNLOAD': 5,
+        'RESOURCE_REDIRECT': 6,
+    }
+    # `client.track` method `requests` timeout
+    PIWIK_TRACK_TIMEOUT = 60  # in seconds
+    # `client.analyze` method `requests` timeout
+    PIWIK_ANALYZE_TIMEOUT = 60 * 5  # in seconds
+
+
+
+.. _circleci-url: https://circleci.com/gh/opendatateam/udata-piwik
+.. _circleci-badge: https://circleci.com/gh/opendatateam/udata-piwik.svg?style=shield
+.. _gitter-badge: https://badges.gitter.im/Join%20Chat.svg
+.. _gitter-url: https://gitter.im/opendatateam/udata
+.. _uData: https://github.com/opendatateam/udata
+
+Changelog
+=========
+
+Current (in progress)
+---------------------
+
+- Add a timeout to `analyze()` `#19 <https://github.com/opendatateam/udata-piwik/pull/19>`_
+
+0.9.2 (2017-12-11)
+------------------
+
+- Add a timeout to `track()` `#18 <https://github.com/opendatateam/udata-piwik/pull/18>`_
+
+0.9.1 (2017-01-10)
+------------------
+
+- Fix build and packaging
+
+0.9.0 (2017-01-10)
+------------------
+
+- First published release
+
+
+
