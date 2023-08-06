@@ -1,0 +1,39 @@
+Metadata-Version: 2.0
+Name: celery-connectors
+Version: 1.0.15
+Summary: Celery Headless Connectors
+Home-page: https://github.com/jay-johnson/celery-connectors
+Author: Jay Johnson
+Author-email: jay.p.h.johnson@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: pep8 (>=1.7.1)
+Requires-Dist: flake8 (>=3.4.1)
+Requires-Dist: boto3
+Requires-Dist: pycurl
+Requires-Dist: redis
+Requires-Dist: celery (>=4.1.0)
+Requires-Dist: kombu (>=4.1.0)
+Requires-Dist: logstash-formatter
+Requires-Dist: python-logstash
+Requires-Dist: docker-compose
+Requires-Dist: coverage
+Requires-Dist: future
+Requires-Dist: pylint
+Requires-Dist: unittest2
+Requires-Dist: mock
+
+Running headless Celery bootsteps to process json or pickled messages from Redis, RabbitMQ or AWS SQS. Includes Kombu message processors with relay publish-hook support for pub-sub or auto-caching functionality. Also has a Kombu Publisher with docker RabbitMQ and Redis containers too. Added SQS demo publish and subscribe tools. For background, headless means no task result backend (like mongo). I am planning to glue Django and Jupyter together with this connection framework, and allow workers to process messages from my windows laptop out of a shared broker.
+
+
