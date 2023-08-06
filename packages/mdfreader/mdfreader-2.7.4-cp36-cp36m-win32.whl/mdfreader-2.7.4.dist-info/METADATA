@@ -1,0 +1,32 @@
+Metadata-Version: 2.0
+Name: mdfreader
+Version: 2.7.4
+Summary: A Measured Data Format file parser
+Home-page: https://github.com/ratal/mdfreader
+Author: Aymeric Rateau
+Author-email: aymeric.rateau@gmail.com
+License: GPL3
+Description-Content-Type: UNKNOWN
+Requires-Dist: numpy (>=1.13.1)
+Requires-Dist: sympy
+Requires-Dist: cython (>=0.21)
+Requires-Dist: lxml
+Provides-Extra: compression
+Requires-Dist: blosc; extra == 'compression'
+Provides-Extra: converter
+Requires-Dist: PyQt4; extra == 'converter'
+Provides-Extra: experimental
+Requires-Dist: bitarray; extra == 'experimental'
+Provides-Extra: export
+Requires-Dist: scipy; extra == 'export'
+Requires-Dist: h5py; extra == 'export'
+Requires-Dist: xlwt; extra == 'export'
+Requires-Dist: xlwt3; extra == 'export'
+Requires-Dist: openpyxl; extra == 'export'
+Requires-Dist: pandas; extra == 'export'
+Provides-Extra: plot
+Requires-Dist: matplotlib; extra == 'plot'
+
+**MDFREADER**
+
+
