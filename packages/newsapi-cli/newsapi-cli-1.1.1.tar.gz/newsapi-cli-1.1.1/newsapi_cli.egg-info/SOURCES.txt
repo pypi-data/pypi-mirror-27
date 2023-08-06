@@ -1,0 +1,12 @@
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+newsapi/__init__.py
+newsapi/cli.py
+newsapi/commands/__init__.py
+newsapi/commands/base.py
+newsapi/commands/headlines.py
+newsapi/commands/search.py
+newsapi/commands/sources.py
+tests/test_cli.py
