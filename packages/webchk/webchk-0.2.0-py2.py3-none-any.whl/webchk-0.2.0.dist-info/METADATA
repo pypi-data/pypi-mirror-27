@@ -1,0 +1,79 @@
+Metadata-Version: 2.0
+Name: webchk
+Version: 0.2.0
+Summary: A command-line tool for checking HTTP status codes and response headers of URLs
+Home-page: https://github.com/amgedr/webchk
+Author: Amged Rustom
+Author-email: amgadhs@codehill.com
+License: MIT license
+Keywords: webchk site management www http link check
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Site Management
+Classifier: Topic :: Internet :: WWW/HTTP :: Site Management :: Link Checking
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+
+======
+webchk
+======
+
+
+.. image:: https://img.shields.io/pypi/v/webchk.svg
+        :target: https://pypi.python.org/pypi/webchk
+
+.. image:: https://img.shields.io/travis/amgedr/webchk.svg
+        :target: https://travis-ci.org/amgedr/webchk
+
+.. image:: https://readthedocs.org/projects/webchk/badge/?version=latest
+        :target: https://webchk.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://pyup.io/repos/github/amgedr/webchk/shield.svg
+     :target: https://pyup.io/repos/github/amgedr/webchk/
+     :alt: Updates
+
+
+A command-line tool for checking HTTP status codes and response headers of URLs
+
+
+* Free software: MIT license
+* Documentation: https://webchk.readthedocs.io.
+
+
+Features
+--------
+
+* TODO
+
+Credits
+---------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+
+=======
+History
+=======
+
+0.2.0 (2017-12-14)
+------------------
+
+* Code refactoring
+* Created setup.py
+
+
+
