@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: infi.rpc
+Version: 0.2.5
+Summary: rpc
+Home-page: https://github.com/Infinidat/infi.rpc
+Author: Arnon Yaari
+Author-email: arnony@infinidat.com
+License: BSD
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: Logbook (>=0.8)
+Requires-Dist: infi.gevent-utils
+Requires-Dist: infi.logging (>=0.4.1)
+Requires-Dist: jsonpickle
+Requires-Dist: setuptools
+Requires-Dist: zerorpc
+
+rpc
+
+
