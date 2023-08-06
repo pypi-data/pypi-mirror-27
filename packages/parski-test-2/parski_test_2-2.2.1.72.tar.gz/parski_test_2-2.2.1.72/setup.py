@@ -1,0 +1,12 @@
+
+from distutils.core import setup
+setup(
+  name = 'parski_test_2',
+  packages = ['parski'],
+  version = '2.2.1.72',
+  description = 'Helper library for filtering json data',
+  author = 'Russell Endicott',
+  author_email = 'rendicott@gmail.com',
+  keywords = ["vpc", "json", "parski"],
+  classifiers = []
+)
