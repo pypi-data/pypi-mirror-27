@@ -1,0 +1,487 @@
+Metadata-Version: 1.1
+Name: sqlphile
+Version: 0.1.3.3
+Summary: SQL Phile
+Home-page: https://gitlab.com/hansroh/sqlphile
+Author: Hans Roh
+Author-email: hansroh@gmail.com
+License: MIT
+Download-URL: https://pypi.python.org/pypi/sqlphile
+Description-Content-Type: UNKNOWN
+Description: ==========
+        SQLPhile
+        ==========
+        
+        .. contents:: Table of Contents
+        
+        Introduce
+        =============
+        
+        SQLPhile is a Python styled SQL generator and SQL template engine. It looks like Django ORM but it hasn't any relationship with Django or ORM.
+        
+        But it is inspired by Django ORM and iBATIS SQL Maps.
+        
+        SQLPhile might be useful for keeping clean look of your app script. It can make hide SQL statements for your script by using Python functions or/and writing SQL templates to seperated files.
+        
+        For Example,
+        
+        .. code:: python
+          
+          conn = psycopg2.connect (...)
+          cursor = conn.cursor ()
+          
+          cursor.execute ("""
+            SELECT type, org, count(*) cnt FROM rc_file
+            WHERE org = 1 AND filename LIKE '%OCD'
+            GROUP BY type    
+            ORDER BY org, cnt DESC
+            LIMIT 10
+            OFFSET 10
+          """)
+        
+        This codes can be written with SQLPhile:
+        
+        .. code:: python
+        
+          sp = SQLPhile ()
+          
+          conn = psycopg2.connect (...)
+          cursor = conn.cursor ()
+          
+          q = sp.ops.select ("rc_file", "type", "count(*) cnt")
+          q.filter (org = 1, name__endswith = 'OCD')
+          q.group_by ("type").order_by ("org", "-cnt")[10:20]
+          cursor.execute (q.as_sql ())
+        
+        Or you can use SQL template file: sqlmaps/file.sql:
+        
+        .. code:: html
+        
+          <sql name="get_stat">
+            SELECT type, org, count(*) cnt FROM rc_file
+            WHERE {_filters}
+            GROUP BY type    
+            ORDER BY org, cnt DESC
+            {limit} {_offset}
+          </sql>
+        
+        Your app code is,
+          
+        .. code:: python
+          
+          sp = SQLPhile ("sqlmaps")
+          
+          conn = psycopg2.connect (...)
+          cursor = conn.cursor ()
+          
+          q = sp.file.get_stat.filter (org = 1, name__endswith = 'OCD')[10:20]
+          cursor.execute (q.as_sql ())
+        
+        
+        SQLPhile
+        ===========
+        
+        SQLPhile is main class of this package.
+        
+        .. code:: python
+          
+          from sqlphile import SQLPhile
+          
+          sp = SQLPhile (dir = None, auto_reload = False, engine = "postgresql")
+          
+        Once SQLPhile is created, you can reuse it through entire your app.
+        
+        
+        Simple Query
+        --------------
+        
+        SQLPhile provide *ops* object for generic SQL operation.
+        
+        .. code:: python
+          
+          q = sp.ops.insert (tbl, name = "Hans", created = datetime.date.today ())  
+          cursor.execute (q.as_sql ())
+          
+          q = sp.ops.update (tbl, name = "Jenny", modified = datetime.date.today ())
+          q.filter (...)
+          cursor.execute (q.as_sql ())
+          
+          q = sp.ops.select (tbl, "id", "name", "create", "modified")
+          q.filter (...)
+          cursor.execute (q.as_sql ())
+          
+          q = sp.ops.delete (tbl)
+          q.filter (...)
+          cursor.execute (q.as_sql ())
+        
+          
+        Templating For Complex and Highly Customized Query
+        ------------------------------------------------------
+          
+        If you create SQL templates in specific directory,
+        
+        .. code:: python
+        
+          from sqlphile import SQLPhile
+          
+          sp = SQLPhile (dir = "./sqlmaps", auto_reload = True)
+        
+        SQLPhile will load all of your templates in ./sqlmaps.
+        
+        If you are under developing phase, set auto_reload True.
+        
+        Assume there is a template file named 'file.sql':
+        
+        .. code:: html
+        
+          <sqlmap version="1.0">
+          
+          <sql name="get_stat">
+            SELECT type, org, count(*) cnt FROM rc_file
+            WHERE {_filters}
+            GROUP BY type    
+            ORDER BY org, cnt DESC
+            {_limit} {_offset}
+          </sql>
+        
+        It looks like XML file, BUT IT'S NOT. All tags - <sqlmap>, <sql></sql> should be started at first of line. But SQL of inside is at your own mind but I recommend give some indentation.
+        
+        Now you can access each sql temnplate via filename without extension and query name attribute:
+          
+        .. code:: python
+        
+          # filename.query name
+          q = sp.file.get_stat
+          q.filter (...).order_by (...)
+          
+          # or
+          q = sp.file.get_stat.filter (...).order_by (...)
+        
+        Note: filename is *default.sql*, you can ommit filename.
+        
+        .. code:: python
+        
+          q = sp.get_stat
+          q.filter (...).order_by (...)
+        
+        Note 2: SHOULD NOt use "ops.*" as filename.
+        
+        
+        Filtering & Excluding
+        ======================
+        
+        filter function is very simailar with Djnago ORM.
+        
+        .. code:: python
+        
+          q = sp.get_stat
+          
+          q.filter (__all = True)
+          >> 1 = 1
+          
+          q.filter (id__all = True)
+          >> 1 = 1
+        
+          q.filter (id = 1)
+          >> id = 1
+          
+          q.filter (id__exact = 1)
+          >> id = 1
+          
+          q.filter (id__eq = 1)
+          >> id = 1
+          
+          q.exclude (id = 1)
+          >> NOT (id = 1)
+          
+          q.filter (id__neq = 1)
+          >> id <> 1
+          
+          q.filter (id__gte = 1)
+          >> id >= 1
+          
+          q.filter (id__lt = 1)
+          >> id < 1
+        
+          q.filter (id__between = (10, 20))
+          >> id BETWEEN 10 AND 20
+          
+          q.filter (name__contains = "fire")
+          >> name LIKE '%fire%'
+          
+          q.exclude (name__contains = "fire")
+          >> NOT name LIKE '%fire%'
+          
+          q.filter (name__startswith = "fire")
+          >> name LIKE 'fire%'
+          
+          # escaping %
+          q.filter (name__startswith = "fire%20ice")
+          >> name LIKE 'fire\%20ice%'
+          
+          q.filter (name__endswith = "fire")
+          >> name LIKE '%fire'
+          
+          q.filter (name = None)
+          >> name IS NULL
+          
+          q.exclude (name = None)
+          >> NOT name IS NULL
+          
+          q.filter (name__isnull = True)
+          >> name IS NULL
+          
+          q.filter (name__isnull = False)
+          >> name IS NOT NULL
+          
+        Also you can add multiple filters:
+        
+        .. code:: python
+        
+          q.filter (name__isnull = False, id = 4)
+          >> name IS NOT NULL AND id = 4
+        
+        All filters will be joined with "AND" operator.
+        
+        Q Object
+        ----------
+          
+        How can add OR operator?
+        
+        .. code:: python
+        
+          from sqlphile import Q
+          
+          q.filter (Q (id = 4) | Q (email__contains = "org"), name__isnull = False)
+          >> name IS NOT NULL AND (id = 4 OR email LIKE '%org%')
+          
+        Note that Q objects are first, keywords arguments late. Also you can add seperatly.
+        
+        .. code:: python
+        
+          q.filter (name__isnull = False)
+          q.filter (Q (id = 4) | Q (email__contains = "org"))
+          >> (id = 4 OR email LIKE '%org%') AND name IS NOT NULL
+        
+        If making excluding filter with Q use tilde(*~*),
+        
+        .. code:: python
+        
+          q.filter (Q (id = 4) | ~Q (email__contains = "org"))
+          >> (id = 4 OR NOT email LIKE '%org%')
+        
+        
+        F Object
+        ----------
+          
+        All value will be escaped or automatically add single quotes, but for comparing with other fileds use *F*.
+        
+        .. code:: python
+        
+          from sqlphile import F
+          
+          Q (email = F ("b.email"))
+          >> email = b.email
+          
+          Q (email__contains = F ("org"))
+          >> email LIKE '%' || org || '%'
+          
+        F can be be used for ops.
+        
+        .. code:: python
+        
+          q = sp.ops.update (tbl, n_view = F ("n_view + 1"))
+          q.filter (...)
+          cursor.execute (q.as_sql ())
+        
+        Ordering & Grouping
+        ====================
+        
+        For ordering,
+        
+        .. code:: python
+        
+          q = sp.ops.select (tbl, "id", "name", "create", "modified")
+          q.filter (...)
+          q.order_by ("id", "-modified")
+          >> ORDER BY id, modified DESC
+        
+        For grouping,  
+        
+        .. code:: python
+        
+          q = sp.ops.select (tbl, "name", "count(*) cnt")
+          q.filter (...)
+          q.group_by ("name")
+          >> GROUP BY name
+          
+          q.having ("count(*) > 10")
+          >> GROUP BY name HAVING count(*) > 10
+        
+        Offset & Limit
+        ================
+        
+        For limiting record set,
+        
+        .. code:: python
+        
+          q = sp.ops.select (tbl, "id", "name", "create", "modified")
+          q [:100]
+          >> LIMIT 100
+        
+          q [10:30]
+          >> LIMIT 20 OFFSET 10
+          
+        Be careful for slicing and limit count.
+        
+        Returning
+        ============
+        
+        For Returning columns after insertinig or updating data,
+        
+        .. code:: python
+        
+          q = sp.ops.insert (tbl, name = "Hans", created = datetime.date.today ())  
+          q.returning ("id", "name")
+        	>> RETURNING id, name
+        
+        
+        Using Template
+        =================
+        
+        Template is like this,
+        
+        .. code:: html
+        
+          <sqlmap version="1.0">
+          
+          <sql name="get_stat">
+            SELECT type, org, count(*) cnt FROM rc_file
+            WHERE {_filters}
+            GROUP BY type
+            ORDER BY org, cnt DESC
+            {_limit} {offset}
+          </sql>
+          
+          <sql name="get_file">
+            SELECT * cnt FROM rc_file
+            WHERE {_filters}
+            {_order_by}
+            {_limit} 
+            {_offset}
+          </sql>
+        
+        You just fill variables your query reqiures,
+        
+        .. code:: python
+        
+          q = sp.file.get_file.filter (id__gte = 1000)[:20]
+          q.order_by ("-id")
+        
+        Current reserved variables are,
+        
+        - _filters
+        - _group_by
+        - _order_by
+        - _limit
+        - _offset
+        - _having
+        - _returning
+        - _columns: comma joined column list fed by data ()
+        - _values: comma joined value list fed by data ()
+        - _pairs: comma joined column=value list fed by data ()
+        
+        Variablize Your Query
+        -----------------------
+        
+        You can add variable on your sql.
+        
+        .. code:: html
+          
+          <sql name="get_file">
+            SELECT {cols} cnt FROM {tbl}
+            WHERE {_filters}
+          </sql>
+        
+        Now feed keywords args with feed ():
+        
+        .. code:: python
+        
+          q = sp.file.get_file.filter (id__gte = 1000)
+          q.feed (cols = "id, name, created", tbl = "rc_file")
+        
+        
+        Also you can feed values with similar way,
+        
+        .. code:: html
+          
+          <sql name="get_file">
+            INSERT INTO {tbl} (name, create, birth_year)
+            VALUES ({name}, {created}, {birth_year})
+          </sql>
+        
+        .. code:: python
+          
+          q = sp.file.get_file
+          q.feed (tbl = "rc_file")
+          q.data (name = "Hans Roh", created = datetime.date.today (), birth_year = 2000)
+        
+        What differences with feed? data () will escape values for fitting SQL. You needn't care about sing quotes, escaping or type casting on date time field.
+        
+        Actually, feed () can be omitable,
+        
+        .. code:: python
+          
+          # like instance constructor
+          q = sp.file.get_file (tbl = "rc_file")
+          q.data (name = "Hans Roh", created = datetime.date.today (), birth_year = 2000)
+        
+        What differences with feed? data () will escape values for fitting SQL. You needn't care about sing quotes, escaping or type casting on date time field.
+        
+        D Object
+        ---------
+          
+        Sometimes, data() method is insufficient. D object convert dictionary into SQL column and value format and can feed them into SQL template.
+        
+        .. code:: python
+          
+          from sqlphile import D
+        	
+          d = D (name = "Hans", id = 1, email = None)
+          d.values
+          >> 'Hans', 1, NULL
+          
+          d.columns
+          >> name, id, email
+          
+          d.pairs
+          >> name = 'Hans', id = 1, email = NULL
+          
+        And you can feed to template.
+        
+        .. code:: html
+        
+          <sql name="get_file">
+            INSERT ({_columns}, {additional_columns})
+            VALUES ({_valuess}, {additional_values})
+            {_returning};
+          </sql>
+        
+        In app,
+          
+        .. code:: python
+          
+          q = sp.file.get_file.data (area = "730", additional = D (name = 'Hans', id = 1))
+          q.returning ("id")
+          cursor.execute (q.as_sql ())
+        
+Platform: posix
+Platform: nt
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: Database
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
