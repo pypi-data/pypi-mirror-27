@@ -1,0 +1,239 @@
+#!python
+# -*- coding: utf-8 -*-
+
+import os
+from sh import git
+from argparse import ArgumentParser, RawTextHelpFormatter
+
+def parse_args():
+    parser = ArgumentParser(formatter_class=RawTextHelpFormatter)
+    parser.description = "This tool will incrementally add & commit changes to a repository, the args are used as triggers for various settings"
+    parser.add_argument('-a', '--all', default=False, action='store_true', help='make all avaliable commits for all catagories')
+    parser.add_argument('-i', '--include', choices=options + short_opts, help="include actions for provided catagories\nAll Avaliable Catagories below", nargs='*')
+    parser.add_argument('-v', '--verbose', default=False, action='store_true', help='display verbose information')
+    parser.add_argument('--interactive', default=False, action='store_true', help='force confirmation prompts')
+    parser.add_argument('-p', '--push', default=False, action='store_true', help='pushes changes to remote repo')
+    parser.add_argument('--passive', default=False, action='store_true', help='Enables passive error handling, displays errors after execution is complete')
+    parser.add_argument('files', default=None, nargs='*')
+    parser.epilog = catagories_string()
+    args = parser.parse_args()
+    if args.all is True:
+        args.include = options
+    return args
+
+def validate_opts():
+    def __get_index(arg):
+        if arg in options:
+            return options.index(arg)
+        elif arg in short_opts:
+            return short_opts.index(arg)
+    valid_opts = []
+    for arg in args.include:
+        index = __get_index(arg)
+        if index is not None:
+            option, short_opt = match_short_opts_and_options(index)
+            valid_opts += [option, short_opt]
+    return list(set(valid_opts))
+
+def is_valid_opt(option):
+    if option in valid_opts:
+        return True
+    return False
+
+def is_valid_file(filename):
+    if args.files is None or filename in args.files:
+        return True # None == accept all filenames
+    return False
+
+def fix_string(s):
+    color_codes = ['\x1b[31m', '\x1b[m', '\x1b[32m']
+    remove_strings = [' ', '\t'] + color_codes
+    for rm_str in remove_strings:
+        s = s.replace(rm_str, '')
+    return s
+
+def match_short_opts_and_options(index):
+    return options[index], short_opts[index]
+
+def catagories_string():
+    s = "Catagories: \n"
+    for n, option in enumerate(options):
+        short_opt = short_opts[n]
+        s = "{}   -{}, --{}\n".format(s, short_opt, option)
+    return s
+
+def parse():
+
+    def __is_file(filename, path=os.getcwd()):
+        return os.path.isfile("{}/{}".format(path, filename))
+
+    def __is_directory(filename, path=os.getcwd()):
+        return os.path.isdir("{}/{}".format(path, filename))
+
+    def file_exists(filename, path=os.getcwd()):
+        return __is_file(filename, path) or __is_directory(filename, path)
+
+    def __has_option(line):
+        x = False
+        for option in options:
+            if option in line:
+                x = True
+        return x
+
+    def strip(status):
+        for n, line in enumerate(status):
+            if line is None or line == '':
+                del(status[n])
+        return status
+
+    def trim_non_files_and_parse_to_dict(status):
+        my_dict = {}
+        for n, line in enumerate(status):
+            try:
+                _ = line.split(':')
+                filename = _[1]
+                option = _[0]
+            except IndexError:
+                filename = line
+                option = 'untracked'
+            if file_exists(filename) is True:
+                my_dict[filename] = option
+        return my_dict
+
+    status = git('status').stdout.decode('utf-8')
+    status = fix_string(status).splitlines()
+    status = strip(status)
+    status = trim_non_files_and_parse_to_dict(status)
+    return status
+
+def commit(filename, index):
+    def check_output(output):
+        if output.exit_code != 0:
+            print('[!] Error! Something went wrong')
+            print('cmd: {}'.format(output.ran))
+            try:
+                stderr = output.stderr.decode('utf-8')
+            except AttributeError:
+                stderr = output.stderr
+            print('stderr: {}'.format(stderr))
+            raise SystemExit
+    option = options[index]
+    flag = flags[index]
+    if is_valid_opt(option):
+        check_output(git.add(filename))
+        check_output(git.commit("-m {} {}".format(flag, filename)))
+
+def prompt():
+    if args.interactive is False:
+        return
+    prompt = input('These are the files youll be adding & commiting to the repo\nWould you like to proceed? [y/n]\n>_ ').lower()
+    if 'y' not in prompt:
+        '[!] You pressed: {}\nexiting...'.format(prompt)
+        raise SystemExit
+
+def display_info(status):
+    if args.verbose is True:
+        import pprint
+        print('Verbose Info:')
+        pprint.pprint(status, indent=4)
+        print('=' * 80)
+    filename_max_len = max_length(build_array(status))
+    options_max_len = max_length(options)
+    flag_max_len = max_length(flags)
+    for filename, option in status.items():
+        if is_valid_opt(option) is True:
+            flag = flags[options.index(option)]
+            s = build_pretty_string(flag, flag_max_len, filename, filename_max_len, option, options_max_len)
+            print(s)
+
+def build_pretty_string(flag, flag_max_len, filename, filename_max_len, option, options_max_len):
+    flag_str = pretty_string(flag, flag_max_len)
+    filename_str = pretty_string(filename, filename_max_len)
+    options_str = pretty_string(option, options_max_len)
+    built_str = '{}{}'.format(flag_str, filename_str)
+    built_str = pretty_string(built_str, flag_max_len + filename_max_len + options_max_len)
+    built_str = '{}{}'.format(built_str, options_str)
+    return built_str
+
+def pretty_string(s, max_len, min_spaces=4):
+    while len(s) < max_len:
+        s = '{} '.format(s)
+    while s[-4:] != ' ' * min_spaces:
+        s = '{} '.format(s)
+    return s
+
+def build_array(status):
+    return [i for i in list(status.keys())]
+
+def max_length(list_of_lists):
+    '''
+    :param list of lists:
+    figures out the max_length for each list
+    :param arg: **args, a list of lists, fetches the max length
+    '''
+    def __check(array, longest_length):
+        if type(array) == str:
+            return len(array)
+        for i in array:
+            if i > longest_len:
+                return len(i)
+        return
+    longest_len = 0
+    for sublist in list_of_lists: # enter list_of_lists[arg]
+        x = __check(sublist, longest_len)
+        if x is not None:
+            if x > longest_len:
+                longest_len = x
+    return longest_len
+
+def _run(option, filename):
+    if is_valid_opt(option) is True:
+        index = options.index(option)
+        commit(filename, index)
+
+def run(status):
+    for filename, option in status.items():
+        if args.passive is True:
+            try_wrapper(_run, option, filename)
+        else:
+            _run(option, filename)
+
+def output_passive_errors(passive_errors=None):
+    if passive_errors is None or list(set(passive_errors))[0] is None:
+        return
+    passive_errors = list(set(passive_errors))
+    print("The following Error(s) were silenced by choosing the --passive flag at runtime")
+    for n, e in enumerate(passive_errors):
+        print('{}: {}'.format(n, e))
+
+def try_wrapper(funct, *args):
+    try:
+        funct(args)
+    except Exception as e:
+        try:
+            passive_errors.append(e)
+        except NameError:
+            passive_errors = [e]
+
+def push():
+    if args.push is True:
+        git('push')
+
+def Main():
+    global options, flags, args, short_opts, valid_opts, path, passive_errors
+    options, flags = ['modified', 'deleted', 'untracked'], ['[!]', '[-]', '[+]']
+    short_opts = ['m', 'd', 'u']
+    args = parse_args()
+    valid_opts = validate_opts()
+    path = os.getcwd()
+    status = parse()
+    display_info(status)
+    prompt()
+    run(status)
+    push()
+    output_passive_errors()
+
+
+if __name__ == '__main__':
+    Main()
+
