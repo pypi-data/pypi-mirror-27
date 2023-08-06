@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.jsonify">
+
+  <browser:page
+      name="jsonify"
+      class=".browser.JsonifyView"
+      for="*"
+      permission="zope2.View"
+      />
+
+</configure>
