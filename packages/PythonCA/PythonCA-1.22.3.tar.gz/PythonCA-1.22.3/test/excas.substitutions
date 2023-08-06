@@ -1,0 +1,19 @@
+# 
+file excas.db {
+    pattern { NAME, scan ,start}
+        { "fred", "1 second","0.7" }
+        { "freddy", "1 second","0.8" }
+        { "jane", ".1 second","0.7" }
+        { "janet", ".1 second","0.8" }
+        { "boot", "2 second","0.5" }
+        { "booty", "2 second","0.6" }
+        { "bill", "2 second","0.7" }
+        { "billy", "2 second","0.8" }
+
+}
+file excasw.db {
+    pattern { NAME, scan ,nelm}
+        { "alan", "2 second" ,"100"}
+        { "albert", "2 second" ,"1000"}
+        { "bloaty", "5 second" ,"1000000"}
+}
