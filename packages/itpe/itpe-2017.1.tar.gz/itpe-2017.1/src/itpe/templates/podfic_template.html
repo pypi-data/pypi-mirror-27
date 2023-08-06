@@ -1,0 +1,87 @@
+{% macro optional_metadata(label, metadata_value, display_text=None) %}
+{%- if metadata_value %}
+{%- if display_text == None %}{% set display_text = metadata_value %}{% endif %}
+  <tr>
+    <td><strong>{{ label }}:</strong></td>
+    <td>{{ display_text }}</td>
+  </tr>{% endif %}
+{% endmacro %}
+
+
+
+{% filter condense %}
+{# title line #}
+
+  {% if podfic.from_user or podfic.for_user %}
+    <h3>
+      <strong>
+        {% if podfic.from_user %}
+          From {{ podfic.from_user|userlinks }}
+          {% if podfic.for_user %}
+          , for {{ podfic.for_user|userlinks }}
+          {% endif %}
+        {% else %}
+          For {{ podfic.for_user|userlinks }}
+        {% endif %}
+      </strong>
+    </h3>
+  {% endif %}
+
+{% endfilter %}
+
+
+{% filter condense %}
+{# cover art #}
+
+  {% filter condense %}
+    {% if podfic.cover_art %}
+      <div style="width: {{ width }} !important;">
+        <img src="{{ podfic.cover_art }}" style="max-width: 100% !important">
+      </div>
+    {% endif %}
+  {% endfilter %}
+  {% if podfic.cover_art and podfic.editor %}<br/>{% endif %}
+  {% filter condense %}
+    {% if podfic.cover_artist %}
+      <font size="1">
+        Cover artwork by {{ podfic.cover_artist|userlinks }}
+      </font>
+    {% endif %}
+  {% endfilter %}
+  {% filter condense %}
+    {% if podfic.editor %}
+      <font size="1">
+        Edited by {{ podfic.editor|userlinks }}
+      </font>
+    {% endif %}
+  {% endfilter %}
+  {% if (podfic.editor and podfic.podbook_compiler) or (podfic.podbook_compiler and podfic.cover_art) %}<br/>{% endif %}
+  {% filter condense %}
+    {% if podfic.podbook_compiler %}
+      <font size="1">
+        Podbook compiled by {{ podfic.podbook_compiler|userlinks }}
+      </font>
+    {% endif %}
+  {% endfilter %}
+
+{% endfilter %}
+
+
+<table>  <!-- Metadata for {{ podfic.title }} -->
+{% set display_text = '<a href="{0}">{1}</a>'.format(podfic.title_link, podfic.title) %}
+{{ optional_metadata("Title", metadata_value=podfic.title, display_text=display_text) }}
+{% set metadata_value = podfic.authors|userlinks %}
+{{ optional_metadata("Authors",  podfic.authors|userlinks) }}
+{{ optional_metadata("Fandom",   podfic.fandom) }}
+{{ optional_metadata("Pairing",  podfic.pairing) }}
+{{ optional_metadata("Warnings", podfic.warnings) }}
+{{ optional_metadata("Length",   podfic.length)}}
+  <tr>
+    <td><strong>Download{% if podfic.mp3_link and podfic.podbook_link %}s{% endif %}:</strong></td>
+    <td>
+      {% if podfic.mp3_link %}<a href="{{ podfic.mp3_link }}">MP3</a>{% endif %}{% if podfic.mp3_link and podfic.podbook_link %} | {{'\n'}}{% endif %}
+      {% if podfic.podbook_link %}<a href="{{ podfic.podbook_link }}">Podbook</a>{% endif %}{% if podfic.ao3_link and podfic.podbook_link %} | {{'\n'}}{% endif %}
+      {% if podfic.ao3_link %}<a href="{{ ao3_link }}">at AO3</a>{{'\n'}}{% endif -%}
+{{'\n'}}    </td>
+  </tr>
+</table>
