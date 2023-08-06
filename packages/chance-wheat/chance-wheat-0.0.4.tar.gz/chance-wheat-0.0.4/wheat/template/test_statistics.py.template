@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# File: {FILE_NAME}
+# Author: {AUTHOR_NAME}
+from nose.tools import assert_equals
+from orm.database import DBSession
+
+from {PROJECT_NAME}.models.{PROJECT_NAME}_statistics import {CLASS_NAME}Statistics
+from test_service import TestService
+
+
+class Test{CLASS_NAME}Statistics(TestService):
+    """Test class for ``{CLASS_NAME}Statistics``
+    """
+    def test_add(self):
+        """Check if ``{CLASS_NAME}Statistics.add`` works
+        """
+        expect_data = {
+            'start_time': '2017-08-07 21:00:00',
+            'finish_time': '2017-08-07 21:10:00',
+            'finish_status': 0,
+        }
+
+        with DBSession(self.session_maker.session_maker) as session:
+            {CLASS_NAME}Statistics.add(
+                {CLASS_NAME}Statistics(**expect_data), session
+            )
+            results = session.query({CLASS_NAME}Statistics).all()
+
+            assert_equals(results, [expect_data, ])
+            session.rollback()

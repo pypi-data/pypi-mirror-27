@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# File: {FILE_NAME}
+# Author: {AUTHOR_NAME}
+import mock
+import sys
+
+from chanconfig import Config
+from nose.tools import assert_equals
+from orm.database import DBSession, DBSessionMaker
+
+from {PROJECT_NAME} import main
+from {PROJECT_NAME}.constant import CONFIGS
+from {PROJECT_NAME}.models.{PROJECT_NAME}_statistics import {CLASS_NAME}Statistics
+
+
+class TestMain(object):
+    """Functional test class for ``main.main``
+    """
+    def setUp(self):
+        sys.argv = ['', '--config', 'debug']
+
+        mysql = Config(*CONFIGS['debug']).mysql
+        self.config = (
+            mysql.user, mysql.password,
+            mysql.host, mysql.port, mysql.database
+        )
+        with DBSessionMaker(*self.config) as session_maker:
+            with DBSession(session_maker.session_maker) as session:
+                session.query({CLASS_NAME}Statistics).delete()
+
+    def tearDown(self):
+        with DBSessionMaker(*self.config) as session_maker:
+            with DBSession(session_maker.session_maker) as session:
+                session.query({CLASS_NAME}Statistics).delete()
+
+    def test_main_normal(self):
+        """Check if ``main.main`` works
+        """
+        expect_statistics = {'finish_status': 0}
+
+        main.main()
+
+        with DBSessionMaker(*self.config) as session_maker:
+            with DBSession(session_maker.session_maker) as session:
+                statistics_res = session.query(
+                    {CLASS_NAME}Statistics
+                ).all()
+
+                assert_equals(
+                    statistics_res, [expect_statistics]
+                )
+
+    @mock.patch.object(main, 'run')
+    def test_main_exception_raised(self, mock_run):
+        """Check if ``main.main`` works when exception raised
+
+        Args:
+            mock_run: the mock object of ``main.run``
+        """
+        expect_statistics = {'finish_status': 1}
+        mock_run.side_effect = KeyError('test')
+
+        main.main()
+
+        with DBSessionMaker(*self.config) as session_maker:
+            with DBSession(session_maker.session_maker) as session:
+                statistics_res = session.query(
+                    {CLASS_NAME}Statistics
+                ).all()
+
+                assert_equals(
+                    statistics_res, [expect_statistics]
+                )

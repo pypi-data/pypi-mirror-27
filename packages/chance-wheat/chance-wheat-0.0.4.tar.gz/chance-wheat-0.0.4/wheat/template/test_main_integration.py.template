@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# File: {FILE_NAME}
+# Author: {AUTHOR_NAME}
+import sys
+import logging
+
+from chanconfig import Config
+from mock_logger import MockLoggingHandler
+from nose.tools import assert_equals
+from orm.database import DBSession
+
+from {PROJECT_NAME} import main
+from {PROJECT_NAME}.constant import CONFIGS
+from {PROJECT_NAME}.main import (
+    create_session_maker, initialize_logger, read_arguments
+)
+from test_service import TestService
+
+
+HANDLER = MockLoggingHandler(level='DEBUG')
+
+
+def test_initialize_logger():
+    """Check if ``initialize_logger`` works
+    """
+    configs = Config(*CONFIGS['logging'])
+    logger = logging.getLogger(main.__name__)
+    logger.addHandler(HANDLER)
+    HANDLER.reset()
+    initialize_logger(configs)
+    assert_equals(HANDLER.messages['info'], ['Initialize logger'])
+
+
+def test_create_session_maker():
+    """Check if ``main.create_session_maker`` works
+    """
+    CREATE_SQL = (
+        u'CREATE TABLE `orm_test` ('
+        u'`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,'
+        u'`gmt_create` datetime(6) DEFAULT NULL COMMENT "创建时间",'
+        u'`gmt_modified` datetime(6) DEFAULT NULL COMMENT "修改时间",'
+        u'PRIMARY KEY (`id`)'
+        u');'
+    )
+    INSERT_SQL = u'INSERT INTO orm_test VALUES(null, null, null)'
+    QUERY_SQL = u'SELECT * FROM orm_test'
+    DROP_SQL = u'DROP table orm_test'
+
+    config = Config(*CONFIGS['debug']).mysql
+
+    session_maker = create_session_maker(config)
+    session_maker.connect()
+    with DBSession(session_maker.session_maker) as session:
+        session.execute(CREATE_SQL)
+        session.execute(INSERT_SQL)
+        results = session.execute(QUERY_SQL).fetchall()
+        assert_equals(len(results), 1)
+        session.execute(DROP_SQL)
+        session.rollback()
+
+
+def test_read_arguments():
+    """Check if ``read_arguments`` works
+    """
+    sys.argv = ['', '--config', 'debug']
+
+    assert_equals(read_arguments()._dict['--config'], 'debug')
+
+
+class TestRun(TestService):
+    """Test class for ``main.run``
+    """
+    pass
