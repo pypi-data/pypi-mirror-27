@@ -1,0 +1,6 @@
+# CMake configuration for {{ name }} from {{ url }}
+SET_PROPERTY(TARGET ${PROJECT} APPEND PROPERTY INCLUDE_DIRECTORIES "${TOOLCHAIN_ROOT}/{{ name }}")
+FILE(GLOB FOUND
+     "${TOOLCHAIN_ROOT}/{{ name }}/*.[cCsShH]"
+     "${TOOLCHAIN_ROOT}/{{ name }}/*.[cCsShH][pP][pP]")
+SET_PROPERTY(TARGET ${PROJECT} APPEND PROPERTY SOURCES ${FOUND})
