@@ -1,0 +1,17 @@
+requirements.txt
+tox.ini
+LICENSE
+MANIFEST
+setup.py
+graft examples
+
+nbodyswissknife/__init__.py
+nbodyswissknife/potential.py
+
+nbodyswissknife/backends/__init__.py
+
+nbodyswissknife/backends/cpu/__init__.py
+nbodyswissknife/backends/cpu/potential.c
+
+tests/test_potential.py
+
