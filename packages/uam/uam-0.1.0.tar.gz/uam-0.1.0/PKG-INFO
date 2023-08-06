@@ -1,0 +1,42 @@
+Metadata-Version: 1.1
+Name: uam
+Version: 0.1.0
+Summary: uam is universal application manager.
+Home-page: https://github.com/youyongsong/uam
+Author: YongSong You
+Author-email: youyongsong@gmail.com
+License: ISC
+Description-Content-Type: UNKNOWN
+Description: 
+        # uam
+        Universal application manager.
+        
+        ## Development
+        ### Create a docker environment
+        ```
+        docker run -dt -v `pwd`:/app --workdir /app --entrypoint bash --name uam -v /var/run/docker.sock:/var/run/docker.sock -v `pwd`/uamlib/:/usr/local/uam python:2
+        docker exec -ti uam bash
+        ```
+        
+        ### Run Locally
+        1. Run without installation:
+           ```
+           python -m uam
+           ```
+        
+        2. Install locally and run:
+           ```
+           pip install --editable .
+           uam
+           ```
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
