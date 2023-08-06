@@ -1,0 +1,19 @@
+language: python
+sudo: false
+python:
+- 3.6
+- 3.7-dev
+- nightly
+install:
+- python setup.py install
+- pip install pytest pytest-asyncio
+script: py.test --doctest-module --ignore=setup.py --doctest-glob='*.rst'
+deploy:
+  skip_cleanup: true
+  provider: pypi
+  user: dijkstra
+  password:
+    secure: noNu83YeUrY//XP3BIX9GzIRtcWPsHO4lsPYGqOC9/DB3z3CBVBXgmtDg1qTAA8rlfR0+GA+FuJh+OdFPYG8VrnrsQHYsC6N/8LJoORqoVNG23sk/vWq2HYnJFPW983k+LpKk3MkvJPehDtoqxnnxgr+UGPfCZteFeMdCWUnYmLP+LP7EvJ1CYzKk4KHkJdarQMQe0ENMfUFST99HTAnwVkvdZSE/ePDgeStwkwH+dRQiQbB0aYcuLSYVzqvBwc4lPisldcp6Kpdp6C6mOVAKC09xW/57FxjHUbOXr/ijUPZIRw85PtOTjKXkCkcmv4c+cPpMX6i0Q+x+NQokokkLs94C7B94gHO1lIXvsLbkVuOAsMiOH/uFD2k7nfk1ngAybs+GJEl9b6ZbeTX8REiYruh2MnPa+pR8oJXfIK25/juhHsLGKN6nDx2Y9gsIbJiv+asT8JAK0a+h3QO4IL2vLg/RrgvCvXX2tqCycIM7LJ+DMy3Szoc+5xgsTiBaikx4jq56GbMHYuo4XOeTvmLoM30x9t8xaRGqL0755XPY5X3gAtx041/zT4RtfT4IHXReHyDFq19z8w9FHtbG961tpSPqt4Whtvj+0daQfNr2gaVcXhtTgiyKpu+Nb6//UTohLp8UYjyXKWMVzh+KNhFpHQuD77pWppD3FpavBw/3RU=
+  on:
+    tags: true
+    branch: master
