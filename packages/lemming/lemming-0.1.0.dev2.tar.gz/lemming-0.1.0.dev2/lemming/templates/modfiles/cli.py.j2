@@ -1,0 +1,17 @@
+import argparse
+
+from {{ name }} import *
+
+def main():
+    parser = argparse.ArgumentParser(description='Some project description')
+    parser.add_argument()
+
+    parser.add_argument('--opt', action='store_true', default='something')
+
+    args = parser.parse_args()
+
+    # Insert functions here
+
+
+if __name__ == "__main__":
+    main()
