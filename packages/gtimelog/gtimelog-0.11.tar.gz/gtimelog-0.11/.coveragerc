@@ -1,0 +1,11 @@
+[run]
+source = src/gtimelog
+omit = src/gtimelog/tests/*,src/gtimelog/main.py
+cover_pylib = False
+
+[report]
+exclude_lines =
+    pragma: nocover
+    if __name__ == '__main__':
+    except ImportError:
+    except NameError:
