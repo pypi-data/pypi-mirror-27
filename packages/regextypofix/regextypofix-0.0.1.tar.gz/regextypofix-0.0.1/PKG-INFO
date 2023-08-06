@@ -1,0 +1,41 @@
+Metadata-Version: 1.1
+Name: regextypofix
+Version: 0.0.1
+Summary: Simple Regex spellchecker based on Wikipedia's RegExTypoFix project
+Home-page: https://github.com/rmdort/regextypofix
+Author: Vinay M
+Author-email: rmdort@gmail.com
+License: MIT, CC-BY-SA
+Download-URL: https://pypi.python.org/pypi/regextypofix/
+Description: RegEx Typo Fix
+        ====
+        Simple Regex spellchecker based on Wikipedia's `RegExTypoFix` project
+        
+        .. _RegExTypoFix: https://en.wikipedia.org/wiki/Wikipedia:AutoWikiBrowser/Typos
+        
+        The dictionary prepared by wikipedia contains most common incorrectly spelled words.
+        
+        Usage
+        -----
+        
+        The easiest way to install it is using pip::
+        
+            pip install regextypofix
+        
+            from regextypofix import correct
+            print (correct('whiel sold'))
+        
+Keywords: typo spelling grammar text
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Documentation
+Classifier: Topic :: Software Development :: Quality Assurance
+Classifier: Topic :: Text Processing :: Filters
