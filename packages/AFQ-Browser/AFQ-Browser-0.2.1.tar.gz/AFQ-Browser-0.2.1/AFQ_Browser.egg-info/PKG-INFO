@@ -1,0 +1,36 @@
+Metadata-Version: 1.1
+Name: AFQ-Browser
+Version: 0.2.1
+Summary: AFQ-Browser
+Home-page: http://github.com/yeatmanlab/AFQ-Browser
+Author: Ariel Rokem
+Author-email: arokem@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        
+        AFQ-browser is a software library for visualization of results from
+        automated fiber quantification of human brain tractography.
+        
+        The software takes as input the results of analysis from the ``AFQ`` software
+        and produces a browser-based visualization of the data. Command-line tools
+        allow users to create these visualizations from their data and upload them to
+        share with others as a website.
+        
+        For instructions on installation and use, visit the documentation:
+        https://yeatmanlab.github.io/AFQ-Browser
+        
+        
+Platform: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering
+Requires: numpy
+Requires: pandas
+Requires: scipy
+Requires: PyGithub
+Requires: GitPython
