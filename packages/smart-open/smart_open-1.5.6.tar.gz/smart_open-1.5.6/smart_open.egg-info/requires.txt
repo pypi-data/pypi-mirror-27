@@ -1,0 +1,9 @@
+boto3
+boto>=2.32
+bz2file
+requests
+
+[test]
+mock
+moto==0.4.31
+responses
