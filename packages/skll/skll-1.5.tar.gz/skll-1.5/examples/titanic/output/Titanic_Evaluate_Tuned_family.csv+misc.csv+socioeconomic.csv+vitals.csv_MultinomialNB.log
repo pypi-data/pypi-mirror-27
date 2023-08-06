@@ -1,0 +1,7 @@
+2017-12-07 11:42:10,581 - INFO - Task: evaluate
+2017-12-07 11:42:10,581 - INFO - Training on train, Test on dev, feature set ['family.csv', 'misc.csv', 'socioeconomic.csv', 'vitals.csv'] ...
+2017-12-07 11:42:10,725 - INFO - Featurizing and training new MultinomialNB model
+2017-12-07 11:42:10,725 - WARNING - Training data will be shuffled to randomize grid search folds.  Shuffling may yield different results compared to scikit-learn.
+2017-12-07 11:42:10,891 - INFO - Best accuracy grid search score: 0.678
+2017-12-07 11:42:10,892 - INFO - Hyperparameters: alpha: 0.1, class_prior: None, fit_prior: True
+2017-12-07 11:42:10,892 - INFO - Evaluating predictions

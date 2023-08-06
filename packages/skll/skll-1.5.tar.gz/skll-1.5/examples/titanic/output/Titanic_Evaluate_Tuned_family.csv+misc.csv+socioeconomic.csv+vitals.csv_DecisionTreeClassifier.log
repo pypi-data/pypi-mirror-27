@@ -1,0 +1,7 @@
+2017-12-07 11:42:09,121 - INFO - Task: evaluate
+2017-12-07 11:42:09,121 - INFO - Training on train, Test on dev, feature set ['family.csv', 'misc.csv', 'socioeconomic.csv', 'vitals.csv'] ...
+2017-12-07 11:42:09,247 - INFO - Featurizing and training new DecisionTreeClassifier model
+2017-12-07 11:42:09,247 - WARNING - Training data will be shuffled to randomize grid search folds.  Shuffling may yield different results compared to scikit-learn.
+2017-12-07 11:42:09,411 - INFO - Best accuracy grid search score: 0.764
+2017-12-07 11:42:09,411 - INFO - Hyperparameters: class_weight: None, criterion: gini, max_depth: None, max_features: auto, max_leaf_nodes: None, min_impurity_decrease: 0.0, min_impurity_split: None, min_samples_leaf: 1, min_samples_split: 2, min_weight_fraction_leaf: 0.0, presort: False, random_state: 123456789, splitter: best
+2017-12-07 11:42:09,411 - INFO - Evaluating predictions
