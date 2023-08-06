@@ -1,0 +1,169 @@
+Metadata-Version: 1.1
+Name: medialog.iconpicker
+Version: 0.6.3.2
+Summary: iconpicker for Plone
+Home-page: http://github.com/espenmn/medialog.iconpicker
+Author: Espen Moe-Nilssen
+Author-email: espen@medialog.no
+License: GPL
+Description-Content-Type: UNKNOWN
+Description: Introduction
+        ============
+        
+        An iconpicker widget for Plone based on http://victor-valencia.github.io/bootstrap-iconpicker/
+        
+        ![image](http://victor-valencia.github.io/bootstrap-iconpicker/bootstrap-iconpicker.png)
+        
+        
+        Installation
+        ============
+        Add it in the add-ons control panel
+        
+        Controlpanel
+        --------
+        Important: You need to choose font in:
+        http://yoursite/@@medialog_controlpanel
+        
+        
+        Iconpicker Behavior
+        --------
+        In the dexterity control panel: add 'iconpicker behavior'
+        
+        Colorpicker Behavior
+        --------
+        In the dexterity control panel: add 'colorpicker behavior'
+        
+        Iconpicker Tile
+        --------
+        In mosaic you can add Iconpicker tile
+        
+        
+        Usage
+        -----
+        - A widget to be uses in your custom views
+        - Helper view to load the selected fonts/icons: /@@fontload
+        - A view to load the icons: <tal:icons tal:replace="structure item/iconfield/@@iconload" />
+        - A simple example view: http:/site/folder/@@iconview 
+        
+        If you add the colorpicker behavior, you can choose color of the icon
+        
+        
+        Control panel
+        -------------
+        The medialog control panel let you choose between 8 different icon-fonts:
+        
+        
+        - glyphicon
+        - typicon
+        - elusiveicon
+        - ionicon
+        - fontawesome
+        - weathericon 
+        - mapicon
+        - octicon 
+        - typicon
+        
+        
+        To Do
+        -----
+        
+        - Better solution for the views
+        - Maybe a viewlet 
+        
+        
+        Author:
+        -------
+        Espen Moe-Nilssen
+        
+        Changelog
+        =========
+        
+        
+        0.6.3 (13.12.2017)
+        ————————————————————	
+        
+        - CSS hack for Mosaic blur
+        
+        
+        0.6.2 (08.12.2017)
+        ————————————————————	
+        
+        - CSS hack for Mosaic icon picker
+        
+        
+        0.6.1 (07.12.2017)
+        ————————————————————	
+        
+        - fix css class 
+        - FieldWidget can now be used with Mosaic
+        
+        
+        0.6 (2017)
+        ————————————————————	
+        
+        - added custom font
+        - added lineage registry
+        
+        
+        0.5 (2017)
+        ————————————————————	
+        
+        - added tile
+        - Added colorpicker, behaviour and template
+        
+        
+        0.4 (3 oct 2015)
+        ————————————————————	
+        
+        - Added (example and 'helper') views
+        - Font files can be loaded by /@@fontload
+        - icons can be shown in listing templates with: with <tal:icon tal:replace="structure item/iconfield/@@iconload" />
+        - there is a simple example view ( http:/site/folder/@@iconview
+        
+        
+        0.3.2 (25 june 2015)
+        ————————————————————	
+        
+        - Loading old bootstrap for Plone 4 [espenmn]
+        
+        
+        0.3.1 (25 june 2015)
+        ————————————————————	
+        
+        - js was loaded twice (you need to add it manually for Plone 4) [espenmn]
+        
+        
+        
+        0.3 (23 june 2015)
+        ————————————————————	
+        
+        - render widget adds correct font family name (class) [espenmn]
+        
+        
+        0.2 (23 june 2015)
+        ————————————————————	
+        
+        - updated render widget [espenmn]
+        
+        
+        0.2 (10 june 2015)
+        ————————————————————	
+        
+        - ‘hard coded js.bootstap, since I did not manage to pin it with Plone 4 [espenmn]
+        
+        
+        0.1.1 (06 june 2015)
+        ————————————————————	
+        
+        - fixed error (True) for Plone 4 [espenmn]
+        
+        
+        0.1dev (22 may 2015)
+        ————————————————————	
+        
+        - Initial release [espenmn]
+        
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
