@@ -1,0 +1,730 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Sabre Dev Studio REST APIs
+  description: "[Sabre Dev Studio](https://developer.sabre.com/io-docs) REST APIs."
+  license:
+    name: Sabre
+    url: https://developer.sabre.com/Terms_of_Use
+host: api.test.sabre.com
+basePath: "/"
+securityDefinitions:
+  Authorization:
+    type: apiKey
+    description: ''
+    name: Authorization
+    in: header
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+
+paths:
+# Air Utility
+  # Point of Sale Country Code Lookup
+  "/v1/lists/supported/pointofsalecountries":
+    get:
+      summary: Point of Sale Country Code Lookup
+      description: Returns a list of supported point of sale country codes and associated country names.
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedPointofsalecountriesGet
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/Pointofsalecountries"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # Travel Seasonality Airports Lookup
+  "/v1/lists/supported/historical/seasonality/airports":
+    get:
+      summary: Travel Seasonality Airports Lookup
+      description: "Heads up – this API is powered by the Travel Insight Engine.
+      For the full list of city pairs available in the test environment and in
+      production view the Travel Seasonality Airports Lookup Supplemental API.
+      Retrieves destinations supported by Travel Seasonality API.
+      Destinations are airport codes or city codes."
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedHistoricalSeasonalityAirportsGet
+      produces:
+      - application/json
+      parameters:
+      - name: country
+        in: query
+        required: false
+        type: string
+        description: 2-letter ISO country code
+      - name: region
+        in: query
+        required: false
+        type: string
+        enum:
+            - Africa
+            - Asia Pacific
+            - Europe
+            - Latin America
+            - Middle East
+            - North America
+        description: Region
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/TravelSeasonalityDestinations"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # Countries Lookup
+  "/v1/lists/supported/countries":
+    get:
+      summary: Countries Lookup
+      description: Retrieves a list of origin and destination country codes that can
+        be used to filter applicable REST Air Shopping APIs.
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedCountriesGet
+      produces:
+      - application/json
+      parameters:
+      - name: pointofsalecountry
+        in: query
+        required: false
+        type: string
+        description: 2-letter country code of the point of sale
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/Countries"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # City Pairs Lookup
+  "/v1/lists/supported/shop/flights/origins-destinations":
+    get:
+      summary: City Pairs Lookup
+      description: "Retrieves city pairs supported by REST Air Shopping APIs. City pairs are combinations of origin and destination airport codes."
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedShopFlightsOriginsdestinationsGet
+      produces:
+      - application/json
+      parameters:
+      - name: origincountry
+        in: query
+        required: false
+        type: string
+        description: 2-letter ISO country code
+      - name: destinationcountry
+        in: query
+        required: false
+        type: string
+        description: 2-letter ISO country code
+      - name: originregion
+        in: query
+        required: false
+        type: string
+        enum:
+            - Africa
+            - Asia Pacific
+            - Europe
+            - Latin America
+            - Middle East
+            - North America
+        description: Region
+      - name: destinationregion
+        in: query
+        required: false
+        type: string
+        enum:
+            - Africa
+            - Asia Pacific
+            - Europe
+            - Latin America
+            - Middle East
+            - North America
+        description: Region
+      - name: pointofsalecountry
+        in: query
+        required: false
+        type: string
+        description: 2-letter country code of the point of sale
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/CityPairOriginsdestinations"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # Low Fare Forecast City Pairs Lookup
+  "/v1/lists/supported/forecast/flights/origins-destinations":
+    get:
+      summary: Low Fare Forecast City Pairs Lookup
+      description: "Heads up – this API is powered by the Travel Insight Engine.
+      For the full list of city pairs available in the
+      test environment and in production view the City Pairs Supplemental API. .
+      Retrieves city pairs supported by Low Fare Forecast API.
+      City pairs are combinations of origin and destination airport codes."
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedForecastFlightsOriginsdestinationsGet
+      produces:
+      - application/json
+      parameters:
+      - name: origincountry
+        in: query
+        required: false
+        type: string
+        description: 2-letter ISO country code
+      - name: destinationcountry
+        in: query
+        required: false
+        type: string
+        description: 2-letter ISO country code
+      - name: originregion
+        in: query
+        required: false
+        type: string
+        enum:
+            - Africa
+            - Asia Pacific
+            - Europe
+            - Latin America
+            - Middle East
+            - North America
+        description: Region
+      - name: destinationregion
+        in: query
+        required: false
+        type: string
+        enum:
+            - Africa
+            - Asia Pacific
+            - Europe
+            - Latin America
+            - Middle East
+            - North America
+        description: Region
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/CityPairOriginsdestinations"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # Fare Range City Pairs Lookup
+  "/v1/lists/supported/historical/flights/origins-destinations":
+    get:
+      summary: Fare Range City Pairs Lookup
+      description: "Heads up – this API is powered by the Travel Insight Engine.
+      For the full list of city pairs available in the test environment and in
+      production view the City Pairs Supplemental API.
+      Retrieves city pairs supported by Fare Range API.
+      City pairs are combinations of origin and destination airport codes."
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedHistoricalFlightsOriginsDestinationsGet
+      produces:
+      - application/json
+      parameters:
+      - name: origincountry
+        in: query
+        required: false
+        type: string
+        description: 2-letter ISO country code
+      - name: destinationcountry
+        in: query
+        required: false
+        type: string
+        description: 2-letter ISO country code
+      - name: originregion
+        in: query
+        required: false
+        type: string
+        enum:
+            - Africa
+            - Asia Pacific
+            - Europe
+            - Latin America
+            - Middle East
+            - North America
+        description: Region
+      - name: destinationregion
+        in: query
+        required: false
+        type: string
+        enum:
+            - Africa
+            - Asia Pacific
+            - Europe
+            - Latin America
+            - Middle East
+            - North America
+        description: Region
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/CityPairOriginsdestinations"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # Travel Theme Lookup
+  "/v1/lists/supported/shop/themes":
+    get:
+      summary: Travel Theme Lookup
+      description: "Retrieves a list of themes that can be used in a Destination Air
+      Shopping request to limit the results to only destinations associated with the
+      theme."
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedShopThemesGet
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/TravelThemes"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # Theme Airport Lookup
+  "/v1/lists/supported/shop/themes/{theme}":
+    get:
+      summary: Theme Airport Lookup
+      description: "Retrieves a list of airport and city codes that are associated
+      with the theme in the request. (Use Travel Theme Lookup to retrieve a list of
+      themes that can be used in the request.)"
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedShopThemesThemeGet
+      produces:
+      - application/json
+      parameters:
+        - in: path
+          name: theme
+          description: 3-letter multi-airport city code
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/ThemeAirport"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # Multi-Airport City Lookup
+  "/v1/lists/supported/cities":
+    get:
+      summary: Multi-Airport City Lookup
+      description: "Retrieves a list of city codes that are served by more than
+      one airport."
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedCitiesGet
+      produces:
+      - application/json
+      parameters:
+      - name: country
+        in: query
+        required: true
+        type: string
+        description: 2-letter IATA country code
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/MultiAirportCities"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+  # Airports at Cities Lookup
+  "/v1/lists/supported/cities/{city}/airports":
+    get:
+      summary: Airports at Cities Lookup
+      description: "Retrieves a list of airport codes that serve the city in the request.
+      (Use Multi-Airport City Lookup to retrieve a list of city codes that can be used in
+      the request.)"
+      tags:
+      - Air_Utility
+      operationId: V1ListsSupportedCitiesCityAirportsGet
+      produces:
+      - application/json
+      parameters:
+        - in: path
+          name: city
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            "$ref": "#/definitions/AirportsAtCity"
+          examples: {}
+        '400':
+          description: Invalid status value
+          schema: {}
+        '401':
+          description: You do not have necessary permissions for the resource
+          schema: {}
+      security:
+      - Authorization: []
+
+# Utility
+  # Airline Alliance Lookup
+  # todo: Airline Alliance Lookup
+
+definitions:
+# Air Utility
+  # Point of Sale Country Code Lookup
+  Pointofsalecountries:
+    title: Pointofsalecountries
+    type: object
+    properties:
+      Countries:
+        description: ''
+        type: array
+        items:
+          "$ref": "#/definitions/Country"
+      Links:
+        description: ''
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+
+  # Travel Seasonality Airports Lookup
+  TravelSeasonalityDestinations:
+    title: TravelSeasonalityDestinations
+    type: object
+    properties:
+      DestinationLocations:
+        type: array
+        items:
+          "$ref": "#/definitions/DestinationLocation"
+      Links:
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+
+  # Countries Lookup
+  Countries:
+    title: Countries
+    type: object
+    properties:
+      PointOfSale:
+        description: ''
+        type: string
+      OriginCountries:
+        description: ''
+        type: array
+        items:
+          "$ref": "#/definitions/OriginCountry"
+      DestinationCountries:
+        description: ''
+        type: array
+        items:
+          "$ref": "#/definitions/DestinationCountry"
+      Links:
+        description: ''
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+
+  # City Pairs Lookup
+  # Low Fare Forecast City Pairs Lookup
+  # Fare Range City Pairs Lookup
+  CityPairOriginsdestinations:
+    title: CityPairOriginsdestinations
+    type: object
+    properties:
+      OriginDestinationLocations:
+        type: array
+        items:
+          "$ref": "#/definitions/CityPairs"
+      Links:
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+
+  # Travel Theme Lookup
+  TravelThemes:
+    title: TravelThemes
+    type: object
+    properties:
+      Themes:
+        type: array
+        items:
+          type: object
+          properties:
+            Theme:
+              type: string
+            Links:
+              type: array
+              items:
+                "$ref": "#/definitions/Link"
+      Links:
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+
+  # Theme Airport Lookup
+  ThemeAirport:
+    title: ThemeAirport
+    type: object
+    properties:
+      Destinations:
+        type: array
+        items:
+          type: object
+          properties:
+            Destination:
+              type: string
+            "Type":
+              type: string
+            Links:
+              type: array
+              items:
+                "$ref": "#/definitions/Link"
+      Links:
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+
+  # Multi-Airport City Lookup
+  MultiAirportCities:
+    title: MultiAirportCities
+    type: object
+    properties:
+      Cities:
+        type: array
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+            name:
+              type: string
+            countryCode:
+              type: string
+            countryName:
+              type: string
+            regionName:
+              type: string
+            Links:
+              type: array
+              items:
+                "$ref": "#/definitions/Link"
+      Links:
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+
+  # Airports at Cities Lookup
+  AirportsAtCity:
+    title: AirportsAtCity
+    type: object
+    properties:
+      Airports:
+        type: array
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+            name:
+              type: string
+      "Rail Stations":
+        type: array
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+            name:
+              type: string
+      Others:
+        type: array
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+            name:
+              type: string
+      Links:
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+
+# Common
+  Link:
+    title: Link
+    type: object
+    properties:
+      rel:
+        description: ''
+        type: string
+      href:
+        description: ''
+        type: string
+  Country:
+    title: Country
+    type: object
+    properties:
+      CountryCode:
+        description: ''
+        type: string
+      CountryName:
+        description: ''
+        type: string
+      Links:
+        description: ''
+        type: array
+        items:
+          "$ref": "#/definitions/Link"
+  OriginCountry:
+    title: OriginCountry
+    type: object
+    properties:
+      CountryCode:
+        description: ''
+        type: string
+      CountryName:
+        description: ''
+        type: string
+  DestinationCountry:
+    title: DestinationCountry
+    type: object
+    properties:
+      CountryCode:
+        description: ''
+        type: string
+      CountryName:
+        description: ''
+        type: string
+  DestinationLocation:
+    title: DestinationLocation
+    type: object
+    properties:
+      AirportCode:
+        type: string
+      AirportName:
+        type: string
+      CityName:
+        type: string
+      CountryCode:
+        type: string
+      CountryName:
+        type: string
+      RegionName:
+        type: string
+  CityPairs:
+    title: CityPairs
+    type: object
+    properties:
+      OriginDestinationLocations:
+        type: string
+      OriginLocation:
+        type: object
+        properties:
+          AirportCode:
+            type: string
+          AirportName:
+            type: string
+          CityName:
+            type: string
+          CountryCode:
+            type: string
+          CountryName:
+            type: string
+          RegionName:
+            type: string
+      DestinationLocation:
+        type: object
+        properties:
+          AirportCode:
+            type: string
+          AirportName:
+            type: string
+          CityName:
+            type: string
+          CountryCode:
+            type: string
+          CountryName:
+            type: string
+          RegionName:
+            type: string
