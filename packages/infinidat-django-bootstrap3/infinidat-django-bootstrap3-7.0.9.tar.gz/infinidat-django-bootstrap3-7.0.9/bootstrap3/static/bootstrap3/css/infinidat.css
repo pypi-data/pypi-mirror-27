@@ -1,0 +1,276 @@
+/*
+This file adds styling to additional components, beyond those defined in infiniboot.css
+Including navbars, tabs, tables, modals and more.
+*/
+
+h1 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+h2, h3 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+blockquote {
+    font-size: inherit;
+}
+
+.radio label, .checkbox label {
+    padding-left: inherit;
+}
+
+.well {
+    background: #fafafa;
+    border: 1px solid #cbced5;
+    border-radius: 0;
+    padding: 12px;
+}
+
+.btn {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.themed-checkbox input[type=checkbox], .themed-radio input[type=checkbox], .themed-radio input[type=radio] {
+    opacity: 0; /* Fix for Mac */
+}
+
+/* Navbar */
+
+.navbar-inverse {
+    background-color: #34363f;
+    border: none;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #edf4e6;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-brand:hover {
+    color: #d7ff5e;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 22px;
+}
+
+.navbar-inverse .navbar-brand a, .navbar-inverse .navbar-brand a:hover {
+    color: #d7ff5e;
+    text-decoration: none;
+}
+
+.navbar-inverse .navbar-nav > li:hover,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #404148;
+    color: #fff;
+    transition: background-color 185ms ease-out, color 185ms ease-out;
+}
+
+/* Tables */
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th,
+.table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    font-size: 13px;
+    height: 41px;
+    line-height: 24px;
+    border-top: none;
+    border-bottom: 1px solid #dddddd;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.table > thead > tr > th, .table-bordered > thead > tr > th {
+    background-color: #f3f3f3;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 10px;
+    height: 35px;
+    line-height: 16px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    border: none;
+    border-right: 1px solid #cacaca;
+    border-bottom: 1px solid #d4d4d4;
+    box-shadow: 0 2px 2px #ddd;
+    background-clip: padding-box;
+}
+
+.table-hover > tbody > tr:hover > td:first-child {
+    background-image: linear-gradient(to right, #27af5e, #27af5e 3px, transparent 3px);
+}
+
+/* Pagination */
+
+.pagination_container .pagination > li > a {
+    width: 38px !important;
+    padding: 5px 0 !important;
+    text-align: center;
+}
+
+.pagination {
+    border-radius: 2px;
+}
+
+/* Tabs */
+
+.nav-tabs {
+    border-color: #cbced5;
+    box-shadow: -5px 1px 5px -5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-tabs > li {
+    box-shadow: 5px 0 5px -5px #ccc;
+    margin-right: -1px;
+}
+
+.nav-tabs > li > a {
+    background-color: #f8f8f8;
+    color: #7c8084;
+    margin-right: 0;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 2;
+    border: 1px solid #cbced5;
+    border-radius: 2px 2px 0 0;
+    padding: 5px 15px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #000;
+    border: 1px solid #cbced5;
+    border-bottom-color: transparent;
+    background: linear-gradient(to bottom, #27af5e, #27af5e 100%);
+    background-color: #fff;
+    background-size: 100% 3px;
+    background-repeat: no-repeat;
+}
+
+.nav-tabs > li > a:hover {
+    border-color: #e0e0e0 #e0e0e0 #cbced5;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #eeeeee;
+}
+
+/* Modals */
+
+.modal-content {
+    background-color: #f9f9f9;
+    border-radius: 0;
+    border-color: #e0e0e0;
+    -webkit-box-shadow: 1px 1.732px 59px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 1px 1.732px 59px 0 rgba(0, 0, 0, 0.24);
+}
+
+.modal-header {
+    background-color: #3f414c;
+    color: #fff;
+    padding: 0;
+    margin: -1px -1px 0;
+    border: none;
+}
+
+.modal-header .close {
+    color: #fff;
+    opacity: .8;
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 0;
+    margin-left: 20px;
+    line-height: 38px;
+    height: 38px;
+    width: 38px;
+    transition: background-color 0.2s;
+}
+
+.modal-header .close:hover {
+    opacity: 1;
+    background-color: #50525a;
+}
+
+.modal-header .modal-title,
+.bootstrap-dialog-title {
+    line-height: 38px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.modal-footer {
+    background: #f0f0f0;
+    padding: 12px 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Cancel button */
+
+.btn.btn-cancel {
+    background: transparent;
+    color: #888;
+    transition: all .2s linear;
+    border: 1px solid transparent;
+}
+
+.btn.btn-cancel:hover {
+    border: 1px solid #888;
+    color: #888;
+}
+
+.btn.btn-cancel:focus {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown menu */
+
+.dropdown-menu {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    color: #000;
+}
+
+/* Pills */
+
+.nav-pills > li + li {
+    margin-left: 4px;
+}
+
+.nav-pills > li > a {
+    padding: 5px 20px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 2px;
+    background-color: transparent;
+    transition: color 0.3s, border-color 0.3s;
+    transition-timing-function: ease, cubic-bezier(0.7, 0, 0.3, 1);
+    color: #333;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid #d2d8d6;
+}
+
+.nav-pills > li > a:hover, .nav-pills > li > a:focus {
+    color: #348edb;
+    border-bottom-color: #348edb;
+    background-color: transparent;
+    outline: none;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+    background-color: #348edb;
+    border-color: #348edb;
+    color: #fff;
+}
