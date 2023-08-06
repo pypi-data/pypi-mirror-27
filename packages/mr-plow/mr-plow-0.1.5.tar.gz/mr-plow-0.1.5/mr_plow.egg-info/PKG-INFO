@@ -1,0 +1,318 @@
+Metadata-Version: 1.2
+Name: mr-plow
+Version: 0.1.5
+Summary: ETL from third-party APIs into Snowflake
+Home-page: https://github.com/Poppin-Tech/mr-plow
+Author: Poppin
+Author-email: technology@poppin.com
+License: Apache
+Description-Content-Type: UNKNOWN
+Description: Mr. Plow
+        ========
+        
+        Mr. Plow is Poppin's ETL system to persist data from third-party APIs into a
+        Snowflake database for later business analysis.
+        
+        We use Python to:
+        
+        #. Call said APIs and store the data in AWS S3 ("Extract")
+        #. Issue Snowflake commands to import the data from AWS S3 ("Stage")
+        #. Issue Snowflake commands to transform the new data from its original
+           unstructured form to the tabular form used for analysis ("Transform")
+        #. Issue Snowflake commands to load the new tabular data to our main store,
+           eliminating any duplicates ("Load")
+        
+        Mr. Plow can be run from the command line. In the future we will add support
+        for running its functions as AWS Lambda functions.
+        
+        Why that ridiculous name?
+        -------------------------
+        
+        Two reasons.
+        
+        First, this is primarily a Snowflake client.
+        
+        Second: https://www.youtube.com/watch?v=uYXEt7xOh1M
+        
+        Installation
+        ============
+        
+        Currently, we support only Python 3.6. This is the highest current version.
+        There is no reason to suspect 3.7 and up will not work to run Mr. Plow.
+        
+        Lower Python 3.x versions may work, but they are not tested. You are free to
+        try them. If you succeed running Mr. Plow in a 3.3, 3.4, or 3.5 environment,
+        please tell us on the Github issue tracker and we will add testing support.
+        
+        First run ``python3 --version`` to ensure you have the required Python version.
+        It may also be installed as ``python3.6``.
+        
+        We recommend you install using a virtual python environment to manage library
+        dependencies. `Virtualenv <https://virtualenv.pypa.io/en/stable/>`_ is a great
+        tool for this.
+        
+        Suggested usage:
+        
+        #. `Install virtualenv <https://virtualenv.pypa.io/en/stable/installation/>`_
+           if not already present
+        #. Create a virtual environment inside the clone: ``virtualenv -p python3.6 venv``
+        
+           * This creates a directory ``venv/``, which contains an entire python
+             environment.
+        
+        #. Activate your virtual environment: ``source venv/bin/activate``
+        
+           * This adds the virtual environment's ``python`` and ``pip`` executables to your
+             ``PATH``.
+        
+        #. Install dependencies: ``pip install mr-plow``
+        
+        Now you should have the executable ``plow`` in your ``PATH``. Simply run
+        ``plow`` at the command line to see available commands and an example workflow.
+        
+        All commands accept the ``--help`` option and print a helpful usage guide.
+        
+        Configuration
+        =============
+        
+        Since we access both Snowflake and AWS S3, credentials are required. These may
+        be provided via a config file. It can be provided to the ``plow`` CLI tool
+        either via the ``-c`` option or by exporting the environment variable
+        ``MR_PLOW_CONFIG``.
+        
+        The supported formats are JSON, YAML, and INI. INI files must have the
+        appropriate settings in the ``[mr-plow]`` section. Run ``plow generate-config``
+        to have a minimal example generated for you to fill in.
+        
+        Mr. Plow fills in configuration it does not find by searching environment
+        variables.
+        
+        To see more including a full list of config options, install Mr. Plow and run
+        ``python -m pydoc plow.config.Config``.
+        
+        Snowflake
+        ---------
+        
+        Those commands that require Snowflake access draw the credentials from the
+        execution environment. Mr. Plow uses the following environment variables to
+        create a Snowflake connection. If both ``SNOWSQL_FOO`` and ``SNOWFLAKE_FOO``
+        are present as environment variables,  Mr. Plow uses ``SNOWFLAKE_FOO``.
+        
+        * ``SNOWFLAKE_ACCOUNT`` or ``SNOWSQL_ACCOUNT``
+        
+          * visible in the URL you use to log in to Snowflake. For the author and his
+            peers, this is "poppin".
+        
+        * ``SNOWFLAKE_USER`` or ``SNOWSQL_USER``
+        
+          * Same as your login on the Snowflake website.
+        
+        * ``SNOWFLAKE_PASSWORD`` or ``SNOWSQL_PASSWORD``
+        
+          * This is the password for that login. With the command line, this is
+            optional as it can be provided as a console prompt.
+        
+        * ``SNOWFLAKE_ROLE``  or ``SNOWSQL_ROLE``
+        
+        * ``SNOWFLAKE_DATABASE`` or ``SNOWSQL_DATABASE``
+        
+        * ``SNOWFLAKE_SCHEMA`` or ``SNOWSQL_SCHEMA``
+        
+          * E.g. "public". However please keep in mind that Mr. Plow creates its own
+            schemas and never references tables without explicitly providing a schema.
+        
+        * ``SNOWFLAKE_WAREHOUSE`` or ``SNOWSQL_WAREHOUSE``
+        
+        .. warning::
+            **Caution**: Choose carefully as many of these commands spin up a warehouse
+            instance. You may incur charges.
+        
+        AWS
+        ----
+        
+        We use `boto3 <https://boto3.readthedocs.io/en/latest/>`_ to connect to AWS S3.
+        It has a rich system for specifying credentials, which can be used in its
+        entirety by omitting AWS settings from your config file. This is appropriate in
+        AWS Lambda, where credentials are taken care of in the background, or if you
+        are an `AWS CLI <https://aws.amazon.com/documentation/cli/>`_ user and have
+        existing configs. See `boto3 documentation
+        <https://boto3.readthedocs.io/en/latest/guide/quickstart.html#configuration>`_
+        for more detail.
+        
+        To specify config directly, you may either give the ``aws_access_key_id`` and
+        ``aws_secret_access_key`` settings directly, or if you have an existing `AWS
+        CLI configuration
+        <https://docs.aws.amazon.com/cli/latest/reference/configure/index.html>`_, you
+        may simply specify ``aws_profile``.
+        
+        When Snowflake reads your API data from S3, it requires you to provide AWS
+        credentials with the appropriate S3 read permissions. Mr. Plow picks these up
+        as distinct config options: ``staging_aws_access_key_id`` and
+        ``staging_aws_secret_access_key``. As with the direct S3 credentials,
+        ``staging_aws_profile`` may also be provided.
+        
+        Third-party API's
+        -----------------
+        
+        We currently provide integrations for Livechat and Snapfulfil.
+        
+        The Livechat integration requires an API login, which is specified as config
+        options ``livechat_login`` and ``livechat_api_key``.
+        
+        The Snapfulfil integration requires an API login (config ``snapfulfil_login`` and
+        ``snapfulfil_password``) as well as an explicit designation of which Snap domain
+        you want to make requests to (config ``snapfulfil_api_domain``). Typically the
+        latter is either ``https://treltestapi.snapfulfil.net`` or
+        ``https://trelliveapi.snapfulfil.net``.
+        
+        Extending Mr. Plow
+        ==================
+        
+        Mr. Plow is designed to be broadly useful and easily extensible. We currently
+        provide integrations for Livechat and Snapfulfil, and more will be added, but
+        you can easily add your own.
+        
+        You must create your own implementation of ``plow.op.extract.Extractor`` to
+        define how to fetch data. In a pinch you can use a RestExtractor; to allow
+        for automatic fetching of subsequent pages, you'll have to subclass it and
+        implement ``postprocess_response()``. See documentation of
+        ``plow.op.Extractor``; also see ``plow.vendors.*`` for examples.
+        
+        You must furthermore create your own instances of ``plow.queries.Table`` to
+        specify how to translate data from the documents you fetch using the Extractor
+        into Snowflake DB tables. See documentation of ``plow.queries.Table``, and see
+        ``plow.queries.livechat`` and ``plow.queries.snapfulfil`` for tested examples.
+        
+        Finally, you must create a ``plow.cli.Source`` pointing to all of these.
+        
+        If you write your own adapter, we'd love to include it. Please send a pull
+        request!
+        
+        Example
+        -------
+        
+        If you have the following files in your Python project and ``mr-plow`` installed
+        with ``pip``::
+        
+            # mymodule/plow/extract.py
+            from plow.op.extract import RestExtractor
+            class Extractor(RestExtractor):
+                ...
+        
+        ::
+        
+            # mymodule/plow/tables.py
+            from plow.queries import Table
+            class Table1(Table):
+                select = "..."
+                # etc...
+        
+            class Table2(Table):
+                ...
+        
+            class Table3(Table):
+                ...
+        
+        ::
+        
+            # mymodule/plow/cli.py
+            from plow.cli import Source
+            from mymodule.plow.extract import Extractor
+            from mymodule.plow.tables import Table1, Table2, Table3
+        
+            extractor = Extractor()
+            tables = {t.name: t for t in (Table1(), Table2(), Table3())}
+            source = Source(extractor=extractor, tables=tables)
+        
+        
+        Then you can invoke the ``plow`` CLI tool, using the ``--source`` option to point
+        to your code::
+        
+            $ plow -c mr-plow.ini extract --source mymodule.plow.cli:source [options]...
+        
+        
+        Development
+        ===========
+        
+        Developer installation
+        ----------------------
+        
+        To develop on Mr. Plow, clone this repository, set up and activate a virtualenv
+        (see Installation) in the new working copy, and run ``pip install -e .[dev]``.
+        This installs the ``plow`` executable as well as development dependencies like
+        Flake8 (the linter we use) and pytest.
+        
+        Testing
+        -------
+        
+        Mr. Plow is tested using `pytest <https://docs.pytest.org/en/latest/>`_. If you
+        clone the source and install using ``pip install -e .[dev]``, it is installed
+        automatically along with several other test dependencies. Run ``pytest`` to run
+        the unit tests; add ``--cov-report=term-missing`` or ``--cov-report=html`` to
+        see detailed coverage information.
+        
+        Testing is separated into two section, unit tests and integration tests.
+        Integration tests are disabled by default: specify ``pytest --integration`` to
+        run integration tests as well, or ``pytest --no-unit`` to disable unit tests and
+        run only integration tests.
+        
+        The unit tests use mocking for all external functionality, including Snowflake,
+        S3, and third-party API's, and so may be run without an internet connection or
+        any of the service-specific configuration specified above. However, at this
+        time, with very few exceptions these tests do not verify any specific SQL
+        queries, nor almost any vendor-specific logic.
+        
+        The integration tests run all Snowflake setup operations and a full run of ETL
+        operations through S3 and Snowflake, so you must do some setup in order to run
+        them. We mock access to the third party API, so that we can simulate the
+        processing of a constant dataset and verify the result with precision. To run
+        integration tests, you must supply a configuration file by exporting its path
+        to ``PLOW_TEST_CONFIG``.
+        
+        .. warning::
+            **Caution**: Since these run real Snowflake operations, you may incur charges by running
+            these tests.
+        
+        Git hooks
+        ---------
+        
+        This project adheres to several standards including a style guide and unit
+        tests. To aid developers in complying, we include hooks that can be run upon
+        a commit. Install them as follows:
+        
+        * Include whatever hooks you wish in your own .git/hooks/pre-commit::
+        
+            $ echo '#!/usr/bin/env bash' >> .git/hooks/pre-commit
+            $ echo 'flake8-hook.py || exit $?' >> .git/hooks/pre-commit
+            $ echo 'unittest-hook.sh || exit $?' >> .git/hooks/pre-commit
+            $ chmod u+x .git/hooks/pre-commit
+        
+        * Add the appropriate options to your git config::
+        
+            $ git config flake8.strict true
+            $ git config plow.unit.strict true
+        
+        Now, the linter and the unit tests will run every time you commit and you will
+        be prompted to fix any deficiencies before committing. These checks can be
+        disabled temporarily using environment variables. To avoid a linting check::
+        
+            $ git commit
+            Style errors found!
+            $ FLAKE8_STRICT=false git commit
+            [...] Success!
+        
+        To skip unit tests::
+        
+            $ PLOW_UNIT_STRICT=false git commit
+        
+Keywords: Snowflake,Database,Amazon Web Services,AWS,S3,API,ETL
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: ~=3.6

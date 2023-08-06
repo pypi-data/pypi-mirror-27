@@ -1,0 +1,13 @@
+boto3>=1.4.6
+click>=6.7
+ijson>=2.3
+requests>=2.18.4
+snowflake-connector-python>=1.4.10
+pyyaml>=3.12
+
+[dev]
+pytest
+pytest-cov
+pytest-mock
+flake8
+pytest-profiling
