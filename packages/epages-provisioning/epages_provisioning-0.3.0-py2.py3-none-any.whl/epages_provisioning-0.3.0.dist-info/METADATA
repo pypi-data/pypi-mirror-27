@@ -1,0 +1,92 @@
+Metadata-Version: 2.0
+Name: epages-provisioning
+Version: 0.3.0
+Summary: Python library for calling ePages provisioning services
+Home-page: https://github.com/tswfi/epages_provisioning
+Author: Tatu Wikman
+Author-email: tatu.wikman@gmail.com
+License: MIT license
+Description-Content-Type: UNKNOWN
+Keywords: epages_provisioning
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: zeep (>=2.4.0)
+
+===================
+ePages provisioning
+===================
+
+.. image:: https://img.shields.io/pypi/v/epages_provisioning.svg
+        :target: https://pypi.python.org/pypi/epages_provisioning
+
+.. image:: https://img.shields.io/travis/tswfi/epages_provisioning.svg
+        :target: https://travis-ci.org/tswfi/epages_provisioning
+
+.. image:: https://readthedocs.org/projects/epages-provisioning/badge/?version=latest
+        :target: https://epages-provisioning.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://pyup.io/repos/github/tswfi/epages_provisioning/shield.svg
+     :target: https://pyup.io/repos/github/tswfi/epages_provisioning/
+     :alt: Updates
+
+
+Python library for calling ePages provisioning services
+
+* Free software: MIT license
+* Documentation: https://epages-provisioning.readthedocs.io.
+
+.. include:: installation.rst
+
+.. include:: usage.rst
+
+Features
+--------
+
+* ePages SimpleProvisioningService for easy shop creation, modifying and deletion
+
+Credits
+---------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+=======
+History
+=======
+
+0.3.0 (2017-12-22)
+------------------
+
+* added "shop" class which is a pythonic wrapper over the shopconfigservice
+
+0.2.1 (2017-12-19)
+------------------
+
+* fixed AddtionalAttributes and SecondaryDomains
+* restructuring
+
+0.2.0 (2017-12-08)
+------------------
+
+* First "working" release
+
+0.1.2 through 0.1.7 (2017-12-08)
+--------------------------------
+
+* Travis deployment tests
+
+0.1.0 (2017-12-05)
+------------------
+
+* First release on PyPI.
+
+
