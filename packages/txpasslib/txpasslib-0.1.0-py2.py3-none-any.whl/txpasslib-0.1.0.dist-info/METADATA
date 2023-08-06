@@ -1,0 +1,33 @@
+Metadata-Version: 2.0
+Name: txpasslib
+Version: 0.1.0
+Summary: Twisted wrapper for passlib
+Home-page: https://github.com/mithrandi/txpasslib
+Author: Tristan Seligmann
+Author-email: mithrandi@mithrandi.net
+License: Expat
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: Twisted (>=15.5.0)
+Requires-Dist: attrs (>=16.0.0)
+Requires-Dist: passlib (>=1.7.0)
+Provides-Extra: test
+Requires-Dist: hypothesis (>=3.6.0,<4.0.0); extra == 'test'
+Requires-Dist: testtools (>=2.2.0); extra == 'test'
+
+UNKNOWN
+
+
