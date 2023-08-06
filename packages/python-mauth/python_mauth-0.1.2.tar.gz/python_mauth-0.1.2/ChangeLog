@@ -1,0 +1,37 @@
+CHANGES
+=======
+
+0.1.2
+-----
+
+* Sphinx docs
+* Fixed test of destroy method
+* Docs + few small fixes
+
+0.1.1
+-----
+
+* Fix .cfg config
+
+0.1
+---
+
+* Add installation notes on library
+* Update package files due to first release
+* Added tests for destroy mixin and application schema
+* Update package description
+* Update requirements
+* Tox config
+* Application and its related structures CRUD methods
+* Update tests
+* Base CRUD ready. Tested on applications
+* Reconfigure project structure
+* Move conf variables to APIClient; add authorization and errors raising
+* Add setup configuration to install properly from pipenv
+* add mailmap
+* Split modules. Add conf file. Add object classes to work with API
+* APIClient
+* Base directory structure
+* gitignore, pipfile for pipenv
+* Readme
+* Initial commit

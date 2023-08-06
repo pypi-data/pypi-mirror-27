@@ -1,0 +1,41 @@
+Metadata-Version: 1.1
+Name: python-mauth
+Version: 0.1.2
+Summary: Mauth API client library
+Home-page: UNKNOWN
+Author: Webcase
+Author-email: info@webcase.com.ua
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Client library for Mauth project
+        ================================
+        
+        Install library through pypi
+        
+        .. code-block:: python
+        
+            pipenv install python_mauth
+        
+        Simple usecase of creating application
+        
+        .. code-block:: python
+        
+            from mauth.applications import Application
+        
+            app = Application(
+                api_base_url='http://auth.ob-auth.com', api_key='some_key'
+            )
+            app.title = 'title'
+            app.create()
+            print(app.id)
+        
+        
+Keywords: setup
+distutils
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Beta
+Classifier: Environment :: Console
+Classifier: Environment :: Mauth
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
