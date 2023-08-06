@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import os
+import sys
+
+from termcolor import colored
+
+from rapidpro_controller import (get_logger, get_color, STATUS_PATH)
+from rapidpro_controller.states import set_status
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main(args):
+    if not len(args):
+        logger.error("new status not specified. Aborting.")
+        return 1
+
+    status = args[0]
+    try:
+        assert set_status(status) == 0
+    except AssertionError:
+        return 1
+    except:
+        logger.error("unable to edit status in {}. permission?"
+                     .format(STATUS_PATH))
+        return 1
+
+    logger.info("changed server status to: `{}`"
+                .format(colored(status, get_color(status))))
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))
