@@ -1,0 +1,15 @@
+Directorship:
+  label: "Directorship"
+  extends: Interest
+  icon: fa-user-circle
+  properties:
+    director:
+      label: "Director"
+      type: entity
+      schema: LegalEntity
+    organization:
+      label: "Organization"
+      type: entity
+      schema: Organization
+    secretary:
+      label: "Secretary"
