@@ -1,0 +1,73 @@
+CHANGES
+=======
+
+0.3.6
+-----
+
+* add release to pypi from Travis
+* don't check for redefined built-ins
+* fix lint
+* converted tests to pytest
+* add missing imports and fix code formatting
+* Add jsonp\_to\_json module docstring
+* Move Manifest parsing code to utils/manifest.py
+* Add unittests for installed plugin version
+* Fix Plugin Manifest parsing, plugin install status
+* Add 500 to allowed status codes while restarting
+* Move update\_center\_dict handling to Plugins class, hopefully fix wrong version issues by restarting after install
+* Optimize \_wait\_for\_reboot
+* Lint fixes and decode bytestring
+* Add plugin uninstall; install exact versions
+* Fix credentials update test
+* Credentials update support
+* disable master executors temporary to let test pass
+* add codecov dependency and env variables for it
+* add timeout parameter to Jenkins object
+* Fixes pycontribs/jenkinsapi#530. It's possible for queued tasks to be unnamed. This is the case when using Pipeline jobs. Check that tasks have names before referring to it
+* Close #583: Handle parameters with secret values
+* disable logging from requests
+* reset executors to test queue
+* remove encode to utf when posting config.xml
+* add new plugin dependencies, fix all tests
+* change disabled job detection (#543)
+* Add support for AWS Credentials (#572)
+* Fix bug when using private key file(on master) to create ssh credential. (#573)
+* Added missing plugin and changed wait for restart test (#579)
+* Enabled 5 retries at request lib level
+* Add missing packages from package
+* Add Jenkins pipeline linter
+
+0.3.5
+-----
+
+* Adopt pbr
+* Dropped support for Jenkins 1.x
+* EnvInject v2.0 now has security settings - add this
+* Select jdk8 for build
+* set java version to use in Travis
+* fix security settings json
+* fix: linting (#561)
+* Add estimated duration accessor to build class (#555)
+* Increment version
+
+0.3.4
+-----
+
+* fix security json for 2.x Jenkins (#541)
+* Add support for jobs in folders
+* Remove .tags
+* Update test case for node management
+* Enable config Tool Locations for jenkins node
+* fix spelling of artefact to artifact
+* Correct typo (#531)
+* Add get\_env\_vars to Build
+* Close #522 Only use parameter actions to access parameters. (#524)
+* Add ability in Node to upload a config xml (#515)
+* Allow fn changes on save (#518)
+* Fix source code url. (#521)
+* fix up tox (#523)
+* Update index.rst
+* Migrate to six (#507)
+* Set to use latest pylint
+* Removed test
+* Converted test\_job\_folders
