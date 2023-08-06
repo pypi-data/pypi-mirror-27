@@ -1,0 +1,68 @@
+#!/usr/bin/python
+
+import sys
+import os
+import socket
+import time
+import datetime
+import logging
+
+from nova_ha_monitor.config import ConsulComputeConfig
+
+from nova_ha_utils import util
+from nova_ha_utils import mdadm
+from nova_ha_utils import block
+from nova_ha_utils import vendor
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+
+CLEAR_ENV = ["http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY"]
+
+def get_compute_node_runtime_info_for_consul():
+
+    node_info = {}
+
+    md_info = mdadm.get_md_local_runtime_info_by_uuid()
+
+    for array in md_info.values():
+        devices = {}
+        for dev in array['devices']:
+            basic_info = block.get_block_device_basic_info(dev)
+            devices[basic_info['uuid']] = basic_info
+
+        array['devices'] = devices
+        array.pop('dev_path', None)
+
+    node_info['md_arrays'] = md_info
+    node_info['hw_model'] = vendor.get_vendor_name()
+
+    time_info = {}
+    ts = time.time()
+    time_info['timestamp'] = ts
+
+    dt = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+    time_info['datetime'] = dt
+
+    node_info['time'] = time_info
+
+    return node_info
+
+def main():
+    try:
+        util.clear_env(clear_env_vars=CLEAR_ENV)
+
+        hostname = socket.gethostname()
+        info = get_compute_node_runtime_info_for_consul()
+        conf = ConsulComputeConfig(hostname)
+
+        if info:
+            conf.set_runtime_config(info)
+            sys.exit(0)
+        else:
+            sys.exit(1)
+    except Exception as err:
+        print err
+        sys.exit(2)
+
+if __name__ == "__main__":
+    main()

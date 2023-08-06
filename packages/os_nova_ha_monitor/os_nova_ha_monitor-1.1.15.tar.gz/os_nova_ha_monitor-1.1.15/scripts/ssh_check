@@ -1,0 +1,53 @@
+#!/usr/bin/python
+
+import sys
+import os
+import socket
+import paramiko
+import argparse
+import logging
+
+from nova_ha_monitor.config import ConsulComputeConfig
+from paramiko.ssh_exception import BadHostKeyException, AuthenticationException, SSHException
+
+from retrying import retry
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+
+@retry(wait_fixed=2000, stop_max_attempt_number=3)
+def check_ssh(ip, user='test', password=''):
+
+
+    ssh = paramiko.SSHClient()
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+    try:
+        ssh.connect(ip, username=user, password=password, timeout=30)
+        print 'Node {0} ssh connected.'.format(ip)
+
+        return 0
+    except (BadHostKeyException, AuthenticationException,
+            SSHException, socket.error) as err:
+        print 'There was an error during ssh check ip: {0}, user: {1}'.format(ip, user)
+        print err
+
+        return 2
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-r", "--remote-node", type=str, required=True,
+                        help='Node name')
+    parser.add_argument("-c", "--check-addr", type=str, required=True,
+                        help='Check address')
+
+    args = parser.parse_args()
+
+    conf = ConsulComputeConfig(args.remote_node)
+    ssh_user = conf.get_ssh_user()
+    ssh_password = conf.get_ssh_password()
+
+    sys.exit(check_ssh(args.check_addr, user=ssh_user, password=ssh_password))
+
+if __name__ == "__main__":
+    main()
+
