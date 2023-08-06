@@ -1,0 +1,6 @@
+include README.md
+include requirements.txt
+recursive-include aws_hadoop/templates *
+include aws_hadoop/ami.tf
+include aws_hadoop/main.tf
+
