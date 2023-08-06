@@ -1,0 +1,36 @@
+{% extends "admin/parler/change_form.html" %}
+{% load i18n admin_static admin_modify admin_urls %}
+{% load url from future %}
+{% block object-tools-items %}
+    {% if change and not is_popup %}
+		{% if has_publish_permission %}
+			{% if publish_btn_live %}
+				<li>
+					<a href="{{ publish_btn_live }}">Publish Draft</a>
+				</li>
+			{% endif %}
+			{% if unpublish_btn %}
+				<li>
+					<a href="{{ unpublish_btn }}">Unpublish</a>
+				</li>
+			{% endif %}
+			{% if revert_btn %}
+				<li>
+					<a href="{{ revert_btn }}">Revert to Published</a>
+				</li>
+			{% endif %}
+			{% if preview_draft_btn %}
+				<li>
+					<a href="{{ original.get_absolute_url }}?edit">Preview Draft</a>
+				</li>
+			{% endif %}
+		{% endif %}
+    {% endif %}
+	{{ block.super }}
+{% endblock %}
+
+{% if save_on_top %}{% block submit_buttons_top %}{% include "publisher/includes/submit_row.html" %}{% endblock %}{% endif %}
+
+{% block submit_buttons_bottom %}
+    {% include "publisher/includes/submit_buttons_bottom.html" %}
+{% endblock %}
