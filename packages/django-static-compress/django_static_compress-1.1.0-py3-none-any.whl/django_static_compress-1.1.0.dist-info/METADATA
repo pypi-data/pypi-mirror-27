@@ -1,0 +1,30 @@
+Metadata-Version: 2.0
+Name: django-static-compress
+Version: 1.1.0
+Summary: Precompress Django static files with Brotli and Zopfli
+Home-page: https://github.com/whs/django-static-compress
+Author: Manatsawin Hanmongkolchai
+Author-email: manatsawin+pypi@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Pre-processors
+Requires-Dist: Django
+Requires-Dist: Brotli (~=1.0.1)
+Requires-Dist: zopfli (~=0.1.1)
+
+UNKNOWN
+
+
