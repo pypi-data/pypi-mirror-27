@@ -1,0 +1,9 @@
+
+      [console_scripts]
+      cfs_manager=cfs_manager.cli:loop
+      cfs-manager=cfs_manager.cli:loop
+      cfsm=cfs_manager.cli:loop
+      cfs-do=cfs_manager.cli:once
+      cfs-watch=cfs_manager.cfs_watcher:main
+      cfs-config=cfs_manager.configuration:main
+    
