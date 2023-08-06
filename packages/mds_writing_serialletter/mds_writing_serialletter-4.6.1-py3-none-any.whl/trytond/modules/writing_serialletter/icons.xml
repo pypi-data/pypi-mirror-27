@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <record model="ir.ui.icon" id="crm_icon">
+            <field name="name">tryton-crm</field>
+            <field name="path">icon/tryton-crm.svg</field>
+        </record>
+       
+        <record model="ir.ui.icon" id="mailtoall_icon">
+            <field name="name">icon-mailtoall</field>
+            <field name="path">icon/mail-reply-all.svg</field>
+        </record>
+
+    </data>
+</tryton>
