@@ -1,0 +1,45 @@
+Metadata-Version: 1.1
+Name: space-command
+Version: 0.2
+Summary: Space Command
+Home-page: UNKNOWN
+Author: Jules David
+Author-email: jules@onada.fr
+License: GPLv3
+Description-Content-Type: UNKNOWN
+Description: Space Command
+        =============
+        
+        The space command allows to compute the position of satellites and their passes above our head.
+        
+        In order to do this, it uses the `beyond <https://github.com/galactics/beyond>`__ library.
+        
+        Installation
+        ------------
+        
+            $ pip install space-command
+        
+        Features
+        --------
+        
+        **Retrieve orbits as TLE from celestrak**
+        
+        .. code-block:: shell
+        
+            $ space tle get
+        
+        **Compute passes over a station for a list of satellites**
+        
+        .. code-block:: shell
+        
+            $ space passes <station> <sat>
+        
+Keywords: flight dynamic,satellite,space
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Classifier: Topic :: Scientific/Engineering :: Physics
