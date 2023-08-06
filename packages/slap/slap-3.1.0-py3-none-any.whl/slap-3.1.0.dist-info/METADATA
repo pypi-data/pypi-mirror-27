@@ -1,0 +1,32 @@
+Metadata-Version: 2.0
+Name: slap
+Version: 3.1.0
+Summary: A set of scripts for publishing ESRI services
+Home-page: https://github.com/gisinc/slap
+Author: Ian Firkin
+Author-email: ian.firkin@gisinc.com
+License: MIT
+Keywords: ESRI GISinc MapService
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: future
+Requires-Dist: requests
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+Requires-Dist: mock; extra == 'test'
+Requires-Dist: pyfakefs; extra == 'test'
+Requires-Dist: pytest; extra == 'test'
+Requires-Dist: pytest-cov; extra == 'test'
+
+A set of scripts for publishing ESRI services
+
+
