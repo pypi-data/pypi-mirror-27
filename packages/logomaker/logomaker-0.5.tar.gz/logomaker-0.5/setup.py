@@ -1,0 +1,50 @@
+from setuptools import setup
+
+def readme():
+    with open('README.rst') as f:
+        return f.read()
+
+setup(name='logomaker',
+      version='0.5',
+      description='Package for making Sequence Logos',
+      long_description=readme(),
+      classifiers=[
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Text Processing :: Linguistic',
+      ],
+      keywords='Sequence Logos',
+      url='http://logomaker.cshl.edu',
+      author='Ammar Tareen',
+      author_email='tareen@cshl.edu',
+      license='MIT',
+      packages=['logomaker'],
+      package_data={'logomaker': ['logomaker_data/*']},
+      include_package_data=True,
+      scripts=['bin/logomaker_cmdline','bin/make_logo_arguments.txt'],
+      install_requires=[
+        'numpy',
+        'backports.functools-lru-cache==1.4',
+		'biopython==1.70',
+		'click==6.7',
+		'cycler==0.10.0',
+		'Flask==0.12.2',
+		'gunicorn',
+		'functools32==3.2.3.post2',
+		'itsdangerous==0.24',
+		'Jinja2==2.9.6',
+		'MarkupSafe==1.0',
+		'matplotlib==2.0.2',
+		'numpy==1.13.3',
+		'pandas==0.21.0',
+		'pyparsing==2.2.0',
+		'python-dateutil==2.6.1',
+		'pytz==2017.3',
+		'six==1.11.0',
+		'subprocess32==3.2.7',
+		'Werkzeug==0.12.2',
+      ],
+      test_suite='nose.collector',
+	  tests_require=['nose'],
+      zip_safe=False)
