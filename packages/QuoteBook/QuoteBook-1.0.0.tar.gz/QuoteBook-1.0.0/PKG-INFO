@@ -1,0 +1,31 @@
+Metadata-Version: 1.2
+Name: QuoteBook
+Version: 1.0.0
+Summary: A program used to store quotes.
+Home-page: https://github.com/axelrechenberg/QuoteBook/
+Author: Axel Rechenberg
+Author-email: axelreche@gmail.com
+License: GPL-3.0
+Description-Content-Type: UNKNOWN
+Description: QuoteBook
+        =========
+        
+        Simple PyQt5 based program used to store quotes.
+        
+        Each quote can in addition store information about author, title,
+        characters, category, date and tags. Quotes are stored in a json file as
+        a list of dictionaries.
+        
+Keywords: quote storage pyqt5
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: X11 Applications :: Qt
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Natural Language :: Polish
+Classifier: Natural Language :: English
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Other/Nonlisted Topic
+Requires-Python: >=3.5
