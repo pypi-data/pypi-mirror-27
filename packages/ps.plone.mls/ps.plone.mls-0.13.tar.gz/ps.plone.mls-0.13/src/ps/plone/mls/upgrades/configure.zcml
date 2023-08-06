@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="ps.plone.mls">
+
+  <genericsetup:registerProfile
+      description=""
+      directory="../profiles/to_1010"
+      name="1010"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      title="Upgrade ps.plone.mls to 1010 profile"
+      />
+  <genericsetup:upgradeStep
+      description=""
+      destination="1010"
+      handler=".upgrade_1010.upgrade"
+      profile="ps.plone.mls:default"
+      source="*"
+      title="Upgrade ps.plone.mls to 1010"
+      />
+
+</configure>

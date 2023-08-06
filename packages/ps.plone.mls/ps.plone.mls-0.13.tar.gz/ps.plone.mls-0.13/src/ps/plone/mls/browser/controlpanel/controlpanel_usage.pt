@@ -1,0 +1,178 @@
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    metal:use-macro="context/prefs_main_template/macros/master"
+    i18n:domain="ps.plone.mls">
+
+  <body>
+    <metal:main fill-slot="prefs_configlet_content">
+      <article id="content">
+        <a id="setup-link" class="link-parent"
+            tal:attributes="href string:$portal_url/@@overview-controlpanel"
+            i18n:translate=""
+            i18n:domain="plone">Site Setup</a>
+
+        <h1 class="documentFirstHeading" i18n:translate="">Propertyshelf MLS Embedding</h1>
+
+        <div metal:use-macro="context/global_statusmessage/macros/portal_message">Portal status message</div>
+
+        <div id="content-core">
+          <style type="text/css">
+            ol.configlets li {
+              margin: 1.2em;
+            }
+            section.portletContent {
+              overflow: hidden;
+            }
+          </style>
+
+          <div class="autotabs">
+            <div class="autotoc-nav">
+              <a href="${portal_url}/@@mls-controlpanel-base"
+                  i18n:translate="">Settings</a>
+              <a href="${portal_url}/@@mls-controlpanel-ui"
+                  i18n:translate="">UI</a>
+              <a href="${portal_url}/@@mls-controlpanel-contact-info"
+                  i18n:translate="">Contact Information</a>
+              <a href="${portal_url}/@@mls-controlpanel-caching"
+                  i18n:translate="">Caching</a>
+              <a href="${portal_url}/@@mls-controlpanel-usage" class="active"
+                  i18n:translate="">Usage Overview</a>
+            </div>
+            <p class="discreet" i18n:translate="">Review the MLS Embedding usage for this Plone site.</p>
+          </div>
+
+          <section class="portlet" tal:define="items view/get_local_mls_settings | nothing">
+            <header class="portletHeader" i18n:translate="">Local MLS Settings</header>
+            <section class="portletContent">
+              <p tal:condition="not: items" i18n:translate="">There are currently no local MLS settings activated in this site.</p>
+              <ol class="configlets" tal:condition="items">
+                <li tal:repeat="item items"><a href="${item/getPath}">
+                  <span tal:replace="item/Title">[Title]</span> (<span tal:replace="item/getPath">[URL]</span>)</a>
+                  <div class="pull-right">
+                    <a href="${item/getPath}/@@mls-localconfig" class="context standalone" i18n:translate="">Edit</a>
+                    <a href="${item/getPath}/@@mls-localconfig-toggle" class="context destructive" i18n:translate="">Deactivate</a>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </section>
+
+          <section class="portlet" tal:define="items view/get_local_contact_infos | nothing">
+            <header class="portletHeader" i18n:translate="">Local Contact Informations</header>
+            <section class="portletContent">
+              <p tal:condition="not: items" i18n:translate="">There are currently no local contact informations activated in this site.</p>
+              <ol class="configlets" tal:condition="items">
+                <li tal:repeat="item items"><a href="${item/getPath}">
+                  <span tal:replace="item/Title">[Title]</span> (<span tal:replace="item/getPath">[URL]</span>)</a>
+                  <div class="pull-right">
+                    <a href="${item/getPath}/@@mls-localagencyinfo" class="context standalone" i18n:translate="">Edit</a>
+                    <a href="${item/getPath}/@@mls-localagencyinfo-toggle" class="context destructive" i18n:translate="">Deactivate</a>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </section>
+
+          <section class="portlet" tal:define="items view/get_listing_collections | nothing">
+            <header class="portletHeader" i18n:translate="">Listing Collections</header>
+            <section class="portletContent">
+              <p tal:condition="not: items" i18n:translate="">There are currently no listing collections activated in this site.</p>
+              <ol class="configlets" tal:condition="items">
+                <li tal:repeat="item items"><a href="${item/getPath}">
+                  <span tal:replace="item/Title">[Title]</span> (<span tal:replace="item/getPath">[URL]</span>)</a>
+                  <div class="pull-right">
+                    <a href="${item/getPath}/@@listing-collection-config" class="context standalone" i18n:translate="">Edit</a>
+                    <a href="${item/getPath}/@@listing-collection-toggle" class="context destructive" i18n:translate="">Deactivate</a>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </section>
+
+          <section class="portlet" tal:define="items view/get_recent_listings | nothing">
+            <header class="portletHeader" i18n:translate="">Recent Listings</header>
+            <section class="portletContent">
+              <p tal:condition="not: items" i18n:translate="">There are currently no recent listings activated in this site.</p>
+              <ol class="configlets" tal:condition="items">
+                <li tal:repeat="item items"><a href="${item/getPath}">
+                  <span tal:replace="item/Title">[Title]</span> (<span tal:replace="item/getPath">[URL]</span>)</a>
+                  <div class="pull-right">
+                    <a href="${item/getPath}/@@recent-listings-config" class="context standalone" i18n:translate="">Edit</a>
+                    <a href="${item/getPath}/@@recent-listings-toggle" class="context destructive" i18n:translate="">Deactivate</a>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </section>
+
+          <section class="portlet" tal:define="items view/get_featured_listings | nothing">
+            <header class="portletHeader" i18n:translate="">Featured Listings</header>
+            <section class="portletContent">
+              <p tal:condition="not: items" i18n:translate="">There are currently no featured listings activated in this site.</p>
+              <ol class="configlets" tal:condition="items">
+                <li tal:repeat="item items"><a href="${item/getPath}">
+                  <span tal:replace="item/Title">[Title]</span> (<span tal:replace="item/getPath">[URL]</span>)</a>
+                  <div class="pull-right">
+                    <a href="${item/getPath}/@@featured-listings-config" class="context standalone" i18n:translate="">Edit</a>
+                    <a href="${item/getPath}/@@featured-listings-toggle" class="context destructive" i18n:translate="">Deactivate</a>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </section>
+
+          <section class="portlet" tal:define="items view/get_listing_searches | nothing">
+            <header class="portletHeader" i18n:translate="">Listing Searches</header>
+            <section class="portletContent">
+              <p tal:condition="not: items" i18n:translate="">There are currently no listing searches activated in this site.</p>
+              <ol class="configlets" tal:condition="items">
+                <li tal:repeat="item items"><a href="${item/getPath}">
+                  <span tal:replace="item/Title">[Title]</span> (<span tal:replace="item/getPath">[URL]</span>)</a>
+                  <div class="pull-right">
+                    <a href="${item/getPath}/@@listing-search-config" class="context standalone" i18n:translate="">Edit</a>
+                    <a href="${item/getPath}/@@listing-search-toggle" class="context destructive" i18n:translate="">Deactivate</a>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </section>
+
+          <section class="portlet" tal:define="items view/get_listing_search_banners | nothing">
+            <header class="portletHeader" i18n:translate="">Listing Search Banners</header>
+            <section class="portletContent">
+              <p tal:condition="not: items" i18n:translate="">There are currently no listing search banners activated in this site.</p>
+              <ol class="configlets" tal:condition="items">
+                <li tal:repeat="item items"><a href="${item/getPath}">
+                  <span tal:replace="item/Title">[Title]</span> (<span tal:replace="item/getPath">[URL]</span>)</a>
+                  <div class="pull-right">
+                    <a href="${item/getPath}/@@listing-search-banner-config" class="context standalone" i18n:translate="">Edit</a>
+                    <a href="${item/getPath}/@@listing-search-banner-toggle" class="context destructive" i18n:translate="">Deactivate</a>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </section>
+
+          <section class="portlet" tal:define="items view/get_development_collections | nothing">
+            <header class="portletHeader" i18n:translate="">Development Collections</header>
+            <section class="portletContent">
+              <p tal:condition="not: items" i18n:translate="">There are currently no development collections activated in this site.</p>
+              <ol class="configlets" tal:condition="items">
+                <li tal:repeat="item items"><a href="${item/getPath}">
+                  <span tal:replace="item/Title">[Title]</span> (<span tal:replace="item/getPath">[URL]</span>)</a>
+                  <div class="pull-right">
+                    <a href="${item/getPath}/@@development-collection-config" class="context standalone" i18n:translate="">Edit</a>
+                    <a href="${item/getPath}/@@development-collection-toggle" class="context destructive" i18n:translate="">Deactivate</a>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </section>
+        </div>
+      </article>
+    </metal:main>
+  </body>
+</html>

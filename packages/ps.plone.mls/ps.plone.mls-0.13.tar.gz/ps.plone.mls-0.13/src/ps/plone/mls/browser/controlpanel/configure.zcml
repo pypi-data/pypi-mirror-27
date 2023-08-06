@@ -1,0 +1,43 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="ps.plone.mls">
+
+  <browser:page
+      class=".settings.MLSBaseSettingsPanelView"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="mls-controlpanel-base"
+      permission="ps.plone.mls.controlpanel.MLS"
+      />
+
+  <browser:page
+      class=".settings.MLSUISettingsPanelView"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="mls-controlpanel-ui"
+      permission="ps.plone.mls.controlpanel.MLS"
+      />
+
+  <browser:page
+      class=".settings.MLSContactInfoSettingsPanelView"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="mls-controlpanel-contact-info"
+      permission="ps.plone.mls.controlpanel.MLS"
+      />
+
+  <browser:page
+      class=".settings.MLSCachingSettingsPanelView"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="mls-controlpanel-caching"
+      permission="ps.plone.mls.controlpanel.MLS"
+      />
+
+  <browser:page
+      class=".usage.UsageControlPanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="mls-controlpanel-usage"
+      permission="ps.plone.mls.controlpanel.MLS"
+      template="controlpanel_usage.pt"
+      />
+
+</configure>

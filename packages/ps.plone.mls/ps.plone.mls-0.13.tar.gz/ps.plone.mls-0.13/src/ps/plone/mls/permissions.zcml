@@ -1,0 +1,11 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <permission
+      id="ps.plone.mls.controlpanel.MLS"
+      title="Plone Site Setup: Propertyshelf MLS">
+    <role name="Manager" />
+    <role name="Site Administrator" />
+  </permission>
+
+</configure>

@@ -1,0 +1,15 @@
+setuptools
+collective.z3cform.widgets
+mls.apiclient
+plone.api
+plone.app.dexterity
+plone.mls.core>=0.7.dev0
+plone.mls.listing>=1.16.dev0
+ps.plone.realestatefont
+
+[test]
+plone.app.robotframework
+plone.app.testing
+plone.mls.listing[fotorama]
+responses
+robotframework-selenium2screenshots

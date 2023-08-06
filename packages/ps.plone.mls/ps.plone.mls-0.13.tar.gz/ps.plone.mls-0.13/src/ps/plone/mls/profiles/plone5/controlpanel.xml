@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="ps.plone.mls"
+    purge="False">
+
+  <configlet action_id="ps_plone_mls"
+      appId="ps.plone.mls"
+      category="Products"
+      condition_expr=""
+      title="Propertyshelf MLS Embedding"
+      url_expr="string:${portal_url}/@@mls-controlpanel-base"
+      visible="True"
+      i18n:attributes="title">
+    <permission>Plone Site Setup: Propertyshelf MLS</permission>
+  </configlet>
+
+</object>
