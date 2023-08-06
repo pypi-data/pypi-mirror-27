@@ -1,0 +1,4 @@
+Alyvix is an open source module for Python. Alyvix monitors the End User Experience by automating and testing the graphical user interfaces.
+It uses OpenCV functions (plus an enhanced version of Tesseract and other algorithms) to recognize application objects like buttons, input boxes, dropdown lists and icons. Alyvix is able to detect the exact position (x y coordinates) of all recognized objects.
+Moreover, Alyvix provides methods to interact with the recognized objects (for example clicking on an object or inserting text into an input box).
+Using the graphical interface of Alyvix, which is integrated in the IDE of Robot Framework, individual test cases can be easily designed. Running these test cases allows to automatically test each type of application. Moreover, the determined performance data can be archived in Nagios format and sent to monitoring systems like Nagios, Icinga, Shinken and NetEye.
