@@ -1,0 +1,28 @@
+Metadata-Version: 2.0
+Name: mrg-core
+Version: 0.0.10
+Summary: The common library for all Meteor Research Group scripts. This library includes all metrec data interfaces, common astronomical routines, and utility classes. 
+Home-page: https://mrg-tools.gitlab.io/mrg_core/
+Author: Hans Smit
+Author-email: jcsmit@xs4all.nl
+License: MIT
+Description-Content-Type: UNKNOWN
+Requires-Dist: Pillow
+Requires-Dist: PyMySQL
+Requires-Dist: SQLAlchemy
+Requires-Dist: astropy
+Requires-Dist: future
+Requires-Dist: lxml
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: pyephem
+Requires-Dist: pysftp
+Requires-Dist: scandir
+Requires-Dist: scipy
+Requires-Dist: six
+Requires-Dist: spiceypy
+
+========
+
+
