@@ -1,0 +1,45 @@
+Metadata-Version: 1.1
+Name: nani-fighter
+Version: 1.2
+Summary: A Simple Game
+Home-page: https://github.com/frrahat/Nani-Fighter
+Author: Fazle Rahat
+Author-email: fr.rahat@gmail.com
+License: MIT
+Download-URL: https://github.com/frrahat/Nani-Fighter/archive/1.2.tar.gz
+Description-Content-Type: UNKNOWN
+Description: # Nani Fighter
+        
+        <img src="res\\home.png">
+        
+        Nani Fighter is a simple game made with python and pygame. Currently It has two versions:
+        * Nani Fighter : The Beginning
+        * Nani Fighter : The Second Visit
+        
+        The first one is easier where the latter one is more difficult and has more enemy characters. These versions are compatible with both python2 and python3. 
+        
+        ### Installation
+        Using pip :
+        
+        ```pip install nani_fighter```
+        
+        ### Running The Game
+        Add the following code to a python (.py) file and run it.
+        ```python
+        # importing two versions of the game
+        from nani_fighter import the_beginning, the_second_visit
+        
+        # follwing line of code will start the 'Nani Fighter : The Beginning'
+        the_beginning.run()
+        
+        # follwing line of code will start the 'Nani Fighter : The Second Visit'
+        the_second_visit.run()
+        
+        ```
+Keywords: game,school,shooting
+Platform: UNKNOWN
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
