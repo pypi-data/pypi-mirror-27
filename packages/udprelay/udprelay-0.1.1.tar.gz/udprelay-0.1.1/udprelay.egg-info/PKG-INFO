@@ -1,0 +1,25 @@
+Metadata-Version: 1.0
+Name: udprelay
+Version: 0.1.1
+Summary: another simple udp realy server and client
+Home-page: https://github.com/whatArePeopleDownloading/udpRelay
+Author: meta Z
+Author-email: zycode277@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: # A simple Udp relay server & client
+        ============================================================
+        
+        
+        .. image:: https://travis-ci.org/whatArePeopleDownloading/udp_relay.svg?branch=master
+            :target: https://travis-ci.org/whatArePeopleDownloading/udp_relay
+        
+        .. code:: python
+        
+            extera header for client (8 Bytes)
+            +------+-------------------------------+
+            | flag |      Ip address(v4)  | port   |
+            |2 byte|        4 bytes       | 2 bytes|
+            +--------------------------------------+
+        
+Platform: UNKNOWN
