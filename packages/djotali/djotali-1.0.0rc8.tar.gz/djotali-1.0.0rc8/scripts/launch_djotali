@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+waitforit --host=db --port=5432 --timeout=15 && waitforit --host=redis --port=6379 --timeout=10
+
+manage.py migrate && manage.py bootstrap
+
+if [ -z ${POPULATE_DB+x} ]; then
+    echo "Not populating the DB, running the migration"
+else
+    echo "Populating the DB, data will be dropped and recreated beforehand"
+    manage.py seed
+fi
+
+# I/O Bound rather than CPU bound so we
+# (2 Workers * CPU Cores) + 1
+# ---------------------------
+# For 1 core  -> (2*1)+1 = 3
+# For 2 cores -> (2*2)+1 = 5
+# For 4 cores -> (2*4)+1 = 9
+celery -A djotali.celery.app worker -B --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler &
+gunicorn --bind 0.0.0.0:8000 --workers=5 --log-level info djotali.wsgi:application
