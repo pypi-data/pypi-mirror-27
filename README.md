@@ -3,36 +3,10 @@
 This repo contains 40000 packages uploaded to PyPI between 
 2017-11-23 12:07 and 2018-01-04 23:24.
 
-The repo is 69% (27997/40000) complete.
+The repo is 74% (29997/40000) complete.
 
-## Packages:
+Package contents can be found [in the code branch](https://github.com/pypi-data/pypi-mirror-27/tree/code/packages).
 
-| Name  | Count |
-| ----- | ----- |
-| frida | 149 |
-| gecosistema_lite | 125 |
-| migbq | 117 |
-| sickrage | 112 |
-| sqlphile | 100 |
-| rundec | 93 |
-| grpcio-tools | 92 |
-| grpcio | 91 |
-| aiohttp | 88 |
-| tribology | 84 |
-| pyramid-oereb | 84 |
-| c2cgeoform | 84 |
-| mali | 77 |
-| gossipcat | 73 |
-| deepdrive | 72 |
-| ssh2-python | 68 |
-| cli-pipeline | 68 |
-| picutils | 66 |
-| hypothesis | 66 |
-| vpython | 65 |
-| edx-enterprise | 65 |
-| ipwb | 64 |
-| IGitt | 64 |
-| rp | 63 |
-| lz4 | 61 |
+A browsable package list for all repositories [all packages here](https://pypi-data.github.io/website/repositories/pypi-mirror-27).
 
 
