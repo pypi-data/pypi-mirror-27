@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-15 17:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: fields.py:42
+msgid "A file field with constraints on size and/or type"
+msgstr "Un champ de fichier avec des contraintes de taille et/ou type"
+
+#: fields.py:60
+#, python-format
+msgid "File size exceeds limit: %(current_size)s. Limit is %(max_size)s."
+msgstr "Le fichier dépasse la taille autorisée: %(current_size)s. La limite est %(max_size)s."
+
+#: fields.py:79
+#, python-format
+msgid "Unsupported file type: %(type)s. Allowed types are %(allowed)s."
+msgstr "Type de fichier non supporté: %(type)s. Les types autorisés sont %(allowed)s."
