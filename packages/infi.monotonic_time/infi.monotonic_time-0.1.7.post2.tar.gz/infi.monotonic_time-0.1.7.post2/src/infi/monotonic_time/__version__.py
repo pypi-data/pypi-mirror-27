@@ -1,0 +1,11 @@
+__version__ = "0.1.7.post2"
+__git_commiter_name__ = "Amit Oren"
+__git_commiter_email__ = "aoren@infinidat.com"
+__git_branch__ = u'develop'
+__git_remote_tracking_branch__ = u'origin/develop'
+__git_remote_url__ = u'git@git.infinidat.com:host-opensource/infi.monotonic_time.git'
+__git_head_hash__ = '23618bfe8f0fd8c88e6a589c36375fdc95745794'
+__git_head_subject__ = u'buildout.cfg changed isolated python version to v2.7.8.10'
+__git_head_message__ = u''
+__git_dirty_diff__ = u''
+__git_commit_date__ = '2017-12-12 17:16:39'
