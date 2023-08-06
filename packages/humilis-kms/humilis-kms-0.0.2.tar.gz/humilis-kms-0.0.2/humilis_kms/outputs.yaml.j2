@@ -1,0 +1,12 @@
+---
+outputs:
+    KeyId:
+        Description: The physical ID of the KMS key
+        Value: {Ref: KmsKey}
+
+    KeyArn:
+        Description: The ARN of the KMS Key
+        Value:
+            "Fn::GetAtt":
+                - KmsKey
+                - Arn

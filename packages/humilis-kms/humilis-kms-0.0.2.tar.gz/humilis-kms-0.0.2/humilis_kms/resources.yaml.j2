@@ -1,0 +1,63 @@
+---
+resources:
+    KmsKeyAlias:
+      Type: "AWS::KMS::Alias"
+      Properties:
+        AliasName: "alias/{{__context.environment.name}}-{{__context.layer.name}}-{{__context.stage}}"
+        TargetKeyId:
+            Ref: KmsKey
+    KmsKey: 
+      Type: "AWS::KMS::Key"
+      Properties: 
+        Description: "{{description or __context.environment.description}}"
+        KeyPolicy:
+          Version: "2012-10-17"
+          Id: "key-default-1"
+          Statement:
+            -
+              Sid: "Allow administration of the key"
+              Effect: "Allow"
+              Principal: 
+                AWS:
+                    {% for admin in key_admins %}
+                    {% if admin.arn %}
+                    - {{admin.arn}}
+                    {% else %}
+                    - "Fn::Join":
+                        ["", ["arn:aws:iam::", {Ref: "AWS::AccountId"}, ":", "{{admin.name or admin}}"]]
+                    {% endif %}
+                    {% endfor %}
+              Action: 
+                - "kms:Create*"
+                - "kms:Describe*"
+                - "kms:Enable*"
+                - "kms:List*"
+                - "kms:Put*"
+                - "kms:Update*"
+                - "kms:Revoke*"
+                - "kms:Disable*"
+                - "kms:Get*"
+                - "kms:Delete*"
+                - "kms:ScheduleKeyDeletion"
+                - "kms:CancelKeyDeletion"
+              Resource: "*"
+            - 
+              Sid: "Allow use of the key"
+              Effect: "Allow"
+              Principal: 
+                AWS:
+                    {% for user in key_users %}
+                    {% if user.arn %}
+                    - {{user.arn}}
+                    {% else %}
+                    - "Fn::Join":
+                        ["", ["arn:aws:iam::", {Ref: "AWS::AccountId"}, ":", "{{user.name or user}}"]]
+                    {% endif %}
+                    {% endfor %}
+              Action: 
+                - "kms:Encrypt"
+                - "kms:Decrypt"
+                - "kms:ReEncrypt*"
+                - "kms:GenerateDataKey*"
+                - "kms:DescribeKey"
+              Resource: "*"
