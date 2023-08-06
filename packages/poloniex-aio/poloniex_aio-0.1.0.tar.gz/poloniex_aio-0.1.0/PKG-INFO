@@ -1,0 +1,33 @@
+Metadata-Version: 1.2
+Name: poloniex_aio
+Version: 0.1.0
+Summary: An async library for Poloniex api
+Home-page: https://github.com/OlivierCazade/poloniex_aio
+Author: Olivier Cazade
+Author-email: olivier.cazade@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Poloniex-aio
+        =================================
+        
+        An async library for `Poloniex api <https://poloniex.com/support/api/>`_
+        
+        This library is still exerimental.
+        
+        .. image:: https://api.travis-ci.org/OlivierCazade/poloniex_aio.svg?branch=master
+        	   :target: https://travis-ci.org/OlivierCazade/poloniex_aio
+        
+        Usage
+        -----
+        
+        .. code:: python
+        
+           from poloniex_aio import public
+        
+           async def printTicker():
+            async with aiohttp.ClientSession() as client:
+                res = await public.returnTicker(client)
+        	print(res)
+        
+Platform: UNKNOWN
+Requires-Python: >=3.5
