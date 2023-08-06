@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "waiters": {
+    "CertificateIssued": {
+      "delay": 10,
+      "maxAttempts": 360,
+      "operation": "DescribeCertificate",
+      "acceptors": [
+        {
+          "matcher": "path",
+          "expected": "ISSUED",
+          "argument": "Certificate.Status",
+          "state": "success"
+        },
+        {
+          "matcher": "path",
+          "expected": "INACTIVE",
+          "argument": "Certificate.Status",
+          "state": "failure"
+        },
+        {
+          "matcher": "path",
+          "expected": "EXPIRED",
+          "argument": "Certificate.Status",
+          "state": "failure"
+        },
+        {
+          "matcher": "path",
+          "expected": "VALIDATION_TIMED_OUT",
+          "argument": "Certificate.Status",
+          "state": "failure"
+        },
+        {
+          "matcher": "path",
+          "expected": "REVOKED",
+          "argument": "Certificate.Status",
+          "state": "failure"
+        },
+        {
+          "matcher": "path",
+          "expected": "FAILED",
+          "argument": "Certificate.Status",
+          "state": "failure"
+        }
+      ]
+    }
+  }
+}
