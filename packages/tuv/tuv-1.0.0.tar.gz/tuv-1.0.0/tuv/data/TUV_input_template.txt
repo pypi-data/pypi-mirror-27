@@ -1,0 +1,174 @@
+TUV inputs:
+==================================================================
+inpfil =      inpfil   outfil =      outfil   nstr =             4
+lat =           xlat   lon =          0.000   tmzone =       0.000
+iyear =       xiyear   imonth =     ximonth   iday =         xiday
+zstart =     xzstart   zstop =      120.000   nz =             120
+wstart =     280.000   wstop =      735.000   nwint =          455
+tstart =       0.000   tstop =       24.000   nt =              25
+lzenit =           F   alsurf =       0.100   psurf =       -999.0
+o3col =       xo3col   so2col =       0.000   no2col =       0.000
+taucld =       0.000   zbase =        3.000   ztop =         5.000
+tauaer =       0.000   ssaaer =       0.990   alpha =        1.000
+dirsun =       1.000   difdn =        1.000   difup =        1.000
+zout =         xzout   zaird =   -9.990E+02   ztemp =     -999.000
+lirrad =           F   laflux =           F   lmmech =           F
+lrates =           F   isfix =            0   nms =              0
+ljvals =           T   ijfix =            0   nmj =            125
+iwfix =            0   itfix =            0   izfix =            0
+==================================================================
+===== Avaliable spectral weighting functions:
+F  1 UV-B, 280-315 nm
+F  2 UV-B*, 280-320 nm
+F  3 UV-A, 315-400 nm
+F  4 vis+, > 400 nm
+F  5 Gaussian, 305 nm, 10 nm FWHM
+F  6 Gaussian, 320 nm, 10 nm FWHM
+F  7 Gaussian, 340 nm, 10 nm FWHM
+F  8 Gaussian, 380 nm, 10 nm FWHM
+F  9 RB Meter, model 501
+F 10 Eppley UV Photometer
+F 11 PAR, 400-700 nm, umol m-2 s-1
+F 12 Exponential decay, 14 nm/10
+F 13 DNA damage, in vitro (Setlow, 1974)
+F 14 SCUP-mice (de Gruijl et al., 1993)
+F 15 SCUP-human (de Gruijl and van der Leun, 1994)
+F 16 CIE human erythema (McKinlay and Diffey, 1987)
+F 17 UV index (WMO, 1994)
+F 18 Erythema, humans (Anders et al., 1995)
+F 19 Occupational TLV (ACGIH, 1992)
+F 20 Phytoplankton (Boucher et al., 1994)
+F 21 Phytoplankton, phaeo (Cullen et al., 1992)
+F 22 Phytoplankton, proro (Cullen et al., 1992)
+F 23 Cataract, pig (Oriowo et al., 2001)
+F 24 Plant damage (Caldwell, 1971)
+F 25 Plant damage (Flint & Caldwell, 2003)
+F 26 Previtamin-D3 (CIE 2006)
+F 27 NMSC (CIE 2006)
+===== Available photolysis reactions:
+T  1 O2 -> O + O
+T  2 O3 -> O2 + O(1D)
+T  3 O3 -> O2 + O(3P)
+T  4 HO2 -> OH + O
+T  5 H2O2 -> 2 OH
+T  6 NO2 -> NO + O(3P)
+T  7 NO3 -> NO + O2
+T  8 NO3 -> NO2 + O(3P)
+T  9 N2O -> N2 + O(1D)
+T 10 N2O5 -> NO3 + NO + O(3P)
+T 11 N2O5 -> NO3 + NO2
+T 12 HNO2 -> OH + NO
+T 13 HNO3 -> OH + NO2
+T 14 HNO4 -> HO2 + NO2
+T 15 NO3-(aq) -> NO2(aq) + O-
+T 16 NO3-(aq) -> NO2-(aq) + O(3P)
+T 17 CH2O -> H + HCO
+T 18 CH2O -> H2 + CO
+T 19 CH3CHO -> CH3 + HCO
+T 20 CH3CHO -> CH4 + CO
+T 21 CH3CHO -> CH3CO + H
+T 22 C2H5CHO -> C2H5 + HCO
+T 23 CH3OOH -> CH3O + OH
+T 24 HOCH2OOH -> HOCH2O. + OH
+T 25 CH3ONO2 -> CH3O + NO2
+T 26 CH3(OONO2) -> CH3(OO) + NO2
+T 27 CH3CH2ONO2 -> CH3CH2O + NO2
+T 28 C2H5ONO2 -> C2H5O + NO2
+T 29 n-C3H7ONO2 -> C3H7O + NO2
+T 30 1-C4H9ONO2 -> 1-C4H9O + NO2
+T 31 2-C4H9ONO2 -> 2-C4H9O + NO2
+T 32 CH3CHONO2CH3 -> CH3CHOCH3 + NO2
+T 33 CH2(OH)CH2(ONO2) -> CH2(OH)CH2(O.) + NO2
+T 34 CH3COCH2(ONO2) -> CH3COCH2(O.) + NO2
+T 35 C(CH3)3(ONO2) -> C(CH3)3(O.) + NO2
+T 36 C(CH3)3(ONO) -> C(CH3)3(O) + NO
+T 37 CH3CO(OONO2) -> CH3CO(OO) + NO2
+T 38 CH3CO(OONO2) -> CH3CO(O) + NO3
+T 39 CH3CH2CO(OONO2) -> CH3CH2CO(OO) + NO2
+T 40 CH3CH2CO(OONO2) -> CH3CH2CO(O) + NO3
+T 41 CH2=CHCHO -> Products
+T 42 CH2=C(CH3)CHO -> Products
+T 43 CH3COCH=CH2 -> Products
+T 44 HOCH2CHO -> CH2OH + HCO
+T 45 HOCH2CHO -> CH3OH + CO
+T 46 HOCH2CHO -> CH2CHO + OH
+T 47 CH3COCH3 -> CH3CO + CH3
+T 48 CH3COCH2CH3 -> CH3CO + CH2CH3
+T 49 CH2(OH)COCH3 -> CH3CO + CH2(OH)
+T 50 CH2(OH)COCH3 -> CH2(OH)CO + CH3
+T 51 CHOCHO -> HCO + HCO
+T 52 CHOCHO -> H2 + 2CO
+T 53 CHOCHO -> CH2O + CO
+T 54 CH3COCHO -> CH3CO + HCO
+T 55 CH3COCOCH3 -> Products
+T 56 CH3COOH -> CH3 + COOH
+T 57 CH3CO(OOH) -> Products
+T 58 CH3COCO(OH) -> Products
+T 59 (CH3)2NNO -> Products
+T 60 CF2O -> Products
+T 61 Cl2 -> Cl + Cl
+T 62 ClO -> Cl + O(1D)
+T 63 ClO -> Cl + O(3P)
+T 64 ClOO -> Products
+T 65 OClO -> Products
+T 66 ClOOCl -> Cl + ClOO
+T 67 HCl -> H + Cl
+T 68 HOCl -> HO + Cl
+T 69 NOCl -> NO + Cl
+T 70 ClNO2 -> Cl + NO2
+T 71 ClONO -> Cl + NO2
+T 72 ClONO2 -> Cl + NO3
+T 73 ClONO2 -> ClO + NO2
+T 74 CCl4 -> Products
+T 75 CH3OCl -> CH3O + Cl
+T 76 CHCl3 -> Products
+T 77 CH3Cl -> Products
+T 78 CH3CCl3 -> Products
+T 79 CCl2O -> Products
+T 80 CClFO -> Products
+T 81 CCl3F (CFC-11) -> Products
+T 82 CCl2F2 (CFC-12) -> Products
+T 83 CF2ClCFCl2 (CFC-113) -> Products
+T 84 CF2ClCF2Cl (CFC-114) -> Products
+T 85 CF3CF2Cl (CFC-115) -> Products
+T 86 CHClF2 (HCFC-22) -> Products
+T 87 CF3CHCl2 (HCFC-123) -> Products
+T 88 CF3CHFCl (HCFC-124) -> Products
+T 89 CH3CFCl2 (HCFC-141b) -> Products
+T 90 CH3CF2Cl (HCFC-142b) -> Products
+T 91 CF3CF2CHCl2 (HCFC-225ca) -> Products
+T 92 CF2ClCF2CHFCl (HCFC-225cb) -> Products
+T 93 Br2 -> Br + Br
+T 94 BrO -> Br + O
+T 95 HOBr -> OH + Br
+T 96 BrNO -> Br + NO
+T 97 BrONO -> Br + NO2
+T 98 BrONO -> BrO + NO
+T 99 BrNO2 -> Br + NO2
+T100 BrONO2 -> BrO + NO2
+T101 BrONO2 -> Br + NO3
+T102 BrCl -> Br + Cl
+T103 CH3Br -> Products
+T104 CHBr3 -> Products
+T105 CF2Br2 (Halon-1202) -> Products
+T106 CF2BrCl (Halon-1211) -> Products
+T107 CF3Br (Halon-1301) -> Products
+T108 CF2BrCF2Br (Halon-2402) -> Products
+T109 perfluoro 1-iodopropane -> products
+T110 COOH -> Products (EPA)
+T111 NTR -> Products (EPA)
+T112 CCHO_R -> Products (EPA)
+T113 PACD -> Products (EPA)
+T114 C2CHO -> Products (EPA)
+T115 ACROLEIN -> Products (EPA)
+T116 FMCL -> Products (EPA)
+T117 n-C3H7CHO -> n-C3H7 + HCO (MCM)
+T118 n-C3H7CHO -> C2H4 + CH3CHO (MCM)
+T119 i-C3H7CHO -> i-C3H7 + HCO (MCM)
+T120 CH2C(CH3)CHO -> CH3C=CH2 + HCO (MCM)
+T121 CH2C(CH3)CHO -> CH2=C(CH3)CO + H (MCM)
+T122 C5HPALD -> CH3C(CHO)=CHCH2O + OH (MCM)
+T123 MVK -> CH3CH=CH2 + CO (MCM)
+T124 MVK -> CH3CO + CH2=CH (MCM)
+T125 BIACET -> CH3CO + CH3CO (MCM)
+==================================================================

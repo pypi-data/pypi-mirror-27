@@ -1,0 +1,97 @@
+TUV;BOXMOX;MCM
+O2 -> O + O;o2;
+O3 -> O2 + O(1D);o31d;1
+O3 -> O2 + O(3P);o33p;2
+HO2 -> OH + O;;
+H2O2 -> 2 OH;h2o2;3
+NO2 -> NO + O(3P);no2;4
+NO3 -> NO + O2;no3o2;5
+NO3 -> NO2 + O(3P);no3o;6
+N2O -> N2 + O(1D);n2o;
+N2O5 -> NO3 + NO + O(3P);n2o5;
+N2O5 -> NO3 + NO2;n2o5;
+HNO2 -> OH + NO;hno2;7
+HNO3 -> OH + NO2;hno3;8
+HNO4 -> HO2 + NO2;hno4,hno4_2;
+NO3-(aq) -> NO2(aq) + O-;;
+NO3-(aq) -> NO2-(aq) + O(3P);;
+CH2O -> H + HCO;ch2or;11
+CH2O -> H2 + CO;ch2om;12
+CH3CHO -> CH3 + HCO;ch3cho;13
+CH3CHO -> CH4 + CO;ch3cho;
+CH3CHO -> CH3CO + H;ch3cho;
+C2H5CHO -> C2H5 + HCO;c2h5cho;14
+CH3OOH -> CH3O + OH;ch3o2h,pooh;41
+HOCH2OOH -> HOCH2O. + OH;;
+CH3ONO2 -> CH3O + NO2;ch3ono2;51
+CH3(OONO2) -> CH3(OO) + NO2;;
+CH3CH2ONO2 -> CH3CH2O + NO2;;
+C2H5ONO2 -> C2H5O + NO2;c2h5ono2;52
+n-C3H7ONO2 -> C3H7O + NO2;n_c3h7ono2;53
+1-C4H9ONO2 -> 1-C4H9O + NO2;1_c4h9ono2;54
+2-C4H9ONO2 -> 2-C4H9O + NO2;2_c4h9ono2;55
+CH3CHONO2CH3 -> CH3CHOCH3 + NO2;;
+CH2(OH)CH2(ONO2) -> CH2(OH)CH2(O.) + NO2;;
+CH3COCH2(ONO2) -> CH3COCH2(O.) + NO2;ch3coch2ono2;56
+C(CH3)3(ONO2) -> C(CH3)3(O.) + NO2;;
+C(CH3)3(ONO) -> C(CH3)3(O) + NO;;
+CH3CO(OONO2) -> CH3CO(OO) + NO2;pan;
+CH3CO(OONO2) -> CH3CO(O) + NO3;pan;
+CH3CH2CO(OONO2) -> CH3CH2CO(OO) + NO2;pan;
+CH3CH2CO(OONO2) -> CH3CH2CO(O) + NO3;pan;
+CH2=CHCHO -> Products;;
+CH2=C(CH3)CHO -> Products;macr;
+CH3COCH=CH2 -> Products;mvk;
+HOCH2CHO -> CH2OH + HCO;glyald;
+HOCH2CHO -> CH3OH + CO;glyald;
+HOCH2CHO -> CH2CHO + OH;glyald;
+CH3COCH3 -> CH3CO + CH3;ch3coch3;21
+CH3COCH2CH3 -> CH3CO + CH2CH3;mek,ch3coc2h5;22
+CH2(OH)COCH3 -> CH3CO + CH2(OH);hyac;
+CH2(OH)COCH3 -> CH2(OH)CO + CH3;hyac;
+CHOCHO -> HCO + HCO;gly,hcochob;33
+CHOCHO -> H2 + 2CO;gly,hcochob;31
+CHOCHO -> CH2O + CO;gly,hcocho;32
+CH3COCHO -> CH3CO + HCO;ch3cocho,hcochest;34
+CH3COCOCH3 -> Products;;
+CH3COOH -> CH3 + COOH;;
+CH3CO(OOH) -> Products;ch3coo2h;
+CH3COCO(OH) -> Products;;
+(CH3)2NNO -> Products;;
+CF2O -> Products;;
+Cl2 -> Cl + Cl;cl2;
+ClO -> Cl + O(1D);;
+ClO -> Cl + O(3P);;
+ClOO -> Products;;
+OClO -> Products;;
+ClOOCl -> Cl + ClOO;;
+HCl -> H + Cl;;
+HOCl -> HO + Cl;hocl;
+NOCl -> NO + Cl;;
+ClNO2 -> Cl + NO2;;
+ClONO -> Cl + NO2;;
+ClONO2 -> Cl + NO3;;
+ClONO2 -> ClO + NO2;;
+CCl4 -> Products;;
+CH3OCl -> CH3O + Cl;;
+CHCl3 -> Products;;
+CH3Cl -> Products;;
+CH3CCl3 -> Products;;
+CCl2O -> Products;;
+CClFO -> Products;;
+COOH -> Products (EPA);cooh;
+NTR -> Products (EPA);ntr;
+CCHO_R -> Products (EPA);ccho_r;
+PACD -> Products (EPA);pacd;
+C2CHO -> Products (EPA);c2cho;
+ACROLEIN -> Products (EPA);acrolein;
+FMCL -> Products (EPA);fmcl;
+n-C3H7CHO -> n-C3H7 + HCO (MCM);n_c3h7cho_hco;15
+n-C3H7CHO -> C2H4 + CH3CHO (MCM);n_c3h7cho_ch3cho;16
+i-C3H7CHO -> i-C3H7 + HCO (MCM);i_c3h7cho;17
+CH2C(CH3)CHO -> CH3C=CH2 + HCO (MCM);ch2cch3cho_hco;18
+CH2C(CH3)CHO -> CH2=C(CH3)CO + H (MCM);ch2cch3cho_h;19
+C5HPALD -> CH3C(CHO)=CHCH2O + OH (MCM);c5hpald;20
+MVK -> CH3CH=CH2 + CO (MCM);mvk_mcm_co;23
+MVK -> CH3CO + CH2=CH (MCM);mvk_mcm_ch2ch;24
+BIACET -> CH3CO + CH3CO (MCM);biacet;35
