@@ -1,0 +1,37 @@
+backend.kafka:
+    disabled: False
+    pusher: True  # The pusher executable will use this backend by default
+    logging: DEBUG
+    server: your_server:9092
+    topic: platypush
+
+backend.pushbullet:
+    disabled: True
+    logging: DEBUG
+    token: your_pushbullet_token_here
+    device: your_pushbullet_virtual_device_name
+
+backend.local:
+    fifo: /tmp/platypush.fifo
+
+# device_id: <your_device_id> (default: current hostname)
+# debug: True (default: False)
+
+music.mpd:
+    host: localhost
+    port: 6600
+
+light.hue:
+    bridge: hue  # Bridge IP or hostname
+    # lights:  # Default lights you want to manage
+    #     - Living Room Ground Right
+    #     - Living Room Ground Left
+    #     - Hue bloom
+    #     - Kitchen Lampm
+    #     - Living room ceiling right
+    #     - Living room ceiling left
+    #     - Kitchen LED Strip
+    #     - Kitchen Table LED Strip
+    groups:  # Default groups you want to manage
+        - Living Room
+
