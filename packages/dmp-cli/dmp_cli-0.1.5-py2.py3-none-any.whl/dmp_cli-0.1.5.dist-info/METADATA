@@ -1,0 +1,149 @@
+Metadata-Version: 2.0
+Name: dmp-cli
+Version: 0.1.5
+Summary: A command-line-interface for django-mako-plus.
+Home-page: https://github.com/knowsuchagency/dmp-cli
+Author: Stephan Fitzpatrick
+Author-email: knowsuchagency@gmail.com
+License: MIT license
+Description-Content-Type: UNKNOWN
+Keywords: dmp-cli
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: attrs
+Requires-Dist: click
+Requires-Dist: django-mako-plus
+Requires-Dist: crayons
+Provides-Extra: dev
+Requires-Dist: bumpversion; extra == 'dev'
+Requires-Dist: coverage; extra == 'dev'
+Requires-Dist: cryptography; extra == 'dev'
+Requires-Dist: flake8; extra == 'dev'
+Requires-Dist: pytest; extra == 'dev'
+Requires-Dist: pytest-runner; extra == 'dev'
+Requires-Dist: pyyaml; extra == 'dev'
+Requires-Dist: sphinx; extra == 'dev'
+Requires-Dist: tox; extra == 'dev'
+Requires-Dist: sphinx-autodoc-typehints; extra == 'dev'
+Requires-Dist: wheel; extra == 'dev'
+Requires-Dist: fabric3; extra == 'dev'
+Requires-Dist: pipenv; extra == 'dev'
+Requires-Dist: readme; extra == 'dev'
+Requires-Dist: twine; extra == 'dev'
+Provides-Extra: development
+Requires-Dist: bumpversion; extra == 'development'
+Requires-Dist: coverage; extra == 'development'
+Requires-Dist: cryptography; extra == 'development'
+Requires-Dist: flake8; extra == 'development'
+Requires-Dist: pytest; extra == 'development'
+Requires-Dist: pytest-runner; extra == 'development'
+Requires-Dist: pyyaml; extra == 'development'
+Requires-Dist: sphinx; extra == 'development'
+Requires-Dist: tox; extra == 'development'
+Requires-Dist: sphinx-autodoc-typehints; extra == 'development'
+Requires-Dist: wheel; extra == 'development'
+Requires-Dist: fabric3; extra == 'development'
+Requires-Dist: pipenv; extra == 'development'
+Requires-Dist: readme; extra == 'development'
+Requires-Dist: twine; extra == 'development'
+Provides-Extra: test
+Requires-Dist: bumpversion; extra == 'test'
+Requires-Dist: coverage; extra == 'test'
+Requires-Dist: cryptography; extra == 'test'
+Requires-Dist: flake8; extra == 'test'
+Requires-Dist: pytest; extra == 'test'
+Requires-Dist: pytest-runner; extra == 'test'
+Requires-Dist: pyyaml; extra == 'test'
+Requires-Dist: sphinx; extra == 'test'
+Requires-Dist: tox; extra == 'test'
+Requires-Dist: sphinx-autodoc-typehints; extra == 'test'
+Requires-Dist: wheel; extra == 'test'
+Requires-Dist: fabric3; extra == 'test'
+Requires-Dist: pipenv; extra == 'test'
+Requires-Dist: readme; extra == 'test'
+Requires-Dist: twine; extra == 'test'
+Provides-Extra: testing
+Requires-Dist: bumpversion; extra == 'testing'
+Requires-Dist: coverage; extra == 'testing'
+Requires-Dist: cryptography; extra == 'testing'
+Requires-Dist: flake8; extra == 'testing'
+Requires-Dist: pytest; extra == 'testing'
+Requires-Dist: pytest-runner; extra == 'testing'
+Requires-Dist: pyyaml; extra == 'testing'
+Requires-Dist: sphinx; extra == 'testing'
+Requires-Dist: tox; extra == 'testing'
+Requires-Dist: sphinx-autodoc-typehints; extra == 'testing'
+Requires-Dist: wheel; extra == 'testing'
+Requires-Dist: fabric3; extra == 'testing'
+Requires-Dist: pipenv; extra == 'testing'
+Requires-Dist: readme; extra == 'testing'
+Requires-Dist: twine; extra == 'testing'
+
+=======
+dmp-cli
+=======
+
+
+.. image:: https://img.shields.io/pypi/v/dmp-cli.svg
+        :target: https://pypi.python.org/pypi/dmp-cli
+
+.. image:: https://img.shields.io/travis/knowsuchagency/dmp-cli.svg
+        :target: https://travis-ci.org/knowsuchagency/dmp-cli
+
+.. image:: https://pyup.io/repos/github/knowsuchagency/dmp-cli/shield.svg
+     :target: https://pyup.io/repos/github/knowsuchagency/dmp-cli/
+     :alt: Updates
+
+.. image:: https://img.shields.io/github/license/mashape/apistatus.svg
+
+
+
+A command-line-interface for `django-mako-plus`_.
+
+
+* Documentation: https://knowsuchagency.github.io/dmp-cli
+* Source: https://github.com/knowsuchagency/dmp-cli
+
+
+Installation
+------------
+
+::
+
+    pipenv install -d dmp-cli
+    # or
+    pip install dmp-cli
+
+Usage
+---------
+
+To create a new `django-mako-plus`_ project use
+
+::
+
+    dmp new project [NAME]
+
+Similarly, for new apps
+
+::
+
+    dmp new app [NAME]
+
+These are just shortcuts for
+
+::
+
+    python3 -m django startproject --template=http://cdn.rawgit.com/doconix/django-mako-plus/master/project_template.zip [NAME]
+    # and
+    python3 manage.py startapp --template=http://cdn.rawgit.com/doconix/django-mako-plus/master/app_template.zip --extension=py,htm,html [NAME]
+
+... but use the templates on your local filesystem from the currently installed version of `DMP`_, rather than fetching the templates from github.
+
+.. _`django-mako-plus`: http://django-mako-plus.readthedocs.io/
+.. _`DMP`: http://django-mako-plus.readthedocs.io/
+
+
