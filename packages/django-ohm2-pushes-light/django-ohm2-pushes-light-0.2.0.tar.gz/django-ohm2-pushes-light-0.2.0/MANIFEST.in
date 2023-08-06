@@ -1,0 +1,9 @@
+include LICENSE
+include README.rst
+recursive-include docs *
+recursive-include ohm2_pushes_light/management *
+recursive-include ohm2_pushes_light/migrations *
+recursive-include ohm2_pushes_light/templates *
+recursive-include ohm2_pushes_light/static *
+recursive-include ohm2_pushes_light/gateways *
+recursive-include ohm2_pushes_light/api *
