@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+pyinfra_etcd/__init__.py
+pyinfra_etcd/defaults.py
+pyinfra_etcd/etcd.py
+pyinfra_etcd/util.py
+pyinfra_etcd.egg-info/PKG-INFO
+pyinfra_etcd.egg-info/SOURCES.txt
+pyinfra_etcd.egg-info/dependency_links.txt
+pyinfra_etcd.egg-info/requires.txt
+pyinfra_etcd.egg-info/top_level.txt
+pyinfra_etcd/templates/etcd.conf.j2
+pyinfra_etcd/templates/etcd.service.j2
