@@ -1,0 +1,63 @@
+Metadata-Version: 1.1
+Name: boxmox
+Version: 1.0.0
+Summary: Python wrapper for the chemical box model BOXMOX
+Home-page: https://boxmodeling.meteo.physik.uni-muenchen.de
+Author: Christoph Knote
+Author-email: christoph.knote@physik.uni-muenchen.de
+License: GPLv3
+Description: ======
+        boxmox
+        ======
+        
+        ``boxmox`` is the Python wrapper for the chemical box model BOXMOX (a standalone
+        C/Fortran executable)
+        
+        Documentation
+        =============
+        
+        maintained at https://boxmodeling.meteo.physik.uni-muenchen.de/documentation
+        
+        Installation
+        ============
+        
+        The chemical box model BOXMOX is required. See the documentation for
+        detailed instructions on how to install it.
+        
+        ::
+        
+           pip install boxmox
+        
+        Set the BOXMOX environmental variable in ~/.bashrc::
+        
+           export BOXMOX_WORK_PATH=/where/you/want/boxmox/to/write/stuff/to/
+        
+        Remember to close the shell and log in again for these changes to take effect.
+        
+        
+        Changelog
+        =========
+        
+        1.0.0 (2017-12-19)
+        ------------------
+        
+        - Peer-reviewed version to be published in Knote et al., GMD
+        
+        0.1.0 (2017-08-12)
+        ------------------
+        
+        - Initial release
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 2 :: Only
+Classifier: Topic :: Education
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Utilities
