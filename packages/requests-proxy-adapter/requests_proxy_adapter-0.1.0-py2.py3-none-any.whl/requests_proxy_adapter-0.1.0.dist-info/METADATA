@@ -1,0 +1,72 @@
+Metadata-Version: 2.0
+Name: requests-proxy-adapter
+Version: 0.1.0
+Summary: Set of Proxy Transport Adapters fro Requests
+Home-page: https://github.com/otetz/requests_proxy_adapter
+Author: Alexey Shevchenko
+Author-email: otetz@me.com
+License: MIT license
+Description-Content-Type: UNKNOWN
+Keywords: requests
+Requires-Dist: requests (==2.18.4)
+Requires-Dist: urllib3 (>=1.15)
+Provides-Extra: dev
+Requires-Dist: flake8 (==3.5.0); extra == 'dev'
+Requires-Dist: Sphinx (==1.6.5); extra == 'dev'
+Provides-Extra: test
+Requires-Dist: tox (==2.9.1); extra == 'test'
+Requires-Dist: coverage (==4.4.2); extra == 'test'
+Requires-Dist: pytest (==3.3.0); extra == 'test'
+Requires-Dist: pytest-runner (==3.0); extra == 'test'
+Requires-Dist: pytest-cov (==2.5.1); extra == 'test'
+Requires-Dist: flaky (==3.4.0); extra == 'test'
+
+######################
+Requests Proxy Adapter
+######################
+
+
+.. image:: https://img.shields.io/pypi/v/requests_proxy_adapter.svg
+        :target: https://pypi.python.org/pypi/requests_proxy_adapter
+
+.. image:: https://img.shields.io/travis/Otetz/requests_proxy_adapter.svg
+        :target: https://travis-ci.org/Otetz/requests_proxy_adapter
+
+.. image:: https://api.codeclimate.com/v1/badges/9f40b1896cbea3ac418a/maintainability
+   :target: https://codeclimate.com/github/Otetz/requests_proxy_adapter/maintainability
+   :alt: Maintainability
+
+.. image:: https://readthedocs.org/projects/requests-proxy-adapter/badge/?version=latest
+        :target: https://requests-proxy-adapter.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://pyup.io/repos/github/Otetz/requests_proxy_adapter/shield.svg
+     :target: https://pyup.io/repos/github/Otetz/requests_proxy_adapter/
+     :alt: Updates
+
+
+Set of Proxy Transport Adapters for `Requests <http://docs.python-requests.org/en/latest/>`_.
+
+* Free software: MIT license
+* Documentation: https://requests-proxy-adapter.readthedocs.io.
+
+
+Features
+********
+
+* `PrivoxyAdapter <./requests_proxy_adapter.html#requests_proxy_adapter.api.PrivoxyAdapter>`_ -- The transport adapter
+  for `Requests <http://docs.python-requests.org/en/latest/>`_ to use Privoxy proxy-server with retries when backend
+  errors occurred.
+* `RetryPrivoxyAdapter <./requests_proxy_adapter.html#requests_proxy_adapter.api.RetryPrivoxyAdapter>`_ -- The transport
+  adapter for Requests to use Privoxy proxy-server with retries when backend errors occurred and retries if errors
+  occured on target site by
+  `urllib3.util.retry <http://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html#module-urllib3.util.retry>`_
+  module.
+
+
+.. include:: usage
+
+.. include:: ../AUTHORS
+
+
+
