@@ -1,0 +1,7 @@
+[appurl.urls]
+censusreporter: = publicdata.censusreporter:CensusReporterURL
+censusreportergeo: = publicdata.censusreporter:CensusReporterShapeURL
+
+[rowgenerators]
+CRJSON+ = publicdata.censusreporter:CensusReporterSource
+
