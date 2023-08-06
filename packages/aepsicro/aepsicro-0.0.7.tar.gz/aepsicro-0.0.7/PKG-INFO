@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: aepsicro
+Version: 0.0.7
+Summary: Psicrometría / Psychrometrics
+Home-page: https://pypi.python.org/pypi/aepsicro
+Author: Antonio Eduardo Téllez Santos
+Author-email: aironmail@gmail.com
+License: GNU GPLv3
+Description-Content-Type: UNKNOWN
+Description: A python library to perform psychrometrics analysis
+        
+        Calculations are made by implementing equations described in 2009 ASHRAE Handbookâ€”Fundamentals (SI).
+        
+        There are three main classes to use this package: AIRE_HUMEDO, FLUJO, PSICROMETRICO.
+        
+        AIRE_HUMEDO represents a psychrometric state.
+        FLUJO represents a stream in a particular state.
+        PSICROMETRICO shows a psychrometric diagram in a window that allows to plot states
+        
+        Install:
+        pip install aepsicro
+        
+        Usage:
+        
+        from aepsicro import aepsicro as ps
+        s1 = ps.AIRE_HUMEDO(tseca=20, humrel=(0.5, '%1'))
+        s2 = ps.AIRE_HUMEDO(tseca=(30,'ÂºC'), humrel=(0.9, '%1'))
+        print(s1)
+        print(s2)
+        f1 = ps.FLUJO(s1,(1000, 'm3/h'))
+        f2 = ps.FLUJO(s2,(500, 'm3/h'))
+        # Adiabatic mixture
+        f3 = f1 + f2
+        psi = ps.PSICROMETRICO()
+        psi.marca_proceso(f1, f2, f3)
+        
+Keywords: psychrometrics,psicrometría
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Scientific/Engineering
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
