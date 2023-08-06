@@ -1,0 +1,148 @@
+#!/bin/bash
+#
+# Regina - A Normal Surface Theory Calculator
+# Source Distribution Verification
+#
+# Copyright (c) 2003-2016, Ben Burton
+# For further details contact Ben Burton (bab@debian.org).
+#
+# Usage: distcheck <dist-tarball>
+#
+# Verifies that a tarball formed using "make dist" contains all the
+# files it should.  This script outputs a list of files contained in
+# the git source tree that are missing from the tarball.
+#
+# Files that are not necessary for inclusion in the tarball (such as
+# auto-generated files or the Regina website) are not included in this
+# output.
+#
+# This script must be run from either the top-level source directory within
+# the git source tree, or from the admin/ directory beneath it.
+#
+# Requires: diff, find, grep, mktemp, sed, sort, tar
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# As an exception, when this program is distributed through (i) the
+# App Store by Apple Inc.; (ii) the Mac App Store by Apple Inc.; or
+# (iii) Google Play by Google Inc., then that store may impose any
+# digital rights management, device limits and/or redistribution
+# restrictions that are required by its terms of service.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the Free
+# Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+# MA 02110-1301, USA.
+#
+set -e
+
+# Command-line sanity check.
+if [ "$#" != 1 ]; then
+  echo "Usage: distcheck <dist-tarball>"
+  exit 1
+fi
+
+# Locate the top of the git source tree.
+if [ -d admin -a -f HIGHLIGHTS.txt ]; then
+  gittree=.
+elif [ -d ../admin -a -f ../HIGHLIGHTS.txt ]; then
+  gittree=..
+else
+  echo "This script must be run from either the top-level source directory"
+  echo "within the git source tree, or from the admin/ directory beneath it."
+  exit 1
+fi
+
+# Find any builddirs that should be ignored.
+builddirs=`find "$gittree" -mindepth 2 -name CMakeCache.txt | \
+	sed -e 's%^[^/]*/%%' -e 's%/CMakeCache.txt$%%'`
+
+display_builddirs=
+grep_builddirs=
+for i in $builddirs; do
+	if [ -z "$grep_builddirs" ]; then
+		display_builddirs="$i"
+		grep_builddirs="$i"
+	else
+		display_builddirs="$display_builddirs $i"
+		grep_builddirs="$grep_builddirs\\|$i"
+	fi
+done
+if [ -z "$grep_builddirs" ]; then
+	grep_builddirs="^$"
+else
+	echo "Ignoring build directories: $display_builddirs"
+	grep_builddirs="^\\($grep_builddirs\\)\\(/\\|$\\)"
+fi
+
+# Prepare the two temporary file lists.
+gitlist="`mktemp -t gitlist.XXXXXXXXXX`" || gitlist=
+distlist="`mktemp -t distlist.XXXXXXXXXX`" || distlist=
+if [ -z "$gitlist" -o -z "$distlist" ]; then
+  echo "Error creating temporary files."
+  exit 1
+fi
+
+# Make a list of files in the distribution tarball.
+echo "Analysing distribution tarball..."
+
+if [ ! -f "$1" ]; then
+  echo "The distribution tarball $1 does not exist or is not a regular file."
+  exit 1
+fi
+
+case "$1" in
+  *.tar.gz )
+    taropts=-ztf
+    ;;
+  *.tgz )
+    taropts=-ztf
+    ;;
+  *.tar.bz2 )
+    taropts=-jtf
+    ;;
+  *.tar )
+    taropts=-tf
+    ;;
+  * )
+    echo "The distribution tarball $1 is not of the correct type."
+    exit 1
+    ;;
+esac
+
+if ! tar "$taropts" "$1" | sed -e 's%^[^/]*/%%' -e 's%/$%%' | \
+    sort > "$distlist"; then
+  echo "The contents of the distribution tarball $1 could not be listed."
+  exit 1
+fi
+
+# Make a list of files in the git source tree.
+echo "Analysing git source tree..."
+
+if ! find "$gittree" | sed -e 's%^[^/]*/%%' | \
+    grep -v "$grep_builddirs" | \
+    grep -v '^\.' | \
+    grep -v '/\.' | \
+    grep -v '^engine/snappea/kernel/unused\(/\|$\)' | \
+    grep -v '^regina-[0-9.]\+\.tar\.gz$' | \
+    grep -v '^sfdist\(/\|$\)' | \
+    grep -v '^utils/local\(/\|$\)' | \
+    grep -v '^utils/snappea\(/\|$\)' | \
+    sort > "$gitlist" ; then
+  echo "The contents of the git source tree could not be listed."
+  exit 1
+fi
+
+# Output the differences.
+diff -B "$distlist" "$gitlist" | grep -v '^[0-9]'
+
+# Clean up.
+rm "$gitlist" "$distlist"

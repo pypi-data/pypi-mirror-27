@@ -1,0 +1,104 @@
+
+<!-- Regina data file format documentation.
+     See ../regina.sgml for further details. -->
+
+<refentry id="data-packet-script">
+ <refmeta>
+  <refentrytitle>packet (script)</refentrytitle>
+  <manvolnum>5reg</manvolnum>
+ </refmeta>
+
+ <refnamediv>
+  <refname>packet (script)</refname>
+  <refpurpose>A script packet</refpurpose>
+ </refnamediv>
+
+ <refsynopsisdiv>
+  <informaltable frame="all">
+   <tgroup cols="2">
+    <colspec colname="c1"/>
+    <colspec colname="c2"/>
+    <tbody>
+     <row><entry namest="c1" nameend="c2">
+      <emphasis role="bold">Content Model</emphasis>
+     </entry></row>
+     <row><entry namest="c1" nameend="c2">
+<synopsis>
+packet ::= (&xml-var;*, &xml-line;*, &xml-text;
+            &xml-tag;*, &xml-packet;*)</synopsis>
+     </entry></row>
+     <row><entry namest="c1" nameend="c2">
+      <emphasis role="bold">Attributes</emphasis>
+     </entry></row>
+     <row><entry namest="c1" nameend="c2">
+      See the general &xml-packet; element documentation.
+     </entry></row>
+    </tbody>
+   </tgroup>
+  </informaltable>
+ </refsynopsisdiv>
+
+ <refsect1>
+  <title>Description</title>
+  <para>
+   A <emphasis>script</emphasis> packet stores a &python; script offering direct
+   low-level access to the &regina; calculation engine.
+  </para>
+  <para>
+   A script may contain variables representing other packets in the same
+   packet tree; these are described by the child &xml-var; elements.
+  </para>
+  <para>
+   The &python; script itself is stored as a single &xml-text; element.
+   In older versions of &regina; (4.95 and earlier) it was stored
+   line-by-line using a sequence of &xml-line; elements, but this
+   method of storage is now deprecated.
+  </para>
+  <para>
+   If you are writing a file that must be read by older versions of
+   &regina; then you may write the script twice,
+   first as a series of &xml-line; elements (for &regina;&nbsp;4.95 and
+   earlier), and then as a single &xml-text; element (for &regina;&nbsp;4.96
+   and later).
+  </para>
+  <warning><para>
+   If you are writing both &xml-line; and &xml-text; elements, then
+   <emphasis>the order is important.</emphasis>.  This is because when
+   &regina; reads a &xml-line; element it will append the line to the script,
+   but when it reads a &xml-text; element it will simply replace the
+   entire script.  Therefore, if the &xml-line; elements appear
+   <emphasis>after</emphasis> the &xml-text; element, &regina; will
+   construct two copies of the script end-on-end.
+  </para></warning>
+  <para>
+   The roles played by the child &xml-tag; and &xml-packet; elements are
+   described in the general &xml-packet; element documentation.
+  </para>
+
+  <refsect2>
+   <title>Parents</title>
+   <para>
+    The following elements contain <sgmltag>packet</sgmltag>:
+    <simplelist type="inline">
+     <member>&xml-packet;</member>
+     <member>&xml-reginadata;</member>
+    </simplelist>.
+   </para>
+  </refsect2>
+
+  <refsect2>
+   <title>Children</title>
+   <para>
+    The following elements occur in <sgmltag>packet</sgmltag> for
+    a script packet:
+    <simplelist type="inline">
+     <member>&xml-line;</member>
+     <member>&xml-packet;</member>
+     <member>&xml-tag;</member>
+     <member>&xml-text;</member>
+     <member>&xml-var;</member>
+    </simplelist>.
+   </para>
+  </refsect2>
+ </refsect1>
+</refentry>

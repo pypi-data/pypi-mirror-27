@@ -1,0 +1,496 @@
+<chapter id="python">
+ <title>&python; Scripting</title>
+
+ <para>
+  &regina; contains inbuilt scripting, which offers you fine control
+  over &regina;'s mathematical engine and enables you to automate
+  large amounts of processing.
+  You can write and run scripts from
+  directly within &regina;, or you can use the separate command-line tool
+  <link linkend="man-regina-python"><command>regina-python</command></link>.
+ </para>
+ <para>
+  The user interface will stay in sync with any changes that you
+  make through a script, which means you can happily modify a
+  data file via scripts while you have it open.
+ </para>
+ <para>
+  All scripts in &regina; use the &python; programming language
+  (<ulink url="http://www.python.org/"/>).
+ </para>
+
+ <sect1 id="python-starting">
+  <title>Starting a &python; Session</title>
+  <para>
+   There are several ways of starting a &python; session to work with
+   &regina;:
+  </para>
+
+  <sect2 id="python-gui">
+   <title>Graphical &python; Consoles</title>
+   <para>
+    You can open a graphical &python; console by selecting
+    <menuchoice>
+     <guimenu>Tools</guimenu>
+     <guimenuitem>Python Console</guimenuitem>
+    </menuchoice>
+    from the menu (or by pressing the corresponding toolbar button).
+   </para>
+   <para>
+    <inlinemediaobject>
+     <imageobject>
+      <imagedata fileref="menu-python.png"/>
+     </imageobject>
+    </inlinemediaobject>
+   </para>
+   <para>
+    A new console window will open as illustrated below,
+    with an input area down the bottom (see the red arrow) and a
+    full history of the session in the main part of the window.
+    You can save this history by selecting
+    <menuchoice>
+     <guimenu>Console</guimenu>
+     <guimenuitem>Save Session</guimenuitem>
+    </menuchoice>.
+   </para>
+   <para>
+    <inlinemediaobject>
+     <imageobject>
+      <imagedata fileref="python-console.png"/>
+     </imageobject>
+    </inlinemediaobject>
+   </para>
+   <para>
+    When you start the &python; session, &regina; will set some special
+    variables for you:
+    <glosslist>
+     <glossentry>
+      <glossterm><varname>item</varname></glossterm>
+      <glossdef>
+       <para>
+        If you have a packet selected in the tree when you start the
+        &python; session,
+        the variable <varname>item</varname> will refer to this packet
+        (see the figure above for an example of this).
+       </para>
+       <para>
+        Note that, if you later change your selection in the packet tree,
+        the <varname>item</varname> variable will not change as a result.
+       </para>
+      </glossdef>
+     </glossentry>
+     <glossentry>
+      <glossterm><varname>root</varname></glossterm>
+      <glossdef><para>
+       The variable <varname>root</varname> will refer to the hidden
+       root at the top of your packet tree (this root is not visible in the
+       user interface, but its top-level children are).
+      </para></glossdef>
+     </glossentry>
+    </glosslist>
+   </para>
+   <para>
+    You are welcome to use these variables to change
+    packets in your data file (or even add, remove or rename packets):
+    the graphical user interface will always stay in sync with any changes
+    that you make via &python;.
+   </para>
+  </sect2>
+  <sect2 id="python-cmdline">
+   <title>Command-Line Sessions</title>
+   <para>
+    You can run the command-line program
+    <link linkend="man-regina-python"><command>regina-python</command></link>
+    without a graphical user interface at all.
+    This will use the standard &python; interpreter.
+    Since this is a text-based interface, you can also redirect
+    input and output in the usual way (using &lt; and &gt; in your
+    command shell).
+   </para>
+   <para>
+    <inlinemediaobject>
+     <imageobject>
+      <imagedata fileref="regina-python.png"/>
+     </imageobject>
+    </inlinemediaobject>
+   </para>
+   <para>
+    &macosx; users will find <command>regina-python</command>
+    inside &regina;'s application bundle.  See the
+    <link linkend="trouble-regina-python"><acronym>FAQ</acronym> entry</link>
+    for details.
+   </para>
+   <para>
+    &windows; users do not have the command-line
+    <command>regina-python</command> at all, though they can still use
+    <link linkend="python-gui">graphical &python; consoles</link> and
+    <link linkend="python-script">script packets</link>.
+   </para>
+  </sect2>
+  <sect2 id="python-script">
+   <title>Script Packets</title>
+   <para>
+    You can create a new <link linkend="packet-script">script
+    packet</link> in your data file.  Script packets allow you to save
+    &python; scripts along with your data, and they give your scripts
+    easy access to the packets inside your file.
+   </para>
+   <para>
+    <inlinemediaobject>
+     <imageobject>
+      <imagedata fileref="menu-newscript.png"/>
+     </imageobject>
+    </inlinemediaobject>
+   </para>
+   <para>
+    When you open a script packet, you will see your &python; code in the lower
+    part of the script editor, and a table of variables up the top.
+   </para>
+   <para>
+    <inlinemediaobject>
+     <imageobject>
+      <imagedata fileref="script-edit.png"/>
+     </imageobject>
+    </inlinemediaobject>
+   </para>
+   <para>
+    You can add your own variables to this table, and set them to arbitrary
+    packets within your data file.  &regina; will always set these variables
+    to the corresponding packets before running your script.
+   </para>
+   <para>
+    <inlinemediaobject>
+     <imageobject>
+      <imagedata fileref="script-var.png"/>
+     </imageobject>
+    </inlinemediaobject>
+   </para>
+   <para>
+    At the top of the script editor you will find buttons to compile
+    and run your script.
+    Compiling is optional: it merely gives you a chance to spot
+    syntax errors as you go.
+    When you press <guibutton>Run</guibutton>, &regina; will run your
+    script in a new graphical &python; console.
+    The console will be left open in case you wish to experiment further.
+   </para>
+   <para>
+    <inlinemediaobject>
+     <imageobject>
+      <imagedata fileref="script-run.png"/>
+     </imageobject>
+    </inlinemediaobject>
+   </para>
+   <para>
+    Again, you are welcome to change packets in your data file via
+    scripts (or even add, remove or rename packets):
+    the graphical user interface will always stay in sync with any changes
+    that your scripts make.
+   </para>
+  </sect2>
+ </sect1>
+
+ <sect1 id="python-access">
+  <title>Accessing &regina; from &python;</title>
+  <para>
+   All of &regina;'s objects, classes and methods belong to the
+   module called <parameter>regina</parameter>.
+   For instance, the main 3-manifold triangulation class is
+   <literal>regina.Triangulation3</literal>, and the main routine to
+   read a data file is <literal>regina.open</literal>.
+  </para>
+  <para>
+   Whenever &regina; gives you access to &python; (either through a
+   <link linkend="python-gui">graphical console</link>,
+   a <link linkend="python-script">script packet</link> or a
+   <link linkend="python-cmdline">command-line session</link>),
+   it will automatically import the <parameter>regina</parameter>
+   module (i.e., &ldquo;<literal>import regina</literal>&rdquo;),
+   and it will import all of &regina;'s objects,
+   classes and methods into the current namespace
+   (i.e., &ldquo;<literal>from regina import&nbsp;*</literal>&rdquo;).
+  </para>
+  <para>
+   This means, for instance, that you create a new triangulation by just
+   calling <literal>Triangulation3()</literal>, and you can read a data file
+   by calling <literal>open(filename)</literal>.
+   For command-line sessions, if you wish to avoid the heavy-handed
+   &ldquo;<literal>from regina import&nbsp;*</literal>&rdquo;, you can pass
+   the option <option>--noautoimport</option> (in which case you will need to
+   use fully qualified names such as
+   <literal>regina.Triangulation3()</literal> and
+   <literal>regina.open(filename)</literal>).
+  </para>
+
+  <sect2 id="python-docs">
+   <title>Documentation</title>
+   <para>
+    &regina; includes a complete &api; reference for its calculation engine,
+    which describes in detail the objects, classes and methods that
+    it makes available through &python;.  To read this documentation, select
+    <menuchoice>
+     <guimenu>Help</guimenu>
+     <guimenuitem>Python &api; Reference</guimenuitem>
+    </menuchoice>
+    from the menu.  The &api; reference should open in your web browser
+    (where you can bookmark it if you like).
+    You can also read it online at &regenginedocsurlbase;.
+   </para>
+  </sect2>
+ </sect1>
+
+ <sect1 id="python-caveats">
+  <title>Caveats and Traps</title>
+
+  <para>
+   &python; scripting gives you direct access to &regina;'s
+   mathematical core, and as such requires some care.
+   Probably the easiest way to crash &regina; is to bring up
+   a &python; console and do something untoward (like gluing together
+   two tetrahedra that belong to different triangulations).
+   Please tread gently.
+  </para>
+  <para>
+   In particular, you should note the following issues:
+  </para>
+  <sect2>
+   <title>Uneditable Packets</title>
+   <para>
+    If you cannot edit a packet within &regina;, there is generally
+    a reason for this.  For instance, a normal surface list needs its
+    parent triangulation to remain fixed, which means that any
+    triangulation with normal surface lists beneath it
+    will be <link linkend="packet-uneditable">uneditable</link>.
+   </para>
+   <para>
+    You should not use &python; as a way to get around this barrier.
+    Instead you can work around the problem by
+    <link linkend="packet-clone">cloning the packet</link>
+    and editing the clone instead.
+   </para>
+  </sect2>
+
+  <sect2 id="python-i18n">
+   <title>International and Special Characters</title>
+   <para>
+    If you use special characters (such as accented letters,
+    other international characters, exotic punctuation, mathematical
+    symbols and so on), you need to think about
+    <emphasis>text encodings</emphasis> when passing strings between
+    &python; and &regina;.
+   </para>
+   <para>
+    If you only ever deal with plain &ascii; text (plain English
+    letters, digits and basic punctuation), you do not need to
+    worry about text encodings at all (and you can stop reading this section).
+   </para>
+   <para>
+    &regina; uses &utf8; throughout for special characters.  If you ever
+    pass a string into one of &regina;'s functions, any special
+    characters must be encoded in &utf8;; conversely, when a string is
+    returned from a function you should assume that any special
+    characters are encoded in &utf8;.
+   </para>
+   <para>
+    &python;, on the other hand, does not use &utf8; strings by default.
+    See the
+    <ulink url="http://docs.python.org/howto/unicode.html">&python;
+    &utf8; HOWTO</ulink> for more information on how to work with
+    &utf8; strings in &python;.
+   </para>
+   <para>
+    As a single exception: for file <emphasis>names</emphasis>,
+    &regina; uses whatever encoding the operating system expects.
+    Any files names that you pass to &regina; will be sent
+    through to low-level &ccpp; I/O routines without any changes or
+    re-encoding.
+   </para>
+  </sect2>
+ </sect1>
+
+ <sect1 id="python-snappy">
+  <title>Talking with &snappy;</title>
+  <para>
+   Since &regina;&nbsp;4.95, a default installation of
+   &regina; can talk directly with a default installation of &snappy;
+   on many platforms.
+   This includes &macosx;&nbsp;10.7 or greater
+   (if you installed the &snappy; app bundle in
+   the usual <filename>Applications</filename> folder), and &linux;
+   (if your &snappy; uses the default system &python; installation).
+  </para>
+  <para>
+   Simply type <userinput>import snappy</userinput> from within any of
+   &regina;'s &python; environments.  To send information back and forth
+   between &regina; and &snappy;:
+   <itemizedlist>
+    <listitem><para>
+     &regina;'s triangulation classes
+     <classname>Triangulation3</classname> and
+     <classname>SnapPeaTriangulation</classname> both have a
+     <function>snapPea()</function> function, which gives a string that
+     you can pass to &snappy;'s <classname>Manifold</classname> constructor.
+    </para></listitem>
+    <listitem><para>
+     &snappy;'s <classname>Manifold</classname> class has a
+     <function>_to_string()</function> function, which gives a string
+     that you can pass to &regina;'s
+     <classname>Triangulation3</classname> or
+     <classname>SnapPeaTriangulation</classname> constructor.
+    </para></listitem>
+   </itemizedlist>
+  </para>
+  <para>
+   Regarding fillings and peripheral curves:
+   &regina; does not store fillings or peripheral curves for its own native
+   <link linkend="packet-triangulation3">triangulation packets</link>,
+   as represented by the <classname>Triangulation3</classname> class.
+   However, it does store fillings and peripheral curves for its hybrid
+   <link linkend="packet-snappea">&snappea; triangulation packets</link>,
+   as represented by the <classname>SnapPeaTriangulation</classname> class.
+   The trade-off is that the native <classname>Triangulation3</classname>
+   class offers &regina;'s full fine-grained control over the triangulation,
+   whereas the hybrid <classname>SnapPeaTriangulation</classname> class
+   has a more limited (largely read-only) interface.
+   <itemizedlist>
+    <listitem><para>
+     When sending data from &regina; to &snappy;,
+     if your triangulation is of the class
+     <classname>Triangulation3</classname>,
+     then <function>Triangulation3.snapPea()</function> will
+     create a &snappy; manifold in which all fillings and peripheral
+     curves are marked as unknown.
+     If your triangulation is of the class
+     <classname>SnapPeaTriangulation</classname>,
+     and if you already have fillings and peripheral curves stored on
+     each cusp, then <function>SnapPeaTriangulation.snapPea()</function> will
+     create a &snappy; manifold that preserves these.
+    </para></listitem>
+    <listitem><para>
+     Conversely, when sending data from &snappy; to &regina;, you
+     can choose to instantiate a triangulation using either the
+     <classname>Triangulation3</classname> class or the
+     <classname>SnapPeaTriangulation</classname> class.
+     If you use the <classname>Triangulation3</classname> class then all
+     fillings and peripheral curves will be lost.
+     If you use the <classname>SnapPeaTriangulation</classname> class then
+     fillings and peripheral curves will be preserved (but your interface
+     will be more restricted).
+    </para></listitem>
+   </itemizedlist>
+  </para>
+  <para>
+   Regarding the interface:
+   the <classname>SnapPeaTriangulation</classname> class
+   inherits from <classname>Triangulation3</classname>, and so you can
+   use it anywhere that a read-only triangulation is expected (in particular,
+   you can use it for enumerating vertex normal surfaces or angle structures).
+   However, because <classname>SnapPeaTriangulation</classname> must
+   maintain two synchronised copies of the triangulation (&regina;'s and
+   &snappea;'s), it is essentially read-only: any attempt to modify the
+   triangulation using &regina;'s native routines (e.g.,
+   <function>twoThreeMove()</function> or
+   <function>barycentricSubdivision()</function>) will cause the
+   &snappea; triangulation to delete itself and become a
+   &ldquo;null triangulation&rdquo; instead.
+  </para>
+  <warning><para>
+   At present, &snappy; (version&nbsp;2.0.3) is not compatible with
+   multiple &python; interpreters.  If you import &snappy; into more than one
+   &python;
+   console in the graphical user interface, &snappy; may stop working.
+   See <link linkend="trouble-python-snappy">this troubleshooting entry</link>
+   for details.
+  </para></warning>
+  <para>
+   The following &python; session illustrates several of the concepts
+   discussed above.
+  </para>
+  <programlisting>
+bab@ember:~$ regina-python 
+Regina 5.1
+Software for low-dimensional topology
+Copyright (c) 1999-2016, The Regina development team
+&gt;&gt;&gt; import snappy
+&gt;&gt;&gt; m = snappy.Manifold('m001')
+&gt;&gt;&gt; t = SnapPeaTriangulation(m._to_string())
+&gt;&gt;&gt; print t.detail()
+Size of the skeleton:
+  Tetrahedra: 2
+  Triangles: 4
+  Edges: 2
+  Vertices: 1
+
+Tetrahedron gluing:
+  Tet  |  glued to:      (012)      (013)      (023)      (123)
+  -----+-------------------------------------------------------
+    0  |               1 (103)    1 (320)    1 (210)    1 (132)
+    1  |               0 (320)    0 (102)    0 (310)    0 (132)
+
+Vertices:
+  Tet  |  vertex:    0   1   2   3
+  -----+--------------------------
+    0  |             0   0   0   0
+    1  |             0   0   0   0
+
+Edges:
+  Tet  |  edge:   01  02  03  12  13  23
+  -----+--------------------------------
+    0  |           0   1   1   1   1   0
+    1  |           0   1   1   1   1   0
+
+Triangles:
+  Tet  |  face:  012 013 023 123
+  -----+------------------------
+    0  |           0   1   2   3
+    1  |           2   0   1   3
+
+Tetrahedron shapes:
+  0: ( -1.60812e-16, 1 )
+  1: ( -1.60812e-16, 1 )
+
+Cusps:
+  0: Vertex 0, complete
+
+&gt;&gt;&gt; print t.hasStrictAngleStructure()
+True
+&gt;&gt;&gt; print AngleStructures.enumerate(t).detail()
+4 vertex angle structures (no restrictions):
+0 1 0 ; 1 0 0
+0 0 1 ; 1 0 0
+1 0 0 ; 0 1 0
+1 0 0 ; 0 0 1
+
+&gt;&gt;&gt; t2 = Example3.figureEight()
+&gt;&gt;&gt; m2 = snappy.Manifold(t2.snapPea())
+&gt;&gt;&gt; print m2.volume()
+2.02988321282
+&gt;&gt;&gt;
+  </programlisting>
+ </sect1>
+
+ <sect1 id="sessions">
+  <title>Sample &python; Sessions</title>
+  <para>
+   Several sample &python; sessions are reproduced below.
+   Each session was started by running
+   <userinput>regina-python</userinput>
+   from the command line.
+  </para>
+
+  <sect2 id="sessiontriangulation">
+   <title>Working with a triangulation</title>
+   <programlisting>&sessiontriangulation;</programlisting>
+  </sect2>
+
+  <sect2 id="sessiontree">
+   <title>Working with a packet tree</title>
+   <programlisting>&sessiontree;</programlisting>
+  </sect2>
+
+  <sect2 id="sessionprogress">
+   <title>Reporting progress of long operations</title>
+   <programlisting>&sessionprogress;</programlisting>
+  </sect2>
+ </sect1>
+</chapter>

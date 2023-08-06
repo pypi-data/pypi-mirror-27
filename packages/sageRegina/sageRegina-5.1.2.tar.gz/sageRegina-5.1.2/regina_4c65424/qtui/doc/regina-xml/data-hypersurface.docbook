@@ -1,0 +1,145 @@
+
+<!-- Regina data file format documentation.
+     See ../regina.sgml for further details. -->
+
+<refentry id="data-hypersurface">
+ <refmeta>
+  <refentrytitle>hypersurface</refentrytitle>
+  <manvolnum>5reg</manvolnum>
+ </refmeta>
+
+ <refnamediv>
+  <refname>hypersurface</refname>
+  <refpurpose>A single normal hypersurface in a 4-manifold triangulation</refpurpose>
+ </refnamediv>
+
+ <refsynopsisdiv>
+  <informaltable frame="all">
+   <tgroup cols="2">
+    <colspec colname="c1"/>
+    <colspec colname="c2"/>
+    <tbody>
+     <row><entry namest="c1" nameend="c2">
+      <emphasis role="bold">Content Model</emphasis>
+     </entry></row>
+     <row><entry namest="c1" nameend="c2">
+<synopsis>
+hypersurface ::= (#PCDATA,
+             &xml-compact-surface;?, &xml-realbdry-surface;?)</synopsis>
+     </entry></row>
+     <row><entry namest="c1" nameend="c2">
+      <emphasis role="bold">Attributes</emphasis>
+     </entry></row>
+     <row>
+      <entry><emphasis role="bold">Name</emphasis></entry>
+      <entry><emphasis role="bold">Type</emphasis></entry>
+     </row>
+     <row>
+      <entry><sgmltag>len</sgmltag></entry>
+      <entry><type>NUMBER</type> (required)</entry>
+     </row>
+     <row>
+      <entry><sgmltag>name</sgmltag></entry>
+      <entry><type>CDATA</type></entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
+ </refsynopsisdiv>
+
+ <refsect1>
+  <title>Description</title>
+  <para>
+   A &xml-hypersurface; element stores a single normal hypersurface in a
+   4-manifold triangulation.
+  </para>
+  <para>
+   A normal hypersurface in a <replaceable>P</replaceable>-pentachoron
+   triangulation is traditionally represented by a vector of integers, whose
+   length depends upon the underlying coordinate system.  For instance, under
+   standard tetrahedron-prism coordinates the vector will have length
+   15<replaceable>P</replaceable>.  The underlying coordinate
+   system is specified in the &xml-params; element of the parent
+   &xml-packet-normalhypersurfacelist;.
+  </para>
+  <para>
+   The normal hypersurface vector is stored as the character data of this
+   &xml; element as follows.
+   Since a normal hypersurface vector will generally contain many zeroes,
+   only the non-zero elements are listed.  The character data should
+   thus consist of a whitespace-separated sequence of integer pairs.
+   Each integer pair represents a non-zero coordinate in the vector; the
+   first element of the pair identifies which coordinate is being
+   described (coordinates are numbered 0, 1, 2, ...) and the second element
+   of the pair is the actual value at this coordinate.
+  </para>
+
+  <refsect2>
+   <title>Parents</title>
+   <para>
+    The following elements contain <sgmltag>hypersurface</sgmltag>:
+    <simplelist type="inline">
+     <member>&xml-packet-normalhypersurfacelist;</member>
+    </simplelist>.
+   </para>
+  </refsect2>
+
+  <refsect2>
+   <title>Children</title>
+   <para>
+    The following elements occur in <sgmltag>hypersurface</sgmltag>:
+    <simplelist type="inline">
+     <member>&xml-compact-surface;</member>
+     <member>&xml-realbdry-surface;</member>
+    </simplelist>.
+   </para>
+  </refsect2>
+ </refsect1>
+
+ <refsect1>
+  <title>Attributes</title>
+  <variablelist>
+   <varlistentry>
+    <term><sgmltag>len</sgmltag></term>
+    <listitem>
+     <para>
+      The length of the underlying normal hypersurface vector.
+      This depends upon the coordinate system in which the normal
+      hypersurface was originally generated.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><sgmltag>name</sgmltag></term>
+    <listitem>
+     <para>
+      A human-readable name given to this hypersurface.  Hypersurface names
+      need not be distinct and exist merely for the convenience of the user.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </refsect1>
+
+ <refsect1>
+  <title>Example</title>
+  <para>
+   The following &xml; snippet represents a normal hypersurface in a
+   4-pentachoron triangulation.  The normal hypersurface vector is:
+   <programlisting>
+(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0)</programlisting>
+  </para>
+  <para>
+   The child elements of this normal surface indicate that the
+   surface is compact and has no real boundary.
+  </para>
+  <programlisting>
+&lt;hypersurface len="60"&gt; 10 1 25 1 36 1 51 1
+    &lt;realbdry value="F"/&gt;
+    &lt;compact value="T"/&gt; &lt;/hypersurface&gt;
+  </programlisting>
+ </refsect1>
+</refentry>

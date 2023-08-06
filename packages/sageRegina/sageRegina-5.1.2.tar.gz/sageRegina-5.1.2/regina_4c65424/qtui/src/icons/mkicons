@@ -1,0 +1,128 @@
+#!/usr/bin/perl -w
+use strict;
+
+my @actionSizes = ( 16, 22, 32 );
+my @packetSizes = ( 16, 22, 32 );
+
+my @actionIcons = qw/
+    barycentric
+    canonical
+    components
+    cone
+    connectedsum
+    connectedsumwith
+    csvexport
+    dehydrated
+    doublecover
+    drilledge
+    fill
+    finite
+    locked
+    orb
+    orient
+    packet_view
+    puncture
+    randomise
+    signature-2d
+    signature-3d
+    simplify
+    vtxlinks
+    /;
+
+my @packetIcons = qw/
+    angles
+    container
+    filter
+    filter_comb
+    filter_prop
+    pdf
+    script
+    snappea
+    surfaces
+    text
+    triangulation2
+    triangulation3
+    triangulation4
+    triangulation5
+    triangulation6
+    triangulation7
+    triangulation8
+    triangulation9
+    triangulation10
+    triangulation11
+    triangulation12
+    triangulation13
+    triangulation14
+    triangulation15
+    /;
+
+my $aux = undef;
+
+sub usage {
+    my $err = shift;
+    $err and print STDERR "ERROR: $err\n\n";
+    print STDERR "Usage: mkicons <path_to_regina-aux_checkout>\n";
+    exit 1;
+}
+
+sub render {
+    my $src = shift;
+    my $size = shift;
+    my $filename = shift;
+
+    my $custom = 0;
+    if ($size <= 16) {
+        my $lores = $src;
+        $lores =~ s/\.svg$/-lores.svg/;
+        if (-e $lores) {
+            print "Using lo-res SVG: $filename\n";
+            $src = $lores;
+            $custom = 1;
+        }
+    }
+    if (not $custom) {
+        my $lores = $src;
+        $lores =~ s/\.svg$/-$size.svg/;
+        if (-e $lores) {
+            print "Using ${size}x SVG: $filename\n";
+            $src = $lores;
+            $custom = 1;
+        }
+    }
+
+    # `rsvg -w$size -h$size "$src" "$filename"`;
+    `inkscape -z -e "$filename" -w $size -h $size "$src"`;
+}
+
+sub process {
+    my $icon = shift;
+    my $sizes = shift;
+    my $src = shift;
+
+    if (not -e $src) {
+        print STDERR "ERROR: Could not find source: $src\n";
+        return;
+    }
+
+    foreach (@$sizes) {
+        render($src, $_, "$icon-$_.png");
+        render($src, 2 * $_, "$icon-$_\@2x.png");
+    }
+}
+
+$aux = ($#ARGV < 0 ? "$ENV{'HOME'}/git/regina-aux" : $ARGV[0]);
+-d "$aux" or usage "Argument \"$aux\" is not a directory.";
+-e "$aux/icons/src/packets/triangulation.svg" or
+    usage "Argument \"$aux\" does not look like a regina-aux checkout.";
+
+foreach my $i (@actionIcons) {
+    my $src = "$aux/icons/src/actions/$i.svg";
+    process($i, \@actionSizes, $src);
+}
+
+foreach my $i (@packetIcons) {
+    my $src = "$aux/icons/src/packets/$i.svg";
+    my $prefix = ($i eq 'filter_comb' || $i eq 'filter_prop' ? '' : 'packet_');
+    process("$prefix$i", \@packetSizes, $src);
+}
+

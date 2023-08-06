@@ -1,0 +1,110 @@
+
+<!-- Regina data file format documentation.
+     See ../regina.sgml for further details. -->
+
+<refentry id="data-pentachora">
+ <refmeta>
+  <refentrytitle>pentachora</refentrytitle>
+  <manvolnum>5reg</manvolnum>
+ </refmeta>
+
+ <refnamediv>
+  <refname>pentachora</refname>
+  <refpurpose>The pentachora forming a 4-dimensional triangulation</refpurpose>
+ </refnamediv>
+
+ <refsynopsisdiv>
+  <informaltable frame="all">
+   <tgroup cols="2">
+    <colspec colname="c1"/>
+    <colspec colname="c2"/>
+    <tbody>
+     <row><entry namest="c1" nameend="c2">
+      <emphasis role="bold">Content Model</emphasis>
+     </entry></row>
+     <row><entry namest="c1" nameend="c2">
+<synopsis>
+pentachora ::= (&xml-pent;*)</synopsis>
+     </entry></row>
+     <row><entry namest="c1" nameend="c2">
+      <emphasis role="bold">Attributes</emphasis>
+     </entry></row>
+     <row>
+      <entry><emphasis role="bold">Name</emphasis></entry>
+      <entry><emphasis role="bold">Type</emphasis></entry>
+     </row>
+     <row>
+      <entry><sgmltag>npent</sgmltag></entry>
+      <entry><type>NUMBER</type> (required)</entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
+ </refsynopsisdiv>
+
+ <refsect1>
+  <title>Description</title>
+  <para>
+   A &xml-pentachora; element stores the entire set of pentachora that
+   form a 4-dimensional triangulation.
+  </para>
+  <para>
+   The total number of pentachora must be specified by the
+   <sgmltag>npent</sgmltag> attribute.  The individual pentachora are
+   numbered 0, 1, 2, etc., and their facet gluings are described by the
+   corresponding child &xml-pent; elements.  There must be precisely
+   <replaceable>npent</replaceable> child &xml-pent; elements in total.
+  </para>
+
+  <refsect2>
+   <title>Parents</title>
+   <para>
+    The following elements contain <sgmltag>pentachora</sgmltag>:
+    <simplelist type="inline">
+     <member>&xml-packet-dim4triangulation;</member>
+    </simplelist>.
+   </para>
+  </refsect2>
+
+  <refsect2>
+   <title>Children</title>
+   <para>
+    The following elements occur in <sgmltag>pentachora</sgmltag>:
+    <simplelist type="inline">
+     <member>&xml-pent;</member>
+    </simplelist>.
+   </para>
+  </refsect2>
+ </refsect1>
+
+ <refsect1>
+  <title>Attributes</title>
+  <variablelist>
+   <varlistentry>
+    <term><sgmltag>npent</sgmltag></term>
+    <listitem>
+     <para>
+      The total number of pentachora in this set.  Note that there must
+      be precisely this many child &xml-pent; elements.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </refsect1>
+
+ <refsect1>
+  <title>Example</title>
+  <para>
+   The following &xml; snippet represents a triangulation
+   of the product
+   B<superscript>3</superscript>&times;S<superscript>1</superscript>,
+   formed from two pentachora.
+  </para>
+  <programlisting>
+&lt;pentachora npent="2"&gt;
+  &lt;pent&gt; 1 13380 -1 -1 -1 -1 -1 -1 1 2257 &lt;/pent&gt;
+  &lt;pent&gt; 0 13380 -1 -1 -1 -1 -1 -1 0 2257 &lt;/pent&gt;
+&lt;/pentachora&gt;
+  </programlisting>
+ </refsect1>
+</refentry>

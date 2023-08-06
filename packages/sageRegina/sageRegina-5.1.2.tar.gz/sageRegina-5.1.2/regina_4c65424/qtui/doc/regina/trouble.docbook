@@ -1,0 +1,502 @@
+<chapter id="troubleshooting">
+ <title>Troubleshooting and <acronym>FAQ</acronym></title>
+
+ <qandaset>
+  <qandadiv id="trouble-running"><title>Running &regina;</title>
+   <qandaentry id="trouble-start">
+    <question><para>
+     How do I start &regina;?
+    </para></question>
+    <answer>
+     <para>
+      If you use &linux;, look for &regina; in your applications menu
+      (for instance, the main &gnome; or &kde; menu).  It might be classified
+      under <guilabel>Science</guilabel> or <guilabel>Education</guilabel>.
+      If all else fails, you can always start &regina; from the command line
+      by running <command>regina-gui</command>.
+     </para>
+     <para>
+      <inlinemediaobject>
+       <imageobject>
+        <imagedata fileref="run-fedora-menu.png"/>
+       </imageobject>
+      </inlinemediaobject>
+     </para>
+     <para>
+      If you use &macosx;, you should have downloaded a drag-and-drop
+      app bundle.  You can start &regina; simply by opening this app
+      from wherever you dragged it to (typically the
+      <guilabel>Applications</guilabel> folder).
+     </para>
+     <para>
+      <inlinemediaobject>
+       <imageobject>
+        <imagedata fileref="run-mac-white.png"/>
+       </imageobject>
+      </inlinemediaobject>
+     </para>
+     <para>
+      If you use &windows;, you can find &regina; in the
+      <guilabel>Start</guilabel> menu.  Look for
+      <menuchoice>
+       <guimenu>All Programs</guimenu>
+       <guisubmenu>Regina&nbsp;&regversion;</guisubmenu>
+       <guimenuitem>&regina;</guimenuitem>
+      </menuchoice>.
+     </para>
+     <para>
+      <inlinemediaobject>
+       <imageobject>
+        <imagedata fileref="run-windows.png"/>
+       </imageobject>
+      </inlinemediaobject>
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="trouble-regina-python">
+    <question><para>
+     How can I run <command>regina-python</command> or the other
+     command-line tools?
+    </para></question>
+    <answer>
+     <para>
+      If you downloaded a &linux; package, these tools should all be in
+      <filename>/usr/bin/</filename>.  You can run them directly from
+      the command line:
+     </para>
+
+<screen>
+    <prompt>example$</prompt> <userinput>regina-python</userinput>
+    Regina 4.95
+    Software for 3-manifold topology and normal surface theory
+    Copyright (c) 1999-2013, The Regina development team
+    &gt;&gt;&gt;
+</screen>
+
+     <para>
+      If you downloaded a drag-and-drop app bundle for &macosx;,
+      these tools are all shipped inside it.
+      If you dragged &regina; to the main
+      <guilabel>Applications</guilabel> folder, you can find them in
+      <filename>/Applications/Regina.app/Contents/MacOS/</filename>.
+     </para>
+
+<screen>
+    <prompt>example$</prompt> <userinput>/Applications/Regina.app/Contents/MacOS/regina-python</userinput>
+    Regina 4.95
+    Software for 3-manifold topology and normal surface theory
+    Copyright (c) 1999-2013, The Regina development team
+    &gt;&gt;&gt;
+</screen>
+
+     <para>
+      If you use &windows;, the tool
+      <command>regina-python</command> is not available.
+      &windows;.  However, you can still use &python; scripting in &regina;'s
+      graphical user interface, by opening a graphical &python; console or
+      using script packets.
+     </para>
+     <para>
+      The other command-line tools (such as <command>regfiledump</command>,
+      <command>tricensus</command> and so on) are installed under
+      &windows; beneath the
+      <filename>Program&nbsp;Files</filename> directory; on some
+      machines this directory is called
+      <filename>Program&nbsp;Files&nbsp;(x86)</filename>.
+      Specifically, the command-line tools are stored in the subdirectory
+      <filename>c:\Program&nbsp;Files\Regina\Regina&nbsp;&regversion;\bin\</filename>.
+
+<screen>
+    <prompt>example$</prompt> <userinput>"c:\Program&nbsp;Files\Regina\Regina&nbsp;&regversion;\bin\tricensus.exe" -t2 output.rga</userinput>
+    Starting census generation...
+    0:1 0:0 1:0 1:1 | 0:2 0:3 1:3 1:2
+    0:1 0:0 1:0 1:1 | 0:2 0:3 bdry bdry
+    ...
+</screen>
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry>
+    <question><para>
+     On &macosx;, do I need &fink; any more?
+    </para></question>
+    <answer>
+     <para>
+      No!  As of version&nbsp;4.92, &regina; ships as a standalone app
+      bundle that you can drag and drop straight into your Applications
+      folder.  If you installed &fink; for an earlier version of
+      &regina; and you do not use it for anything else, you can remove
+      it: simply delete <filename>/sw</filename> and everything beneath it.
+     </para>
+    </answer>
+   </qandaentry>
+  </qandadiv>
+
+  <qandadiv id="trouble-gui"><title>The User Interface</title>
+   <qandaentry id="trouble-gui-shortcuts">
+    <question><para>
+     On &ubuntu;, none of the keyboard shortcuts work.
+    </para></question>
+    <answer>
+     <para>
+      This is due to a
+      <ulink url="https://bugs.launchpad.net/appmenu-qt5/+bug/1380702">larger
+      bug in &ubuntu;</ulink> that affects not just &regina; but all
+      programs that use the &qt; libraries.
+      It is not clear if/when &ubuntu; will fix this problem.
+     </para>
+     <para>
+      In the meantime, if it bothers you greatly then you can try
+      uninstalling the <literal>appmenu-qt5</literal> package.
+      This will fix the keyboard shortcuts, but at a cost: all
+      &qt;-based applications will lose
+      the unified menu bar at the top of the screen, and
+      instead will put their menus inside their own windows.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="trouble-gui-whatsthis">
+    <question><para>
+     On &ubuntu;, the &ldquo;What&rsquo;s this?&rdquo; help
+     just gives me an empty yellow box.
+    </para>
+    <para>
+     <inlinemediaobject>
+      <imageobject>
+       <imagedata fileref="ubuntu-whatsthis.png"/>
+      </imageobject>
+     </inlinemediaobject>
+    </para></question>
+    <answer>
+     <para>
+      If you look closely, you might see that the box is full of
+      white text on a bright yellow background (which of course is
+      impossible to read).
+     </para>
+     <para>
+      Unfortunately this is another
+      <ulink url="https://bugs.launchpad.net/ubuntu/+source/qt4-x11/+bug/877236">long-standing
+      bug in &ubuntu;</ulink>, which
+      affects not only &regina; but all &qt;-based applications.
+      It is not clear how &regina; can work around this problem;
+      hopefully &ubuntu; will fix this issue soon.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="trouble-gui-crashonexit">
+    <question><para>
+     On &ubuntu;, I sometimes receive a crash report when I exit &regina;.
+    </para></question>
+    <answer>
+     <para>
+      The problem itself is harmless (but annoying), and you can simply
+      ignore it.  Any tasks you asked &regina; to perform (such as
+      saving your data files) will still be completed successfully.
+     </para>
+     <para>
+      It is not clear if/how this problem can be fixed, since it seems to be a
+      <ulink url="https://bugreports.qt.io/browse/QTBUG-52988">wider problem
+      with the &qt; toolkit</ulink> (in particular, the version of
+      &qt; that ships with some recent versions of &ubuntu;).
+     </para>
+     <para>
+      This most likely affects other &linux; distributions as well;
+      you will simply notice it on &ubuntu; because &ubuntu; comes with
+      a crash handler that notifies the user of such events.
+      In other distributions the problem is invisible (and harmless)
+      because the crash only occurs when you are exiting &regina; anyway.
+     </para>
+    </answer>
+   </qandaentry>
+  </qandadiv>
+
+  <qandadiv id="trouble-python"><title>&python; Scripting</title>
+   <qandaentry id="trouble-python-disabled">
+    <question><para>
+     &regina; tells me that &python; scripting has been disabled.
+    </para></question>
+    <answer>
+     <para>
+      This means that whoever built your version of &regina; did
+      not include &python; support in the build.
+     </para>
+     <para>
+      The best solution is to download a ready-made package from the
+      <ulink url="http://regina-normal.github.io/#download">&regina;
+      website</ulink>.  All of the ready-made packages should have
+      &python; support built in.
+     </para>
+     <para>
+      If you need to build &regina; yourself from source, make sure you have the
+      <ulink url="http://regina-normal.github.io/source.html#sysreq">&python;
+      and &boost-python; development files</ulink> installed.
+      If not, &regina; will warn you about this when you run
+      <command>cmake</command>:
+     </para>
+<screen>
+<prompt>example:~/source/regina/build&gt;</prompt> <userinput>cmake ..</userinput>
+-- The C compiler identification is GNU
+-- The CXX compiler identification is GNU
+...
+... (lots of output)
+...
+-----------------------------------------------------------------------------
+-- The following OPTIONAL packages could NOT be located on your system.
+-- Consider installing them to enable more features from this software.
+-----------------------------------------------------------------------------
+   * Python development  &lt;http://www.python.org/&gt;
+     Build Python bindings for Regina
+
+-----------------------------------------------------------------------------
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/bab/source/regina/build
+<prompt>example:~/source/regina/build&gt;</prompt>
+</screen>
+     <para>
+      If you are stuck, please &mailtheauthors; for assistance,
+      including your <filename>CMakeCache.txt</filename>
+      if possible to help diagnose the problem.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="trouble-python-root">
+    <question><para>
+     &python; scripting does not work on &macosx;.
+     Instead I get a <exceptionname>TypeError</exceptionname>
+     saying &ldquo;No &python; class registered for &cpp; class
+     <classname>regina::Packet</classname>&rdquo;, and/or a
+     message that &regina; &ldquo;could not set the
+     root variable&rdquo;.
+    </para>
+    <para>
+     <inlinemediaobject>
+      <imageobject>
+       <imagedata fileref="trouble-python-root.png"/>
+      </imageobject>
+     </inlinemediaobject>
+    </para></question>
+    <answer>
+     <para>
+      If you have a second, hand-built version of &regina; installed on your
+      system, then this can conflict with the standalone app that you
+      download from &regina;'s website.
+     </para>
+     <para>
+      Look for a second copy of &regina;'s &python; module on your
+      system.  It will be a directory called <filename>regina</filename>,
+      containing the files <filename>engine.so</filename> and
+      <filename>__init__.py</filename>.  On a modern &macosx; system using
+      the standard system &python;, a hand-built version of &regina;
+      will typically install this module in
+      <filename>/Library/Python/2.7/site-packages/regina</filename>.
+     </para>
+     <para>
+      The next release of &regina; (version&nbsp;5.1) will allow two
+      such installations to work happily side-by-side.  In the meantime,
+      you can fix the problem by manually removing the hand-built &python;
+      module that you found.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="trouble-python-snappy">
+    <question><para>
+     &snappy; has stopped working in the graphical user interface.
+     When I import &snappy; and try to create a manifold, I receive a
+     <exceptionname>TypeError</exceptionname> with the message
+     &ldquo;isinstance() arg 2 must be a class, type, or tuple
+     of classes and types&rdquo;.
+    </para></question>
+    <answer>
+     <para>
+      At the time of writing, &snappy; (version&nbsp;2.4) is not
+      compatible with multiple interpreters.  If you run the graphical
+      user interface and import the <parameter>snappy</parameter> module
+      in more than one &python; console, &snappy; will stop working.
+     </para>
+     <para>
+      A workaround is to open one console, import
+      <parameter>snappy</parameter> within it, and then <emphasis>leave that
+      console open</emphasis>.  You can then use &snappy; in as many
+      different consoles as you like: &snappy; will only break after you
+      close that first console.
+     </para>
+     <para>
+      If you are not working directly with a data file, another option
+      is to use the
+      <link linkend="man-regina-python"><command>regina-python</command></link>
+      command-line tool.  This only runs one instance of &python;, and
+      so avoids the problem.
+     </para>
+     <para>
+      The problem appears to be rooted in &cython;, which &snappy; uses
+      for its &python; bindings.
+      The &snappy; and &regina; authors are currently working to find a
+      suitable workaround.
+     </para>
+    </answer>
+   </qandaentry>
+  </qandadiv>
+
+  <qandadiv id="trouble-misc"><title>Miscellaneous</title>
+   <qandaentry id="trouble-packet-uneditable">
+    <question><para>
+     I cannot edit a triangulation.  I can view it but I can't change anything.
+    </para></question>
+    <answer>
+     <para>
+      If a triangulation has any normal surface lists or angle structure
+      lists beneath it, that triangulation must not change.
+      This is because normal surfaces and angle structures store their
+      coordinates relative to the triangulation, and any changes to the
+      triangulation will invalidate these coordinates.
+     </para>
+     <para>
+      If you wish to modify the triangulation,
+      <link linkend="packet-clone">try cloning it</link>
+      (not the subtree, just the triangulation itself).
+      Then you can edit the clone instead.
+     </para>
+     <para>
+      Triangulations that cannot be edited will be marked with a
+      padlock in the triangulation viewer, as illustrated below.
+     </para>
+     <para>
+      <inlinemediaobject>
+       <imageobject>
+        <imagedata fileref="padlock.png"/>
+       </imageobject>
+      </inlinemediaobject>
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="trouble-compile">
+    <question><para>
+     I am having trouble compiling &regina;.
+    </para></question>
+    <answer>
+     <para>
+      If you can, it is best to install &regina; from a ready-made
+      package.  See the
+      <ulink url="http://regina-normal.github.io/#download">&regina;
+      website</ulink> for a list of &linux; distributions
+      that have packages available.
+     </para>
+     <para>
+      If you do need to build &regina; yourself, the website offers
+      help on
+      <ulink url="http://regina-normal.github.io/source.html">building
+      &regina; from source</ulink>.  There is also a page on
+      <ulink url="http://regina-normal.github.io/buildtips.html">building
+      &regina; on different distributions</ulink>, which suggests specific
+      <command>cmake</command> options tailored to your particular
+      type of machine.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="trouble-testsuite">
+    <question><para>
+     What is the test suite, and how do I run it?
+    </para></question>
+    <answer>
+     <para>
+      Sometimes building an application on different
+      hardware or against different versions of libraries can produce
+      unforseen bugs that do not appear on the developer's machine(s).
+      To help guard against such problems, &regina; ships with a rich test
+      suite.  The test suite asks &regina; to perform
+      different calculations that isolate different portions of its
+      mathematical code, and it verifies that &regina; gets all
+      the answers correct.
+     </para>
+     <para>
+      You can only run the test suite if you are
+      <ulink url="http://regina-normal.github.io/source.html">building
+      &regina; from source</ulink> yourself.
+      If you download a ready-made package, the person who built the
+      package should have already verified that &regina; passes the
+      test suite (as all of the packages on the &regina; website do).
+     </para>
+     <para>
+      You will also need
+      <ulink url="http://regina-normal.github.io/source.html#sysreq"><application>CppUnit</application> installed</ulink>.
+      Otherwise the test suite will run but only with the simpler &python;
+      tests, not the rich and detailed &cpp; calculation engine tests.
+     </para>
+     <para>
+      To run the test suite, move into your main build
+      directory and type <userinput>make test ARGS=-V</userinput>.
+      You should see the individual tests being run, as illustrated below.
+     </para>
+<screen>
+<prompt>example:~/source/regina/build&gt;</prompt> <userinput>make test ARGS=-V</userinput>
+Running tests...
+...
+... (some initial output)
+...
+1: ---------------------------------------
+1: Test suite for Regina's python bindings
+1: ---------------------------------------
+1: 
+1: Running euler.test ... ok
+1: Running file.test ... ok
+...
+... (more output)
+...
+2: Regina calculation engine test suite
+2: 
+2: BitmaskTest::sizes... ok.
+2: BitmaskTest::firstLastBit... ok.
+2: BitmaskTest::truncate... ok.
+...
+... (lots and lots of output)
+...
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  19.48 sec
+<prompt>example:~/source/regina/build&gt;</prompt>
+</screen>
+     <para>
+      We see from the output above that &regina; passed all of its tests
+      (and hopefully this is what you will see too).
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry>
+    <question><para>
+     Something else not described in this list has gone wrong.
+    </para></question>
+    <answer>
+     <para>
+      Perhaps something crashed.  Maybe the program gave the wrong
+      answer.  Or it could be just a little too slow?
+     </para>
+     <para>
+      Please! - mail the authors and let us know.  You are welcome to
+      write to us directly (our <link linkend="acknowledgements">email
+      addresses are here</link>).  Or even better,
+      use the <link linkend="services">&github; issue tracking system</link>
+      so that the problem you report is publicly archived.
+     </para>
+     <para>
+      This program is permanently in development.  There is a very
+      long &todo; list, and chances are your problem is on it.  And
+      then again chances are it's not.  So please, let us know what you
+      think can be fixed or improved.
+     </para>
+    </answer>
+   </qandaentry>
+  </qandadiv>
+ </qandaset>
+</chapter>
+
