@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import datetime
+
+from rapidpro_controller import (THIS_SERVER, OTHER_SERVER, get_color)
+from rapidpro_controller.states import (local_role, local_status,
+                                        remote_role, remote_status)
+
+template = """<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RapidPro {lserver} state</title>
+</head>
+<body>
+<pre>
+{lserver}:: <font color="{lsrc}">{lsrole}</font>: <font color="{lssc}">{lsstatus}</font>
+{rserver}:: <font color="{rsrc}">{rsrole}</font>: <font color="{rssc}">{rsstatus}</font>
+
+Generated on {date}.
+</pre>
+</body>
+</html>"""
+
+
+def gen_html():
+    lrole, lrole_level = local_role()
+    lstatus, lstatus_level = local_status()
+    rrole, rrole_level = remote_role()
+    rstatus, rstatus_level = remote_status()
+
+    def boldif(server):
+        return '<strong>{}</strong>'.format(server) \
+            if server == THIS_SERVER else server
+
+    output = template.replace('{server}', boldif(THIS_SERVER)) \
+                     .replace('{lserver}', boldif(THIS_SERVER)) \
+                     .replace('{lsrc}', get_color(lrole_level) or "") \
+                     .replace('{lsrole}', lrole) \
+                     .replace('{lssc}', get_color(lstatus_level) or "") \
+                     .replace('{lsstatus}', lstatus) \
+                     .replace('{rserver}', OTHER_SERVER) \
+                     .replace('{rsrc}', get_color(rrole_level) or "") \
+                     .replace('{rsrole}', rrole) \
+                     .replace('{rssc}', get_color(rstatus_level) or "") \
+                     .replace('{rsstatus}', rstatus) \
+                     .replace('{date}', datetime.datetime.now().isoformat())
+
+    return output
+
+
+def main():
+    print(gen_html())
+
+
+if __name__ == '__main__':
+    main()
