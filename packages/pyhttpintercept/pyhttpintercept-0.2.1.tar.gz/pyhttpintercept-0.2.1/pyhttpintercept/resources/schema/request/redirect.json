@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Schema for PyHTTPIntercept redirect config",
+
+  "definitions": {
+    "redirect_config": {
+      "type": "object",
+      "properties": {
+        "host": {"type": "string"},
+        "description": {"type": "string"},
+        "active": {"type": "boolean"}
+      },
+      "required": ["active"],
+      "oneOf": [
+        {
+          "properties": {"paths": { "$ref": "#/definitions/path_config_simple" }},
+          "required": ["host"]
+        },
+        {
+          "properties": {"paths": { "$ref": "#/definitions/path_config" }},
+          "required": ["paths"]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "path_config": {
+      "type": "object",
+      "properties": {
+        "host": {"type": "string"},
+        "path": {"type": "string"},
+        "status": {"type": "number"},
+        "description": {"type": "string"},
+        "active": {"type": "boolean"}
+      },
+      "required": ["active"],
+      "oneOf": [
+        {"required": ["host"]},
+        {"required": ["path"]}
+      ],
+      "additionalProperties": false
+    },
+    "path_config_simple": {
+      "type": "object",
+      "properties": {
+        "host": {"type": "string"},
+        "path": {"type": "string"},
+        "status": {"type": "number"},
+        "description": {"type": "string"},
+        "active": {"type": "boolean"}
+      },
+      "required": ["active"],
+      "additionalProperties": false
+    }
+  },
+
+  "type": "object",
+  "additionalProperties": { "$ref": "#/definitions/redirect_config" }
+}
