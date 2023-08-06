@@ -1,0 +1,117 @@
+Metadata-Version: 2.0
+Name: zypper-patch-status-collector
+Version: 0.1.0
+Summary: Exports patch status in Prometheus-compatible format.
+Home-page: https://gitlab.com/Marix/zypper-patch-status-collector
+Author: Matthias Bach
+Author-email: marix@marix.org
+License: GPL-3.0+
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Environment :: Console
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: System :: Monitoring
+Classifier: Topic :: Utilities
+Requires-Dist: setuptools
+
+=============================
+Zypper Patch Status Collector
+=============================
+
+This queries the current patch status of the system from Zypper and exports it in a format compatible with the `Prometheus Node Exporter's`_ textfile collector.
+
+Usage
+-----
+
+::
+
+    > zypper-patch-status-collector
+    # HELP zypper_applicable_patches The current count of applicable patches
+    # TYPE zypper_applicable_patches gauge
+    zypper_applicable_patches{category="security",severity="critical"} 0
+    zypper_applicable_patches{category="security",severity="important"} 2
+    zypper_applicable_patches{category="security",severity="moderate"} 0
+    zypper_applicable_patches{category="security",severity="low"} 0
+    zypper_applicable_patches{category="security",severity="unspecified"} 0
+    zypper_applicable_patches{category="recommended",severity="critical"} 0
+    zypper_applicable_patches{category="recommended",severity="important"} 0
+    zypper_applicable_patches{category="recommended",severity="moderate"} 0
+    zypper_applicable_patches{category="recommended",severity="low"} 0
+    zypper_applicable_patches{category="recommended",severity="unspecified"} 0
+    zypper_applicable_patches{category="optional",severity="critical"} 0
+    zypper_applicable_patches{category="optional",severity="important"} 0
+    zypper_applicable_patches{category="optional",severity="moderate"} 1
+    zypper_applicable_patches{category="optional",severity="low"} 0
+    zypper_applicable_patches{category="optional",severity="unspecified"} 0
+    zypper_applicable_patches{category="feature",severity="critical"} 0
+    zypper_applicable_patches{category="feature",severity="important"} 0
+    zypper_applicable_patches{category="feature",severity="moderate"} 0
+    zypper_applicable_patches{category="feature",severity="low"} 0
+    zypper_applicable_patches{category="feature",severity="unspecified"} 0
+    zypper_applicable_patches{category="document",severity="critical"} 0
+    zypper_applicable_patches{category="document",severity="important"} 0
+    zypper_applicable_patches{category="document",severity="moderate"} 0
+    zypper_applicable_patches{category="document",severity="low"} 0
+    zypper_applicable_patches{category="document",severity="unspecified"} 0
+    zypper_applicable_patches{category="yast",severity="critical"} 0
+    zypper_applicable_patches{category="yast",severity="important"} 0
+    zypper_applicable_patches{category="yast",severity="moderate"} 0
+    zypper_applicable_patches{category="yast",severity="low"} 0
+    zypper_applicable_patches{category="yast",severity="unspecified"} 0
+    # HELP zypper_scrape_success Whether the last scrape for zypper data was successful.
+    # TYPE zypper_scrape_success gauge
+    zypper_scrape_success 1
+
+To get this picked up by the `Prometheus Node Exporter's`_ textfile collector dump the output into a ``zypper.prom`` file in the textfile collector directory::
+
+    > zypper-patch-status-collector > /var/lib/node_exporter/collector/zypper.prom
+
+Installation
+------------
+
+Running this requires Python. Legacy Python (2.7) is also supported.
+
+Install as any python software via pip::
+
+    pip install zypper-patch-status-collector
+
+Tests
+-----
+
+The tests are based on pytest_.
+Running them on multiple Python versions can be done via tox_.
+Just run the following in the project root::
+
+    tox
+
+License
+-------
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You can find a full version of the license in the `LICENSE file`_.
+If not, see https://www.gnu.org/licenses/.
+
+
+.. _`Prometheus Node Exporter's`: https://github.com/prometheus/node_exporter
+.. _pytest: https://docs.pytest.org/en/latest/
+.. _tox: https://tox.readthedocs.io/en/latest/
+.. _`LICENSE file`: ./LICENSE.txt
+
+
