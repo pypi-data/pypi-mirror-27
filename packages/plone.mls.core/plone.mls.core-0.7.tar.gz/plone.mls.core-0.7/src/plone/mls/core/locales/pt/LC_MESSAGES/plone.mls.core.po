@@ -1,0 +1,151 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# Translators:
+# Valeria Garcia <valeriassimsou@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: MLS Plone Components\n"
+"POT-Creation-Date: 2017-08-21 10:09+0000\n"
+"PO-Revision-Date: 2017-08-21 10:10+0000\n"
+"Last-Translator: Thomas Massmann <thomas.massmann@it-spir.it>\n"
+"Language-Team: Portuguese (http://www.transifex.com/propertyshelf/MLS_Plone/language/pt/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Domain: plone.mls.core\n"
+"Language: pt\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Preferred-Encodings: utf-8 latin1\n"
+
+#: plone/mls/core/profiles.zcml:56
+msgid "A Plone 4 uninstall profile for plone.mls.core."
+msgstr ""
+
+#: plone/mls/core/profiles.zcml:66
+msgid "A Plone 5 uninstall profile for plone.mls.core."
+msgstr ""
+
+#: plone/mls/core/profiles/plone4/actions.xml
+#: plone/mls/core/profiles/plone5/actions.xml
+msgid "Activate local MLS settings"
+msgstr "Ativar as Configurações SLM Locais"
+
+#: plone/mls/core/profiles/plone4/actions.xml
+#: plone/mls/core/profiles/plone5/actions.xml
+msgid "Activate the local MLS configuration."
+msgstr "Ativar as Configurações SLM Locais"
+
+#: plone/mls/core/interfaces.py:34
+msgid "Agency ID"
+msgstr "Indentidade do Agente"
+
+#: plone/mls/core/browser/localconfig.py:52
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: plone/mls/core/profiles/plone4/actions.xml
+#: plone/mls/core/profiles/plone5/actions.xml
+msgid "Deactivate local MLS settings"
+msgstr "Desativar as Configurações SLM Locais"
+
+#: plone/mls/core/profiles/plone4/actions.xml
+#: plone/mls/core/profiles/plone5/actions.xml
+msgid "Deactivate the local MLS configuration."
+msgstr "Desativar as Configurações SLM Locais"
+
+#: plone/mls/core/profiles/plone4/actions.xml
+#: plone/mls/core/profiles/plone5/actions.xml
+msgid "Local MLS Settings"
+msgstr "Configurações SLM Locais"
+
+#: plone/mls/core/browser/localconfig.py:96
+msgid "Local MLS settings activated."
+msgstr "Configurações SLM locais ativado."
+
+#: plone/mls/core/browser/localconfig.py:92
+msgid "Local MLS settings deactivated."
+msgstr "Configurações SLM locais desativado."
+
+#: plone/mls/core/browser/localconfig.py:27
+msgid "Local Propertyshelf MLS Settings"
+msgstr "Configurações Propertyshelf SLM Locais"
+
+#: plone/mls/core/interfaces.py:22
+msgid "MLS API Key"
+msgstr "Chave API de SLM"
+
+#: plone/mls/core/profiles/plone4/controlpanel.xml
+#: plone/mls/core/profiles/plone5/controlpanel.xml
+msgid "MLS Base Settings"
+msgstr "Base Configurações do SLM"
+
+#: plone/mls/core/interfaces.py:28
+msgid "MLS URL"
+msgstr "SLM URL"
+
+#: plone/mls/core/profiles/plone4/actions.xml
+#: plone/mls/core/profiles/plone5/actions.xml
+msgid "Manage the local MLS settings."
+msgstr "Gerenciar as Configurações SLM Locais"
+
+#: plone/mls/core/profiles.zcml:27
+msgid "Plone 4 support for the Propertyshelf MLS."
+msgstr ""
+
+#: plone/mls/core/profiles.zcml:37
+msgid "Plone 5 support for the Propertyshelf MLS."
+msgstr ""
+
+#: plone/mls/core/browser/controlpanel.py:16
+msgid "Propertyshelf MLS Settings"
+msgstr "Configurações de SLM do Propertyshelf "
+
+#: plone/mls/core/browser/localconfig.py:41
+msgid "Save"
+msgstr "Salvar"
+
+#: plone/mls/core/browser/localconfig.py:98
+msgid ""
+"The local MLS settings don't work with this content type. Add "
+"'IPossibleLocalMLSSettings' to the provided interfaces to enable this "
+"feature."
+msgstr "As configurações locais so SLM não funcionão com este tipo de conteúdo. Adicione 'Possiveis Configurações SLM Locais' as interfaces fornecidas para ativar essa característica. "
+
+#: plone/mls/core/browser/controlpanel.py:17
+msgid ""
+"This MLS configuration will be used as the default for this Plone site. You "
+"can add more MLS configurations by activating the local MLS settings on any "
+"content item within the site."
+msgstr "Esta configuração SLM será utilizado como padrão para este site Plone. Você pode adicionar mais configurações SLM ativando as configurações locais SLM em qualquer item de conteúdo no site."
+
+#: plone/mls/core/browser/localconfig.py:28
+msgid ""
+"This MLS configuration will be used for this content item and all possible "
+"child elements."
+msgstr "Esta configuração SLM será usado para este conteúdo e todos os possíveis elementos filhos."
+
+#: plone/mls/core/profiles.zcml:27
+msgid "plone.mls.core"
+msgstr ""
+
+#: plone/mls/core/profiles.zcml:56
+msgid "plone.mls.core - uninstall"
+msgstr ""
+
+#: plone/mls/core/profiles.zcml:17
+msgid "plone.mls.core base profile"
+msgstr ""
+
+#: plone/mls/core/profiles.zcml:17
+msgid "plone.mls.core base profile."
+msgstr ""
+
+#: plone/mls/core/profiles.zcml:46
+msgid "plone.mls.core base uninstall profile"
+msgstr ""
+
+#: plone/mls/core/profiles.zcml:46
+msgid "plone.mls.core base uninstall profile."
+msgstr ""

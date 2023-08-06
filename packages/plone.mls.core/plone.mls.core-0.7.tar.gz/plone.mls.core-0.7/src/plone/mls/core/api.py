@@ -1,0 +1,72 @@
+# -*- coding: utf-8 -*-
+"""plone.mls.core API."""
+
+from Acquisition import aq_inner
+from Acquisition import aq_parent
+from persistent.interfaces import IPersistent
+from plone import api
+from plone.mls.core.browser.localconfig import CONFIGURATION_KEY
+from plone.mls.core.interfaces import ILocalMLSSettings
+from plone.mls.core.interfaces import IMLSSettings
+from plone.registry.interfaces import IRegistry
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from zope.annotation.interfaces import IAnnotations
+from zope.component import getUtility
+from zope.globalrequest import getRequest
+
+import logging
+
+
+logger = logging.getLogger('plone.mls.core')
+
+
+def _local_settings(context):
+    """Get local MLS settings."""
+    settings = None
+    if not context or not IPersistent.providedBy(context):
+        request = getRequest()
+        parents = request.get('PARENTS')
+        if len(parents) > 0:
+            context = parents[0]
+        else:
+            context = api.portal.get()
+    obj = context
+    while (
+            not IPloneSiteRoot.providedBy(obj) and
+            not ILocalMLSSettings.providedBy(obj)):
+        parent = aq_parent(aq_inner(obj))
+        if parent is None:
+            return
+        obj = parent
+    if ILocalMLSSettings.providedBy(obj):
+        annotations = IAnnotations(obj)
+        settings = annotations.get(
+            CONFIGURATION_KEY, annotations.setdefault(CONFIGURATION_KEY, {}))
+    return settings
+
+
+def get_settings(context=None):
+    """Get the MLS settings."""
+    if context is None:
+        context = api.portal.get()
+
+    local_settings = _local_settings(context)
+    if local_settings:
+        logger.debug('Returning local MLS settings.')
+        return local_settings
+
+    # Get the global configuration.
+    settings = {}
+    registry = getUtility(IRegistry)
+    if registry is not None:
+        try:
+            registry_settings = registry.forInterface(IMLSSettings)  # noqa
+        except KeyError:
+            logger.warning('Global MLS settings not available.')
+        else:
+            settings = dict([
+                (a, getattr(registry_settings, a)) for a in
+                registry_settings.__schema__]
+            )
+            logger.debug('Returning global MLS settings.')
+    return settings
