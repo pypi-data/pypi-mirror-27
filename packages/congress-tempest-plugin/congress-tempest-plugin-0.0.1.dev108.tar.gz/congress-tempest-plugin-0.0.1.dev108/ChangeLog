@@ -1,0 +1,89 @@
+CHANGES
+=======
+
+* Initial CookieCutter commit
+* Fix py3 failures and enable py3 dsvm job
+* Modify to use libraries compatible with python3
+* Replace the usage of some aliases in tempest
+* Remove ceilometer datasource driver from congress
+* Fix test mocking and disable ceilometer tempest test
+* Update tests to do not use deprecated test.services()
+* Replace the usage of some aliases in tempest
+* Add diagnostic output for replica test instability
+* add tempest test to activate library policies
+* Add Qos translator in neutron datasource drive
+* Fixed confusing cls param in instance methods
+* Final changes for pike RC1
+* Show replica error in replica HA test
+* fix and re-enable replica HA test
+* add encryption to secret datasource config fields
+* Replace deprecated test.attr with decorators.attr
+* Replace the usage of 'admin\_manager' with 'os\_admin'
+* Automatically load library policy files at start
+* policy library DB interface, DSE service, API
+* Replace the usage of 'manager' with 'os\_primary'
+* Replace assertEqual([], items) with assertEmpty(items)
+* Enable HA test
+* Add tempest tests for keystonev3 driver
+* Remove deprecated attrs usage in tempest plugin
+* Fix gate failures
+* check update error on tempest datasoure tests
+* Remove \_hotplug\_server() from test manager
+* Switch to use stable data\_utils
+* Keep local copy of tempest/scenario/manager.py
+* Pass network\_mask\_bits in assign\_static\_ip()
+* Switch using exec\_command() directly
+* delete "id" field in DoctorDriver
+* Remove logging import unused
+* Switch to use test\_utils.call\_until\_true
+* Don't use Tempest internal methods
+* Refactor policy synchronizer
+* Fix cinder driver all\_tenant typo
+* Add tempest tests for aodh driver
+* Minor change in HA test
+* Gate-Issue: Fix datasource sync period
+* tempest HAHT wait for sync
+* Add missing whitespaces to a few messages
+* Replace retrying with tenacity
+* Clean imports in code
+* Restore the DSE opt group
+* Sync datasources only on datasource node
+* use - instead of \_ in cli opts
+* Modify existing HA tempest test
+* Fix tempest.conf generation
+* Correct reraising of exception
+* Introduce 'lazy\_tables' flag to nova datasource driver
+* Fix string interpolation at logging call
+* Scrap testHA:test\_datasource\_db\_sync\_remove
+* Enable different deployment configurations for HA
+* Fix gate failure
+* Add congress to service\_available group
+* Remove use of deprecated network\_resources module
+* Working Hot Stanby HA on any driver of oslo.messaging
+* Use right method to get admin credential
+* Tempest for Push Type Driver
+* [Trivial] Remove unnecessary executable privilege
+* Fix gate failure
+* Resolve Gate failure
+* Switch to Ceilometer tempest plugin
+* Fixes Tempest error caused by tempest's changes
+* Enable Murano tempest tests
+* Enable congress HA tests
+* Use tempest.lib instead of tempest\_lib
+* Use routers\_client instead of neutron client
+* Retry tempest tests on any error
+* Enable basic\_ops tempest tests
+* Add retry to fix intermittent tempest failures
+* Fix keystone tempest test failure
+* use neutron security\_groups\_client
+* Use roles\_client in keystone
+* Fix gate failure - Use tenants\_client
+* Enable neutron tempest tests
+* Enable keystone, cinder, ceilometer tempest tests
+* Enable Nova and Glance tempest tests
+* Use skip\_checks to define class level skip condition
+* Fix tempest failures
+* Update readme on tox commands to run tempest tests
+* Migrate to tempest\_lib : exceptions
+* Remove ServiceClient from policy\_client
+* Change to use tempest plugin framework
