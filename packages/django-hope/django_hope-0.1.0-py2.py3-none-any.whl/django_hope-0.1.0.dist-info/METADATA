@@ -1,0 +1,69 @@
+Metadata-Version: 2.0
+Name: django-hope
+Version: 0.1.0
+Summary: Django application to implement the HOPE library.
+Home-page: https://icube-forge.unistra.fr/CSTB/django-hope
+Author: Timothée Mazzucotelli
+Author-email: timothee.mazzucotelli@gmail.com
+License: ISC
+Description-Content-Type: UNKNOWN
+Keywords: django,hope,health,optimization,4P,ecosystems
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Operating System :: Unix
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Utilities
+Requires-Dist: django-cerberus-ac
+
+===========
+Django HOPE
+===========
+
+
+
+Django application to implement the HOPE library.
+
+License
+=======
+
+Software licensed under `ISC`_ license.
+
+.. _ISC: https://www.isc.org/downloads/software-support-policy/isc-license/
+
+Installation
+============
+
+::
+
+    pip install django-hope
+
+Documentation
+=============
+
+`On ReadTheDocs`_
+
+.. _`On ReadTheDocs`: http://django-hope.readthedocs.io/
+
+Development
+===========
+
+To run all the tests: ``tox``
+
+=========
+Changelog
+=========
+
+0.1.0 (2017-11-30)
+==================
+
+* Alpha release on PyPI.
+
+
