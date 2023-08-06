@@ -1,0 +1,6 @@
+<p>{{ item.text }}</p>
+<span>{{ item.posted }}</span>
+{% if item.image %}
+    {{ image.image }}
+    <img src="{{ item.image.thumb.url }}" />
+{% endif %}
