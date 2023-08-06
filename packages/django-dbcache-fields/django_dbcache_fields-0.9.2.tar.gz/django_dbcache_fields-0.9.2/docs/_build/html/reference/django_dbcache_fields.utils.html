@@ -1,0 +1,213 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>django_dbcache_fields.utils &#8212; django-dbcache-fields 0.9.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="Change history" href="../changelog.html" />
+    <link rel="prev" title="django_dbcache_fields.receivers" href="django_dbcache_fields.receivers.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="django-dbcache-fields-utils">
+<h1><code class="docutils literal"><span class="pre">django_dbcache_fields.utils</span></code><a class="headerlink" href="#django-dbcache-fields-utils" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-django_dbcache_fields.utils"></span><dl class="class">
+<dt id="django_dbcache_fields.utils.Register">
+<em class="property">class </em><code class="descclassname">django_dbcache_fields.utils.</code><code class="descname">Register</code><a class="headerlink" href="#django_dbcache_fields.utils.Register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Central register to keep track of all <cite>dbcache</cite> decorated methods.</p>
+<dl class="method">
+<dt id="django_dbcache_fields.utils.Register.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>class_path</em><span class="sig-paren">)</span><a class="headerlink" href="#django_dbcache_fields.utils.Register.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <cite>list</cite> of information about <cite>dbcache</cite> decorated methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>class_path</strong> – The <cite>Model</cite> class path.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A <cite>list</cite> of <cite>dict</cite> with the following keys:</dt>
+<dd><ul class="first last simple">
+<li>decorated_method</li>
+<li>field</li>
+<li>field_name</li>
+<li>dirty_func</li>
+<li>invalidated_by</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="django_dbcache_fields.utils.Register.get_related_models">
+<code class="descname">get_related_models</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#django_dbcache_fields.utils.Register.get_related_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <cite>dict</cite> of models related to the <cite>dbcache</cite> decorated method.
+Typically used to see which models and fields should be invalidated
+when a related model is changed</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model</strong> – The model name in the form <cite>{app label}.{model name}</cite>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A <cite>dict</cite> where each key is the affected model class path. The
+value is a <cite>list</cite> of field names that are affected.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="django_dbcache_fields.utils.get_class_path">
+<code class="descclassname">django_dbcache_fields.utils.</code><code class="descname">get_class_path</code><span class="sig-paren">(</span><em>instance</em><span class="sig-paren">)</span><a class="headerlink" href="#django_dbcache_fields.utils.get_class_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an instance or <cite>class</cite> to a class path string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instance</strong> – An instance or class.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The stringified class path.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="django_dbcache_fields.utils.get_model_name">
+<code class="descclassname">django_dbcache_fields.utils.</code><code class="descname">get_model_name</code><span class="sig-paren">(</span><em>instance</em><span class="sig-paren">)</span><a class="headerlink" href="#django_dbcache_fields.utils.get_model_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a <cite>Model</cite> instance or <cite>class</cite> to a model name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instance</strong> – A <cite>Model</cite> instance or <cite>class</cite>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The stringified model name in the form <cite>{app label}.{model name}</cite>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p><p>&nbsp;</p>
+
+<h4><strong>django-dbcache-fields</strong></h4>
+
+<h3>Links</h3>
+<ul>
+  <li><a href="https://pypi.python.org/pypi/django-dbcache-fields">PyPI</a></li>
+  <li><a href="https://github.com/maykinmedia/django-dbcache-fields/issues">Issue Tracker</a></li>
+</ul><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="django_dbcache_fields.decorators.html"><code class="docutils literal"><span class="pre">django_dbcache_fields.decorators</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="django_dbcache_fields.receivers.html"><code class="docutils literal"><span class="pre">django_dbcache_fields.receivers</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal"><span class="pre">django_dbcache_fields.utils</span></code></a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change history</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Reference</a><ul>
+      <li>Previous: <a href="django_dbcache_fields.receivers.html" title="previous chapter"><code class="docutils literal"><span class="pre">django_dbcache_fields.receivers</span></code></a></li>
+      <li>Next: <a href="../changelog.html" title="next chapter">Change history</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Maykin Media.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/reference/django_dbcache_fields.utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/maykinmedia/django-dbcache-fields" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,281 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Usage examples &#8212; django-dbcache-fields 0.9.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Copyright" href="copyright.html" />
+    <link rel="prev" title="Django DBCache Fields" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="usage-examples">
+<h1>Usage examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h1>
+<p>Consider the following Django <cite>Model</cite> for a pizza:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django_dbcache_fields.decorators</span> <span class="kn">import</span> <span class="n">dbcache</span>
+
+<span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">TYPES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="s1">&#39;regular&#39;</span><span class="p">,</span> <span class="s1">&#39;regular&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;calzone&#39;</span><span class="p">,</span> <span class="s1">&#39;calzone&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">pizza_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">TYPES</span><span class="p">)</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">supplement</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">()</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pizza_type</span> <span class="o">==</span> <span class="s1">&#39;calzone&#39;</span><span class="p">:</span>
+        <span class="n">supplement</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_price</span> <span class="o">+</span> <span class="n">supplement</span>
+</pre></div>
+</div>
+<p>The <cite>get_total_price()</cite> method calculated the final price simply by returning
+the <cite>base_price</cite> with a supplement for calzone pizza’s.</p>
+<p>It’s not very exciting nor very computational complex but for the sake of
+simplicity, this is our use case.</p>
+<p>Every call to <cite>get_total_price()</cite> performs the same calculation over and over
+again. Also, you can not simply order the list of pizza’s by their total price
+(without annotations and conditional expressions) on database level.</p>
+<div class="section" id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>Let’s decorate the <cite>get_total_price()</cite> function with <cite>dbcache</cite>. To cache the
+total price, we need to indicate what type of Django <cite>Field</cite> will be used.</p>
+<p>We assume the total price will never exceeds 6 digits, so we’ll use a Django
+<cite>DecimalField</cite> with the appropriate parameters. The field should always be
+allowed to be <cite>null</cite>. For good measure it can also be <cite>blank</cite> in case you add
+the field in the Django admin.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="nd">@dbcache</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+             <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The total price will now be stored in the database. Under the hood, a new
+field was added to the <cite>Pizza</cite> model: <cite>_get_total_price_cached</cite>.</p>
+<p>So, our <cite>get_total_price()</cite> function works as it normally would:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span> <span class="o">=</span> <span class="n">Pizza</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;margarita&#39;</span><span class="p">,</span> <span class="n">base_price</span><span class="o">=</span><span class="n">Decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">pizza_type</span><span class="o">=</span><span class="s1">&#39;calzone&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">get_total_price</span><span class="p">()</span>
+<span class="go">Decimal(&#39;11&#39;)</span>
+</pre></div>
+</div>
+<p>In addition, this resulting value is cached on the model field created by the
+<cite>dbcache</cite> decorator, which also allows us to perform ORM-operations with it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">_get_total_price_cached</span>
+<span class="go">Decimal(&#39;11&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Pizza</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_get_total_price_cached__gte</span><span class="o">=</span><span class="n">Decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="go">&lt;QuerySet [&lt;Pizza: Pizza object&gt;]&gt;</span>
+</pre></div>
+</div>
+<p>The cached field is updated everytime a new instance is created or when the
+instance is saved.</p>
+<p>If the cached value is <cite>None</cite>, it’s considered to be invalid. As a
+consequence, calling the <cite>get_total_price()</cite> method will perform its
+calculations as it normally would <strong>and</strong> will update the cached value in the
+database (using an update query, so it does not trigger a save signal).</p>
+</div>
+<div class="section" id="more-precise-cache-invalidation">
+<h2>More precise cache invalidation<a class="headerlink" href="#more-precise-cache-invalidation" title="Permalink to this headline">¶</a></h2>
+<p>In its simplest use case, <cite>dbcache</cite> updates the cached value everytime the
+instance is saved or when the decorated function is called and the cached
+value is <cite>None</cite>.</p>
+<p>Changing the name of a <cite>Pizza</cite> however, will not cause any change to the total
+price. For this use case, we can pass a function to the <cite>dbcache</cite> decorator to
+indicate whether a change to the instance caused a price change.</p>
+<p>Such a <em>dirty</em> function can be a very simple function or lambda, and should
+accept 2 arguments: The <cite>instance</cite> and the <cite>field_name</cite> of the cached field.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_pizza_price_changed</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">instance</span><span class="o">.</span><span class="n">_original_base_price</span> <span class="o">!=</span> <span class="n">instance</span><span class="o">.</span><span class="n">base_price</span>
+
+<span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Pizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># Store the original base price on the instance.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_original_base_price</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_price</span>
+    <span class="c1"># ...</span>
+    <span class="nd">@dbcache</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+             <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">dirty_func</span><span class="o">=</span><span class="n">is_pizza_price_changed</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The function <cite>is_pizza_price_changed(…)</cite> is passed to the <cite>dirty_func</cite>
+parameter of the <cite>dbcache</cite> decorator. This causes the following behaviour:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;hawaii&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># The cached field will not be updated</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">get_total_price</span><span class="p">()</span>
+<span class="go">Decimal(&#39;11&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">base_price</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># The cached field will be updated</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">get_total_price</span><span class="p">()</span>
+<span class="go">Decimal(&#39;6&#39;)  # Remember 1 euro was added for the pizza type calzone</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">pizza_type</span> <span class="o">=</span> <span class="s1">&#39;regular&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># The cached field will not be updated</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pizza</span><span class="o">.</span><span class="n">get_total_price</span><span class="p">()</span>
+<span class="go">Decimal(&#39;11&#39;)  # The old price is still used</span>
+</pre></div>
+</div>
+<p>Note that in the last example, the total price is <strong>not</strong> correct. The cached
+value was not invalidated due to an incomplete <em>dirty</em> function. The <em>dirty</em>
+function should have taken the <cite>pizza_type</cite> into account as well since it can
+affect the total price.</p>
+</div>
+<div class="section" id="methods-that-depend-on-other-models">
+<h2>Methods that depend on other models<a class="headerlink" href="#methods-that-depend-on-other-models" title="Permalink to this headline">¶</a></h2>
+<p>Consider this slightly altered version of our <cite>Pizza</cite> model. The <cite>pizza_type</cite>
+is no longer a choice field but instead a related model: <cite>PizzaType</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django_dbcache_fields.decorators</span> <span class="kn">import</span> <span class="n">dbcache</span>
+
+<span class="k">class</span> <span class="nc">PizzaType</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">supplement</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">pizza_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">PizzaType</span><span class="p">)</span>
+
+    <span class="nd">@dbcache</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">invalidated_by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;myapp.PizzaType&#39;</span><span class="p">])</span>
+    <span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_price</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pizza_type</span><span class="o">.</span><span class="n">supplement</span>
+</pre></div>
+</div>
+<p>The function <cite>PizzaType</cite> is passed to the <cite>invalidated_by</cite> parameter of the
+<cite>dbcache</cite> decorator. Any update to a <cite>PizzaType</cite> will cause all cached
+<cite>get_total_price</cite> values to be invalidated.</p>
+<p>On the next call of <cite>get_total_price()</cite>, the invalidated cached value will be
+updated for this <cite>Pizza</cite> instance. Any save on the instance, would cause the
+same update.</p>
+<div class="section" id="caveat">
+<h3>Caveat<a class="headerlink" href="#caveat" title="Permalink to this headline">¶</a></h3>
+<p>It’s worth noting that the value of the <cite>dbcache</cite> generated field can always
+be <cite>None</cite>. Be careful when using ORM-functions that rely on a filled value.</p>
+<p>Also, a <cite>QuerySet.update()</cite> does not trigger cached field invalidation. In the
+above example <cite>PizzaType.objects.update(supplement=Decimal())</cite> will result in
+incorrect total prices for pizza’s.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p><p>&nbsp;</p>
+
+<h4><strong>django-dbcache-fields</strong></h4>
+
+<h3>Links</h3>
+<ul>
+  <li><a href="https://pypi.python.org/pypi/django-dbcache-fields">PyPI</a></li>
+  <li><a href="https://github.com/maykinmedia/django-dbcache-fields/issues">Issue Tracker</a></li>
+</ul><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-precise-cache-invalidation">More precise cache invalidation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods-that-depend-on-other-models">Methods that depend on other models</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">API Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change history</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Django DBCache Fields</a></li>
+      <li>Next: <a href="copyright.html" title="next chapter">Copyright</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Maykin Media.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/maykinmedia/django-dbcache-fields" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

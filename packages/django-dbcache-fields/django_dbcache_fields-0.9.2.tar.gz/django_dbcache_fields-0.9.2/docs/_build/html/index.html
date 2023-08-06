@@ -1,0 +1,239 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Django DBCache Fields &#8212; django-dbcache-fields 0.9.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Usage examples" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="django-dbcache-fields">
+<h1>Django DBCache Fields<a class="headerlink" href="#django-dbcache-fields" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Version:</th><td class="field-body">0.9.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Download:</th><td class="field-body"><a class="reference external" href="https://pypi.python.org/pypi/django_dbcache_fields">https://pypi.python.org/pypi/django_dbcache_fields</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/maykinmedia/django-dbcache-fields">https://github.com/maykinmedia/django-dbcache-fields</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Keywords:</th><td class="field-body">django, database, cache, methods, decorator</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://travis-ci.org/maykinmedia/django-dbcache-fields"><img alt="Build status" src="https://secure.travis-ci.org/maykinmedia/django-dbcache-fields.svg?branch=master" /></a> <a class="reference external" href="https://codecov.io/github/maykinmedia/django-dbcache-fields?branch=master"><img alt="coverage" src="https://codecov.io/github/maykinmedia/django-dbcache-fields/coverage.svg?branch=master" /></a> <a class="reference external" href="https://opensource.org/licenses/BSD-3-Clause"><img alt="BSD License" src="https://img.shields.io/pypi/l/django-dbcache-fields.svg" /></a> <a class="reference external" href="http://pypi.python.org/pypi/django_dbcache_fields/"><img alt="Supported Python versions" src="https://img.shields.io/pypi/pyversions/django-dbcache-fields.svg" /></a> <a class="reference external" href="http://pypi.python.org/pypi/django_dbcache_fields/"><img alt="Supported Django versions" src="https://img.shields.io/badge/django-1.8%2C%201.9%2C%201.10%2C%201.11-blue.svg" /></a></p>
+<div class="section" id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<p>This library provides a decorator <code class="docutils literal"><span class="pre">dbcache</span></code> that caches the result of your
+Django <code class="docutils literal"><span class="pre">Model</span></code> methods in your database.</p>
+<p>It adds a regular <code class="docutils literal"><span class="pre">Field</span></code> on your <code class="docutils literal"><span class="pre">Model</span></code> for each method that you
+decorate. This means you can use all ORM-functions like aggregation and
+migrations. You can use existing fields or let <code class="docutils literal"><span class="pre">dbcache</span></code> create the field
+for you.</p>
+<p>You can also invalidate the cached value by creating a _dirty_ function or by
+indicating which other models affect the this cached value. By default, the
+cached value is only updated when the model is saved.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>You can install <cite>django_dbcache_fields</cite> either via the Python Package Index
+(PyPI) or from source.</p>
+<p>To install using <cite>pip</cite>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install -U django_dbcache_fields
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>To use this with your project you need to follow these steps:</p>
+<ol class="arabic">
+<li><p class="first">Install the django_dbcache_fields library:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install django_dbcache_fields
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add <code class="docutils literal"><span class="pre">django_dbcache_fields</span></code> to <code class="docutils literal"><span class="pre">INSTALLED_APPS</span></code> in your Django
+project’s <code class="docutils literal"><span class="pre">settings.py</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c1"># ...,</span>
+    <span class="s1">&#39;django_dbcache_fields&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that there is no dash in the module name, only underscores.</p>
+</li>
+<li><p class="first">All done. You can now decorate methods in your <code class="docutils literal"><span class="pre">Model</span></code> with
+<code class="docutils literal"><span class="pre">&#64;dbcache</span></code>.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Simple example to show what <code class="docutils literal"><span class="pre">dbcache</span></code> does:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django_dbcache_fields.decorators</span> <span class="kn">import</span> <span class="n">dbcache</span>
+
+<span class="k">class</span> <span class="nc">Ingredient</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">ingredients</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Ingredient</span><span class="p">)</span>
+
+    <span class="nd">@dbcache</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+             <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">invalidated_by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;myapp.Ingredient&#39;</span><span class="p">])</span>
+    <span class="k">def</span> <span class="nf">get_price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredients</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">Sum</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">))[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">Decimal</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Every call to <code class="docutils literal"><span class="pre">get_price</span></code> would normally perform a database query to
+calculate the total price of all ingredients. However, the <code class="docutils literal"><span class="pre">dbcache</span></code>
+decorator caused a new field to be added to the model: A <code class="docutils literal"><span class="pre">DecimalField</span></code> that
+can store the resulting value of the <code class="docutils literal"><span class="pre">get_price</span></code> function, so it doesn’t
+need to perform the same query over and over again.</p>
+</div>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#more-precise-cache-invalidation">More precise cache invalidation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#methods-that-depend-on-other-models">Methods that depend on other models</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/django_dbcache_fields.decorators.html"><code class="docutils literal"><span class="pre">django_dbcache_fields.decorators</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/django_dbcache_fields.receivers.html"><code class="docutils literal"><span class="pre">django_dbcache_fields.receivers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/django_dbcache_fields.utils.html"><code class="docutils literal"><span class="pre">django_dbcache_fields.utils</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change history</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p><p>&nbsp;</p>
+
+<h4><strong>django-dbcache-fields</strong></h4>
+
+<h3>Links</h3>
+<ul>
+  <li><a href="https://pypi.python.org/pypi/django-dbcache-fields">PyPI</a></li>
+  <li><a href="https://github.com/maykinmedia/django-dbcache-fields/issues">Issue Tracker</a></li>
+</ul><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">API Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change history</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="usage.html" title="next chapter">Usage examples</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Maykin Media.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/maykinmedia/django-dbcache-fields" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
