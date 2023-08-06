@@ -1,0 +1,6 @@
+[console_scripts]
+libpracmln-build = pracmln.libpracmln:createcpplibs
+mlnlearn = pracmln.mlnlearn:main
+mlnquery = pracmln.mlnquery:main
+pracmlntest = pracmln.test:main
+
