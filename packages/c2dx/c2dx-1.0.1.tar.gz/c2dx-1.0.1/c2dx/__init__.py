@@ -1,0 +1,1 @@
+from c2dx.main import cli
