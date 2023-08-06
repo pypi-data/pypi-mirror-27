@@ -1,0 +1,45 @@
+Metadata-Version: 2.0
+Name: vscodex
+Version: 0.1.0
+Summary: VSCode Extension Manager
+Home-page: UNKNOWN
+Author: Cauê Baasch de Souza
+Author-email: cauebs@protonmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Dist: docopt
+Requires-Dist: requests
+Requires-Dist: bs4
+Requires-Dist: semver
+Requires-Dist: tqdm
+
+codex - VSCode Extension Manager
+================================
+
+Installation
+------------
+
+.. code:: shell
+
+    pipsi install git+https://github.com/cauebs/codex#egg=codex
+
+Usage
+-----
+
+.. code:: shell
+
+    codex install <extension-id>...
+    codex uninstall <extension-id>...
+    codex update [<extension-id>...]
+    codex list [--show-versions]
+    codex (-h | --help)
+
+
