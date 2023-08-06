@@ -1,0 +1,16 @@
+Metadata-Version: 1.2
+Name: microdrop_client
+Version: 0.0.1
+Summary: Library for controlling Microdrop 
+Home-page: https://github.com/Lucaszw/microdrop-python-client
+License: BSD-2-Clause
+Author: Sci-Bots
+Author-email: lucas@sci-bots.com
+Requires-Python: >=3.6
+Requires-Dist: mqttclient
+Requires-Dist: pydash
+
+# @microdrop/python-client
+
+Port for @microdrop/async to Python 3.6. Library for controlling the Microdrop UI and DropBot Hardware.
+
