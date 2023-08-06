@@ -1,0 +1,72 @@
+
+nr-merkletree
+=============
+
+Python-3 compatible Merkle tree implementation.
+
+Current Stable Version
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+   0.1.2
+
+Install
+=======
+
+Pip
+^^^
+
+.. code-block::
+
+   pip install nr-merkletree
+
+Development Installation
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* Clone the project.
+* Install in Anaconda3 environment
+  .. code-block::
+
+       $ conda env create --force -f dev_environment.yml
+       $ source activate nr-merkletree
+       $ pip install -e .
+
+Test
+====
+
+To run the tests:
+
+.. code-block::
+
+   make test
+
+Usage
+=====
+
+.. code-block:: python
+
+   from nr_merkletree import MerkleTree
+   from pprint import pprint
+
+   # A list of bytes data
+   data_chunks = [b'0', b'1', b'2', b'3', b'4']
+
+   # Create merkle_tree
+   merkle_tree = MerkleTree(data_chunks)
+
+   # Print out Merkle Tree
+   pprint(merkle_tree.tree.to_dict())
+
+Examples
+========
+
+.. code-block::
+
+   $ python examples/simple_merkle_tree.py
+
+License
+=======
+
+MIT
