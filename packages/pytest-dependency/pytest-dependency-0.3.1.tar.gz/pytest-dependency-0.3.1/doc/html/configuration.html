@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuring pytest-dependency &mdash; pytest-dependency 0.3.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="pytest-dependency 0.3.1 documentation" href="index.html" />
+    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="prev" title="Advanced usage" href="advanced.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reference.html" title="Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="advanced.html" title="Advanced usage"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-pytest-dependency">
+<h1>Configuring pytest-dependency<a class="headerlink" href="#configuring-pytest-dependency" title="Permalink to this headline">¶</a></h1>
+<p>This section explains configuration options for pytest-dependency, but
+also options for pytest itself or other plugins that are recommended
+for the use with pytest-dependency.</p>
+<div class="section" id="notes-on-configuration-for-other-plugins">
+<h2>Notes on configuration for other plugins<a class="headerlink" href="#notes-on-configuration-for-other-plugins" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>pytest-xdist</dt>
+<dd>Test run parallelization in pytest-xdist is incompatible with
+pytest-dependency, see <a class="reference internal" href="install.html#install-other-packages"><em>Interaction with other packages</em></a>.  By default,
+parallelization is disabled in pytest-xdist (<cite>&#8211;dist=no</cite>).  You are
+advised to leave this default.</dd>
+</dl>
+</div>
+<div class="section" id="configuration-file-options">
+<h2>Configuration file options<a class="headerlink" href="#configuration-file-options" title="Permalink to this headline">¶</a></h2>
+<p>Configuration file options can be set in the <cite>ini file</cite>.</p>
+<dl class="docutils">
+<dt>minversion</dt>
+<dd>This is a builtin configuration option of pytest itself.  Since
+pytest-dependency requires pytest 2.8.0 or newer, it is recommended
+to set this option accordingly, either to 2.8.0 or to a newer
+version, if required by your test code.</dd>
+<dt>automark_dependency</dt>
+<dd><p class="first">This is a flag.  If set to <cite>False</cite>, the default, the outcome of a
+test will only be registered if the test has been decorated with
+the <a class="reference internal" href="reference.html#pytest.mark.dependency" title="pytest.mark.dependency"><tt class="xref py py-func docutils literal"><span class="pre">pytest.mark.dependency()</span></tt></a> marker.  As a results, all
+tests, the dependencies and the dependent tests must be decorated.
+If set to <cite>True</cite>, the outcome of all tests will be registered.  It
+has the same effect as if all tests are implicitly decorated with
+<a class="reference internal" href="reference.html#pytest.mark.dependency" title="pytest.mark.dependency"><tt class="xref py py-func docutils literal"><span class="pre">pytest.mark.dependency()</span></tt></a>.</p>
+<div class="last versionadded">
+<p><span class="versionmodified">New in version 0.3.</span></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="command-line-options">
+<h2>Command line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h2>
+<p>The following command line options are added by pytest.dependency:</p>
+<dl class="docutils">
+<dt><cite>&#8211;ignore-unknown-dependency</cite></dt>
+<dd><p class="first">By default, a test will be skipped unless all the dependencies have
+been run successful.  If this option is set, a test will be skipped
+if any of the dependencies has been skipped or failed.
+E.g. dependencies that have not been run at all will be ignored.</p>
+<p>This may be useful if you run only a subset of the testsuite and
+some tests in the selected set are marked to depend on other tests
+that have not been selected.</p>
+<div class="last versionadded">
+<p><span class="versionmodified">New in version 0.3.</span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring pytest-dependency</a><ul>
+<li><a class="reference internal" href="#notes-on-configuration-for-other-plugins">Notes on configuration for other plugins</a></li>
+<li><a class="reference internal" href="#configuration-file-options">Configuration file options</a></li>
+<li><a class="reference internal" href="#command-line-options">Command line options</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="advanced.html"
+                        title="previous chapter">Advanced usage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reference.html"
+                        title="next chapter">Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reference.html" title="Reference"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="advanced.html" title="Advanced usage"
+             >previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016-2017, Rolf Krahl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation instructions &mdash; pytest-dependency 0.3.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="pytest-dependency 0.3.1 documentation" href="index.html" />
+    <link rel="next" title="Using pytest-dependency" href="usage.html" />
+    <link rel="prev" title="About pytest-dependency" href="about.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Using pytest-dependency"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="about.html" title="About pytest-dependency"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation-instructions">
+<h1>Installation instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="system-requirements">
+<h2>System requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Python 2.6, 2.7, or 3.2 and newer.
+Python 2.6 requires patching the sources, see below.</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/setuptools/">setuptools</a>.</li>
+<li><a class="reference external" href="http://pytest.org/">pytest</a> 2.8.0 or newer.</li>
+</ul>
+<p>(Python 3.1 is not supported by pytest 2.8.0 itself.)</p>
+</div>
+<div class="section" id="interaction-with-other-packages">
+<span id="install-other-packages"></span><h2>Interaction with other packages<a class="headerlink" href="#interaction-with-other-packages" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>pytest-xdist</dt>
+<dd>pytest-xdist features test run parallelization, e.g. distributing
+tests over separate processes that run in parallel.  This is based
+on the assumption that the tests can be run independent of each
+other.  Obviously, if you are using pytest-dependency, this
+assumption is not valid.  Thus, pytest-dependency will only work if
+you do not enable parallelization in pytest-xdist.</dd>
+</dl>
+</div>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p>The latest release version of pytest-dependency source can be found at
+PyPI, see</p>
+<blockquote>
+<div><a class="reference external" href="https://pypi.python.org/pypi/pytest_dependency">https://pypi.python.org/pypi/pytest_dependency</a></div></blockquote>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Download the sources, unpack, and change into the source directory.</p>
+</li>
+<li><p class="first">Build (optional):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ python setup.py build
+</pre></div>
+</div>
+</li>
+<li><p class="first">Test (optional):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ python -m pytest
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ python setup.py install
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The last step might require admin privileges in order to write into
+the site-packages directory of your Python installation.</p>
+<p>If you are using Python 2.6, apply python2_6.patch after the first
+step:</p>
+<p>1a. Patch:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ patch -p1 &lt; python2_6.patch
+</pre></div>
+</div>
+<p>It removes the use of certain language features (dict comprehensions)
+that were introduced in Python 2.7.</p>
+<p>For production use, it is always recommended to use the latest release
+version from PyPI, see above.  If you build from the development
+sources that can be found at GitHub, please note that python2_6.patch
+is generated dynamically and not in the source repository.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation instructions</a><ul>
+<li><a class="reference internal" href="#system-requirements">System requirements</a></li>
+<li><a class="reference internal" href="#interaction-with-other-packages">Interaction with other packages</a></li>
+<li><a class="reference internal" href="#download">Download</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="about.html"
+                        title="previous chapter">About pytest-dependency</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="next chapter">Using pytest-dependency</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Using pytest-dependency"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="about.html" title="About pytest-dependency"
+             >previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016-2017, Rolf Krahl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

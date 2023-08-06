@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>About pytest-dependency &mdash; pytest-dependency 0.3.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="#" />
+    <link rel="top" title="pytest-dependency 0.3.1 documentation" href="index.html" />
+    <link rel="next" title="Installation instructions" href="install.html" />
+    <link rel="prev" title="pytest-dependency - Manage dependencies of tests" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation instructions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="pytest-dependency - Manage dependencies of tests"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="about-pytest-dependency">
+<h1>About pytest-dependency<a class="headerlink" href="#about-pytest-dependency" title="Permalink to this headline">¶</a></h1>
+<p>This module is a plugin for the popular Python testing framework
+<a class="reference external" href="http://pytest.org/">pytest</a>.  It manages dependencies of tests: you may mark some tests
+as dependent from other tests.  These tests will then be skipped if
+any of the dependencies did fail or has been skipped.</p>
+<div class="section" id="what-is-the-purpose">
+<h2>What is the purpose?<a class="headerlink" href="#what-is-the-purpose" title="Permalink to this headline">¶</a></h2>
+<p>In the theory of good test design, tests should be self-contained and
+independent.  Each test should cover one single issue, either verify
+that one single feature is working or that one single bug is fixed.
+Tests should be designed to work in any order independent of each
+other.</p>
+<p>So far the theory.  The practice is often more complicated then that.
+Sometimes, the principle of independency of tests is simply
+unrealistic or impractical.  Program features often depend on each
+other.  If some feature B depends on another feature A in such a way
+that B cannot work without A, then it may simply be pointless to run
+the test for B unless the test for A has succeeded.  Another case may
+be if the subject of the tests has an internal state that unavoidably
+is influenced by the tests.  In this situation it may happen that test
+A, as a side effect, sets the system in some state that is the
+precondition to be able to run test B.  Again, in this case it would
+be pointless to try running test B unless test A has been run
+successful.</p>
+<p>It should be emphasized however that the principle of independency of
+tests is still valid.  Before using pytest-dependency, it is still
+advisable to reconsider your test design and to avoid dependencies of
+tests whenever possible, rather then to manage these dependencies.</p>
+</div>
+<div class="section" id="how-does-it-work">
+<h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
+<p>The pytest-dependency module defines a marker that can be applied to
+tests.  The marker accepts an argument that allows to list the
+dependencies of the test.  Both tests, the dependency and the
+dependent test should be decorated with the marker.  Behind the
+scenes, the marker arranges for the result of the test to be recorded
+internally.  If a list of dependencies has been given as argument, the
+marker verifies that a successful outcome of all the dependencies has
+been registered previously and causes a skip of the test if this was
+not the case.</p>
+</div>
+<div class="section" id="why-is-this-useful">
+<h2>Why is this useful?<a class="headerlink" href="#why-is-this-useful" title="Permalink to this headline">¶</a></h2>
+<p>The benefit of skipping dependent tests is the same as for skipping
+tests in general: it avoids cluttering the test report with useless
+and misleading failure reports from tests that have been known
+beforehand not to work in this particular case.</p>
+<p>If tests depend on each other in such a way that test B cannot work
+unless test A has been run successfully, a failure of test A will
+likely result in failure messages from both tests.  But the failure
+message from test B will not be helpful in any way.  It will only
+distract the user from the real issue that is the failure of test A.
+Skipping test B in this case will help the user to concentrate on
+those results that really matter.</p>
+</div>
+<div class="section" id="copyright-and-license">
+<h2>Copyright and License<a class="headerlink" href="#copyright-and-license" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Copyright 2013-2015
+Helmholtz-Zentrum Berlin für Materialien und Energie GmbH</li>
+<li>Copyright 2016-2017 Rolf Krahl</li>
+</ul>
+<p>Licensed under the Apache License, Version 2.0 (the &#8220;License&#8221;); you
+may not use this file except in compliance with the License.  You may
+obtain a copy of the License at</p>
+<blockquote>
+<div><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></div></blockquote>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#8220;AS IS&#8221; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied.  See the License for the specific language governing
+permissions and limitations under the License.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">About pytest-dependency</a><ul>
+<li><a class="reference internal" href="#what-is-the-purpose">What is the purpose?</a></li>
+<li><a class="reference internal" href="#how-does-it-work">How does it work?</a></li>
+<li><a class="reference internal" href="#why-is-this-useful">Why is this useful?</a></li>
+<li><a class="reference internal" href="#copyright-and-license">Copyright and License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">pytest-dependency - Manage dependencies of tests</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">Installation instructions</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation instructions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="pytest-dependency - Manage dependencies of tests"
+             >previous</a> |</li>
+        <li><a href="index.html">pytest-dependency 0.3.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016-2017, Rolf Krahl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+diff --git a/pytest_dependency.py b/pytest_dependency.py
+index 743cbef..97f6566 100644
+--- a/pytest_dependency.py
++++ b/pytest_dependency.py
+@@ -30,7 +30,7 @@ class DependencyItemStatus(object):
+     Phases = ('setup', 'call', 'teardown')
+ 
+     def __init__(self):
+-        self.results = { w:None for w in self.Phases }
++        self.results = dict([ (w,None) for w in self.Phases ])
+ 
+     def __str__(self):
+         l = ["%s: %s" % (w, self.results[w]) for w in self.Phases]
+diff --git a/setup.py b/setup.py
+index 21a49b1..55a5ce4 100755
+--- a/setup.py
++++ b/setup.py
+@@ -9,10 +9,6 @@ skipped if any of the dependencies did fail or has been skipped.
+ __version__ = "0.3.1"
+ 
+ import sys
+-if sys.version_info < (2, 7):
+-    raise RuntimeError("You are using Python %s.\n"
+-                       "Please apply python2_6.patch first." 
+-                       % sys.version.split()[0])
+ import os
+ import os.path
+ import re
+@@ -26,12 +22,13 @@ def _filter_file(src, dest, subst):
+     substre = re.compile(r'\$(%s)' % '|'.join(subst.keys()))
+     def repl(m):
+         return subst[m.group(1)]
+-    with open(src, "rt") as sf, open(dest, "wt") as df:
+-        while True:
+-            l = sf.readline()
+-            if not l:
+-                break
+-            df.write(re.sub(substre, repl, l))
++    with open(src, "rt") as sf:
++        with open(dest, "wt") as df:
++            while True:
++                l = sf.readline()
++                if not l:
++                    break
++                df.write(re.sub(substre, repl, l))
+ 
+ class sdist(st_sdist.sdist):
+     def make_release_tree(self, base_dir, files):
