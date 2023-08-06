@@ -1,0 +1,91 @@
+import sys
+sys.path.append('../../')
+from RedisQ.GPUWorker import GPUWorker
+from redis import Redis
+from RedisQ.Base.Qjob import BaseJob
+from RedisQ.Base.Qlist import LQ, LW, LD, HS, HJ
+#from DICOM.algorithm.code import *
+import requests
+import os
+
+
+class DICOMPredictionContent(object):
+    # those data is used for testing
+    api = 'http://192.168.1.122:8000/api/v1/'
+    patient = 'patients/1/'
+    case = 'cases/2351cb63-ea0a-4f40-8fed-5a82761adb7e/'
+    accession = 'accessions/1/'
+    image = 'images/?accession_id=4&limit=200&ordering=id'
+
+
+class DICOMJob(BaseJob):
+
+    content = DICOMPredictionContent()
+
+
+class DICOMConfig(object):
+
+    gpu_load = 0.3
+    gpu_memory = 0.3
+    docker_path = './test'
+    docker_image_tag = 'test_work'
+    res_base = 'DICOM/res'
+    des_base = 'workout/DICOM/des'
+
+    @property
+    def gpu_fraction(self):
+        return (self.gpu_memory + self.gpu_load) * 0.5
+
+
+def payload(job, config):
+    print('playload running...')
+    # get job
+    content = job.content
+    # get api information
+    print('get resource info')
+    response = requests.get(content.api + content.image)
+    if response.status_code != 200:
+        raise Exception("can't get resource information")
+    for image in response.json().get('results'):
+        raw_uri = image.get('raw_file_path', None)
+        id = image.get('id', None)
+        if raw_uri and id is None:
+            return
+        # judge if the raw file has been downed
+        print('download raw file')
+        response = requests.get(raw_uri)
+        if response.status_code != 200:
+            raise Exception("can't download raw files {},{}".format(raw_uri, id))
+        filename = response.url.split('/')[-1]
+        # set file path
+        res = '{base}/{id}_{filename}'.format(
+            base=config.res_base,
+            id=id,
+            filename=filename
+        )
+        with open(res, 'wb+') as f:
+            f.write(response.content)
+
+    print('ready to predict')
+    des = '{base}/{filename}/'.format(
+    base=config.des_base,
+    filename=filename.split('.')[0]
+    )
+    # write content
+    os.mkdir(des)
+    print('prediction...')
+    # run algorithm
+    #predict_one_DICOM(res, des)
+    # TODO write result infomation here
+
+
+def run_worker(host, port):
+    conn = Redis(host=host, port=port)
+    config = DICOMConfig()
+    worker = GPUWorker(connection=conn, config=config, job_hash=HJ, sign_hash=HS,
+                       queue_list=LQ, working_list=LW, done_list=LD)
+    print('polling...')
+    worker.polling(config=config, payload=payload)
+
+if __name__ == '__main__':
+    run_worker(host='192.168.1.122', port='6389')
