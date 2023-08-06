@@ -1,0 +1,137 @@
+Metadata-Version: 1.2
+Name: fleep
+Version: 0.1.0
+Summary: File format identification library
+Home-page: https://github.com/floyernick/fleep
+Author: Mykyta Paliienko
+Author-email: floyernick@gmail.com
+License: MIT
+Description: fleep
+        =====
+        
+        File format identification library
+        
+        Getting Started
+        ---------------
+        
+        **fleep** is a Python library, that identifies file format by file
+        signature.
+        
+        Installation
+        ------------
+        
+        Simply run in console:
+        
+        ::
+        
+            pip install fleep
+        
+        Example
+        -------
+        
+        It has only one function **get()**, that takes path to the file as an
+        argument and returns a list of suitable extensions. There is a simple example:
+        
+        .. code:: python
+        
+            import fleep
+            print(fleep.get(path="PATH_TO_THE_FILE") # prints ['some_extension_1', 'some_extension_2']
+        
+        Supported formats
+        -----------------
+        
+        There is a list of supported formats
+        
+        - aiff
+        - cda
+        - midi
+        - mp3
+        - m4a
+        - ogg
+        - oga
+        - wav
+        - wma
+        - flac
+        - 3g2
+        - 3gp
+        - 3gg
+        - avi
+        - flv
+        - m4v
+        - mkv
+        - mov
+        - mp4
+        - swf
+        - mpg
+        - vob
+        - wmv
+        - ogv
+        - webm
+        - 7z
+        - rar
+        - rpm
+        - tar.z
+        - gz
+        - zip
+        - dmg
+        - iso
+        - dll
+        - sys
+        - com
+        - exe
+        - jar
+        - ai
+        - bmp
+        - gif
+        - jpg
+        - ico
+        - psd
+        - tiff
+        - odp
+        - pps
+        - ppt
+        - pptx
+        - ods
+        - xls
+        - xlsx
+        - odt
+        - doc
+        - docx
+        - pdf
+        - rtf
+        - sql
+        
+        
+        License
+        -------
+        
+        This project is licensed under the *MIT License*.
+        
+        Contributing
+        ------------
+        
+        It would be nice to identify more formats. You can help us to
+        deal with it!
+        
+        Authors
+        -------
+        
+        **Mykyta Paliienko** - `GitHub profile`_
+        
+        .. _GitHub profile: https://github.com/floyernick
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Programming Language :: Python :: 3.1
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development
+Classifier: Topic :: Utilities
+Requires-Python: >=3
