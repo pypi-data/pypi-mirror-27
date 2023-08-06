@@ -1,0 +1,163 @@
+Metadata-Version: 2.0
+Name: django-rest-coreapi-schema
+Version: 0.1.1
+Summary: Django restframework custom schema
+Home-page: https://github.com/emilioag/django_rest_coreapi_schema
+Author: The Python Packaging Authority
+Author-email: agonzalez.emilio@gmail.com
+License: UNKNOWN
+Keywords: django restframework schema coreapi swagger
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Documentation
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: Django (==2.0)
+Requires-Dist: Markdown (==2.6.10)
+Requires-Dist: Pygments (==2.2.0)
+Requires-Dist: coreapi (==2.3.3)
+Requires-Dist: djangorestframework (==3.7.7)
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+
+# Django restframework schema
+
+This package is a schema for django restframework.
+
+# How to use
+
+## Installation
+
+```bash
+$ pip install django-rest-coreapi-schema
+```
+
+```bash
+$ pip install -e git+https://github.com/emilioag/django_rest_coreapi_schema.git#egg=django_rest_coreapi_schema
+```
+
+## Configuration 
+
+### django settings
+
+Add the next configuration in your settings.py file.
+
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'django_rest_coreapi_schema.schema.CoreAPIAutoSchema',
+}
+```
+
+### Restframework docs (urls)
+
+Add to your urls.py the restframework docs
+
+
+```python
+from django.conf.urls import url
+from rest_framework.documentation import include_docs_urls
+
+urlpatterns = [
+    url(r'^docs/', include_docs_urls(title='My API title', description='API description', public=False)),
+]
+```
+
+### Create your serializers
+
+```python
+from rest_framework import serializers
+
+
+class UserSerializer(serializers.Serializer):
+    email = serializers.CharField(
+        required=False,
+        help_text="User email")
+    address = serializers.CharField(
+        required=False,
+        help_text="User address")
+
+
+class FilterSerializer(serializers.Serializer):
+    order = serializers.ChoiceField(
+        required=False,
+        choices=[("asc", "Asc"), ("desc", "desc")],
+        help_text="Order")
+    username = serializers.CharField(
+        required=False,
+        help_text="Username pattern")
+
+
+class PathSerializer(serializers.Serializer):
+    username = serializers.CharField(
+        required=True,
+        help_text="Username")
+```
+
+### Create your pagination
+
+```python
+from rest_framework.pagination import PageNumberPagination
+
+
+class LargeResultsSetPagination(PageNumberPagination):
+    page_size = 1000
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
+
+```
+
+## Create your view
+
+### Documenting path variables
+
+You have to use the class variable: `queryset`
+
+```python
+from django_rest_coreapi_schema.views import DocumentedBaseView
+
+class UserView(DocumentedBaseView):
+    queryset = PathSerializer
+```
+
+### Url args
+
+You have to use the class variables: `filter_backends` and `filter_fields`
+
+ * **filter_backends** is a list of serializers which contains all the possible url args.
+ * **filter_fields** is a list of arg names that will be appear in the coreapi documentation.
+
+```python
+from django_rest_coreapi_schema.views import DocumentedBaseView
+
+class UserListView(DocumentedBaseView):
+    filter_backends = [FilterSerializer]
+    filter_fields = ('order', 'username')
+```
+
+### Body
+
+Http put, post, etc. body.
+
+```python
+from django_rest_coreapi_schema.views import DocumentedBaseView
+
+class UserView(DocumentedBaseView):
+    body_serializer_class = UserSerializer
+```
+
+### Pagination (for large results)
+
+```python
+from django_rest_coreapi_schema.views import DocumentedBaseView
+
+class UserListView(DocumentedBaseView):
+    pagination_class = LargeResultsSetPagination
+```
+
+
+
+You can see a whole example in examples/restAPI folder inside this repository.
+
