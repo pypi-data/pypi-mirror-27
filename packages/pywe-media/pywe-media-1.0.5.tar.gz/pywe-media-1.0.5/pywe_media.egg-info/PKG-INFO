@@ -1,0 +1,62 @@
+Metadata-Version: 1.1
+Name: pywe-media
+Version: 1.0.5
+Summary: Wechat Media Module for Python.
+Home-page: https://github.com/sdkwe/pywe-media
+Author: Hackathon
+Author-email: kimi.huang@brightcells.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: ==========
+        pywe-media
+        ==========
+        
+        Wechat Media Module for Python.
+        
+        Sandbox
+        =======
+        
+        * https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
+        
+        Installation
+        ============
+        
+        ::
+        
+            pip install pywe-media
+        
+        
+        Usage
+        =====
+        
+        ::
+        
+            from pywe_media import Media, media_download, media_upload
+        
+        
+        Method
+        ======
+        
+        ::
+        
+            class Media(BaseToken):
+                def __init__(self, appid=None, secret=None, token=None, storage=None):
+                    super(Media, self).__init__(appid=appid, secret=secret, token=token, storage=storage)
+        
+            def upload(self, media_type='image', media_file=None, appid=None, secret=None, token=None, storage=None):
+        
+            def download(self, media_id, hd=False, appid=None, secret=None, token=None, storage=None):
+        
+        
+Keywords: Wechat Weixin Media
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
