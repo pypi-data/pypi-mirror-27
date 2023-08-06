@@ -1,0 +1,178 @@
+Metadata-Version: 2.0
+Name: json2df
+Version: 0.1.3.7
+Summary: convert json data to Pandas DataFrame
+Home-page: https://github.com/shichaoji/json2df
+Author: Shichao(Richard) Ji
+Author-email: jshichao@vt.edu
+License: MIT
+Download-URL: https://github.com/shichaoji/json2df/archive/0.1.1.tar.gz
+Description-Content-Type: UNKNOWN
+Keywords: data,json,dataframe,python
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: pandas
+
+Json2df
+-------
+
+|PyPI version|
+
+json2df is a library batch processing a lists of json data (multiple
+instances of same structured json data) into Pandas DataFrame
+
+.. |PyPI version| image:: https://badge.fury.io/py/json2df.svg
+   :target: https://badge.fury.io/py/json2df
+
+installation
+~~~~~~~~~~~~
+
+``$ pip install json2df``
+
+usage example
+~~~~~~~~~~~~~
+
+e.g. when you scrape some users info data from a website, usually some
+fields contains json data format
+
+.. sourcecode:: python
+
+    import pandas as pd
+    df = pd.read_csv('https://raw.githubusercontent.com/shichaoji/json2df/master/sample.csv')
+    df.shape
+
+
+
+
+.. parsed-literal::
+
+    (100, 5)
+
+
+
+.. sourcecode:: python
+
+    df.head(3)
+
+
+
+
+
+
+
+
+e.g. we want to extract the location field and convert into a dataframe
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+select location
+
+.. sourcecode:: python
+
+    df['location'].head()
+
+
+
+
+.. parsed-literal::
+
+    0    {u'administrative_area': None, u'city': u'Sing...
+    1    {u'administrative_area': None, u'city': u'Bris...
+    2    {u'administrative_area': None, u'city': u'Ambo...
+    3    {u'administrative_area': None, u'city': u'Drob...
+    4    {u'administrative_area': None, u'city': u'Torr...
+    Name: location, dtype: object
+
+
+
+view first row
+
+.. sourcecode:: python
+
+    first_row = df['location'].head()[0]
+    print type(first_row)
+
+
+.. parsed-literal::
+
+    <type 'str'>
+
+
+.. sourcecode:: python
+
+    first_row
+
+
+
+
+.. parsed-literal::
+
+    "{u'administrative_area': None, u'city': u'Singapore', u'country': {u'highres_flag_url': u'/img/flags/highres_png/singapore.png', u'code': u'sg', u'name': u'Singapore', u'seo_url': None, u'flag_url_cdn': u'//cdn2.f-cdn.com/img/flags/png/sg.png', u'highres_flag_url_cdn': u'//cdn6.f-cdn.com/img/flags/highres_png/singapore.png', u'phone_code': None, u'language_code': None, u'demonym': None, u'language_id': None, u'person': None, u'iso3': None, u'sanction': None, u'flag_url': u'/img/flags/png/sg.png', u'flag_class': u'singapore', u'region_id': None}, u'vicinity': None, u'longitude': None, u'full_address': None, u'latitude': None}"
+
+
+
+convert the string representation into a python dictionary
+
+as you can see the json data has inner loop
+
+.. sourcecode:: python
+
+    import ast
+    ast.literal_eval(first_row)
+
+
+
+
+.. parsed-literal::
+
+    {u'administrative_area': None,
+     u'city': u'Singapore',
+     u'country': {u'code': u'sg',
+      u'demonym': None,
+      u'flag_class': u'singapore',
+      u'flag_url': u'/img/flags/png/sg.png',
+      u'flag_url_cdn': u'//cdn2.f-cdn.com/img/flags/png/sg.png',
+      u'highres_flag_url': u'/img/flags/highres_png/singapore.png',
+      u'highres_flag_url_cdn': u'//cdn6.f-cdn.com/img/flags/highres_png/singapore.png',
+      u'iso3': None,
+      u'language_code': None,
+      u'language_id': None,
+      u'name': u'Singapore',
+      u'person': None,
+      u'phone_code': None,
+      u'region_id': None,
+      u'sanction': None,
+      u'seo_url': None},
+     u'full_address': None,
+     u'latitude': None,
+     u'longitude': None,
+     u'vicinity': None}
+
+
+
+user json2df to convert the entire location field (Series) into a DataFrame
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. sourcecode:: python
+
+    from json2df import series2df
+
+    extract_df = series2df(df['location'])
+
+
+    print (extract_df.shape)
+    extract_df.head(5)
+
+
+.. parsed-literal::
+
+    (100, 22)
+
+
+
+
+
+
+
+
