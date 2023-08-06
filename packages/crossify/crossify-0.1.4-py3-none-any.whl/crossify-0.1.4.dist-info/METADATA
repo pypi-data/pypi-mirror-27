@@ -1,0 +1,23 @@
+Metadata-Version: 2.0
+Name: crossify
+Version: 0.1.4
+Summary: `crossify` is a Python library and command line application for drawing street crossings lines from street centerline and sidewalk centerline data.
+Home-page: https://github.com/accessmap/crossify
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: MIT / Apache 2.0
+Download-URL: https://github.com/accessmap/crossify.git
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Dist: click
+Requires-Dist: geopandas
+Requires-Dist: numpy
+Requires-Dist: osmnx
+Requires-Dist: overpass
+Requires-Dist: Shapely
+
+
+See project information at https://github.com/AccessMap/crossify
+
