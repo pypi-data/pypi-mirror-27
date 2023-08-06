@@ -1,0 +1,73 @@
+Metadata-Version: 1.1
+Name: ec2stash
+Version: 0.1.6
+Summary: EC2 stash using AWS Parameters Store
+Home-page: https://github.com/giuliocalzolari/ec2stash
+Author: giuliocalzolari
+Author-email: gc@hide.me
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: ===============
+        EC2 Stash Store
+        ===============
+        
+        .. image:: https://circleci.com/gh/giuliocalzolari/ec2stash/tree/master.svg?style=svg
+            :target: https://circleci.com/gh/giuliocalzolari/ec2stash/tree/master
+        
+        .. image:: https://badge.fury.io/py/ec2stash.png
+            :target: https://badge.fury.io/py/ec2stash
+        
+        
+        Config
+        ------
+        
+        this script is designed to run across multiple accounts and across multiple regions you can switch between regions/accounts using some OS vars
+        
+        To execute an assume role action::
+        
+          $ export AWS_SSM_ROLE=arn:aws:iam::111111111:role/admin
+        
+        
+        Command
+        -------
+        ::
+        
+          $ ec2stash -h
+          Usage: ec2stash [OPTIONS] COMMAND [ARGS]...
+        
+          Options:
+            --iam TEXT     IAM to assume
+            --region TEXT  AWS region
+            --kms TEXT     KMS Key
+            --help         Show this message and exit.
+        
+          Commands:
+            backup
+            blockerase
+            delete
+            erase
+            get
+            gettag
+            list
+            put
+            render
+            restore
+            setup
+            tag
+        
+        
+        
+        License
+        -------
+        
+        ec2stash is licensed under the `MIT <LICENSE>`_.
+        
+Keywords: ec2stash
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Environment :: Console
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
