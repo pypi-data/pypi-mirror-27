@@ -1,0 +1,68 @@
+Metadata-Version: 2.0
+Name: EPAB
+Version: 0.1.20
+Summary: I'll do you for that.
+Home-page: https://github.com/132nd-etcher/EPAB
+Author: 132nd-etcher
+Author-email: epab@daribouca.net
+License: GPLv3
+Download-URL: https://github.com/132nd-etcher/EPAB/releases
+Description-Content-Type: UNKNOWN
+Platform: win32
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Natural Language :: English
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: Microsoft :: Windows :: Windows 7
+Classifier: Operating System :: Microsoft :: Windows :: Windows 8
+Classifier: Operating System :: Microsoft :: Windows :: Windows 8.1
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Programming Language :: Cython
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Games/Entertainment
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Requires-Dist: click (>=6)
+Requires-Dist: pyyaml (>=3)
+Requires-Dist: versioneer
+Requires-Dist: semver
+Requires-Dist: wheel
+Requires-Dist: twine
+Requires-Dist: autopep8
+Requires-Dist: pylint
+Requires-Dist: isort
+Requires-Dist: safety
+Requires-Dist: flake8
+
+
+README
+======
+
+EPAB
+----
+
+Etcher's Python Application Builder
+
+
+|OSI|
+
+|license|
+
+|av_master| |av_develop|
+
+
+.. |OSI| image:: https://badges.frapsoft.com/os/v3/open-source-200x33.png?v=103
+    :target: https://github.com/ellerbrock/open-source-badges/
+.. |license| image:: https://img.shields.io/github/license/132nd-etcher/EPAB.svg
+    :target: https://www.gnu.org/licenses/gpl-3.0.en.html
+.. |av_master| image:: https://img.shields.io/appveyor/ci/132nd-etcher/epab/master.svg?label=master
+    :target: https://ci.appveyor.com/project/132nd-etcher/epab
+.. |av_develop| image:: https://img.shields.io/appveyor/ci/132nd-etcher/epab/develop.svg?label=develop
+    :target: https://ci.appveyor.com/project/132nd-etcher/epab
+
