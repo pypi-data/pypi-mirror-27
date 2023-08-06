@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: pytest-mockredis
+Version: 0.1.2.dev1
+Summary: An in-memory mock of a Redis server that runs in a separate thread. This is to be used for unit-tests that require a Redis database.
+Home-page: https://github.com/cngo-github/mock-redis
+Author: Chuong Ngo
+Author-email: cngo.github@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: # Mock-Redis
+        An in-memory mock of a Redis server that runs in a separate thread. This is to be used for
+        unit-tests that require a Redis database. It comes with a plugin for pytest.
+        
+Platform: any
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
