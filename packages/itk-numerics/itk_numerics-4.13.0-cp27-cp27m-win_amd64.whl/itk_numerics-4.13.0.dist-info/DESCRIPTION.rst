@@ -1,0 +1,4 @@
+ITK is an open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis. Developed through extreme programming methodologies, ITK employs leading-edge algorithms for registering and segmenting multidimensional scientific images.
+
+This package contains basic numerical tools and algorithms that have general applications outside of imaging.
+
