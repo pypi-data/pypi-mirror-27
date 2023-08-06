@@ -1,0 +1,25 @@
+<div metal:use-macro="load: layout.pt">
+			<div metal:fill-slot="content">
+				<div class="content">
+					<h3>Données actuelles à ${ltime}</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Lieux</th>
+                                <th>Température</th>
+                                <th>Humidité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr tal:repeat="data datas">
+                                <td>${data.name}</td>
+                                <td>${round(data.temperature, 1)} °C</td>
+                                <td>${data.humidity} %</td>
+                            </tr>
+                        </tbody>
+                    </table>
+<!--!                                <a href="${request.route_url('wikipage_view', uid=pagex.uid)}"> -->
+<!--!                                </a>  -->
+				</div>
+			</div>
+</div>
