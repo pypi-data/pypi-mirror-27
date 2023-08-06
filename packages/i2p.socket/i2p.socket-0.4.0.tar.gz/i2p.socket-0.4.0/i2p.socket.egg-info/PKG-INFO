@@ -1,0 +1,76 @@
+Metadata-Version: 1.1
+Name: i2p.socket
+Version: 0.4.0
+Summary: I2P socket module
+Home-page: https://github.com/majestrate/i2p.socket
+Author: Jeff
+Author-email: jeff@i2p.rocks
+License: MIT
+Download-URL: https://github.com/majestrate/i2p.socket/tarball/0.4.0
+Description: ==========
+        i2p.socket
+        ==========
+        
+        Requirements:
+        
+        * Python 2.7 or >= 3.4 
+        
+        * Java I2P 0.9.14 and higher or i2pd 2.17.0 and higher
+        
+        Installing:
+        
+        pypi:
+        
+        .. code:: bash
+                  
+                  pip install i2p.socket
+        
+        git:
+        
+        .. code:: bash
+        
+                  git clone https://github.com/majestrate/i2p.socket/
+                  cd i2p.socket
+                  python setup.py install
+        
+        Usage:
+        
+        .. code:: python
+                  
+                  from i2p import socket 
+            
+                  # i2p socket
+                  sock = socket.socket()
+                  sock.connect(("i2p-projekt.i2p", 80))
+                  sock.send(b"GET /\r\n\r\n")
+                  print (sock.recv(1024))
+                  sock.close()
+                  
+                  # also works as 'regular' socket
+                  sock = socket.socket(socket.AF_INET) 
+                  sock.connect(("geti2p.net", 80))
+                  sock.send(b"GET /\r\n\r\n")
+                  print (sock.recv(1024))
+                  sock.close()
+        
+        
+        
+        Caveats:
+        
+        * Probably contains bugs  
+        
+                  
+        
+Keywords: i2p,socket
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: Public Domain
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Internet
