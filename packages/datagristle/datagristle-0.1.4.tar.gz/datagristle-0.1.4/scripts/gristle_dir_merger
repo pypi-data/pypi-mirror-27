@@ -1,0 +1,765 @@
+#!/usr/bin/env python
+"""
+Gristle_dir_merger is used to perform powerful directory merging.
+
+Usage:
+  $ gristle_dir_merger [source_dir] [dest_dir] [misc options]
+
+positional arguments:
+  source_dir            The source directory - from which files are deleted and
+                        moved into the destination directory.
+  dest_dir              The destination directory - where files are moved into.
+
+optional arguments:
+
+  --match-on-name-and-md5
+                        Match files on name and an MD5 commparison.  This is the
+                        default.
+  --match-on-name-only  Match files on name only.  Overrides default of
+                        match-on-name-and-md5.
+
+  --on-full-match       Action for files matched completely.
+         keep_dest    - Keeps the desination file and deletes the source file.
+                        This is the default - because it is the fastest, and
+                        the two files are already deemed to be identical.
+         keep_source  - Keeps the source and deletes the destination.  This
+                        override might be useful if you want to keep the
+                        ownership, privs, etc associated with the source file.
+                        Or if you're only matching on name.
+         keep_both    - Keeps both files by copying the source_file over with a
+                        slightly modified name - in which a number is inserted
+                        prior to the file extension.
+         keep_newest  - Keeps the newest of the two matching files, as
+                        determined by modification time.
+         keep_biggest - Keeps the largest of the two matching files.
+
+  --on-partial-match    Action for files matched by name, but not by md5.  Only
+                        applies to match-on-name-and-md5.
+         keep_newest  - Keeps the newest of the two matching files, as
+                        determined by modification time.  Ths is the default.
+         keep_biggest - Keeps the largest of the two matching files.
+         keep_both    - Keeps both files by copying the source_file over with a
+                        slightly modified name - in which a number is inserted
+                        prior to the file extension.
+         keep_dest    - Keeps the desination file and deletes the source file.
+         keep_source  - Keeps the source and deletes the destination.
+
+  --dry-run             Lists files and action, but does not change them.
+  -r, --recursive       Walk through directories recursively.  Default is
+                        non-recursive.
+  -s, --stats           Prints processing counts.
+  --log-level           Controls level of detail for what is printed.
+        critical      - Prints only messages that cause the entire program to fail.
+        error         - Prints the above plus messages about operations that
+                        failed.
+        warning       - Prints the above plus warnings.
+        info          - Prints the above plus info about each file.  This is
+                        the Default.
+        debug         - Prints the above plus details on each file's process.
+  --version             Show program's version number and exit.
+  -h, --help            Show this help message and exit.
+  --long-help           Print more verbose help.
+
+
+Examples
+  $ gristle_dir_merger /tmp/foo /data/foo
+        - Compares source of /tmp/foo to dest of /data/foo.
+        - Files will be consolidated into /data/foo, and deleted from /tmp/foo.
+        - Comparison will be: match-on-name-and-md5 (default)
+        - Full matches will use: keep_dest (default)
+        - Partial matches will use: keep_newest (default)
+        - Bottom line: this is what you normally want
+
+  $ gristle_dir_merger /tmp/foo /data/foo --dry-run
+        - Same as the first example - except it only prints what it would do
+          without actually doing it.
+        - Bottom line: this is a good step to take prior to running it for real
+
+  $ gristle_dir_merger /tmp/foo /data/foo -r
+        - Same as the first example - except it runs recursively through
+          the directories.
+
+  $ gristle_dir_merger /tmp/foo /data/foo --on-partial-match keep-biggest
+        - Comparison will be: match-on-name-and-md5 (default)
+        - Full matches will use: keep_dest (default)
+        - Partial matches will use: keep_biggest (override)
+        - Bottom line: this is a good combo if you know that some files
+          have been modified on both source & dest, and newest isn't the best.
+
+  $ gristle_dir_merger /tmp/foo /data/foo --match-on-name-only --on-full-match keep-source
+        - Comparison will be: match-on-name-only (override)
+        - Full matches will use: keep_source (override)
+        - Bottom line: this is a good way to go if you have
+          files that have changed in both directories, but always want to
+          use the source files.
+
+Performance
+    Because of a number of optimizations, gristle_dir_merger does as little work
+    as it can get away with.  This means using the dest_dir copy rather than the
+    source_copy when two files match, and it means stopping the md5 process as
+    soon as the files are discovered to be different.
+
+    A simple benchmark was performed with a circa 2010 laptop with an SSD drive
+    using two 600 MB directories, each containing the exact same 550 files
+    spread across 70 directories.  This is a worst-case scenario, since 100% of
+    all files will have to be MD5'd:
+        - using defaults (match-on-name-and-md5 and keep-source):
+            - ~9 seconds
+        - using worst-case settings  (match-on-name-and-md5 and keep-source):
+            - ~13 seconds
+    These times would be far slower on magnetic media.
+
+Warnings and Limitations
+    - Concurrency - this program is not intended to be used on data while
+      other processes are modifying the files.
+
+
+This source code is protected by the BSD license.  See the file "LICENSE"
+in the source code root directory for the full language or refer to it here:
+  http://opensource.org/licenses/BSD-3-Clause
+
+Copyright 2014,2017 Ken Farmer
+"""
+import sys
+import argparse
+import time
+import math
+import shutil
+import glob
+import hashlib
+import logging
+import os
+from os.path import dirname, basename
+from os.path import isdir, isfile, exists
+from os.path import join as pjoin
+from signal import signal, SIGPIPE, SIG_DFL
+
+#--- Ignore SIG_PIPE and don't throw exceptions on it
+#--- (http://docs.python.org/library/signal.html)
+signal(SIGPIPE, SIG_DFL)
+
+
+__version__ = 'unknown'
+try:
+    from gristle._version import __version__
+except ImportError:
+    # We're running in a directory that doesn't have pathing set up quite right
+    pass
+
+
+
+def main():
+    """ Sets up the environment then runs the main process.
+    """
+    args = get_args()
+    setup_logs(args.log_level)
+
+    process_dir = ProcessDirs(args.source_dir,
+                              args.matchon,
+                              args.on_f_match,
+                              args.on_p_match,
+                              args.recursive,
+                              args.dry_run,
+                              args.ignore_errors)
+
+    process_dir.walk(args.source_dir, args.dest_dir)
+
+    if args.stats:
+        process_dir.write_stats()
+
+    return 0
+
+
+
+class ProcessDirs(object):
+    """ Handles walking through the directories then running the merge process
+        against files within them.
+    """
+
+    def __init__(self, starting_src_dir,
+                 matchon, full_match, part_match, recursive,
+                 dry_run, ignore_err):
+
+        assert isdir(starting_src_dir)
+
+        self.start_time = time.time()
+        self.ignore_err = ignore_err
+        self.recursive = recursive
+        self.matchon = matchon
+        self.starting_src_dir = starting_src_dir
+        self.dest_dirs = {} # key is dirpath, value is count of files within
+        self.dest_files = {} # key is dirpath, value is list of files
+        self.full_match = full_match
+        self.part_match = part_match
+        self.merger = MergeFiles(dry_run, ignore_err)
+        self.full_match_cnt = 0
+        self.partial_match_cnt = 0
+        self.no_match_cnt = 0
+        self.sdir_cnt = 0
+        self.sfile_cnt = 0
+        self.sdotfile_cnt = 0
+        self.ddir_cnt = 0
+        self.dfile_cnt = 0
+
+
+    def get_walk_entries(self, src_dir):
+        """ Intended to emulate the os.walk() interaction.
+            Inputs:
+                - a_dir - a directory
+            Outputs:
+                - dirs  - a list of subdirectories within a_dir
+                - files - a list of files within a_dir
+        """
+        entries = os.listdir(src_dir)
+        dirs = []
+        files = []
+        for entry in entries:
+            if isdir(pjoin(src_dir, entry)):
+                dirs.append(entry)
+            else:
+                files.append(entry)
+        return dirs, files
+
+
+    def walk(self, src_dir, dst_dir):
+        """ Inputs:
+                - src_dir - fully qualified source directory
+                - dst_dir - fully qualified destination directory
+            Processing
+                - Will call itself
+                - Will terminate the program if it encounters a symbolic link
+        """
+        kill_if_symlink(src_dir, 'source', self.ignore_err)
+        kill_if_symlink(dst_dir, 'dest', self.ignore_err)
+
+        sub_dirs, files = self.get_walk_entries(src_dir)
+
+        for sub_dir in sub_dirs:
+
+            self.sdir_cnt += 1
+            self._is_srcfile_in_destdir(None, dst_dir) # ensure dir in cache
+            kill_if_symlink(pjoin(src_dir, sub_dir), 'source', self.ignore_err)
+            kill_if_symlink(pjoin(dst_dir, sub_dir), 'dest', self.ignore_err)
+
+            if isdir(pjoin(src_dir, sub_dir)):
+                if self.recursive:
+                    self.walk(pjoin(src_dir, sub_dir), pjoin(dst_dir, sub_dir))
+                if not os.listdir(pjoin(src_dir, sub_dir)):
+                    self.merger.keep_dest(pjoin(src_dir, sub_dir),
+                                          pjoin(dst_dir, sub_dir), None)
+                    log_reason('source_dir empty - will be removed')
+
+            else:
+                self.no_match_cnt += 1
+                reason = 'source_dir has no matching dest'
+                self.merger.keep_source(pjoin(src_dir, sub_dir),
+                                        pjoin(dst_dir, sub_dir), reason=reason)
+
+        for file_name in files:
+            self.sfile_cnt += 1
+            if file_name.startswith('.'):
+               self.sdotfile_cnt += 1
+            self._merge_source_file(pjoin(src_dir, file_name), dst_dir)
+
+        if src_dir == self.starting_src_dir:
+            self.remove_top_source()
+
+
+
+    def _merge_source_file(self, src_path, dst_path):
+        """ Attempts to match a source file against a corresponding one in the
+            dest dir by name_only or name_and_md5.  Then it performs the action
+            specified for the level of match that occurred.
+            Inputs:
+               - src_path - the source path - must specify a file
+               - dst_path - the source path - must specify a dir
+        """
+        assert isfile(src_path)
+        if exists(dst_path):
+            assert isdir(dst_path)
+
+        if self._is_srcfile_in_destdir(basename(src_path), dst_path):
+            if self.matchon == 'name_only':
+                self.full_match_cnt += 1
+                rsn = 'full-match'
+                self.merger.action[self.full_match](src_path, dst_path, rsn)
+            elif self.matchon == 'name_and_md5':
+                if compare_md5s(src_path, pjoin(dst_path, basename(src_path))) == 'matched':
+                    self.full_match_cnt += 1
+                    rsn = 'full-match'
+                    self.merger.action[self.full_match](src_path, dst_path, rsn)
+                else:
+                    self.partial_match_cnt += 1
+                    rsn = 'partial-match'
+                    self.merger.action[self.part_match](src_path, dst_path, rsn)
+            else:
+                logging.critical('Logic Error, bad value: %s' % self.matchon)
+                sys.exit(2)
+        else:
+            self.no_match_cnt += 1
+            rsn = 'source_file has no matching dest'
+            self.merger.keep_source(src_path, dst_path, rsn)
+
+
+
+    def _is_srcfile_in_destdir(self, src_file, dest_dir):
+        """ Determines if source_file is also in the corresponding dest_dir.
+            Inputs:
+                - src_file
+                - dest_dir
+            Outputs:
+                - Boolean
+        """
+        if dest_dir not in self.dest_dirs:
+            dest_file_list = glob.glob(pjoin(dest_dir, '*'))
+            dest_file_list.extend(glob.glob(pjoin(dest_dir, '.*')))
+            self.dest_dirs[dest_dir] = len(dest_file_list)
+            self.dest_files[dest_dir] = [basename(f) for f in dest_file_list]
+
+        if src_file:
+            if src_file in self.dest_files[dest_dir]:
+                return True
+            else:
+                return False
+
+
+    def generate_dest_counts(self):
+        ddir_cnt  = 0
+        dfile_cnt = 0
+        for _, value in self.dest_dirs.iteritems():
+            if value > 0:
+                ddir_cnt += 1
+                dfile_cnt += value
+        self.ddir_cnt = ddir_cnt
+        self.dfile_cnt = dfile_cnt - ddir_cnt
+
+
+    def remove_top_source(self):
+        if not os.listdir(self.starting_src_dir):
+            self.merger.keep_dest(self.starting_src_dir, None, None)
+            log_reason('source_dir empty - will be removed')
+
+
+    def write_stats(self):
+        self.generate_dest_counts()
+
+        logging.info('')
+        logging.info('---------- Counts -----------')
+        logging.info('Total Source Objects:       %d', (self.sdir_cnt + self.sfile_cnt))
+        logging.info('   Directory Read Cnt:      %d', self.sdir_cnt)
+        logging.info('   File Read Cnt:           %d', self.sfile_cnt)
+        logging.info('      DotFile Read Cnt:     %d', self.sdotfile_cnt)
+        logging.info('Total Dest Objects:         %d', (self.ddir_cnt + self.dfile_cnt))
+        logging.info('   Directory Read Cnt:      %d', self.ddir_cnt)
+        logging.info('   File Read Cnt:           %d', self.dfile_cnt)
+        logging.info('')
+        logging.info('Full Match Cnt:             %d', self.full_match_cnt)
+        logging.info('Partial Match Cnt:          %d', self.partial_match_cnt)
+        logging.info('No Match Cnt:               %d', self.no_match_cnt)
+        logging.info('')
+        logging.info('Delete Source Cnt:          %d', self.merger.delete_source_cnt)
+        logging.info('Move Source Cnt:            %d', self.merger.move_source_cnt)
+        logging.info('Rename And Move Source Cnt: %d', self.merger.rename_and_move_source_cnt)
+        logging.info('')
+        logging.info('Seconds Duration:      %7.2f', (time.time() - self.start_time))
+
+
+
+
+class MergeFiles(object):
+    """ A collection of methods used to merge directories and files.
+        Inputs:
+           - dry_run - T/F
+           - ignore_errors - T/F
+    """
+
+    def __init__(self, dry_run, ignore_err):
+        self.dry_run = dry_run
+        self.ignore_err = ignore_err
+        self.action = {'keep_dest': self.keep_dest,
+                       'keep_source': self.keep_source,
+                       'keep_both': self.keep_both,
+                       'keep_newest': self.keep_newest,
+                       'keep_biggest': self.keep_biggest}
+        self.move_source_cnt = 0
+        self.rename_and_move_source_cnt = 0
+        self.delete_source_cnt = 0
+
+
+    def keep_dest(self, src_path, dst_path, reason=''):
+        self._delete_source(src_path, rsn=reason)
+
+
+    def keep_source(self, src_path, dst_path, reason=''):
+        self._move_source(src_path, dst_path, reason=reason)
+
+
+    def keep_biggest(self, src_path, dst_path, reason=''):
+        if os.path.getsize(src_path) > os.path.getsize(dst_path):
+            self._move_source(src_path, dst_path, reason=reason)
+        else:
+            self._delete_source(src_path, rsn=reason)
+
+
+    def keep_newest(self, src_path, dst_path, reason=''):
+        src_fn_time = os.path.getmtime(src_path)
+        dst_fn_time = os.path.getmtime(dst_path)
+
+        if src_fn_time > dst_fn_time:
+            self._move_source(src_path, dst_path, reason=reason)
+        else:
+            self._delete_source(src_path, rsn=reason)
+
+
+    def keep_both(self, src_path, dst_path, reason=''):
+        """ No files will over-write one another - instead the new file will
+            get a modified name within the destination directory.
+        """
+        self._rename_and_move_source(src_path, dst_path, reason=reason)
+
+
+
+    def _move_source(self, src_path, dst_path, reason):
+
+        log_action('move_source', src_path)
+        log_reason(reason)
+        kill_if_symlink(src_path, 'source', self.ignore_err)
+        kill_if_symlink(dst_path, 'dest', self.ignore_err)
+        self.move_source_cnt += 1
+
+        stype = get_fileobj_type(src_path)
+        dtype = get_fileobj_type(dst_path)
+
+        if stype == 'dir' and dtype == 'file':
+            logging.critical('dest_dir exists, but is a file: %s' % dst_path)
+            if not self.ignore_err:
+                sys.exit(2)
+
+        if not self.dry_run:
+            if not dtype:  # dst_path doesn't exist
+                create_dest_dir_if_needed(dst_path)
+            if stype == 'file':
+                shutil.copy2(src_path, dst_path)
+                os.remove(src_path)
+            else:
+                shutil.move(src_path, dst_path)
+
+
+    def _rename_and_move_source(self, src_path, dst_path, reason=None):
+        """ Requirements:
+            - src_path must refer to a file
+            - dst_path must refer to a dir, if a filename is provided it
+              will be removed.
+        """
+        log_action('rename_and_move_source', src_path)
+        log_reason(reason)
+        kill_if_symlink(src_path, 'source', self.ignore_err)
+        kill_if_symlink(dst_path, 'dest', self.ignore_err)
+
+        if isdir(src_path):
+            logging.critical('Invalid files: source must be file')
+            logging.critical('Source: %s' % src_path)
+            if self.ignore_err is False:
+                sys.exit(1)
+
+        if isfile(dst_path):
+            dst_path = dirname(dst_path)
+
+        self.rename_and_move_source_cnt += 1
+        dest_file = create_unique_file_name(dst_path, basename(src_path))
+
+        if not self.dry_run:
+            shutil.move(src_path, pjoin(dst_path, dest_file))
+
+
+    def _delete_source(self, src_path, rsn=None):
+        log_action('delete_source', src_path or '')
+        log_reason(rsn)
+        kill_if_symlink(src_path, 'source', self.ignore_err)
+        self.delete_source_cnt += 1
+
+        if not self.dry_run:
+            if isfile(src_path):
+                os.remove(src_path)
+            else:
+                os.rmdir(src_path)
+
+
+def get_fileobj_type(path):
+    if exists(path):
+        if isfile(path):
+            return 'file'
+        else:
+            return 'dir'
+    else:
+        return None
+
+
+
+def create_dest_dir_if_needed(dest_dir):
+    if not exists(dest_dir):
+        os.mkdir(dest_dir)
+        logging.info('Created dir: %s' % dest_dir)
+
+
+def compare_md5s(src_path, dst_path):
+    """ Compares two files to determine if their content is identical
+        through the use of MD5 hashes.   Two optimizations exist:
+           - it first checks to see if the file sizes are identical
+           - it only compares 128*md5 block size at a time
+        Inputs:
+           - source_dir
+           - source_file
+           - dest_dir
+           - dest_file
+        Outputs:
+           - result of either 'matched' or 'not-matched'
+    """
+    assert isfile(src_path)
+    assert isfile(dst_path)
+
+    #---- first run a cheap check: -----
+    size1 = os.path.getsize(src_path)
+    size2 = os.path.getsize(dst_path)
+    #if size1 == size2:
+    #    return 'match'
+    if size1 > size2:
+        return 'not-matched'
+    elif size1 < size2:
+        return 'not-matched'
+
+    #---- next keep comparing sections, hoping to bail out early
+    #---- on a difference:
+    source_md5 = hashlib.md5()
+    dest_md5 = hashlib.md5()
+    source_f = open(src_path, 'r')
+    dest_f = open(dst_path, 'r')
+    while True:
+        source_chunk = source_f.read(128 * source_md5.block_size)
+        dest_chunk = dest_f.read(128 * dest_md5.block_size)
+        if not source_chunk or not dest_chunk:
+            break
+        else:
+            source_md5.update(source_chunk.encode('utf-8'))
+            dest_md5.update(dest_chunk.encode('utf-8'))
+            if source_md5.hexdigest() != dest_md5.hexdigest():
+                return 'not-matched'
+
+    return 'matched'
+
+
+
+def create_unique_file_name(dir_name, file_name):
+    """ Creates a unique file name for the keep_both aciton.  This allows
+        the source file to be copied to the dest directory with a minor
+        modification in order to not step on the matching dest_file.
+
+        If no file already exists with the current name then it won't be
+        changed.  If it has to be changed, this process will try inserting
+        a number between the file's base_name and its extension.
+
+        Inputs:
+           - dir_name  - should be the dest_dir
+           - file_name - can be either the source_file or dest_file, should
+                         be unqualified.
+        Outputs:
+           - file_name - this is the unqualified, but modified file_name.
+    """
+    base_name, extension = os.path.splitext(file_name)
+
+    i = 0
+    while exists(pjoin(dir_name, file_name)):
+        i += 1
+        file_name = '%s.%d%s' % (base_name, i, extension)
+
+    return file_name
+
+
+
+
+
+def abort(summary, details, rc=1):
+    """ Creates formatted error message within a box of = characters
+        then exits.
+    """
+
+    #---prints top line:
+    print('=' * 79)
+
+    #---prints message within = characters, assumes it is kinda short:
+    print('=== ', end='')
+    print('%-69.69s' % summary, end='')
+    print(' ===')
+    if logging:
+        logging.critical(summary)
+
+    #---prints exception msg, breaks it into multiple lines:
+    for i in range(int(math.ceil(len(details)/68))):
+        print('=== ', end='')
+        print('%-69.69s' % details[i*68:(i*68)+68], end='')
+        print(' ===')
+    if logging:
+        logging.critical(details)
+
+    #---prints bottom line:
+    print('=' * 79)
+
+    sys.exit(rc)
+
+
+
+
+def setup_logs(log_level='debug', log_to_console=True):
+    """
+    """
+    assert log_level.lower() in ('debug', 'info', 'warning', 'error', 'critical')
+    logging.basicConfig(level=log_level.upper(),
+                        format='%(message)s')
+
+def log_action(on_f_match, file_name):
+    logging.info('%s - %s', on_f_match, file_name)
+
+def log_reason(reason):
+    if reason:
+        logging.debug('   %s', reason)
+
+
+
+
+def kill_if_symlink(fqfn, dir_type, ignore_errors):
+    """ Tests a fully-qualified file name to see if it's a symlink. If it 
+        fails the test it generally exits the program.
+        Inputs:
+            - fqfn - "fully qualified file name" - may be either a file or a
+                     directory
+            - dir_type - must be either 'source' or 'dest'
+            - ignore_errors - doesn't exit if True
+        Process:
+            - if the fqfn is a symlink, it will write an error msg to the log
+              and immediately exit the program.
+            - if the file doesn't exist, and it's a source dir_type, then it
+              will also error & exit the program.  This is because navigation
+              occurs through source_dir - so files should never turn up missing.
+              But they may have no corresponding directory on the dest side -
+              so this could get called for a dest_dir that doesn't exist.
+    """
+    assert dir_type in ['source', 'dest']
+    if exists(fqfn):
+        if os.path.islink(fqfn):
+            logging.critical('Symbolic link not supported: %s', fqfn)
+            if not ignore_errors:
+                sys.exit(1)
+    else:
+        if dir_type == 'source':
+            logging.critical('File missing while checking for symlink: %s', fqfn)
+            if not ignore_errors:
+                sys.exit(1)
+
+
+
+def get_args():
+    """ gets args and returns them
+        Input:
+            - command line args & options
+        Output:
+            - args dictionary
+    """
+    use = ("gristle_dir_merger is used to merge directories"
+           " \n"
+           "   gristle_dir_merger source_dir dest_dir [misc options]")
+
+    parser = argparse.ArgumentParser(description=use,
+                                     formatter_class=argparse.RawTextHelpFormatter)
+
+    parser.add_argument('source_dir',
+                        help='Source directory.  Files from here will be deleted or moved into the dest_dir.')
+    parser.add_argument('dest_dir',
+                        help='Destination directory.  Files from the source_dir will be copied into here.')
+    parser.add_argument('--match-on-name-only',
+                        dest='matchon',
+                        action='store_const',
+                        const='name_only',
+                        help='Match files on name only.  Overrides default of match-on-name-and-md5.')
+    parser.add_argument('--match-on-name-and-md5',
+                        dest='matchon',
+                        action='store_const',
+                        const='name_and_md5',
+                        help='Match files on name and an MD5 commparison.  This is the default.')
+    parser.add_argument('--on-full-match',
+                        dest='on_f_match',
+                        choices=['keep_dest', 'keep_source', 'keep_both', 'keep_newest', 'keep_biggest'],
+                        default='keep_dest',
+                        required=False,
+                        help='Action for files matched completely.  Default is keep_dest.')
+    # default added below so it won't get added with match-on-name-only:
+    parser.add_argument('--on-partial-match',
+                        dest='on_p_match',
+                        choices=['keep_dest', 'keep_source', 'keep_both', 'keep_newest', 'keep_biggest'],
+                        required=False,
+                        help='Action for files matched by name but with different content.  Default is keep_newest.')
+
+
+    parser.add_argument('-i', '--ignore-errors',
+                        default=False,
+                        action='store_true',
+                        dest='ignore_errors',
+                        help='ignores errors, but reports them, when dry-run is true')
+
+    parser.add_argument('--dry-run',
+                        default=False,
+                        action='store_true',
+                        dest='dry_run',
+                        help='Lists files and action, but does not change them.')
+
+    parser.add_argument('-r', '--recursive',
+                        default=False,
+                        action='store_true',
+                        help='Walk through directories recursively.  Default is non-recursive')
+
+    parser.add_argument('-s', '--stats',
+                        default=False,
+                        action='store_true',
+                        help='Print statistics at end of job.  Default is False.')
+
+    parser.add_argument('--log-level',
+                        dest='log_level',
+                        choices=['debug', 'info', 'warning', 'error', 'critical'],
+                        default='info',
+                        help='Level of log detail.  Default is Info.')
+
+    parser.add_argument('--long-help',
+                        default=False,
+                        action='store_true',
+                        help='Print more verbose help.')
+
+    parser.add_argument('--version',
+                        action='version',
+                        version='gristle_dir_merger %s' % __version__)
+
+    if '--long-help' in sys.argv:
+        print(__doc__)
+        sys.exit(0)
+
+    args = parser.parse_args()
+
+    if args.matchon is None:
+        args.matchon = 'name_and_md5'
+
+    if args.matchon == 'name_only':
+        if args.on_p_match is not None:
+            parser.error("on-partial-match must not be provided when match-on is 'name_only'")
+    else:
+        if args.on_p_match is None:
+            args.on_p_match = 'keep_newest'
+
+    if (not args.dry_run) and args.ignore_errors:
+        parser.error("ignore-errors requires dry-run")
+
+
+    return args
+
+
+
+if __name__ == '__main__':
+    sys.exit(main())
+
