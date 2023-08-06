@@ -1,0 +1,39 @@
+Metadata-Version: 2.0
+Name: scinot
+Version: 0.0.2
+Summary: Express numbers in scientific notation.
+Home-page: https://github.com/David-OConnor/scinot
+Author: David O'Connor
+Author-email: david.alan.oconnor@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: scientific notation,exponential
+Platform: UNKNOWN
+
+Scinot
+======
+
+This package expresses numbers in scientific notation, in formatted
+strings. It's intended use to to make computational results easily readable.
+
+Example use:
+
+.. code-block:: python
+
+    import scinot
+
+
+    scinot.parse(341283875012.238)
+    >> '3.41Ã—10^11'
+
+You can also specify the number of significant figures to display; it
+defaults to 3.
+
+.. code-block:: python
+
+    import scinot
+
+
+    scinot.parse(-.00000409348, 2)
+    >> '-4.1Ã—10^-6'
+
