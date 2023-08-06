@@ -1,0 +1,46 @@
+Metadata-Version: 1.1
+Name: rubyenv
+Version: 0.3
+Summary: manage ruby in your virtualenv
+Home-page: http://github.com/twang817/rubyenv
+Author: Tommy Wang
+Author-email: twang@august8.net
+License: MIT
+Download-URL: https://github.com/twang817/rubyenv/tarball/0.3
+Description: #rubyenv
+        
+        This tool is inspired by [nodeenv](https://github.com/ekalinin/nodeenv) and allows you to install ruby into your virtualenvs.
+        
+        Unlike nodeenv, rubyenv **only** works inside virtualenvs.
+        
+        ## Install
+        
+        ```
+        $ virtualenv myenv
+        $ source myenv/bin/activate
+        $ pip install rubyenv
+        $ rubyenv install 2.2.2
+        ```
+        
+        ## Example
+        
+        ```
+        $ mkdir frontend
+        $ echo 'use_env frontend' > frontenv/.env
+        $ cd frontend
+        $ pip install nodeenv rubyenv
+        $ nodeenv -p --prebuilt
+        $ npm upgrade -g npm
+        $ node --version && npm --version
+        $ npm install -g yo bower grunt-cli generator-angular
+        $ rubyenv install 2.2.2
+        $ ruby --version && gem --version
+        $ gem install compass
+        $ yo angular
+        $ grunt serve
+        ```
+        
+Keywords: ruby virtualenv
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
