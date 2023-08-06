@@ -1,0 +1,22 @@
+Metadata-Version: 2.0
+Name: jackal
+Version: 0.3.6
+Summary: Jackal provides a way to store results from hacking tools in a single place.
+Home-page: https://github.com/mwgielen/jackal/
+Author: Matthijs Gielen
+Author-email: github@mwgielen.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: elasticsearch-dsl
+Requires-Dist: future
+Requires-Dist: gevent
+Requires-Dist: grequests
+Requires-Dist: python-libnmap
+Requires-Dist: requests
+Provides-Extra: Sniffer
+Requires-Dist: psutil; extra == 'Sniffer'
+Requires-Dist: scapy-python3; extra == 'Sniffer'
+
+UNKNOWN
+
+
