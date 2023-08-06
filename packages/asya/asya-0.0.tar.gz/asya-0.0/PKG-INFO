@@ -1,0 +1,83 @@
+Metadata-Version: 1.2
+Name: asya
+Version: 0.0
+Summary: Asynchronously your acquaintances from GitHub issues
+Home-page: https://github.com/MarekSuchanek/asya
+Author: Marek Suchánek
+Author-email: suchama4@fit.cvut.cz
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Asya
+        ====
+        
+        |license|
+        
+        **AS**\ ynchronously-\ **Y**\ our-\ **A**\ cquaintances from `GitHub`_ issues
+        
+        Installation
+        ------------
+        
+        You can simply install Asya in standard Python way (system-wide or with virtual env).
+        Python 3.4 or higher is required (`asyncio`_ is in Python since 3.4).
+        
+        .. code::
+        
+           python setup.py install
+        
+        
+        Usage
+        -----
+        
+        After installation, you can use the CLI of Asya (for more, visit :ref:`CLI docs <cli-docs>`):
+        
+        .. code::
+        
+           asya --help
+           asya MarekSuchanek --token <your-secret-API-token>
+        
+        Documentation
+        -------------
+        
+        After installing Asya, you can also build the documentation:
+        
+        .. code::
+        
+           cd docs
+           pip install -r requirements.txt
+           make html
+        
+        Then open `docs/_build/html/index.html` in your browser. For more information visit
+        `Sphinx documentation`_.
+        
+        License
+        -------
+        
+        This project is licensed under the MIT License - see the `LICENSE`_ file for more details.
+        
+        .. _LICENSE: LICENSE
+        .. _GitHub: https://github.com
+        .. _asyncio: https://docs.python.org/3/library/asyncio.html
+        .. _Sphinx documentation: http://www.sphinx-doc.org/en/stable/
+        
+        .. |license| image:: https://img.shields.io/badge/license-MIT-blue.svg
+            :alt: License
+            :target: LICENSE
+        
+        
+Keywords: github issues social search asyncio comments issues
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Framework :: AsyncIO
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Communications
+Classifier: Topic :: Sociology
+Requires-Python: >=3.4
