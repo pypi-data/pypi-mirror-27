@@ -1,0 +1,1 @@
+IGNORELIST = ['template:', 'talk:', 'user:', 'category talk:', 'wikipedia:', 'draft:', 'portal:', 'wikipedia:', 're:start', '模塊:', 'help:', '的維基百科條目']
