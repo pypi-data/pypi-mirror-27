@@ -1,0 +1,11 @@
+bonobo~=0.6.0a4
+docker~=2.7
+requests~=2.16
+semantic_version~=2.6
+
+[dev]
+bonobo~=0.6.0a4
+coverage<5.0,>=4.4
+pytest<4.0,>=3.1
+pytest-cov<3.0,>=2.5
+yapf
