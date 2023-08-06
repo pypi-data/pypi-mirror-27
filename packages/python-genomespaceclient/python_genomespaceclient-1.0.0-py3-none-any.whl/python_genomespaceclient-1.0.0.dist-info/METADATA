@@ -1,0 +1,35 @@
+Metadata-Version: 2.0
+Name: python-genomespaceclient
+Version: 1.0.0
+Summary: Python bindings and commandline client to the GenomeSpace API
+Home-page: http://python-genomespaceclient.readthedocs.org/
+Author: GVL Project
+Author-email: help@genome.edu.au
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: cloudbridge (>=0.3,<0.4)
+Requires-Dist: requests
+Provides-Extra: dev
+Requires-Dist: tox; extra == 'dev'
+Requires-Dist: sphinx; extra == 'dev'
+Requires-Dist: flake8; extra == 'dev'
+Requires-Dist: flake8-import-order; extra == 'dev'
+
+UNKNOWN
+
+
