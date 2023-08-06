@@ -1,0 +1,318 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-01-02 14:44+0200\n"
+"PO-Revision-Date: 2018-01-02 15:06+0200\n"
+"Last-Translator: \n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: pcart_import/admin.py:63
+msgid "Price list preview"
+msgstr "Просмотр прайс-листа"
+
+#: pcart_import/admin.py:85 pcart_import/admin.py:142
+msgid "Process"
+msgstr "Обработка"
+
+#: pcart_import/apps.py:7
+msgid "Import"
+msgstr "Импорт"
+
+#: pcart_import/forms.py:17 pcart_import/forms.py:31 pcart_import/models.py:17
+#: pcart_import/models.py:463
+msgid "Language"
+msgstr "Язык"
+
+#: pcart_import/models.py:10 pcart_import/models.py:456
+msgid "Do nothing"
+msgstr "Ничего не делать"
+
+#: pcart_import/models.py:11 pcart_import/models.py:457
+msgid "Set specified status"
+msgstr "Установить указанный статус"
+
+#: pcart_import/models.py:12 pcart_import/models.py:458
+msgid "Remove from site (unpublish)"
+msgstr "Снять с публикации"
+
+#: pcart_import/models.py:16 pcart_import/models.py:462
+#: pcart_import/models.py:541 pcart_import/models.py:575
+msgid "Title"
+msgstr "Заголовок"
+
+#: pcart_import/models.py:20
+msgid "First row as labels"
+msgstr "Заголовки в первой строке"
+
+#: pcart_import/models.py:21
+msgid "Get column labels from the first row."
+msgstr "Брать заголовки колонок из первой строки"
+
+#: pcart_import/models.py:25 pcart_import/models.py:547
+msgid "Default product type"
+msgstr "Тип товара по умолчанию"
+
+#: pcart_import/models.py:27 pcart_import/models.py:549
+msgid "Default collection"
+msgstr "Коллекция по умолчанию"
+
+#: pcart_import/models.py:30 pcart_import/models.py:474
+msgid "Unavailable action"
+msgstr "Действие для недоступных товаров"
+
+#: pcart_import/models.py:33 pcart_import/models.py:477
+msgid ""
+"Choose the action to do for products which are not available in the price "
+"list."
+msgstr "Выберите действие для товаров которые не представлены в прайс-листе."
+
+#: pcart_import/models.py:37 pcart_import/models.py:481
+msgid "Unavailable status"
+msgstr "Статус для недоступных товаров"
+
+#: pcart_import/models.py:40 pcart_import/models.py:484
+msgid "If not set the status with minimal weight will be used."
+msgstr "Если не установлен, то будет выбран статус с минимальным весом."
+
+#: pcart_import/models.py:44 pcart_import/models.py:138
+#: pcart_import/models.py:443 pcart_import/models.py:488
+#: pcart_import/models.py:619 pcart_import/models.py:854
+msgid "Added"
+msgstr "Добавлено"
+
+#: pcart_import/models.py:45 pcart_import/models.py:139
+#: pcart_import/models.py:489 pcart_import/models.py:620
+msgid "Changed"
+msgstr "Изменено"
+
+#: pcart_import/models.py:48
+msgid "XLS Import profile"
+msgstr "Профиль импорта XLS"
+
+#: pcart_import/models.py:49
+msgid "XLS Import profiles"
+msgstr "Профили импорта XLS"
+
+#: pcart_import/models.py:58
+msgid "Product type"
+msgstr "Тип товара"
+
+#: pcart_import/models.py:59
+msgid "Collection"
+msgstr "Коллекция"
+
+#: pcart_import/models.py:60
+msgid "Extra collection"
+msgstr "Дополнительная коллекция"
+
+#: pcart_import/models.py:61
+msgid "Vendor"
+msgstr "Производитель"
+
+#: pcart_import/models.py:62 pcart_import/models.py:437
+#: pcart_import/models.py:848
+msgid "Product"
+msgstr "Товар"
+
+#: pcart_import/models.py:63
+msgid "ID"
+msgstr ""
+
+#: pcart_import/models.py:64
+msgid "External ID"
+msgstr "Внешний ID"
+
+#: pcart_import/models.py:65
+msgid "Product image"
+msgstr "Изображение товара"
+
+#: pcart_import/models.py:66
+msgid "Product property"
+msgstr "Характеристика товара"
+
+#: pcart_import/models.py:67
+msgid "Price"
+msgstr "Цена"
+
+#: pcart_import/models.py:68
+msgid "Quantity"
+msgstr "Количество"
+
+#: pcart_import/models.py:69 pcart_import/models.py:136
+#: pcart_import/models.py:617
+msgid "Status"
+msgstr "Статус"
+
+#: pcart_import/models.py:74 pcart_import/models.py:127
+#: pcart_import/models.py:543 pcart_import/models.py:608
+msgid "Import profile"
+msgstr "Профиль импорта"
+
+#: pcart_import/models.py:77
+msgid "Column index"
+msgstr "Индекс колонки"
+
+#: pcart_import/models.py:79
+msgid "Use column label"
+msgstr "Использовать заголовок колонки"
+
+#: pcart_import/models.py:80
+msgid ""
+"If checked \"Column index\" is related to column label, otherwise it is a "
+"column number."
+msgstr ""
+"Если отмечено, то \"Индекс колонки\" ссылается на заголовок колонки, в ином "
+"случае - ее номер."
+
+#: pcart_import/models.py:83
+msgid "Destination"
+msgstr "Назначение"
+
+#: pcart_import/models.py:84
+msgid "See documentation for supported values."
+msgstr "См. документацию о доступных вариантах."
+
+#: pcart_import/models.py:86
+msgid "Sub-destination"
+msgstr "Назначение 2-го уровня"
+
+#: pcart_import/models.py:89
+msgid "Function"
+msgstr "Функция"
+
+#: pcart_import/models.py:90 pcart_import/models.py:553
+#: pcart_import/models.py:557
+msgid "Use P-Cart Script for implementing complex logic."
+msgstr "Используйте P-Cart Script для реализации сложной логики."
+
+#: pcart_import/models.py:94
+msgid "XLS column"
+msgstr "Колонка XLS"
+
+#: pcart_import/models.py:95
+msgid "XLS columns"
+msgstr "Колонки XLS"
+
+#: pcart_import/models.py:119 pcart_import/models.py:600
+msgid "New"
+msgstr "Новый"
+
+#: pcart_import/models.py:120 pcart_import/models.py:601
+msgid "Processing"
+msgstr "Обработка"
+
+#: pcart_import/models.py:121 pcart_import/models.py:440
+#: pcart_import/models.py:602 pcart_import/models.py:851
+msgid "Success"
+msgstr "Успешно"
+
+#: pcart_import/models.py:122 pcart_import/models.py:603
+msgid "With errors"
+msgstr "С ошибками"
+
+#: pcart_import/models.py:131 pcart_import/models.py:435
+#: pcart_import/models.py:612 pcart_import/models.py:846
+msgid "Price list"
+msgstr "Прайс-лист"
+
+#: pcart_import/models.py:132 pcart_import/models.py:613
+msgid "Price list file."
+msgstr "Файл прайс-листа."
+
+#: pcart_import/models.py:142
+msgid "XLS Price list"
+msgstr "Прайс-лист XLS"
+
+#: pcart_import/models.py:143
+msgid "XLS Price lists"
+msgstr "Прайс-листы XLS"
+
+#: pcart_import/models.py:441 pcart_import/models.py:852
+msgid "Message"
+msgstr "Сообщение"
+
+#: pcart_import/models.py:446 pcart_import/models.py:447
+msgid "XLS Import history"
+msgstr "История импорта XLS"
+
+#: pcart_import/models.py:465
+msgid "URL"
+msgstr ""
+
+#: pcart_import/models.py:467
+msgid "Active"
+msgstr "Активно"
+
+#: pcart_import/models.py:468
+msgid "Last download"
+msgstr "Последняя загрузка"
+
+#: pcart_import/models.py:470
+msgid "Check interval"
+msgstr "Интервал проверки"
+
+#: pcart_import/models.py:471
+msgid "The interval between data downloading in hours."
+msgstr "Интервал в часах между загрузками данных."
+
+#: pcart_import/models.py:492
+msgid "YML Import profile"
+msgstr "Профиль импорта YML"
+
+#: pcart_import/models.py:493
+msgid "YML Import profiles"
+msgstr "Профили импорта YML"
+
+#: pcart_import/models.py:552
+msgid "Product type function"
+msgstr "Функция типа товара"
+
+#: pcart_import/models.py:556
+msgid "Collection function"
+msgstr "Функция коллекции"
+
+#: pcart_import/models.py:561 pcart_import/models.py:572
+msgid "YML Import category"
+msgstr "Категория импорта YML"
+
+#: pcart_import/models.py:562
+msgid "YML Import categories"
+msgstr "Категории импорта YML"
+
+#: pcart_import/models.py:576
+msgid "Rename to"
+msgstr "Переименовать в"
+
+#: pcart_import/models.py:579
+msgid "YML Import property"
+msgstr "Характеристика импорта YML"
+
+#: pcart_import/models.py:580
+msgid "YML Import properties"
+msgstr "Характеристики импорта YML"
+
+#: pcart_import/models.py:623
+msgid "YML Price list"
+msgstr "Прайс-лист YML"
+
+#: pcart_import/models.py:624
+msgid "YML Price lists"
+msgstr "Прайс-листы YML"
+
+#: pcart_import/models.py:857 pcart_import/models.py:858
+msgid "YML Import history"
+msgstr "История импорта YML"
