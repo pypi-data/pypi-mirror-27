@@ -1,0 +1,10 @@
+#!/bin/sh
+prevMsg=$(git log -1 --pretty=%B | cat)
+shouldTag=$(python .git/hooks/post_commit.py "$prevMsg")
+
+if [[ $shouldTag == *"NO"* ]]; then
+  :
+else
+  git tag -a $shouldTag -m "Version $shouldTag Release"
+  git push --tags
+fi
