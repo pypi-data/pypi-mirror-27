@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object>
+
+  <hidden manager="plone.mainnavigation" skinname="Plone Default">
+    <viewlet name="plone.global_sections" remove="True"/>
+  </hidden>
+  
+  <hidden manager="plone.portaltop" skinname="Plone Default">
+    <viewlet name="plone.global_sections" remove="True"/>
+  </hidden>
+  <hidden manager="plone.portalheader" skinname="Plone Default">
+    <viewlet name="plone.global_sections" remove="True"/>
+  </hidden>
+
+</object>

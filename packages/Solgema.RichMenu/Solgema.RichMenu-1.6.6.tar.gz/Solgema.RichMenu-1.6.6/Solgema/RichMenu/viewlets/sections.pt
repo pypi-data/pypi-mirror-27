@@ -1,0 +1,26 @@
+<tal:tabs i18n:domain="plone">
+  <p class="hiddenStructure" i18n:translate="heading_sections">Navigation</p>
+  <nav class="plone-navbar" id="portal-globalnav-wrapper" role="navigation">
+    <div class="container">
+      <div class="plone-navbar-header">
+        <button type="button" class="plone-navbar-toggle" data-toggle="collapse" data-target="#portal-globalnav-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
+        <tal:varnish define="behind_varnish python:context.REQUEST.get('HTTP_X_VARNISH',False);
+                             not_cached_in_varnish python: 'richmenu_sections_content' in context.REQUEST['URL0'];">
+          <esi:include tal:condition="python:behind_varnish and not not_cached_in_varnish"
+            tal:define="esi_src string:${view/context_url}/richmenu_sections_content?esi=__ac&X-Theme-Disabled=1;
+                        esi_src python:esi_src.replace('https','http')"
+            tal:attributes="src esi_src" />
+          <div tal:condition="python:not behind_varnish or not_cached_in_varnish"
+            tal:replace="structure view/content"/>
+        </tal:varnish>
+      </div>
+    </div>
+  </nav>
+</tal:tabs>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="uninstall-solgemarichmenu"
+              version="20160310-01"
+              handler="Solgema.RichMenu.setuphandlers.uninstallRichMenu"
+              title="Solgema RichMenu uninstall">
+    <dependency step="catalog" />
+    Uninstall Solgema RichMenu
+ </import-step>
+</import-steps>

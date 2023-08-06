@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:gallery="http://namespaces.zope.org/gallery">
+
+  <browser:page
+     for="*"
+     name="rich_menu_properties"
+     class=".content.ManageSolgemaRichMenuAttributes"
+     permission="zope2.View"
+     />
+
+  <adapter
+      for="*" 
+      factory=".content.SolgemaRichMenuAttributes"
+      provides="Solgema.RichMenu.interfaces.ISolgemaRichMenuAttributes" />
+
+  <browser:page
+     for="*"
+     name="rich_menu_control"
+     class=".content.SolgemaRichMenuControl"
+     permission="zope2.View"
+     />
+
+  <include zcml:condition="not-have plone-5" file="p4_controlpanel.zcml" />
+
+</configure>

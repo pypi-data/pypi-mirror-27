@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file holds the setup configuration for the portal_skins tool -->
+
+<object name="portal_skins">
+
+ <object name="solgemarichmenu" remove="True"/>
+ <skin-path name="*">
+  <layer name="solgemarichmenu" remove="True"/>
+ </skin-path>
+
+</object>

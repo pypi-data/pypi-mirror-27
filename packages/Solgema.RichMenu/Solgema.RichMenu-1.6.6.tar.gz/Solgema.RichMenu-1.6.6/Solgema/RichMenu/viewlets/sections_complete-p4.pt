@@ -1,0 +1,15 @@
+<tal:tabs i18n:domain="plone">
+  <h5 class="hiddenStructure" i18n:translate="heading_sections">Sections</h5>
+  <div id="portal-globalnav-wrapper" class="dropDownEnabled">
+  <ul id="portal-globalnav">
+    <a id="manage_sections"
+       tal:attributes="href string:${view/navigation_root_url}/folder_contents"
+       tal:condition="view/canManageNavTree">
+      <img tal:attributes="src string:${view/navigation_root_url}/edit_icon.gif" width="10" height="10"/>
+    </a>
+    <li tal:replace="structure view/createSections">
+      SUBTREE
+    </li>
+  </ul>
+  </div>
+</tal:tabs>

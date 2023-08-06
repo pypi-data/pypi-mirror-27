@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<registry>
+  
+  <records prefix="plone.resources/solgema-richmenu"
+           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+    <value key="js">++resource++solgemarichmenu/navtree_dropdown.js</value>
+    <value key="css">
+      <element>++resource++solgemarichmenu/solgema.richmenu.less</element>
+    </value>
+  </records>
+  
+  <records prefix="plone.bundles/solgema-richmenu"
+            interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+    <value key="resources">
+      <element>solgema-richmenu</element>
+    </value>
+    <value key="jscompilation">++resource++solgemarichmenu/navtree_dropdown.js</value>
+    <value key="csscompilation">++resource++solgemarichmenu/solgemarichmenu_minified.css</value>
+    <value key="depends">plone</value>
+    <value key="compile">True</value>
+    <value key="enabled">True</value>
+    <value key="last_compilation">2016-05-04 00:00:00</value>
+  </records>
+
+  <records interface="Solgema.RichMenu.dx.interfaces.IRichMenuSchema"
+           prefix="plone">
+    <value key="sections_displayed_types">
+      <element>Image</element>
+      <element>File</element>
+      <element>Link</element>
+      <element>News Item</element>
+      <element>Folder</element>
+      <element>Document</element>
+      <element>Event</element>
+    </value>
+  </records>
+
+</registry>

@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:gallery="http://namespaces.zope.org/gallery">
+
+  <adapter zcml:condition="have plone-4"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot" 
+    factory=".navigation.RichMenuNavigationControlPanelAdapter"
+    provides="Solgema.RichMenu.interfaces.IRichMenuSchema"
+    />
+    
+  <browser:page zcml:condition="have plone-4"
+    name="richmenu-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".navigation.RichMenuNavigationControlPanel"
+    permission="plone.app.controlpanel.Navigation"
+    layer="Solgema.RichMenu.interfaces.ISolgemaRichMenuLayer"
+    />
+
+</configure>

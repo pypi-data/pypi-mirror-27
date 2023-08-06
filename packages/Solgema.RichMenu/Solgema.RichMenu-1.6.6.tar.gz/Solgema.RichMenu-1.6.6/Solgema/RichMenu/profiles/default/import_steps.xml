@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="solgemarichmenu"
+              version="20130725-01"
+              handler="Solgema.RichMenu.setuphandlers.setupRichMenu"
+              title="Solgema RichMenu configuration">
+    <dependency step="catalog" />
+    Set up Solgema RichMenu properties
+ </import-step>
+</import-steps>

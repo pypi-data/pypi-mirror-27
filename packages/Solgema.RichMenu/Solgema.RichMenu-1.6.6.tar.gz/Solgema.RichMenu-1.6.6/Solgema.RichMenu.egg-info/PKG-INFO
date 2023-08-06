@@ -1,0 +1,50 @@
+Metadata-Version: 1.1
+Name: Solgema.RichMenu
+Version: 1.6.6
+Summary: Solgema RichMenu for Plone
+Home-page: http://www.martronic.ch/plone_products/Solgema.RichMenu
+Author: Martronic SA
+Author-email: martronic@martronic.ch
+License: GPL
+Description: Solgema.RichMenu Package Readme
+        =========================
+        
+        Overview
+        --------
+        Richer Plone main menu with Solgema.RichMenu
+        You can define submenu position, width, depth, number of columns and also add content like document, folder, image inside the submenu.
+        In order to set the menu properties, move to one of the folder that compose main menu (ensure to be on the folder and not on the default view)
+        and click on the "Navigation" action tab.
+        
+        
+        CHANGES
+        -------
+        v. 1.6.4 Better touch screen handling
+        
+        v. 1.5, 1.6 Various css fixes
+        
+        v. 1.4 Fix menu 100% width when aligned to left and center
+              Better Plone 4 compatibility
+        
+        v. 1.3 Fix - Navigation action was displayed event if the DX content type hadn't the RichMenu behavior.
+        
+        v. 1.2 Allow the use of Image in RichMenu content.
+        
+        
+        Changelog for Solgema.RichMenu
+        v 1.6.3
+        -------
+        Update javascript to hide only visible menu.
+        Hiding menu with animation can be time consuming and sometimes pointer can return quily on the menu before all animations ended which made the sub menu to remain open but not visible.
+        
+        v 1.6.2
+        -------
+        
+        - Fix missing definition of member in viewlets common class
+        
+        
+Keywords: Solgema
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

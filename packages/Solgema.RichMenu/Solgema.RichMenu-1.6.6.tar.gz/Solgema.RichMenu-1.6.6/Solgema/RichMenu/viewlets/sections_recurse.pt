@@ -1,0 +1,91 @@
+<tal:master define="parent options/parent | nothing;
+                    level options/level | python:0;
+                    children options/children | nothing;"
+            i18n:domain="plone">
+
+<metal:main define-macro="nav_main">
+<tal:global define="global num python:0">
+<tal:navitem repeat="node children">
+<tal:number define="global num python:num + 1">
+<li tal:define="item_id              node/id; 
+                item_url             node/url;
+                is_current           python:view.selected_portal_tab==node['id'];
+                number               node/number | python:None;
+                li_number            python: number != None and ' section-'+str(number) or '';
+                li_level             python:level-1;
+                state                node/review_state | nothing;
+                review_state         python: state and 'state-'+state or '';
+                firstItem            python:num == 1 and ' firstItem' or '';
+                lastItem             python:num == len(children) and ' lastItem' or '';
+                currentclass         python:is_current and ' sectionCurrentItem' or '';
+                children             node/children | python:[];
+                hasChildren          python: len(children) > 0;
+                hasChildrenClass     python: hasChildren and ' hasChildren' or '';
+                sectionmenuitem      node/sectionmenuitem | python:None;
+                displaySubMenu       python:hasChildren and sectionmenuitem == None;
+                showmenu             node/showmenu | string:right;
+                menucontent          python:node.get('menucontent', ['title']);
+                displaySubMenuItem   python:hasChildren and showmenu in ['left', 'right'];
+                submenuwidth         node/submenuwidth|nothing;
+                menustyle            node/menustyle|nothing;
+                contentstyle         node/contentstyle|nothing;
+                menuimage            node/menuimage|nothing;
+                menuposition         node/menuposition|string:left;
+                menucolumns          node/menucolumns|string:1;
+                useflexbox           python:menucolumns != '1' and ' useflexbox' or '';
+                submenudisplay       node/submenudisplay|string:hover;
+                menuimagesize        node/menuimagesize|string:tile;
+                sizeClass            python:menuimage and ' image_'+menuimagesize or ''"
+    tal:attributes="class string:sectionItem ${item_id}_menu visualNoMarker${firstItem}${lastItem} liLevel${li_level}${currentclass}${li_number}${hasChildrenClass} ${menuposition};
+                    style python:'z-index:'+str(100-num)+';;';">
+    <tal:defs tal:define="item_class python:is_current and ' sectionCurrentItem '+ review_state or ' '+review_state;
+                      description node/description | nothing;
+                      menuTitle python:'title' in menucontent;
+                      item_class python:menuTitle and item_class+' menuTitle' or item_class;
+                      menuDescription python:description and 'description' in menucontent;
+                      item_class python:menuDescription and item_class+' menuDescription' or item_class;
+                      menuImage python:menuimage and 'image' in menucontent;
+                      item_class python:menuImage and item_class+' menuImage' or item_class;">
+          <a tal:attributes="href item_url;
+                             title description;
+                             class string:sectionText ${firstItem}${lastItem} ${item_class}${hasChildrenClass}">
+            <span tal:condition="menuImage" class="image" tal:content="structure menuimage"></span>
+            <span tal:condition="menuTitle" tal:content="node/name" class="title">Selected Item Title</span>
+            <span tal:condition="menuDescription" class="description" tal:content="description | nothing"></span>
+          </a>
+    </tal:defs>
+    <ul tal:condition="displaySubMenu"
+        tal:define="menuclass python:level == 1 and ' sectionSubmenu smenu' or ' smenu';
+                    hoverClass string:sectionTree ${submenudisplay} ;"
+        tal:attributes="class python:hoverClass+'sectionTreeLevel'+str(level)+menuclass+' columns_'+menucolumns+useflexbox;
+                        id python:level == 1 and item_id+'_smenu' or None;
+                        style python:menustyle">  
+        <span tal:replace="structure python:view.recurse(parent=node, children=children, level=level+1)" />
+    </ul>
+    <div tal:condition="python:sectionmenuitem != None"
+        tal:define="menuclass python:level == 1 and ' sectionSubmenu smenu menuPage' or 'menuPage';
+                    menuclass python:displaySubMenuItem and menuclass+' hasSubMenu' or menuclass;"
+        tal:attributes="class python:'sectionTree sectionTreeLevel'+str(level)+menuclass;
+                        id python:level == 1 and item_id+'_smenu' or None;
+                        style python:menustyle"
+        style="display:none;">
+      <ul tal:condition="displaySubMenuItem"
+          tal:define="menuclass python:level == 1 and ' sectionSubmenu smenu ' or ' smenu';
+                      hoverClass string:sectionTree ${submenudisplay} ;"
+          tal:attributes="class python:hoverClass+'sectionTreeLevel'+str(level)+menuclass+' '+showmenu+' columns_'+menucolumns+useflexbox;
+                          id python:level == 1 and item_id+'_smenu' or None;
+                          style python:submenuwidth and 'width:'+submenuwidth or None"
+          style="display:none;">  
+          <span tal:replace="structure python:view.recurse(parent=node, children=children, level=level+1)" />
+      </ul>
+      <div class="menuContent" tal:content="structure sectionmenuitem"
+          tal:attributes="class python:'menuContent'+' '+showmenu;
+                          style python:contentstyle;
+                          id python:view.has_p4 and 'content' or None"/>
+    </div>
+</li>
+</tal:number>
+</tal:navitem>
+</tal:global>
+</metal:main>
+</tal:master>

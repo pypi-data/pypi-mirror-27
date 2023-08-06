@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object>
+  <hidden manager="plone.portaltop" skinname="Plone Default">
+    <viewlet name="solgema.richmenu_sections" />
+  </hidden>
+  <hidden manager="plone.portalheader" skinname="Plone Default">
+    <viewlet name="plone.global_sections" />
+    <viewlet name="solgema.richmenu_sections" />
+  </hidden>
+  <hidden manager="plone.mainnavigation" skinname="Plone Default">
+    <viewlet name="plone.global_sections" />
+  </hidden>
+  <order manager="plone.mainnavigation" skinname="Plone Default">
+    <viewlet name="solgema.richmenu_sections" insert-after="plone.global_sections" />
+  </order>
+</object>

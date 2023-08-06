@@ -1,0 +1,289 @@
+.icon-controlpanel-RichMenuSettings:before,
+.icon-navigation_menu_properties:before {
+  content: '\e838';
+}
+
+#portal-globalnav {
+  position: relative;
+  width: 100%;
+}
+
+#portal-globalnav ul {
+  padding-left: 0;
+  list-style-type: none;
+  min-width: 200px;
+  background-color: #f2f1f1;
+}
+
+#portal-globalnav ul li {
+  border-bottom: 1px solid #dddada;
+  width: 100%;
+}
+
+#portal-globalnav ul li a {
+  padding: 1em;
+  display: block;
+}
+
+#portal-globalnav ul li a:focus,
+#portal-globalnav ul li a:hover,
+#portal-globalnav ul li a:hover .image {
+  color: white;
+  background-color: #7099bf;
+  text-decoration: none;
+}
+
+#portal-globalnav ul li.menuhover > a,
+#portal-globalnav ul li.menuhover > a .image {
+  color: white;
+  background-color: #7099bf;
+  text-decoration: none;
+}
+
+#portal-globalnav ul.useflexbox {
+  align-items: stretch;
+}
+
+#portal-globalnav ul.useflexbox li > a {
+  height: 100%;
+}
+
+#portal-globalnav ul.useflexbox li > a.hasChildren {
+  height: auto;
+}
+
+#portal-globalnav ul.columns_2 {
+  min-width: 250px;
+}
+
+#portal-globalnav ul.columns_2 li.liLevel1 {
+  width: 50%;
+  float: left;
+  -webkit-box-flex: 0 1 48%;
+  -moz-box-flex: 0 1 48%;
+  -webkit-flex: 0 1 48%;
+  -ms-flex: 0 1 48%;
+  flex: 0 1 48%;
+}
+
+#portal-globalnav ul.columns_3 {
+  min-width: 300px;
+}
+
+#portal-globalnav ul.columns_3 li.liLevel1 {
+  width: 33.3%;
+  float: left;
+  -webkit-box-flex: 0 1 31%;
+  -moz-box-flex: 0 1 31%;
+  -webkit-flex: 0 1 31%;
+  -ms-flex: 0 1 31%;
+  flex: 0 1 31%;
+}
+
+#portal-globalnav ul.columns_4 {
+  min-width: 400px;
+}
+
+#portal-globalnav ul.columns_4 li.liLevel1 {
+  width: 25%;
+  float: left;
+  -webkit-box-flex: 0 1 23%;
+  -moz-box-flex: 0 1 23%;
+  -webkit-flex: 0 1 23%;
+  -ms-flex: 0 1 23%;
+  flex: 0 1 23%;
+}
+
+#portal-globalnav li {
+  position: relative;
+}
+
+#portal-globalnav li.right > .sectionTreeLevel1 {
+  right: 0;
+  left: auto;
+}
+
+#portal-globalnav li.left > .sectionTreeLevel1 {
+  right: auto;
+  left: 0;
+}
+
+#portal-globalnav li.center > .sectionTreeLevel1 {
+  right: auto;
+  left: 50%;
+}
+
+#portal-globalnav li.right_site,
+#portal-globalnav li.left_site {
+  position: static !important;
+}
+
+#portal-globalnav li.left_site > .sectionTreeLevel1 {
+  left: 0;
+}
+
+#portal-globalnav li.right_site > .sectionTreeLevel1 {
+  right: 0;
+}
+
+#portal-globalnav li.menuhover > a {
+  background-color: #7099bf;
+}
+
+#portal-globalnav li.menuhover > ul,
+#portal-globalnav li.menuhover > .menuPage > ul {
+  display: block;
+}
+
+#portal-globalnav li.menuhover > ul.useflexbox,
+#portal-globalnav li.menuhover > .menuPage > ul.useflexbox {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+#portal-globalnav.hover li > .sectionTree,
+#portal-globalnav.click li > .sectionTree {
+  display: none;
+  position: absolute;
+}
+
+#portal-globalnav.hover li:hover > .sectionTree,
+#portal-globalnav.click li.menuhover > .sectionTree {
+  display: block;
+  z-index: 100;
+}
+
+#portal-globalnav.hover li:hover > .sectionTree.useflexbox,
+#portal-globalnav.click li.menuhover > .sectionTree.useflexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+#portal-globalnav .sectionTreeLevel1 .sectionTreeLevel2.always {
+  border-left: none;
+  display: block !important;
+  left: 0 !important;
+  top: 0 !important;
+  position: relative;
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+#portal-globalnav .sectionTreeLevel1 .sectionTreeLevel2.always li.liLevel2 a.sectionText {
+  padding: 0.5em;
+}
+
+#portal-globalnav .sectionTreeLevel1 ul {
+  position: abolute;
+  top: 0;
+  left: 100%;
+  border-left: 1px solid #dddada;
+}
+
+#portal-globalnav .menuPage {
+  width: 400px;
+  float: none;
+  padding: 1.5em;
+  background: #f2f1f1;
+  font-size: 90%;
+  zoom: 1;
+}
+
+#portal-globalnav .menuPage .sectionTreeLevel1 {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+#portal-globalnav .menuPage .sectionTree.left,
+#portal-globalnav .menuPage .sectionTreeLevel1.left {
+  float: left;
+}
+
+#portal-globalnav .menuPage .sectionTree.right,
+#portal-globalnav .menuPage .sectionTreeLevel1.right {
+  float: right;
+}
+
+#portal-globalnav .menuPage #viewlet-above-content-title,
+#portal-globalnav .menuPage #viewlet-below-content-title,
+#portal-globalnav .menuPage #viewlet-below-content-body,
+#portal-globalnav .menuPage .documentActions,
+#portal-globalnav .menuPage .reviewHistory {
+  display: none;
+}
+
+#portal-globalnav .menuPage.sectionTreeLevel1 {
+  display: block;
+}
+
+#portal-globalnav .menuPage.sectionTreeLevel1 a.sectionText {
+  border-bottom: none;
+}
+
+#portal-globalnav .menuPage.sectionTreeLevel1 ul {
+  border-left: none;
+}
+
+#portal-globalnav .menuPage.hasSubMenu {
+  width: 500px;
+}
+
+#portal-globalnav .menuContent {
+  overflow: auto;
+  float: none;
+  color: #4d4d4d;
+}
+
+#portal-globalnav .hasSubMenu .menuContent {
+  width: auto;
+}
+
+#portal-globalnav .hasSubMenu .menuContent.right {
+  margin-right: 200px;
+}
+
+#portal-globalnav .hasSubMenu .menuContent.left {
+  margin-left: 200px;
+  clear: none;
+}
+
+#portal-globalnav .menuDescription .title {
+  display: block;
+  border-bottom: 1px solid #DDDADA;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+#portal-globalnav .menuImage .title,
+#portal-globalnav a.always {
+  display: block;
+  border-bottom: 1px solid #DDDADA;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+#portal-globalnav a.menuImage {
+  overflow: auto;
+}
+
+#portal-globalnav a.menuImage .image {
+  display: block;
+  background-color: #f2f1f1;
+  float: left;
+  margin-right: 1em;
+}
+
+

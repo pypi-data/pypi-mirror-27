@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="Solgema.RichMenu">
+
+  <adapter factory=".catalog.getGlobalSectionItem" name="section_menu_item" />
+  <adapter factory=".catalog.getGlobalSectionShowMenu" name="show_menu" />
+  <adapter factory=".catalog.getGlobalSectionMenuWidth" name="menu_width" />
+  <adapter factory=".catalog.getGlobalSectionMenuContent" name="menu_content" />
+  <adapter factory=".catalog.getGlobalSectionMenuColumns" name="menu_columns" />
+  <adapter factory=".catalog.getGlobalSectionMenuPosition" name="menu_position" />
+  <adapter factory=".catalog.getGlobalSectionSubMenuWidth" name="submenu_width" />
+  <adapter factory=".catalog.getGlobalSectionMenuSectionsDepth" name="menu_sections_depth" />
+  <adapter factory=".catalog.getGlobalSectionMenuDirection" name="menu_direction" />
+  <adapter factory=".catalog.getGlobalSectionSubMenuDisplay" name="submenu_display" />
+  <adapter factory=".catalog.getGlobalSectionMenuImageSize" name="menu_image_size" />
+  <adapter factory=".catalog.getGlobalSectionMenuItemContent" name="menu_item_content" />
+
+</configure>

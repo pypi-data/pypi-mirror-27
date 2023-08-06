@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file holds the setup configuration for the portal_skins tool -->
+
+<object name="portal_skins">
+
+ <object name="solgemarichmenu"
+    meta_type="Filesystem Directory View"
+    directory="Solgema.RichMenu:skins/solgemarichmenu"/>
+
+ <skin-path name="*">
+  <layer name="solgemarichmenu"
+     insert-after="custom"/>
+ </skin-path>
+
+</object>

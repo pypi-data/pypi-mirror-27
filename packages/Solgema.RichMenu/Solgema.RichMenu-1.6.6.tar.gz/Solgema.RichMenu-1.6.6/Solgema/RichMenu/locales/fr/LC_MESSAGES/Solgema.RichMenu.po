@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solgema\n"
+"POT-Creation-Date: 2016-04-22 13:45+0000\n"
+"PO-Revision-Date: 2007-12-14 16:01+0100\n"
+"Last-Translator: Martronic SA <martronic@martronic.ch>\n"
+"Language-Team: EDF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: fr\n"
+"Language-Name: Français\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: Solgema.PortletsManager\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
+
+#: ../interfaces.py:106
+msgid "Column"
+msgstr "Colonne"
+
+#: ../interfaces.py:163
+msgid "Content item"
+msgstr "Élément de contenu"
+
+#: ../dx/interfaces.py:9
+#: ../interfaces.py:173
+msgid "Enable Submenues"
+msgstr "Activer le sous-menu"
+
+#: ../dx/interfaces.py:34
+#: ../interfaces.py:198
+msgid "Filter sections on workflow state"
+msgstr "Filtrer les menus sur l'état du workflow"
+
+#: ../browser/navigation.py:87
+#: ../dx/navigation.py:12
+msgid "Lets you control how main menu tabs bar is constructed in your site. You can also control the behavior of each tab by going onto the tab itself and click on Navigation in the toolbar."
+msgstr "Vous permet de controller comment la barre de navigation est construite dans votre site. Vous pouvez également contrôler le comportement de chaque onglet en allant sur l'onglet lui-même et en cliquant sur l'onglet de navigation dans la barre d'outils."
+
+#: ../upgrades/configure.zcml:17
+msgid "Move configuration panel to its own panel"
+msgstr ""
+
+#: ../dx/interfaces.py:48
+#: ../interfaces.py:212
+msgid "Number of folder levels to show in the submenues."
+msgstr "Nombre de niveaux à montrer dans les sous-menus."
+
+#: ../browser/content.py:48
+#: ../dx/content.py:12
+msgid "Rich Menu parameters"
+msgstr "Paramètres du Menu de navigation"
+
+#: ../browser/navigation.py:86
+#: ../dx/navigation.py:11
+msgid "RichMenu Settings"
+msgstr "Paramètres RichMenu"
+
+#: ../interfaces.py:105
+msgid "Row"
+msgstr "Ligne"
+
+#: ../dx/interfaces.py:16
+#: ../interfaces.py:180
+msgid "Sections displayed content types"
+msgstr "Types de contenus affichés dans le menu"
+
+#: ../dx/interfaces.py:10
+#: ../interfaces.py:174
+msgid "Show submenues in tabs."
+msgstr "Afficher les sous-menus dans les onglets."
+
+#: ../upgrades/configure.zcml:17
+msgid "Solgema RichMenu Upgrade 1.1"
+msgstr ""
+
+#: ../dx/interfaces.py:47
+#: ../interfaces.py:211
+msgid "Submenues depth"
+msgstr "Profondeur des sous-menus"
+
+#: ../dx/interfaces.py:17
+#: ../interfaces.py:181
+msgid "The content types that should be shown in the main navigation menu."
+msgstr "Les types de contenus à afficher dans le menu de navigation"
+
+#: ../dx/interfaces.py:35
+#: ../interfaces.py:199
+msgid "The workflow states that should be shown in the main navigation menu."
+msgstr "Les états du workflow devant être affichés dans le menu de navigation"
+
+#. Default: "Set the number of columns in the menu."
+#: ../interfaces.py:82
+msgid "help_menu_columns"
+msgstr "Nombre de colonnes dans le menu."
+
+#. Default: "Choose wether to display items by row or by column."
+#: ../interfaces.py:102
+msgid "help_menu_direction"
+msgstr "Choissisez si vous voulez organiser les éléments du sous-menu par colonne ou par ligne."
+
+#. Default: "Set the horizontal position of the menu."
+#: ../interfaces.py:46
+msgid "help_menu_position"
+msgstr "Alignement horizontal du menu par rapport à l'onglet ou au site"
+
+#. Default: "Set the depth of submenu to be displayed. Leave empty for default."
+#: ../interfaces.py:95
+msgid "help_menu_sections_depth"
+msgstr "Profondeur de sous-menus à afficher dans le menu."
+
+#. Default: "Set the width of the submenu (in 'px' or '%'). Leave blank for default setting."
+#: ../interfaces.py:40
+msgid "help_menu_width"
+msgstr "Largeur du sous-menu en px ou % (p.ex : 300px ou 120%). Laissez vide pour avoir la valeur par défaut."
+
+#. Default: "Choose an item that will be displayed in the drop down menu of this section."
+#: ../interfaces.py:152
+msgid "help_section_menu_item"
+msgstr "Choisissez un élément du site qui sera affiché dans le menu de navigation."
+
+#. Default: "Choose when to display the submenu."
+#: ../dx/interfaces.py:55
+#: ../interfaces.py:113
+msgid "help_submenu_display"
+msgstr "Choisissez quand est-ce que le menu doit s'afficher."
+
+#. Default: "Set the width of the submenu when displayed in a  (in 'px' or '%'). Leave blank for default setting."
+#: ../interfaces.py:146
+msgid "help_submenu_width"
+msgstr "Choisissez la largeur des éléments du sous-menu lorsqu'une page est affichée dans le menu. Laisser vide pour avoir la valeur par défaut."
+
+#. Default: "Always"
+#: ../dx/interfaces.py:60
+#: ../interfaces.py:118
+msgid "label_always"
+msgstr "Toujours"
+
+#. Default: "center (submenu width only in px)"
+#: ../interfaces.py:51
+msgid "label_center"
+msgstr "Centre"
+
+#. Default: "Mouse click"
+#: ../dx/interfaces.py:59
+#: ../interfaces.py:117
+msgid "label_click"
+msgstr "Clic souris"
+
+#. Default: "Content"
+#: ../interfaces.py:128
+msgid "label_content"
+msgstr "Contenu"
+
+#. Default: "Description"
+#: ../interfaces.py:62
+msgid "label_description"
+msgstr "Description"
+
+#. Default: "Mouse hover"
+#: ../dx/interfaces.py:58
+#: ../interfaces.py:116
+msgid "label_hover"
+msgstr "Survol souris"
+
+#. Default: "Image"
+#: ../interfaces.py:63
+msgid "label_image"
+msgstr "Image"
+
+#. Default: "left"
+#: ../interfaces.py:49
+msgid "label_left"
+msgstr "Gauche"
+
+#. Default: "site left (submenu width 100%)"
+#: ../interfaces.py:52
+msgid "label_left_site"
+msgstr "Gauche du site"
+
+#. Default: "Menu columns"
+#: ../interfaces.py:81
+msgid "label_menu_columns"
+msgstr "Nombre de colonnes"
+
+#. Default: "Wich content must be displayed in the menu?"
+#: ../interfaces.py:59
+msgid "label_menu_content"
+msgstr "Contenu du menu"
+
+#. Default: "Submenu items direction"
+#: ../interfaces.py:101
+msgid "label_menu_direction"
+msgstr "Direction des éléments du sous-menu"
+
+#. Default: "Wich size you want to use for the image in the menu?"
+#: ../interfaces.py:69
+msgid "label_menu_image_size"
+msgstr "Taille de l'image"
+
+#. Default: "Wich content must be displayed in the sub-menu?"
+#: ../interfaces.py:124
+msgid "label_menu_item_content"
+msgstr "Contenu du sous-menu"
+
+#. Default: "Menu position"
+#: ../interfaces.py:45
+msgid "label_menu_position"
+msgstr "Alignement du menu"
+
+#. Default: "Menu Sections depth"
+#: ../interfaces.py:94
+msgid "label_menu_sections_depth"
+msgstr "Profondeur du menu"
+
+#. Default: "Submenu width"
+#: ../interfaces.py:39
+msgid "label_menu_width"
+msgstr "Largeur du menu"
+
+#. Default: "right"
+#: ../interfaces.py:50
+msgid "label_right"
+msgstr "Droite"
+
+#. Default: "site right (submenu width 100%)"
+#: ../interfaces.py:53
+msgid "label_right_site"
+msgstr "Droite du site"
+
+#. Default: "Item displayed in menu"
+#: ../interfaces.py:151
+msgid "label_section_menu_item"
+msgstr "Élément à afficher"
+
+#. Default: "Show the submenu next to the page?"
+#: ../interfaces.py:134
+msgid "label_show_menu"
+msgstr "Afficher le sous-menu standard dans le menu?"
+
+#. Default: "Sub-menu display"
+#: ../dx/interfaces.py:54
+#: ../interfaces.py:112
+msgid "label_submenu_display"
+msgstr "Affichage du sous-menu"
+
+#. Default: "Sub-menu width"
+#: ../interfaces.py:145
+msgid "label_submenu_width"
+msgstr "Largeur du sous-menu"
+
+#. Default: "Title"
+#: ../interfaces.py:61
+msgid "label_title"
+msgstr "Titre"

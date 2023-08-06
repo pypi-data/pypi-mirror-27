@@ -1,0 +1,117 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="plone"
+      tal:omit-tag="">
+
+<body tal:omit-tag="">
+  <metal:content define-macro="content">
+    <div class="item visualIEFloatFix"
+         tal:define="portal_state context/@@plone_portal_state;
+                     context_state context/@@plone_context_state;
+                     plone_view context/@@plone;
+                     lang portal_state/language;
+                     view nocall:view | nocall: plone_view;
+                     dummy python: plone_view.mark_view(view);
+                     portal_url portal_state/portal_url;
+                     checkPermission nocall: context/portal_membership/checkPermission;
+                     site_properties context/portal_properties/site_properties;
+                     item_type context/portal_type;
+                     item_layout here/getLayout;
+                     override python: {'Link': 'link_view'};
+                     item_macro python:path('here/%s/macros/content-core | nothing' % override.get(item_type, item_layout));
+                     title_macro python:path('here/%s/macros/content-title | nothing' % override.get(item_type, item_layout));
+                     description_macro python:path('here/%s/macros/content-description | nothing' % override.get(item_type, item_layout));
+                     use_view_action site_properties/typesUseViewActionInListings|python:();
+                     item_url context/absolute_url;
+                     normalizeString nocall: context/plone_utils/normalizeString;
+                     item_type_class python: 'contenttype-' + normalizeString(item_type);
+                     kss_inline_editable python:False;
+                     defaultPageId context/getDefaultPage|nothing;
+                     defaultPage python:defaultPageId is not None and getattr(context, defaultPageId, None) or None;
+                     defaultPageLayout defaultPage/getLayout | python:'';
+                     item_selectedLayout python:defaultPage is None and context.getLayout() or hasattr(context,'getViewMethod') and defaultPageLayout or 'base_view';
+                     item_selectedLayout python:item_selectedLayout == 'atct_album_view' and 'atct_album_view'+here.get_plone_version() or item_selectedLayout;">
+
+
+      <tal:standard tal:condition="python:not defaultPageId"
+       tal:define="base_view nocall:view;
+                   view python:context.restrictedTraverse('@@'+item_selectedLayout, view);
+                   macros_view_path python:'here/'+ item_selectedLayout + '/macros';
+                   macro_tuples python:[(a[1][2][1][0], a[0]) for a in path(macros_view_path).items()];
+                   macro_tuples_sorting python:macro_tuples.sort(lambda x, y: cmp(x[0], y[0]));
+                   macro_keys python:[a[1] for a in macro_tuples if a[1] in ['content-core', 'main']];
+                   has_master_key python:len([a[1] for a in macro_tuples if a[1] == 'master'])>0;
+                   java_key python:[a[1] for a in macro_tuples if a[1] in ['javascript_head_slot']];
+                   macro_key python:macro_keys and macro_keys[0] or False;
+                   macro_view_path python:macro_key and macros_view_path+'/'+macro_key or '';
+                   master_view_path python:macro_key and has_master_key and macros_view_path+'/master' or 'context/main_template/macros/main';
+                   base_ajax_content_load python:request.get('ajax_content_load');
+                   base_ajax_load python:request.get('ajax_load');
+                   dummy python:context.REQUEST.set('ajax_content_load',1);
+                   dummy python:request.set('ajax_content_load',1);
+                   dummy python:context.REQUEST.set('ajax_load',1);
+                   dummy python:request.set('ajax_load',1);
+                   ajax_load python:True;
+                   ajax_content_load python:True">
+
+          <tal:java tal:condition="java_key">
+            <metal:expand use-macro="python:path(macros_view_path+'/javascript_head_slot')"/>
+          </tal:java>
+          
+          <tal:item tal:condition="python:not macro_key or 'fg_' in macros_view_path">
+            <tal:content tal:replace="structure context"/>
+          </tal:item>
+
+          <tal:item tal:condition="python:macro_key=='content-core' and not 'fg_' in macros_view_path">
+            <metal:main metal:use-macro="python:path(master_view_path)">
+               <metal:abovecontenttitle fill-slot="abovecontenttitle"></metal:abovecontenttitle>
+               <metal:belowcontenttitle fill-slot="belowcontenttitle"></metal:belowcontenttitle>
+               <metal:abovecontentbody fill-slot="abovecontentbody"></metal:abovecontentbody>
+               <metal:belowcontentbody fill-slot="belowcontentbody"></metal:belowcontentbody>
+               <metal:belowcontent fill-slot="belowcontent"></metal:belowcontent>
+               
+               <tal:content-core tal:condition="python:macro_key=='content-core'">
+                 <metal:title fill-slot="content-title">
+                   <h2 class="tileHeadline" tal:content="context/Title">
+                   </h2>
+                 </metal:title>
+                 <metal:content-core fill-slot="content-core">
+                   <metal:expand use-macro="python:path(macro_view_path)"/>
+                 </metal:content-core>
+               </tal:content-core>
+
+            </metal:main>
+          </tal:item>
+
+          <tal:item tal:condition="python:macro_key=='main' and not 'fg_' in macros_view_path">
+            <metal:main metal:use-macro="context/main_template/macros/content">
+
+                 <metal:contentviews_slot fill-slot="contentviews_slot"></metal:contentviews_slot>
+                 
+                 <metal:main-core fill-slot="body">
+                   <metal:expand use-macro="python:path(macro_view_path)"/>
+                 </metal:main-core>
+
+            </metal:main>
+          </tal:item>
+      <tal:ajax
+       define="dummy python:not base_ajax_content_load and context.REQUEST.set('ajax_content_load', False) or None;
+               dummy python:not base_ajax_content_load and request.set('ajax_content_load', False) or None;
+               dummy python:not base_ajax_load and context.REQUEST.set('ajax_load', False) or None;
+               dummy python:not base_ajax_load and request.set('ajax_load', False) or None;
+               view nocall:base_view"/>
+      </tal:standard>
+
+      <tal:defaultPage tal:define="here nocall: defaultPage;
+                                   context nocall: defaultPage;"
+        tal:condition="python:defaultPageId and here">
+          <metal:expand use-macro="here/folder_full_view_item/macros/content"/>
+      </tal:defaultPage>
+                   
+    </div>
+  </metal:content>
+</body>
+</html>

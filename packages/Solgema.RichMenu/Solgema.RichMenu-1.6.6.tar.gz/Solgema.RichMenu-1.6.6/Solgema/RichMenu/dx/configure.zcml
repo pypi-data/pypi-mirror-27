@@ -1,0 +1,46 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="Solgema.FlowView">
+
+  <include package="plone.app.contenttypes"/>
+  <adapter name="richmenu_migrator" factory=".migration.RichMenuMigator"/>
+
+  <plone:behavior
+    title="RichMenu"
+    description="Rich Menu settings."
+    provides="Solgema.RichMenu.interfaces.ISolgemaRichMenuAttributes"
+    factory="plone.behavior.AnnotationStorage"
+    marker="Solgema.RichMenu.interfaces.ISolgemaRichMenuMarker"
+    />
+
+  <!-- Navigation Control Panel -->
+  <browser:page
+    name="richmenu-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".navigation.RichMenuControlPanel"
+    permission="plone.app.controlpanel.Navigation"
+    />
+
+  <browser:page
+     for="plone.dexterity.interfaces.IDexterityContent"
+     name="rich_menu_properties"
+     class=".content.ManageSolgemaRichMenuAttributes"
+     permission="zope2.View"
+     />
+
+  <browser:page
+      name="richmenu_view_item"
+      for="*"
+      class="plone.app.contenttypes.browser.full_view.FullViewItem"
+      template="richmenu_view_item.pt"
+      layer="plone.app.contenttypes.interfaces.IPloneAppContenttypesLayer"
+      permission="zope2.View"
+      />
+      
+</configure>

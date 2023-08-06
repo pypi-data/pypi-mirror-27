@@ -1,0 +1,49 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:zcml="http://namespaces.zope.org/zcml">
+
+    <!-- The global sections -->
+    <browser:viewlet zcml:condition="have plone-5"
+        name="solgema.richmenu_sections"
+        manager="plone.app.layout.viewlets.interfaces.IMainNavigation"
+        class=".common.GlobalSectionsViewlet"
+        permission="zope2.View"
+        layer="Solgema.RichMenu.interfaces.ISolgemaRichMenuLayer"
+        />
+
+    <browser:viewlet
+        name="solgema.richmenu_sections"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".common.GlobalSectionsViewlet"
+        permission="zope2.View"
+        layer="Solgema.RichMenu.interfaces.ISolgemaRichMenuLayer"
+        />
+        
+    <browser:viewlet
+        name="solgema.richmenu_sections"
+        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+        class=".common.GlobalSectionsViewlet"
+        permission="zope2.View"
+        layer="Solgema.RichMenu.interfaces.ISolgemaRichMenuLayer"
+        />
+
+    <browser:page
+        for="*"
+        name="richmenu_sections_content"
+        class=".common.GlobalSectionsContentPage"
+        template="sections_content.pt"
+        permission="zope.Public"
+        layer="Solgema.RichMenu.interfaces.ISolgemaRichMenuLayer"
+        />
+
+    <browser:page
+        for="*"
+        name="richmenu_sections"
+        class=".common.GlobalSectionsPage"
+        permission="zope.Public"
+        template="sections_page.pt"
+        layer="Solgema.RichMenu.interfaces.ISolgemaRichMenuLayer"
+        />
+
+</configure>

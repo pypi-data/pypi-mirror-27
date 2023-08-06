@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+   i18n:domain="Solgema.RichMenu">
+
+ <object name="object" meta_type="CMF Action Category">
+ 
+  <object name="navigation_menu_properties" meta_type="CMF Action" i18n:domain="Martronic.Solgema">
+   <property name="title" i18n:translate="">Navigation</property>
+   <property name="description" i18n:translate="">Edit the navigation menu properties</property>
+   <property name="url_expr">string:$object_url/@@rich_menu_properties</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">python:path('object/@@rich_menu_control').showSolgemaRichMenuAction()</property>
+   <property name="permissions">
+    <element value="Modify portal content"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+ </object>
+
+</object>
