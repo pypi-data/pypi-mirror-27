@@ -1,0 +1,14 @@
+Party:
+  label: "Party"
+  extends: Interest
+  icon: fa-birthday-cake
+  fuzzy: false
+  properties:
+    party: 
+      label: "Party"
+      type: entity
+      schema: Thing
+    case:
+      label: "Case"
+      type: entity
+      schema: CourtCase
