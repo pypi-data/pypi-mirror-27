@@ -1,0 +1,4 @@
+[console_scripts]
+django-settings-disable-app = django_settings_cmd.command_line:disable_app
+django-settings-enable-app = django_settings_cmd.command_line:enable_app
+
