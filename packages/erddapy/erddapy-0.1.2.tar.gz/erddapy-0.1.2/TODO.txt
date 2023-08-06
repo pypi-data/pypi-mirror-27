@@ -1,0 +1,4 @@
+- add all the kwargs and options to the constructor
+- provide the URL constructors with .(info/search/download).response[csv/html/nc, etc]
+- auto update the URLs if any option in the constructor is change
+- validate the URL only when it is requested to avoid breakages
