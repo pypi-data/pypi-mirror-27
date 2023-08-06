@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import sys
+import os
+
+from rapidpro_controller import (get_logger, run_command, MASTER, THIS_SERVER,
+                                 WORKING, DISABLED, TRANSIANT,
+                                 log_success, log_failure)
+from rapidpro_controller.states import get_local_role, get_local_status
+from rapidpro_controller.alerts import alert
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main():
+    role = get_local_role()
+    status = get_local_status()
+
+    if role == MASTER and status == WORKING:
+        # we are alone now but don't react to it.
+        logger.info("received peer-failure-notif. ignoring as working master.")
+        return
+
+    elif role == MASTER:
+        # hum. we're not ready and peer crashed. alert team
+        logger.warning("received peer-failure-notif. "
+                       "alerting as non-working master.")
+
+        message = "{server} received peer-failure notif request but is a " \
+                  "non-working master ({status})" \
+                  .format(server=THIS_SERVER, status=status)
+        success, _, _, _, _, _ = alert(message)
+        return 0
+
+    # we're a slave
+    if status in (WORKING, DISABLED):
+        # ok, we've been waiting for it.
+        # let's promote to master \o/
+        logger.info("received peer-failure-notif. "
+                    "alerting as non-working master.")
+
+        if run_command(['rapidpro-change-role', 'master', '--force']) == 0:
+            log_success(logger, msg="became a master \o/")
+        else:
+            log_failure(logger, msg="could not become a master")
+
+    if status == TRANSIANT:
+        # hum. can't guess what's going on. let's inform the team
+        logger.error("received peer-failure-notif. "
+                     "alerting as slave in transiant state.")
+
+        message = "{server} received peer-failure notif request but is a " \
+                  "slave in transiant state." \
+                  .format(server=THIS_SERVER)
+        success, _, _, _, _, _ = alert(message)
+        return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

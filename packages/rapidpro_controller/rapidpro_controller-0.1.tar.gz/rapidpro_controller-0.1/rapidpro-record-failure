@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import sys
+import os
+
+from rapidpro_controller import get_logger, run_command, FAILURE, DISABLED
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main(args):
+    logger.critical("received failure event. {}"
+                    .format(", ".join(args)))
+
+    # change state to `failure`
+    run_command(['rapidpro-set-status', FAILURE])
+
+    # disable components
+    run_command(['rapidpro-disable'])
+
+    # stop all services
+    run_command(['rapidpro-stop'])
+
+    # change state to `disabled`
+    run_command(['rapidpro-set-status', DISABLED])
+
+    # inform peer
+    run_command(['rapidpro-notify-peer'])
+
+    # alert team
+    run_command(['rapidpro-alert'])
+
+
+if __name__ == '__main__':
+    main(sys.argv[1:])

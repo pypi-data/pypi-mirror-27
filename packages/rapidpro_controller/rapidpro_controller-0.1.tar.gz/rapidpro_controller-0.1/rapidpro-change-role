@@ -1,0 +1,73 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4 nu
+
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+import sys
+import os
+
+from termcolor import colored
+
+from rapidpro_controller import (get_logger, run_command, ROLES,
+                                 log_success, log_failure, LDANGER, get_color)
+from rapidpro_controller.states import get_local_role
+from rapidpro_controller.transitions import change_role
+
+logger = get_logger(os.path.basename(__file__))
+
+
+def main(args):
+    new_role = args[0] if len(args) else ""
+    if new_role not in ROLES:
+        logger.error("Unable to change to role `{}` which doesnt exist."
+                     .format(new_role))
+        return 1
+
+    role = get_local_role()
+    if new_role == role:
+        logger.error("Unable to change to role `{}`. Already at this role."
+                     .format(new_role))
+        return 1
+
+    execute_change = '--force' in args[1:]
+    can_change, procedure = change_role(new_role)
+    commands_list = "\n\t".join([" ".join(e) for e in procedure])
+
+    if execute_change:
+        logger.info("Attempting to automaticaly change to `{role}` "
+                    "by running the following commands:\n\t{cmds}"
+                    .format(role=new_role, cmds=commands_list))
+
+        failed_commands = []
+        for entry in procedure:
+            command = " ".join(entry)
+            logger.info(". running: `{}`".format(command))
+            if run_command(entry) == 0:
+                log_success(logger)
+            else:
+                log_failure(logger)
+                failed_commands.append(command)
+
+        if failed_commands:
+            logger.error("Failed to run {nb} commands: {cmds}"
+                         .format(nb=len(failed_commands),
+                                 cmds=",".join(failed_commands)))
+            logger.error("{warn} commands have failed so status might be "
+                         "incoherent at the moment. Please check output "
+                         "and fix status accordingly."
+                         .format(warn=colored("!! WARNING !!",
+                                              get_color(LDANGER))))
+
+        return len(failed_commands) == 0
+    else:
+        if not can_change:
+            return 1
+        logger.info("To change role to `{role}`, "
+                    "execute the following commands:\n\t{cmds}"
+                    .format(role=new_role, cmds=commands_list))
+        return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))
