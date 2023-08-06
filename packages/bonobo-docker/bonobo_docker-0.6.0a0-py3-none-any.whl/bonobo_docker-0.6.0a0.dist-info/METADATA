@@ -1,0 +1,25 @@
+Metadata-Version: 2.0
+Name: bonobo-docker
+Version: 0.6.0a0
+Summary: Docker extension for Bonobo
+Home-page: https://www.bonobo-project.org/with/docker
+Author: Romain Dorgueil
+Author-email: romain@dorgueil.net
+License: Apache License, Version 2.0
+Download-URL: https://github.com/python-bonobo/bonobo-docker/tarball/0.6.0a0
+Platform: UNKNOWN
+Requires-Dist: bonobo (~=0.6.0a4)
+Requires-Dist: docker (~=2.7)
+Requires-Dist: requests (~=2.16)
+Requires-Dist: semantic-version (~=2.6)
+Provides-Extra: dev
+Requires-Dist: bonobo (~=0.6.0a4); extra == 'dev'
+Requires-Dist: coverage (<5.0,>=4.4); extra == 'dev'
+Requires-Dist: pytest (<4.0,>=3.1); extra == 'dev'
+Requires-Dist: pytest-cov (<3.0,>=2.5); extra == 'dev'
+Requires-Dist: sphinx (<2.0,>=1.6); extra == 'dev'
+Requires-Dist: yapf; extra == 'dev'
+
+UNKNOWN
+
+
