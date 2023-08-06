@@ -1,0 +1,59 @@
+Metadata-Version: 2.0
+Name: django-fluo-legal
+Version: 1.0a0
+Summary: A reuseable Django application for EU cookielaw and T&C/TOS handling.
+Home-page: https://bitbucket.org/rsalmaso/django-fluo-legal
+Author: Raffaele Salmaso
+Author-email: raffaele@salmaso.org
+License: MIT
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 1.10
+Classifier: Framework :: Django :: 1.11
+Classifier: Framework :: Django :: 2.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.4
+
+# django-fluo-legal #
+A Django application to handle european/italian cookie law and versioned T&C.
+
+## install ##
+Just include `legal.apps.LegalConfig` into your `INSTALLED_APPS`
+```
+#!python
+
+INSTALLED_APPS += [ "legal.apps.LegalConfig" ]
+```
+
+
+## templatetag ##
+Show an overlay box to inform about privacy/cookies.
+
+Load the templatetag in your base template
+```
+#!html
+{% load legal_tags %}
+
+  ...
+  {% cookielaw %}
+  </body>
+</html>
+```
+
+You can customize the box overriding `templates/legal/cookielaw.css`
+and/or `templates/legal/cookielaw.html` or using the templatetag
+parameters:
+
+* `banner`: [default=`legal/cookielaw.html`]
+* `name`: [default=`legal_cookielaw_accepted`]
+* `id`: [default=`CookieLawBanner`]
+* `js`: [default=`legal/cookielaw.js`]
+* `css`: [default=`legal/cookielaw.css`]
+
+

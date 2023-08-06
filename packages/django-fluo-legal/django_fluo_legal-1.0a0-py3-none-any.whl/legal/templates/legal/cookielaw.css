@@ -1,0 +1,28 @@
+#{{ legal_cookielaw_banner_id }} {
+  z-index: 999999;
+  position: fixed;
+  bottom: 0;
+  border-radius: 16px;
+  background: #fff;
+  background-color: #a7a7a7;
+  opacity: 0.9;
+  width: 100%;
+}
+#{{ legal_cookielaw_banner_id }}-container {
+  margin: 0 auto;
+  padding: 1.2em;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+}
+#{{ legal_cookielaw_banner_id }}-message {
+  display: inline-block;
+  margin-left: 1.2em;
+  max-width: 90%;
+  white-space: normal;
+  vertical-align: middle;
+}
+#{{ legal_cookielaw_banner_id }}-btn {
+  margin-right: 1.2em;
+  padding-bottom: 1.2em;
+}

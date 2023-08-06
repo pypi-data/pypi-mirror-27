@@ -1,0 +1,9 @@
+{% load i18n %}
+<div id="{{ legal_cookielaw_banner_id }}">
+  <div id="{{ legal_cookielaw_banner_id }}-container">
+    <p id="{{ legal_cookielaw_banner_id }}-message">
+      {% blocktrans %}We use cookies to give you the best online experience. By using our website you agree to our use of cookies in accordance with our cookie policy.{% endblocktrans %}
+    </p>
+    <a id="{{ legal_cookielaw_banner_id }}-btn" class="btn btn-primary" href="javascript:_Cookielaw.accept();">{% trans "OK" %}</a>
+  </div>
+</div>
