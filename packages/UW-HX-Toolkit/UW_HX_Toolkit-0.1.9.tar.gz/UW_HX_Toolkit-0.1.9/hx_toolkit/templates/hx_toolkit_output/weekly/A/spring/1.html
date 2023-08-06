@@ -1,0 +1,36 @@
+{% load static %}
+
+<div class="row">
+    <div class="col-md-8">
+
+        <div class="myuw-card myuw-card-article">
+            <h3 class="myuw-card-title">The Long View</h3>
+            <p class="myuw-card-tagline">Weekly thoughts on making the most of your Husky Experience</p>
+
+            <div class="myuw-article-teaser-wrapper">
+                
+                    <img class="myuw-card-image-full"
+                         srcset="{% static 'hx_toolkit_output/images/does_resume_represent_you_480.jpg' %} 480w,
+                             {% static 'hx_toolkit_output/images/does_resume_represent_you_650.jpg' %} 650w,
+                             {% static 'hx_toolkit_output/images/does_resume_represent_you_780.jpg' %} 780w,
+                             {% static 'hx_toolkit_output/images/does_resume_represent_you_1000.jpg' %} 1000w"
+                         sizes="(max-width: 767px) 480vw,
+                            650px"
+                         src="{% static 'hx_toolkit_output/images/does_resume_represent_you_650.jpg' %}"
+                         alt="None">
+                
+
+                
+
+                <div class="myuw-article-teaser">
+                    <h4><span class="myuw-highlight">Does Your Résumé Represent You?</span></h4>
+                    <p><span class="myuw-highlight">Résumés tell the story of your skills and experience. Think you don't have any? Follow this 3-step process to mine your experiences and name your skills.<a href="/husky_experience?article=does-your-resume-represent-you">Here is the link to the article.</a></span></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>

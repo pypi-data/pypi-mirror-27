@@ -1,0 +1,38 @@
+{{ article.load_static_string }}
+
+<div class="row">
+    <div class="col-md-8">
+
+        <div class="myuw-card myuw-card-article">
+            <h3 class="myuw-card-title">The Long View</h3>
+            <p class="myuw-card-tagline">Weekly thoughts on making the most of your Husky Experience</p>
+
+            <div class="myuw-article-teaser-wrapper">
+                {%  with img=article.image_srcset_paths%}
+                    <img class="myuw-card-image-full"
+                         srcset="{{ img.480|safe }} 480w,
+                             {{ img.650|safe }} 650w,
+                             {{ img.780|safe }} 780w,
+                             {{ img.1000|safe }} 1000w"
+                         sizes="(max-width: 767px) 480vw,
+                            650px"
+                         src="{{ img.650|safe }}"
+                         alt="{{ article.image_alt_text }}">
+                {% endwith %}
+
+                {% if article.image_credit %}
+                    <p>{{ article.image_credit }}</p>
+                {% endif %}
+
+                <div class="myuw-article-teaser">
+                    <h4><span class="myuw-highlight">{{ article.title }}</span></h4>
+                    <p><span class="myuw-highlight">{{ article.short_body | safe }}<a href="/husky_experience?article={{ article.slug }}">Here is the link to the article.</a></span></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
