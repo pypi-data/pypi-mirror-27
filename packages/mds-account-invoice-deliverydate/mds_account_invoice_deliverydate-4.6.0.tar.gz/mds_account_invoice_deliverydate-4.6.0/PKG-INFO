@@ -1,0 +1,53 @@
+Metadata-Version: 1.1
+Name: mds_account_invoice_deliverydate
+Version: 4.6.0
+Summary: Tryton module to add delivery-date to invoices
+Home-page: https://www.m-ds.de/
+Author: m-ds GmbH
+Author-email: service@m-ds.de
+License: GPL-3
+Description-Content-Type: UNKNOWN
+Description: mds-account-invoice-deliverydate
+        ================================
+        This module adds a delivery date to the invoice, which is necessary in Germany.
+        Default for invoicedate is set to 'today'.
+        
+        Install
+        =======
+        
+        pip install mds-account-invoice-deliverydate
+        
+        Requires
+        ========
+        - Tryton 4.6
+        
+        Changes
+        =======
+        
+        *4.6.0 - 15/12/2017*
+        
+        - compatibility to Tryton 4.6
+        
+        *0.1.4 - 06/12/2017*
+        
+        - build package
+        
+Keywords: tryton invoice delivery date
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Framework :: Tryton
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Customer Service
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Office/Business :: Financial :: Accounting
+Classifier: Natural Language :: German
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
