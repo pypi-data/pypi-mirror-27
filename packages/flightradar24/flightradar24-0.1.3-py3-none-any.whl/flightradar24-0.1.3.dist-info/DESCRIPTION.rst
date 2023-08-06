@@ -1,0 +1,88 @@
+Copyright (c) 2017 Mehmet Korkmaz <mehmet@mkorkmaz.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Description-Content-Type: UNKNOWN
+Description: flightradar24.py
+        ================
+        
+        |Travis|_ |Coveralls|_ |Codacy|_ |Scrutinizer|_
+        
+        .. |Travis| image:: https://api.travis-ci.org/mkorkmaz/flightradar24.svg?branch=master
+        .. _Travis: https://travis-ci.org/mkorkmaz/flightradar24
+        
+        .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/8c51d54a63c44c88839d07f61848df6d
+        .. _Codacy: https://www.codacy.com/app/mehmet/flightradar24/
+        
+        .. |Coveralls| image:: https://coveralls.io/repos/github/mkorkmaz/flightradar24/badge.svg?branch=master
+        .. _Coveralls: https://coveralls.io/github/mkorkmaz/flightradar24?branch=master
+        
+        .. |Scrutinizer| image:: https://scrutinizer-ci.com/g/mkorkmaz/flightradar24/badges/quality-score.png?b=master
+        .. _Scrutinizer: https://scrutinizer-ci.com/g/mkorkmaz/flightradar24/?branch=master
+        
+        Data library for Flightadar24.com written in Python 3.
+        
+        If you want to use  the data collected using this library commercially, You need to subscribe to Business Plan. See details at  `https://www.flightradar24.com/premium/ <https://www.flightradar24.com/premium/>`_
+        
+        
+        Installing flightradar24.py
+        ===========================
+        
+        .. code-block:: bash
+        
+            pip3 install flightradar24
+        
+        
+        Getting airports list
+        
+        .. code-block:: python
+        
+            import flightradar24
+            fr = flightradar24.Api()
+            airlines = fr.get_airports()
+        
+        Getting airlines list
+        
+        .. code-block:: python
+        
+            import flightradar24
+            fr = flightradar24.Api()
+            airlines = fr.get_airlines()
+        
+        Getting flights list
+        
+        .. code-block:: python
+        
+            import flightradar24
+            airline = 'THY' # Turkish Airlines
+            fr = flightradar24.Api()
+            flights = fr.get_flights(airline)
+        
+        
+        Getting flight details
+        
+        .. code-block:: python
+        
+            import flightradar24
+            flight_id = 'TK1' # Turkish Airlines' Istanbul - New York flight
+            fr = flightradar24.Api()
+            flight = fr.get_flight(flight_id)
+        
+        
+        Notes
+        =====
+        
+        * flightradar24.py will not follow the `semantic versioning scheme <http://semver.org/>`_ until the version 1.0.0. So there may be BC breaks.
+        
+        
+        Credits
+        =======
+        
+        * `Mehmet Korkmaz <http://github.com/mkorkmaz>`_
+        
+        
+        
+Platform: UNKNOWN
