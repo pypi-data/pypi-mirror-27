@@ -1,0 +1,52 @@
+Metadata-Version: 2.0
+Name: bnet
+Version: 0.2
+Summary: Battle.net API Wrapper
+Home-page: https://github.com/nzagorsky/bnet
+Author: Nikita Zagorskiy
+Author-email: toltenos@gmail.com
+License: MIT
+Download-URL: https://github.com/nzagorsky/bnet/tarball/v0.2
+Description-Content-Type: UNKNOWN
+Keywords: battle.net,wow,warcraft,pypi,sc2,setup,api
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: requests
+
+
+Battle.net API for Python
+=========================
+
+
+Usage:
+------
+
+.. code-block:: python
+
+    >>> from api.connection import BattleNetConnection
+    >>> connection = BattleNetConnection(apikey=<BATTLE_NET_APIKEY>)
+    >>> client = conn.client()
+    >>> client.get_auction_data(server)
+
+
+Documentation:
+--------------
+https://dev.battle.net/io-docs
+
+
+Tests:
+------
+
+.. code-block:: sh
+
+   $ export BATTLE_NET_APIKEY=<BATTLE_NET_APIKEY>
+   $ make test
+
+
