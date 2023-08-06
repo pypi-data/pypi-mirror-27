@@ -1,0 +1,28 @@
+Metadata-Version: 2.0
+Name: IST411Team1
+Version: 1.0.1
+Summary: A Python project which retrieves a JSON via CURL and sends it along various Nodes to a final destination, performing various operations on the JSON along the way.
+Home-page: https://128.118.251.244/home/Team1/repository
+Author: IST 411 Team 1
+Author-email: jdg5591@psu.edu
+License: MIT
+Description-Content-Type: UNKNOWN
+Keywords: IST411Team1 ProjectDiamond
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: peppercorn
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+
+The Project Diamond application passes a JSON payload from one node to the next, using different server
+Every activity is logged to a MongoDB using node5's Node5 log method. P2P payload time is calculated 
+using Team 1's p2p module; the total P2P time is also calculated in node1 since it is the last node to 
+receive a payload.
+
+
