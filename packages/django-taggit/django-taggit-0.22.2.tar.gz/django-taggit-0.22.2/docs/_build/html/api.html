@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The API &#8212; django-taggit 0.12 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Customizing taggit" href="custom_tagging.html" />
+    <link rel="prev" title="Using tags in the admin" href="admin.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="custom_tagging.html" title="Customizing taggit"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="admin.html" title="Using tags in the admin"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-api">
+<h1>The API<a class="headerlink" href="#the-api" title="Permalink to this headline">¶</a></h1>
+<p>After you&#8217;ve got your <code class="docutils literal"><span class="pre">TaggableManager</span></code> added to your model you can start
+playing around with the API.</p>
+<dl class="class">
+<dt id="TaggableManager">
+<em class="property">class </em><code class="descname">TaggableManager</code><span class="sig-paren">(</span><span class="optional">[</span><em>verbose_name=&quot;Tags&quot;</em>, <em>help_text=&quot;A comma-separated list of tags.&quot;</em>, <em>through=None</em>, <em>blank=False</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#TaggableManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>verbose_name</strong> &#8211; The verbose_name for this field.</li>
+<li><strong>help_text</strong> &#8211; The help_text to be used in forms (including the admin).</li>
+<li><strong>through</strong> &#8211; The through model, see <a class="reference internal" href="custom_tagging.html"><span class="doc">Customizing taggit</span></a> for more
+information.</li>
+<li><strong>blank</strong> &#8211; Controls whether this field is required.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="TaggableManager.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>*tags</em><span class="sig-paren">)</span><a class="headerlink" href="#TaggableManager.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>This adds tags to an object. The tags can be either <code class="docutils literal"><span class="pre">Tag</span></code> instances, or
+strings:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">apple</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apple</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">,</span> <span class="s">&quot;fruit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="TaggableManager.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>*tags</em><span class="sig-paren">)</span><a class="headerlink" href="#TaggableManager.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a tag from an object. No exception is raised if the object
+doesn&#8217;t have that tag.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TaggableManager.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TaggableManager.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all tags from an object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TaggableManager.set">
+<code class="descname">set</code><span class="sig-paren">(</span><em>*tags</em>, <em>clear=False</em><span class="sig-paren">)</span><a class="headerlink" href="#TaggableManager.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal"><span class="pre">clear</span> <span class="pre">=</span> <span class="pre">True</span></code> removes all the current tags and then adds the
+specified tags to the object. Otherwise sets the object&#8217;s tags to those
+specified, removing only the missing tags and adding only the new tags.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TaggableManager.similar_objects">
+<code class="descname">similar_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TaggableManager.similar_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list (not a lazy <code class="docutils literal"><span class="pre">QuerySet</span></code>) of other objects tagged
+similarly to this one, ordered with most similar first. Each object in
+the list is decorated with a <code class="docutils literal"><span class="pre">similar_tags</span></code> attribute, the number of
+tags it shares with this object.</p>
+<p>If the model is using generic tagging (the default), this method
+searches tagged objects from all classes. If you are querying on a
+model with its own tagging through table, only other instances of the
+same model will be returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TaggableManager.names">
+<code class="descname">names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TaggableManager.names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method, returning a <code class="docutils literal"><span class="pre">ValuesListQuerySet</span></code> (basically
+just an iterable) containing the name of each tag as a string:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">apple</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">names</span><span class="p">()</span>
+<span class="go">[u&#39;green and juicy&#39;, u&#39;red&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="TaggableManager.slugs">
+<code class="descname">slugs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TaggableManager.slugs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method, returning a <code class="docutils literal"><span class="pre">ValuesListQuerySet</span></code> (basically
+just an iterable) containing the slug of each tag as a string:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">apple</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">slugs</span><span class="p">()</span>
+<span class="go">[u&#39;green-and-juicy&#39;, u&#39;red&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>You can subclass <code class="docutils literal"><span class="pre">_TaggableManager</span></code> (note the underscore) to add
+methods or functionality. <code class="docutils literal"><span class="pre">TaggableManager</span></code> takes an optional
+manager keyword argument for your custom class, like this:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Food</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c"># ... fields here</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">TaggableManager</span><span class="p">(</span><span class="n">manager</span><span class="o">=</span><span class="n">_CustomTaggableManager</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<div class="section" id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
+<p>To find all of a model with a specific tags you can filter, using the normal
+Django ORM API.  For example if you had a <code class="docutils literal"><span class="pre">Food</span></code> model, whose
+<code class="docutils literal"><span class="pre">TaggableManager</span></code> was named <code class="docutils literal"><span class="pre">tags</span></code>, you could find all the delicious fruit
+like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Food</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__name__in</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;delicious&quot;</span><span class="p">])</span>
+<span class="go">[&lt;Food: apple&gt;, &lt;Food: pear&gt;, &lt;Food: plum&gt;]</span>
+</pre></div>
+</div>
+<p>If you&#8217;re filtering on multiple tags, it&#8217;s very common to get duplicate
+results, because of the way relational databases work.  Often you&#8217;ll want to
+make use of the <code class="docutils literal"><span class="pre">distinct()</span></code> method on <code class="docutils literal"><span class="pre">QuerySets</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Food</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__name__in</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;delicious&quot;</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">])</span>
+<span class="go">[&lt;Food: apple&gt;, &lt;Food: apple&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Food</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__name__in</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;delicious&quot;</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+<span class="go">[&lt;Food: apple&gt;]</span>
+</pre></div>
+</div>
+<p>You can also filter by the slug on tags.  If you&#8217;re using a custom <code class="docutils literal"><span class="pre">Tag</span></code>
+model you can use this API to filter on any fields it has.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The API</a><ul>
+<li><a class="reference internal" href="#filtering">Filtering</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="admin.html"
+                        title="previous chapter">Using tags in the admin</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="custom_tagging.html"
+                        title="next chapter">Customizing taggit</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="custom_tagging.html" title="Customizing taggit"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="admin.html" title="Using tags in the admin"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2010-2014, Alex Gaynor and others..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>

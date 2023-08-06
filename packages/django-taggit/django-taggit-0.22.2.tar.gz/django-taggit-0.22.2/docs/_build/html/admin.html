@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using tags in the admin &#8212; django-taggit 0.12 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The API" href="api.html" />
+    <link rel="prev" title="Tags in forms" href="forms.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api.html" title="The API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="forms.html" title="Tags in forms"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-tags-in-the-admin">
+<h1>Using tags in the admin<a class="headerlink" href="#using-tags-in-the-admin" title="Permalink to this headline">¶</a></h1>
+<p>By default if you have a <a class="reference internal" href="api.html#TaggableManager" title="TaggableManager"><code class="xref py py-class docutils literal"><span class="pre">TaggableManager</span></code></a> on your model it will show up
+in the admin, just as it will in any other form.</p>
+<p>If you are specifying <code class="xref py py-attr docutils literal"><span class="pre">ModelAdmin.fieldsets</span></code>, include the name
+of the <a class="reference internal" href="api.html#TaggableManager" title="TaggableManager"><code class="xref py py-class docutils literal"><span class="pre">TaggableManager</span></code></a> as a field:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">fieldsets</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="k">None</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;tags&#39;</span><span class="p">)}),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="including-tags-in-modeladmin-list-display">
+<h2>Including tags in <code class="xref py py-attr docutils literal"><span class="pre">ModelAdmin.list_display</span></code><a class="headerlink" href="#including-tags-in-modeladmin-list-display" title="Permalink to this headline">¶</a></h2>
+<p>One important thing to note is that you <em>cannot</em> include a <a class="reference internal" href="api.html#TaggableManager" title="TaggableManager"><code class="xref py py-class docutils literal"><span class="pre">TaggableManager</span></code></a>
+in <code class="xref py py-attr docutils literal"><span class="pre">ModelAdmin.list_display</span></code>. If you do you&#8217;ll see an exception that looks
+like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="ne">AttributeError</span><span class="p">:</span> <span class="s">&#39;_TaggableManager&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s">&#39;name&#39;</span>
+</pre></div>
+</div>
+<p>This is for the same reason that you cannot include a <code class="xref py py-class docutils literal"><span class="pre">ManyToManyField</span></code>:
+it would result in an unreasonable number of queries being executed.</p>
+<p>If you want to show tags in <code class="xref py py-attr docutils literal"><span class="pre">ModelAdmin.list_display</span></code>, you can add a
+custom display method to the <code class="xref py py-class docutils literal"><span class="pre">ModelAdmin</span></code>, using <code class="docutils literal"><span class="pre">prefetch_related</span></code> to
+minimize queries:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyModelAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;tag_list&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyModelAdmin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s">&#39;tags&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tag_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">u&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>For details, see the
+<a class="reference external" href="http://docs.djangoproject.com/en/1.8/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_display">Django documentation</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using tags in the admin</a><ul>
+<li><a class="reference internal" href="#including-tags-in-modeladmin-list-display">Including tags in <code class="docutils literal"><span class="pre">ModelAdmin.list_display</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="forms.html"
+                        title="previous chapter">Tags in forms</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="next chapter">The API</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/admin.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api.html" title="The API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="forms.html" title="Tags in forms"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2010-2014, Alex Gaynor and others..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>

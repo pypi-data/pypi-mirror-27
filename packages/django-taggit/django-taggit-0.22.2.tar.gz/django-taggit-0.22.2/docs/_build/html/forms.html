@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tags in forms &#8212; django-taggit 0.12 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using tags in the admin" href="admin.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="admin.html" title="Using tags in the admin"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tags-in-forms">
+<span id="id1"></span><h1>Tags in forms<a class="headerlink" href="#tags-in-forms" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal"><span class="pre">TaggableManager</span></code> will show up automatically as a field in a
+<code class="docutils literal"><span class="pre">ModelForm</span></code> or in the admin. Tags input via the form field are parsed
+as follows:</p>
+<ul class="simple">
+<li>If the input doesn&#8217;t contain any commas or double quotes, it is simply
+treated as a space-delimited list of tag names.</li>
+<li>If the input does contain either of these characters:<ul>
+<li>Groups of characters which appear between double quotes take
+precedence as multi-word tags (so double quoted tag names may
+contain commas). An unclosed double quote will be ignored.</li>
+<li>Otherwise, if there are any unquoted commas in the input, it will
+be treated as comma-delimited. If not, it will be treated as
+space-delimited.</li>
+</ul>
+</li>
+</ul>
+<p>Examples:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="32%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tag input string</th>
+<th class="head">Resulting tags</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>apple ball cat</td>
+<td><code class="docutils literal"><span class="pre">[&quot;apple&quot;,</span> <span class="pre">&quot;ball&quot;,</span> <span class="pre">&quot;cat&quot;]</span></code></td>
+<td>No commas, so space delimited</td>
+</tr>
+<tr class="row-odd"><td>apple, ball cat</td>
+<td><code class="docutils literal"><span class="pre">[&quot;apple&quot;,</span> <span class="pre">&quot;ball</span> <span class="pre">cat&quot;]</span></code></td>
+<td>Comma present, so comma delimited</td>
+</tr>
+<tr class="row-even"><td>&#8220;apple, ball&#8221; cat dog</td>
+<td><code class="docutils literal"><span class="pre">[&quot;apple,</span> <span class="pre">ball&quot;,</span> <span class="pre">&quot;cat&quot;,</span> <span class="pre">&quot;dog&quot;]</span></code></td>
+<td>All commas are quoted, so space delimited</td>
+</tr>
+<tr class="row-odd"><td>&#8220;apple, ball&#8221;, cat dog</td>
+<td><code class="docutils literal"><span class="pre">[&quot;apple,</span> <span class="pre">ball&quot;,</span> <span class="pre">&quot;cat</span> <span class="pre">dog&quot;]</span></code></td>
+<td>Contains an unquoted comma, so comma delimited</td>
+</tr>
+<tr class="row-even"><td>apple &#8220;ball cat&#8221; dog</td>
+<td><code class="docutils literal"><span class="pre">[&quot;apple&quot;,</span> <span class="pre">&quot;ball</span> <span class="pre">cat&quot;,</span> <span class="pre">&quot;dog&quot;]</span></code></td>
+<td>No commas, so space delimited</td>
+</tr>
+<tr class="row-odd"><td>&#8220;apple&#8221; &#8220;ball dog</td>
+<td><code class="docutils literal"><span class="pre">[&quot;apple&quot;,</span> <span class="pre">&quot;ball&quot;,</span> <span class="pre">&quot;dog&quot;]</span></code></td>
+<td>Unclosed double quote is ignored</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="commit-false">
+<h2><code class="docutils literal"><span class="pre">commit=False</span></code><a class="headerlink" href="#commit-false" title="Permalink to this headline">¶</a></h2>
+<p>If, when saving a form, you use the <code class="docutils literal"><span class="pre">commit=False</span></code> option you&#8217;ll need to call
+<code class="docutils literal"><span class="pre">save_m2m()</span></code> on the form after you save the object, just as you would for a
+form with normal many to many fields on it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">MyFormClass</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">commit</span><span class="o">=</span><span class="k">False</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="c"># Without this next line the tags won&#39;t be saved.</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">save_m2m</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tags in forms</a><ul>
+<li><a class="reference internal" href="#commit-false"><code class="docutils literal"><span class="pre">commit=False</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="previous chapter">Getting Started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="admin.html"
+                        title="next chapter">Using tags in the admin</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/forms.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="admin.html" title="Using tags in the admin"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2010-2014, Alex Gaynor and others..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Contributing to taggit &#8212; django-taggit 0.12 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="External Applications" href="external_apps.html" />
+    <link rel="prev" title="Customizing taggit" href="custom_tagging.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="external_apps.html" title="External Applications"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="custom_tagging.html" title="Customizing taggit"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="contributing-to-taggit">
+<h1>Contributing to taggit<a class="headerlink" href="#contributing-to-taggit" title="Permalink to this headline">¶</a></h1>
+<p>Thank you for taking the time to contribute to django-taggit.</p>
+<p>Follow these guidelines to speed up the process.</p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first"><strong>Table of Contents</strong>:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#contributing-to-taggit" id="id1">Contributing to taggit</a><ul>
+<li><a class="reference internal" href="#reach-out-before-you-start" id="id2">Reach out before you start</a></li>
+<li><a class="reference internal" href="#fork-repo-and-install-your-fork" id="id3">Fork repo and install your fork</a></li>
+<li><a class="reference internal" href="#running-tests" id="id4">Running tests</a></li>
+<li><a class="reference internal" href="#opening-the-django-shell" id="id5">Opening the django shell</a></li>
+<li><a class="reference internal" href="#creating-new-migrations" id="id6">Creating new migrations</a></li>
+<li><a class="reference internal" href="#follow-style-conventions-pep8-isort" id="id7">Follow style conventions (PEP8, isort)</a></li>
+<li><a class="reference internal" href="#update-documentation" id="id8">Update documentation</a></li>
+<li><a class="reference internal" href="#send-pull-request" id="id9">Send pull request</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="reach-out-before-you-start">
+<h2>Reach out before you start<a class="headerlink" href="#reach-out-before-you-start" title="Permalink to this headline">¶</a></h2>
+<p>Before opening a new issue, try the following steps:</p>
+<ul class="simple">
+<li>look if somebody else has already started working on the same issue
+by looking in the <a class="reference external" href="https://github.com/alex/django-taggit/issues">github issues</a>
+and <a class="reference external" href="https://github.com/alex/django-taggit/pulls">pull requests</a></li>
+<li>look also in the <a class="reference external" href="http://groups.google.com/group/django-taggit">django-taggit mailinglist</a></li>
+<li>announce your intentions by opening a new issue</li>
+<li>present yourself on the mailing list</li>
+</ul>
+</div>
+<div class="section" id="fork-repo-and-install-your-fork">
+<h2>Fork repo and install your fork<a class="headerlink" href="#fork-repo-and-install-your-fork" title="Permalink to this headline">¶</a></h2>
+<p>Once you have forked this repository to your own github account or organization,
+install your own fork in your development environment:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>git clone git@github.com:&lt;your_fork&gt;/django-taggit.git
+<span class="nb">cd</span> django-taggit
+python setup.py develop
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-tests">
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>make <span class="nb">test</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="opening-the-django-shell">
+<h2>Opening the django shell<a class="headerlink" href="#opening-the-django-shell" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>./manage.py shell
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-new-migrations">
+<h2>Creating new migrations<a class="headerlink" href="#creating-new-migrations" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>./manage.py makemigrations
+</pre></div>
+</div>
+</div>
+<div class="section" id="follow-style-conventions-pep8-isort">
+<h2>Follow style conventions (PEP8, isort)<a class="headerlink" href="#follow-style-conventions-pep8-isort" title="Permalink to this headline">¶</a></h2>
+<p>Check that your changes are not breaking the style conventions with:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>flake8 taggit
+python setup.py isort
+</pre></div>
+</div>
+<p>For more information, please see:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8: Style Guide for Python Code</a></li>
+<li><a class="reference external" href="https://github.com/timothycrosley/isort">isort: a python utility / library to sort imports</a></li>
+</ul>
+</div>
+<div class="section" id="update-documentation">
+<h2>Update documentation<a class="headerlink" href="#update-documentation" title="Permalink to this headline">¶</a></h2>
+<p>If you introduce new features or change existing documented behavior,
+please remember to update the documentation!</p>
+<p>The documentation is located in the <code class="docutils literal"><span class="pre">/docs</span></code> directory
+of the repository.</p>
+<p>To do work on the docs, proceed with the following steps:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">cd</span> docs/
+pip install sphinx
+<span class="c1"># update the text files with your favorite text editor</span>
+make html
+</pre></div>
+</div>
+</div>
+<div class="section" id="send-pull-request">
+<h2>Send pull request<a class="headerlink" href="#send-pull-request" title="Permalink to this headline">¶</a></h2>
+<p>Now is time to push your changes to github and open a
+<a class="reference external" href="https://github.com/alex/django-taggit/pulls">pull request</a>!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Contributing to taggit</a><ul>
+<li><a class="reference internal" href="#reach-out-before-you-start">Reach out before you start</a></li>
+<li><a class="reference internal" href="#fork-repo-and-install-your-fork">Fork repo and install your fork</a></li>
+<li><a class="reference internal" href="#running-tests">Running tests</a></li>
+<li><a class="reference internal" href="#opening-the-django-shell">Opening the django shell</a></li>
+<li><a class="reference internal" href="#creating-new-migrations">Creating new migrations</a></li>
+<li><a class="reference internal" href="#follow-style-conventions-pep8-isort">Follow style conventions (PEP8, isort)</a></li>
+<li><a class="reference internal" href="#update-documentation">Update documentation</a></li>
+<li><a class="reference internal" href="#send-pull-request">Send pull request</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="custom_tagging.html"
+                        title="previous chapter">Customizing taggit</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="external_apps.html"
+                        title="next chapter">External Applications</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/contributing.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="external_apps.html" title="External Applications"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="custom_tagging.html" title="Customizing taggit"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2010-2014, Alex Gaynor and others..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>

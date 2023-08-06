@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Customizing taggit &#8212; django-taggit 0.12 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing to taggit" href="contributing.html" />
+    <link rel="prev" title="The API" href="api.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing to taggit"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="The API"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="customizing-taggit">
+<h1>Customizing taggit<a class="headerlink" href="#customizing-taggit" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-a-custom-tag-or-through-model">
+<h2>Using a Custom Tag or Through Model<a class="headerlink" href="#using-a-custom-tag-or-through-model" title="Permalink to this headline">¶</a></h2>
+<p>By default <code class="docutils literal"><span class="pre">django-taggit</span></code> uses a &#8220;through model&#8221; with a
+<code class="docutils literal"><span class="pre">GenericForeignKey</span></code> on it, that has another <code class="docutils literal"><span class="pre">ForeignKey</span></code> to an included
+<code class="docutils literal"><span class="pre">Tag</span></code> model.  However, there are some cases where this isn&#8217;t desirable, for
+example if you want the speed and referential guarantees of a real
+<code class="docutils literal"><span class="pre">ForeignKey</span></code>, if you have a model with a non-integer primary key, or if you
+want to store additional data about a tag, such as whether it is official.  In
+these cases <code class="docutils literal"><span class="pre">django-taggit</span></code> makes it easy to substitute your own through
+model, or <code class="docutils literal"><span class="pre">Tag</span></code> model.</p>
+<p>To change the behavior there are a number of classes you can subclass to obtain
+different behavior:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Class name</th>
+<th class="head">Behavior</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">TaggedItemBase</span></code></td>
+<td>Allows custom <code class="docutils literal"><span class="pre">ForeignKeys</span></code> to models.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GenericTaggedItemBase</span></code></td>
+<td>Allows custom <code class="docutils literal"><span class="pre">Tag</span></code> models. Tagged models use an integer primary key.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">GenericUUIDTaggedItemBase</span></code></td>
+<td>Allows custom <code class="docutils literal"><span class="pre">Tag</span></code> models. Tagged models use a UUID primary key.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CommonGenericTaggedItemBase</span></code></td>
+<td>Allows custom <code class="docutils literal"><span class="pre">Tag</span></code> models and <code class="docutils literal"><span class="pre">GenericForeignKeys</span></code> to models.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ItemBase</span></code></td>
+<td>Allows custom <code class="docutils literal"><span class="pre">Tag</span></code> models and <code class="docutils literal"><span class="pre">ForeignKeys</span></code> to models.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="custom-foreignkeys">
+<h3>Custom ForeignKeys<a class="headerlink" href="#custom-foreignkeys" title="Permalink to this headline">¶</a></h3>
+<p>Your intermediary model must be a subclass of
+<code class="docutils literal"><span class="pre">taggit.models.TaggedItemBase</span></code> with a foreign key to your content
+model named <code class="docutils literal"><span class="pre">content_object</span></code>. Pass this intermediary model as the
+<code class="docutils literal"><span class="pre">through</span></code> argument to <code class="docutils literal"><span class="pre">TaggableManager</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+
+<span class="kn">from</span> <span class="nn">taggit.managers</span> <span class="k">import</span> <span class="n">TaggableManager</span>
+<span class="kn">from</span> <span class="nn">taggit.models</span> <span class="k">import</span> <span class="n">TaggedItemBase</span>
+
+
+<span class="k">class</span> <span class="nc">TaggedFood</span><span class="p">(</span><span class="n">TaggedItemBase</span><span class="p">):</span>
+    <span class="n">content_object</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;Food&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Food</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c"># ... fields here</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">TaggableManager</span><span class="p">(</span><span class="n">through</span><span class="o">=</span><span class="n">TaggedFood</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once this is done, the API works the same as for GFK-tagged models.</p>
+</div>
+<div class="section" id="custom-genericforeignkeys">
+<h3>Custom GenericForeignKeys<a class="headerlink" href="#custom-genericforeignkeys" title="Permalink to this headline">¶</a></h3>
+<p>The default <code class="docutils literal"><span class="pre">GenericForeignKey</span></code> used by <code class="docutils literal"><span class="pre">django-taggit</span></code> assume your
+tagged object use an integer primary key. For non-integer primary key,
+your intermediary model must be a subclass of <code class="docutils literal"><span class="pre">taggit.models.CommonGenericTaggedItemBase</span></code>
+with a field named <code class="docutils literal"><span class="pre">&quot;object_id&quot;</span></code> of the type of your primary key.</p>
+<p>For example, if your primary key is a string:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+
+<span class="kn">from</span> <span class="nn">taggit.managers</span> <span class="k">import</span> <span class="n">TaggableManager</span>
+<span class="kn">from</span> <span class="nn">taggit.models</span> <span class="k">import</span> <span class="n">CommonGenericTaggedItemBase</span><span class="p">,</span> <span class="n">TaggedItemBase</span>
+
+<span class="k">class</span> <span class="nc">GenericStringTaggedItem</span><span class="p">(</span><span class="n">CommonGenericTaggedItemBase</span><span class="p">,</span> <span class="n">TaggedItemBase</span><span class="p">):</span>
+    <span class="n">object_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s">&#39;Object id&#39;</span><span class="p">),</span> <span class="n">db_index</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Food</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">food_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+    <span class="c"># ... fields here</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">TaggableManager</span><span class="p">(</span><span class="n">through</span><span class="o">=</span><span class="n">GenericStringTaggedItem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="genericuuidtaggeditembase">
+<h3>GenericUUIDTaggedItemBase<a class="headerlink" href="#genericuuidtaggeditembase" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">GenericUUIDTaggedItemBase</span></code> relies on Django UUIDField introduced with
+Django 1.8. Therefore <code class="docutils literal"><span class="pre">GenericUUIDTaggedItemBase</span></code> is only defined
+if you are using Django 1.8+.</p>
+</div>
+<p>A common use case of a non-integer primary key, is UUID primary key.
+<code class="docutils literal"><span class="pre">django-taggit</span></code> provides a base class <code class="docutils literal"><span class="pre">GenericUUIDTaggedItemBase</span></code> ready
+to use with models using an UUID primary key:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="k">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+
+<span class="kn">from</span> <span class="nn">taggit.managers</span> <span class="k">import</span> <span class="n">TaggableManager</span>
+<span class="kn">from</span> <span class="nn">taggit.models</span> <span class="k">import</span> <span class="n">GenericUUIDTaggedItemBase</span><span class="p">,</span> <span class="n">TaggedItemBase</span>
+
+<span class="k">class</span> <span class="nc">UUIDTaggedItem</span><span class="p">(</span><span class="n">GenericUUIDTaggedItemBase</span><span class="p">,</span> <span class="n">TaggedItemBase</span><span class="p">):</span>
+    <span class="c"># If you only inherit GenericUUIDTaggedItemBase, you need to define</span>
+    <span class="c"># a tag field. e.g.</span>
+    <span class="c"># tag = models.ForeignKey(Tag, related_name=&quot;uuid_tagged_items&quot;, on_delete=models.CASCADE)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s">&quot;Tag&quot;</span><span class="p">)</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s">&quot;Tags&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Food</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="k">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="k">False</span><span class="p">)</span>
+    <span class="c"># ... fields here</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">TaggableManager</span><span class="p">(</span><span class="n">through</span><span class="o">=</span><span class="n">UUIDTaggedItem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-tag">
+<h3>Custom tag<a class="headerlink" href="#custom-tag" title="Permalink to this headline">¶</a></h3>
+<p>When providing a custom <code class="docutils literal"><span class="pre">Tag</span></code> model it should be a <code class="docutils literal"><span class="pre">ForeignKey</span></code> to your tag
+model named <code class="docutils literal"><span class="pre">&quot;tag&quot;</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+
+<span class="kn">from</span> <span class="nn">taggit.managers</span> <span class="kn">import</span> <span class="n">TaggableManager</span>
+<span class="kn">from</span> <span class="nn">taggit.models</span> <span class="kn">import</span> <span class="n">TagBase</span><span class="p">,</span> <span class="n">GenericTaggedItemBase</span>
+
+
+<span class="k">class</span> <span class="nc">MyCustomTag</span><span class="p">(</span><span class="n">TagBase</span><span class="p">):</span>
+    <span class="c"># ... fields here</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s">&quot;Tag&quot;</span><span class="p">)</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s">&quot;Tags&quot;</span><span class="p">)</span>
+
+    <span class="c"># ... methods (if any) here</span>
+
+
+<span class="k">class</span> <span class="nc">TaggedWhatever</span><span class="p">(</span><span class="n">GenericTaggedItemBase</span><span class="p">):</span>
+    <span class="c"># TaggedWhatever can also extend TaggedItemBase or a combination of</span>
+    <span class="c"># both TaggedItemBase and GenericTaggedItemBase. GenericTaggedItemBase</span>
+    <span class="c"># allows using the same tag for different kinds of objects, in this</span>
+    <span class="c"># example Food and Drink.</span>
+
+    <span class="c"># Here is where you provide your custom Tag class.</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">MyCustomTag</span><span class="p">,</span>
+                            <span class="n">related_name</span><span class="o">=</span><span class="s">&quot;</span><span class="si">%(app_label)s</span><span class="s">_</span><span class="si">%(class)s</span><span class="s">_items&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Food</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c"># ... fields here</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">TaggableManager</span><span class="p">(</span><span class="n">through</span><span class="o">=</span><span class="n">TaggedWhatever</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Drink</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c"># ... fields here</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">TaggableManager</span><span class="p">(</span><span class="n">through</span><span class="o">=</span><span class="n">TaggedWhatever</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<dl class="class">
+<dt id="TagBase">
+<em class="property">class </em><code class="descname">TagBase</code><a class="headerlink" href="#TagBase" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="TagBase.slugify">
+<code class="descname">slugify</code><span class="sig-paren">(</span><em>tag</em>, <em>i=None</em><span class="sig-paren">)</span><a class="headerlink" href="#TagBase.slugify" title="Permalink to this definition">¶</a></dt>
+<dd><p>By default <code class="docutils literal"><span class="pre">taggit</span></code> uses <code class="xref py py-func docutils literal"><span class="pre">django.template.defaultfilters.slugify()</span></code>
+to calculate a slug for a given tag.  However, if you want to implement
+your own logic you can override this method, which receives the <code class="docutils literal"><span class="pre">tag</span></code>
+(a string), and <code class="docutils literal"><span class="pre">i</span></code>, which is either <code class="docutils literal"><span class="pre">None</span></code> or an integer, which
+signifies how many times the slug for this tag has been attempted to be
+calculated, it is <code class="docutils literal"><span class="pre">None</span></code> on the first time, and the counting begins
+at <code class="docutils literal"><span class="pre">1</span></code> thereafter.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="using-a-custom-tag-string-parser">
+<h2>Using a custom tag string parser<a class="headerlink" href="#using-a-custom-tag-string-parser" title="Permalink to this headline">¶</a></h2>
+<p>By default <code class="docutils literal"><span class="pre">django-taggit</span></code> uses <code class="xref py py-func docutils literal"><span class="pre">taggit.utils._parse_tags()</span></code> which
+accepts a string which may contain one or more tags and returns a list of tag
+names.  This parser is quite intelligent and can handle a number of edge cases;
+however, you may wish to provide your own parser for various reasons (e.g. you
+can do some preprocessing on the tags so that they are converted to lowercase,
+reject certain tags, disallow certain characters, split only on commas rather
+than commas and whitespace, etc.).  To provide your own parser, write a
+function that takes a tag string and returns a list of tag names.  For example,
+a simple function to split on comma and convert to lowercase:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="k">def</span> <span class="nf">comma_splitter</span><span class="p">(</span><span class="n">tag_string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tag_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
+</pre></div>
+</div>
+<p>You need to tell <code class="docutils literal"><span class="pre">taggit</span></code> to use this function instead of the default by
+adding a new setting, <code class="docutils literal"><span class="pre">TAGGIT_TAGS_FROM_STRING</span></code> and providing it with the
+dotted path to your function.  Likewise, you can provide a function to convert
+a list of tags to a string representation and use the setting
+<code class="docutils literal"><span class="pre">TAGGIT_STRING_FROM_TAGS</span></code> to override the default value (which is
+<code class="xref py py-func docutils literal"><span class="pre">taggit.utils._edit_string_for_tags()</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="k">def</span> <span class="nf">comma_joiner</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the functions above were defined in a module, <code class="docutils literal"><span class="pre">appname.utils</span></code>, then your
+project settings.py file should contain the following:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">TAGGIT_TAGS_FROM_STRING</span> <span class="o">=</span> <span class="s">&#39;appname.utils.comma_splitter&#39;</span>
+<span class="n">TAGGIT_STRING_FROM_TAGS</span> <span class="o">=</span> <span class="s">&#39;appname.utils.comma_joiner&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Customizing taggit</a><ul>
+<li><a class="reference internal" href="#using-a-custom-tag-or-through-model">Using a Custom Tag or Through Model</a><ul>
+<li><a class="reference internal" href="#custom-foreignkeys">Custom ForeignKeys</a></li>
+<li><a class="reference internal" href="#custom-genericforeignkeys">Custom GenericForeignKeys</a></li>
+<li><a class="reference internal" href="#genericuuidtaggeditembase">GenericUUIDTaggedItemBase</a></li>
+<li><a class="reference internal" href="#custom-tag">Custom tag</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-a-custom-tag-string-parser">Using a custom tag string parser</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="previous chapter">The API</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="contributing.html"
+                        title="next chapter">Contributing to taggit</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/custom_tagging.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing to taggit"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="The API"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-taggit 0.12 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2010-2014, Alex Gaynor and others..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>
