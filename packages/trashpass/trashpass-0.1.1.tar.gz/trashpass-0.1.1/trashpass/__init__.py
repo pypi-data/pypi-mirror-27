@@ -1,0 +1,1 @@
+from .trashpass import Trashpass
