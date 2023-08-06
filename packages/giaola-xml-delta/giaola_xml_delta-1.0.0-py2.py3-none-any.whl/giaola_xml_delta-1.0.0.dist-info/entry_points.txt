@@ -1,0 +1,7 @@
+[console_scripts]
+xml_delta = xml_delta.cli:xml_delta
+xml_delta_check_db = xml_delta.cli:check_db
+xml_delta_check_file_log = xml_delta.cli:check_file_log
+xml_delta_check_network = xml_delta.cli:check_network
+xml_delta_drop = xml_delta.cli:drop_tables
+
