@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+  then
+    echo "You must specify the target location path for the dump. exiting."
+    exit 1
+fi
+echo "dumping postgres database +rapidpro_db+ to $1"
+su - postgres -c "pg_dump -C rapidpro_db > $1"
