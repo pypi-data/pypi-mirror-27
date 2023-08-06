@@ -1,0 +1,42 @@
+Changelog
+=========
+
+0.3.0
+-----
+- **Backward incompatible change:** The ``hana://`` DBURI schema will now use ``hdbcli`` by default.
+- Support of Python 3
+- Support for tenant specification in connect URL and automatic sql port discovery
+
+0.2.2
+-----
+- Support of named constraints
+- Reflection is now able to detect named constraints
+- Fixed reflection of view columns with newer SAP HANA versions
+- Allow construction of more complex SELECT FOR UPDATE statements
+- Fixed bug with table argument hana_table_type that could lead to
+  invalid CREATE TABLE statements
+- Replace standard reserved words with SAP HANA reserved words in
+  ``HANAIdentifierPreparer``
+
+0.2.1
+-----
+- Fix LOB handling with hdbcli driver
+
+0.2.0
+-----
+- Added basic support for hdbcli driver
+- Allow specification of table type via ``hana_table_type``
+
+0.1.2
+-----
+- Cleanup of setup.py
+- Release on PyPi
+
+0.1.0
+-----
+- Added support for LOBs
+
+
+0.0.1
+-----
+- Initial version
