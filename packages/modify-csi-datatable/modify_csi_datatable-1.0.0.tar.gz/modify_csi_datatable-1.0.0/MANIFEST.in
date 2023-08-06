@@ -1,0 +1,16 @@
+# Include the license file
+include LICENSE
+include modify_csi_datatable/VERSION
+
+exclude modify_csi_datatable/flask_ui.py
+exclude modify_csi_datatable/cli.py
+exclude modify_csi_datatable/modify_csi_datatable.wsgi
+
+prune modify_csi_datatable/template
+prune modify_csi_datatable/static
+prune modify_csi_datatable/venv
+prune test
+
+# If using Python 2.6 or less, then have to include package data, even though
+# it's already declared in setup.py
+# include sample/*.dat
