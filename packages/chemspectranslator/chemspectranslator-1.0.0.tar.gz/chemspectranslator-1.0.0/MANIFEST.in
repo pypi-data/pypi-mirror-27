@@ -1,0 +1,10 @@
+include chemspectranslator/data/translator_db.csv
+include chemspectranslator/data/translator_db.README
+exclude chemspectranslator/data/translator_db.csv.cache
+exclude chemspectranslator/google_sheets_api.py
+exclude chemspectranslator/data/google_api_program_client_secret.json
+exclude chemspectranslator/data/sheets.googleapis.com-python-quickstart.json
+include CHANGES.rst
+include INSTALL.rst
+include LICENSE.txt
+include README.rst
