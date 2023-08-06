@@ -1,0 +1,40 @@
+Metadata-Version: 1.1
+Name: django-ultracache-twisted
+Version: 0.0.3
+Summary: Companion app to django-ultracache that enables proxy invalidation
+Home-page: http://github.com/praekelt/django-ultracache-twisted
+Author: Praekelt Consulting
+Author-email: dev@praekelt.com
+License: BSD
+Description: Django Ultracache Twisted
+        =========================
+        **Companion app to django-ultracache that enables proxy invalidation**
+        
+        .. figure:: https://travis-ci.org/praekelt/django-ultracache-twisted.svg?branch=develop
+           :align: center
+           :alt: Travis
+        
+        .. contents:: Contents
+            :depth: 5
+        
+        Installation
+        ------------
+        
+        #. Install or add ``django-ultracache-twisted`` to your Python path.
+        
+        Running from the CLI
+        --------------------
+        
+            virtualenv example/ve
+            ./example/ve/bin/pip install -r example/requirements.txt
+            ./example/dev-purge.sh
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Networking
