@@ -1,0 +1,15 @@
+argparse
+bda.cache
+node.ext.ugm>=0.9.9
+node>=0.9.20
+odict>=1.6.1
+plumber>=1.4
+python-ldap
+setuptools
+smbpasswd
+
+[test]
+interlude
+plone.testing
+zope.configuration
+zope.testing
