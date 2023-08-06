@@ -1,0 +1,32 @@
+Metadata-Version: 2.0
+Name: satori-rtm-cli
+Version: 1.5.3
+Summary: Satori RTM CLI
+Home-page: http://www.satori.com/
+Author: Satori
+Author-email: sdk@satori.com
+License: Proprietary
+Description-Content-Type: UNKNOWN
+Keywords: satori
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: satori-rtm-sdk (>=1.5.0)
+Requires-Dist: docopt
+Requires-Dist: toml
+Requires-Dist: xdg (<2,>=1.0.4)
+Requires-Dist: cbor2
+
+
+This is a debugging and exploration tool for `Satori <https://www.satori.com>`_ RTM.
+
+See `README <https://github.com/satori-com/satori-rtm-sdk-python/tree/master/cli>`_
+
+
