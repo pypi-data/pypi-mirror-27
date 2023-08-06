@@ -1,0 +1,85 @@
+# campbel
+
+便利モジュールです。  
+
+セットアップ  
+内部でpymysql、botoが動いていますのでインストールしてください。  
+pip install pymysql boto  
+
+
+チュートリアル  
+dbに接続しよう  
+
+from campbel import AWS.Rds as rds  
+rds = rds.Rds(  
+    db_host = 'DBホスト',  
+    db_user = 'DBユーザー',  
+    db_password = 'DBパスワード',  
+    db_name = 'DB名',  
+    charset = 'utf-8',  
+    )  
+
+これで接続完了！  
+
+インサートしよう  
+rds.insertExecute('user','name,age,message','"campbel",20,"hello"')  
+rds.dbClosed()  
+これは  
+INSERT INTO user (name,age,message) VALUES ("campbel",20,"hello")  
+と等価です。rds.dbClosed()はDBと接続を切ります。  
+
+次はデータをまとめて挿入してみましょう。辞書形式を配列にしましょう。  
+data_list_array = [  
+{'name':'ryu', age:27, 'massage':'こんにちは'},  
+{'name':'koumei', age:26, 'massage':'game'},  
+{'name':'hyuga', age:21, 'massage':'meshi'},  
+{'name':'kenjo', age:20, 'massage':'study'},  
+]  
+rds.insertListExecute(data_list_array)  
+rds.dbClosed()  
+
+これは  
+INSERT INTO user (name,age,message) VALUES ("ryu",27,"こんにちは")  
+INSERT INTO user (name,age,message) VALUES ("koumei",26,"game")  
+INSERT INTO user (name,age,message) VALUES ("hyuga",21,"meshi")  
+INSERT INTO user (name,age,message) VALUES ("kenjo",20,"study")  
+と等価です。  
+
+次はs3に接続してみよう！  
+from campbel import AWS.S3 as S3  
+
+s3 = S3.S3(  
+        access_key = 'アクセスキー',  
+        secret_access_key = 'シークレットアクセスキー',  
+        bucket_name = 'バケット名',  
+    )  
+
+これで接続完了です。  
+
+S3の/test/とディレクトリを作ろう。  
+s3.createDir('test/')  
+
+ローカルのa.txtをデータを入れよう！  
+s3.uploadFileToS3(a.txt, 'test/a.txt')  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  -->
+
+
