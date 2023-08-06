@@ -1,0 +1,15 @@
+websockets
+aiohttp
+ujson
+sanic>=0.5.4
+raven
+raven-aiohttp
+diskcache
+httpagentparser
+pyfailsafe
+
+[diskcache]
+diskcache
+
+[s3]
+minio>=3.0.0
