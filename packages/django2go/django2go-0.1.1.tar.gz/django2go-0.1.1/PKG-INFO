@@ -1,0 +1,56 @@
+Metadata-Version: 1.1
+Name: django2go
+Version: 0.1.1
+Summary: Translate django model to go struct.
+Home-page: UNKNOWN
+Author: treeoph
+Author-email: treeoph@gmail.com
+License: UNKNOWN
+Description: # Django Model 2 Go Struct
+        
+        for gorm or other ORM operation.
+        
+        Depends in go code:
+        
+        https://github.com/jinzhu/gorm
+        
+        https://github.com/guregu/null
+        
+        ## Install
+        
+        ```bash
+        git clone /django2go.git
+        cd django2go
+        python setup.py install .
+        ```
+        
+        ## Usage:
+        
+        settings.py
+        
+        ```python
+        INSTALLED_APPS = [
+            ...
+            'django2go',
+            ...
+        ]
+        
+        ```
+        
+        run CMD:
+        
+        `python manage.py model2go app_name`
+        
+        Example generated go code: [testapp.go](./test_project/testapp.go)
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 1.10
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
